@@ -60,20 +60,20 @@ static void SplitNifTree( NiObject * root_object, NiObjectRef& xnif_root, list<N
 
 //--Function Bodies--//
 
-NiObjectRef ReadNifTree( istream & in, list<NiObjectRef> & missing_link_stack, NifInfo * info ) {
-	vector<NiObjectRef> objects = ReadNifList( in, missing_link_stack, info );
+NiObjectRef ReadNifTree( istream & in, list<NiObjectRef> & missing_link_stack, NifInfo * info, NifOptions * nif_opts ) {
+	vector<NiObjectRef> objects = ReadNifList( in, missing_link_stack, info, nif_opts );
 	return FindRoot( objects );
 }
 
-NiObjectRef ReadNifTree( string const & file_name, NifInfo * info ) {
+NiObjectRef ReadNifTree( string const & file_name, NifInfo * info, NifOptions * nif_opts ) {
 	//Read object list
-	vector<NiObjectRef> objects = ReadNifList( file_name, info );
+	vector<NiObjectRef> objects = ReadNifList( file_name, info, nif_opts );
 	return FindRoot( objects );
 }
 
-NiObjectRef ReadNifTree( istream & in, NifInfo * info ) {
+NiObjectRef ReadNifTree( istream & in, NifInfo * info, NifOptions * nif_opts ) {
 	//Read object list
-	vector<NiObjectRef> objects = ReadNifList( in, info );
+	vector<NiObjectRef> objects = ReadNifList( in, info, nif_opts );
 	return FindRoot( objects );
 }
 
@@ -114,21 +114,21 @@ unsigned int GetNifVersion( string const & file_name ) {
 	return info.version;
 }
 
-vector<NiObjectRef> ReadNifList( string const & file_name, NifInfo * info ) {
+vector<NiObjectRef> ReadNifList( string const & file_name, NifInfo * info, NifOptions * nif_opts ) {
 
 	//--Open File--//
 	ifstream in( file_name.c_str(), ifstream::binary );
-	vector<NiObjectRef> ret = ReadNifList( in, info );
+	vector<NiObjectRef> ret = ReadNifList( in, info, nif_opts );
 	in.close();
 	return ret;
 }
 
-vector<NiObjectRef> ReadNifList( istream & in, NifInfo * info ) {
+vector<NiObjectRef> ReadNifList( istream & in, NifInfo * info, NifOptions * nif_opts ) {
 	list<NiObjectRef> missing_link_stack;
-	return ReadNifList(in, missing_link_stack, info);
+	return ReadNifList(in, missing_link_stack, info, nif_opts);
 }
 
-vector<NiObjectRef> ReadNifList( istream & in, list<NiObjectRef> & missing_link_stack, NifInfo * info ) {
+vector<NiObjectRef> ReadNifList( istream & in, list<NiObjectRef> & missing_link_stack, NifInfo * info, NifOptions * nif_opts ) {
 
 	//Ensure that objects are registered
 	if ( g_objects_registered == false ) {
@@ -187,8 +187,8 @@ vector<NiObjectRef> ReadNifList( istream & in, list<NiObjectRef> & missing_link_
 	NiObjectRef new_obj;
 	while (true) {
 
-		// Check if the size information matches in version 20.3 and greater
-		if ( header.version >= VER_20_3_0_3 ) {
+		// Check if the size information matches in version 20.2.0.7 and greater
+		if ( header.version >= VER_20_2_0_7 ) {
 			if (nextobjpos != in.tellg()) {
 				// incorrect positioning seek to expected location
 				in.seekg(nextobjpos);				
@@ -335,7 +335,7 @@ vector<NiObjectRef> ReadNifList( istream & in, list<NiObjectRef> & missing_link_
 		std::streampos endobjpos = in.tellg();
 
 		// Check if the size information matches
-		if ( header.version >= VER_20_3_0_3 ) {
+		if ( header.version >= VER_20_2_0_7 ) {
 			std::streamsize calcobjsize = endobjpos - startobjpos;
 			unsigned int objsize = header.blockSize[i];
 			if (calcobjsize != objsize) {
@@ -371,7 +371,10 @@ vector<NiObjectRef> ReadNifList( istream & in, list<NiObjectRef> & missing_link_
 
 	// Check for accumulated warnings
 	if (errStream.tellp() > 0) {
-		throw runtime_error( errStream.str() );
+		if (nif_opts != NULL) 
+			nif_opts->errorMsgs = errStream.str();
+		if (nif_opts == NULL || nif_opts->exceptionOnErrors)
+			throw runtime_error( errStream.str() );
 	}
 	
 #ifdef DEBUG_LINK_PHASE
@@ -584,45 +587,45 @@ void WriteNifTree( ostream & out, list<NiObjectRef> const & roots, list<NiObject
 	out << hdrInfo(NULL);
 }
 
-void WriteNifTree( ostream & out, NiObject *root, list<NiObject *> & missing_link_stack, const NifInfo & info) {
+void WriteNifTree( ostream & out, NiObject *root, list<NiObject *> & missing_link_stack, const NifInfo & info, NifOptions * nif_opts ) {
 	list<NiObjectRef> roots;
 	roots.push_back(root);
 	WriteNifTree( out, roots, missing_link_stack, info );
 }
 
-void WriteNifTree( ostream & out, list<NiObjectRef> const & roots, const NifInfo & info) {
+void WriteNifTree( ostream & out, list<NiObjectRef> const & roots, const NifInfo & info, NifOptions * nif_opts ) {
 	list<NiObject *> missing_link_stack;
 	WriteNifTree( out, roots, missing_link_stack, info );
 }
 
 // Writes a valid Nif File given a file name, a pointer to the root object of a file tree
-void WriteNifTree( string const & file_name, NiObject * root, const NifInfo & info ) {
+void WriteNifTree( string const & file_name, NiObject * root, const NifInfo & info, NifOptions * nif_opts ) {
    //Open output file
    ofstream out( file_name.c_str(), ofstream::binary );
 
    list<NiObjectRef> roots;
    roots.push_back(root);
-   WriteNifTree( out, roots, info );
+   WriteNifTree( out, roots, info, nif_opts );
 
    //Close file
    out.close();
 }
 
-void WriteNifTree( string const & file_name, list<NiObjectRef> const & roots, const NifInfo & info ) {
+void WriteNifTree( string const & file_name, list<NiObjectRef> const & roots, const NifInfo & info, NifOptions * nif_opts ) {
    //Open output file
    ofstream out( file_name.c_str(), ofstream::binary );
 
-   WriteNifTree( out, roots, info );
+   WriteNifTree( out, roots, info, nif_opts );
 
    //Close file
    out.close();
 }
 
 // Writes a valid Nif File given an ostream, a pointer to the root object of a file tree
-void WriteNifTree( ostream & out, NiObject * root, const NifInfo & info ) {
+void WriteNifTree( ostream & out, NiObject * root, const NifInfo & info, NifOptions * nif_opts ) {
    list<NiObjectRef> roots;
    roots.push_back(root);
-   WriteNifTree( out, roots, info );
+   WriteNifTree( out, roots, info, nif_opts );
 }
 
 // Determine whether block comes before its parent or not, depending on the block type.
@@ -900,6 +903,11 @@ static void SplitNifTree( NiObject* root_object, NiObjectRef& xnif_root, list<Ni
 
 //TODO:  This was written by Amorilia.  Figure out how to fix it.
 void WriteFileGroup( string const & file_name, NiObject * root_object, const NifInfo & info, ExportOptions export_files, NifGame kf_type ) {
+
+	NifOptions nif_opts;
+	nif_opts.export_files = export_files;
+	nif_opts.kf_type = kf_type;
+
 	// Get base filename.
 	unsigned int file_name_slash = (unsigned int)(file_name.rfind("\\") + 1);
 	string file_name_path = file_name.substr(0, file_name_slash);
@@ -909,19 +917,19 @@ void WriteFileGroup( string const & file_name, NiObject * root_object, const Nif
 	
 	// Deal with the simple case first
 	if ( export_files == EXPORT_NIF )
-		WriteNifTree( file_name_path + file_name_base + ".nif", root_object, info ); // simply export the NIF file!
+		WriteNifTree( file_name_path + file_name_base + ".nif", root_object, info, &nif_opts ); // simply export the NIF file!
 	// Now consider all other cases
 	else if ( kf_type == KF_MW ) {
 		if ( export_files == EXPORT_NIF_KF ) {
 			// for Morrowind we must also write the full NIF file
-			WriteNifTree( file_name_path + file_name_base + ".nif", root_object, info ); // simply export the NIF file!
+			WriteNifTree( file_name_path + file_name_base + ".nif", root_object, info, &nif_opts ); // simply export the NIF file!
 			NiObjectRef xnif_root;
 			list<NiObjectRef> xkf_roots;
 			Kfm kfm; // dummy
 			SplitNifTree( root_object, xnif_root, xkf_roots, kfm, kf_type, info );
 			if ( xnif_root != NULL && !xkf_roots.empty()) {
-				WriteNifTree( file_name_path + "x" + file_name_base + ".nif", xnif_root, info );
-				WriteNifTree( file_name_path + "x" + file_name_base + ".kf", xkf_roots.front(), info );
+				WriteNifTree( file_name_path + "x" + file_name_base + ".nif", xnif_root, info, &nif_opts );
+				WriteNifTree( file_name_path + "x" + file_name_base + ".kf", xkf_roots.front(), info, &nif_opts );
 			};
 		} else
 			throw runtime_error("Invalid export option.");
@@ -932,17 +940,17 @@ void WriteFileGroup( string const & file_name, NiObject * root_object, const Nif
       Kfm kfm; // dummy
 	  SplitNifTree( root_object, xnif_root, xkf_roots, kfm, kf_type, info );
       if ( export_files == EXPORT_NIF || export_files == EXPORT_NIF_KF || export_files == EXPORT_NIF_KF_MULTI ) {
-         WriteNifTree( file_name_path + file_name_base + ".nif", xnif_root, info );
+         WriteNifTree( file_name_path + file_name_base + ".nif", xnif_root, info, &nif_opts );
       }
       if ( export_files == EXPORT_NIF_KF || export_files == EXPORT_KF ) {
-         WriteNifTree( file_name_path + file_name_base + ".kf", xkf_roots, info );
+         WriteNifTree( file_name_path + file_name_base + ".kf", xkf_roots, info, &nif_opts );
       } else if ( export_files == EXPORT_NIF_KF_MULTI || export_files == EXPORT_KF_MULTI ) {
          for ( list<NiObjectRef>::iterator it = xkf_roots.begin(); it != xkf_roots.end(); ++it ) {
             NiControllerSequenceRef seq = DynamicCast<NiControllerSequence>(*it);
             if (seq == NULL)
                continue;
             string path = file_name_path + file_name_base + "_" + CreateFileName(seq->GetTargetName()) + "_" + CreateFileName(seq->GetName()) + ".kf";
-            WriteNifTree( path, StaticCast<NiObject>(seq), info );
+            WriteNifTree( path, StaticCast<NiObject>(seq), info, &nif_opts );
          }         
       }
    } else if (kf_type == KF_FFVT3R) {
@@ -952,10 +960,10 @@ void WriteFileGroup( string const & file_name, NiObject * root_object, const Nif
       Kfm kfm; // dummy
       SplitNifTree( root_object, xnif_root, xkf_roots, kfm, kf_type, info );
       if ( export_files == EXPORT_NIF || export_files == EXPORT_NIF_KF || export_files == EXPORT_NIF_KF_MULTI ) {
-         WriteNifTree( file_name_path + file_name_base + ".nif", xnif_root, info );
+         WriteNifTree( file_name_path + file_name_base + ".nif", xnif_root, info, &nif_opts );
       }
       if ( export_files == EXPORT_NIF_KF || export_files == EXPORT_KF ) {
-         WriteNifTree( file_name_path + file_name_base + ".kf", xkf_roots, info );
+         WriteNifTree( file_name_path + file_name_base + ".kf", xkf_roots, info, &nif_opts );
       } else if ( export_files == EXPORT_NIF_KF_MULTI || export_files == EXPORT_KF_MULTI ) {
          for ( list<NiObjectRef>::iterator it = xkf_roots.begin(); it != xkf_roots.end(); ++it ) {
             NiControllerSequenceRef seq = DynamicCast<NiControllerSequence>(*it);
