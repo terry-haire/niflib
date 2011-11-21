@@ -186,25 +186,5 @@ std::list<NiObject *> NiMultiTextureProperty::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-unsigned short NiMultiTextureProperty::GetFlags() const {
-	return flags;
-}
-
-void NiMultiTextureProperty::SetFlags( unsigned short value ) {
-	flags = value;
-}
-
-array<5,MultiTextureElement >  NiMultiTextureProperty::GetTextureElements() const {
-	return textureElements;
-}
-
-void NiMultiTextureProperty::SetTextureElements( const array<5,MultiTextureElement >&  value ) {
-	textureElements = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

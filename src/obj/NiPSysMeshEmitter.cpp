@@ -153,41 +153,5 @@ std::list<NiObject *> NiPSysMeshEmitter::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<Ref<NiTriBasedGeom > > NiPSysMeshEmitter::GetEmitterMeshes() const {
-	return emitterMeshes;
-}
-
-void NiPSysMeshEmitter::SetEmitterMeshes( const vector<Ref<NiTriBasedGeom > >& value ) {
-	emitterMeshes = value;
-}
-
-VelocityType NiPSysMeshEmitter::GetInitialVelocityType() const {
-	return initialVelocityType;
-}
-
-void NiPSysMeshEmitter::SetInitialVelocityType( const VelocityType & value ) {
-	initialVelocityType = value;
-}
-
-EmitFrom NiPSysMeshEmitter::GetEmissionType() const {
-	return emissionType;
-}
-
-void NiPSysMeshEmitter::SetEmissionType( const EmitFrom & value ) {
-	emissionType = value;
-}
-
-Vector3 NiPSysMeshEmitter::GetEmissionAxis() const {
-	return emissionAxis;
-}
-
-void NiPSysMeshEmitter::SetEmissionAxis( const Vector3 & value ) {
-	emissionAxis = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

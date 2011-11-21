@@ -52,18 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Defines the radius of the sphere object.
-	// \return The current value.
-	float GetRadius() const;
-
-	// Defines the radius of the sphere object.
-	// \param[in] value The new value.
-	void SetRadius( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

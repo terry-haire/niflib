@@ -119,26 +119,6 @@ std::list<NiObject *> NiVertWeightsExtraData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-unsigned int NiVertWeightsExtraData::GetNumBytes() const {
-	return numBytes;
-}
-
-void NiVertWeightsExtraData::SetNumBytes( unsigned int value ) {
-	numBytes = value;
-}
-
-vector<float > NiVertWeightsExtraData::GetWeight() const {
-	return weight;
-}
-
-void NiVertWeightsExtraData::SetWeight( const vector<float >& value ) {
-	weight = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 vector<float> NiVertWeightsExtraData::GetData() const {

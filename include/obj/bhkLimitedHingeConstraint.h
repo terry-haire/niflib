@@ -55,23 +55,29 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Describes a limited hinge constraint
-	// \return The current value.
-	LimitedHingeDescriptor GetLimitedHinge() const;
-
-	// Describes a limited hinge constraint
-	// \param[in] value The new value.
-	void SetLimitedHinge( const LimitedHingeDescriptor & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:
 	/*! Describes a limited hinge constraint */
 	LimitedHingeDescriptor limitedHinge;
+	/*! Unknown */
+	float unknownFloat1;
+	/*! Unknown */
+	byte isDeathPose;
+	/*! Unknown */
+	int unknownInt1;
+	/*! Unknown */
+	int unknownInt2;
+	/*! Unknown */
+	int unknownInt3;
+	/*! Unknown */
+	int unknownInt4;
+	/*! Unknown */
+	int unknownInt5;
+	/*! Unknown */
+	int unknownInt6;
+	/*! Unknown */
+	byte unknownByte1;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

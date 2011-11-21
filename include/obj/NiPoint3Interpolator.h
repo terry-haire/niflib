@@ -57,26 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Value when posed?  Value at time 0?
-	// \return The current value.
-	Vector3 GetPoint3Value() const;
-
-	// Value when posed?  Value at time 0?
-	// \param[in] value The new value.
-	void SetPoint3Value( const Vector3 & value );
-
-	// Reference to NiPosData.
-	// \return The current value.
-	Ref<NiPosData > GetData() const;
-
-	// Reference to NiPosData.
-	// \param[in] value The new value.
-	void SetData( Ref<NiPosData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

@@ -57,26 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// List of all armature bones.
-	// \return The current value.
-	vector<NiBone * > GetBones() const;
-
-	// List of all armature bones.
-	// \param[in] value The new value.
-	void SetBones( const vector<NiBone * >& value );
-
-	// Contains skin weight data for each node that this skin is influenced by.
-	// \return The current value.
-	vector<vector<OldSkinData > > GetBoneData() const;
-
-	// Contains skin weight data for each node that this skin is influenced by.
-	// \param[in] value The new value.
-	void SetBoneData( const vector<OldSkinData >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

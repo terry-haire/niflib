@@ -152,18 +152,6 @@ std::list<NiObject *> NiArkImporterExtraData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-IndexString NiArkImporterExtraData::GetImporterName() const {
-	return importerName;
-}
-
-void NiArkImporterExtraData::SetImporterName( const IndexString & value ) {
-	importerName = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

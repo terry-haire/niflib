@@ -58,50 +58,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Force Field Object
-	// \return The current value.
-	Ref<NiAVObject > GetFieldObject() const;
-
-	// Force Field Object
-	// \param[in] value The new value.
-	void SetFieldObject( Ref<NiAVObject > value );
-
-	// Magnitude of the force
-	// \return The current value.
-	float GetMagnitude() const;
-
-	// Magnitude of the force
-	// \param[in] value The new value.
-	void SetMagnitude( float value );
-
-	// Controls how quick the field diminishes
-	// \return The current value.
-	float GetAttenuation() const;
-
-	// Controls how quick the field diminishes
-	// \param[in] value The new value.
-	void SetAttenuation( float value );
-
-	// Use maximum distance
-	// \return The current value.
-	bool GetUseMaxDistance() const;
-
-	// Use maximum distance
-	// \param[in] value The new value.
-	void SetUseMaxDistance( bool value );
-
-	// Maximum distance
-	// \return The current value.
-	float GetMaxDistance() const;
-
-	// Maximum distance
-	// \param[in] value The new value.
-	void SetMaxDistance( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -112,10 +68,10 @@ protected:
 	float magnitude;
 	/*! Controls how quick the field diminishes */
 	float attenuation;
-	/*! Use maximum distance */
-	bool useMaxDistance;
-	/*! Maximum distance */
-	float maxDistance;
+	/*! Unknown */
+	bool unknownBoolean1;
+	/*! Unknown value, perhaps maximum effect distance */
+	float unknownFloat1;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

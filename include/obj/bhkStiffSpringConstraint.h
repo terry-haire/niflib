@@ -52,34 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Pivot A.
-	// \return The current value.
-	Vector4 GetPivotA() const;
-
-	// Pivot A.
-	// \param[in] value The new value.
-	void SetPivotA( const Vector4 & value );
-
-	// Pivot B.
-	// \return The current value.
-	Vector4 GetPivotB() const;
-
-	// Pivot B.
-	// \param[in] value The new value.
-	void SetPivotB( const Vector4 & value );
-
-	// Length.
-	// \return The current value.
-	float GetLength() const;
-
-	// Length.
-	// \param[in] value The new value.
-	void SetLength( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

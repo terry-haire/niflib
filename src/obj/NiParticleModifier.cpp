@@ -156,26 +156,6 @@ std::list<NiObject *> NiParticleModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiParticleModifier > NiParticleModifier::GetNextModifier() const {
-	return nextModifier;
-}
-
-void NiParticleModifier::SetNextModifier( Ref<NiParticleModifier > value ) {
-	nextModifier = value;
-}
-
-NiParticleSystemController * NiParticleModifier::GetController() const {
-	return controller;
-}
-
-void NiParticleModifier::SetController( NiParticleSystemController * value ) {
-	controller = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

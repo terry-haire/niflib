@@ -63,6 +63,11 @@ void NiPhysXShapeDesc::Read( istream& in, list<unsigned int> & link_stack, const
 	NifStream( unknownInt5, in, info );
 	NifStream( unknownInt7, in, info );
 	NifStream( unknownInt8, in, info );
+	if ( info.version >= 0x14030006 ) {
+		for (unsigned int i2 = 0; i2 < 8; i2++) {
+			NifStream( unknownBytes1[i2], in, info );
+		};
+	};
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
 
@@ -92,6 +97,11 @@ void NiPhysXShapeDesc::Write( ostream& out, const map<NiObjectRef,unsigned int> 
 	NifStream( unknownInt5, out, info );
 	NifStream( unknownInt7, out, info );
 	NifStream( unknownInt8, out, info );
+	if ( info.version >= 0x14030006 ) {
+		for (unsigned int i2 = 0; i2 < 8; i2++) {
+			NifStream( unknownBytes1[i2], out, info );
+		};
+	};
 	if ( info.version < VER_3_3_0_13 ) {
 		WritePtr32( &(*meshDescription), out );
 	} else {
@@ -121,6 +131,7 @@ std::string NiPhysXShapeDesc::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
+	unsigned int array_output_count = 0;
 	out << NiObject::asString();
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Quat 1:  " << unknownQuat1 << endl;
@@ -137,6 +148,18 @@ std::string NiPhysXShapeDesc::asString( bool verbose ) const {
 	out << "  Unknown Int 5:  " << unknownInt5 << endl;
 	out << "  Unknown Int 7:  " << unknownInt7 << endl;
 	out << "  Unknown Int 8:  " << unknownInt8 << endl;
+	array_output_count = 0;
+	for (unsigned int i1 = 0; i1 < 8; i1++) {
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
+			break;
+		};
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			break;
+		};
+		out << "    Unknown Bytes 1[" << i1 << "]:  " << unknownBytes1[i1] << endl;
+		array_output_count++;
+	};
 	out << "  Mesh Description:  " << meshDescription << endl;
 	return out.str();
 
@@ -171,18 +194,6 @@ std::list<NiObject *> NiPhysXShapeDesc::GetPtrs() const {
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-Ref<NiPhysXMeshDesc > NiPhysXShapeDesc::GetMeshDescription() const {
-	return meshDescription;
-}
-
-void NiPhysXShapeDesc::SetMeshDescription( Ref<NiPhysXMeshDesc > value ) {
-	meshDescription = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

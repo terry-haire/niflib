@@ -103,41 +103,5 @@ std::list<NiObject *> NiPSysPlanarCollider::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float NiPSysPlanarCollider::GetWidth() const {
-	return width;
-}
-
-void NiPSysPlanarCollider::SetWidth( float value ) {
-	width = value;
-}
-
-float NiPSysPlanarCollider::GetHeight() const {
-	return height;
-}
-
-void NiPSysPlanarCollider::SetHeight( float value ) {
-	height = value;
-}
-
-Vector3 NiPSysPlanarCollider::GetXAxis() const {
-	return xAxis;
-}
-
-void NiPSysPlanarCollider::SetXAxis( const Vector3 & value ) {
-	xAxis = value;
-}
-
-Vector3 NiPSysPlanarCollider::GetYAxis() const {
-	return yAxis;
-}
-
-void NiPSysPlanarCollider::SetYAxis( const Vector3 & value ) {
-	yAxis = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

@@ -94,18 +94,6 @@ std::list<NiObject *> NiBlendPoint3Interpolator::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Vector3 NiBlendPoint3Interpolator::GetPointValue() const {
-	return pointValue;
-}
-
-void NiBlendPoint3Interpolator::SetPointValue( const Vector3 & value ) {
-	pointValue = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 Vector3 NiBlendPoint3Interpolator::GetPointValue() const {

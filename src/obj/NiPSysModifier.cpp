@@ -125,41 +125,5 @@ std::list<NiObject *> NiPSysModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-IndexString NiPSysModifier::GetName() const {
-	return name;
-}
-
-void NiPSysModifier::SetName( const IndexString & value ) {
-	name = value;
-}
-
-unsigned int NiPSysModifier::GetOrder() const {
-	return order;
-}
-
-void NiPSysModifier::SetOrder( unsigned int value ) {
-	order = value;
-}
-
-NiParticleSystem * NiPSysModifier::GetTarget() const {
-	return target;
-}
-
-void NiPSysModifier::SetTarget( NiParticleSystem * value ) {
-	target = value;
-}
-
-bool NiPSysModifier::GetActive() const {
-	return active;
-}
-
-void NiPSysModifier::SetActive( bool value ) {
-	active = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

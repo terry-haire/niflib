@@ -94,18 +94,6 @@ std::list<NiObject *> NiBooleanExtraData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-byte NiBooleanExtraData::GetBooleanData() const {
-	return booleanData;
-}
-
-void NiBooleanExtraData::SetBooleanData( byte value ) {
-	booleanData = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 bool NiBooleanExtraData::GetData() const {

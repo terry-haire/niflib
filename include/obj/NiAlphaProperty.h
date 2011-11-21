@@ -52,82 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Bit 0 : alpha blending enable
-	//             Bits 1-4 : source blend mode
-	//             Bits 5-8 : destination blend mode
-	//             Bit 9 : alpha test enable
-	//             Bit 10-12 : alpha test mode
-	//             Bit 13 : no sorter flag ( disables triangle sorting )
-	//
-//             blend modes (glBlendFunc):
-	//             0000 GL_ONE
-	//             0001 GL_ZERO
-	//             0010 GL_SRC_COLOR
-	//             0011 GL_ONE_MINUS_SRC_COLOR
-	//             0100 GL_DST_COLOR
-	//             0101 GL_ONE_MINUS_DST_COLOR
-	//             0110 GL_SRC_ALPHA
-	//             0111 GL_ONE_MINUS_SRC_ALPHA
-	//             1000 GL_DST_ALPHA
-	//             1001 GL_ONE_MINUS_DST_ALPHA
-	//             1010 GL_SRC_ALPHA_SATURATE
-	//
-//             test modes (glAlphaFunc):
-	//             000 GL_ALWAYS
-	//             001 GL_LESS
-	//             010 GL_EQUAL
-	//             011 GL_LEQUAL
-	//             100 GL_GREATER
-	//             101 GL_NOTEQUAL
-	//             110 GL_GEQUAL
-	//             111 GL_NEVER
-	// \return The current value.
-	unsigned short GetFlags() const;
-
-	// Bit 0 : alpha blending enable
-	//             Bits 1-4 : source blend mode
-	//             Bits 5-8 : destination blend mode
-	//             Bit 9 : alpha test enable
-	//             Bit 10-12 : alpha test mode
-	//             Bit 13 : no sorter flag ( disables triangle sorting )
-	//
-//             blend modes (glBlendFunc):
-	//             0000 GL_ONE
-	//             0001 GL_ZERO
-	//             0010 GL_SRC_COLOR
-	//             0011 GL_ONE_MINUS_SRC_COLOR
-	//             0100 GL_DST_COLOR
-	//             0101 GL_ONE_MINUS_DST_COLOR
-	//             0110 GL_SRC_ALPHA
-	//             0111 GL_ONE_MINUS_SRC_ALPHA
-	//             1000 GL_DST_ALPHA
-	//             1001 GL_ONE_MINUS_DST_ALPHA
-	//             1010 GL_SRC_ALPHA_SATURATE
-	//
-//             test modes (glAlphaFunc):
-	//             000 GL_ALWAYS
-	//             001 GL_LESS
-	//             010 GL_EQUAL
-	//             011 GL_LEQUAL
-	//             100 GL_GREATER
-	//             101 GL_NOTEQUAL
-	//             110 GL_GEQUAL
-	//             111 GL_NEVER
-	// \param[in] value The new value.
-	void SetFlags( unsigned short value );
-
-	// Threshold for alpha testing (see: glAlphaFunc)
-	// \return The current value.
-	byte GetThreshold() const;
-
-	// Threshold for alpha testing (see: glAlphaFunc)
-	// \param[in] value The new value.
-	void SetThreshold( byte value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*! Used to specify the source and destination blending functions.  The function of each value is equivalent to the OpenGL blending function of similar name. */
@@ -290,10 +214,6 @@ protected:
 	unsigned short flags;
 	/*! Threshold for alpha testing (see: glAlphaFunc) */
 	byte threshold;
-	/*! Unknown */
-	unsigned short unknownShort1;
-	/*! Unknown */
-	unsigned int unknownInt2;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

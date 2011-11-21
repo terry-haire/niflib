@@ -14,7 +14,7 @@ All rights reserved.  Please see niflib.h for license. */
 
 //--END CUSTOM CODE--//
 
-#include "AbstractAdditionalGeometryData.h"
+#include "NiObject.h"
 
 // Include structures
 #include "../gen/AdditionalDataInfo.h"
@@ -25,7 +25,7 @@ class NiAdditionalGeometryData;
 typedef Ref<NiAdditionalGeometryData> NiAdditionalGeometryDataRef;
 
 /*!  */
-class NiAdditionalGeometryData : public AbstractAdditionalGeometryData {
+class NiAdditionalGeometryData : public NiObject {
 public:
 	/*! Constructor */
 	NIFLIB_API NiAdditionalGeometryData();
@@ -56,34 +56,6 @@ public:
 	 * \return The type constant for the actual type of the object.
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
-
-	/***Begin Example Naive Implementation****
-
-	// Number of vertices
-	// \return The current value.
-	unsigned short GetNumVertices() const;
-
-	// Number of vertices
-	// \param[in] value The new value.
-	void SetNumVertices( unsigned short value );
-
-	// Number of additional data blocks
-	// \return The current value.
-	vector<AdditionalDataInfo > GetBlockInfos() const;
-
-	// Number of additional data blocks
-	// \param[in] value The new value.
-	void SetBlockInfos( const vector<AdditionalDataInfo >& value );
-
-	// Number of additional data blocks
-	// \return The current value.
-	vector<AdditionalDataBlock > GetBlocks() const;
-
-	// Number of additional data blocks
-	// \param[in] value The new value.
-	void SetBlocks( const vector<AdditionalDataBlock >& value );
-
-	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 

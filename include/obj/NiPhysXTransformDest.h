@@ -55,18 +55,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Affected node?
-	// \return The current value.
-	NiNode * GetNode() const;
-
-	// Affected node?
-	// \param[in] value The new value.
-	void SetNode( NiNode * value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

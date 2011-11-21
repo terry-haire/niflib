@@ -56,34 +56,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The physics triangles?
-	// \return The current value.
-	vector<hkTriangle > GetTriangles() const;
-
-	// The physics triangles?
-	// \param[in] value The new value.
-	void SetTriangles( const vector<hkTriangle >& value );
-
-	// The vertices?
-	// \return The current value.
-	vector<Vector3 > GetVertices() const;
-
-	// The vertices?
-	// \param[in] value The new value.
-	void SetVertices( const vector<Vector3 >& value );
-
-	// The subparts.
-	// \return The current value.
-	vector<OblivionSubShape > GetSubShapes() const;
-
-	// The subparts.
-	// \param[in] value The new value.
-	void SetSubShapes( const vector<OblivionSubShape >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

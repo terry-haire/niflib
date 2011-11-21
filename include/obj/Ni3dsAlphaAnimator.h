@@ -25,7 +25,7 @@ class NiObject;
 class Ni3dsAlphaAnimator;
 typedef Ref<Ni3dsAlphaAnimator> Ni3dsAlphaAnimatorRef;
 
-/*! Unknown. */
+/*! Unknown! */
 class Ni3dsAlphaAnimator : public NiObject {
 public:
 	/*! Constructor */
@@ -57,18 +57,6 @@ public:
 	 * \return The type constant for the actual type of the object.
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
-
-	/***Begin Example Naive Implementation****
-
-	// The parent?
-	// \return The current value.
-	Ref<NiObject > GetParent() const;
-
-	// The parent?
-	// \param[in] value The new value.
-	void SetParent( Ref<NiObject > value );
-
-	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 

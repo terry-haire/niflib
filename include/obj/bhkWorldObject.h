@@ -57,40 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Link to the body for this collision object.
-	// \return The current value.
-	Ref<bhkShape > GetShape() const;
-
-	// Link to the body for this collision object.
-	// \param[in] value The new value.
-	void SetShape( Ref<bhkShape > value );
-
-	// Sets mesh color in Oblivion Construction Set.
-	// \return The current value.
-	OblivionLayer GetLayer() const;
-
-	// Sets mesh color in Oblivion Construction Set.
-	// \param[in] value The new value.
-	void SetLayer( const OblivionLayer & value );
-
-	// The first bit sets the LINK property and controls whether this body is
-	// physically linked to others. The next bit turns collision off. Then, the next
-	// bit sets the SCALED property in Oblivion. The next five bits make up the number
-	// of this part in a linked body list.
-	// \return The current value.
-	byte GetColFilter() const;
-
-	// The first bit sets the LINK property and controls whether this body is
-	// physically linked to others. The next bit turns collision off. Then, the next
-	// bit sets the SCALED property in Oblivion. The next five bits make up the number
-	// of this part in a linked body list.
-	// \param[in] value The new value.
-	void SetColFilter( byte value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

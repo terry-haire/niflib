@@ -94,18 +94,6 @@ std::list<NiObject *> NiColorExtraData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Color4 NiColorExtraData::GetData() const {
-	return data;
-}
-
-void NiColorExtraData::SetData( const Color4 & value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 Color4 NiColorExtraData::GetData() const {

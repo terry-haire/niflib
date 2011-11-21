@@ -108,26 +108,6 @@ std::list<NiObject *> NiPSysDragFieldModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-bool NiPSysDragFieldModifier::GetUseDirection_() const {
-	return useDirection_;
-}
-
-void NiPSysDragFieldModifier::SetUseDirection_( bool value ) {
-	useDirection_ = value;
-}
-
-Vector3 NiPSysDragFieldModifier::GetDirection() const {
-	return direction;
-}
-
-void NiPSysDragFieldModifier::SetDirection( const Vector3 & value ) {
-	direction = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

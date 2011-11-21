@@ -42,25 +42,13 @@ void bhkPrismaticConstraint::Read( istream& in, list<unsigned int> & link_stack,
 	//--END CUSTOM CODE--//
 
 	bhkConstraint::Read( in, link_stack, info );
-	if ( info.version <= 0x14000005 ) {
-		NifStream( pivotA, in, info );
-		for (unsigned int i2 = 0; i2 < 4; i2++) {
-			NifStream( rotationMatrixA[i2], in, info );
-		};
-		NifStream( pivotB, in, info );
-		NifStream( slidingB, in, info );
-		NifStream( planeB, in, info );
+	NifStream( pivotA, in, info );
+	for (unsigned int i1 = 0; i1 < 4; i1++) {
+		NifStream( rotation[i1], in, info );
 	};
-	if ( info.version >= 0x14020007 ) {
-		NifStream( slidingA, in, info );
-		NifStream( rotationA, in, info );
-		NifStream( planeA, in, info );
-		NifStream( pivotA, in, info );
-		NifStream( slidingB, in, info );
-		NifStream( rotationB, in, info );
-		NifStream( planeB, in, info );
-		NifStream( pivotB, in, info );
-	};
+	NifStream( pivotB, in, info );
+	NifStream( slidingAxis, in, info );
+	NifStream( plane, in, info );
 	NifStream( minDistance, in, info );
 	NifStream( maxDistance, in, info );
 	NifStream( friction, in, info );
@@ -77,25 +65,13 @@ void bhkPrismaticConstraint::Write( ostream& out, const map<NiObjectRef,unsigned
 	//--END CUSTOM CODE--//
 
 	bhkConstraint::Write( out, link_map, missing_link_stack, info );
-	if ( info.version <= 0x14000005 ) {
-		NifStream( pivotA, out, info );
-		for (unsigned int i2 = 0; i2 < 4; i2++) {
-			NifStream( rotationMatrixA[i2], out, info );
-		};
-		NifStream( pivotB, out, info );
-		NifStream( slidingB, out, info );
-		NifStream( planeB, out, info );
+	NifStream( pivotA, out, info );
+	for (unsigned int i1 = 0; i1 < 4; i1++) {
+		NifStream( rotation[i1], out, info );
 	};
-	if ( info.version >= 0x14020007 ) {
-		NifStream( slidingA, out, info );
-		NifStream( rotationA, out, info );
-		NifStream( planeA, out, info );
-		NifStream( pivotA, out, info );
-		NifStream( slidingB, out, info );
-		NifStream( rotationB, out, info );
-		NifStream( planeB, out, info );
-		NifStream( pivotB, out, info );
-	};
+	NifStream( pivotB, out, info );
+	NifStream( slidingAxis, out, info );
+	NifStream( plane, out, info );
 	NifStream( minDistance, out, info );
 	NifStream( maxDistance, out, info );
 	NifStream( friction, out, info );
@@ -124,16 +100,12 @@ std::string bhkPrismaticConstraint::asString( bool verbose ) const {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 			break;
 		};
-		out << "    Rotation Matrix A[" << i1 << "]:  " << rotationMatrixA[i1] << endl;
+		out << "    Rotation[" << i1 << "]:  " << rotation[i1] << endl;
 		array_output_count++;
 	};
 	out << "  Pivot B:  " << pivotB << endl;
-	out << "  Sliding B:  " << slidingB << endl;
-	out << "  Plane B:  " << planeB << endl;
-	out << "  Sliding A:  " << slidingA << endl;
-	out << "  Rotation A:  " << rotationA << endl;
-	out << "  Plane A:  " << planeA << endl;
-	out << "  Rotation B:  " << rotationB << endl;
+	out << "  Sliding Axis:  " << slidingAxis << endl;
+	out << "  Plane:  " << plane << endl;
 	out << "  Min Distance:  " << minDistance << endl;
 	out << "  Max Distance:  " << maxDistance << endl;
 	out << "  Friction:  " << friction << endl;
@@ -165,138 +137,6 @@ std::list<NiObject *> bhkPrismaticConstraint::GetPtrs() const {
 	ptrs = bhkConstraint::GetPtrs();
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-Vector4 bhkPrismaticConstraint::GetPivotA() const {
-	return pivotA;
-}
-
-void bhkPrismaticConstraint::SetPivotA( const Vector4 & value ) {
-	pivotA = value;
-}
-
-array<4,Vector4 >  bhkPrismaticConstraint::GetRotationMatrixA() const {
-	return rotationMatrixA;
-}
-
-void bhkPrismaticConstraint::SetRotationMatrixA( const array<4,Vector4 >&  value ) {
-	rotationMatrixA = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetPivotB() const {
-	return pivotB;
-}
-
-void bhkPrismaticConstraint::SetPivotB( const Vector4 & value ) {
-	pivotB = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetSlidingB() const {
-	return slidingB;
-}
-
-void bhkPrismaticConstraint::SetSlidingB( const Vector4 & value ) {
-	slidingB = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetPlaneB() const {
-	return planeB;
-}
-
-void bhkPrismaticConstraint::SetPlaneB( const Vector4 & value ) {
-	planeB = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetSlidingA() const {
-	return slidingA;
-}
-
-void bhkPrismaticConstraint::SetSlidingA( const Vector4 & value ) {
-	slidingA = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetRotationA() const {
-	return rotationA;
-}
-
-void bhkPrismaticConstraint::SetRotationA( const Vector4 & value ) {
-	rotationA = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetPlaneA() const {
-	return planeA;
-}
-
-void bhkPrismaticConstraint::SetPlaneA( const Vector4 & value ) {
-	planeA = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetPivotA() const {
-	return pivotA;
-}
-
-void bhkPrismaticConstraint::SetPivotA( const Vector4 & value ) {
-	pivotA = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetSlidingB() const {
-	return slidingB;
-}
-
-void bhkPrismaticConstraint::SetSlidingB( const Vector4 & value ) {
-	slidingB = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetRotationB() const {
-	return rotationB;
-}
-
-void bhkPrismaticConstraint::SetRotationB( const Vector4 & value ) {
-	rotationB = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetPlaneB() const {
-	return planeB;
-}
-
-void bhkPrismaticConstraint::SetPlaneB( const Vector4 & value ) {
-	planeB = value;
-}
-
-Vector4 bhkPrismaticConstraint::GetPivotB() const {
-	return pivotB;
-}
-
-void bhkPrismaticConstraint::SetPivotB( const Vector4 & value ) {
-	pivotB = value;
-}
-
-float bhkPrismaticConstraint::GetMinDistance() const {
-	return minDistance;
-}
-
-void bhkPrismaticConstraint::SetMinDistance( float value ) {
-	minDistance = value;
-}
-
-float bhkPrismaticConstraint::GetMaxDistance() const {
-	return maxDistance;
-}
-
-void bhkPrismaticConstraint::SetMaxDistance( float value ) {
-	maxDistance = value;
-}
-
-float bhkPrismaticConstraint::GetFriction() const {
-	return friction;
-}
-
-void bhkPrismaticConstraint::SetFriction( float value ) {
-	friction = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

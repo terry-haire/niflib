@@ -139,66 +139,6 @@ std::list<NiObject *> BSPSysSimpleColorModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float BSPSysSimpleColorModifier::GetFadeInPercent() const {
-	return fadeInPercent;
-}
-
-void BSPSysSimpleColorModifier::SetFadeInPercent( float value ) {
-	fadeInPercent = value;
-}
-
-float BSPSysSimpleColorModifier::GetFadeOutPercent() const {
-	return fadeOutPercent;
-}
-
-void BSPSysSimpleColorModifier::SetFadeOutPercent( float value ) {
-	fadeOutPercent = value;
-}
-
-float BSPSysSimpleColorModifier::GetColor1EndPercent() const {
-	return color1EndPercent;
-}
-
-void BSPSysSimpleColorModifier::SetColor1EndPercent( float value ) {
-	color1EndPercent = value;
-}
-
-float BSPSysSimpleColorModifier::GetColor1StartPercent() const {
-	return color1StartPercent;
-}
-
-void BSPSysSimpleColorModifier::SetColor1StartPercent( float value ) {
-	color1StartPercent = value;
-}
-
-float BSPSysSimpleColorModifier::GetColor2EndPercent() const {
-	return color2EndPercent;
-}
-
-void BSPSysSimpleColorModifier::SetColor2EndPercent( float value ) {
-	color2EndPercent = value;
-}
-
-float BSPSysSimpleColorModifier::GetColor2StartPercent() const {
-	return color2StartPercent;
-}
-
-void BSPSysSimpleColorModifier::SetColor2StartPercent( float value ) {
-	color2StartPercent = value;
-}
-
-array<3,Color4 >  BSPSysSimpleColorModifier::GetColors() const {
-	return colors;
-}
-
-void BSPSysSimpleColorModifier::SetColors( const array<3,Color4 >&  value ) {
-	colors = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

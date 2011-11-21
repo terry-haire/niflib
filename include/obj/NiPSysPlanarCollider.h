@@ -52,42 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Defines the width of the plane.
-	// \return The current value.
-	float GetWidth() const;
-
-	// Defines the width of the plane.
-	// \param[in] value The new value.
-	void SetWidth( float value );
-
-	// Defines the height of the plane.
-	// \return The current value.
-	float GetHeight() const;
-
-	// Defines the height of the plane.
-	// \param[in] value The new value.
-	void SetHeight( float value );
-
-	// Defines Orientation.
-	// \return The current value.
-	Vector3 GetXAxis() const;
-
-	// Defines Orientation.
-	// \param[in] value The new value.
-	void SetXAxis( const Vector3 & value );
-
-	// Defines Orientation.
-	// \return The current value.
-	Vector3 GetYAxis() const;
-
-	// Defines Orientation.
-	// \param[in] value The new value.
-	void SetYAxis( const Vector3 & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

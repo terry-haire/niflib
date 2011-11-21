@@ -58,42 +58,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Animation start time.
-	// \return The current value.
-	float GetStartTime() const;
-
-	// Animation start time.
-	// \param[in] value The new value.
-	void SetStartTime( float value );
-
-	// Animation stop time.
-	// \return The current value.
-	float GetStopTime() const;
-
-	// Animation stop time.
-	// \param[in] value The new value.
-	void SetStopTime( float value );
-
-	// Refers to NiBSplineData.
-	// \return The current value.
-	Ref<NiBSplineData > GetSplineData() const;
-
-	// Refers to NiBSplineData.
-	// \param[in] value The new value.
-	void SetSplineData( Ref<NiBSplineData > value );
-
-	// Refers to NiBSPlineBasisData.
-	// \return The current value.
-	Ref<NiBSplineBasisData > GetBasisData() const;
-
-	// Refers to NiBSPlineBasisData.
-	// \param[in] value The new value.
-	void SetBasisData( Ref<NiBSplineBasisData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

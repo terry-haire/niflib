@@ -133,18 +133,6 @@ std::list<NiObject *> NiPhysXTransformDest::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-NiNode * NiPhysXTransformDest::GetNode() const {
-	return node;
-}
-
-void NiPhysXTransformDest::SetNode( NiNode * value ) {
-	node = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

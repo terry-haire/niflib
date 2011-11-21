@@ -52,18 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// RGBA Color?
-	// \return The current value.
-	Color4 GetData() const;
-
-	// RGBA Color?
-	// \param[in] value The new value.
-	void SetData( const Color4 & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

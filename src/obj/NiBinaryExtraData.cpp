@@ -117,18 +117,6 @@ std::list<NiObject *> NiBinaryExtraData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-ByteArray NiBinaryExtraData::GetBinaryData() const {
-	return binaryData;
-}
-
-void NiBinaryExtraData::SetBinaryData( const ByteArray & value ) {
-	binaryData = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 vector<byte> NiBinaryExtraData::GetData() const {

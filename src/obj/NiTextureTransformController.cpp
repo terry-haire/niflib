@@ -132,34 +132,6 @@ std::list<NiObject *> NiTextureTransformController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-TexType NiTextureTransformController::GetTextureSlot() const {
-	return textureSlot;
-}
-
-void NiTextureTransformController::SetTextureSlot( const TexType & value ) {
-	textureSlot = value;
-}
-
-TexTransform NiTextureTransformController::GetOperation() const {
-	return operation;
-}
-
-void NiTextureTransformController::SetOperation( const TexTransform & value ) {
-	operation = value;
-}
-
-Ref<NiFloatData > NiTextureTransformController::GetData() const {
-	return data;
-}
-
-void NiTextureTransformController::SetData( Ref<NiFloatData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 TexType NiTextureTransformController::GetTargetTextureSlot() {

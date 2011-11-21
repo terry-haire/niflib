@@ -53,66 +53,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Unknown
-	// \return The current value.
-	float GetFadeInPercent() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetFadeInPercent( float value );
-
-	// Unknown
-	// \return The current value.
-	float GetFadeOutPercent() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetFadeOutPercent( float value );
-
-	// Unknown
-	// \return The current value.
-	float GetColor1EndPercent() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetColor1EndPercent( float value );
-
-	// Unknown
-	// \return The current value.
-	float GetColor1StartPercent() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetColor1StartPercent( float value );
-
-	// Unknown
-	// \return The current value.
-	float GetColor2EndPercent() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetColor2EndPercent( float value );
-
-	// Unknown
-	// \return The current value.
-	float GetColor2StartPercent() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetColor2StartPercent( float value );
-
-	// Colors
-	// \return The current value.
-	array<3,Color4 >  GetColors() const;
-
-	// Colors
-	// \param[in] value The new value.
-	void SetColors( const array<3,Color4 >&  value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

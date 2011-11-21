@@ -175,34 +175,6 @@ std::list<NiObject *> NiBezierTriangle4::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Matrix33 NiBezierTriangle4::GetMatrix() const {
-	return matrix;
-}
-
-void NiBezierTriangle4::SetMatrix( const Matrix33 & value ) {
-	matrix = value;
-}
-
-Vector3 NiBezierTriangle4::GetVector1() const {
-	return vector1;
-}
-
-void NiBezierTriangle4::SetVector1( const Vector3 & value ) {
-	vector1 = value;
-}
-
-Vector3 NiBezierTriangle4::GetVector2() const {
-	return vector2;
-}
-
-void NiBezierTriangle4::SetVector2( const Vector3 & value ) {
-	vector2 = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

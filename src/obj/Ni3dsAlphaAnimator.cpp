@@ -182,18 +182,6 @@ std::list<NiObject *> Ni3dsAlphaAnimator::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiObject > Ni3dsAlphaAnimator::GetParent() const {
-	return parent;
-}
-
-void Ni3dsAlphaAnimator::SetParent( Ref<NiObject > value ) {
-	parent = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

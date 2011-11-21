@@ -105,18 +105,6 @@ std::list<NiObject *> TallGrassShaderProperty::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-string TallGrassShaderProperty::GetFileName() const {
-	return fileName;
-}
-
-void TallGrassShaderProperty::SetFileName( const string & value ) {
-	fileName = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 string TallGrassShaderProperty::GetFileName() const {

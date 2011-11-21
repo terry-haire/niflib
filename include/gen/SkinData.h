@@ -11,7 +11,6 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../NIF_IO.h"
 
 // Include structures
-#include "SkinTransform.h"
 #include "SkinWeight.h"
 namespace Niflib {
 
@@ -26,8 +25,15 @@ struct SkinData {
 	NIFLIB_API SkinData( const SkinData & src );
 	/*! Copy Operator */
 	NIFLIB_API SkinData & operator=( const SkinData & src );
-	/*! Offset of the skin from this bone in bind position. */
-	SkinTransform skinTransform;
+	/*! Rotation offset of the skin from this bone in bind position. */
+	Matrix33 rotation;
+	/*! Translation offset of the skin from this bone in bind position. */
+	Vector3 translation;
+	/*!
+	 * Scale offset of the skin from this bone in bind position. (Assumption - this is
+	 * always 1.0 so far)
+	 */
+	float scale;
 	/*!
 	 * Translation offset of a bounding sphere holding all vertices. (Note that its a
 	 * Sphere Containing Axis Aligned Box not a minimum volume Sphere)
@@ -35,8 +41,6 @@ struct SkinData {
 	Vector3 boundingSphereOffset;
 	/*! Radius for bounding sphere holding all vertices. */
 	float boundingSphereRadius;
-	/*! Unknown, always 0? */
-	array<13,short > unknown13Shorts;
 	/*! Number of weighted vertices. */
 	mutable unsigned short numVertices;
 	/*! The vertex weights. */

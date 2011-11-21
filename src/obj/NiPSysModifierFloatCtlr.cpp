@@ -122,17 +122,5 @@ std::list<NiObject *> NiPSysModifierFloatCtlr::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiFloatData > NiPSysModifierFloatCtlr::GetData() const {
-	return data;
-}
-
-void NiPSysModifierFloatCtlr::SetData( Ref<NiFloatData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

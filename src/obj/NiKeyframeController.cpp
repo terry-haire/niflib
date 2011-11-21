@@ -122,18 +122,6 @@ std::list<NiObject *> NiKeyframeController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiKeyframeData > NiKeyframeController::GetData() const {
-	return data;
-}
-
-void NiKeyframeController::SetData( Ref<NiKeyframeData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<NiKeyframeData> NiKeyframeController::GetData() const {

@@ -94,18 +94,6 @@ std::list<NiObject *> NiIntegerExtraData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-unsigned int NiIntegerExtraData::GetIntegerData() const {
-	return integerData;
-}
-
-void NiIntegerExtraData::SetIntegerData( unsigned int value ) {
-	integerData = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 unsigned int NiIntegerExtraData::GetData() const {

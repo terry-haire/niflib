@@ -56,50 +56,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Polygons
-	// \return The current value.
-	vector<Polygon > GetPolygons() const;
-
-	// Polygons
-	// \param[in] value The new value.
-	void SetPolygons( const vector<Polygon >& value );
-
-	// Polygon Indices
-	// \return The current value.
-	vector<unsigned short > GetPolygonIndices() const;
-
-	// Polygon Indices
-	// \param[in] value The new value.
-	void SetPolygonIndices( const vector<unsigned short >& value );
-
-	// Number of Polygons actually in use
-	// \return The current value.
-	unsigned short GetNumPolygons() const;
-
-	// Number of Polygons actually in use
-	// \param[in] value The new value.
-	void SetNumPolygons( unsigned short value );
-
-	// Number of in-use vertices
-	// \return The current value.
-	unsigned short GetUsedVertices() const;
-
-	// Number of in-use vertices
-	// \param[in] value The new value.
-	void SetUsedVertices( unsigned short value );
-
-	// Number of in-use triangles
-	// \return The current value.
-	unsigned short GetUsedTrianglePoints() const;
-
-	// Number of in-use triangles
-	// \param[in] value The new value.
-	void SetUsedTrianglePoints( unsigned short value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

@@ -57,42 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Translate.
-	// \return The current value.
-	Vector3 GetTranslation() const;
-
-	// Translate.
-	// \param[in] value The new value.
-	void SetTranslation( const Vector3 & value );
-
-	// Rotation.
-	// \return The current value.
-	Quaternion GetRotation() const;
-
-	// Rotation.
-	// \param[in] value The new value.
-	void SetRotation( const Quaternion & value );
-
-	// Scale.
-	// \return The current value.
-	float GetScale() const;
-
-	// Scale.
-	// \param[in] value The new value.
-	void SetScale( float value );
-
-	// Refers to NiTransformData.
-	// \return The current value.
-	Ref<NiTransformData > GetData() const;
-
-	// Refers to NiTransformData.
-	// \param[in] value The new value.
-	void SetData( Ref<NiTransformData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

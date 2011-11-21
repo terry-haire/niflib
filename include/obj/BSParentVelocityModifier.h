@@ -55,18 +55,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Amount of blending?
-	// \return The current value.
-	float GetDamping() const;
-
-	// Amount of blending?
-	// \param[in] value The new value.
-	void SetDamping( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

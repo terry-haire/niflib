@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiPalette::TYPE("NiPalette", &NiObject::TYPE );
 
-NiPalette::NiPalette() : unknownByte((byte)0), numEntries((unsigned int)256) {
+NiPalette::NiPalette() : unknownByte((byte)0), numEntries((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -121,26 +121,6 @@ std::list<NiObject *> NiPalette::GetPtrs() const {
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-unsigned int NiPalette::GetNumEntries() const {
-	return numEntries;
-}
-
-void NiPalette::SetNumEntries( unsigned int value ) {
-	numEntries = value;
-}
-
-array<256,ByteColor4 >  NiPalette::GetPalette() const {
-	return palette;
-}
-
-void NiPalette::SetPalette( const array<256,ByteColor4 >&  value ) {
-	palette = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

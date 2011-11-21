@@ -119,17 +119,5 @@ std::list<NiObject *> NiBinaryVoxelExtraData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiBinaryVoxelData > NiBinaryVoxelExtraData::GetData() const {
-	return data;
-}
-
-void NiBinaryVoxelExtraData::SetData( Ref<NiBinaryVoxelData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

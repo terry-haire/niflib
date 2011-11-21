@@ -58,42 +58,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The subparts.
-	// \return The current value.
-	vector<OblivionSubShape > GetSubShapes() const;
-
-	// The subparts.
-	// \param[in] value The new value.
-	void SetSubShapes( const vector<OblivionSubShape >& value );
-
-	// Unknown. Same as scale below?
-	// \return The current value.
-	Vector3 GetScaleCopy_() const;
-
-	// Unknown. Same as scale below?
-	// \param[in] value The new value.
-	void SetScaleCopy_( const Vector3 & value );
-
-	// Scale.
-	// \return The current value.
-	Vector3 GetScale() const;
-
-	// Scale.
-	// \param[in] value The new value.
-	void SetScale( const Vector3 & value );
-
-	// A link to the shape's NiTriStripsData.
-	// \return The current value.
-	Ref<hkPackedNiTriStripsData > GetData() const;
-
-	// A link to the shape's NiTriStripsData.
-	// \param[in] value The new value.
-	void SetData( Ref<hkPackedNiTriStripsData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	/*!
 	 * Retrieves the geometry data object used by this geometry node, if any.  This contains the vertices, normals, etc. and can be shared among several geometry nodes.

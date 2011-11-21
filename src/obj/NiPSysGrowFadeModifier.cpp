@@ -110,49 +110,5 @@ std::list<NiObject *> NiPSysGrowFadeModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float NiPSysGrowFadeModifier::GetGrowTime() const {
-	return growTime;
-}
-
-void NiPSysGrowFadeModifier::SetGrowTime( float value ) {
-	growTime = value;
-}
-
-unsigned short NiPSysGrowFadeModifier::GetGrowGeneration() const {
-	return growGeneration;
-}
-
-void NiPSysGrowFadeModifier::SetGrowGeneration( unsigned short value ) {
-	growGeneration = value;
-}
-
-float NiPSysGrowFadeModifier::GetFadeTime() const {
-	return fadeTime;
-}
-
-void NiPSysGrowFadeModifier::SetFadeTime( float value ) {
-	fadeTime = value;
-}
-
-unsigned short NiPSysGrowFadeModifier::GetFadeGeneration() const {
-	return fadeGeneration;
-}
-
-void NiPSysGrowFadeModifier::SetFadeGeneration( unsigned short value ) {
-	fadeGeneration = value;
-}
-
-float NiPSysGrowFadeModifier::GetBaseScale() const {
-	return baseScale;
-}
-
-void NiPSysGrowFadeModifier::SetBaseScale( float value ) {
-	baseScale = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

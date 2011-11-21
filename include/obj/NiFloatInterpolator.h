@@ -57,26 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Value when posed?  At time 0?
-	// \return The current value.
-	float GetFloatValue() const;
-
-	// Value when posed?  At time 0?
-	// \param[in] value The new value.
-	void SetFloatValue( float value );
-
-	// Float data?
-	// \return The current value.
-	Ref<NiFloatData > GetData() const;
-
-	// Float data?
-	// \param[in] value The new value.
-	void SetData( Ref<NiFloatData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

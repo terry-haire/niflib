@@ -144,17 +144,5 @@ std::list<NiObject *> NiParticleMeshModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<Ref<NiAVObject > > NiParticleMeshModifier::GetParticleMeshes() const {
-	return particleMeshes;
-}
-
-void NiParticleMeshModifier::SetParticleMeshes( const vector<Ref<NiAVObject > >& value ) {
-	particleMeshes = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

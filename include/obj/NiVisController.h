@@ -57,18 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Visibility controller data object index.
-	// \return The current value.
-	Ref<NiVisData > GetData() const;
-
-	// Visibility controller data object index.
-	// \param[in] value The new value.
-	void SetData( Ref<NiVisData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

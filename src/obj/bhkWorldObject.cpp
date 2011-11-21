@@ -125,34 +125,6 @@ std::list<NiObject *> bhkWorldObject::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<bhkShape > bhkWorldObject::GetShape() const {
-	return shape;
-}
-
-void bhkWorldObject::SetShape( Ref<bhkShape > value ) {
-	shape = value;
-}
-
-OblivionLayer bhkWorldObject::GetLayer() const {
-	return layer;
-}
-
-void bhkWorldObject::SetLayer( const OblivionLayer & value ) {
-	layer = value;
-}
-
-byte bhkWorldObject::GetColFilter() const {
-	return colFilter;
-}
-
-void bhkWorldObject::SetColFilter( byte value ) {
-	colFilter = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<bhkShape > bhkWorldObject::GetShape() const {

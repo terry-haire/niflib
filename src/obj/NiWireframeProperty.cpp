@@ -94,18 +94,6 @@ std::list<NiObject *> NiWireframeProperty::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-unsigned short NiWireframeProperty::GetFlags() const {
-	return flags;
-}
-
-void NiWireframeProperty::SetFlags( unsigned short value ) {
-	flags = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 unsigned short NiWireframeProperty::GetFlags() const {

@@ -55,18 +55,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The color keys.
-	// \return The current value.
-	KeyGroup<Color4 > GetData() const;
-
-	// The color keys.
-	// \param[in] value The new value.
-	void SetData( const KeyGroup<Color4 > & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*! Retrieves the type of color interpolation being used.

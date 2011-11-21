@@ -94,18 +94,6 @@ std::list<NiObject *> NiFloatExtraData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float NiFloatExtraData::GetFloatData() const {
-	return floatData;
-}
-
-void NiFloatExtraData::SetFloatData( float value ) {
-	floatData = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 float NiFloatExtraData::GetData() const {

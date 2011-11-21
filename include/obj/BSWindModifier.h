@@ -55,18 +55,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The amount of force wind will have on particles.
-	// \return The current value.
-	float GetStrength() const;
-
-	// The amount of force wind will have on particles.
-	// \param[in] value The new value.
-	void SetStrength( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

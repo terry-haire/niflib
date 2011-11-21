@@ -55,18 +55,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The objects.
-	// \return The current value.
-	vector<AVObject > GetObjs() const;
-
-	// The objects.
-	// \param[in] value The new value.
-	void SetObjs( const vector<AVObject >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

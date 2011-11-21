@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiPSysTurbulenceFieldModifier::TYPE("NiPSysTurbulenceFieldModifier", &NiPSysFieldModifier::TYPE );
 
-NiPSysTurbulenceFieldModifier::NiPSysTurbulenceFieldModifier() : frequency(0.0f) {
+NiPSysTurbulenceFieldModifier::NiPSysTurbulenceFieldModifier() : unknownFloat2(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,7 +46,7 @@ void NiPSysTurbulenceFieldModifier::Read( istream& in, list<unsigned int> & link
 	//--END CUSTOM CODE--//
 
 	NiPSysFieldModifier::Read( in, link_stack, info );
-	NifStream( frequency, in, info );
+	NifStream( unknownFloat2, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -59,7 +59,7 @@ void NiPSysTurbulenceFieldModifier::Write( ostream& out, const map<NiObjectRef,u
 	//--END CUSTOM CODE--//
 
 	NiPSysFieldModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( frequency, out, info );
+	NifStream( unknownFloat2, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -73,7 +73,7 @@ std::string NiPSysTurbulenceFieldModifier::asString( bool verbose ) const {
 
 	stringstream out;
 	out << NiPSysFieldModifier::asString();
-	out << "  Frequency:  " << frequency << endl;
+	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -104,18 +104,6 @@ std::list<NiObject *> NiPSysTurbulenceFieldModifier::GetPtrs() const {
 	ptrs = NiPSysFieldModifier::GetPtrs();
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-float NiPSysTurbulenceFieldModifier::GetFrequency() const {
-	return frequency;
-}
-
-void NiPSysTurbulenceFieldModifier::SetFrequency( float value ) {
-	frequency = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

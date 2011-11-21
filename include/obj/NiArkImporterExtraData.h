@@ -53,18 +53,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Contains a string like "Gamebryo_1_1" or "4.1.0.12"
-	// \return The current value.
-	IndexString GetImporterName() const;
-
-	// Contains a string like "Gamebryo_1_1" or "4.1.0.12"
-	// \param[in] value The new value.
-	void SetImporterName( const IndexString & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

@@ -122,18 +122,6 @@ std::list<NiObject *> bhkMultiSphereShape::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<SphereBV > bhkMultiSphereShape::GetSpheres() const {
-	return spheres;
-}
-
-void bhkMultiSphereShape::SetSpheres( const vector<SphereBV >& value ) {
-	spheres = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 vector<SphereBV > bhkMultiSphereShape::GetSpheres() const {

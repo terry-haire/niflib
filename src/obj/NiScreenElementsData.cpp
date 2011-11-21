@@ -170,50 +170,6 @@ std::list<NiObject *> NiScreenElementsData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<Polygon > NiScreenElementsData::GetPolygons() const {
-	return polygons;
-}
-
-void NiScreenElementsData::SetPolygons( const vector<Polygon >& value ) {
-	polygons = value;
-}
-
-vector<unsigned short > NiScreenElementsData::GetPolygonIndices() const {
-	return polygonIndices;
-}
-
-void NiScreenElementsData::SetPolygonIndices( const vector<unsigned short >& value ) {
-	polygonIndices = value;
-}
-
-unsigned short NiScreenElementsData::GetNumPolygons() const {
-	return numPolygons;
-}
-
-void NiScreenElementsData::SetNumPolygons( unsigned short value ) {
-	numPolygons = value;
-}
-
-unsigned short NiScreenElementsData::GetUsedVertices() const {
-	return usedVertices;
-}
-
-void NiScreenElementsData::SetUsedVertices( unsigned short value ) {
-	usedVertices = value;
-}
-
-unsigned short NiScreenElementsData::GetUsedTrianglePoints() const {
-	return usedTrianglePoints;
-}
-
-void NiScreenElementsData::SetUsedTrianglePoints( unsigned short value ) {
-	usedTrianglePoints = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

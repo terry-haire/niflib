@@ -116,18 +116,6 @@ std::list<NiObject *> NiVisData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<Key<byte > > NiVisData::GetKeys() const {
-	return keys;
-}
-
-void NiVisData::SetKeys( const vector<Key<byte > >& value ) {
-	keys = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 vector< Key<unsigned char> > NiVisData::GetKeys() const {

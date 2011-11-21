@@ -108,18 +108,6 @@ std::list<NiObject *> BSValueNode::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-int BSValueNode::GetValue() const {
-	return value;
-}
-
-void BSValueNode::SetValue( int value ) {
-	value = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

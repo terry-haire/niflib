@@ -116,17 +116,5 @@ std::list<NiObject *> NiRollController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiFloatData > NiRollController::GetData() const {
-	return data;
-}
-
-void NiRollController::SetData( Ref<NiFloatData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

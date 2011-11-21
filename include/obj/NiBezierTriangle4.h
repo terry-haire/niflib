@@ -53,34 +53,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// unknown
-	// \return The current value.
-	Matrix33 GetMatrix() const;
-
-	// unknown
-	// \param[in] value The new value.
-	void SetMatrix( const Matrix33 & value );
-
-	// unknown
-	// \return The current value.
-	Vector3 GetVector1() const;
-
-	// unknown
-	// \param[in] value The new value.
-	void SetVector1( const Vector3 & value );
-
-	// unknown
-	// \return The current value.
-	Vector3 GetVector2() const;
-
-	// unknown
-	// \param[in] value The new value.
-	void SetVector2( const Vector3 & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

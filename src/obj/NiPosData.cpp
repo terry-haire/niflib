@@ -126,18 +126,6 @@ std::list<NiObject *> NiPosData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-KeyGroup<Vector3 > NiPosData::GetData() const {
-	return data;
-}
-
-void NiPosData::SetData( const KeyGroup<Vector3 > & value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 KeyType NiPosData::GetKeyType() const {

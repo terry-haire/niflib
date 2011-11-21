@@ -63,98 +63,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Model projection matrix.  Always identity?
-	// \return The current value.
-	Matrix33 GetModelProjectionMatrix() const;
-
-	// Model projection matrix.  Always identity?
-	// \param[in] value The new value.
-	void SetModelProjectionMatrix( const Matrix33 & value );
-
-	// Model projection transform.  Always (0,0,0)?
-	// \return The current value.
-	Vector3 GetModelProjectionTransform() const;
-
-	// Model projection transform.  Always (0,0,0)?
-	// \param[in] value The new value.
-	void SetModelProjectionTransform( const Vector3 & value );
-
-	// Texture Filtering mode.
-	// \return The current value.
-	TexFilterMode GetTextureFiltering() const;
-
-	// Texture Filtering mode.
-	// \param[in] value The new value.
-	void SetTextureFiltering( const TexFilterMode & value );
-
-	// Texture Clamp mode.
-	// \return The current value.
-	TexClampMode GetTextureClamping() const;
-
-	// Texture Clamp mode.
-	// \param[in] value The new value.
-	void SetTextureClamping( const TexClampMode & value );
-
-	// The type of effect that the texture is used for.
-	// \return The current value.
-	EffectType GetTextureType() const;
-
-	// The type of effect that the texture is used for.
-	// \param[in] value The new value.
-	void SetTextureType( const EffectType & value );
-
-	// The method that will be used to generate UV coordinates for the texture effect.
-	// \return The current value.
-	CoordGenType GetCoordinateGenerationType() const;
-
-	// The method that will be used to generate UV coordinates for the texture effect.
-	// \param[in] value The new value.
-	void SetCoordinateGenerationType( const CoordGenType & value );
-
-	// Image index.
-	// \return The current value.
-	Ref<NiImage > GetImage() const;
-
-	// Image index.
-	// \param[in] value The new value.
-	void SetImage( Ref<NiImage > value );
-
-	// Source texture index.
-	// \return The current value.
-	Ref<NiSourceTexture > GetSourceTexture() const;
-
-	// Source texture index.
-	// \param[in] value The new value.
-	void SetSourceTexture( Ref<NiSourceTexture > value );
-
-	// Determines whether a clipping plane is used.  0 means that a plane is not used.
-	// \return The current value.
-	byte GetClippingPlane() const;
-
-	// Determines whether a clipping plane is used.  0 means that a plane is not used.
-	// \param[in] value The new value.
-	void SetClippingPlane( byte value );
-
-	// 0?
-	// \return The current value.
-	short GetPs2L() const;
-
-	// 0?
-	// \param[in] value The new value.
-	void SetPs2L( short value );
-
-	// -75?
-	// \return The current value.
-	short GetPs2K() const;
-
-	// -75?
-	// \param[in] value The new value.
-	void SetPs2K( short value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!
@@ -309,8 +217,6 @@ protected:
 	TexFilterMode textureFiltering;
 	/*! Texture Clamp mode. */
 	TexClampMode textureClamping;
-	/*! Unknown. */
-	short unknown;
 	/*! The type of effect that the texture is used for. */
 	EffectType textureType;
 	/*! The method that will be used to generate UV coordinates for the texture effect. */

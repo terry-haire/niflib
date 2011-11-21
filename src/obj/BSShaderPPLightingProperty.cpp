@@ -50,11 +50,11 @@ void BSShaderPPLightingProperty::Read( istream& in, list<unsigned int> & link_st
 	BSShaderLightingProperty::Read( in, link_stack, info );
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
-	if ( ((info.userVersion >= 11) && (info.userVersion2 > 14)) ) {
+	if ( ((info.userVersion == 11) && (info.userVersion2 > 14)) ) {
 		NifStream( unknownFloat2, in, info );
 		NifStream( refractionPeriod, in, info );
 	};
-	if ( ((info.userVersion >= 11) && (info.userVersion2 > 24)) ) {
+	if ( ((info.userVersion == 11) && (info.userVersion2 > 24)) ) {
 		NifStream( unknownFloat4, in, info );
 		NifStream( unknownFloat5, in, info );
 	};
@@ -87,11 +87,11 @@ void BSShaderPPLightingProperty::Write( ostream& out, const map<NiObjectRef,unsi
 			missing_link_stack.push_back( NULL );
 		}
 	}
-	if ( ((info.userVersion >= 11) && (info.userVersion2 > 14)) ) {
+	if ( ((info.userVersion == 11) && (info.userVersion2 > 14)) ) {
 		NifStream( unknownFloat2, out, info );
 		NifStream( refractionPeriod, out, info );
 	};
-	if ( ((info.userVersion >= 11) && (info.userVersion2 > 24)) ) {
+	if ( ((info.userVersion == 11) && (info.userVersion2 > 24)) ) {
 		NifStream( unknownFloat4, out, info );
 		NifStream( unknownFloat5, out, info );
 	};
@@ -146,26 +146,6 @@ std::list<NiObject *> BSShaderPPLightingProperty::GetPtrs() const {
 	ptrs = BSShaderLightingProperty::GetPtrs();
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-Ref<BSShaderTextureSet > BSShaderPPLightingProperty::GetTextureSet() const {
-	return textureSet;
-}
-
-void BSShaderPPLightingProperty::SetTextureSet( Ref<BSShaderTextureSet > value ) {
-	textureSet = value;
-}
-
-int BSShaderPPLightingProperty::GetRefractionPeriod() const {
-	return refractionPeriod;
-}
-
-void BSShaderPPLightingProperty::SetRefractionPeriod( int value ) {
-	refractionPeriod = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

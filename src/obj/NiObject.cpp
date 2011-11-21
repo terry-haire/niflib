@@ -94,8 +94,6 @@ std::list<NiObject *> NiObject::GetPtrs() const {
 	return ptrs;
 }
 
-//--This object has no eligable attributes.  No example implementation generated--//
-
 //--BEGIN MISC CUSTOM CODE--//
 
 NiObjectRef NiObject::Clone( unsigned int version, unsigned int user_version ) {

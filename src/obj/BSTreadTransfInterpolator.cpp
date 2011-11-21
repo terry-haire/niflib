@@ -163,18 +163,6 @@ std::list<NiObject *> BSTreadTransfInterpolator::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<BSTreadTransfInfo > BSTreadTransfInterpolator::GetTreadTransferInfo() const {
-	return treadTransferInfo;
-}
-
-void BSTreadTransfInterpolator::SetTreadTransferInfo( const vector<BSTreadTransfInfo >& value ) {
-	treadTransferInfo = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

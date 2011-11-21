@@ -57,18 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Texture coordinate controller data index.
-	// \return The current value.
-	Ref<NiUVData > GetData() const;
-
-	// Texture coordinate controller data index.
-	// \param[in] value The new value.
-	void SetData( Ref<NiUVData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//TODO:  This class has an unknown member

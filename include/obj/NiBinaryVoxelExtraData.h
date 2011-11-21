@@ -57,18 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Link to binary voxel data.
-	// \return The current value.
-	Ref<NiBinaryVoxelData > GetData() const;
-
-	// Link to binary voxel data.
-	// \param[in] value The new value.
-	void SetData( Ref<NiBinaryVoxelData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

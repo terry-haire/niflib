@@ -52,20 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// List of textual notes and at which time they take effect. Used for designating
-	// the start and stop of animations and the triggering of sounds.
-	// \return The current value.
-	vector<Key<IndexString > > GetTextKeys() const;
-
-	// List of textual notes and at which time they take effect. Used for designating
-	// the start and stop of animations and the triggering of sounds.
-	// \param[in] value The new value.
-	void SetTextKeys( const vector<Key<IndexString > >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*! Retrieves the text note key data.

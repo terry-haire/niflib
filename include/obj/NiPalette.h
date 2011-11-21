@@ -55,26 +55,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The number of palette entries.  Always = 256.
-	// \return The current value.
-	unsigned int GetNumEntries() const;
-
-	// The number of palette entries.  Always = 256.
-	// \param[in] value The new value.
-	void SetNumEntries( unsigned int value );
-
-	// The color palette.
-	// \return The current value.
-	array<256,ByteColor4 >  GetPalette() const;
-
-	// The color palette.
-	// \param[in] value The new value.
-	void SetPalette( const array<256,ByteColor4 >&  value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

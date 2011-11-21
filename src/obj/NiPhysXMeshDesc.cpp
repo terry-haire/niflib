@@ -50,7 +50,7 @@ void NiPhysXMeshDesc::Read( istream& in, list<unsigned int> & link_stack, const 
 	NifStream( unknownFloat1, in, info );
 	NifStream( unknownShort2, in, info );
 	for (unsigned int i1 = 0; i1 < 3; i1++) {
-		NifStream( unknownBytes0[i1], in, info );
+		NifStream( unknownBytes1[i1], in, info );
 	};
 	NifStream( unknownByte1, in, info );
 	for (unsigned int i1 = 0; i1 < 4; i1++) {
@@ -95,7 +95,7 @@ void NiPhysXMeshDesc::Write( ostream& out, const map<NiObjectRef,unsigned int> &
 	NifStream( unknownFloat1, out, info );
 	NifStream( unknownShort2, out, info );
 	for (unsigned int i1 = 0; i1 < 3; i1++) {
-		NifStream( unknownBytes0[i1], out, info );
+		NifStream( unknownBytes1[i1], out, info );
 	};
 	NifStream( unknownByte1, out, info );
 	for (unsigned int i1 = 0; i1 < 4; i1++) {
@@ -149,22 +149,10 @@ std::string NiPhysXMeshDesc::asString( bool verbose ) const {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 			break;
 		};
-		out << "    Unknown Bytes 0[" << i1 << "]:  " << unknownBytes0[i1] << endl;
-		array_output_count++;
-	};
-	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
-	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
-			break;
-		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			break;
-		};
 		out << "    Unknown Bytes 1[" << i1 << "]:  " << unknownBytes1[i1] << endl;
 		array_output_count++;
 	};
+	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 8; i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
@@ -261,18 +249,6 @@ std::list<NiObject *> NiPhysXMeshDesc::GetPtrs() const {
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-vector<Vector3 > NiPhysXMeshDesc::GetVertices() const {
-	return vertices;
-}
-
-void NiPhysXMeshDesc::SetVertices( const vector<Vector3 >& value ) {
-	vertices = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

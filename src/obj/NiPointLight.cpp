@@ -100,34 +100,6 @@ std::list<NiObject *> NiPointLight::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float NiPointLight::GetConstantAttenuation() const {
-	return constantAttenuation;
-}
-
-void NiPointLight::SetConstantAttenuation( float value ) {
-	constantAttenuation = value;
-}
-
-float NiPointLight::GetLinearAttenuation() const {
-	return linearAttenuation;
-}
-
-void NiPointLight::SetLinearAttenuation( float value ) {
-	linearAttenuation = value;
-}
-
-float NiPointLight::GetQuadraticAttenuation() const {
-	return quadraticAttenuation;
-}
-
-void NiPointLight::SetQuadraticAttenuation( float value ) {
-	quadraticAttenuation = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 float NiPointLight::GetConstantAttenuation() const {

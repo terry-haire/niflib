@@ -146,42 +146,6 @@ std::list<NiObject *> NiBSplineInterpolator::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float NiBSplineInterpolator::GetStartTime() const {
-	return startTime;
-}
-
-void NiBSplineInterpolator::SetStartTime( float value ) {
-	startTime = value;
-}
-
-float NiBSplineInterpolator::GetStopTime() const {
-	return stopTime;
-}
-
-void NiBSplineInterpolator::SetStopTime( float value ) {
-	stopTime = value;
-}
-
-Ref<NiBSplineData > NiBSplineInterpolator::GetSplineData() const {
-	return splineData;
-}
-
-void NiBSplineInterpolator::SetSplineData( Ref<NiBSplineData > value ) {
-	splineData = value;
-}
-
-Ref<NiBSplineBasisData > NiBSplineInterpolator::GetBasisData() const {
-	return basisData;
-}
-
-void NiBSplineInterpolator::SetBasisData( Ref<NiBSplineBasisData > value ) {
-	basisData = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 float NiBSplineInterpolator::GetStartTime() const {

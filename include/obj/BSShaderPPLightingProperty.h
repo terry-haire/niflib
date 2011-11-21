@@ -58,26 +58,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Texture Set
-	// \return The current value.
-	Ref<BSShaderTextureSet > GetTextureSet() const;
-
-	// Texture Set
-	// \param[in] value The new value.
-	void SetTextureSet( Ref<BSShaderTextureSet > value );
-
-	// Rate of texture movement for refraction shader.
-	// \return The current value.
-	int GetRefractionPeriod() const;
-
-	// Rate of texture movement for refraction shader.
-	// \param[in] value The new value.
-	void SetRefractionPeriod( int value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	// Texture Set

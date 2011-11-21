@@ -52,42 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Dimmer.
-	// \return The current value.
-	float GetDimmer() const;
-
-	// Dimmer.
-	// \param[in] value The new value.
-	void SetDimmer( float value );
-
-	// Ambient color.
-	// \return The current value.
-	Color3 GetAmbientColor() const;
-
-	// Ambient color.
-	// \param[in] value The new value.
-	void SetAmbientColor( const Color3 & value );
-
-	// Diffuse color.
-	// \return The current value.
-	Color3 GetDiffuseColor() const;
-
-	// Diffuse color.
-	// \param[in] value The new value.
-	void SetDiffuseColor( const Color3 & value );
-
-	// Specular color.
-	// \return The current value.
-	Color3 GetSpecularColor() const;
-
-	// Specular color.
-	// \param[in] value The new value.
-	void SetSpecularColor( const Color3 & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

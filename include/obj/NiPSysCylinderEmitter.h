@@ -52,26 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Radius of the cylinder shape.
-	// \return The current value.
-	float GetRadius() const;
-
-	// Radius of the cylinder shape.
-	// \param[in] value The new value.
-	void SetRadius( float value );
-
-	// Height of the cylinders shape.
-	// \return The current value.
-	float GetHeight() const;
-
-	// Height of the cylinders shape.
-	// \param[in] value The new value.
-	void SetHeight( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

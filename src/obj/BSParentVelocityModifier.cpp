@@ -94,17 +94,5 @@ std::list<NiObject *> BSParentVelocityModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float BSParentVelocityModifier::GetDamping() const {
-	return damping;
-}
-
-void BSParentVelocityModifier::SetDamping( float value ) {
-	damping = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

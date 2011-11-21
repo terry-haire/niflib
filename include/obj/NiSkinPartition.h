@@ -62,18 +62,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Skin partition objects.
-	// \return The current value.
-	vector<SkinPartition > GetSkinPartitionBlocks() const;
-
-	// Skin partition objects.
-	// \param[in] value The new value.
-	void SetSkinPartitionBlocks( const vector<SkinPartition >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

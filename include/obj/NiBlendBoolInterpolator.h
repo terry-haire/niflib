@@ -52,18 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The interpolated bool?
-	// \return The current value.
-	byte GetBoolValue() const;
-
-	// The interpolated bool?
-	// \param[in] value The new value.
-	void SetBoolValue( byte value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

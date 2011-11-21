@@ -52,18 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Float data.
-	// \return The current value.
-	vector<float > GetData() const;
-
-	// Float data.
-	// \param[in] value The new value.
-	void SetData( const vector<float >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

@@ -158,26 +158,6 @@ std::list<NiObject *> BSMasterParticleSystem::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-unsigned short BSMasterParticleSystem::GetMaxEmitterObjects() const {
-	return maxEmitterObjects;
-}
-
-void BSMasterParticleSystem::SetMaxEmitterObjects( unsigned short value ) {
-	maxEmitterObjects = value;
-}
-
-vector<Ref<NiAVObject > > BSMasterParticleSystem::GetParticleSystems() const {
-	return particleSystems;
-}
-
-void BSMasterParticleSystem::SetParticleSystems( const vector<Ref<NiAVObject > >& value ) {
-	particleSystems = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

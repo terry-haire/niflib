@@ -94,17 +94,5 @@ std::list<NiObject *> BSWindModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float BSWindModifier::GetStrength() const {
-	return strength;
-}
-
-void BSWindModifier::SetStrength( float value ) {
-	strength = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

@@ -97,26 +97,6 @@ std::list<NiObject *> BSBound::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Vector3 BSBound::GetCenter() const {
-	return center;
-}
-
-void BSBound::SetCenter( const Vector3 & value ) {
-	center = value;
-}
-
-Vector3 BSBound::GetDimensions() const {
-	return dimensions;
-}
-
-void BSBound::SetDimensions( const Vector3 & value ) {
-	dimensions = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 Vector3 BSBound::GetCenter() const {

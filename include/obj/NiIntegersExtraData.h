@@ -52,18 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Integers.
-	// \return The current value.
-	vector<unsigned int > GetData() const;
-
-	// Integers.
-	// \param[in] value The new value.
-	void SetData( const vector<unsigned int >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

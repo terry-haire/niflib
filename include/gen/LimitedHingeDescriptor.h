@@ -10,8 +10,6 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-// Include structures
-#include "MotorDescriptor.h"
 namespace Niflib {
 
 
@@ -43,18 +41,18 @@ struct LimitedHingeDescriptor {
 	Vector4 axleB;
 	/*! Perp2 Axle In A2 in second entity coordinate system. */
 	Vector4 perp2AxleInB2;
-	/*! Perp2 Axle In A1 in second entity coordinate system. */
-	Vector4 perp2AxleInB1;
 	/*! Minimum rotation angle. */
 	float minAngle;
 	/*! Maximum rotation angle. */
 	float maxAngle;
-	/*! Maximum friction, typically either 0 or 10. In Fallout 3, typically 100. */
+	/*! Maximum friction, typically either 0 or 10. */
 	float maxFriction;
 	/*! Unknown */
-	bool enableMotor;
-	/*! Unknown. */
-	MotorDescriptor motor;
+	float unknownFloat1;
+	/*! Unknown */
+	float unknownFloat2;
+	/*! Unknown */
+	float unknownFloat3;
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 };

@@ -52,18 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The interpolated float?
-	// \return The current value.
-	float GetFloatValue() const;
-
-	// The interpolated float?
-	// \param[in] value The new value.
-	void SetFloatValue( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

@@ -25,7 +25,7 @@ class NiObject;
 class Ni3dsAnimationNode;
 typedef Ref<Ni3dsAnimationNode> Ni3dsAnimationNodeRef;
 
-/*! Unknown. Only found in 2.3 nifs. */
+/*! Unknown! */
 class Ni3dsAnimationNode : public NiObject {
 public:
 	/*! Constructor */
@@ -58,34 +58,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Name of this object.
-	// \return The current value.
-	IndexString GetName() const;
-
-	// Name of this object.
-	// \param[in] value The new value.
-	void SetName( const IndexString & value );
-
-	// Unknown.
-	// \return The current value.
-	bool GetHasData() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetHasData( bool value );
-
-	// Child?
-	// \return The current value.
-	Ref<NiObject > GetChild() const;
-
-	// Child?
-	// \param[in] value The new value.
-	void SetChild( Ref<NiObject > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -93,7 +65,7 @@ protected:
 	/*! Name of this object. */
 	IndexString name;
 	/*! Unknown. */
-	bool hasData;
+	unsigned int hasData;
 	/*! Unknown. Matrix? */
 	array<21,float > unknownFloats1;
 	/*! Unknown. */

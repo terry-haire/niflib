@@ -24,7 +24,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiPhysXPropDesc::TYPE("NiPhysXPropDesc", &NiObject::TYPE );
 
-NiPhysXPropDesc::NiPhysXPropDesc() : numDests((int)0), numJoints((unsigned int)0), unknownInt1((int)0), numMaterials((unsigned int)0), unknownInt2((unsigned int)0), unknownInt3((unsigned int)0), unknownInt5((unsigned int)0), unknownByte6((byte)0) {
+NiPhysXPropDesc::NiPhysXPropDesc() : numDests((int)0), numJoints((unsigned int)0), unknownInt1((int)0), numMaterials((unsigned int)0), unknownInt2((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -73,12 +73,6 @@ void NiPhysXPropDesc::Read( istream& in, list<unsigned int> & link_stack, const 
 		link_stack.push_back( block_num );
 	};
 	NifStream( unknownInt2, in, info );
-	if ( info.version >= 0x14050000 ) {
-		NifStream( unknownInt3, in, info );
-		NifStream( unknownString4, in, info );
-		NifStream( unknownInt5, in, info );
-		NifStream( unknownByte6, in, info );
-	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -158,12 +152,6 @@ void NiPhysXPropDesc::Write( ostream& out, const map<NiObjectRef,unsigned int> &
 		}
 	};
 	NifStream( unknownInt2, out, info );
-	if ( info.version >= 0x14050000 ) {
-		NifStream( unknownInt3, out, info );
-		NifStream( unknownString4, out, info );
-		NifStream( unknownInt5, out, info );
-		NifStream( unknownByte6, out, info );
-	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -220,10 +208,6 @@ std::string NiPhysXPropDesc::asString( bool verbose ) const {
 		out << "    Material Desc:  " << materialDescs[i1].materialDesc << endl;
 	};
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;
-	out << "  Unknown Int 3:  " << unknownInt3 << endl;
-	out << "  Unknown String 4:  " << unknownString4 << endl;
-	out << "  Unknown Int 5:  " << unknownInt5 << endl;
-	out << "  Unknown Byte 6:  " << unknownByte6 << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -281,34 +265,6 @@ std::list<NiObject *> NiPhysXPropDesc::GetPtrs() const {
 	};
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-vector<Ref<NiPhysXActorDesc > > NiPhysXPropDesc::GetActorDescs() const {
-	return actorDescs;
-}
-
-void NiPhysXPropDesc::SetActorDescs( const vector<Ref<NiPhysXActorDesc > >& value ) {
-	actorDescs = value;
-}
-
-vector<Ref<NiPhysXD6JointDesc > > NiPhysXPropDesc::GetJointDescs() const {
-	return jointDescs;
-}
-
-void NiPhysXPropDesc::SetJointDescs( const vector<Ref<NiPhysXD6JointDesc > >& value ) {
-	jointDescs = value;
-}
-
-vector<physXMaterialRef > NiPhysXPropDesc::GetMaterialDescs() const {
-	return materialDescs;
-}
-
-void NiPhysXPropDesc::SetMaterialDescs( const vector<physXMaterialRef >& value ) {
-	materialDescs = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

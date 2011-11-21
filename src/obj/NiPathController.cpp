@@ -159,26 +159,6 @@ std::list<NiObject *> NiPathController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiPosData > NiPathController::GetPosData() const {
-	return posData;
-}
-
-void NiPathController::SetPosData( Ref<NiPosData > value ) {
-	posData = value;
-}
-
-Ref<NiFloatData > NiPathController::GetFloatData() const {
-	return floatData;
-}
-
-void NiPathController::SetFloatData( Ref<NiFloatData > value ) {
-	floatData = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<NiFloatData> NiPathController::GetFloatData() const {

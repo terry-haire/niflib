@@ -50,11 +50,9 @@ void NiLookAtInterpolator::Read( istream& in, list<unsigned int> & link_stack, c
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
 	NifStream( target, in, info );
-	if ( info.version <= 0x14050000 ) {
-		NifStream( translation, in, info );
-		NifStream( rotation, in, info );
-		NifStream( scale, in, info );
-	};
+	NifStream( translation, in, info );
+	NifStream( rotation, in, info );
+	NifStream( scale, in, info );
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
 	NifStream( block_num, in, info );
@@ -90,11 +88,9 @@ void NiLookAtInterpolator::Write( ostream& out, const map<NiObjectRef,unsigned i
 		}
 	}
 	NifStream( target, out, info );
-	if ( info.version <= 0x14050000 ) {
-		NifStream( translation, out, info );
-		NifStream( rotation, out, info );
-		NifStream( scale, out, info );
-	};
+	NifStream( translation, out, info );
+	NifStream( rotation, out, info );
+	NifStream( scale, out, info );
 	if ( info.version < VER_3_3_0_13 ) {
 		WritePtr32( &(*unknownLink1), out );
 	} else {
@@ -189,6 +185,8 @@ void NiLookAtInterpolator::FixLinks( const map<unsigned int,NiObjectRef> & objec
 std::list<NiObjectRef> NiLookAtInterpolator::GetRefs() const {
 	list<Ref<NiObject> > refs;
 	refs = NiInterpolator::GetRefs();
+	if ( lookAt != NULL )
+		refs.push_back(StaticCast<NiObject>(lookAt));
 	if ( unknownLink1 != NULL )
 		refs.push_back(StaticCast<NiObject>(unknownLink1));
 	if ( unknownLink2 != NULL )
@@ -201,54 +199,8 @@ std::list<NiObjectRef> NiLookAtInterpolator::GetRefs() const {
 std::list<NiObject *> NiLookAtInterpolator::GetPtrs() const {
 	list<NiObject *> ptrs;
 	ptrs = NiInterpolator::GetPtrs();
-	if ( lookAt != NULL )
-		ptrs.push_back((NiObject *)(lookAt));
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-NiNode * NiLookAtInterpolator::GetLookAt() const {
-	return lookAt;
-}
-
-void NiLookAtInterpolator::SetLookAt( NiNode * value ) {
-	lookAt = value;
-}
-
-IndexString NiLookAtInterpolator::GetTarget() const {
-	return target;
-}
-
-void NiLookAtInterpolator::SetTarget( const IndexString & value ) {
-	target = value;
-}
-
-Vector3 NiLookAtInterpolator::GetTranslation() const {
-	return translation;
-}
-
-void NiLookAtInterpolator::SetTranslation( const Vector3 & value ) {
-	translation = value;
-}
-
-Quaternion NiLookAtInterpolator::GetRotation() const {
-	return rotation;
-}
-
-void NiLookAtInterpolator::SetRotation( const Quaternion & value ) {
-	rotation = value;
-}
-
-float NiLookAtInterpolator::GetScale() const {
-	return scale;
-}
-
-void NiLookAtInterpolator::SetScale( float value ) {
-	scale = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

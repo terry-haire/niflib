@@ -47,11 +47,9 @@ struct Header {
 	mutable unsigned int numBlocks;
 	/*!
 	 * This also appears to be the extra user version number and must be set in some
-	 * circumstances. Probably used by Bethesda to denote the Havok version.
+	 * circumstances.
 	 */
 	unsigned int userVersion2;
-	/*! Unknown. Possibly User Version 2? */
-	unsigned int unknownInt3;
 	/*! Unknown. */
 	ExportInfo exportInfo;
 	/*! Number of object types in this NIF file. */

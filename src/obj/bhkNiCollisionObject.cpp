@@ -119,26 +119,6 @@ std::list<NiObject *> bhkNiCollisionObject::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-unsigned short bhkNiCollisionObject::GetFlags() const {
-	return flags;
-}
-
-void bhkNiCollisionObject::SetFlags( unsigned short value ) {
-	flags = value;
-}
-
-Ref<NiObject > bhkNiCollisionObject::GetBody() const {
-	return body;
-}
-
-void bhkNiCollisionObject::SetBody( Ref<NiObject > value ) {
-	body = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<NiObject > bhkNiCollisionObject::GetBody() const {

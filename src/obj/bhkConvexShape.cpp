@@ -91,8 +91,6 @@ std::list<NiObject *> bhkConvexShape::GetPtrs() const {
 	return ptrs;
 }
 
-//--This object has no eligable attributes.  No example implementation generated--//
-
 //--BEGIN MISC CUSTOM CODE--//
 
 void bhkConvexShape::CalcMassProperties(float density, bool solid, float &mass, float &volume, Vector3 &center, InertiaMatrix& inertia)

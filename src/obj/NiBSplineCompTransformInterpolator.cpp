@@ -116,58 +116,6 @@ std::list<NiObject *> NiBSplineCompTransformInterpolator::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float NiBSplineCompTransformInterpolator::GetTranslationBias() const {
-	return translationBias;
-}
-
-void NiBSplineCompTransformInterpolator::SetTranslationBias( float value ) {
-	translationBias = value;
-}
-
-float NiBSplineCompTransformInterpolator::GetTranslationMultiplier() const {
-	return translationMultiplier;
-}
-
-void NiBSplineCompTransformInterpolator::SetTranslationMultiplier( float value ) {
-	translationMultiplier = value;
-}
-
-float NiBSplineCompTransformInterpolator::GetRotationBias() const {
-	return rotationBias;
-}
-
-void NiBSplineCompTransformInterpolator::SetRotationBias( float value ) {
-	rotationBias = value;
-}
-
-float NiBSplineCompTransformInterpolator::GetRotationMultiplier() const {
-	return rotationMultiplier;
-}
-
-void NiBSplineCompTransformInterpolator::SetRotationMultiplier( float value ) {
-	rotationMultiplier = value;
-}
-
-float NiBSplineCompTransformInterpolator::GetScaleBias() const {
-	return scaleBias;
-}
-
-void NiBSplineCompTransformInterpolator::SetScaleBias( float value ) {
-	scaleBias = value;
-}
-
-float NiBSplineCompTransformInterpolator::GetScaleMultiplier() const {
-	return scaleMultiplier;
-}
-
-void NiBSplineCompTransformInterpolator::SetScaleMultiplier( float value ) {
-	scaleMultiplier = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 float NiBSplineCompTransformInterpolator::GetTranslateBias() const {

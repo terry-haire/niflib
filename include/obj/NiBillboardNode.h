@@ -73,18 +73,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The way the billboard will react to the camera.
-	// \return The current value.
-	BillboardMode GetBillboardMode() const;
-
-	// The way the billboard will react to the camera.
-	// \param[in] value The new value.
-	void SetBillboardMode( const BillboardMode & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

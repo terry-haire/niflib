@@ -127,18 +127,6 @@ std::list<NiObject *> BSFrustumFOVController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiFloatInterpolator > BSFrustumFOVController::GetInterpolator() const {
-	return interpolator;
-}
-
-void BSFrustumFOVController::SetInterpolator( Ref<NiFloatInterpolator > value ) {
-	interpolator = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

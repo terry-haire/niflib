@@ -55,52 +55,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The type of interpolation to use for rotation.  Can also be 4 to indicate that
-	// separate X, Y, and Z values are used for the rotation instead of Quaternions.
-	// \return The current value.
-	KeyType GetRotationType() const;
-
-	// The type of interpolation to use for rotation.  Can also be 4 to indicate that
-	// separate X, Y, and Z values are used for the rotation instead of Quaternions.
-	// \param[in] value The new value.
-	void SetRotationType( const KeyType & value );
-
-	// The rotation keys if Quaternion rotation is used.
-	// \return The current value.
-	vector<Key<Quaternion > > GetQuaternionKeys() const;
-
-	// The rotation keys if Quaternion rotation is used.
-	// \param[in] value The new value.
-	void SetQuaternionKeys( const vector<Key<Quaternion > >& value );
-
-	// Individual arrays of keys for rotating X, Y, and Z individually.
-	// \return The current value.
-	array<3,KeyGroup<float > >  GetXyzRotations() const;
-
-	// Individual arrays of keys for rotating X, Y, and Z individually.
-	// \param[in] value The new value.
-	void SetXyzRotations( const array<3,KeyGroup<float > >&  value );
-
-	// Translation keys.
-	// \return The current value.
-	KeyGroup<Vector3 > GetTranslations() const;
-
-	// Translation keys.
-	// \param[in] value The new value.
-	void SetTranslations( const KeyGroup<Vector3 > & value );
-
-	// Scale keys.
-	// \return The current value.
-	KeyGroup<float > GetScales() const;
-
-	// Scale keys.
-	// \param[in] value The new value.
-	void SetScales( const KeyGroup<float > & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!
@@ -271,11 +225,7 @@ protected:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*!
-	 * The number of quaternion rotation keys. If the rotation type is XYZ (type 4)
-	 * then this *must* be set to 1, and in this case the actual number of keys is
-	 * stored in the XYZ Rotations field.
-	 */
+	/*! The number of rotation keys. */
 	mutable unsigned int numRotationKeys;
 	/*!
 	 * The type of interpolation to use for rotation.  Can also be 4 to indicate that

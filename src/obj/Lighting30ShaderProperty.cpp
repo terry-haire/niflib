@@ -102,8 +102,6 @@ std::list<NiObject *> Lighting30ShaderProperty::GetPtrs() const {
 	return ptrs;
 }
 
-//--This object has no eligable attributes.  No example implementation generated--//
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

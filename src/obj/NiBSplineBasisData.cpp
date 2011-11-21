@@ -94,18 +94,6 @@ std::list<NiObject *> NiBSplineBasisData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-unsigned int NiBSplineBasisData::GetNumControlPoints() const {
-	return numControlPoints;
-}
-
-void NiBSplineBasisData::SetNumControlPoints( unsigned int value ) {
-	numControlPoints = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 unsigned int NiBSplineBasisData::GetNumControlPoints() const {

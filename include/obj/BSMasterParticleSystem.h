@@ -58,26 +58,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Unknown
-	// \return The current value.
-	unsigned short GetMaxEmitterObjects() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetMaxEmitterObjects( unsigned short value );
-
-	// Unknown
-	// \return The current value.
-	vector<Ref<NiAVObject > > GetParticleSystems() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetParticleSystems( const vector<Ref<NiAVObject > >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

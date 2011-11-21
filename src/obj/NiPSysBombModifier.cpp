@@ -131,57 +131,5 @@ std::list<NiObject *> NiPSysBombModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-NiNode * NiPSysBombModifier::GetBombObject() const {
-	return bombObject;
-}
-
-void NiPSysBombModifier::SetBombObject( NiNode * value ) {
-	bombObject = value;
-}
-
-Vector3 NiPSysBombModifier::GetBombAxis() const {
-	return bombAxis;
-}
-
-void NiPSysBombModifier::SetBombAxis( const Vector3 & value ) {
-	bombAxis = value;
-}
-
-float NiPSysBombModifier::GetDecay() const {
-	return decay;
-}
-
-void NiPSysBombModifier::SetDecay( float value ) {
-	decay = value;
-}
-
-float NiPSysBombModifier::GetDeltaV() const {
-	return deltaV;
-}
-
-void NiPSysBombModifier::SetDeltaV( float value ) {
-	deltaV = value;
-}
-
-DecayType NiPSysBombModifier::GetDecayType() const {
-	return decayType;
-}
-
-void NiPSysBombModifier::SetDecayType( const DecayType & value ) {
-	decayType = value;
-}
-
-SymmetryType NiPSysBombModifier::GetSymmetryType() const {
-	return symmetryType;
-}
-
-void NiPSysBombModifier::SetSymmetryType( const SymmetryType & value ) {
-	symmetryType = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

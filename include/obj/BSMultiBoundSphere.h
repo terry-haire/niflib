@@ -53,18 +53,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Radius
-	// \return The current value.
-	float GetRadius() const;
-
-	// Radius
-	// \param[in] value The new value.
-	void SetRadius( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

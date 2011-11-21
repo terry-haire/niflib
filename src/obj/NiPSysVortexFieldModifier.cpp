@@ -105,18 +105,6 @@ std::list<NiObject *> NiPSysVortexFieldModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Vector3 NiPSysVortexFieldModifier::GetDirection() const {
-	return direction;
-}
-
-void NiPSysVortexFieldModifier::SetDirection( const Vector3 & value ) {
-	direction = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

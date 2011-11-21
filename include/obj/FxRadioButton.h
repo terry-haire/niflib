@@ -52,20 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Unknown pointers to other buttons.  Maybe other buttons in a group so they can
-	// be switch off if this one is switched on?
-	// \return The current value.
-	vector<FxRadioButton * > GetButtons() const;
-
-	// Unknown pointers to other buttons.  Maybe other buttons in a group so they can
-	// be switch off if this one is switched on?
-	// \param[in] value The new value.
-	void SetButtons( const vector<FxRadioButton * >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

@@ -57,26 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Value when posed?  At time 0?
-	// \return The current value.
-	bool GetBoolValue() const;
-
-	// Value when posed?  At time 0?
-	// \param[in] value The new value.
-	void SetBoolValue( bool value );
-
-	// Refers to a NiBoolData object.
-	// \return The current value.
-	Ref<NiBoolData > GetData() const;
-
-	// Refers to a NiBoolData object.
-	// \param[in] value The new value.
-	void SetData( Ref<NiBoolData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

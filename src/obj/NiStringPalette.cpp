@@ -98,18 +98,6 @@ std::list<NiObject *> NiStringPalette::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-StringPalette NiStringPalette::GetPalette() const {
-	return palette;
-}
-
-void NiStringPalette::SetPalette( const StringPalette & value ) {
-	palette = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 string NiStringPalette::GetPaletteString() const {

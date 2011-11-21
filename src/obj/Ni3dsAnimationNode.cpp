@@ -21,7 +21,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type Ni3dsAnimationNode::TYPE("Ni3dsAnimationNode", &NiObject::TYPE );
 
-Ni3dsAnimationNode::Ni3dsAnimationNode() : hasData(false), unknownShort((unsigned short)0), child(NULL), count((unsigned int)0) {
+Ni3dsAnimationNode::Ni3dsAnimationNode() : hasData((unsigned int)0), unknownShort((unsigned short)0), child(NULL), count((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -203,34 +203,6 @@ std::list<NiObject *> Ni3dsAnimationNode::GetPtrs() const {
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-IndexString Ni3dsAnimationNode::GetName() const {
-	return name;
-}
-
-void Ni3dsAnimationNode::SetName( const IndexString & value ) {
-	name = value;
-}
-
-bool Ni3dsAnimationNode::GetHasData() const {
-	return hasData;
-}
-
-void Ni3dsAnimationNode::SetHasData( bool value ) {
-	hasData = value;
-}
-
-Ref<NiObject > Ni3dsAnimationNode::GetChild() const {
-	return child;
-}
-
-void Ni3dsAnimationNode::SetChild( Ref<NiObject > value ) {
-	child = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

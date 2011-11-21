@@ -119,26 +119,6 @@ std::list<NiObject *> NiFloatInterpolator::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float NiFloatInterpolator::GetFloatValue() const {
-	return floatValue;
-}
-
-void NiFloatInterpolator::SetFloatValue( float value ) {
-	floatValue = value;
-}
-
-Ref<NiFloatData > NiFloatInterpolator::GetData() const {
-	return data;
-}
-
-void NiFloatInterpolator::SetData( Ref<NiFloatData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 float NiFloatInterpolator::GetFloatValue() const {

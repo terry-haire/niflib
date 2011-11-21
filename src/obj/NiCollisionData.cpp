@@ -206,41 +206,5 @@ std::list<NiObject *> NiCollisionData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-PropagationMode NiCollisionData::GetPropagationMode() const {
-	return propagationMode;
-}
-
-void NiCollisionData::SetPropagationMode( const PropagationMode & value ) {
-	propagationMode = value;
-}
-
-CollisionMode NiCollisionData::GetCollisionMode() const {
-	return collisionMode;
-}
-
-void NiCollisionData::SetCollisionMode( const CollisionMode & value ) {
-	collisionMode = value;
-}
-
-byte NiCollisionData::GetUseAbv() const {
-	return useAbv;
-}
-
-void NiCollisionData::SetUseAbv( byte value ) {
-	useAbv = value;
-}
-
-BoundingVolume NiCollisionData::GetBoundingVolume() const {
-	return boundingVolume;
-}
-
-void NiCollisionData::SetBoundingVolume( const BoundingVolume & value ) {
-	boundingVolume = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

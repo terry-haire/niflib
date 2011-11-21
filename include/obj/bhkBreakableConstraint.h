@@ -17,8 +17,6 @@ All rights reserved.  Please see niflib.h for license. */
 #include "bhkConstraint.h"
 namespace Niflib {
 
-// Forward define of referenced NIF objects
-class bhkEntity;
 class bhkBreakableConstraint;
 typedef Ref<bhkBreakableConstraint> bhkBreakableConstraintRef;
 
@@ -55,54 +53,14 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The entities affected by this constraint.
-	// \return The current value.
-	vector<bhkEntity * > GetEntities2() const;
-
-	// The entities affected by this constraint.
-	// \param[in] value The new value.
-	void SetEntities2( const vector<bhkEntity * >& value );
-
-	// Usually 1. Higher values indicate higher priority of this constraint?
-	// \return The current value.
-	unsigned int GetPriority2() const;
-
-	// Usually 1. Higher values indicate higher priority of this constraint?
-	// \param[in] value The new value.
-	void SetPriority2( unsigned int value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*!  */
+	/*! Unknown. */
 	array<41,int > unknownInts1;
 	/*! Unknown */
 	short unknownShort1;
-	/*! A count or flag? */
-	unsigned int unknownInt1;
-	/*! Number of bodies affected by this constraint. */
-	mutable unsigned int numEntities2;
-	/*! The entities affected by this constraint. */
-	vector<bhkEntity * > entities2;
-	/*! Usually 1. Higher values indicate higher priority of this constraint? */
-	unsigned int priority2;
-	/*! Unknown */
-	unsigned int unknownInt2;
-	/*! Unknown */
-	Vector3 unknownFloats1;
-	/*! Unknown */
-	Vector3 unknownFloats2;
-	/*! Unknown */
-	unsigned int unknownInt3;
-	/*! Unknown */
-	float unknownFloat1;
-	/*! Unknown */
-	byte unknownByte1;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

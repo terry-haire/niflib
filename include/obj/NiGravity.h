@@ -52,44 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The strength/force of this gravity.
-	// \return The current value.
-	float GetForce() const;
-
-	// The strength/force of this gravity.
-	// \param[in] value The new value.
-	void SetForce( float value );
-
-	// The force field's type.
-	// \return The current value.
-	FieldType GetType() const;
-
-	// The force field's type.
-	// \param[in] value The new value.
-	void SetType( const FieldType & value );
-
-	// The position of the mass point relative to the particle system. (TODO: check for
-	// versions <= 3.1)
-	// \return The current value.
-	Vector3 GetPosition() const;
-
-	// The position of the mass point relative to the particle system. (TODO: check for
-	// versions <= 3.1)
-	// \param[in] value The new value.
-	void SetPosition( const Vector3 & value );
-
-	// The direction of the applied acceleration.
-	// \return The current value.
-	Vector3 GetDirection() const;
-
-	// The direction of the applied acceleration.
-	// \param[in] value The new value.
-	void SetDirection( const Vector3 & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

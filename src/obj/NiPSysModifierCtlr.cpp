@@ -94,17 +94,5 @@ std::list<NiObject *> NiPSysModifierCtlr::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-IndexString NiPSysModifierCtlr::GetModifierName() const {
-	return modifierName;
-}
-
-void NiPSysModifierCtlr::SetModifierName( const IndexString & value ) {
-	modifierName = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

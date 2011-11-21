@@ -167,66 +167,6 @@ std::list<NiObject *> NiTimeController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiTimeController > NiTimeController::GetNextController() const {
-	return nextController;
-}
-
-void NiTimeController::SetNextController( Ref<NiTimeController > value ) {
-	nextController = value;
-}
-
-unsigned short NiTimeController::GetFlags() const {
-	return flags;
-}
-
-void NiTimeController::SetFlags( unsigned short value ) {
-	flags = value;
-}
-
-float NiTimeController::GetFrequency() const {
-	return frequency;
-}
-
-void NiTimeController::SetFrequency( float value ) {
-	frequency = value;
-}
-
-float NiTimeController::GetPhase() const {
-	return phase;
-}
-
-void NiTimeController::SetPhase( float value ) {
-	phase = value;
-}
-
-float NiTimeController::GetStartTime() const {
-	return startTime;
-}
-
-void NiTimeController::SetStartTime( float value ) {
-	startTime = value;
-}
-
-float NiTimeController::GetStopTime() const {
-	return stopTime;
-}
-
-void NiTimeController::SetStopTime( float value ) {
-	stopTime = value;
-}
-
-NiObjectNET * NiTimeController::GetTarget() const {
-	return target;
-}
-
-void NiTimeController::SetTarget( NiObjectNET * value ) {
-	target = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 NiTimeControllerRef NiTimeController::GetNextController() const {

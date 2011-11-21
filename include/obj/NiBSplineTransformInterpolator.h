@@ -52,58 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Base translation when translate curve not defined.
-	// \return The current value.
-	Vector3 GetTranslation() const;
-
-	// Base translation when translate curve not defined.
-	// \param[in] value The new value.
-	void SetTranslation( const Vector3 & value );
-
-	// Base rotation when rotation curve not defined.
-	// \return The current value.
-	Quaternion GetRotation() const;
-
-	// Base rotation when rotation curve not defined.
-	// \param[in] value The new value.
-	void SetRotation( const Quaternion & value );
-
-	// Base scale when scale curve not defined.
-	// \return The current value.
-	float GetScale() const;
-
-	// Base scale when scale curve not defined.
-	// \param[in] value The new value.
-	void SetScale( float value );
-
-	// Starting offset for the translation data. (USHRT_MAX for no data.)
-	// \return The current value.
-	unsigned int GetTranslationOffset() const;
-
-	// Starting offset for the translation data. (USHRT_MAX for no data.)
-	// \param[in] value The new value.
-	void SetTranslationOffset( unsigned int value );
-
-	// Starting offset for the rotation data. (USHRT_MAX for no data.)
-	// \return The current value.
-	unsigned int GetRotationOffset() const;
-
-	// Starting offset for the rotation data. (USHRT_MAX for no data.)
-	// \param[in] value The new value.
-	void SetRotationOffset( unsigned int value );
-
-	// Starting offset for the scale data. (USHRT_MAX for no data.)
-	// \return The current value.
-	unsigned int GetScaleOffset() const;
-
-	// Starting offset for the scale data. (USHRT_MAX for no data.)
-	// \param[in] value The new value.
-	void SetScaleOffset( unsigned int value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

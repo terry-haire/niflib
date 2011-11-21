@@ -127,18 +127,6 @@ std::list<NiObject *> BSMultiBound::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<BSMultiBoundData > BSMultiBound::GetData() const {
-	return data;
-}
-
-void BSMultiBound::SetData( Ref<BSMultiBoundData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

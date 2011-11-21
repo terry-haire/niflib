@@ -100,33 +100,5 @@ std::list<NiObject *> NiPSysBoxEmitter::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float NiPSysBoxEmitter::GetWidth() const {
-	return width;
-}
-
-void NiPSysBoxEmitter::SetWidth( float value ) {
-	width = value;
-}
-
-float NiPSysBoxEmitter::GetHeight() const {
-	return height;
-}
-
-void NiPSysBoxEmitter::SetHeight( float value ) {
-	height = value;
-}
-
-float NiPSysBoxEmitter::GetDepth() const {
-	return depth;
-}
-
-void NiPSysBoxEmitter::SetDepth( float value ) {
-	depth = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

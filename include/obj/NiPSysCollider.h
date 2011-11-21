@@ -59,68 +59,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Defines amount of bounce the collider object has.
-	// \return The current value.
-	float GetBounce() const;
-
-	// Defines amount of bounce the collider object has.
-	// \param[in] value The new value.
-	void SetBounce( float value );
-
-	// Unknown.
-	// \return The current value.
-	bool GetSpawnOnCollide() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetSpawnOnCollide( bool value );
-
-	// Kill particles on impact if set to yes.
-	// \return The current value.
-	bool GetDieOnCollide() const;
-
-	// Kill particles on impact if set to yes.
-	// \param[in] value The new value.
-	void SetDieOnCollide( bool value );
-
-	// Link to NiPSysSpawnModifier object?
-	// \return The current value.
-	Ref<NiPSysSpawnModifier > GetSpawnModifier() const;
-
-	// Link to NiPSysSpawnModifier object?
-	// \param[in] value The new value.
-	void SetSpawnModifier( Ref<NiPSysSpawnModifier > value );
-
-	// Link to parent.
-	// \return The current value.
-	NiObject * GetParent() const;
-
-	// Link to parent.
-	// \param[in] value The new value.
-	void SetParent( NiObject * value );
-
-	// The next collider.
-	// \return The current value.
-	Ref<NiObject > GetNextCollider() const;
-
-	// The next collider.
-	// \param[in] value The new value.
-	void SetNextCollider( Ref<NiObject > value );
-
-	// Links to a NiNode that will define where in object space the collider is
-	// located/oriented.
-	// \return The current value.
-	NiNode * GetColliderObject() const;
-
-	// Links to a NiNode that will define where in object space the collider is
-	// located/oriented.
-	// \param[in] value The new value.
-	void SetColliderObject( NiNode * value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

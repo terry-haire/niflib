@@ -52,34 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Constant Attenuation
-	// \return The current value.
-	float GetConstantAttenuation() const;
-
-	// Constant Attenuation
-	// \param[in] value The new value.
-	void SetConstantAttenuation( float value );
-
-	// Linear Attenuation
-	// \return The current value.
-	float GetLinearAttenuation() const;
-
-	// Linear Attenuation
-	// \param[in] value The new value.
-	void SetLinearAttenuation( float value );
-
-	// Quadratic Attenuation (see glLight)
-	// \return The current value.
-	float GetQuadraticAttenuation() const;
-
-	// Quadratic Attenuation (see glLight)
-	// \param[in] value The new value.
-	void SetQuadraticAttenuation( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

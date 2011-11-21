@@ -122,17 +122,5 @@ std::list<NiObject *> NiPSysModifierActiveCtlr::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiVisData > NiPSysModifierActiveCtlr::GetData() const {
-	return data;
-}
-
-void NiPSysModifierActiveCtlr::SetData( Ref<NiVisData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

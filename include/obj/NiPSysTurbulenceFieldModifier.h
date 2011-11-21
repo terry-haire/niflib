@@ -56,24 +56,12 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Frequency of the update.
-	// \return The current value.
-	float GetFrequency() const;
-
-	// Frequency of the update.
-	// \param[in] value The new value.
-	void SetFrequency( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Frequency of the update. */
-	float frequency;
+	/*! Unknown */
+	float unknownFloat2;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

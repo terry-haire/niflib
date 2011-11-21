@@ -128,50 +128,6 @@ std::list<NiObject *> NiScreenLODData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Vector3 NiScreenLODData::GetBoundCenter() const {
-	return boundCenter;
-}
-
-void NiScreenLODData::SetBoundCenter( const Vector3 & value ) {
-	boundCenter = value;
-}
-
-float NiScreenLODData::GetBoundRadius() const {
-	return boundRadius;
-}
-
-void NiScreenLODData::SetBoundRadius( float value ) {
-	boundRadius = value;
-}
-
-Vector3 NiScreenLODData::GetWorldCenter() const {
-	return worldCenter;
-}
-
-void NiScreenLODData::SetWorldCenter( const Vector3 & value ) {
-	worldCenter = value;
-}
-
-float NiScreenLODData::GetWorldRadius() const {
-	return worldRadius;
-}
-
-void NiScreenLODData::SetWorldRadius( float value ) {
-	worldRadius = value;
-}
-
-vector<float > NiScreenLODData::GetProportionLevels() const {
-	return proportionLevels;
-}
-
-void NiScreenLODData::SetProportionLevels( const vector<float >& value ) {
-	proportionLevels = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 Vector3 NiScreenLODData::GetBoundCenter() const {

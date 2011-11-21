@@ -105,18 +105,6 @@ std::list<NiObject *> NiPSysGravityFieldModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Vector3 NiPSysGravityFieldModifier::GetDirection() const {
-	return direction;
-}
-
-void NiPSysGravityFieldModifier::SetDirection( const Vector3 & value ) {
-	direction = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

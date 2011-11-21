@@ -119,26 +119,6 @@ std::list<NiObject *> NiBoolInterpolator::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-bool NiBoolInterpolator::GetBoolValue() const {
-	return boolValue;
-}
-
-void NiBoolInterpolator::SetBoolValue( bool value ) {
-	boolValue = value;
-}
-
-Ref<NiBoolData > NiBoolInterpolator::GetData() const {
-	return data;
-}
-
-void NiBoolInterpolator::SetData( Ref<NiBoolData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 bool NiBoolInterpolator::GetBoolValue() const {

@@ -55,26 +55,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Number of bytes in this data object.
-	// \return The current value.
-	unsigned int GetNumBytes() const;
-
-	// Number of bytes in this data object.
-	// \param[in] value The new value.
-	void SetNumBytes( unsigned int value );
-
-	// The vertex weights.
-	// \return The current value.
-	vector<float > GetWeight() const;
-
-	// The vertex weights.
-	// \param[in] value The new value.
-	void SetWeight( const vector<float >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

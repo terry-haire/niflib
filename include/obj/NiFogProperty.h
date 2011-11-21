@@ -52,44 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// 1's bit: Enables Fog
-	//             2's bit: Sets Fog Function to FOG_RANGE_SQ
-	//             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
-	//
-	//             If 2's and 4's bit are not set, but fog is enabled, Fog function is
-	// FOG_Z_LINEAR.
-	// \return The current value.
-	unsigned short GetFlags() const;
-
-	// 1's bit: Enables Fog
-	//             2's bit: Sets Fog Function to FOG_RANGE_SQ
-	//             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
-	//
-	//             If 2's and 4's bit are not set, but fog is enabled, Fog function is
-	// FOG_Z_LINEAR.
-	// \param[in] value The new value.
-	void SetFlags( unsigned short value );
-
-	// The thickness of the fog?  Default is 1.0
-	// \return The current value.
-	float GetFogDepth() const;
-
-	// The thickness of the fog?  Default is 1.0
-	// \param[in] value The new value.
-	void SetFogDepth( float value );
-
-	// The color of the fog.
-	// \return The current value.
-	Color3 GetFogColor() const;
-
-	// The color of the fog.
-	// \param[in] value The new value.
-	void SetFogColor( const Color3 & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

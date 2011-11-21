@@ -57,26 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Selects which color to control.
-	// \return The current value.
-	TargetColor GetTargetColor() const;
-
-	// Selects which color to control.
-	// \param[in] value The new value.
-	void SetTargetColor( const TargetColor & value );
-
-	// Material color controller data object index. Points to NiPosData.
-	// \return The current value.
-	Ref<NiPosData > GetData() const;
-
-	// Material color controller data object index. Points to NiPosData.
-	// \param[in] value The new value.
-	void SetData( Ref<NiPosData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

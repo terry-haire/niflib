@@ -145,17 +145,5 @@ std::list<NiObject *> NiFloatExtraDataController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-IndexString NiFloatExtraDataController::GetControllerData() const {
-	return controllerData;
-}
-
-void NiFloatExtraDataController::SetControllerData( const IndexString & value ) {
-	controllerData = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

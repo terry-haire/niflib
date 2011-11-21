@@ -53,18 +53,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Sorting
-	// \return The current value.
-	SortingMode GetSortingMode() const;
-
-	// Sorting
-	// \param[in] value The new value.
-	void SetSortingMode( const SortingMode & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

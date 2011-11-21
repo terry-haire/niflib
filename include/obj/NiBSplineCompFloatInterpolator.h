@@ -52,42 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Base value when curve not defined.
-	// \return The current value.
-	float GetBase() const;
-
-	// Base value when curve not defined.
-	// \param[in] value The new value.
-	void SetBase( float value );
-
-	// Starting offset for the data. (USHRT_MAX for no data.)
-	// \return The current value.
-	unsigned int GetOffset() const;
-
-	// Starting offset for the data. (USHRT_MAX for no data.)
-	// \param[in] value The new value.
-	void SetOffset( unsigned int value );
-
-	// Bias
-	// \return The current value.
-	float GetBias() const;
-
-	// Bias
-	// \param[in] value The new value.
-	void SetBias( float value );
-
-	// Multiplier
-	// \return The current value.
-	float GetMultiplier() const;
-
-	// Multiplier
-	// \param[in] value The new value.
-	void SetMultiplier( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

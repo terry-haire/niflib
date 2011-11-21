@@ -147,26 +147,6 @@ std::list<NiObject *> bhkConstraint::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<bhkEntity * > bhkConstraint::GetEntities() const {
-	return entities;
-}
-
-void bhkConstraint::SetEntities( const vector<bhkEntity * >& value ) {
-	entities = value;
-}
-
-unsigned int bhkConstraint::GetPriority() const {
-	return priority;
-}
-
-void bhkConstraint::SetPriority( unsigned int value ) {
-	priority = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 void bhkConstraint::AddEntity( bhkEntity * obj ) {

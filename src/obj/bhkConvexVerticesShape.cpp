@@ -159,26 +159,6 @@ std::list<NiObject *> bhkConvexVerticesShape::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<Vector4 > bhkConvexVerticesShape::GetVertices() const {
-	return vertices;
-}
-
-void bhkConvexVerticesShape::SetVertices( const vector<Vector4 >& value ) {
-	vertices = value;
-}
-
-vector<Vector4 > bhkConvexVerticesShape::GetNormals() const {
-	return normals;
-}
-
-void bhkConvexVerticesShape::SetNormals( const vector<Vector4 >& value ) {
-	normals = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 vector<Vector3> bhkConvexVerticesShape::GetNormals() const {
 	//Remove any bad triangles

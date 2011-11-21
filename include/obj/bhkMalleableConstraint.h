@@ -60,58 +60,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Type of constraint.
-	// \return The current value.
-	unsigned int GetType() const;
-
-	// Type of constraint.
-	// \param[in] value The new value.
-	void SetType( unsigned int value );
-
-	// Unknown.
-	// \return The current value.
-	HingeDescriptor GetHinge() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetHinge( const HingeDescriptor & value );
-
-	// Unknown.
-	// \return The current value.
-	RagdollDescriptor GetRagdoll() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetRagdoll( const RagdollDescriptor & value );
-
-	// Unknown.
-	// \return The current value.
-	LimitedHingeDescriptor GetLimitedHinge() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetLimitedHinge( const LimitedHingeDescriptor & value );
-
-	// Unknown.
-	// \return The current value.
-	float GetTau() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetTau( float value );
-
-	// Unknown.
-	// \return The current value.
-	float GetDamping() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetDamping( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:
@@ -133,6 +81,8 @@ protected:
 	LimitedHingeDescriptor limitedHinge;
 	/*! Unknown. */
 	float tau;
+	/*! Unknown */
+	byte unknownByte1;
 	/*! Unknown. */
 	float damping;
 public:

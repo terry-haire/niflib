@@ -121,8 +121,6 @@ std::list<NiObject *> Ni3dsParticleSystem::GetPtrs() const {
 	return ptrs;
 }
 
-//--This object has no eligable attributes.  No example implementation generated--//
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

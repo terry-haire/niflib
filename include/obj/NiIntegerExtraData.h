@@ -52,18 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The value of the extra data.
-	// \return The current value.
-	unsigned int GetIntegerData() const;
-
-	// The value of the extra data.
-	// \param[in] value The new value.
-	void SetIntegerData( unsigned int value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

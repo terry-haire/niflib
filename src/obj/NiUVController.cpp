@@ -119,18 +119,6 @@ std::list<NiObject *> NiUVController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiUVData > NiUVController::GetData() const {
-	return data;
-}
-
-void NiUVController::SetData( Ref<NiUVData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<NiUVData> NiUVController::GetData() const {

@@ -62,7 +62,7 @@ void NiAVObject::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 	if ( info.version >= 0x03000000 ) {
 		NifStream( flags, in, info );
 	};
-	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion >= 11) && (info.userVersion2 > 26)) ) ) {
+	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion == 11) && (info.userVersion2 > 26)) ) ) {
 		NifStream( unknownShort1, in, info );
 	};
 	NifStream( translation, in, info );
@@ -71,13 +71,11 @@ void NiAVObject::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 	if ( info.version <= 0x04020200 ) {
 		NifStream( velocity, in, info );
 	};
-	if ( (info.userVersion <= 11) ) {
-		NifStream( numProperties, in, info );
-		properties.resize(numProperties);
-		for (unsigned int i2 = 0; i2 < properties.size(); i2++) {
-			NifStream( block_num, in, info );
-			link_stack.push_back( block_num );
-		};
+	NifStream( numProperties, in, info );
+	properties.resize(numProperties);
+	for (unsigned int i1 = 0; i1 < properties.size(); i1++) {
+		NifStream( block_num, in, info );
+		link_stack.push_back( block_num );
 	};
 	if ( info.version <= 0x02030000 ) {
 		for (unsigned int i2 = 0; i2 < 4; i2++) {
@@ -87,7 +85,7 @@ void NiAVObject::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 	};
 	if ( ( info.version >= 0x03000000 ) && ( info.version <= 0x04020200 ) ) {
 		NifStream( hasBoundingBox, in, info );
-		if ( hasBoundingBox ) {
+		if ( (hasBoundingBox != 0) ) {
 			NifStream( boundingBox.unknownInt, in, info );
 			NifStream( boundingBox.translation, in, info );
 			NifStream( boundingBox.rotation, in, info );
@@ -112,7 +110,7 @@ void NiAVObject::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 	if ( info.version >= 0x03000000 ) {
 		NifStream( flags, out, info );
 	};
-	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion >= 11) && (info.userVersion2 > 26)) ) ) {
+	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion == 11) && (info.userVersion2 > 26)) ) ) {
 		NifStream( unknownShort1, out, info );
 	};
 	NifStream( translation, out, info );
@@ -121,27 +119,25 @@ void NiAVObject::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 	if ( info.version <= 0x04020200 ) {
 		NifStream( velocity, out, info );
 	};
-	if ( (info.userVersion <= 11) ) {
-		NifStream( numProperties, out, info );
-		for (unsigned int i2 = 0; i2 < properties.size(); i2++) {
-			if ( info.version < VER_3_3_0_13 ) {
-				WritePtr32( &(*properties[i2]), out );
-			} else {
-				if ( properties[i2] != NULL ) {
-					map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(properties[i2]) );
-					if (it != link_map.end()) {
-						NifStream( it->second, out, info );
-						missing_link_stack.push_back( NULL );
-					} else {
-						NifStream( 0xFFFFFFFF, out, info );
-						missing_link_stack.push_back( properties[i2] );
-					}
+	NifStream( numProperties, out, info );
+	for (unsigned int i1 = 0; i1 < properties.size(); i1++) {
+		if ( info.version < VER_3_3_0_13 ) {
+			WritePtr32( &(*properties[i1]), out );
+		} else {
+			if ( properties[i1] != NULL ) {
+				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(properties[i1]) );
+				if (it != link_map.end()) {
+					NifStream( it->second, out, info );
+					missing_link_stack.push_back( NULL );
 				} else {
 					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( NULL );
+					missing_link_stack.push_back( properties[i1] );
 				}
+			} else {
+				NifStream( 0xFFFFFFFF, out, info );
+				missing_link_stack.push_back( NULL );
 			}
-		};
+		}
 	};
 	if ( info.version <= 0x02030000 ) {
 		for (unsigned int i2 = 0; i2 < 4; i2++) {
@@ -151,7 +147,7 @@ void NiAVObject::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 	};
 	if ( ( info.version >= 0x03000000 ) && ( info.version <= 0x04020200 ) ) {
 		NifStream( hasBoundingBox, out, info );
-		if ( hasBoundingBox ) {
+		if ( (hasBoundingBox != 0) ) {
 			NifStream( boundingBox.unknownInt, out, info );
 			NifStream( boundingBox.translation, out, info );
 			NifStream( boundingBox.rotation, out, info );
@@ -223,7 +219,7 @@ std::string NiAVObject::asString( bool verbose ) const {
 	};
 	out << "  Unknown 2:  " << unknown2 << endl;
 	out << "  Has Bounding Box:  " << hasBoundingBox << endl;
-	if ( hasBoundingBox ) {
+	if ( (hasBoundingBox != 0) ) {
 		out << "    Unknown Int:  " << boundingBox.unknownInt << endl;
 		out << "    Translation:  " << boundingBox.translation << endl;
 		out << "    Rotation:  " << boundingBox.rotation << endl;
@@ -241,10 +237,8 @@ void NiAVObject::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<u
 	//--END CUSTOM CODE--//
 
 	NiObjectNET::FixLinks( objects, link_stack, missing_link_stack, info );
-	if ( (info.userVersion <= 11) ) {
-		for (unsigned int i2 = 0; i2 < properties.size(); i2++) {
-			properties[i2] = FixLink<NiProperty>( objects, link_stack, missing_link_stack, info );
-		};
+	for (unsigned int i1 = 0; i1 < properties.size(); i1++) {
+		properties[i1] = FixLink<NiProperty>( objects, link_stack, missing_link_stack, info );
 	};
 	if ( info.version >= 0x0A000100 ) {
 		collisionObject = FixLink<NiCollisionObject>( objects, link_stack, missing_link_stack, info );
@@ -273,82 +267,6 @@ std::list<NiObject *> NiAVObject::GetPtrs() const {
 	};
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-unsigned short NiAVObject::GetFlags() const {
-	return flags;
-}
-
-void NiAVObject::SetFlags( unsigned short value ) {
-	flags = value;
-}
-
-Vector3 NiAVObject::GetTranslation() const {
-	return translation;
-}
-
-void NiAVObject::SetTranslation( const Vector3 & value ) {
-	translation = value;
-}
-
-Matrix33 NiAVObject::GetRotation() const {
-	return rotation;
-}
-
-void NiAVObject::SetRotation( const Matrix33 & value ) {
-	rotation = value;
-}
-
-float NiAVObject::GetScale() const {
-	return scale;
-}
-
-void NiAVObject::SetScale( float value ) {
-	scale = value;
-}
-
-Vector3 NiAVObject::GetVelocity() const {
-	return velocity;
-}
-
-void NiAVObject::SetVelocity( const Vector3 & value ) {
-	velocity = value;
-}
-
-vector<Ref<NiProperty > > NiAVObject::GetProperties() const {
-	return properties;
-}
-
-void NiAVObject::SetProperties( const vector<Ref<NiProperty > >& value ) {
-	properties = value;
-}
-
-bool NiAVObject::GetHasBoundingBox() const {
-	return hasBoundingBox;
-}
-
-void NiAVObject::SetHasBoundingBox( bool value ) {
-	hasBoundingBox = value;
-}
-
-BoundingBox NiAVObject::GetBoundingBox() const {
-	return boundingBox;
-}
-
-void NiAVObject::SetBoundingBox( const BoundingBox & value ) {
-	boundingBox = value;
-}
-
-Ref<NiCollisionObject > NiAVObject::GetCollisionObject() const {
-	return collisionObject;
-}
-
-void NiAVObject::SetCollisionObject( Ref<NiCollisionObject > value ) {
-	collisionObject = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

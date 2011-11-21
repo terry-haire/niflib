@@ -57,66 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Refers to a NiNode for gravity location.
-	// \return The current value.
-	NiNode * GetGravityObject() const;
-
-	// Refers to a NiNode for gravity location.
-	// \param[in] value The new value.
-	void SetGravityObject( NiNode * value );
-
-	// Orientation of gravity.
-	// \return The current value.
-	Vector3 GetGravityAxis() const;
-
-	// Orientation of gravity.
-	// \param[in] value The new value.
-	void SetGravityAxis( const Vector3 & value );
-
-	// Falloff range.
-	// \return The current value.
-	float GetDecay() const;
-
-	// Falloff range.
-	// \param[in] value The new value.
-	void SetDecay( float value );
-
-	// The strength of gravity.
-	// \return The current value.
-	float GetStrength() const;
-
-	// The strength of gravity.
-	// \param[in] value The new value.
-	void SetStrength( float value );
-
-	// Planar or Spherical type
-	// \return The current value.
-	ForceType GetForceType() const;
-
-	// Planar or Spherical type
-	// \param[in] value The new value.
-	void SetForceType( const ForceType & value );
-
-	// Adds a degree of randomness.
-	// \return The current value.
-	float GetTurbulence() const;
-
-	// Adds a degree of randomness.
-	// \param[in] value The new value.
-	void SetTurbulence( float value );
-
-	// Range for turbulence.
-	// \return The current value.
-	float GetTurbulenceScale() const;
-
-	// Range for turbulence.
-	// \param[in] value The new value.
-	void SetTurbulenceScale( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

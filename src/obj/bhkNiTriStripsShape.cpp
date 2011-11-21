@@ -208,42 +208,6 @@ std::list<NiObject *> bhkNiTriStripsShape::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-HavokMaterial bhkNiTriStripsShape::GetMaterial() const {
-	return material;
-}
-
-void bhkNiTriStripsShape::SetMaterial( const HavokMaterial & value ) {
-	material = value;
-}
-
-Vector3 bhkNiTriStripsShape::GetScale() const {
-	return scale;
-}
-
-void bhkNiTriStripsShape::SetScale( const Vector3 & value ) {
-	scale = value;
-}
-
-vector<Ref<NiTriStripsData > > bhkNiTriStripsShape::GetStripsData() const {
-	return stripsData;
-}
-
-void bhkNiTriStripsShape::SetStripsData( const vector<Ref<NiTriStripsData > >& value ) {
-	stripsData = value;
-}
-
-vector<OblivionColFilter > bhkNiTriStripsShape::GetDataLayers() const {
-	return dataLayers;
-}
-
-void bhkNiTriStripsShape::SetDataLayers( const vector<OblivionColFilter >& value ) {
-	dataLayers = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 int bhkNiTriStripsShape::GetNumStripsData( )

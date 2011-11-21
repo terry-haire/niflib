@@ -123,18 +123,6 @@ std::list<NiObject *> NiPSysAirFieldModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Vector3 NiPSysAirFieldModifier::GetDirection() const {
-	return direction;
-}
-
-void NiPSysAirFieldModifier::SetDirection( const Vector3 & value ) {
-	direction = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

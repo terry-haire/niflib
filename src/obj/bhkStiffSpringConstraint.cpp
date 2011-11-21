@@ -100,33 +100,5 @@ std::list<NiObject *> bhkStiffSpringConstraint::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Vector4 bhkStiffSpringConstraint::GetPivotA() const {
-	return pivotA;
-}
-
-void bhkStiffSpringConstraint::SetPivotA( const Vector4 & value ) {
-	pivotA = value;
-}
-
-Vector4 bhkStiffSpringConstraint::GetPivotB() const {
-	return pivotB;
-}
-
-void bhkStiffSpringConstraint::SetPivotB( const Vector4 & value ) {
-	pivotB = value;
-}
-
-float bhkStiffSpringConstraint::GetLength() const {
-	return length;
-}
-
-void bhkStiffSpringConstraint::SetLength( float value ) {
-	length = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

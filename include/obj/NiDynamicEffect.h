@@ -57,40 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Turns effect on and off?  Switches list to list of unaffected nodes?
-	// \return The current value.
-	bool GetSwitchState() const;
-
-	// Turns effect on and off?  Switches list to list of unaffected nodes?
-	// \param[in] value The new value.
-	void SetSwitchState( bool value );
-
-	// This is probably the list of affected nodes. For some reason i do not know the
-	// max exporter seems to write pointers instead of links. But it doesn't matter
-	// because at least in version 4.0.0.2 the list is automagically updated by the
-	// engine during the load stage.
-	// \return The current value.
-	vector<unsigned int > GetAffectedNodeListPointers() const;
-
-	// This is probably the list of affected nodes. For some reason i do not know the
-	// max exporter seems to write pointers instead of links. But it doesn't matter
-	// because at least in version 4.0.0.2 the list is automagically updated by the
-	// engine during the load stage.
-	// \param[in] value The new value.
-	void SetAffectedNodeListPointers( const vector<unsigned int >& value );
-
-	// The list of affected nodes?
-	// \return The current value.
-	vector<Ref<NiAVObject > > GetAffectedNodes() const;
-
-	// The list of affected nodes?
-	// \param[in] value The new value.
-	void SetAffectedNodes( const vector<Ref<NiAVObject > >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

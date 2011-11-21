@@ -53,18 +53,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Is vertex connected to other (next?) vertex?
-	// \return The current value.
-	vector<bool > GetLines() const;
-
-	// Is vertex connected to other (next?) vertex?
-	// \param[in] value The new value.
-	void SetLines( const vector<bool >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

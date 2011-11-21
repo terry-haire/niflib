@@ -169,26 +169,6 @@ std::list<NiObject *> BSPSysMultiTargetEmitterCtlr::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiPSysEmitterCtlrData > BSPSysMultiTargetEmitterCtlr::GetData() const {
-	return data;
-}
-
-void BSPSysMultiTargetEmitterCtlr::SetData( Ref<NiPSysEmitterCtlrData > value ) {
-	data = value;
-}
-
-Ref<NiInterpolator > BSPSysMultiTargetEmitterCtlr::GetVisibilityInterpolator() const {
-	return visibilityInterpolator;
-}
-
-void BSPSysMultiTargetEmitterCtlr::SetVisibilityInterpolator( Ref<NiInterpolator > value ) {
-	visibilityInterpolator = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

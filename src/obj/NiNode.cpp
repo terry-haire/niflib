@@ -222,26 +222,6 @@ std::list<NiObject *> NiNode::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<Ref<NiAVObject > > NiNode::GetChildren() const {
-	return children;
-}
-
-void NiNode::SetChildren( const vector<Ref<NiAVObject > >& value ) {
-	children = value;
-}
-
-vector<Ref<NiDynamicEffect > > NiNode::GetEffects() const {
-	return effects;
-}
-
-void NiNode::SetEffects( const vector<Ref<NiDynamicEffect > >& value ) {
-	effects = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 void NiNode::AddChild( Ref<NiAVObject> obj ) {

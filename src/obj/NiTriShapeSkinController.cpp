@@ -196,25 +196,5 @@ std::list<NiObject *> NiTriShapeSkinController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<NiBone * > NiTriShapeSkinController::GetBones() const {
-	return bones;
-}
-
-void NiTriShapeSkinController::SetBones( const vector<NiBone * >& value ) {
-	bones = value;
-}
-
-vector<vector<OldSkinData > > NiTriShapeSkinController::GetBoneData() const {
-	return boneData;
-}
-
-void NiTriShapeSkinController::SetBoneData( const vector<OldSkinData >& value ) {
-	boneData = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

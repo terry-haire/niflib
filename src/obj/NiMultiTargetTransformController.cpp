@@ -145,18 +145,6 @@ std::list<NiObject *> NiMultiTargetTransformController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<NiAVObject * > NiMultiTargetTransformController::GetExtraTargets() const {
-	return extraTargets;
-}
-
-void NiMultiTargetTransformController::SetExtraTargets( const vector<NiAVObject * >& value ) {
-	extraTargets = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 vector<NiAVObjectRef> NiMultiTargetTransformController::GetExtraTargets() const {

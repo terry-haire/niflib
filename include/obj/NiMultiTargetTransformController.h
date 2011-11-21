@@ -54,18 +54,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// NiNode Targets to be controlled.
-	// \return The current value.
-	vector<NiAVObject * > GetExtraTargets() const;
-
-	// NiNode Targets to be controlled.
-	// \param[in] value The new value.
-	void SetExtraTargets( const vector<NiAVObject * >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

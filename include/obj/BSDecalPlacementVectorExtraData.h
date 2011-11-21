@@ -56,18 +56,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Number of Blocks
-	// \return The current value.
-	vector<DecalVectorArray > GetVectorBlocks() const;
-
-	// Number of Blocks
-	// \param[in] value The new value.
-	void SetVectorBlocks( const vector<DecalVectorArray >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

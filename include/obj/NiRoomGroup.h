@@ -56,26 +56,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Outer Shell Geometry Node?
-	// \return The current value.
-	NiNode * GetShellLink() const;
-
-	// Outer Shell Geometry Node?
-	// \param[in] value The new value.
-	void SetShellLink( NiNode * value );
-
-	// Rooms associated with this group.
-	// \return The current value.
-	vector<NiRoom * > GetRooms() const;
-
-	// Rooms associated with this group.
-	// \param[in] value The new value.
-	void SetRooms( const vector<NiRoom * >& value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

@@ -55,20 +55,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Four UV data groups. Appear to be U translation, V translation, U
-	// scaling/tiling, V scaling/tiling.
-	// \return The current value.
-	array<4,KeyGroup<float > >  GetUvGroups() const;
-
-	// Four UV data groups. Appear to be U translation, V translation, U
-	// scaling/tiling, V scaling/tiling.
-	// \param[in] value The new value.
-	void SetUvGroups( const array<4,KeyGroup<float > >&  value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

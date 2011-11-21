@@ -190,26 +190,6 @@ std::list<NiObject *> bhkListShape::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<Ref<bhkShape > > bhkListShape::GetSubShapes() const {
-	return subShapes;
-}
-
-void bhkListShape::SetSubShapes( const vector<Ref<bhkShape > >& value ) {
-	subShapes = value;
-}
-
-HavokMaterial bhkListShape::GetMaterial() const {
-	return material;
-}
-
-void bhkListShape::SetMaterial( const HavokMaterial & value ) {
-	material = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 HavokMaterial bhkListShape::GetMaterial() const {

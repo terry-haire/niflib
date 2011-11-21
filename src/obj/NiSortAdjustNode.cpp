@@ -112,18 +112,6 @@ std::list<NiObject *> NiSortAdjustNode::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-SortingMode NiSortAdjustNode::GetSortingMode() const {
-	return sortingMode;
-}
-
-void NiSortAdjustNode::SetSortingMode( const SortingMode & value ) {
-	sortingMode = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

@@ -105,18 +105,6 @@ std::list<NiObject *> BSPSysStripUpdateModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float BSPSysStripUpdateModifier::GetUpdateDeltaTime() const {
-	return updateDeltaTime;
-}
-
-void BSPSysStripUpdateModifier::SetUpdateDeltaTime( float value ) {
-	updateDeltaTime = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

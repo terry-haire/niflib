@@ -114,18 +114,6 @@ std::list<NiObject *> BSMultiBoundSphere::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float BSMultiBoundSphere::GetRadius() const {
-	return radius;
-}
-
-void BSMultiBoundSphere::SetRadius( float value ) {
-	radius = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

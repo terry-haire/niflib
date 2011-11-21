@@ -247,42 +247,6 @@ std::list<NiObject *> NiSkinInstance::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiSkinData > NiSkinInstance::GetData() const {
-	return data;
-}
-
-void NiSkinInstance::SetData( Ref<NiSkinData > value ) {
-	data = value;
-}
-
-Ref<NiSkinPartition > NiSkinInstance::GetSkinPartition() const {
-	return skinPartition;
-}
-
-void NiSkinInstance::SetSkinPartition( Ref<NiSkinPartition > value ) {
-	skinPartition = value;
-}
-
-NiNode * NiSkinInstance::GetSkeletonRoot() const {
-	return skeletonRoot;
-}
-
-void NiSkinInstance::SetSkeletonRoot( NiNode * value ) {
-	skeletonRoot = value;
-}
-
-vector<NiNode * > NiSkinInstance::GetBones() const {
-	return bones;
-}
-
-void NiSkinInstance::SetBones( const vector<NiNode * >& value ) {
-	bones = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 vector< Ref<NiNode> > NiSkinInstance::GetBones() const {

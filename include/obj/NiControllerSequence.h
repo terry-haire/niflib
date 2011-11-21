@@ -62,84 +62,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Weight/priority of animation?
-	// \return The current value.
-	float GetWeight() const;
-
-	// Weight/priority of animation?
-	// \param[in] value The new value.
-	void SetWeight( float value );
-
-	// Link to NiTextKeyExtraData. Replaces the other Text Keys field in versions
-	// 10.1.0.106 and up.
-	// \return The current value.
-	Ref<NiTextKeyExtraData > GetTextKeys() const;
-
-	// Link to NiTextKeyExtraData. Replaces the other Text Keys field in versions
-	// 10.1.0.106 and up.
-	// \param[in] value The new value.
-	void SetTextKeys( Ref<NiTextKeyExtraData > value );
-
-	// Anim cycle type? Is part of "Flags" in other objects?
-	// \return The current value.
-	CycleType GetCycleType() const;
-
-	// Anim cycle type? Is part of "Flags" in other objects?
-	// \param[in] value The new value.
-	void SetCycleType( const CycleType & value );
-
-	// The animation frequency.
-	// \return The current value.
-	float GetFrequency() const;
-
-	// The animation frequency.
-	// \param[in] value The new value.
-	void SetFrequency( float value );
-
-	// The controller sequence start time?
-	// \return The current value.
-	float GetStartTime() const;
-
-	// The controller sequence start time?
-	// \param[in] value The new value.
-	void SetStartTime( float value );
-
-	// The controller sequence stop time?
-	// \return The current value.
-	float GetStopTime() const;
-
-	// The controller sequence stop time?
-	// \param[in] value The new value.
-	void SetStopTime( float value );
-
-	// Refers to NiControllerManager which references this object, if any.
-	// \return The current value.
-	NiControllerManager * GetManager() const;
-
-	// Refers to NiControllerManager which references this object, if any.
-	// \param[in] value The new value.
-	void SetManager( NiControllerManager * value );
-
-	// Name of target node Controller acts on.
-	// \return The current value.
-	IndexString GetTargetName() const;
-
-	// Name of target node Controller acts on.
-	// \param[in] value The new value.
-	void SetTargetName( const IndexString & value );
-
-	// Refers to NiStringPalette.
-	// \return The current value.
-	Ref<NiStringPalette > GetStringPalette() const;
-
-	// Refers to NiStringPalette.
-	// \param[in] value The new value.
-	void SetStringPalette( Ref<NiStringPalette > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!
@@ -363,8 +285,8 @@ protected:
 	/*! Unknown */
 	short unknownShort2;
 	/*!
-	 * Unknown, found in some Lazeska and Krazy Rain .KFs (seems to be 64 when
-	 * present).
+	 * Unknown, found in some Lazeska .KFs (seems to be 64 when present). Conditions
+	 * are unknown.
 	 */
 	unsigned int unknownInt3;
 public:

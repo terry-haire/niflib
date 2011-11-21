@@ -94,17 +94,5 @@ std::list<NiObject *> NiPSysSphericalCollider::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-float NiPSysSphericalCollider::GetRadius() const {
-	return radius;
-}
-
-void NiPSysSphericalCollider::SetRadius( float value ) {
-	radius = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

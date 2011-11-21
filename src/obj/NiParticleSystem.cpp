@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiParticleSystem::TYPE("NiParticleSystem", &NiParticles::TYPE );
 
-NiParticleSystem::NiParticleSystem() : unknownShort1((unsigned short)0), unknownShort2((unsigned short)0), unknownInt1((unsigned int)0), worldSpace(false), numModifiers((unsigned int)0) {
+NiParticleSystem::NiParticleSystem() : worldSpace(false), numModifiers((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -44,11 +44,6 @@ void NiParticleSystem::Read( istream& in, list<unsigned int> & link_stack, const
 
 	unsigned int block_num;
 	NiParticles::Read( in, link_stack, info );
-	if ( (info.userVersion >= 12) ) {
-		NifStream( unknownShort1, in, info );
-		NifStream( unknownShort2, in, info );
-		NifStream( unknownInt1, in, info );
-	};
 	if ( info.version >= 0x0A010000 ) {
 		NifStream( worldSpace, in, info );
 		NifStream( numModifiers, in, info );
@@ -69,11 +64,6 @@ void NiParticleSystem::Write( ostream& out, const map<NiObjectRef,unsigned int> 
 
 	NiParticles::Write( out, link_map, missing_link_stack, info );
 	numModifiers = (unsigned int)(modifiers.size());
-	if ( (info.userVersion >= 12) ) {
-		NifStream( unknownShort1, out, info );
-		NifStream( unknownShort2, out, info );
-		NifStream( unknownInt1, out, info );
-	};
 	if ( info.version >= 0x0A010000 ) {
 		NifStream( worldSpace, out, info );
 		NifStream( numModifiers, out, info );
@@ -110,9 +100,6 @@ std::string NiParticleSystem::asString( bool verbose ) const {
 	unsigned int array_output_count = 0;
 	out << NiParticles::asString();
 	numModifiers = (unsigned int)(modifiers.size());
-	out << "  Unknown Short 1:  " << unknownShort1 << endl;
-	out << "  Unknown Short 2:  " << unknownShort2 << endl;
-	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  World Space:  " << worldSpace << endl;
 	out << "  Num Modifiers:  " << numModifiers << endl;
 	array_output_count = 0;
@@ -165,26 +152,6 @@ std::list<NiObject *> NiParticleSystem::GetPtrs() const {
 	};
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-bool NiParticleSystem::GetWorldSpace() const {
-	return worldSpace;
-}
-
-void NiParticleSystem::SetWorldSpace( bool value ) {
-	worldSpace = value;
-}
-
-vector<Ref<NiPSysModifier > > NiParticleSystem::GetModifiers() const {
-	return modifiers;
-}
-
-void NiParticleSystem::SetModifiers( const vector<Ref<NiPSysModifier > >& value ) {
-	modifiers = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

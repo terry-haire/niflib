@@ -52,42 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// First point on the capsule's axis.
-	// \return The current value.
-	Vector3 GetFirstPoint() const;
-
-	// First point on the capsule's axis.
-	// \param[in] value The new value.
-	void SetFirstPoint( const Vector3 & value );
-
-	// Matches first capsule radius.
-	// \return The current value.
-	float GetRadius1() const;
-
-	// Matches first capsule radius.
-	// \param[in] value The new value.
-	void SetRadius1( float value );
-
-	// Second point on the capsule's axis.
-	// \return The current value.
-	Vector3 GetSecondPoint() const;
-
-	// Second point on the capsule's axis.
-	// \param[in] value The new value.
-	void SetSecondPoint( const Vector3 & value );
-
-	// Matches second capsule radius.
-	// \return The current value.
-	float GetRadius2() const;
-
-	// Matches second capsule radius.
-	// \param[in] value The new value.
-	void SetRadius2( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

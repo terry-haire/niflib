@@ -94,18 +94,6 @@ std::list<NiObject *> NiBlendBoolInterpolator::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-byte NiBlendBoolInterpolator::GetBoolValue() const {
-	return boolValue;
-}
-
-void NiBlendBoolInterpolator::SetBoolValue( byte value ) {
-	boolValue = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 byte NiBlendBoolInterpolator::GetBoolValue() const {

@@ -119,25 +119,5 @@ std::list<NiObject *> NiPSysAgeDeathModifier::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-bool NiPSysAgeDeathModifier::GetSpawnOnDeath() const {
-	return spawnOnDeath;
-}
-
-void NiPSysAgeDeathModifier::SetSpawnOnDeath( bool value ) {
-	spawnOnDeath = value;
-}
-
-Ref<NiPSysSpawnModifier > NiPSysAgeDeathModifier::GetSpawnModifier() const {
-	return spawnModifier;
-}
-
-void NiPSysAgeDeathModifier::SetSpawnModifier( Ref<NiPSysSpawnModifier > value ) {
-	spawnModifier = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

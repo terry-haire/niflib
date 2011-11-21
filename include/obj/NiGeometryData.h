@@ -20,7 +20,7 @@ All rights reserved.  Please see niflib.h for license. */
 namespace Niflib {
 
 // Forward define of referenced NIF objects
-class AbstractAdditionalGeometryData;
+class NiAdditionalGeometryData;
 class NiGeometryData;
 typedef Ref<NiGeometryData> NiGeometryDataRef;
 
@@ -56,178 +56,6 @@ public:
 	 * \return The type constant for the actual type of the object.
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
-
-	/***Begin Example Naive Implementation****
-
-	// Used with NiCollision objects when OBB or TRI is set.
-	// \return The current value.
-	byte GetKeepFlags() const;
-
-	// Used with NiCollision objects when OBB or TRI is set.
-	// \param[in] value The new value.
-	void SetKeepFlags( byte value );
-
-	// Unknown.
-	// \return The current value.
-	byte GetCompressFlags() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetCompressFlags( byte value );
-
-	// Is the vertex array present? (Always non-zero.)
-	// \return The current value.
-	bool GetHasVertices() const;
-
-	// Is the vertex array present? (Always non-zero.)
-	// \param[in] value The new value.
-	void SetHasVertices( bool value );
-
-	// The mesh vertices.
-	// \return The current value.
-	vector<Vector3 > GetVertices() const;
-
-	// The mesh vertices.
-	// \param[in] value The new value.
-	void SetVertices( const vector<Vector3 >& value );
-
-	// Do we have lighting normals? These are essential for proper lighting: if not
-	// present, the model will only be influenced by ambient light.
-	// \return The current value.
-	bool GetHasNormals() const;
-
-	// Do we have lighting normals? These are essential for proper lighting: if not
-	// present, the model will only be influenced by ambient light.
-	// \param[in] value The new value.
-	void SetHasNormals( bool value );
-
-	// The lighting normals.
-	// \return The current value.
-	vector<Vector3 > GetNormals() const;
-
-	// The lighting normals.
-	// \param[in] value The new value.
-	void SetNormals( const vector<Vector3 >& value );
-
-	// Unknown. Binormal & tangents?
-	// \return The current value.
-	vector<Vector3 > GetTangents() const;
-
-	// Unknown. Binormal & tangents?
-	// \param[in] value The new value.
-	void SetTangents( const vector<Vector3 >& value );
-
-	// Unknown. Binormal & tangents? has_normals must be set as well for this field to
-	// be present.
-	// \return The current value.
-	vector<Vector3 > GetBinormals() const;
-
-	// Unknown. Binormal & tangents? has_normals must be set as well for this field to
-	// be present.
-	// \param[in] value The new value.
-	void SetBinormals( const vector<Vector3 >& value );
-
-	// Center of the bounding box (smallest box that contains all vertices) of the
-	// mesh.
-	// \return The current value.
-	Vector3 GetCenter() const;
-
-	// Center of the bounding box (smallest box that contains all vertices) of the
-	// mesh.
-	// \param[in] value The new value.
-	void SetCenter( const Vector3 & value );
-
-	// Radius of the mesh: maximal Euclidean distance between the center and all
-	// vertices.
-	// \return The current value.
-	float GetRadius() const;
-
-	// Radius of the mesh: maximal Euclidean distance between the center and all
-	// vertices.
-	// \param[in] value The new value.
-	void SetRadius( float value );
-
-	// Do we have vertex colors? These are usually used to fine-tune the lighting of
-	// the model.
-	//
-	//             Note: how vertex colors influence the model can be controlled by
-	// having a NiVertexColorProperty object as a property child of the root node. If
-	// this property object is not present, the vertex colors fine-tune lighting.
-	//
-	//             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
-	// \return The current value.
-	bool GetHasVertexColors() const;
-
-	// Do we have vertex colors? These are usually used to fine-tune the lighting of
-	// the model.
-	//
-	//             Note: how vertex colors influence the model can be controlled by
-	// having a NiVertexColorProperty object as a property child of the root node. If
-	// this property object is not present, the vertex colors fine-tune lighting.
-	//
-	//             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
-	// \param[in] value The new value.
-	void SetHasVertexColors( bool value );
-
-	// The vertex colors.
-	// \return The current value.
-	vector<Color4 > GetVertexColors() const;
-
-	// The vertex colors.
-	// \param[in] value The new value.
-	void SetVertexColors( const vector<Color4 >& value );
-
-	// Do we have UV coordinates?
-	//
-	//             Note: for compatibility with NifTexture, set this value to either
-	// 0x00000000 or 0xFFFFFFFF.
-	// \return The current value.
-	bool GetHasUv() const;
-
-	// Do we have UV coordinates?
-	//
-	//             Note: for compatibility with NifTexture, set this value to either
-	// 0x00000000 or 0xFFFFFFFF.
-	// \param[in] value The new value.
-	void SetHasUv( bool value );
-
-	// The UV texture coordinates. They follow the OpenGL standard: some programs may
-	// require you to flip the second coordinate.
-	// \return The current value.
-	vector<vector<TexCoord > > GetUvSets() const;
-
-	// The UV texture coordinates. They follow the OpenGL standard: some programs may
-	// require you to flip the second coordinate.
-	// \param[in] value The new value.
-	void SetUvSets( const vector<TexCoord >& value );
-
-	// The UV texture coordinates. They follow the OpenGL standard: some programs may
-	// require you to flip the second coordinate.
-	// \return The current value.
-	vector<vector<TexCoord > > GetUvSets() const;
-
-	// The UV texture coordinates. They follow the OpenGL standard: some programs may
-	// require you to flip the second coordinate.
-	// \param[in] value The new value.
-	void SetUvSets( const vector<TexCoord >& value );
-
-	// Consistency Flags
-	// \return The current value.
-	ConsistencyType GetConsistencyFlags() const;
-
-	// Consistency Flags
-	// \param[in] value The new value.
-	void SetConsistencyFlags( const ConsistencyType & value );
-
-	// Unknown.
-	// \return The current value.
-	Ref<AbstractAdditionalGeometryData > GetAdditionalData() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetAdditionalData( Ref<AbstractAdditionalGeometryData > value );
-
-	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 protected:
@@ -441,17 +269,10 @@ protected:
 	bool hasVertices;
 	/*! The mesh vertices. */
 	vector<Vector3 > vertices;
-	/*!
-	 * Methods for saving binormals and tangents saved in upper byte.  Texture flags in
-	 * lower byte.
-	 */
-	mutable unsigned short numUvSets;
-	/*!
-	 * Bethesda's version of this field for nif versions 20.2.0.7 and up. Only a single
-	 * bit denotes whether uv's are present. For example, see
-	 * meshes/architecture/megaton/megatonrampturn45sml.nif in Fallout 3.
-	 */
-	mutable unsigned short bsNumUvSets;
+	/*! Texture flags in lower byte. */
+	mutable byte numUvSets;
+	/*! Methods for saving binormals and tangents saved in upper byte. */
+	byte tspaceFlag;
 	/*!
 	 * Do we have lighting normals? These are essential for proper lighting: if not
 	 * present, the model will only be influenced by ambient light.
@@ -459,13 +280,13 @@ protected:
 	bool hasNormals;
 	/*! The lighting normals. */
 	vector<Vector3 > normals;
-	/*! Unknown. Binormal & tangents? */
-	vector<Vector3 > tangents;
 	/*!
 	 * Unknown. Binormal & tangents? has_normals must be set as well for this field to
 	 * be present.
 	 */
 	vector<Vector3 > binormals;
+	/*! Unknown. Binormal & tangents? */
+	vector<Vector3 > tangents;
 	/*!
 	 * Center of the bounding box (smallest box that contains all vertices) of the
 	 * mesh.
@@ -476,8 +297,6 @@ protected:
 	 * vertices.
 	 */
 	float radius;
-	/*! Unknown, always 0? */
-	array<13,short > unknown13Shorts;
 	/*!
 	 * Do we have vertex colors? These are usually used to fine-tune the lighting of
 	 * the model.
@@ -506,7 +325,7 @@ protected:
 	/*! Consistency Flags */
 	ConsistencyType consistencyFlags;
 	/*! Unknown. */
-	Ref<AbstractAdditionalGeometryData > additionalData;
+	Ref<NiAdditionalGeometryData > additionalData;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

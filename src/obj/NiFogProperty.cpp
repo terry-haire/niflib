@@ -100,34 +100,6 @@ std::list<NiObject *> NiFogProperty::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-unsigned short NiFogProperty::GetFlags() const {
-	return flags;
-}
-
-void NiFogProperty::SetFlags( unsigned short value ) {
-	flags = value;
-}
-
-float NiFogProperty::GetFogDepth() const {
-	return fogDepth;
-}
-
-void NiFogProperty::SetFogDepth( float value ) {
-	fogDepth = value;
-}
-
-Color3 NiFogProperty::GetFogColor() const {
-	return fogColor;
-}
-
-void NiFogProperty::SetFogColor( const Color3 & value ) {
-	fogColor = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 unsigned short NiFogProperty::GetFlags() const {

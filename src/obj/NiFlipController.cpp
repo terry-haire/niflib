@@ -219,41 +219,5 @@ std::list<NiObject *> NiFlipController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-TexType NiFlipController::GetTextureSlot() const {
-	return textureSlot;
-}
-
-void NiFlipController::SetTextureSlot( const TexType & value ) {
-	textureSlot = value;
-}
-
-float NiFlipController::GetDelta() const {
-	return delta;
-}
-
-void NiFlipController::SetDelta( float value ) {
-	delta = value;
-}
-
-vector<Ref<NiSourceTexture > > NiFlipController::GetSources() const {
-	return sources;
-}
-
-void NiFlipController::SetSources( const vector<Ref<NiSourceTexture > >& value ) {
-	sources = value;
-}
-
-vector<Ref<NiImage > > NiFlipController::GetImages() const {
-	return images;
-}
-
-void NiFlipController::SetImages( const vector<Ref<NiImage > >& value ) {
-	images = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

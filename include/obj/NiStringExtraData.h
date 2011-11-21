@@ -57,28 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The number of bytes left in the record.  Equals the length of the following
-	// string + 4.
-	// \return The current value.
-	unsigned int GetBytesRemaining() const;
-
-	// The number of bytes left in the record.  Equals the length of the following
-	// string + 4.
-	// \param[in] value The new value.
-	void SetBytesRemaining( unsigned int value );
-
-	// The string.
-	// \return The current value.
-	IndexString GetStringData() const;
-
-	// The string.
-	// \param[in] value The new value.
-	void SetStringData( const IndexString & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

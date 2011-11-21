@@ -127,18 +127,6 @@ std::list<NiObject *> NiMorpherController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Ref<NiMorphData > NiMorpherController::GetData() const {
-	return data;
-}
-
-void NiMorpherController::SetData( Ref<NiMorphData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

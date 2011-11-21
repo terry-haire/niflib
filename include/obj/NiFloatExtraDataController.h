@@ -52,18 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Refers to a NiFloatExtraData name.
-	// \return The current value.
-	IndexString GetControllerData() const;
-
-	// Refers to a NiFloatExtraData name.
-	// \param[in] value The new value.
-	void SetControllerData( const IndexString & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

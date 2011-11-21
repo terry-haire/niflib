@@ -58,26 +58,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Path controller data index (position data). ?
-	// \return The current value.
-	Ref<NiPosData > GetPosData() const;
-
-	// Path controller data index (position data). ?
-	// \param[in] value The new value.
-	void SetPosData( Ref<NiPosData > value );
-
-	// Path controller data index (float data). ?
-	// \return The current value.
-	Ref<NiFloatData > GetFloatData() const;
-
-	// Path controller data index (float data). ?
-	// \param[in] value The new value.
-	void SetFloatData( Ref<NiFloatData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//TODO:  This class has a lot of unknown data

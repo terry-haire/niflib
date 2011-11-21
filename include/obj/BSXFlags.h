@@ -21,10 +21,10 @@ typedef Ref<BSXFlags> BSXFlagsRef;
 
 /*!
  * Controls animation and collision.  Integer holds flags:
- *         Bit 0 : enable havok
+ *         Bit 0 : enable animation
  *         Bit 1 : enable collision
  *         Bit 2 : is skeleton nif?
- *         Bit 3 : enable animation
+ *         Bit 3 : toggable? unknown, set to 1 on oblivion signs
  *         Bit 4 : FlameNodes present
  *         Bit 5 : EditorMarkers present
  */
@@ -59,8 +59,6 @@ public:
 	 * \return The type constant for the actual type of the object.
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
-
-	//--This object has no eligable attributes.  No example implementation generated--//
 
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//

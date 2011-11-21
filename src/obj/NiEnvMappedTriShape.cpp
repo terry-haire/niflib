@@ -208,34 +208,6 @@ std::list<NiObject *> NiEnvMappedTriShape::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<Ref<NiAVObject > > NiEnvMappedTriShape::GetChildren() const {
-	return children;
-}
-
-void NiEnvMappedTriShape::SetChildren( const vector<Ref<NiAVObject > >& value ) {
-	children = value;
-}
-
-Ref<NiObject > NiEnvMappedTriShape::GetChild2() const {
-	return child2;
-}
-
-void NiEnvMappedTriShape::SetChild2( Ref<NiObject > value ) {
-	child2 = value;
-}
-
-Ref<NiObject > NiEnvMappedTriShape::GetChild3() const {
-	return child3;
-}
-
-void NiEnvMappedTriShape::SetChild3( Ref<NiObject > value ) {
-	child3 = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

@@ -52,18 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The boolean extra data value.
-	// \return The current value.
-	byte GetBooleanData() const;
-
-	// The boolean extra data value.
-	// \param[in] value The new value.
-	void SetBooleanData( byte value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

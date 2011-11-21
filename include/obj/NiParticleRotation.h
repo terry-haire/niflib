@@ -52,34 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Unknown.
-	// \return The current value.
-	byte GetRandomInitialAxis_() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetRandomInitialAxis_( byte value );
-
-	// Unknown.
-	// \return The current value.
-	Vector3 GetInitialAxis_() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetInitialAxis_( const Vector3 & value );
-
-	// Unknown.
-	// \return The current value.
-	float GetRotationSpeed_() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetRotationSpeed_( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

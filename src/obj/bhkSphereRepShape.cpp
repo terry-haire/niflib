@@ -98,26 +98,6 @@ std::list<NiObject *> bhkSphereRepShape::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-HavokMaterial bhkSphereRepShape::GetMaterial() const {
-	return material;
-}
-
-void bhkSphereRepShape::SetMaterial( const HavokMaterial & value ) {
-	material = value;
-}
-
-float bhkSphereRepShape::GetRadius() const {
-	return radius;
-}
-
-void bhkSphereRepShape::SetRadius( float value ) {
-	radius = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 HavokMaterial bhkSphereRepShape::GetMaterial() const {

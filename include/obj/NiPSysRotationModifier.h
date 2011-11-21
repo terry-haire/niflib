@@ -52,66 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// The initial speed of rotation.
-	// \return The current value.
-	float GetInitialRotationSpeed() const;
-
-	// The initial speed of rotation.
-	// \param[in] value The new value.
-	void SetInitialRotationSpeed( float value );
-
-	// Adds a ranged randomness to rotation speed.
-	// \return The current value.
-	float GetInitialRotationSpeedVariation() const;
-
-	// Adds a ranged randomness to rotation speed.
-	// \param[in] value The new value.
-	void SetInitialRotationSpeedVariation( float value );
-
-	// Sets the intial angle for particles to be birthed in.
-	// \return The current value.
-	float GetInitialRotationAngle() const;
-
-	// Sets the intial angle for particles to be birthed in.
-	// \param[in] value The new value.
-	void SetInitialRotationAngle( float value );
-
-	// Adds a random range to Initial angle.
-	// \return The current value.
-	float GetInitialRotationAngleVariation() const;
-
-	// Adds a random range to Initial angle.
-	// \param[in] value The new value.
-	void SetInitialRotationAngleVariation( float value );
-
-	// Unknown
-	// \return The current value.
-	bool GetRandomRotSpeedSign() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetRandomRotSpeedSign( bool value );
-
-	// Unknown.
-	// \return The current value.
-	bool GetRandomInitialAxis() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetRandomInitialAxis( bool value );
-
-	// Unknown.
-	// \return The current value.
-	Vector3 GetInitialAxis() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetInitialAxis( const Vector3 & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

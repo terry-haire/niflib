@@ -148,42 +148,6 @@ std::list<NiObject *> NiTransformInterpolator::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-Vector3 NiTransformInterpolator::GetTranslation() const {
-	return translation;
-}
-
-void NiTransformInterpolator::SetTranslation( const Vector3 & value ) {
-	translation = value;
-}
-
-Quaternion NiTransformInterpolator::GetRotation() const {
-	return rotation;
-}
-
-void NiTransformInterpolator::SetRotation( const Quaternion & value ) {
-	rotation = value;
-}
-
-float NiTransformInterpolator::GetScale() const {
-	return scale;
-}
-
-void NiTransformInterpolator::SetScale( float value ) {
-	scale = value;
-}
-
-Ref<NiTransformData > NiTransformInterpolator::GetData() const {
-	return data;
-}
-
-void NiTransformInterpolator::SetData( Ref<NiTransformData > value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 Vector3 NiTransformInterpolator::GetTranslation() const {

@@ -57,34 +57,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// 0 if the texture is internal to the NIF file.
-	// \return The current value.
-	byte GetUseExternal() const;
-
-	// 0 if the texture is internal to the NIF file.
-	// \param[in] value The new value.
-	void SetUseExternal( byte value );
-
-	// The filepath to the texture.
-	// \return The current value.
-	IndexString GetFileName() const;
-
-	// The filepath to the texture.
-	// \param[in] value The new value.
-	void SetFileName( const IndexString & value );
-
-	// Link to the internally stored image data.
-	// \return The current value.
-	Ref<NiRawImageData > GetImageData() const;
-
-	// Link to the internally stored image data.
-	// \param[in] value The new value.
-	void SetImageData( Ref<NiRawImageData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!
@@ -122,7 +94,7 @@ public:
 	//--END CUSTOM CODE--//
 protected:
 	/*! 0 if the texture is internal to the NIF file. */
-	byte useExternal;
+	byte external;
 	/*! The filepath to the texture. */
 	IndexString fileName;
 	/*! Link to the internally stored image data. */

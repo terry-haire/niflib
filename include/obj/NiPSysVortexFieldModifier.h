@@ -56,18 +56,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Direction of the particle velocity
-	// \return The current value.
-	Vector3 GetDirection() const;
-
-	// Direction of the particle velocity
-	// \param[in] value The new value.
-	void SetDirection( const Vector3 & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

@@ -59,26 +59,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// This controller's data
-	// \return The current value.
-	Ref<NiPSysEmitterCtlrData > GetData() const;
-
-	// This controller's data
-	// \param[in] value The new value.
-	void SetData( Ref<NiPSysEmitterCtlrData > value );
-
-	// Links to a bool interpolator. Controls emitter's visibility status?
-	// \return The current value.
-	Ref<NiInterpolator > GetVisibilityInterpolator() const;
-
-	// Links to a bool interpolator. Controls emitter's visibility status?
-	// \param[in] value The new value.
-	void SetVisibilityInterpolator( Ref<NiInterpolator > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

@@ -52,30 +52,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Bit 0 enables the z test
-	//             Bit 1 controls wether the Z buffer is read only (0) or read/write
-	// (1)
-	// \return The current value.
-	unsigned short GetFlags() const;
-
-	// Bit 0 enables the z test
-	//             Bit 1 controls wether the Z buffer is read only (0) or read/write
-	// (1)
-	// \param[in] value The new value.
-	void SetFlags( unsigned short value );
-
-	// Z-Test function (see: glDepthFunc). In Flags from 20.1.0.3 on.
-	// \return The current value.
-	ZCompareMode GetFunction() const;
-
-	// Z-Test function (see: glDepthFunc). In Flags from 20.1.0.3 on.
-	// \param[in] value The new value.
-	void SetFunction( const ZCompareMode & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

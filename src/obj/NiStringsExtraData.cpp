@@ -116,18 +116,6 @@ std::list<NiObject *> NiStringsExtraData::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-vector<string > NiStringsExtraData::GetData() const {
-	return data;
-}
-
-void NiStringsExtraData::SetData( const vector<string >& value ) {
-	data = value;
-}
-
-****End Example Naive Implementation***/
-
 //--BEGIN MISC CUSTOM CODE--//
 
 vector<string> NiStringsExtraData::GetData() const {

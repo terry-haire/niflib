@@ -81,7 +81,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 	};
 	NifStream( textureCount, in, info );
 	NifStream( hasBaseTexture, in, info );
-	if ( hasBaseTexture ) {
+	if ( (hasBaseTexture != 0) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 		if ( info.version <= 0x14000005 ) {
@@ -90,9 +90,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x14010003 ) {
 			NifStream( baseTexture.flags, in, info );
-		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( baseTexture.unknownShort, in, info );
 		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( baseTexture.uvSet, in, info );
@@ -106,7 +103,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( baseTexture.hasTextureTransform, in, info );
-			if ( baseTexture.hasTextureTransform ) {
+			if ( (baseTexture.hasTextureTransform != 0) ) {
 				NifStream( baseTexture.translation, in, info );
 				NifStream( baseTexture.tiling, in, info );
 				NifStream( baseTexture.wRotation, in, info );
@@ -116,7 +113,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 	};
 	NifStream( hasDarkTexture, in, info );
-	if ( hasDarkTexture ) {
+	if ( (hasDarkTexture != 0) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 		if ( info.version <= 0x14000005 ) {
@@ -125,9 +122,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x14010003 ) {
 			NifStream( darkTexture.flags, in, info );
-		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( darkTexture.unknownShort, in, info );
 		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( darkTexture.uvSet, in, info );
@@ -141,7 +135,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( darkTexture.hasTextureTransform, in, info );
-			if ( darkTexture.hasTextureTransform ) {
+			if ( (darkTexture.hasTextureTransform != 0) ) {
 				NifStream( darkTexture.translation, in, info );
 				NifStream( darkTexture.tiling, in, info );
 				NifStream( darkTexture.wRotation, in, info );
@@ -151,7 +145,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 	};
 	NifStream( hasDetailTexture, in, info );
-	if ( hasDetailTexture ) {
+	if ( (hasDetailTexture != 0) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 		if ( info.version <= 0x14000005 ) {
@@ -160,9 +154,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x14010003 ) {
 			NifStream( detailTexture.flags, in, info );
-		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( detailTexture.unknownShort, in, info );
 		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( detailTexture.uvSet, in, info );
@@ -176,7 +167,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( detailTexture.hasTextureTransform, in, info );
-			if ( detailTexture.hasTextureTransform ) {
+			if ( (detailTexture.hasTextureTransform != 0) ) {
 				NifStream( detailTexture.translation, in, info );
 				NifStream( detailTexture.tiling, in, info );
 				NifStream( detailTexture.wRotation, in, info );
@@ -186,7 +177,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 	};
 	NifStream( hasGlossTexture, in, info );
-	if ( hasGlossTexture ) {
+	if ( (hasGlossTexture != 0) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 		if ( info.version <= 0x14000005 ) {
@@ -195,9 +186,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x14010003 ) {
 			NifStream( glossTexture.flags, in, info );
-		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( glossTexture.unknownShort, in, info );
 		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( glossTexture.uvSet, in, info );
@@ -211,7 +199,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( glossTexture.hasTextureTransform, in, info );
-			if ( glossTexture.hasTextureTransform ) {
+			if ( (glossTexture.hasTextureTransform != 0) ) {
 				NifStream( glossTexture.translation, in, info );
 				NifStream( glossTexture.tiling, in, info );
 				NifStream( glossTexture.wRotation, in, info );
@@ -221,7 +209,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 	};
 	NifStream( hasGlowTexture, in, info );
-	if ( hasGlowTexture ) {
+	if ( (hasGlowTexture != 0) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 		if ( info.version <= 0x14000005 ) {
@@ -230,9 +218,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x14010003 ) {
 			NifStream( glowTexture.flags, in, info );
-		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( glowTexture.unknownShort, in, info );
 		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( glowTexture.uvSet, in, info );
@@ -246,7 +231,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( glowTexture.hasTextureTransform, in, info );
-			if ( glowTexture.hasTextureTransform ) {
+			if ( (glowTexture.hasTextureTransform != 0) ) {
 				NifStream( glowTexture.translation, in, info );
 				NifStream( glowTexture.tiling, in, info );
 				NifStream( glowTexture.wRotation, in, info );
@@ -256,7 +241,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 	};
 	NifStream( hasBumpMapTexture, in, info );
-	if ( hasBumpMapTexture ) {
+	if ( (hasBumpMapTexture != 0) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 		if ( info.version <= 0x14000005 ) {
@@ -265,9 +250,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x14010003 ) {
 			NifStream( bumpMapTexture.flags, in, info );
-		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( bumpMapTexture.unknownShort, in, info );
 		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( bumpMapTexture.uvSet, in, info );
@@ -281,7 +263,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( bumpMapTexture.hasTextureTransform, in, info );
-			if ( bumpMapTexture.hasTextureTransform ) {
+			if ( (bumpMapTexture.hasTextureTransform != 0) ) {
 				NifStream( bumpMapTexture.translation, in, info );
 				NifStream( bumpMapTexture.tiling, in, info );
 				NifStream( bumpMapTexture.wRotation, in, info );
@@ -295,7 +277,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 	};
 	if ( info.version >= 0x14020007 ) {
 		NifStream( hasNormalTexture, in, info );
-		if ( hasNormalTexture ) {
+		if ( (hasNormalTexture != 0) ) {
 			NifStream( block_num, in, info );
 			link_stack.push_back( block_num );
 			if ( info.version <= 0x14000005 ) {
@@ -304,9 +286,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 			};
 			if ( info.version >= 0x14010003 ) {
 				NifStream( normalTexture.flags, in, info );
-			};
-			if ( info.version >= 0x14060000 ) {
-				NifStream( normalTexture.unknownShort, in, info );
 			};
 			if ( info.version <= 0x14000005 ) {
 				NifStream( normalTexture.uvSet, in, info );
@@ -320,7 +299,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 			};
 			if ( info.version >= 0x0A010000 ) {
 				NifStream( normalTexture.hasTextureTransform, in, info );
-				if ( normalTexture.hasTextureTransform ) {
+				if ( (normalTexture.hasTextureTransform != 0) ) {
 					NifStream( normalTexture.translation, in, info );
 					NifStream( normalTexture.tiling, in, info );
 					NifStream( normalTexture.wRotation, in, info );
@@ -330,7 +309,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 			};
 		};
 		NifStream( hasUnknown2Texture, in, info );
-		if ( hasUnknown2Texture ) {
+		if ( (hasUnknown2Texture != 0) ) {
 			NifStream( block_num, in, info );
 			link_stack.push_back( block_num );
 			if ( info.version <= 0x14000005 ) {
@@ -339,9 +318,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 			};
 			if ( info.version >= 0x14010003 ) {
 				NifStream( unknown2Texture.flags, in, info );
-			};
-			if ( info.version >= 0x14060000 ) {
-				NifStream( unknown2Texture.unknownShort, in, info );
 			};
 			if ( info.version <= 0x14000005 ) {
 				NifStream( unknown2Texture.uvSet, in, info );
@@ -355,7 +331,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 			};
 			if ( info.version >= 0x0A010000 ) {
 				NifStream( unknown2Texture.hasTextureTransform, in, info );
-				if ( unknown2Texture.hasTextureTransform ) {
+				if ( (unknown2Texture.hasTextureTransform != 0) ) {
 					NifStream( unknown2Texture.translation, in, info );
 					NifStream( unknown2Texture.tiling, in, info );
 					NifStream( unknown2Texture.wRotation, in, info );
@@ -365,11 +341,11 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 			};
 		};
 	};
-	if ( hasUnknown2Texture ) {
+	if ( (hasUnknown2Texture != 0) ) {
 		NifStream( unknown2Float, in, info );
 	};
 	NifStream( hasDecal0Texture, in, info );
-	if ( hasDecal0Texture ) {
+	if ( (hasDecal0Texture != 0) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 		if ( info.version <= 0x14000005 ) {
@@ -378,9 +354,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x14010003 ) {
 			NifStream( decal0Texture.flags, in, info );
-		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( decal0Texture.unknownShort, in, info );
 		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( decal0Texture.uvSet, in, info );
@@ -394,7 +367,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( decal0Texture.hasTextureTransform, in, info );
-			if ( decal0Texture.hasTextureTransform ) {
+			if ( (decal0Texture.hasTextureTransform != 0) ) {
 				NifStream( decal0Texture.translation, in, info );
 				NifStream( decal0Texture.tiling, in, info );
 				NifStream( decal0Texture.wRotation, in, info );
@@ -413,7 +386,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 			NifStream( hasDecal1Texture, in, info );
 		};
 	};
-	if ( hasDecal1Texture ) {
+	if ( (hasDecal1Texture != 0) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 		if ( info.version <= 0x14000005 ) {
@@ -422,9 +395,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x14010003 ) {
 			NifStream( decal1Texture.flags, in, info );
-		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( decal1Texture.unknownShort, in, info );
 		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( decal1Texture.uvSet, in, info );
@@ -438,7 +408,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( decal1Texture.hasTextureTransform, in, info );
-			if ( decal1Texture.hasTextureTransform ) {
+			if ( (decal1Texture.hasTextureTransform != 0) ) {
 				NifStream( decal1Texture.translation, in, info );
 				NifStream( decal1Texture.tiling, in, info );
 				NifStream( decal1Texture.wRotation, in, info );
@@ -457,7 +427,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 			NifStream( hasDecal2Texture, in, info );
 		};
 	};
-	if ( hasDecal2Texture ) {
+	if ( (hasDecal2Texture != 0) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 		if ( info.version <= 0x14000005 ) {
@@ -466,9 +436,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x14010003 ) {
 			NifStream( decal2Texture.flags, in, info );
-		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( decal2Texture.unknownShort, in, info );
 		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( decal2Texture.uvSet, in, info );
@@ -482,7 +449,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( decal2Texture.hasTextureTransform, in, info );
-			if ( decal2Texture.hasTextureTransform ) {
+			if ( (decal2Texture.hasTextureTransform != 0) ) {
 				NifStream( decal2Texture.translation, in, info );
 				NifStream( decal2Texture.tiling, in, info );
 				NifStream( decal2Texture.wRotation, in, info );
@@ -501,7 +468,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 			NifStream( hasDecal3Texture, in, info );
 		};
 	};
-	if ( hasDecal3Texture ) {
+	if ( (hasDecal3Texture != 0) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 		if ( info.version <= 0x14000005 ) {
@@ -510,9 +477,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x14010003 ) {
 			NifStream( decal3Texture.flags, in, info );
-		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( decal3Texture.unknownShort, in, info );
 		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( decal3Texture.uvSet, in, info );
@@ -526,7 +490,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( decal3Texture.hasTextureTransform, in, info );
-			if ( decal3Texture.hasTextureTransform ) {
+			if ( (decal3Texture.hasTextureTransform != 0) ) {
 				NifStream( decal3Texture.translation, in, info );
 				NifStream( decal3Texture.tiling, in, info );
 				NifStream( decal3Texture.wRotation, in, info );
@@ -540,7 +504,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 		shaderTextures.resize(numShaderTextures);
 		for (unsigned int i2 = 0; i2 < shaderTextures.size(); i2++) {
 			NifStream( shaderTextures[i2].isUsed, in, info );
-			if ( shaderTextures[i2].isUsed ) {
+			if ( (shaderTextures[i2].isUsed != 0) ) {
 				NifStream( block_num, in, info );
 				link_stack.push_back( block_num );
 				if ( info.version <= 0x14000005 ) {
@@ -549,9 +513,6 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 				};
 				if ( info.version >= 0x14010003 ) {
 					NifStream( shaderTextures[i2].textureData.flags, in, info );
-				};
-				if ( info.version >= 0x14060000 ) {
-					NifStream( shaderTextures[i2].textureData.unknownShort, in, info );
 				};
 				if ( info.version <= 0x14000005 ) {
 					NifStream( shaderTextures[i2].textureData.uvSet, in, info );
@@ -565,7 +526,7 @@ void NiTexturingProperty::Read( istream& in, list<unsigned int> & link_stack, co
 				};
 				if ( info.version >= 0x0A010000 ) {
 					NifStream( shaderTextures[i2].textureData.hasTextureTransform, in, info );
-					if ( shaderTextures[i2].textureData.hasTextureTransform ) {
+					if ( (shaderTextures[i2].textureData.hasTextureTransform != 0) ) {
 						NifStream( shaderTextures[i2].textureData.translation, in, info );
 						NifStream( shaderTextures[i2].textureData.tiling, in, info );
 						NifStream( shaderTextures[i2].textureData.wRotation, in, info );
@@ -599,7 +560,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 	};
 	NifStream( textureCount, out, info );
 	NifStream( hasBaseTexture, out, info );
-	if ( hasBaseTexture ) {
+	if ( (hasBaseTexture != 0) ) {
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*baseTexture.source), out );
 		} else {
@@ -624,9 +585,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		if ( info.version >= 0x14010003 ) {
 			NifStream( baseTexture.flags, out, info );
 		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( baseTexture.unknownShort, out, info );
-		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( baseTexture.uvSet, out, info );
 		};
@@ -639,7 +597,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( baseTexture.hasTextureTransform, out, info );
-			if ( baseTexture.hasTextureTransform ) {
+			if ( (baseTexture.hasTextureTransform != 0) ) {
 				NifStream( baseTexture.translation, out, info );
 				NifStream( baseTexture.tiling, out, info );
 				NifStream( baseTexture.wRotation, out, info );
@@ -649,7 +607,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 	};
 	NifStream( hasDarkTexture, out, info );
-	if ( hasDarkTexture ) {
+	if ( (hasDarkTexture != 0) ) {
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*darkTexture.source), out );
 		} else {
@@ -674,9 +632,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		if ( info.version >= 0x14010003 ) {
 			NifStream( darkTexture.flags, out, info );
 		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( darkTexture.unknownShort, out, info );
-		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( darkTexture.uvSet, out, info );
 		};
@@ -689,7 +644,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( darkTexture.hasTextureTransform, out, info );
-			if ( darkTexture.hasTextureTransform ) {
+			if ( (darkTexture.hasTextureTransform != 0) ) {
 				NifStream( darkTexture.translation, out, info );
 				NifStream( darkTexture.tiling, out, info );
 				NifStream( darkTexture.wRotation, out, info );
@@ -699,7 +654,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 	};
 	NifStream( hasDetailTexture, out, info );
-	if ( hasDetailTexture ) {
+	if ( (hasDetailTexture != 0) ) {
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*detailTexture.source), out );
 		} else {
@@ -724,9 +679,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		if ( info.version >= 0x14010003 ) {
 			NifStream( detailTexture.flags, out, info );
 		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( detailTexture.unknownShort, out, info );
-		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( detailTexture.uvSet, out, info );
 		};
@@ -739,7 +691,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( detailTexture.hasTextureTransform, out, info );
-			if ( detailTexture.hasTextureTransform ) {
+			if ( (detailTexture.hasTextureTransform != 0) ) {
 				NifStream( detailTexture.translation, out, info );
 				NifStream( detailTexture.tiling, out, info );
 				NifStream( detailTexture.wRotation, out, info );
@@ -749,7 +701,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 	};
 	NifStream( hasGlossTexture, out, info );
-	if ( hasGlossTexture ) {
+	if ( (hasGlossTexture != 0) ) {
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*glossTexture.source), out );
 		} else {
@@ -774,9 +726,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		if ( info.version >= 0x14010003 ) {
 			NifStream( glossTexture.flags, out, info );
 		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( glossTexture.unknownShort, out, info );
-		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( glossTexture.uvSet, out, info );
 		};
@@ -789,7 +738,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( glossTexture.hasTextureTransform, out, info );
-			if ( glossTexture.hasTextureTransform ) {
+			if ( (glossTexture.hasTextureTransform != 0) ) {
 				NifStream( glossTexture.translation, out, info );
 				NifStream( glossTexture.tiling, out, info );
 				NifStream( glossTexture.wRotation, out, info );
@@ -799,7 +748,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 	};
 	NifStream( hasGlowTexture, out, info );
-	if ( hasGlowTexture ) {
+	if ( (hasGlowTexture != 0) ) {
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*glowTexture.source), out );
 		} else {
@@ -824,9 +773,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		if ( info.version >= 0x14010003 ) {
 			NifStream( glowTexture.flags, out, info );
 		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( glowTexture.unknownShort, out, info );
-		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( glowTexture.uvSet, out, info );
 		};
@@ -839,7 +785,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( glowTexture.hasTextureTransform, out, info );
-			if ( glowTexture.hasTextureTransform ) {
+			if ( (glowTexture.hasTextureTransform != 0) ) {
 				NifStream( glowTexture.translation, out, info );
 				NifStream( glowTexture.tiling, out, info );
 				NifStream( glowTexture.wRotation, out, info );
@@ -849,7 +795,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 	};
 	NifStream( hasBumpMapTexture, out, info );
-	if ( hasBumpMapTexture ) {
+	if ( (hasBumpMapTexture != 0) ) {
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*bumpMapTexture.source), out );
 		} else {
@@ -874,9 +820,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		if ( info.version >= 0x14010003 ) {
 			NifStream( bumpMapTexture.flags, out, info );
 		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( bumpMapTexture.unknownShort, out, info );
-		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( bumpMapTexture.uvSet, out, info );
 		};
@@ -889,7 +832,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( bumpMapTexture.hasTextureTransform, out, info );
-			if ( bumpMapTexture.hasTextureTransform ) {
+			if ( (bumpMapTexture.hasTextureTransform != 0) ) {
 				NifStream( bumpMapTexture.translation, out, info );
 				NifStream( bumpMapTexture.tiling, out, info );
 				NifStream( bumpMapTexture.wRotation, out, info );
@@ -903,7 +846,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 	};
 	if ( info.version >= 0x14020007 ) {
 		NifStream( hasNormalTexture, out, info );
-		if ( hasNormalTexture ) {
+		if ( (hasNormalTexture != 0) ) {
 			if ( info.version < VER_3_3_0_13 ) {
 				WritePtr32( &(*normalTexture.source), out );
 			} else {
@@ -928,9 +871,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 			if ( info.version >= 0x14010003 ) {
 				NifStream( normalTexture.flags, out, info );
 			};
-			if ( info.version >= 0x14060000 ) {
-				NifStream( normalTexture.unknownShort, out, info );
-			};
 			if ( info.version <= 0x14000005 ) {
 				NifStream( normalTexture.uvSet, out, info );
 			};
@@ -943,7 +883,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 			};
 			if ( info.version >= 0x0A010000 ) {
 				NifStream( normalTexture.hasTextureTransform, out, info );
-				if ( normalTexture.hasTextureTransform ) {
+				if ( (normalTexture.hasTextureTransform != 0) ) {
 					NifStream( normalTexture.translation, out, info );
 					NifStream( normalTexture.tiling, out, info );
 					NifStream( normalTexture.wRotation, out, info );
@@ -953,7 +893,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 			};
 		};
 		NifStream( hasUnknown2Texture, out, info );
-		if ( hasUnknown2Texture ) {
+		if ( (hasUnknown2Texture != 0) ) {
 			if ( info.version < VER_3_3_0_13 ) {
 				WritePtr32( &(*unknown2Texture.source), out );
 			} else {
@@ -978,9 +918,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 			if ( info.version >= 0x14010003 ) {
 				NifStream( unknown2Texture.flags, out, info );
 			};
-			if ( info.version >= 0x14060000 ) {
-				NifStream( unknown2Texture.unknownShort, out, info );
-			};
 			if ( info.version <= 0x14000005 ) {
 				NifStream( unknown2Texture.uvSet, out, info );
 			};
@@ -993,7 +930,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 			};
 			if ( info.version >= 0x0A010000 ) {
 				NifStream( unknown2Texture.hasTextureTransform, out, info );
-				if ( unknown2Texture.hasTextureTransform ) {
+				if ( (unknown2Texture.hasTextureTransform != 0) ) {
 					NifStream( unknown2Texture.translation, out, info );
 					NifStream( unknown2Texture.tiling, out, info );
 					NifStream( unknown2Texture.wRotation, out, info );
@@ -1003,11 +940,11 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 			};
 		};
 	};
-	if ( hasUnknown2Texture ) {
+	if ( (hasUnknown2Texture != 0) ) {
 		NifStream( unknown2Float, out, info );
 	};
 	NifStream( hasDecal0Texture, out, info );
-	if ( hasDecal0Texture ) {
+	if ( (hasDecal0Texture != 0) ) {
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*decal0Texture.source), out );
 		} else {
@@ -1032,9 +969,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		if ( info.version >= 0x14010003 ) {
 			NifStream( decal0Texture.flags, out, info );
 		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( decal0Texture.unknownShort, out, info );
-		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( decal0Texture.uvSet, out, info );
 		};
@@ -1047,7 +981,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( decal0Texture.hasTextureTransform, out, info );
-			if ( decal0Texture.hasTextureTransform ) {
+			if ( (decal0Texture.hasTextureTransform != 0) ) {
 				NifStream( decal0Texture.translation, out, info );
 				NifStream( decal0Texture.tiling, out, info );
 				NifStream( decal0Texture.wRotation, out, info );
@@ -1066,7 +1000,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 			NifStream( hasDecal1Texture, out, info );
 		};
 	};
-	if ( hasDecal1Texture ) {
+	if ( (hasDecal1Texture != 0) ) {
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*decal1Texture.source), out );
 		} else {
@@ -1091,9 +1025,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		if ( info.version >= 0x14010003 ) {
 			NifStream( decal1Texture.flags, out, info );
 		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( decal1Texture.unknownShort, out, info );
-		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( decal1Texture.uvSet, out, info );
 		};
@@ -1106,7 +1037,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( decal1Texture.hasTextureTransform, out, info );
-			if ( decal1Texture.hasTextureTransform ) {
+			if ( (decal1Texture.hasTextureTransform != 0) ) {
 				NifStream( decal1Texture.translation, out, info );
 				NifStream( decal1Texture.tiling, out, info );
 				NifStream( decal1Texture.wRotation, out, info );
@@ -1125,7 +1056,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 			NifStream( hasDecal2Texture, out, info );
 		};
 	};
-	if ( hasDecal2Texture ) {
+	if ( (hasDecal2Texture != 0) ) {
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*decal2Texture.source), out );
 		} else {
@@ -1150,9 +1081,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		if ( info.version >= 0x14010003 ) {
 			NifStream( decal2Texture.flags, out, info );
 		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( decal2Texture.unknownShort, out, info );
-		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( decal2Texture.uvSet, out, info );
 		};
@@ -1165,7 +1093,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( decal2Texture.hasTextureTransform, out, info );
-			if ( decal2Texture.hasTextureTransform ) {
+			if ( (decal2Texture.hasTextureTransform != 0) ) {
 				NifStream( decal2Texture.translation, out, info );
 				NifStream( decal2Texture.tiling, out, info );
 				NifStream( decal2Texture.wRotation, out, info );
@@ -1184,7 +1112,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 			NifStream( hasDecal3Texture, out, info );
 		};
 	};
-	if ( hasDecal3Texture ) {
+	if ( (hasDecal3Texture != 0) ) {
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*decal3Texture.source), out );
 		} else {
@@ -1209,9 +1137,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		if ( info.version >= 0x14010003 ) {
 			NifStream( decal3Texture.flags, out, info );
 		};
-		if ( info.version >= 0x14060000 ) {
-			NifStream( decal3Texture.unknownShort, out, info );
-		};
 		if ( info.version <= 0x14000005 ) {
 			NifStream( decal3Texture.uvSet, out, info );
 		};
@@ -1224,7 +1149,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		};
 		if ( info.version >= 0x0A010000 ) {
 			NifStream( decal3Texture.hasTextureTransform, out, info );
-			if ( decal3Texture.hasTextureTransform ) {
+			if ( (decal3Texture.hasTextureTransform != 0) ) {
 				NifStream( decal3Texture.translation, out, info );
 				NifStream( decal3Texture.tiling, out, info );
 				NifStream( decal3Texture.wRotation, out, info );
@@ -1237,7 +1162,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 		NifStream( numShaderTextures, out, info );
 		for (unsigned int i2 = 0; i2 < shaderTextures.size(); i2++) {
 			NifStream( shaderTextures[i2].isUsed, out, info );
-			if ( shaderTextures[i2].isUsed ) {
+			if ( (shaderTextures[i2].isUsed != 0) ) {
 				if ( info.version < VER_3_3_0_13 ) {
 					WritePtr32( &(*shaderTextures[i2].textureData.source), out );
 				} else {
@@ -1262,9 +1187,6 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 				if ( info.version >= 0x14010003 ) {
 					NifStream( shaderTextures[i2].textureData.flags, out, info );
 				};
-				if ( info.version >= 0x14060000 ) {
-					NifStream( shaderTextures[i2].textureData.unknownShort, out, info );
-				};
 				if ( info.version <= 0x14000005 ) {
 					NifStream( shaderTextures[i2].textureData.uvSet, out, info );
 				};
@@ -1277,7 +1199,7 @@ void NiTexturingProperty::Write( ostream& out, const map<NiObjectRef,unsigned in
 				};
 				if ( info.version >= 0x0A010000 ) {
 					NifStream( shaderTextures[i2].textureData.hasTextureTransform, out, info );
-					if ( shaderTextures[i2].textureData.hasTextureTransform ) {
+					if ( (shaderTextures[i2].textureData.hasTextureTransform != 0) ) {
 						NifStream( shaderTextures[i2].textureData.translation, out, info );
 						NifStream( shaderTextures[i2].textureData.tiling, out, info );
 						NifStream( shaderTextures[i2].textureData.wRotation, out, info );
@@ -1306,18 +1228,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 	out << "  Apply Mode:  " << applyMode << endl;
 	out << "  Texture Count:  " << textureCount << endl;
 	out << "  Has Base Texture:  " << hasBaseTexture << endl;
-	if ( hasBaseTexture ) {
+	if ( (hasBaseTexture != 0) ) {
 		out << "    Source:  " << baseTexture.source << endl;
 		out << "    Clamp Mode:  " << baseTexture.clampMode << endl;
 		out << "    Filter Mode:  " << baseTexture.filterMode << endl;
 		out << "    Flags:  " << baseTexture.flags << endl;
-		out << "    Unknown short:  " << baseTexture.unknownShort << endl;
 		out << "    UV Set:  " << baseTexture.uvSet << endl;
 		out << "    PS2 L:  " << baseTexture.ps2L << endl;
 		out << "    PS2 K:  " << baseTexture.ps2K << endl;
 		out << "    Unknown1:  " << baseTexture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << baseTexture.hasTextureTransform << endl;
-		if ( baseTexture.hasTextureTransform ) {
+		if ( (baseTexture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << baseTexture.translation << endl;
 			out << "      Tiling:  " << baseTexture.tiling << endl;
 			out << "      W Rotation:  " << baseTexture.wRotation << endl;
@@ -1326,18 +1247,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 		};
 	};
 	out << "  Has Dark Texture:  " << hasDarkTexture << endl;
-	if ( hasDarkTexture ) {
+	if ( (hasDarkTexture != 0) ) {
 		out << "    Source:  " << darkTexture.source << endl;
 		out << "    Clamp Mode:  " << darkTexture.clampMode << endl;
 		out << "    Filter Mode:  " << darkTexture.filterMode << endl;
 		out << "    Flags:  " << darkTexture.flags << endl;
-		out << "    Unknown short:  " << darkTexture.unknownShort << endl;
 		out << "    UV Set:  " << darkTexture.uvSet << endl;
 		out << "    PS2 L:  " << darkTexture.ps2L << endl;
 		out << "    PS2 K:  " << darkTexture.ps2K << endl;
 		out << "    Unknown1:  " << darkTexture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << darkTexture.hasTextureTransform << endl;
-		if ( darkTexture.hasTextureTransform ) {
+		if ( (darkTexture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << darkTexture.translation << endl;
 			out << "      Tiling:  " << darkTexture.tiling << endl;
 			out << "      W Rotation:  " << darkTexture.wRotation << endl;
@@ -1346,18 +1266,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 		};
 	};
 	out << "  Has Detail Texture:  " << hasDetailTexture << endl;
-	if ( hasDetailTexture ) {
+	if ( (hasDetailTexture != 0) ) {
 		out << "    Source:  " << detailTexture.source << endl;
 		out << "    Clamp Mode:  " << detailTexture.clampMode << endl;
 		out << "    Filter Mode:  " << detailTexture.filterMode << endl;
 		out << "    Flags:  " << detailTexture.flags << endl;
-		out << "    Unknown short:  " << detailTexture.unknownShort << endl;
 		out << "    UV Set:  " << detailTexture.uvSet << endl;
 		out << "    PS2 L:  " << detailTexture.ps2L << endl;
 		out << "    PS2 K:  " << detailTexture.ps2K << endl;
 		out << "    Unknown1:  " << detailTexture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << detailTexture.hasTextureTransform << endl;
-		if ( detailTexture.hasTextureTransform ) {
+		if ( (detailTexture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << detailTexture.translation << endl;
 			out << "      Tiling:  " << detailTexture.tiling << endl;
 			out << "      W Rotation:  " << detailTexture.wRotation << endl;
@@ -1366,18 +1285,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 		};
 	};
 	out << "  Has Gloss Texture:  " << hasGlossTexture << endl;
-	if ( hasGlossTexture ) {
+	if ( (hasGlossTexture != 0) ) {
 		out << "    Source:  " << glossTexture.source << endl;
 		out << "    Clamp Mode:  " << glossTexture.clampMode << endl;
 		out << "    Filter Mode:  " << glossTexture.filterMode << endl;
 		out << "    Flags:  " << glossTexture.flags << endl;
-		out << "    Unknown short:  " << glossTexture.unknownShort << endl;
 		out << "    UV Set:  " << glossTexture.uvSet << endl;
 		out << "    PS2 L:  " << glossTexture.ps2L << endl;
 		out << "    PS2 K:  " << glossTexture.ps2K << endl;
 		out << "    Unknown1:  " << glossTexture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << glossTexture.hasTextureTransform << endl;
-		if ( glossTexture.hasTextureTransform ) {
+		if ( (glossTexture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << glossTexture.translation << endl;
 			out << "      Tiling:  " << glossTexture.tiling << endl;
 			out << "      W Rotation:  " << glossTexture.wRotation << endl;
@@ -1386,18 +1304,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 		};
 	};
 	out << "  Has Glow Texture:  " << hasGlowTexture << endl;
-	if ( hasGlowTexture ) {
+	if ( (hasGlowTexture != 0) ) {
 		out << "    Source:  " << glowTexture.source << endl;
 		out << "    Clamp Mode:  " << glowTexture.clampMode << endl;
 		out << "    Filter Mode:  " << glowTexture.filterMode << endl;
 		out << "    Flags:  " << glowTexture.flags << endl;
-		out << "    Unknown short:  " << glowTexture.unknownShort << endl;
 		out << "    UV Set:  " << glowTexture.uvSet << endl;
 		out << "    PS2 L:  " << glowTexture.ps2L << endl;
 		out << "    PS2 K:  " << glowTexture.ps2K << endl;
 		out << "    Unknown1:  " << glowTexture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << glowTexture.hasTextureTransform << endl;
-		if ( glowTexture.hasTextureTransform ) {
+		if ( (glowTexture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << glowTexture.translation << endl;
 			out << "      Tiling:  " << glowTexture.tiling << endl;
 			out << "      W Rotation:  " << glowTexture.wRotation << endl;
@@ -1406,18 +1323,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 		};
 	};
 	out << "  Has Bump Map Texture:  " << hasBumpMapTexture << endl;
-	if ( hasBumpMapTexture ) {
+	if ( (hasBumpMapTexture != 0) ) {
 		out << "    Source:  " << bumpMapTexture.source << endl;
 		out << "    Clamp Mode:  " << bumpMapTexture.clampMode << endl;
 		out << "    Filter Mode:  " << bumpMapTexture.filterMode << endl;
 		out << "    Flags:  " << bumpMapTexture.flags << endl;
-		out << "    Unknown short:  " << bumpMapTexture.unknownShort << endl;
 		out << "    UV Set:  " << bumpMapTexture.uvSet << endl;
 		out << "    PS2 L:  " << bumpMapTexture.ps2L << endl;
 		out << "    PS2 K:  " << bumpMapTexture.ps2K << endl;
 		out << "    Unknown1:  " << bumpMapTexture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << bumpMapTexture.hasTextureTransform << endl;
-		if ( bumpMapTexture.hasTextureTransform ) {
+		if ( (bumpMapTexture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << bumpMapTexture.translation << endl;
 			out << "      Tiling:  " << bumpMapTexture.tiling << endl;
 			out << "      W Rotation:  " << bumpMapTexture.wRotation << endl;
@@ -1429,18 +1345,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 		out << "    Bump Map Matrix:  " << bumpMapMatrix << endl;
 	};
 	out << "  Has Normal Texture:  " << hasNormalTexture << endl;
-	if ( hasNormalTexture ) {
+	if ( (hasNormalTexture != 0) ) {
 		out << "    Source:  " << normalTexture.source << endl;
 		out << "    Clamp Mode:  " << normalTexture.clampMode << endl;
 		out << "    Filter Mode:  " << normalTexture.filterMode << endl;
 		out << "    Flags:  " << normalTexture.flags << endl;
-		out << "    Unknown short:  " << normalTexture.unknownShort << endl;
 		out << "    UV Set:  " << normalTexture.uvSet << endl;
 		out << "    PS2 L:  " << normalTexture.ps2L << endl;
 		out << "    PS2 K:  " << normalTexture.ps2K << endl;
 		out << "    Unknown1:  " << normalTexture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << normalTexture.hasTextureTransform << endl;
-		if ( normalTexture.hasTextureTransform ) {
+		if ( (normalTexture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << normalTexture.translation << endl;
 			out << "      Tiling:  " << normalTexture.tiling << endl;
 			out << "      W Rotation:  " << normalTexture.wRotation << endl;
@@ -1449,18 +1364,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 		};
 	};
 	out << "  Has Unknown2 Texture:  " << hasUnknown2Texture << endl;
-	if ( hasUnknown2Texture ) {
+	if ( (hasUnknown2Texture != 0) ) {
 		out << "    Source:  " << unknown2Texture.source << endl;
 		out << "    Clamp Mode:  " << unknown2Texture.clampMode << endl;
 		out << "    Filter Mode:  " << unknown2Texture.filterMode << endl;
 		out << "    Flags:  " << unknown2Texture.flags << endl;
-		out << "    Unknown short:  " << unknown2Texture.unknownShort << endl;
 		out << "    UV Set:  " << unknown2Texture.uvSet << endl;
 		out << "    PS2 L:  " << unknown2Texture.ps2L << endl;
 		out << "    PS2 K:  " << unknown2Texture.ps2K << endl;
 		out << "    Unknown1:  " << unknown2Texture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << unknown2Texture.hasTextureTransform << endl;
-		if ( unknown2Texture.hasTextureTransform ) {
+		if ( (unknown2Texture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << unknown2Texture.translation << endl;
 			out << "      Tiling:  " << unknown2Texture.tiling << endl;
 			out << "      W Rotation:  " << unknown2Texture.wRotation << endl;
@@ -1470,18 +1384,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 		out << "    Unknown2 Float:  " << unknown2Float << endl;
 	};
 	out << "  Has Decal 0 Texture:  " << hasDecal0Texture << endl;
-	if ( hasDecal0Texture ) {
+	if ( (hasDecal0Texture != 0) ) {
 		out << "    Source:  " << decal0Texture.source << endl;
 		out << "    Clamp Mode:  " << decal0Texture.clampMode << endl;
 		out << "    Filter Mode:  " << decal0Texture.filterMode << endl;
 		out << "    Flags:  " << decal0Texture.flags << endl;
-		out << "    Unknown short:  " << decal0Texture.unknownShort << endl;
 		out << "    UV Set:  " << decal0Texture.uvSet << endl;
 		out << "    PS2 L:  " << decal0Texture.ps2L << endl;
 		out << "    PS2 K:  " << decal0Texture.ps2K << endl;
 		out << "    Unknown1:  " << decal0Texture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << decal0Texture.hasTextureTransform << endl;
-		if ( decal0Texture.hasTextureTransform ) {
+		if ( (decal0Texture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << decal0Texture.translation << endl;
 			out << "      Tiling:  " << decal0Texture.tiling << endl;
 			out << "      W Rotation:  " << decal0Texture.wRotation << endl;
@@ -1492,18 +1405,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 	if ( (textureCount >= 8) ) {
 		out << "    Has Decal 1 Texture:  " << hasDecal1Texture << endl;
 	};
-	if ( hasDecal1Texture ) {
+	if ( (hasDecal1Texture != 0) ) {
 		out << "    Source:  " << decal1Texture.source << endl;
 		out << "    Clamp Mode:  " << decal1Texture.clampMode << endl;
 		out << "    Filter Mode:  " << decal1Texture.filterMode << endl;
 		out << "    Flags:  " << decal1Texture.flags << endl;
-		out << "    Unknown short:  " << decal1Texture.unknownShort << endl;
 		out << "    UV Set:  " << decal1Texture.uvSet << endl;
 		out << "    PS2 L:  " << decal1Texture.ps2L << endl;
 		out << "    PS2 K:  " << decal1Texture.ps2K << endl;
 		out << "    Unknown1:  " << decal1Texture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << decal1Texture.hasTextureTransform << endl;
-		if ( decal1Texture.hasTextureTransform ) {
+		if ( (decal1Texture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << decal1Texture.translation << endl;
 			out << "      Tiling:  " << decal1Texture.tiling << endl;
 			out << "      W Rotation:  " << decal1Texture.wRotation << endl;
@@ -1514,18 +1426,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 	if ( (textureCount >= 9) ) {
 		out << "    Has Decal 2 Texture:  " << hasDecal2Texture << endl;
 	};
-	if ( hasDecal2Texture ) {
+	if ( (hasDecal2Texture != 0) ) {
 		out << "    Source:  " << decal2Texture.source << endl;
 		out << "    Clamp Mode:  " << decal2Texture.clampMode << endl;
 		out << "    Filter Mode:  " << decal2Texture.filterMode << endl;
 		out << "    Flags:  " << decal2Texture.flags << endl;
-		out << "    Unknown short:  " << decal2Texture.unknownShort << endl;
 		out << "    UV Set:  " << decal2Texture.uvSet << endl;
 		out << "    PS2 L:  " << decal2Texture.ps2L << endl;
 		out << "    PS2 K:  " << decal2Texture.ps2K << endl;
 		out << "    Unknown1:  " << decal2Texture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << decal2Texture.hasTextureTransform << endl;
-		if ( decal2Texture.hasTextureTransform ) {
+		if ( (decal2Texture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << decal2Texture.translation << endl;
 			out << "      Tiling:  " << decal2Texture.tiling << endl;
 			out << "      W Rotation:  " << decal2Texture.wRotation << endl;
@@ -1536,18 +1447,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 	if ( (textureCount >= 10) ) {
 		out << "    Has Decal 3 Texture:  " << hasDecal3Texture << endl;
 	};
-	if ( hasDecal3Texture ) {
+	if ( (hasDecal3Texture != 0) ) {
 		out << "    Source:  " << decal3Texture.source << endl;
 		out << "    Clamp Mode:  " << decal3Texture.clampMode << endl;
 		out << "    Filter Mode:  " << decal3Texture.filterMode << endl;
 		out << "    Flags:  " << decal3Texture.flags << endl;
-		out << "    Unknown short:  " << decal3Texture.unknownShort << endl;
 		out << "    UV Set:  " << decal3Texture.uvSet << endl;
 		out << "    PS2 L:  " << decal3Texture.ps2L << endl;
 		out << "    PS2 K:  " << decal3Texture.ps2K << endl;
 		out << "    Unknown1:  " << decal3Texture.unknown1 << endl;
 		out << "    Has Texture Transform:  " << decal3Texture.hasTextureTransform << endl;
-		if ( decal3Texture.hasTextureTransform ) {
+		if ( (decal3Texture.hasTextureTransform != 0) ) {
 			out << "      Translation:  " << decal3Texture.translation << endl;
 			out << "      Tiling:  " << decal3Texture.tiling << endl;
 			out << "      W Rotation:  " << decal3Texture.wRotation << endl;
@@ -1563,18 +1473,17 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 			break;
 		};
 		out << "    Is Used:  " << shaderTextures[i1].isUsed << endl;
-		if ( shaderTextures[i1].isUsed ) {
+		if ( (shaderTextures[i1].isUsed != 0) ) {
 			out << "      Source:  " << shaderTextures[i1].textureData.source << endl;
 			out << "      Clamp Mode:  " << shaderTextures[i1].textureData.clampMode << endl;
 			out << "      Filter Mode:  " << shaderTextures[i1].textureData.filterMode << endl;
 			out << "      Flags:  " << shaderTextures[i1].textureData.flags << endl;
-			out << "      Unknown short:  " << shaderTextures[i1].textureData.unknownShort << endl;
 			out << "      UV Set:  " << shaderTextures[i1].textureData.uvSet << endl;
 			out << "      PS2 L:  " << shaderTextures[i1].textureData.ps2L << endl;
 			out << "      PS2 K:  " << shaderTextures[i1].textureData.ps2K << endl;
 			out << "      Unknown1:  " << shaderTextures[i1].textureData.unknown1 << endl;
 			out << "      Has Texture Transform:  " << shaderTextures[i1].textureData.hasTextureTransform << endl;
-			if ( shaderTextures[i1].textureData.hasTextureTransform ) {
+			if ( (shaderTextures[i1].textureData.hasTextureTransform != 0) ) {
 				out << "        Translation:  " << shaderTextures[i1].textureData.translation << endl;
 				out << "        Tiling:  " << shaderTextures[i1].textureData.tiling << endl;
 				out << "        W Rotation:  " << shaderTextures[i1].textureData.wRotation << endl;
@@ -1595,47 +1504,47 @@ void NiTexturingProperty::FixLinks( const map<unsigned int,NiObjectRef> & object
 	//--END CUSTOM CODE--//
 
 	NiProperty::FixLinks( objects, link_stack, missing_link_stack, info );
-	if ( hasBaseTexture ) {
+	if ( (hasBaseTexture != 0) ) {
 		baseTexture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 	};
-	if ( hasDarkTexture ) {
+	if ( (hasDarkTexture != 0) ) {
 		darkTexture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 	};
-	if ( hasDetailTexture ) {
+	if ( (hasDetailTexture != 0) ) {
 		detailTexture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 	};
-	if ( hasGlossTexture ) {
+	if ( (hasGlossTexture != 0) ) {
 		glossTexture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 	};
-	if ( hasGlowTexture ) {
+	if ( (hasGlowTexture != 0) ) {
 		glowTexture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 	};
-	if ( hasBumpMapTexture ) {
+	if ( (hasBumpMapTexture != 0) ) {
 		bumpMapTexture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 	};
 	if ( info.version >= 0x14020007 ) {
-		if ( hasNormalTexture ) {
+		if ( (hasNormalTexture != 0) ) {
 			normalTexture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 		};
-		if ( hasUnknown2Texture ) {
+		if ( (hasUnknown2Texture != 0) ) {
 			unknown2Texture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 		};
 	};
-	if ( hasDecal0Texture ) {
+	if ( (hasDecal0Texture != 0) ) {
 		decal0Texture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 	};
-	if ( hasDecal1Texture ) {
+	if ( (hasDecal1Texture != 0) ) {
 		decal1Texture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 	};
-	if ( hasDecal2Texture ) {
+	if ( (hasDecal2Texture != 0) ) {
 		decal2Texture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 	};
-	if ( hasDecal3Texture ) {
+	if ( (hasDecal3Texture != 0) ) {
 		decal3Texture.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 	};
 	if ( info.version >= 0x0A000100 ) {
 		for (unsigned int i2 = 0; i2 < shaderTextures.size(); i2++) {
-			if ( shaderTextures[i2].isUsed ) {
+			if ( (shaderTextures[i2].isUsed != 0) ) {
 				shaderTextures[i2].textureData.source = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
 			};
 		};
@@ -1686,274 +1595,6 @@ std::list<NiObject *> NiTexturingProperty::GetPtrs() const {
 	};
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-unsigned short NiTexturingProperty::GetFlags() const {
-	return flags;
-}
-
-void NiTexturingProperty::SetFlags( unsigned short value ) {
-	flags = value;
-}
-
-unsigned short NiTexturingProperty::GetFlags() const {
-	return flags;
-}
-
-void NiTexturingProperty::SetFlags( unsigned short value ) {
-	flags = value;
-}
-
-ApplyMode NiTexturingProperty::GetApplyMode() const {
-	return applyMode;
-}
-
-void NiTexturingProperty::SetApplyMode( const ApplyMode & value ) {
-	applyMode = value;
-}
-
-unsigned int NiTexturingProperty::GetTextureCount() const {
-	return textureCount;
-}
-
-void NiTexturingProperty::SetTextureCount( unsigned int value ) {
-	textureCount = value;
-}
-
-bool NiTexturingProperty::GetHasBaseTexture() const {
-	return hasBaseTexture;
-}
-
-void NiTexturingProperty::SetHasBaseTexture( bool value ) {
-	hasBaseTexture = value;
-}
-
-TexDesc NiTexturingProperty::GetBaseTexture() const {
-	return baseTexture;
-}
-
-void NiTexturingProperty::SetBaseTexture( const TexDesc & value ) {
-	baseTexture = value;
-}
-
-bool NiTexturingProperty::GetHasDarkTexture() const {
-	return hasDarkTexture;
-}
-
-void NiTexturingProperty::SetHasDarkTexture( bool value ) {
-	hasDarkTexture = value;
-}
-
-TexDesc NiTexturingProperty::GetDarkTexture() const {
-	return darkTexture;
-}
-
-void NiTexturingProperty::SetDarkTexture( const TexDesc & value ) {
-	darkTexture = value;
-}
-
-bool NiTexturingProperty::GetHasDetailTexture() const {
-	return hasDetailTexture;
-}
-
-void NiTexturingProperty::SetHasDetailTexture( bool value ) {
-	hasDetailTexture = value;
-}
-
-TexDesc NiTexturingProperty::GetDetailTexture() const {
-	return detailTexture;
-}
-
-void NiTexturingProperty::SetDetailTexture( const TexDesc & value ) {
-	detailTexture = value;
-}
-
-bool NiTexturingProperty::GetHasGlossTexture() const {
-	return hasGlossTexture;
-}
-
-void NiTexturingProperty::SetHasGlossTexture( bool value ) {
-	hasGlossTexture = value;
-}
-
-TexDesc NiTexturingProperty::GetGlossTexture() const {
-	return glossTexture;
-}
-
-void NiTexturingProperty::SetGlossTexture( const TexDesc & value ) {
-	glossTexture = value;
-}
-
-bool NiTexturingProperty::GetHasGlowTexture() const {
-	return hasGlowTexture;
-}
-
-void NiTexturingProperty::SetHasGlowTexture( bool value ) {
-	hasGlowTexture = value;
-}
-
-TexDesc NiTexturingProperty::GetGlowTexture() const {
-	return glowTexture;
-}
-
-void NiTexturingProperty::SetGlowTexture( const TexDesc & value ) {
-	glowTexture = value;
-}
-
-bool NiTexturingProperty::GetHasBumpMapTexture() const {
-	return hasBumpMapTexture;
-}
-
-void NiTexturingProperty::SetHasBumpMapTexture( bool value ) {
-	hasBumpMapTexture = value;
-}
-
-TexDesc NiTexturingProperty::GetBumpMapTexture() const {
-	return bumpMapTexture;
-}
-
-void NiTexturingProperty::SetBumpMapTexture( const TexDesc & value ) {
-	bumpMapTexture = value;
-}
-
-float NiTexturingProperty::GetBumpMapLumaScale() const {
-	return bumpMapLumaScale;
-}
-
-void NiTexturingProperty::SetBumpMapLumaScale( float value ) {
-	bumpMapLumaScale = value;
-}
-
-float NiTexturingProperty::GetBumpMapLumaOffset() const {
-	return bumpMapLumaOffset;
-}
-
-void NiTexturingProperty::SetBumpMapLumaOffset( float value ) {
-	bumpMapLumaOffset = value;
-}
-
-Matrix22 NiTexturingProperty::GetBumpMapMatrix() const {
-	return bumpMapMatrix;
-}
-
-void NiTexturingProperty::SetBumpMapMatrix( const Matrix22 & value ) {
-	bumpMapMatrix = value;
-}
-
-bool NiTexturingProperty::GetHasNormalTexture() const {
-	return hasNormalTexture;
-}
-
-void NiTexturingProperty::SetHasNormalTexture( bool value ) {
-	hasNormalTexture = value;
-}
-
-TexDesc NiTexturingProperty::GetNormalTexture() const {
-	return normalTexture;
-}
-
-void NiTexturingProperty::SetNormalTexture( const TexDesc & value ) {
-	normalTexture = value;
-}
-
-bool NiTexturingProperty::GetHasDecal0Texture() const {
-	return hasDecal0Texture;
-}
-
-void NiTexturingProperty::SetHasDecal0Texture( bool value ) {
-	hasDecal0Texture = value;
-}
-
-TexDesc NiTexturingProperty::GetDecal0Texture() const {
-	return decal0Texture;
-}
-
-void NiTexturingProperty::SetDecal0Texture( const TexDesc & value ) {
-	decal0Texture = value;
-}
-
-bool NiTexturingProperty::GetHasDecal1Texture() const {
-	return hasDecal1Texture;
-}
-
-void NiTexturingProperty::SetHasDecal1Texture( bool value ) {
-	hasDecal1Texture = value;
-}
-
-bool NiTexturingProperty::GetHasDecal1Texture() const {
-	return hasDecal1Texture;
-}
-
-void NiTexturingProperty::SetHasDecal1Texture( bool value ) {
-	hasDecal1Texture = value;
-}
-
-TexDesc NiTexturingProperty::GetDecal1Texture() const {
-	return decal1Texture;
-}
-
-void NiTexturingProperty::SetDecal1Texture( const TexDesc & value ) {
-	decal1Texture = value;
-}
-
-bool NiTexturingProperty::GetHasDecal2Texture() const {
-	return hasDecal2Texture;
-}
-
-void NiTexturingProperty::SetHasDecal2Texture( bool value ) {
-	hasDecal2Texture = value;
-}
-
-bool NiTexturingProperty::GetHasDecal2Texture() const {
-	return hasDecal2Texture;
-}
-
-void NiTexturingProperty::SetHasDecal2Texture( bool value ) {
-	hasDecal2Texture = value;
-}
-
-TexDesc NiTexturingProperty::GetDecal2Texture() const {
-	return decal2Texture;
-}
-
-void NiTexturingProperty::SetDecal2Texture( const TexDesc & value ) {
-	decal2Texture = value;
-}
-
-bool NiTexturingProperty::GetHasDecal3Texture() const {
-	return hasDecal3Texture;
-}
-
-void NiTexturingProperty::SetHasDecal3Texture( bool value ) {
-	hasDecal3Texture = value;
-}
-
-bool NiTexturingProperty::GetHasDecal3Texture() const {
-	return hasDecal3Texture;
-}
-
-void NiTexturingProperty::SetHasDecal3Texture( bool value ) {
-	hasDecal3Texture = value;
-}
-
-TexDesc NiTexturingProperty::GetDecal3Texture() const {
-	return decal3Texture;
-}
-
-void NiTexturingProperty::SetDecal3Texture( const TexDesc & value ) {
-	decal3Texture = value;
-}
-
-vector<ShaderTexDesc > NiTexturingProperty::GetShaderTextures() const {
-	return shaderTextures;
-}
-
-void NiTexturingProperty::SetShaderTextures( const vector<ShaderTexDesc >& value ) {
-	shaderTextures = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

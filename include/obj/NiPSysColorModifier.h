@@ -60,18 +60,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Refers to NiColorData object.
-	// \return The current value.
-	Ref<NiColorData > GetData() const;
-
-	// Refers to NiColorData object.
-	// \param[in] value The new value.
-	void SetData( Ref<NiColorData > value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

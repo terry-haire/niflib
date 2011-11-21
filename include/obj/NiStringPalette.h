@@ -58,18 +58,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// A bunch of 0x00 seperated strings.
-	// \return The current value.
-	StringPalette GetPalette() const;
-
-	// A bunch of 0x00 seperated strings.
-	// \param[in] value The new value.
-	void SetPalette( const StringPalette & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!
