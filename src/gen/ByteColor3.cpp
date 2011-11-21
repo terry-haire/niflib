@@ -30,19 +30,19 @@ ByteColor3::~ByteColor3() {};
 //--BEGIN MISC CUSTOM CODE--//
 
 //ByteColor4
-void NifStream( ByteColor3 & val, istream& in, const NifInfo & info ) {
+void Niflib::NifStream( ByteColor3 & val, istream& in, const NifInfo & info ) {
 	val.r = ReadByte( in );
 	val.g = ReadByte( in );
 	val.b = ReadByte( in );
 };
 
-void NifStream( ByteColor3 const & val, ostream& out, const NifInfo & info ) {
+void Niflib::NifStream( ByteColor3 const & val, ostream& out, const NifInfo & info ) {
 	WriteByte( val.r, out );
 	WriteByte( val.g, out );
 	WriteByte( val.b, out );
 };
 
-ostream & operator<<( ostream & out, Color3 const & val ) {
+ostream & Niflib::operator<<( ostream & out, ByteColor3 const & val ) {
 	return out << "{R:" << setw(6) << val.r << " G:" << setw(6) << val.g << " B:" << setw(6) << val.b << "}";
 }
 

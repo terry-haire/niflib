@@ -35,13 +35,6 @@ struct ByteColor4 {
 	//--END CUSTOM CODE--//
 };
 
-//--BEGIN FILE FOOT CUSTOM CODE--//
-void NifStream( ByteColor4 & val, istream& in, const NifInfo & info);
-void NifStream( ByteColor4 const & val, ostream& out, const NifInfo & info );
-
-NIFLIB_API ostream & operator<<( ostream & out, ByteColor4 const & val );
-//--END FILE FOOT CUSTOM CODE--//
-
 }
 
 #endif

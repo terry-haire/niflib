@@ -311,6 +311,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/FI&quot;pch.h&quot;"
 				Optimization="3"
 				AdditionalIncludeDirectories="$(ProjectDir)include"
 				PreprocessorDefinitions="BUILDING_NIFLIB_DLL;WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS"
@@ -386,6 +387,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/FI&quot;pch.h&quot;"
 				Optimization="3"
 				AdditionalIncludeDirectories="$(ProjectDir)include"
 				PreprocessorDefinitions="BUILDING_NIFLIB_DLL;WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS"
@@ -460,6 +462,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/FI&quot;pch.h&quot;"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(ProjectDir)include"
 				PreprocessorDefinitions="BUILDING_NIFLIB_DLL;WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS"
@@ -537,6 +540,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/FI&quot;pch.h&quot;"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(ProjectDir)include"
 				PreprocessorDefinitions="BUILDING_NIFLIB_DLL;WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS"
@@ -2281,6 +2285,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\obj\NiShadowGenerator.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\obj\NiSingleInterpController.cpp"
 					>
 				</File>
@@ -2646,6 +2654,10 @@
 				</File>
 				<File
 					RelativePath=".\src\gen\MatchGroup.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\gen\MaterialData.cpp"
 					>
 				</File>
 				<File
