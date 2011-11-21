@@ -60,6 +60,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Unknown
+	// \return The current value.
+	vector<Ref<NiPhysXTransformDest > > GetTransformDests() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetTransformDests( const vector<Ref<NiPhysXTransformDest > >& value );
+
+	// PhysX Property Description.
+	// \return The current value.
+	Ref<NiPhysXPropDesc > GetPropDescription() const;
+
+	// PhysX Property Description.
+	// \param[in] value The new value.
+	void SetPropDescription( Ref<NiPhysXPropDesc > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -76,6 +96,8 @@ protected:
 	vector<Ref<NiPhysXTransformDest > > transformDests;
 	/*! Unknown */
 	byte unknownByte;
+	/*! Unknown */
+	int unknownInt;
 	/*! PhysX Property Description. */
 	Ref<NiPhysXPropDesc > propDescription;
 public:

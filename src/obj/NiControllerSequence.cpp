@@ -26,7 +26,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiControllerSequence::TYPE("NiControllerSequence", &NiSequence::TYPE );
 
-NiControllerSequence::NiControllerSequence() : weight(1.0f), textKeys(NULL), cycleType((CycleType)0), unknownInt0((unsigned int)0), frequency(0.0f), startTime(0.0f), unknownFloat2(0.0f), stopTime(0.0f), unknownByte((byte)0), manager(NULL), stringPalette(NULL), unknownShort1((short)0), unknownShort2((short)0), unknownInt3((unsigned int)0) {
+NiControllerSequence::NiControllerSequence() : weight(1.0f), textKeys(NULL), cycleType((CycleType)0), unknownInt0((unsigned int)0), frequency(0.0f), startTime(0.0f), unknownFloat2(0.0f), stopTime(0.0f), unknownByte((byte)0), manager(NULL), stringPalette(NULL), unknownShort1((short)0), unknownShort2((short)0), unknownInt3((unsigned int)64) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -81,13 +81,13 @@ void NiControllerSequence::Read( istream& in, list<unsigned int> & link_stack, c
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 	};
-	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion == 11) && (info.userVersion2 >= 24)) ) ) {
+	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion >= 11) && (info.userVersion2 >= 24)) ) ) {
 		NifStream( unknownShort1, in, info );
 	};
-	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion == 11) && ((info.userVersion2 >= 24) && (info.userVersion2 <= 28))) ) ) {
+	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion >= 11) && ((info.userVersion2 >= 24) && (info.userVersion2 <= 28))) ) ) {
 		NifStream( unknownShort2, in, info );
 	};
-	if ( ( info.version >= 0x14030009 ) && ( info.version <= 0x14030009 ) ) {
+	if ( info.version >= 0x14030009 ) {
 		NifStream( unknownInt3, in, info );
 	};
 
@@ -176,13 +176,13 @@ void NiControllerSequence::Write( ostream& out, const map<NiObjectRef,unsigned i
 			}
 		}
 	};
-	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion == 11) && (info.userVersion2 >= 24)) ) ) {
+	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion >= 11) && (info.userVersion2 >= 24)) ) ) {
 		NifStream( unknownShort1, out, info );
 	};
-	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion == 11) && ((info.userVersion2 >= 24) && (info.userVersion2 <= 28))) ) ) {
+	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion >= 11) && ((info.userVersion2 >= 24) && (info.userVersion2 <= 28))) ) ) {
 		NifStream( unknownShort2, out, info );
 	};
-	if ( ( info.version >= 0x14030009 ) && ( info.version <= 0x14030009 ) ) {
+	if ( info.version >= 0x14030009 ) {
 		NifStream( unknownInt3, out, info );
 	};
 
@@ -251,6 +251,82 @@ std::list<NiObject *> NiControllerSequence::GetPtrs() const {
 		ptrs.push_back((NiObject *)(manager));
 	return ptrs;
 }
+
+/***Begin Example Naive Implementation****
+
+float NiControllerSequence::GetWeight() const {
+	return weight;
+}
+
+void NiControllerSequence::SetWeight( float value ) {
+	weight = value;
+}
+
+Ref<NiTextKeyExtraData > NiControllerSequence::GetTextKeys() const {
+	return textKeys;
+}
+
+void NiControllerSequence::SetTextKeys( Ref<NiTextKeyExtraData > value ) {
+	textKeys = value;
+}
+
+CycleType NiControllerSequence::GetCycleType() const {
+	return cycleType;
+}
+
+void NiControllerSequence::SetCycleType( const CycleType & value ) {
+	cycleType = value;
+}
+
+float NiControllerSequence::GetFrequency() const {
+	return frequency;
+}
+
+void NiControllerSequence::SetFrequency( float value ) {
+	frequency = value;
+}
+
+float NiControllerSequence::GetStartTime() const {
+	return startTime;
+}
+
+void NiControllerSequence::SetStartTime( float value ) {
+	startTime = value;
+}
+
+float NiControllerSequence::GetStopTime() const {
+	return stopTime;
+}
+
+void NiControllerSequence::SetStopTime( float value ) {
+	stopTime = value;
+}
+
+NiControllerManager * NiControllerSequence::GetManager() const {
+	return manager;
+}
+
+void NiControllerSequence::SetManager( NiControllerManager * value ) {
+	manager = value;
+}
+
+IndexString NiControllerSequence::GetTargetName() const {
+	return targetName;
+}
+
+void NiControllerSequence::SetTargetName( const IndexString & value ) {
+	targetName = value;
+}
+
+Ref<NiStringPalette > NiControllerSequence::GetStringPalette() const {
+	return stringPalette;
+}
+
+void NiControllerSequence::SetStringPalette( Ref<NiStringPalette > value ) {
+	stringPalette = value;
+}
+
+****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

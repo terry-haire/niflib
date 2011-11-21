@@ -123,6 +123,42 @@ std::list<NiObject *> bhkCapsuleShape::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Vector3 bhkCapsuleShape::GetFirstPoint() const {
+	return firstPoint;
+}
+
+void bhkCapsuleShape::SetFirstPoint( const Vector3 & value ) {
+	firstPoint = value;
+}
+
+float bhkCapsuleShape::GetRadius1() const {
+	return radius1;
+}
+
+void bhkCapsuleShape::SetRadius1( float value ) {
+	radius1 = value;
+}
+
+Vector3 bhkCapsuleShape::GetSecondPoint() const {
+	return secondPoint;
+}
+
+void bhkCapsuleShape::SetSecondPoint( const Vector3 & value ) {
+	secondPoint = value;
+}
+
+float bhkCapsuleShape::GetRadius2() const {
+	return radius2;
+}
+
+void bhkCapsuleShape::SetRadius2( float value ) {
+	radius2 = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 float bhkCapsuleShape::GetRadius() const {

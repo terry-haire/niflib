@@ -52,6 +52,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The visibility keys.
+	// \return The current value.
+	vector<Key<byte > > GetKeys() const;
+
+	// The visibility keys.
+	// \param[in] value The new value.
+	void SetKeys( const vector<Key<byte > >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*! Retrieves the visibility key data.

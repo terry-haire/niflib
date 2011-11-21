@@ -55,6 +55,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// ?
+	// \return The current value.
+	Vector3 GetLodCenter() const;
+
+	// ?
+	// \param[in] value The new value.
+	void SetLodCenter( const Vector3 & value );
+
+	// The ranges of distance that each level of detail applies in.
+	// \return The current value.
+	vector<LODRange > GetLodLevels() const;
+
+	// The ranges of distance that each level of detail applies in.
+	// \param[in] value The new value.
+	void SetLodLevels( const vector<LODRange >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

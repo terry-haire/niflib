@@ -117,6 +117,26 @@ std::list<NiObject *> bhkBoxShape::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Vector3 bhkBoxShape::GetDimensions() const {
+	return dimensions;
+}
+
+void bhkBoxShape::SetDimensions( const Vector3 & value ) {
+	dimensions = value;
+}
+
+float bhkBoxShape::GetMinimumSize() const {
+	return minimumSize;
+}
+
+void bhkBoxShape::SetMinimumSize( float value ) {
+	minimumSize = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Vector3 bhkBoxShape::GetDimensions() const {

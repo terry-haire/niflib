@@ -55,6 +55,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Unknown. Probably has something to do with the furniture positions?
+	// \return The current value.
+	vector<FurniturePosition > GetPositions() const;
+
+	// Unknown. Probably has something to do with the furniture positions?
+	// \param[in] value The new value.
+	void SetPositions( const vector<FurniturePosition >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

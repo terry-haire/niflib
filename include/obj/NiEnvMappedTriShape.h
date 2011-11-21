@@ -59,6 +59,34 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// List of child node object indices.
+	// \return The current value.
+	vector<Ref<NiAVObject > > GetChildren() const;
+
+	// List of child node object indices.
+	// \param[in] value The new value.
+	void SetChildren( const vector<Ref<NiAVObject > >& value );
+
+	// unknown
+	// \return The current value.
+	Ref<NiObject > GetChild2() const;
+
+	// unknown
+	// \param[in] value The new value.
+	void SetChild2( Ref<NiObject > value );
+
+	// unknown
+	// \return The current value.
+	Ref<NiObject > GetChild3() const;
+
+	// unknown
+	// \param[in] value The new value.
+	void SetChild3( Ref<NiObject > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

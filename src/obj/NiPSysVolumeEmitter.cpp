@@ -122,5 +122,17 @@ std::list<NiObject *> NiPSysVolumeEmitter::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+NiNode * NiPSysVolumeEmitter::GetEmitterObject() const {
+	return emitterObject;
+}
+
+void NiPSysVolumeEmitter::SetEmitterObject( NiNode * value ) {
+	emitterObject = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

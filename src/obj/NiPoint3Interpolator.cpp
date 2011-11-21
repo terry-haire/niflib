@@ -119,6 +119,26 @@ std::list<NiObject *> NiPoint3Interpolator::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Vector3 NiPoint3Interpolator::GetPoint3Value() const {
+	return point3Value;
+}
+
+void NiPoint3Interpolator::SetPoint3Value( const Vector3 & value ) {
+	point3Value = value;
+}
+
+Ref<NiPosData > NiPoint3Interpolator::GetData() const {
+	return data;
+}
+
+void NiPoint3Interpolator::SetData( Ref<NiPosData > value ) {
+	data = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Vector3 NiPoint3Interpolator::GetPoint3Value() const {

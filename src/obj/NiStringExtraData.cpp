@@ -101,6 +101,26 @@ std::list<NiObject *> NiStringExtraData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+unsigned int NiStringExtraData::GetBytesRemaining() const {
+	return bytesRemaining;
+}
+
+void NiStringExtraData::SetBytesRemaining( unsigned int value ) {
+	bytesRemaining = value;
+}
+
+IndexString NiStringExtraData::GetStringData() const {
+	return stringData;
+}
+
+void NiStringExtraData::SetStringData( const IndexString & value ) {
+	stringData = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 string NiStringExtraData::GetData() const {

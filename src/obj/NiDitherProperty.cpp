@@ -94,6 +94,18 @@ std::list<NiObject *> NiDitherProperty::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+unsigned short NiDitherProperty::GetFlags() const {
+	return flags;
+}
+
+void NiDitherProperty::SetFlags( unsigned short value ) {
+	flags = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 unsigned short NiDitherProperty::GetFlags() const {

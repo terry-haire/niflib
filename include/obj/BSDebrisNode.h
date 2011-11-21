@@ -53,6 +53,8 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	//--This object has no eligable attributes.  No example implementation generated--//
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -60,7 +62,7 @@ protected:
 	/*! Unknown */
 	byte unknownByte1;
 	/*! Unknown */
-	short unknownShort1;
+	short unknownShort2;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

@@ -52,6 +52,22 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Property flags.
+	//             0 - Wireframe Mode Disabled
+	//             1 - Wireframe Mode Enabled
+	// \return The current value.
+	unsigned short GetFlags() const;
+
+	// Property flags.
+	//             0 - Wireframe Mode Disabled
+	//             1 - Wireframe Mode Enabled
+	// \param[in] value The new value.
+	void SetFlags( unsigned short value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

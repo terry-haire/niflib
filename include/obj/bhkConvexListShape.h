@@ -67,6 +67,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// List of shapes.
+	// \return The current value.
+	vector<Ref<bhkConvexShape > > GetSubShapes() const;
+
+	// List of shapes.
+	// \param[in] value The new value.
+	void SetSubShapes( const vector<Ref<bhkConvexShape > >& value );
+
+	// The shape's material.
+	// \return The current value.
+	HavokMaterial GetMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	void SetMaterial( const HavokMaterial & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

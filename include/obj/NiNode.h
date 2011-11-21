@@ -61,6 +61,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// List of child node object indices.
+	// \return The current value.
+	vector<Ref<NiAVObject > > GetChildren() const;
+
+	// List of child node object indices.
+	// \param[in] value The new value.
+	void SetChildren( const vector<Ref<NiAVObject > >& value );
+
+	// List of node effects. ADynamicEffect?
+	// \return The current value.
+	vector<Ref<NiDynamicEffect > > GetEffects() const;
+
+	// List of node effects. ADynamicEffect?
+	// \param[in] value The new value.
+	void SetEffects( const vector<Ref<NiDynamicEffect > >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

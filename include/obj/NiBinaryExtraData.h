@@ -55,6 +55,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The binary data.
+	// \return The current value.
+	ByteArray GetBinaryData() const;
+
+	// The binary data.
+	// \param[in] value The new value.
+	void SetBinaryData( const ByteArray & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

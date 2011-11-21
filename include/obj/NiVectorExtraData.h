@@ -52,6 +52,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The vector data.
+	// \return The current value.
+	Vector3 GetVectorData() const;
+
+	// The vector data.
+	// \param[in] value The new value.
+	void SetVectorData( const Vector3 & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

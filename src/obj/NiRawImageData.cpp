@@ -178,5 +178,33 @@ std::list<NiObject *> NiRawImageData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+ImageType NiRawImageData::GetImageType() const {
+	return imageType;
+}
+
+void NiRawImageData::SetImageType( const ImageType & value ) {
+	imageType = value;
+}
+
+vector<vector<ByteColor3 > > NiRawImageData::GetRgbImageData() const {
+	return rgbImageData;
+}
+
+void NiRawImageData::SetRgbImageData( const vector<ByteColor3 >& value ) {
+	rgbImageData = value;
+}
+
+vector<vector<ByteColor4 > > NiRawImageData::GetRgbaImageData() const {
+	return rgbaImageData;
+}
+
+void NiRawImageData::SetRgbaImageData( const vector<ByteColor4 >& value ) {
+	rgbaImageData = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

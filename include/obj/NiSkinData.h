@@ -19,6 +19,7 @@ namespace Niflib {
 #include "NiObject.h"
 
 // Include structures
+#include "../gen/SkinTransform.h"
 #include "../Ref.h"
 #include "../gen/SkinData.h"
 namespace Niflib {
@@ -60,6 +61,42 @@ public:
 	 * \return The type constant for the actual type of the object.
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
+
+	/***Begin Example Naive Implementation****
+
+	// Offset of the skin from this bone in bind position.
+	// \return The current value.
+	SkinTransform GetSkinTransform() const;
+
+	// Offset of the skin from this bone in bind position.
+	// \param[in] value The new value.
+	void SetSkinTransform( const SkinTransform & value );
+
+	// This optionally links a NiSkinPartition for hardware-acceleration information.
+	// \return The current value.
+	Ref<NiSkinPartition > GetSkinPartition() const;
+
+	// This optionally links a NiSkinPartition for hardware-acceleration information.
+	// \param[in] value The new value.
+	void SetSkinPartition( Ref<NiSkinPartition > value );
+
+	// Enables Vertex Weights for this NiSkinData.
+	// \return The current value.
+	byte GetHasVertexWeights() const;
+
+	// Enables Vertex Weights for this NiSkinData.
+	// \param[in] value The new value.
+	void SetHasVertexWeights( byte value );
+
+	// Contains offset data for each node that this skin is influenced by.
+	// \return The current value.
+	vector<SkinData > GetBoneList() const;
+
+	// Contains offset data for each node that this skin is influenced by.
+	// \param[in] value The new value.
+	void SetBoneList( const vector<SkinData >& value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
@@ -137,21 +174,8 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*!
-	 * The overall rotation offset of the skin from this bone in the bind position.
-	 *             (This is a guess, it has always been the identity matrix so far)
-	 */
-	Matrix33 rotation;
-	/*!
-	 * The overall translation offset of the skin from this bone in the bind position.
-	 * (This is a guess, it has always been (0.0, 0.0, 0.0) so far)
-	 */
-	Vector3 translation;
-	/*!
-	 * The scale offset of the skin from this bone in the bind position. (This is an
-	 * assumption - it has always been 1.0 so far)
-	 */
-	float scale;
+	/*! Offset of the skin from this bone in bind position. */
+	SkinTransform skinTransform;
 	/*! Number of bones. */
 	mutable unsigned int numBones;
 	/*! This optionally links a NiSkinPartition for hardware-acceleration information. */

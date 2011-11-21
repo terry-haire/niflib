@@ -54,6 +54,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The entities affected by this constraint.
+	// \return The current value.
+	vector<bhkEntity * > GetEntities() const;
+
+	// The entities affected by this constraint.
+	// \param[in] value The new value.
+	void SetEntities( const vector<bhkEntity * >& value );
+
+	// Usually 1. Higher values indicate higher priority of this constraint?
+	// \return The current value.
+	unsigned int GetPriority() const;
+
+	// Usually 1. Higher values indicate higher priority of this constraint?
+	// \param[in] value The new value.
+	void SetPriority( unsigned int value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

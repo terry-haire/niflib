@@ -52,6 +52,118 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Property flags.
+	// \return The current value.
+	unsigned short GetFlags() const;
+
+	// Property flags.
+	// \param[in] value The new value.
+	void SetFlags( unsigned short value );
+
+	// Enables or disables the stencil test.
+	// \return The current value.
+	byte GetStencilEnabled() const;
+
+	// Enables or disables the stencil test.
+	// \param[in] value The new value.
+	void SetStencilEnabled( byte value );
+
+	// Selects the compare mode function (see: glStencilFunc).
+	// \return The current value.
+	StencilCompareMode GetStencilFunction() const;
+
+	// Selects the compare mode function (see: glStencilFunc).
+	// \param[in] value The new value.
+	void SetStencilFunction( const StencilCompareMode & value );
+
+	// Unknown.  Default is 0.
+	// \return The current value.
+	unsigned int GetStencilRef() const;
+
+	// Unknown.  Default is 0.
+	// \param[in] value The new value.
+	void SetStencilRef( unsigned int value );
+
+	// A bit mask. The default is 0xffffffff.
+	// \return The current value.
+	unsigned int GetStencilMask() const;
+
+	// A bit mask. The default is 0xffffffff.
+	// \param[in] value The new value.
+	void SetStencilMask( unsigned int value );
+
+	// Unknown.
+	// \return The current value.
+	StencilAction GetFailAction() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetFailAction( const StencilAction & value );
+
+	// Unknown.
+	// \return The current value.
+	StencilAction GetZFailAction() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetZFailAction( const StencilAction & value );
+
+	// Unknown.
+	// \return The current value.
+	StencilAction GetPassAction() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetPassAction( const StencilAction & value );
+
+	// Used to enabled double sided faces. Default is 3 (DRAW_BOTH).
+	// \return The current value.
+	FaceDrawMode GetDrawMode() const;
+
+	// Used to enabled double sided faces. Default is 3 (DRAW_BOTH).
+	// \param[in] value The new value.
+	void SetDrawMode( const FaceDrawMode & value );
+
+// Property flags:
+	//             Bit 0: Stencil Enable
+	//             Bits 1-3: Fail Action
+	//             Bits 4-6: Z Fail Action
+	//             Bits 7-9: Pass Action
+	//             Bits 10-11: Draw Mode
+	//             Bits 12-14: Stencil Function
+	// \return The current value.
+	unsigned short GetFlags() const;
+
+// Property flags:
+	//             Bit 0: Stencil Enable
+	//             Bits 1-3: Fail Action
+	//             Bits 4-6: Z Fail Action
+	//             Bits 7-9: Pass Action
+	//             Bits 10-11: Draw Mode
+	//             Bits 12-14: Stencil Function
+	// \param[in] value The new value.
+	void SetFlags( unsigned short value );
+
+	// Unknown.  Default is 0.
+	// \return The current value.
+	unsigned int GetStencilRef() const;
+
+	// Unknown.  Default is 0.
+	// \param[in] value The new value.
+	void SetStencilRef( unsigned int value );
+
+	// A bit mask. The default is 0xffffffff.
+	// \return The current value.
+	unsigned int GetStencilMask() const;
+
+	// A bit mask. The default is 0xffffffff.
+	// \param[in] value The new value.
+	void SetStencilMask( unsigned int value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

@@ -52,6 +52,38 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Do we have strip point data?
+	// \return The current value.
+	bool GetHasPoints() const;
+
+	// Do we have strip point data?
+	// \param[in] value The new value.
+	void SetHasPoints( bool value );
+
+	// The points in the Triangle strips.  Size is the sum of all entries in Strip
+	// Lengths.
+	// \return The current value.
+	vector<vector<unsigned short > > GetPoints() const;
+
+	// The points in the Triangle strips.  Size is the sum of all entries in Strip
+	// Lengths.
+	// \param[in] value The new value.
+	void SetPoints( const vector<unsigned short >& value );
+
+	// The points in the Triangle strips. Size is the sum of all entries in Strip
+	// Lengths.
+	// \return The current value.
+	vector<vector<unsigned short > > GetPoints() const;
+
+	// The points in the Triangle strips. Size is the sum of all entries in Strip
+	// Lengths.
+	// \param[in] value The new value.
+	void SetPoints( const vector<unsigned short >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

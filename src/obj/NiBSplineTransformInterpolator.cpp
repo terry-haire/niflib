@@ -115,6 +115,58 @@ std::list<NiObject *> NiBSplineTransformInterpolator::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Vector3 NiBSplineTransformInterpolator::GetTranslation() const {
+	return translation;
+}
+
+void NiBSplineTransformInterpolator::SetTranslation( const Vector3 & value ) {
+	translation = value;
+}
+
+Quaternion NiBSplineTransformInterpolator::GetRotation() const {
+	return rotation;
+}
+
+void NiBSplineTransformInterpolator::SetRotation( const Quaternion & value ) {
+	rotation = value;
+}
+
+float NiBSplineTransformInterpolator::GetScale() const {
+	return scale;
+}
+
+void NiBSplineTransformInterpolator::SetScale( float value ) {
+	scale = value;
+}
+
+unsigned int NiBSplineTransformInterpolator::GetTranslationOffset() const {
+	return translationOffset;
+}
+
+void NiBSplineTransformInterpolator::SetTranslationOffset( unsigned int value ) {
+	translationOffset = value;
+}
+
+unsigned int NiBSplineTransformInterpolator::GetRotationOffset() const {
+	return rotationOffset;
+}
+
+void NiBSplineTransformInterpolator::SetRotationOffset( unsigned int value ) {
+	rotationOffset = value;
+}
+
+unsigned int NiBSplineTransformInterpolator::GetScaleOffset() const {
+	return scaleOffset;
+}
+
+void NiBSplineTransformInterpolator::SetScaleOffset( unsigned int value ) {
+	scaleOffset = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 Vector3 NiBSplineTransformInterpolator::GetTranslation() const {
 	return translation;

@@ -280,6 +280,42 @@ std::list<NiObject *> NiRoom::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<Vector4 > NiRoom::GetWallPlane() const {
+	return wallPlane;
+}
+
+void NiRoom::SetWallPlane( const vector<Vector4 >& value ) {
+	wallPlane = value;
+}
+
+vector<NiPortal * > NiRoom::GetInPortals() const {
+	return inPortals;
+}
+
+void NiRoom::SetInPortals( const vector<NiPortal * >& value ) {
+	inPortals = value;
+}
+
+vector<NiPortal * > NiRoom::GetPortals2() const {
+	return portals2;
+}
+
+void NiRoom::SetPortals2( const vector<NiPortal * >& value ) {
+	portals2 = value;
+}
+
+vector<NiAVObject * > NiRoom::GetItems() const {
+	return items;
+}
+
+void NiRoom::SetItems( const vector<NiAVObject * >& value ) {
+	items = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

@@ -56,6 +56,28 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The time from the beginning of the particle lifetime during which the particle
+	// grows.
+	// \return The current value.
+	float GetGrow() const;
+
+	// The time from the beginning of the particle lifetime during which the particle
+	// grows.
+	// \param[in] value The new value.
+	void SetGrow( float value );
+
+	// The time from the end of the particle lifetime during which the particle fades.
+	// \return The current value.
+	float GetFade() const;
+
+	// The time from the end of the particle lifetime during which the particle fades.
+	// \param[in] value The new value.
+	void SetFade( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

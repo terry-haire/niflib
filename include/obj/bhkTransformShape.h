@@ -57,6 +57,34 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The shape that this object transforms.
+	// \return The current value.
+	Ref<bhkShape > GetShape() const;
+
+	// The shape that this object transforms.
+	// \param[in] value The new value.
+	void SetShape( Ref<bhkShape > value );
+
+	// The shape's material.
+	// \return The current value.
+	HavokMaterial GetMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	void SetMaterial( const HavokMaterial & value );
+
+	// A transform matrix.
+	// \return The current value.
+	Matrix44 GetTransform() const;
+
+	// A transform matrix.
+	// \param[in] value The new value.
+	void SetTransform( const Matrix44 & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

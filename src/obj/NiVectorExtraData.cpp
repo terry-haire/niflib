@@ -97,6 +97,18 @@ std::list<NiObject *> NiVectorExtraData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Vector3 NiVectorExtraData::GetVectorData() const {
+	return vectorData;
+}
+
+void NiVectorExtraData::SetVectorData( const Vector3 & value ) {
+	vectorData = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Vector3 NiVectorExtraData::GetData() const {

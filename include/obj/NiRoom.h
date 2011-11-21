@@ -56,6 +56,42 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Face normal and unknown value.
+	// \return The current value.
+	vector<Vector4 > GetWallPlane() const;
+
+	// Face normal and unknown value.
+	// \param[in] value The new value.
+	void SetWallPlane( const vector<Vector4 >& value );
+
+	// Number of portals into room
+	// \return The current value.
+	vector<NiPortal * > GetInPortals() const;
+
+	// Number of portals into room
+	// \param[in] value The new value.
+	void SetInPortals( const vector<NiPortal * >& value );
+
+	// Number of portals out of room
+	// \return The current value.
+	vector<NiPortal * > GetPortals2() const;
+
+	// Number of portals out of room
+	// \param[in] value The new value.
+	void SetPortals2( const vector<NiPortal * >& value );
+
+	// All geometry associated with room.
+	// \return The current value.
+	vector<NiAVObject * > GetItems() const;
+
+	// All geometry associated with room.
+	// \param[in] value The new value.
+	void SetItems( const vector<NiAVObject * >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

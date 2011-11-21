@@ -52,6 +52,20 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The number of control points of the B-spline (number of frames of animation plus
+	// degree of B-spline minus one).
+	// \return The current value.
+	unsigned int GetNumControlPoints() const;
+
+	// The number of control points of the B-spline (number of frames of animation plus
+	// degree of B-spline minus one).
+	// \param[in] value The new value.
+	void SetNumControlPoints( unsigned int value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

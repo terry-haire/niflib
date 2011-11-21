@@ -52,6 +52,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Looks like this could be the box size.
+	// \return The current value.
+	Vector3 GetDimensions() const;
+
+	// Looks like this could be the box size.
+	// \param[in] value The new value.
+	void SetDimensions( const Vector3 & value );
+
+	// The smallest of the three sizes. Might be used for optimization.
+	// \return The current value.
+	float GetMinimumSize() const;
+
+	// The smallest of the three sizes. Might be used for optimization.
+	// \param[in] value The new value.
+	void SetMinimumSize( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

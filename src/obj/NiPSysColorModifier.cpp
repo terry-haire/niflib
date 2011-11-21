@@ -116,5 +116,17 @@ std::list<NiObject *> NiPSysColorModifier::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Ref<NiColorData > NiPSysColorModifier::GetData() const {
+	return data;
+}
+
+void NiPSysColorModifier::SetData( Ref<NiColorData > value ) {
+	data = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

@@ -55,6 +55,34 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Number of vertices.
+	// \return The current value.
+	unsigned int GetNumVertices() const;
+
+	// Number of vertices.
+	// \param[in] value The new value.
+	void SetNumVertices( unsigned int value );
+
+	// This byte is always 1 in all official files.
+	// \return The current value.
+	byte GetRelativeTargets() const;
+
+	// This byte is always 1 in all official files.
+	// \param[in] value The new value.
+	void SetRelativeTargets( byte value );
+
+	// The geometry morphing objects.
+	// \return The current value.
+	vector<Morph > GetMorphs() const;
+
+	// The geometry morphing objects.
+	// \param[in] value The new value.
+	void SetMorphs( const vector<Morph >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

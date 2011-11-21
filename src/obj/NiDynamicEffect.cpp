@@ -193,6 +193,34 @@ std::list<NiObject *> NiDynamicEffect::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+bool NiDynamicEffect::GetSwitchState() const {
+	return switchState;
+}
+
+void NiDynamicEffect::SetSwitchState( bool value ) {
+	switchState = value;
+}
+
+vector<unsigned int > NiDynamicEffect::GetAffectedNodeListPointers() const {
+	return affectedNodeListPointers;
+}
+
+void NiDynamicEffect::SetAffectedNodeListPointers( const vector<unsigned int >& value ) {
+	affectedNodeListPointers = value;
+}
+
+vector<Ref<NiAVObject > > NiDynamicEffect::GetAffectedNodes() const {
+	return affectedNodes;
+}
+
+void NiDynamicEffect::SetAffectedNodes( const vector<Ref<NiAVObject > >& value ) {
+	affectedNodes = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 bool NiDynamicEffect::GetSwitchState() const {

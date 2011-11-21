@@ -59,6 +59,50 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Unknown.
+	// \return The current value.
+	unsigned short GetExtraFlags() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetExtraFlags( unsigned short value );
+
+	// Geometry morphing data index.
+	// \return The current value.
+	Ref<NiMorphData > GetData() const;
+
+	// Geometry morphing data index.
+	// \param[in] value The new value.
+	void SetData( Ref<NiMorphData > value );
+
+	// Always Update
+	// \return The current value.
+	byte GetAlwaysUpdate() const;
+
+	// Always Update
+	// \param[in] value The new value.
+	void SetAlwaysUpdate( byte value );
+
+	// List of interpolators.
+	// \return The current value.
+	vector<Ref<NiInterpolator > > GetInterpolators() const;
+
+	// List of interpolators.
+	// \param[in] value The new value.
+	void SetInterpolators( const vector<Ref<NiInterpolator > >& value );
+
+	// Weighted Interpolators?
+	// \return The current value.
+	vector<MorphWeight > GetInterpolatorWeights() const;
+
+	// Weighted Interpolators?
+	// \param[in] value The new value.
+	void SetInterpolatorWeights( const vector<MorphWeight >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//TODO: Lots of unknown data in this object

@@ -94,6 +94,18 @@ std::list<NiObject *> NiShadeProperty::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+unsigned short NiShadeProperty::GetFlags() const {
+	return flags;
+}
+
+void NiShadeProperty::SetFlags( unsigned short value ) {
+	flags = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 unsigned short NiShadeProperty::GetFlags() const {

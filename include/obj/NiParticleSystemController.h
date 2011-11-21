@@ -60,6 +60,238 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Particle speed in old files
+	// \return The current value.
+	unsigned int GetOldSpeed() const;
+
+	// Particle speed in old files
+	// \param[in] value The new value.
+	void SetOldSpeed( unsigned int value );
+
+	// Particle speed
+	// \return The current value.
+	float GetSpeed() const;
+
+	// Particle speed
+	// \param[in] value The new value.
+	void SetSpeed( float value );
+
+	// Particle random speed modifier
+	// \return The current value.
+	float GetSpeedRandom() const;
+
+	// Particle random speed modifier
+	// \param[in] value The new value.
+	void SetSpeedRandom( float value );
+
+	// vertical emit direction [radians]
+	//             0.0 : up
+	//             1.6 : horizontal
+	//             3.1416 : down
+	// \return The current value.
+	float GetVerticalDirection() const;
+
+	// vertical emit direction [radians]
+	//             0.0 : up
+	//             1.6 : horizontal
+	//             3.1416 : down
+	// \param[in] value The new value.
+	void SetVerticalDirection( float value );
+
+	// emitter's vertical opening angle [radians]
+	// \return The current value.
+	float GetVerticalAngle() const;
+
+	// emitter's vertical opening angle [radians]
+	// \param[in] value The new value.
+	void SetVerticalAngle( float value );
+
+	// horizontal emit direction
+	// \return The current value.
+	float GetHorizontalDirection() const;
+
+	// horizontal emit direction
+	// \param[in] value The new value.
+	void SetHorizontalDirection( float value );
+
+	// emitter's horizontal opening angle
+	// \return The current value.
+	float GetHorizontalAngle() const;
+
+	// emitter's horizontal opening angle
+	// \param[in] value The new value.
+	void SetHorizontalAngle( float value );
+
+	// Particle size
+	// \return The current value.
+	float GetSize() const;
+
+	// Particle size
+	// \param[in] value The new value.
+	void SetSize( float value );
+
+	// Particle emit start time
+	// \return The current value.
+	float GetEmitStartTime() const;
+
+	// Particle emit start time
+	// \param[in] value The new value.
+	void SetEmitStartTime( float value );
+
+	// Particle emit stop time
+	// \return The current value.
+	float GetEmitStopTime() const;
+
+	// Particle emit stop time
+	// \param[in] value The new value.
+	void SetEmitStopTime( float value );
+
+	// Particle emission rate in old files
+	// \return The current value.
+	unsigned int GetOldEmitRate() const;
+
+	// Particle emission rate in old files
+	// \param[in] value The new value.
+	void SetOldEmitRate( unsigned int value );
+
+	// Particle emission rate (particles per second)
+	// \return The current value.
+	float GetEmitRate() const;
+
+	// Particle emission rate (particles per second)
+	// \param[in] value The new value.
+	void SetEmitRate( float value );
+
+	// Particle lifetime
+	// \return The current value.
+	float GetLifetime() const;
+
+	// Particle lifetime
+	// \param[in] value The new value.
+	void SetLifetime( float value );
+
+	// Particle lifetime random modifier
+	// \return The current value.
+	float GetLifetimeRandom() const;
+
+	// Particle lifetime random modifier
+	// \param[in] value The new value.
+	void SetLifetimeRandom( float value );
+
+	// Bit 0: Emit Rate toggle bit (0 = auto adjust, 1 = use Emit Rate value)
+	// \return The current value.
+	unsigned short GetEmitFlags() const;
+
+	// Bit 0: Emit Rate toggle bit (0 = auto adjust, 1 = use Emit Rate value)
+	// \param[in] value The new value.
+	void SetEmitFlags( unsigned short value );
+
+	// Particle random start translation vector
+	// \return The current value.
+	Vector3 GetStartRandom() const;
+
+	// Particle random start translation vector
+	// \param[in] value The new value.
+	void SetStartRandom( const Vector3 & value );
+
+	// This index targets the particle emitter object (TODO: find out what type of
+	// object this refers to).
+	// \return The current value.
+	NiObject * GetEmitter() const;
+
+	// This index targets the particle emitter object (TODO: find out what type of
+	// object this refers to).
+	// \param[in] value The new value.
+	void SetEmitter( NiObject * value );
+
+	// Particle velocity
+	// \return The current value.
+	Vector3 GetParticleVelocity() const;
+
+	// Particle velocity
+	// \param[in] value The new value.
+	void SetParticleVelocity( const Vector3 & value );
+
+	// The particle's age.
+	// \return The current value.
+	float GetParticleLifetime() const;
+
+	// The particle's age.
+	// \param[in] value The new value.
+	void SetParticleLifetime( float value );
+
+	// Unknown.
+	// \return The current value.
+	Ref<NiObject > GetParticleLink() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetParticleLink( Ref<NiObject > value );
+
+	// Timestamp of the last update.
+	// \return The current value.
+	unsigned int GetParticleTimestamp() const;
+
+	// Timestamp of the last update.
+	// \param[in] value The new value.
+	void SetParticleTimestamp( unsigned int value );
+
+	// Particle/vertex index matches array index
+	// \return The current value.
+	unsigned short GetParticleVertexId() const;
+
+	// Particle/vertex index matches array index
+	// \param[in] value The new value.
+	void SetParticleVertexId( unsigned short value );
+
+	// Number of valid entries in the following array. (Number of active particles at
+	// the time the system was saved)
+	// \return The current value.
+	unsigned short GetNumValid() const;
+
+	// Number of valid entries in the following array. (Number of active particles at
+	// the time the system was saved)
+	// \param[in] value The new value.
+	void SetNumValid( unsigned short value );
+
+	// Individual particle modifiers?
+	// \return The current value.
+	vector<Particle > GetParticles() const;
+
+	// Individual particle modifiers?
+	// \param[in] value The new value.
+	void SetParticles( const vector<Particle >& value );
+
+	// Link to some optional particle modifiers (NiGravity, NiParticleGrowFade,
+	// NiParticleBomb, ...)
+	// \return The current value.
+	Ref<NiParticleModifier > GetParticleExtra() const;
+
+	// Link to some optional particle modifiers (NiGravity, NiParticleGrowFade,
+	// NiParticleBomb, ...)
+	// \param[in] value The new value.
+	void SetParticleExtra( Ref<NiParticleModifier > value );
+
+	// Trailing null byte
+	// \return The current value.
+	byte GetTrailer() const;
+
+	// Trailing null byte
+	// \param[in] value The new value.
+	void SetTrailer( byte value );
+
+	// Unknown.
+	// \return The current value.
+	Ref<NiColorData > GetColorData() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetColorData( Ref<NiColorData > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

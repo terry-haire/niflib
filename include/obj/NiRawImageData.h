@@ -56,6 +56,34 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The format of the raw image data.
+	// \return The current value.
+	ImageType GetImageType() const;
+
+	// The format of the raw image data.
+	// \param[in] value The new value.
+	void SetImageType( const ImageType & value );
+
+	// Image pixel data.
+	// \return The current value.
+	vector<vector<ByteColor3 > > GetRgbImageData() const;
+
+	// Image pixel data.
+	// \param[in] value The new value.
+	void SetRgbImageData( const vector<ByteColor3 >& value );
+
+	// Image pixel data.
+	// \return The current value.
+	vector<vector<ByteColor4 > > GetRgbaImageData() const;
+
+	// Image pixel data.
+	// \param[in] value The new value.
+	void SetRgbaImageData( const vector<ByteColor4 >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

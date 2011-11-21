@@ -56,6 +56,34 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Vertices. Fourth component is 0. Lexicographically sorted.
+	// \return The current value.
+	vector<Vector4 > GetVertices() const;
+
+	// Vertices. Fourth component is 0. Lexicographically sorted.
+	// \param[in] value The new value.
+	void SetVertices( const vector<Vector4 >& value );
+
+	// Half spaces as determined by the set of vertices above. First three components
+	// define the normal pointing to the exterior, fourth component is the signed
+	// distance of the separating plane to the origin: it is minus the dot product of v
+	// and n, where v is any vertex on the separating plane, and n is the normal.
+	// Lexicographically sorted.
+	// \return The current value.
+	vector<Vector4 > GetNormals() const;
+
+	// Half spaces as determined by the set of vertices above. First three components
+	// define the normal pointing to the exterior, fourth component is the signed
+	// distance of the separating plane to the origin: it is minus the dot product of v
+	// and n, where v is any vertex on the separating plane, and n is the normal.
+	// Lexicographically sorted.
+	// \param[in] value The new value.
+	void SetNormals( const vector<Vector4 >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*! 

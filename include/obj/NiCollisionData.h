@@ -55,6 +55,42 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Propagation Mode
+	// \return The current value.
+	PropagationMode GetPropagationMode() const;
+
+	// Propagation Mode
+	// \param[in] value The new value.
+	void SetPropagationMode( const PropagationMode & value );
+
+	// Collision Mode
+	// \return The current value.
+	CollisionMode GetCollisionMode() const;
+
+	// Collision Mode
+	// \param[in] value The new value.
+	void SetCollisionMode( const CollisionMode & value );
+
+	// Use Alternate Bounding Volume.
+	// \return The current value.
+	byte GetUseAbv() const;
+
+	// Use Alternate Bounding Volume.
+	// \param[in] value The new value.
+	void SetUseAbv( byte value );
+
+	// Collision data.
+	// \return The current value.
+	BoundingVolume GetBoundingVolume() const;
+
+	// Collision data.
+	// \param[in] value The new value.
+	void SetBoundingVolume( const BoundingVolume & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

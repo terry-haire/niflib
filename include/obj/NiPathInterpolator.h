@@ -58,6 +58,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Links to NiPosData.
+	// \return The current value.
+	Ref<NiPosData > GetPosData() const;
+
+	// Links to NiPosData.
+	// \param[in] value The new value.
+	void SetPosData( Ref<NiPosData > value );
+
+	// Links to NiFloatData.
+	// \return The current value.
+	Ref<NiFloatData > GetFloatData() const;
+
+	// Links to NiFloatData.
+	// \param[in] value The new value.
+	void SetFloatData( Ref<NiFloatData > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

@@ -52,6 +52,98 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Speed / Inertia of particle movement.
+	// \return The current value.
+	float GetSpeed() const;
+
+	// Speed / Inertia of particle movement.
+	// \param[in] value The new value.
+	void SetSpeed( float value );
+
+	// Adds an amount of randomness to Speed.
+	// \return The current value.
+	float GetSpeedVariation() const;
+
+	// Adds an amount of randomness to Speed.
+	// \param[in] value The new value.
+	void SetSpeedVariation( float value );
+
+	// Declination / First axis.
+	// \return The current value.
+	float GetDeclination() const;
+
+	// Declination / First axis.
+	// \param[in] value The new value.
+	void SetDeclination( float value );
+
+	// Declination randomness / First axis.
+	// \return The current value.
+	float GetDeclinationVariation() const;
+
+	// Declination randomness / First axis.
+	// \param[in] value The new value.
+	void SetDeclinationVariation( float value );
+
+	// Planar Angle / Second axis.
+	// \return The current value.
+	float GetPlanarAngle() const;
+
+	// Planar Angle / Second axis.
+	// \param[in] value The new value.
+	void SetPlanarAngle( float value );
+
+	// Planar Angle randomness / Second axis .
+	// \return The current value.
+	float GetPlanarAngleVariation() const;
+
+	// Planar Angle randomness / Second axis .
+	// \param[in] value The new value.
+	void SetPlanarAngleVariation( float value );
+
+	// Defines color of a birthed particle.
+	// \return The current value.
+	Color4 GetInitialColor() const;
+
+	// Defines color of a birthed particle.
+	// \param[in] value The new value.
+	void SetInitialColor( const Color4 & value );
+
+	// Size of a birthed particle.
+	// \return The current value.
+	float GetInitialRadius() const;
+
+	// Size of a birthed particle.
+	// \param[in] value The new value.
+	void SetInitialRadius( float value );
+
+	// Particle Radius randomness.
+	// \return The current value.
+	float GetRadiusVariation() const;
+
+	// Particle Radius randomness.
+	// \param[in] value The new value.
+	void SetRadiusVariation( float value );
+
+	// Duration until a particle dies.
+	// \return The current value.
+	float GetLifeSpan() const;
+
+	// Duration until a particle dies.
+	// \param[in] value The new value.
+	void SetLifeSpan( float value );
+
+	// Adds randomness to Life Span.
+	// \return The current value.
+	float GetLifeSpanVariation() const;
+
+	// Adds randomness to Life Span.
+	// \param[in] value The new value.
+	void SetLifeSpanVariation( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

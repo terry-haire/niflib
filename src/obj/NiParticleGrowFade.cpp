@@ -97,5 +97,25 @@ std::list<NiObject *> NiParticleGrowFade::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+float NiParticleGrowFade::GetGrow() const {
+	return grow;
+}
+
+void NiParticleGrowFade::SetGrow( float value ) {
+	grow = value;
+}
+
+float NiParticleGrowFade::GetFade() const {
+	return fade;
+}
+
+void NiParticleGrowFade::SetFade( float value ) {
+	fade = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

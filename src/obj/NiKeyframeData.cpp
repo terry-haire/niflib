@@ -259,6 +259,50 @@ std::list<NiObject *> NiKeyframeData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+KeyType NiKeyframeData::GetRotationType() const {
+	return rotationType;
+}
+
+void NiKeyframeData::SetRotationType( const KeyType & value ) {
+	rotationType = value;
+}
+
+vector<Key<Quaternion > > NiKeyframeData::GetQuaternionKeys() const {
+	return quaternionKeys;
+}
+
+void NiKeyframeData::SetQuaternionKeys( const vector<Key<Quaternion > >& value ) {
+	quaternionKeys = value;
+}
+
+array<3,KeyGroup<float > >  NiKeyframeData::GetXyzRotations() const {
+	return xyzRotations;
+}
+
+void NiKeyframeData::SetXyzRotations( const array<3,KeyGroup<float > >&  value ) {
+	xyzRotations = value;
+}
+
+KeyGroup<Vector3 > NiKeyframeData::GetTranslations() const {
+	return translations;
+}
+
+void NiKeyframeData::SetTranslations( const KeyGroup<Vector3 > & value ) {
+	translations = value;
+}
+
+KeyGroup<float > NiKeyframeData::GetScales() const {
+	return scales;
+}
+
+void NiKeyframeData::SetScales( const KeyGroup<float > & value ) {
+	scales = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 void NiKeyframeData::NormalizeKeys( float phase, float frequency ) {

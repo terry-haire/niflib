@@ -52,6 +52,24 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// 1's Bit:  Enable smooth phong shading on this shape.
+	//
+	//             If 1's bit is not set, hard-edged flat shading will be used on this
+	// shape.
+	// \return The current value.
+	unsigned short GetFlags() const;
+
+	// 1's Bit:  Enable smooth phong shading on this shape.
+	//
+	//             If 1's bit is not set, hard-edged flat shading will be used on this
+	// shape.
+	// \param[in] value The new value.
+	void SetFlags( unsigned short value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

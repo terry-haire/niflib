@@ -21,7 +21,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiObjectNET::TYPE("NiObjectNET", &NiObject::TYPE );
 
-NiObjectNET::NiObjectNET() : hasOldExtraData((unsigned int)0), oldExtraInternalId((unsigned int)0), unknownByte((byte)0), extraData(NULL), numExtraDataList((unsigned int)0), controller(NULL) {
+NiObjectNET::NiObjectNET() : hasOldExtraData(false), oldExtraInternalId((unsigned int)0), unknownByte((byte)0), extraData(NULL), numExtraDataList((unsigned int)0), controller(NULL) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -241,6 +241,74 @@ std::list<NiObject *> NiObjectNET::GetPtrs() const {
 	};
 	return ptrs;
 }
+
+/***Begin Example Naive Implementation****
+
+IndexString NiObjectNET::GetName() const {
+	return name;
+}
+
+void NiObjectNET::SetName( const IndexString & value ) {
+	name = value;
+}
+
+bool NiObjectNET::GetHasOldExtraData() const {
+	return hasOldExtraData;
+}
+
+void NiObjectNET::SetHasOldExtraData( bool value ) {
+	hasOldExtraData = value;
+}
+
+IndexString NiObjectNET::GetOldExtraPropName() const {
+	return oldExtraPropName;
+}
+
+void NiObjectNET::SetOldExtraPropName( const IndexString & value ) {
+	oldExtraPropName = value;
+}
+
+unsigned int NiObjectNET::GetOldExtraInternalId() const {
+	return oldExtraInternalId;
+}
+
+void NiObjectNET::SetOldExtraInternalId( unsigned int value ) {
+	oldExtraInternalId = value;
+}
+
+IndexString NiObjectNET::GetOldExtraString() const {
+	return oldExtraString;
+}
+
+void NiObjectNET::SetOldExtraString( const IndexString & value ) {
+	oldExtraString = value;
+}
+
+Ref<NiExtraData > NiObjectNET::GetExtraData() const {
+	return extraData;
+}
+
+void NiObjectNET::SetExtraData( Ref<NiExtraData > value ) {
+	extraData = value;
+}
+
+vector<Ref<NiExtraData > > NiObjectNET::GetExtraDataList() const {
+	return extraDataList;
+}
+
+void NiObjectNET::SetExtraDataList( const vector<Ref<NiExtraData > >& value ) {
+	extraDataList = value;
+}
+
+Ref<NiTimeController > NiObjectNET::GetController() const {
+	return controller;
+}
+
+void NiObjectNET::SetController( Ref<NiTimeController > value ) {
+	controller = value;
+}
+
+****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

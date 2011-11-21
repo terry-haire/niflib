@@ -57,6 +57,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Group of target NiNodes or NiTriShapes?
+	// \return The current value.
+	vector<Ref<NiAVObject > > GetMeshes() const;
+
+	// Group of target NiNodes or NiTriShapes?
+	// \param[in] value The new value.
+	void SetMeshes( const vector<Ref<NiAVObject > >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

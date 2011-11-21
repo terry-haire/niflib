@@ -58,6 +58,34 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Designates whether animation sequences are cumulative?
+	// \return The current value.
+	bool GetCumulative() const;
+
+	// Designates whether animation sequences are cumulative?
+	// \param[in] value The new value.
+	void SetCumulative( bool value );
+
+	// Refers to a list of NiControllerSequence object.
+	// \return The current value.
+	vector<Ref<NiControllerSequence > > GetControllerSequences() const;
+
+	// Refers to a list of NiControllerSequence object.
+	// \param[in] value The new value.
+	void SetControllerSequences( const vector<Ref<NiControllerSequence > >& value );
+
+	// Refers to a NiDefaultAVObjectPalette.
+	// \return The current value.
+	Ref<NiDefaultAVObjectPalette > GetObjectPalette() const;
+
+	// Refers to a NiDefaultAVObjectPalette.
+	// \param[in] value The new value.
+	void SetObjectPalette( Ref<NiDefaultAVObjectPalette > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

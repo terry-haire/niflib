@@ -108,6 +108,34 @@ std::list<NiObject *> NiVertexColorProperty::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+unsigned short NiVertexColorProperty::GetFlags() const {
+	return flags;
+}
+
+void NiVertexColorProperty::SetFlags( unsigned short value ) {
+	flags = value;
+}
+
+VertMode NiVertexColorProperty::GetVertexMode() const {
+	return vertexMode;
+}
+
+void NiVertexColorProperty::SetVertexMode( const VertMode & value ) {
+	vertexMode = value;
+}
+
+LightMode NiVertexColorProperty::GetLightingMode() const {
+	return lightingMode;
+}
+
+void NiVertexColorProperty::SetLightingMode( const LightMode & value ) {
+	lightingMode = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 unsigned short NiVertexColorProperty::GetFlags() const {

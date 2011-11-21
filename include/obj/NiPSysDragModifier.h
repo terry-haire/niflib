@@ -54,6 +54,50 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Parent reference.
+	// \return The current value.
+	NiObject * GetParent() const;
+
+	// Parent reference.
+	// \param[in] value The new value.
+	void SetParent( NiObject * value );
+
+	// The drag axis.
+	// \return The current value.
+	Vector3 GetDragAxis() const;
+
+	// The drag axis.
+	// \param[in] value The new value.
+	void SetDragAxis( const Vector3 & value );
+
+	// Drag percentage.
+	// \return The current value.
+	float GetPercentage() const;
+
+	// Drag percentage.
+	// \param[in] value The new value.
+	void SetPercentage( float value );
+
+	// The range.
+	// \return The current value.
+	float GetRange() const;
+
+	// The range.
+	// \param[in] value The new value.
+	void SetRange( float value );
+
+	// The range falloff.
+	// \return The current value.
+	float GetRangeFalloff() const;
+
+	// The range falloff.
+	// \param[in] value The new value.
+	void SetRangeFalloff( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

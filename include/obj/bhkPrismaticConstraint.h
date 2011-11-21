@@ -52,26 +52,170 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Pivot A.
+	// \return The current value.
+	Vector4 GetPivotA() const;
+
+	// Pivot A.
+	// \param[in] value The new value.
+	void SetPivotA( const Vector4 & value );
+
+	// 4x4 rotation matrix, rotates the child entity.
+	// \return The current value.
+	array<4,Vector4 >  GetRotationMatrixA() const;
+
+	// 4x4 rotation matrix, rotates the child entity.
+	// \param[in] value The new value.
+	void SetRotationMatrixA( const array<4,Vector4 >&  value );
+
+	// Pivot B.
+	// \return The current value.
+	Vector4 GetPivotB() const;
+
+	// Pivot B.
+	// \param[in] value The new value.
+	void SetPivotB( const Vector4 & value );
+
+	// Describes the axis the object is able to travel along. Unit vector.
+	// \return The current value.
+	Vector4 GetSlidingB() const;
+
+	// Describes the axis the object is able to travel along. Unit vector.
+	// \param[in] value The new value.
+	void SetSlidingB( const Vector4 & value );
+
+	// Plane normal. Describes the plane the object is able to move on.
+	// \return The current value.
+	Vector4 GetPlaneB() const;
+
+	// Plane normal. Describes the plane the object is able to move on.
+	// \param[in] value The new value.
+	void SetPlaneB( const Vector4 & value );
+
+	// Describes the axis the object is able to travel along. Unit vector.
+	// \return The current value.
+	Vector4 GetSlidingA() const;
+
+	// Describes the axis the object is able to travel along. Unit vector.
+	// \param[in] value The new value.
+	void SetSlidingA( const Vector4 & value );
+
+	// Rotation axis.
+	// \return The current value.
+	Vector4 GetRotationA() const;
+
+	// Rotation axis.
+	// \param[in] value The new value.
+	void SetRotationA( const Vector4 & value );
+
+	// Plane normal. Describes the plane the object is able to move on.
+	// \return The current value.
+	Vector4 GetPlaneA() const;
+
+	// Plane normal. Describes the plane the object is able to move on.
+	// \param[in] value The new value.
+	void SetPlaneA( const Vector4 & value );
+
+	// Pivot.
+	// \return The current value.
+	Vector4 GetPivotA() const;
+
+	// Pivot.
+	// \param[in] value The new value.
+	void SetPivotA( const Vector4 & value );
+
+	// Describes the axis the object is able to travel along in B coordinates. Unit
+	// vector.
+	// \return The current value.
+	Vector4 GetSlidingB() const;
+
+	// Describes the axis the object is able to travel along in B coordinates. Unit
+	// vector.
+	// \param[in] value The new value.
+	void SetSlidingB( const Vector4 & value );
+
+	// Rotation axis.
+	// \return The current value.
+	Vector4 GetRotationB() const;
+
+	// Rotation axis.
+	// \param[in] value The new value.
+	void SetRotationB( const Vector4 & value );
+
+	// Plane normal. Describes the plane the object is able to move on in B
+	// coordinates.
+	// \return The current value.
+	Vector4 GetPlaneB() const;
+
+	// Plane normal. Describes the plane the object is able to move on in B
+	// coordinates.
+	// \param[in] value The new value.
+	void SetPlaneB( const Vector4 & value );
+
+	// Pivot in B coordinates.
+	// \return The current value.
+	Vector4 GetPivotB() const;
+
+	// Pivot in B coordinates.
+	// \param[in] value The new value.
+	void SetPivotB( const Vector4 & value );
+
+	// Describe the min distance the object is able to travel.
+	// \return The current value.
+	float GetMinDistance() const;
+
+	// Describe the min distance the object is able to travel.
+	// \param[in] value The new value.
+	void SetMinDistance( float value );
+
+	// Describe the max distance the object is able to travel.
+	// \return The current value.
+	float GetMaxDistance() const;
+
+	// Describe the max distance the object is able to travel.
+	// \param[in] value The new value.
+	void SetMaxDistance( float value );
+
+	// Friction.
+	// \return The current value.
+	float GetFriction() const;
+
+	// Friction.
+	// \param[in] value The new value.
+	void SetFriction( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:
 	/*! Pivot A. */
 	Vector4 pivotA;
 	/*! 4x4 rotation matrix, rotates the child entity. */
-	array<4,Vector4 > rotation;
+	array<4,Vector4 > rotationMatrixA;
 	/*! Pivot B. */
 	Vector4 pivotB;
 	/*! Describes the axis the object is able to travel along. Unit vector. */
-	Vector4 slidingAxis;
+	Vector4 slidingB;
 	/*! Plane normal. Describes the plane the object is able to move on. */
-	Vector4 plane;
+	Vector4 planeB;
+	/*! Describes the axis the object is able to travel along. Unit vector. */
+	Vector4 slidingA;
+	/*! Rotation axis. */
+	Vector4 rotationA;
+	/*! Plane normal. Describes the plane the object is able to move on. */
+	Vector4 planeA;
+	/*! Rotation axis. */
+	Vector4 rotationB;
 	/*! Describe the min distance the object is able to travel. */
 	float minDistance;
 	/*! Describe the max distance the object is able to travel. */
 	float maxDistance;
 	/*! Friction. */
 	float friction;
-	/*! Unknown */
+	/*! Unknown. Do not set this to anything over 0 as it will crash the game. */
 	byte unknownByte1;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */

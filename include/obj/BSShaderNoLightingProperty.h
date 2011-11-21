@@ -53,6 +53,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The texture glow map.
+	// \return The current value.
+	string GetFileName() const;
+
+	// The texture glow map.
+	// \param[in] value The new value.
+	void SetFileName( const string & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	// The texture glow map.
 	// \return The current value.

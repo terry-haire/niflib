@@ -52,6 +52,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Center of the bounding box.
+	// \return The current value.
+	Vector3 GetCenter() const;
+
+	// Center of the bounding box.
+	// \param[in] value The new value.
+	void SetCenter( const Vector3 & value );
+
+	// Dimensions of the bounding box from center.
+	// \return The current value.
+	Vector3 GetDimensions() const;
+
+	// Dimensions of the bounding box from center.
+	// \param[in] value The new value.
+	void SetDimensions( const Vector3 & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

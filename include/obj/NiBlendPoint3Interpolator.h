@@ -52,6 +52,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The interpolated point?
+	// \return The current value.
+	Vector3 GetPointValue() const;
+
+	// The interpolated point?
+	// \param[in] value The new value.
+	void SetPointValue( const Vector3 & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

@@ -140,6 +140,26 @@ std::list<NiObject *> NiBSplineData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<float > NiBSplineData::GetFloatControlPoints() const {
+	return floatControlPoints;
+}
+
+void NiBSplineData::SetFloatControlPoints( const vector<float >& value ) {
+	floatControlPoints = value;
+}
+
+vector<short > NiBSplineData::GetShortControlPoints() const {
+	return shortControlPoints;
+}
+
+void NiBSplineData::SetShortControlPoints( const vector<short >& value ) {
+	shortControlPoints = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 vector<float> NiBSplineData::GetFloatControlPoints() const 

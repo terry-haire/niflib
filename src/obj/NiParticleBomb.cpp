@@ -119,5 +119,73 @@ std::list<NiObject *> NiParticleBomb::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+float NiParticleBomb::GetDecay_() const {
+	return decay_;
+}
+
+void NiParticleBomb::SetDecay_( float value ) {
+	decay_ = value;
+}
+
+float NiParticleBomb::GetDuration_() const {
+	return duration_;
+}
+
+void NiParticleBomb::SetDuration_( float value ) {
+	duration_ = value;
+}
+
+float NiParticleBomb::GetDeltav_() const {
+	return deltav_;
+}
+
+void NiParticleBomb::SetDeltav_( float value ) {
+	deltav_ = value;
+}
+
+float NiParticleBomb::GetStart_() const {
+	return start_;
+}
+
+void NiParticleBomb::SetStart_( float value ) {
+	start_ = value;
+}
+
+DecayType NiParticleBomb::GetDecayType_() const {
+	return decayType_;
+}
+
+void NiParticleBomb::SetDecayType_( const DecayType & value ) {
+	decayType_ = value;
+}
+
+SymmetryType NiParticleBomb::GetSymmetryType_() const {
+	return symmetryType_;
+}
+
+void NiParticleBomb::SetSymmetryType_( const SymmetryType & value ) {
+	symmetryType_ = value;
+}
+
+Vector3 NiParticleBomb::GetPosition_() const {
+	return position_;
+}
+
+void NiParticleBomb::SetPosition_( const Vector3 & value ) {
+	position_ = value;
+}
+
+Vector3 NiParticleBomb::GetDirection_() const {
+	return direction_;
+}
+
+void NiParticleBomb::SetDirection_( const Vector3 & value ) {
+	direction_ = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

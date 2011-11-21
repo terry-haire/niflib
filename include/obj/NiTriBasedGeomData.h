@@ -52,6 +52,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Number of triangles.
+	// \return The current value.
+	unsigned short GetNumTriangles() const;
+
+	// Number of triangles.
+	// \param[in] value The new value.
+	void SetNumTriangles( unsigned short value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

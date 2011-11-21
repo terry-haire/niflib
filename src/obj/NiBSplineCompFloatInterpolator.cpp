@@ -106,6 +106,42 @@ std::list<NiObject *> NiBSplineCompFloatInterpolator::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+float NiBSplineCompFloatInterpolator::GetBase() const {
+	return base;
+}
+
+void NiBSplineCompFloatInterpolator::SetBase( float value ) {
+	base = value;
+}
+
+unsigned int NiBSplineCompFloatInterpolator::GetOffset() const {
+	return offset;
+}
+
+void NiBSplineCompFloatInterpolator::SetOffset( unsigned int value ) {
+	offset = value;
+}
+
+float NiBSplineCompFloatInterpolator::GetBias() const {
+	return bias;
+}
+
+void NiBSplineCompFloatInterpolator::SetBias( float value ) {
+	bias = value;
+}
+
+float NiBSplineCompFloatInterpolator::GetMultiplier() const {
+	return multiplier;
+}
+
+void NiBSplineCompFloatInterpolator::SetMultiplier( float value ) {
+	multiplier = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 float NiBSplineCompFloatInterpolator::GetBase() const {

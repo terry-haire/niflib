@@ -108,6 +108,26 @@ std::list<NiObject *> BSOrderedNode::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Vector4 BSOrderedNode::GetAlphaSortBound() const {
+	return alphaSortBound;
+}
+
+void BSOrderedNode::SetAlphaSortBound( const Vector4 & value ) {
+	alphaSortBound = value;
+}
+
+byte BSOrderedNode::GetIsStaticBound() const {
+	return isStaticBound;
+}
+
+void BSOrderedNode::SetIsStaticBound( byte value ) {
+	isStaticBound = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

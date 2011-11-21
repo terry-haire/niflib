@@ -57,6 +57,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Link to the node to look at?
+	// \return The current value.
+	Ref<NiNode > GetLookAtNode() const;
+
+	// Link to the node to look at?
+	// \param[in] value The new value.
+	void SetLookAtNode( Ref<NiNode > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

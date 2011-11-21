@@ -144,5 +144,17 @@ std::list<NiObject *> NiPSysMeshUpdateModifier::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<Ref<NiAVObject > > NiPSysMeshUpdateModifier::GetMeshes() const {
+	return meshes;
+}
+
+void NiPSysMeshUpdateModifier::SetMeshes( const vector<Ref<NiAVObject > >& value ) {
+	meshes = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

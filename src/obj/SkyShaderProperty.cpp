@@ -111,6 +111,18 @@ std::list<NiObject *> SkyShaderProperty::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+string SkyShaderProperty::GetFileName() const {
+	return fileName;
+}
+
+void SkyShaderProperty::SetFileName( const string & value ) {
+	fileName = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 string SkyShaderProperty::GetFileName() const {

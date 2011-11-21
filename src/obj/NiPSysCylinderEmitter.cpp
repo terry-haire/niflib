@@ -97,5 +97,25 @@ std::list<NiObject *> NiPSysCylinderEmitter::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+float NiPSysCylinderEmitter::GetRadius() const {
+	return radius;
+}
+
+void NiPSysCylinderEmitter::SetRadius( float value ) {
+	radius = value;
+}
+
+float NiPSysCylinderEmitter::GetHeight() const {
+	return height;
+}
+
+void NiPSysCylinderEmitter::SetHeight( float value ) {
+	height = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

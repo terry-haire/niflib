@@ -73,7 +73,7 @@ void NiTriStripsData::Read( istream& in, list<unsigned int> & link_stack, const 
 		};
 	};
 	if ( info.version >= 0x0A000103 ) {
-		if ( (hasPoints != 0) ) {
+		if ( hasPoints ) {
 			points.resize(numStrips);
 			for (unsigned int i3 = 0; i3 < points.size(); i3++) {
 				points[i3].resize(stripLengths[i3]);
@@ -111,7 +111,7 @@ void NiTriStripsData::Write( ostream& out, const map<NiObjectRef,unsigned int> &
 		};
 	};
 	if ( info.version >= 0x0A000103 ) {
-		if ( (hasPoints != 0) ) {
+		if ( hasPoints ) {
 			for (unsigned int i3 = 0; i3 < points.size(); i3++) {
 				for (unsigned int i4 = 0; i4 < stripLengths[i3]; i4++) {
 					NifStream( points[i3][i4], out, info );
@@ -189,6 +189,34 @@ std::list<NiObject *> NiTriStripsData::GetPtrs() const {
 	ptrs = NiTriBasedGeomData::GetPtrs();
 	return ptrs;
 }
+
+/***Begin Example Naive Implementation****
+
+bool NiTriStripsData::GetHasPoints() const {
+	return hasPoints;
+}
+
+void NiTriStripsData::SetHasPoints( bool value ) {
+	hasPoints = value;
+}
+
+vector<vector<unsigned short > > NiTriStripsData::GetPoints() const {
+	return points;
+}
+
+void NiTriStripsData::SetPoints( const vector<unsigned short >& value ) {
+	points = value;
+}
+
+vector<vector<unsigned short > > NiTriStripsData::GetPoints() const {
+	return points;
+}
+
+void NiTriStripsData::SetPoints( const vector<unsigned short >& value ) {
+	points = value;
+}
+
+****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

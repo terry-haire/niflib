@@ -182,6 +182,42 @@ std::list<NiObject *> bhkPackedNiTriStripsShape::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<OblivionSubShape > bhkPackedNiTriStripsShape::GetSubShapes() const {
+	return subShapes;
+}
+
+void bhkPackedNiTriStripsShape::SetSubShapes( const vector<OblivionSubShape >& value ) {
+	subShapes = value;
+}
+
+Vector3 bhkPackedNiTriStripsShape::GetScaleCopy_() const {
+	return scaleCopy_;
+}
+
+void bhkPackedNiTriStripsShape::SetScaleCopy_( const Vector3 & value ) {
+	scaleCopy_ = value;
+}
+
+Vector3 bhkPackedNiTriStripsShape::GetScale() const {
+	return scale;
+}
+
+void bhkPackedNiTriStripsShape::SetScale( const Vector3 & value ) {
+	scale = value;
+}
+
+Ref<hkPackedNiTriStripsData > bhkPackedNiTriStripsShape::GetData() const {
+	return data;
+}
+
+void bhkPackedNiTriStripsShape::SetData( Ref<hkPackedNiTriStripsData > value ) {
+	data = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 Ref<hkPackedNiTriStripsData> bhkPackedNiTriStripsShape::GetData() const {
 	return data;

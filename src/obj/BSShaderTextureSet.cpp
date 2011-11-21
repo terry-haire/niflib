@@ -127,6 +127,18 @@ std::list<NiObject *> BSShaderTextureSet::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<string > BSShaderTextureSet::GetTextures() const {
+	return textures;
+}
+
+void BSShaderTextureSet::SetTextures( const vector<string >& value ) {
+	textures = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 vector<string > BSShaderTextureSet::GetTextures() const {

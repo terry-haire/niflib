@@ -180,6 +180,34 @@ std::list<NiObject *> NiLODNode::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Vector3 NiLODNode::GetLodCenter() const {
+	return lodCenter;
+}
+
+void NiLODNode::SetLodCenter( const Vector3 & value ) {
+	lodCenter = value;
+}
+
+vector<LODRange > NiLODNode::GetLodLevels() const {
+	return lodLevels;
+}
+
+void NiLODNode::SetLodLevels( const vector<LODRange >& value ) {
+	lodLevels = value;
+}
+
+Ref<NiLODData > NiLODNode::GetLodLevelData() const {
+	return lodLevelData;
+}
+
+void NiLODNode::SetLodLevelData( Ref<NiLODData > value ) {
+	lodLevelData = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Vector3 NiLODNode::GetLODCenter() const {

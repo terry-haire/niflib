@@ -58,6 +58,42 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The shape's material.
+	// \return The current value.
+	HavokMaterial GetMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	void SetMaterial( const HavokMaterial & value );
+
+	// Scale. Usually (1.0, 1.0, 1.0).
+	// \return The current value.
+	Vector3 GetScale() const;
+
+	// Scale. Usually (1.0, 1.0, 1.0).
+	// \param[in] value The new value.
+	void SetScale( const Vector3 & value );
+
+	// Refers to a bunch of NiTriStripsData objects that make up this shape.
+	// \return The current value.
+	vector<Ref<NiTriStripsData > > GetStripsData() const;
+
+	// Refers to a bunch of NiTriStripsData objects that make up this shape.
+	// \param[in] value The new value.
+	void SetStripsData( const vector<Ref<NiTriStripsData > >& value );
+
+	// Havok Layers for each strip data.
+	// \return The current value.
+	vector<OblivionColFilter > GetDataLayers() const;
+
+	// Havok Layers for each strip data.
+	// \param[in] value The new value.
+	void SetDataLayers( const vector<OblivionColFilter >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

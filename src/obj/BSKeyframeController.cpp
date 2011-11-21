@@ -116,5 +116,17 @@ std::list<NiObject *> BSKeyframeController::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Ref<NiKeyframeData > BSKeyframeController::GetData2() const {
+	return data2;
+}
+
+void BSKeyframeController::SetData2( Ref<NiKeyframeData > value ) {
+	data2 = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

@@ -152,5 +152,17 @@ std::list<NiObject *> FxRadioButton::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<FxRadioButton * > FxRadioButton::GetButtons() const {
+	return buttons;
+}
+
+void FxRadioButton::SetButtons( const vector<FxRadioButton * >& value ) {
+	buttons = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

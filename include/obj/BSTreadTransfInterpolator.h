@@ -56,6 +56,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Unknown
+	// \return The current value.
+	vector<BSTreadTransfInfo > GetTreadTransferInfo() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetTreadTransferInfo( const vector<BSTreadTransfInfo >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

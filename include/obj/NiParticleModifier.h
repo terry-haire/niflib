@@ -58,6 +58,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Next particle modifier.
+	// \return The current value.
+	Ref<NiParticleModifier > GetNextModifier() const;
+
+	// Next particle modifier.
+	// \param[in] value The new value.
+	void SetNextModifier( Ref<NiParticleModifier > value );
+
+	// Points to the particle system controller parent.
+	// \return The current value.
+	NiParticleSystemController * GetController() const;
+
+	// Points to the particle system controller parent.
+	// \param[in] value The new value.
+	void SetController( NiParticleSystemController * value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

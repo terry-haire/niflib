@@ -57,9 +57,37 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// If true, Particles are birthed into world space.  If false, Particles are
+	// birthed into object space.
+	// \return The current value.
+	bool GetWorldSpace() const;
+
+	// If true, Particles are birthed into world space.  If false, Particles are
+	// birthed into object space.
+	// \param[in] value The new value.
+	void SetWorldSpace( bool value );
+
+	// The list of particle modifiers.
+	// \return The current value.
+	vector<Ref<NiPSysModifier > > GetModifiers() const;
+
+	// The list of particle modifiers.
+	// \param[in] value The new value.
+	void SetModifiers( const vector<Ref<NiPSysModifier > >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:
+	/*! Unknown */
+	unsigned short unknownShort1;
+	/*! Unknown */
+	unsigned short unknownShort2;
+	/*! Unknown */
+	unsigned int unknownInt1;
 	/*!
 	 * If true, Particles are birthed into world space.  If false, Particles are
 	 * birthed into object space.

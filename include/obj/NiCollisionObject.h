@@ -62,6 +62,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Index of the AV object referring to this collision object.
+	// \return The current value.
+	NiAVObject * GetTarget() const;
+
+	// Index of the AV object referring to this collision object.
+	// \param[in] value The new value.
+	void SetTarget( NiAVObject * value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

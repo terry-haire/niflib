@@ -52,6 +52,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The float data.
+	// \return The current value.
+	float GetFloatData() const;
+
+	// The float data.
+	// \param[in] value The new value.
+	void SetFloatData( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

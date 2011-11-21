@@ -55,6 +55,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Unknown.
+	// \return The current value.
+	KeyGroup<float > GetFloatKeys_() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetFloatKeys_( const KeyGroup<float > & value );
+
+	// Unknown.
+	// \return The current value.
+	vector<Key<byte > > GetVisibilityKeys_() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetVisibilityKeys_( const vector<Key<byte > >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

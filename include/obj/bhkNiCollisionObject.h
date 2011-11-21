@@ -57,6 +57,28 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Set to 1 for most objects, and to 41 for animated objects (OL_ANIM_STATIC).
+	// Bits: 0=Active 2=Notify 3=Set Local 6=Reset.
+	// \return The current value.
+	unsigned short GetFlags() const;
+
+	// Set to 1 for most objects, and to 41 for animated objects (OL_ANIM_STATIC).
+	// Bits: 0=Active 2=Notify 3=Set Local 6=Reset.
+	// \param[in] value The new value.
+	void SetFlags( unsigned short value );
+
+	// Links to the collision object data
+	// \return The current value.
+	Ref<NiObject > GetBody() const;
+
+	// Links to the collision object data
+	// \param[in] value The new value.
+	void SetBody( Ref<NiObject > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
    /*!
    * Gets the rigid body that this collision object uses, if any.
@@ -71,7 +93,10 @@ public:
    NIFLIB_API void SetBody( NiObject * value );
 	//--END CUSTOM CODE--//
 protected:
-	/*! Set to "1" for most objects. Bits: 0=Active 2=Notify 3=Set Local 6=Reset */
+	/*!
+	 * Set to 1 for most objects, and to 41 for animated objects (OL_ANIM_STATIC).
+	 * Bits: 0=Active 2=Notify 3=Set Local 6=Reset.
+	 */
 	unsigned short flags;
 	/*! Links to the collision object data */
 	Ref<NiObject > body;

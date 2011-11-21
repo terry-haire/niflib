@@ -60,6 +60,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// PhysX Shape Description
+	// \return The current value.
+	Ref<NiPhysXShapeDesc > GetShapeDescription() const;
+
+	// PhysX Shape Description
+	// \param[in] value The new value.
+	void SetShapeDescription( Ref<NiPhysXShapeDesc > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

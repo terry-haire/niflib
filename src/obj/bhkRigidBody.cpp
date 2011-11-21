@@ -22,7 +22,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type bhkRigidBody::TYPE("bhkRigidBody", &bhkEntity::TYPE );
 
-bhkRigidBody::bhkRigidBody() : unknownInt1((int)0), unknownInt2((int)0x00000001), unknown3Ints(3,(int)0,(int)0,(int)0x80000000), collisionResponse_((hkResponseType)RESPONSE_SIMPLE_CONTACT), unknownByte((byte)0xbe), processContactCallbackDelay_((unsigned short)0xffff), unknown2Shorts(2,(unsigned short)35899,(unsigned short)16336), layerCopy((OblivionLayer)OL_STATIC), colFilterCopy((byte)0), unknown7Shorts(7,(unsigned short)0,(unsigned short)21280,(unsigned short)2481,(unsigned short)62977,(unsigned short)65535,(unsigned short)44,(unsigned short)0), mass(1.0f), linearDamping(0.1f), angularDamping(0.05f), friction(0.3f), restitution(0.3f), maxLinearVelocity(250.0f), maxAngularVelocity(31.4159f), penetrationDepth(0.15f), motionSystem((MotionSystem)MO_SYS_DYNAMIC), deactivatorType((DeactivatorType)DEACTIVATOR_NEVER), solverDeactivation((SolverDeactivation)SOLVER_DEACTIVATION_OFF), qualityType((MotionQuality)MO_QUAL_INVALID), autoRemoveLevel((unsigned int)0), userDatasInContactPointProperties_((unsigned int)0), forceCollideOntoPpu_((unsigned int)0), numConstraints((unsigned int)0), unknownInt9((unsigned int)0) {
+bhkRigidBody::bhkRigidBody() : unknownInt1((int)0), unknownInt2((int)0x00000001), unknown3Ints(3,(int)0,(int)0,(int)0x80000000), collisionResponse_((hkResponseType)RESPONSE_SIMPLE_CONTACT), unknownByte((byte)0xbe), processContactCallbackDelay_((unsigned short)0xffff), unknown2Shorts(2,(unsigned short)35899,(unsigned short)16336), layerCopy((OblivionLayer)OL_STATIC), colFilterCopy((byte)0), unknown7Shorts(7,(unsigned short)0,(unsigned short)21280,(unsigned short)2481,(unsigned short)62977,(unsigned short)65535,(unsigned short)44,(unsigned short)0), mass(1.0f), linearDamping(0.1f), angularDamping(0.05f), friction(0.3f), restitution(0.3f), unknownFloat51(0.0f), unknownFloat52(0.0f), unknownFloat53(0.0f), maxLinearVelocity(250.0f), maxAngularVelocity(31.4159f), penetrationDepth(0.15f), motionSystem((MotionSystem)MO_SYS_DYNAMIC), deactivatorType((DeactivatorType)DEACTIVATOR_NEVER), solverDeactivation((SolverDeactivation)SOLVER_DEACTIVATION_OFF), qualityType((MotionQuality)MO_QUAL_FIXED), unknownInt6((unsigned int)512), unknownInt7((unsigned int)160), unknownInt8((unsigned int)161), unknownInt81((unsigned int)0), numConstraints((unsigned int)0), unknownInt9((unsigned int)0), unknownInt91((unsigned short)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -76,6 +76,11 @@ void bhkRigidBody::Read( istream& in, list<unsigned int> & link_stack, const Nif
 	NifStream( angularDamping, in, info );
 	NifStream( friction, in, info );
 	NifStream( restitution, in, info );
+	if ( (info.userVersion >= 12) ) {
+		NifStream( unknownFloat51, in, info );
+		NifStream( unknownFloat52, in, info );
+		NifStream( unknownFloat53, in, info );
+	};
 	NifStream( maxLinearVelocity, in, info );
 	NifStream( maxAngularVelocity, in, info );
 	NifStream( penetrationDepth, in, info );
@@ -83,16 +88,24 @@ void bhkRigidBody::Read( istream& in, list<unsigned int> & link_stack, const Nif
 	NifStream( deactivatorType, in, info );
 	NifStream( solverDeactivation, in, info );
 	NifStream( qualityType, in, info );
-	NifStream( autoRemoveLevel, in, info );
-	NifStream( userDatasInContactPointProperties_, in, info );
-	NifStream( forceCollideOntoPpu_, in, info );
+	NifStream( unknownInt6, in, info );
+	NifStream( unknownInt7, in, info );
+	NifStream( unknownInt8, in, info );
+	if ( (info.userVersion >= 12) ) {
+		NifStream( unknownInt81, in, info );
+	};
 	NifStream( numConstraints, in, info );
 	constraints.resize(numConstraints);
 	for (unsigned int i1 = 0; i1 < constraints.size(); i1++) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 	};
-	NifStream( unknownInt9, in, info );
+	if ( (info.userVersion <= 11) ) {
+		NifStream( unknownInt9, in, info );
+	};
+	if ( (info.userVersion >= 12) ) {
+		NifStream( unknownInt91, in, info );
+	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
@@ -134,6 +147,11 @@ void bhkRigidBody::Write( ostream& out, const map<NiObjectRef,unsigned int> & li
 	NifStream( angularDamping, out, info );
 	NifStream( friction, out, info );
 	NifStream( restitution, out, info );
+	if ( (info.userVersion >= 12) ) {
+		NifStream( unknownFloat51, out, info );
+		NifStream( unknownFloat52, out, info );
+		NifStream( unknownFloat53, out, info );
+	};
 	NifStream( maxLinearVelocity, out, info );
 	NifStream( maxAngularVelocity, out, info );
 	NifStream( penetrationDepth, out, info );
@@ -141,9 +159,12 @@ void bhkRigidBody::Write( ostream& out, const map<NiObjectRef,unsigned int> & li
 	NifStream( deactivatorType, out, info );
 	NifStream( solverDeactivation, out, info );
 	NifStream( qualityType, out, info );
-	NifStream( autoRemoveLevel, out, info );
-	NifStream( userDatasInContactPointProperties_, out, info );
-	NifStream( forceCollideOntoPpu_, out, info );
+	NifStream( unknownInt6, out, info );
+	NifStream( unknownInt7, out, info );
+	NifStream( unknownInt8, out, info );
+	if ( (info.userVersion >= 12) ) {
+		NifStream( unknownInt81, out, info );
+	};
 	NifStream( numConstraints, out, info );
 	for (unsigned int i1 = 0; i1 < constraints.size(); i1++) {
 		if ( info.version < VER_3_3_0_13 ) {
@@ -164,7 +185,12 @@ void bhkRigidBody::Write( ostream& out, const map<NiObjectRef,unsigned int> & li
 			}
 		}
 	};
-	NifStream( unknownInt9, out, info );
+	if ( (info.userVersion <= 11) ) {
+		NifStream( unknownInt9, out, info );
+	};
+	if ( (info.userVersion >= 12) ) {
+		NifStream( unknownInt91, out, info );
+	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
@@ -235,6 +261,9 @@ std::string bhkRigidBody::asString( bool verbose ) const {
 	out << "  Angular Damping:  " << angularDamping << endl;
 	out << "  Friction:  " << friction << endl;
 	out << "  Restitution:  " << restitution << endl;
+	out << "  Unknown Float 51:  " << unknownFloat51 << endl;
+	out << "  Unknown Float 52:  " << unknownFloat52 << endl;
+	out << "  Unknown Float 53:  " << unknownFloat53 << endl;
 	out << "  Max Linear Velocity:  " << maxLinearVelocity << endl;
 	out << "  Max Angular Velocity:  " << maxAngularVelocity << endl;
 	out << "  Penetration Depth:  " << penetrationDepth << endl;
@@ -242,9 +271,10 @@ std::string bhkRigidBody::asString( bool verbose ) const {
 	out << "  Deactivator Type:  " << deactivatorType << endl;
 	out << "  Solver Deactivation:  " << solverDeactivation << endl;
 	out << "  Quality Type:  " << qualityType << endl;
-	out << "  Auto Remove Level:  " << autoRemoveLevel << endl;
-	out << "  User Datas In Contact Point Properties?:  " << userDatasInContactPointProperties_ << endl;
-	out << "  Force Collide Onto Ppu?:  " << forceCollideOntoPpu_ << endl;
+	out << "  Unknown Int 6:  " << unknownInt6 << endl;
+	out << "  Unknown Int 7:  " << unknownInt7 << endl;
+	out << "  Unknown Int 8:  " << unknownInt8 << endl;
+	out << "  Unknown Int 81:  " << unknownInt81 << endl;
 	out << "  Num Constraints:  " << numConstraints << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < constraints.size(); i1++) {
@@ -259,6 +289,7 @@ std::string bhkRigidBody::asString( bool verbose ) const {
 		array_output_count++;
 	};
 	out << "  Unknown Int 9:  " << unknownInt9 << endl;
+	out << "  Unknown Int 91:  " << unknownInt91 << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -295,6 +326,194 @@ std::list<NiObject *> bhkRigidBody::GetPtrs() const {
 	};
 	return ptrs;
 }
+
+/***Begin Example Naive Implementation****
+
+hkResponseType bhkRigidBody::GetCollisionResponse_() const {
+	return collisionResponse_;
+}
+
+void bhkRigidBody::SetCollisionResponse_( const hkResponseType & value ) {
+	collisionResponse_ = value;
+}
+
+unsigned short bhkRigidBody::GetProcessContactCallbackDelay_() const {
+	return processContactCallbackDelay_;
+}
+
+void bhkRigidBody::SetProcessContactCallbackDelay_( unsigned short value ) {
+	processContactCallbackDelay_ = value;
+}
+
+OblivionLayer bhkRigidBody::GetLayerCopy() const {
+	return layerCopy;
+}
+
+void bhkRigidBody::SetLayerCopy( const OblivionLayer & value ) {
+	layerCopy = value;
+}
+
+byte bhkRigidBody::GetColFilterCopy() const {
+	return colFilterCopy;
+}
+
+void bhkRigidBody::SetColFilterCopy( byte value ) {
+	colFilterCopy = value;
+}
+
+Vector4 bhkRigidBody::GetTranslation() const {
+	return translation;
+}
+
+void bhkRigidBody::SetTranslation( const Vector4 & value ) {
+	translation = value;
+}
+
+QuaternionXYZW bhkRigidBody::GetRotation() const {
+	return rotation;
+}
+
+void bhkRigidBody::SetRotation( const QuaternionXYZW & value ) {
+	rotation = value;
+}
+
+Vector4 bhkRigidBody::GetLinearVelocity() const {
+	return linearVelocity;
+}
+
+void bhkRigidBody::SetLinearVelocity( const Vector4 & value ) {
+	linearVelocity = value;
+}
+
+Vector4 bhkRigidBody::GetAngularVelocity() const {
+	return angularVelocity;
+}
+
+void bhkRigidBody::SetAngularVelocity( const Vector4 & value ) {
+	angularVelocity = value;
+}
+
+InertiaMatrix bhkRigidBody::GetInertia() const {
+	return inertia;
+}
+
+void bhkRigidBody::SetInertia( const InertiaMatrix & value ) {
+	inertia = value;
+}
+
+Vector4 bhkRigidBody::GetCenter() const {
+	return center;
+}
+
+void bhkRigidBody::SetCenter( const Vector4 & value ) {
+	center = value;
+}
+
+float bhkRigidBody::GetMass() const {
+	return mass;
+}
+
+void bhkRigidBody::SetMass( float value ) {
+	mass = value;
+}
+
+float bhkRigidBody::GetLinearDamping() const {
+	return linearDamping;
+}
+
+void bhkRigidBody::SetLinearDamping( float value ) {
+	linearDamping = value;
+}
+
+float bhkRigidBody::GetAngularDamping() const {
+	return angularDamping;
+}
+
+void bhkRigidBody::SetAngularDamping( float value ) {
+	angularDamping = value;
+}
+
+float bhkRigidBody::GetFriction() const {
+	return friction;
+}
+
+void bhkRigidBody::SetFriction( float value ) {
+	friction = value;
+}
+
+float bhkRigidBody::GetRestitution() const {
+	return restitution;
+}
+
+void bhkRigidBody::SetRestitution( float value ) {
+	restitution = value;
+}
+
+float bhkRigidBody::GetMaxLinearVelocity() const {
+	return maxLinearVelocity;
+}
+
+void bhkRigidBody::SetMaxLinearVelocity( float value ) {
+	maxLinearVelocity = value;
+}
+
+float bhkRigidBody::GetMaxAngularVelocity() const {
+	return maxAngularVelocity;
+}
+
+void bhkRigidBody::SetMaxAngularVelocity( float value ) {
+	maxAngularVelocity = value;
+}
+
+float bhkRigidBody::GetPenetrationDepth() const {
+	return penetrationDepth;
+}
+
+void bhkRigidBody::SetPenetrationDepth( float value ) {
+	penetrationDepth = value;
+}
+
+MotionSystem bhkRigidBody::GetMotionSystem() const {
+	return motionSystem;
+}
+
+void bhkRigidBody::SetMotionSystem( const MotionSystem & value ) {
+	motionSystem = value;
+}
+
+DeactivatorType bhkRigidBody::GetDeactivatorType() const {
+	return deactivatorType;
+}
+
+void bhkRigidBody::SetDeactivatorType( const DeactivatorType & value ) {
+	deactivatorType = value;
+}
+
+SolverDeactivation bhkRigidBody::GetSolverDeactivation() const {
+	return solverDeactivation;
+}
+
+void bhkRigidBody::SetSolverDeactivation( const SolverDeactivation & value ) {
+	solverDeactivation = value;
+}
+
+MotionQuality bhkRigidBody::GetQualityType() const {
+	return qualityType;
+}
+
+void bhkRigidBody::SetQualityType( const MotionQuality & value ) {
+	qualityType = value;
+}
+
+vector<Ref<bhkSerializable > > bhkRigidBody::GetConstraints() const {
+	return constraints;
+}
+
+void bhkRigidBody::SetConstraints( const vector<Ref<bhkSerializable > >& value ) {
+	constraints = value;
+}
+
+****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

@@ -57,6 +57,76 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Index of the next controller.
+	// \return The current value.
+	Ref<NiTimeController > GetNextController() const;
+
+	// Index of the next controller.
+	// \param[in] value The new value.
+	void SetNextController( Ref<NiTimeController > value );
+
+	// Controller flags (usually 0x000C). Probably controls loops.
+	//             Bit 0 : Anim type, 0=APP_TIME 1=APP_INIT
+	//             Bit 1-2 : Cycle type  00=Loop 01=Reverse 10=Loop
+	//             Bit 3 : Active
+	//             Bit 4 : Play backwards
+	// \return The current value.
+	unsigned short GetFlags() const;
+
+	// Controller flags (usually 0x000C). Probably controls loops.
+	//             Bit 0 : Anim type, 0=APP_TIME 1=APP_INIT
+	//             Bit 1-2 : Cycle type  00=Loop 01=Reverse 10=Loop
+	//             Bit 3 : Active
+	//             Bit 4 : Play backwards
+	// \param[in] value The new value.
+	void SetFlags( unsigned short value );
+
+	// Frequency (is usually 1.0).
+	// \return The current value.
+	float GetFrequency() const;
+
+	// Frequency (is usually 1.0).
+	// \param[in] value The new value.
+	void SetFrequency( float value );
+
+	// Phase (usually 0.0).
+	// \return The current value.
+	float GetPhase() const;
+
+	// Phase (usually 0.0).
+	// \param[in] value The new value.
+	void SetPhase( float value );
+
+	// Controller start time.
+	// \return The current value.
+	float GetStartTime() const;
+
+	// Controller start time.
+	// \param[in] value The new value.
+	void SetStartTime( float value );
+
+	// Controller stop time.
+	// \return The current value.
+	float GetStopTime() const;
+
+	// Controller stop time.
+	// \param[in] value The new value.
+	void SetStopTime( float value );
+
+	// Controller target (object index of the first controllable ancestor of this
+	// object).
+	// \return The current value.
+	NiObjectNET * GetTarget() const;
+
+	// Controller target (object index of the first controllable ancestor of this
+	// object).
+	// \param[in] value The new value.
+	void SetTarget( NiObjectNET * value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*! 

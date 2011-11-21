@@ -167,6 +167,18 @@ std::list<NiObject *> BSDecalPlacementVectorExtraData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<DecalVectorArray > BSDecalPlacementVectorExtraData::GetVectorBlocks() const {
+	return vectorBlocks;
+}
+
+void BSDecalPlacementVectorExtraData::SetVectorBlocks( const vector<DecalVectorArray >& value ) {
+	vectorBlocks = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

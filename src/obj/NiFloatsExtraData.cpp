@@ -116,6 +116,18 @@ std::list<NiObject *> NiFloatsExtraData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<float > NiFloatsExtraData::GetData() const {
+	return data;
+}
+
+void NiFloatsExtraData::SetData( const vector<float >& value ) {
+	data = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 vector<float> NiFloatsExtraData::GetData() const {

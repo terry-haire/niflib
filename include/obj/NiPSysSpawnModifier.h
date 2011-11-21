@@ -52,6 +52,74 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Unknown.
+	// \return The current value.
+	unsigned short GetNumSpawnGenerations() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetNumSpawnGenerations( unsigned short value );
+
+	// Unknown.
+	// \return The current value.
+	float GetPercentageSpawned() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetPercentageSpawned( float value );
+
+	// Unknown.
+	// \return The current value.
+	unsigned short GetMinNumToSpawn() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetMinNumToSpawn( unsigned short value );
+
+	// Unknown.
+	// \return The current value.
+	unsigned short GetMaxNumToSpawn() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetMaxNumToSpawn( unsigned short value );
+
+	// Unknown.
+	// \return The current value.
+	float GetSpawnSpeedChaos() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetSpawnSpeedChaos( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetSpawnDirChaos() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetSpawnDirChaos( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetLifeSpan() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetLifeSpan( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetLifeSpanVariation() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetLifeSpanVariation( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

@@ -59,6 +59,58 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Number of node groups.
+	// \return The current value.
+	unsigned int GetNumNodeGroups2() const;
+
+	// Number of node groups.
+	// \param[in] value The new value.
+	void SetNumNodeGroups2( unsigned int value );
+
+	// A list of node groups (each group a sequence of bones).
+	// \return The current value.
+	vector<NodeGroup > GetNodeGroups() const;
+
+	// A list of node groups (each group a sequence of bones).
+	// \param[in] value The new value.
+	void SetNodeGroups( const vector<NodeGroup >& value );
+
+	// List of shape groups.
+	// \return The current value.
+	vector<SkinShapeGroup > GetShapeGroups1() const;
+
+	// List of shape groups.
+	// \param[in] value The new value.
+	void SetShapeGroups1( const vector<SkinShapeGroup >& value );
+
+	// List of shape groups.
+	// \return The current value.
+	vector<SkinShapeGroup > GetShapeGroups1() const;
+
+	// List of shape groups.
+	// \param[in] value The new value.
+	void SetShapeGroups1( const vector<SkinShapeGroup >& value );
+
+	// Group of NiTriShape indices.
+	// \return The current value.
+	vector<Ref<NiTriBasedGeom > > GetShapeGroups2() const;
+
+	// Group of NiTriShape indices.
+	// \param[in] value The new value.
+	void SetShapeGroups2( const vector<Ref<NiTriBasedGeom > >& value );
+
+	// Group of NiTriShape indices.
+	// \return The current value.
+	vector<Ref<NiTriBasedGeom > > GetShapeGroups2() const;
+
+	// Group of NiTriShape indices.
+	// \param[in] value The new value.
+	void SetShapeGroups2( const vector<Ref<NiTriBasedGeom > >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!
@@ -125,6 +177,10 @@ protected:
 	mutable unsigned int numShapeGroups2;
 	/*! Group of NiTriShape indices. */
 	vector<Ref<NiTriBasedGeom > > shapeGroups2;
+	/*! Unknown. */
+	int unknownInt2;
+	/*! Unknown. */
+	int unknownInt3;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

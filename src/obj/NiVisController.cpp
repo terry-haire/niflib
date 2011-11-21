@@ -122,6 +122,18 @@ std::list<NiObject *> NiVisController::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Ref<NiVisData > NiVisController::GetData() const {
+	return data;
+}
+
+void NiVisController::SetData( Ref<NiVisData > value ) {
+	data = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<NiVisData> NiVisController::GetData() const {
