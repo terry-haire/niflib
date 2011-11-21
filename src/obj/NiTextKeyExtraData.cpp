@@ -123,6 +123,18 @@ std::list<NiObject *> NiTextKeyExtraData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<Key<IndexString > > NiTextKeyExtraData::GetTextKeys() const {
+	return textKeys;
+}
+
+void NiTextKeyExtraData::SetTextKeys( const vector<Key<IndexString > >& value ) {
+	textKeys = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 vector< Key<string> > NiTextKeyExtraData::GetKeys() const {

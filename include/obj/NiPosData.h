@@ -55,6 +55,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The position keys.
+	// \return The current value.
+	KeyGroup<Vector3 > GetData() const;
+
+	// The position keys.
+	// \param[in] value The new value.
+	void SetData( const KeyGroup<Vector3 > & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*! Retrieves the type of position interpolation being used.

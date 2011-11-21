@@ -94,5 +94,17 @@ std::list<NiObject *> NiPSysSphereEmitter::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+float NiPSysSphereEmitter::GetRadius() const {
+	return radius;
+}
+
+void NiPSysSphereEmitter::SetRadius( float value ) {
+	radius = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

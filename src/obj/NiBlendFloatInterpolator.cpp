@@ -94,6 +94,18 @@ std::list<NiObject *> NiBlendFloatInterpolator::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+float NiBlendFloatInterpolator::GetFloatValue() const {
+	return floatValue;
+}
+
+void NiBlendFloatInterpolator::SetFloatValue( float value ) {
+	floatValue = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 float NiBlendFloatInterpolator::GetFloatValue() const {

@@ -150,5 +150,25 @@ std::list<NiObject *> NiPSysEmitterCtlrData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+KeyGroup<float > NiPSysEmitterCtlrData::GetFloatKeys_() const {
+	return floatKeys_;
+}
+
+void NiPSysEmitterCtlrData::SetFloatKeys_( const KeyGroup<float > & value ) {
+	floatKeys_ = value;
+}
+
+vector<Key<byte > > NiPSysEmitterCtlrData::GetVisibilityKeys_() const {
+	return visibilityKeys_;
+}
+
+void NiPSysEmitterCtlrData::SetVisibilityKeys_( const vector<Key<byte > >& value ) {
+	visibilityKeys_ = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

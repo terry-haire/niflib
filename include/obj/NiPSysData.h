@@ -55,6 +55,34 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Unknown.
+	// \return The current value.
+	vector<ParticleDesc > GetParticleDescriptions() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetParticleDescriptions( const vector<ParticleDesc >& value );
+
+	// Unknown, probably a boolean.
+	// \return The current value.
+	byte GetHasVertexColors2() const;
+
+	// Unknown, probably a boolean.
+	// \param[in] value The new value.
+	void SetHasVertexColors2( byte value );
+
+	// Unknown
+	// \return The current value.
+	vector<Color4 > GetVertexColors() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetVertexColors( const vector<Color4 >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:
@@ -68,6 +96,26 @@ protected:
 	unsigned short unknownShort1;
 	/*! Unknown. */
 	unsigned short unknownShort2;
+	/*! Unknown, probably a boolean. */
+	byte unknownByte2;
+	/*! Unknown, probably a boolean. */
+	byte hasVertexColors2;
+	/*! Num bytes per */
+	mutable unsigned int numVertexColors2;
+	/*! Unknown */
+	unsigned int unknownInt3;
+	/*! Unknown */
+	vector<Color4 > vertexColors;
+	/*! Unknown */
+	unsigned int unknownInt4;
+	/*! Unknown */
+	unsigned int unknownInt5;
+	/*! Unknown */
+	unsigned int unknownInt6;
+	/*! Unknown */
+	unsigned short unknownShort3;
+	/*! Unknown */
+	byte unknownByte4;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

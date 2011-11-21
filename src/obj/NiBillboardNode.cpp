@@ -98,6 +98,18 @@ std::list<NiObject *> NiBillboardNode::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+BillboardMode NiBillboardNode::GetBillboardMode() const {
+	return billboardMode;
+}
+
+void NiBillboardNode::SetBillboardMode( const BillboardMode & value ) {
+	billboardMode = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 BillboardMode NiBillboardNode::GetBillboardMode() const {

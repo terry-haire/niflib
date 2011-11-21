@@ -52,6 +52,76 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Property flags.
+	// \return The current value.
+	unsigned short GetFlags() const;
+
+	// Property flags.
+	// \param[in] value The new value.
+	void SetFlags( unsigned short value );
+
+	// How much the material reflects ambient light.
+	// \return The current value.
+	Color3 GetAmbientColor() const;
+
+	// How much the material reflects ambient light.
+	// \param[in] value The new value.
+	void SetAmbientColor( const Color3 & value );
+
+	// How much the material reflects diffuse light.
+	// \return The current value.
+	Color3 GetDiffuseColor() const;
+
+	// How much the material reflects diffuse light.
+	// \param[in] value The new value.
+	void SetDiffuseColor( const Color3 & value );
+
+	// How much light the material reflects in a specular manner.
+	// \return The current value.
+	Color3 GetSpecularColor() const;
+
+	// How much light the material reflects in a specular manner.
+	// \param[in] value The new value.
+	void SetSpecularColor( const Color3 & value );
+
+	// How much light the material emits.
+	// \return The current value.
+	Color3 GetEmissiveColor() const;
+
+	// How much light the material emits.
+	// \param[in] value The new value.
+	void SetEmissiveColor( const Color3 & value );
+
+	// The material's glossiness.
+	// \return The current value.
+	float GetGlossiness() const;
+
+	// The material's glossiness.
+	// \param[in] value The new value.
+	void SetGlossiness( float value );
+
+	// The material transparency (1=non-transparant). Refer to a NiAlphaProperty object
+	// in this material's parent NiTriShape object, when alpha is not 1.
+	// \return The current value.
+	float GetAlpha() const;
+
+	// The material transparency (1=non-transparant). Refer to a NiAlphaProperty object
+	// in this material's parent NiTriShape object, when alpha is not 1.
+	// \param[in] value The new value.
+	void SetAlpha( float value );
+
+	// Unknown
+	// \return The current value.
+	float GetEmitMulti() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetEmitMulti( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

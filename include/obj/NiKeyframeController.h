@@ -57,6 +57,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Keyframe controller data index.
+	// \return The current value.
+	Ref<NiKeyframeData > GetData() const;
+
+	// Keyframe controller data index.
+	// \param[in] value The new value.
+	void SetData( Ref<NiKeyframeData > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

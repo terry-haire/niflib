@@ -61,6 +61,34 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Point to calculate distance from for switching?
+	// \return The current value.
+	Vector3 GetLodCenter() const;
+
+	// Point to calculate distance from for switching?
+	// \param[in] value The new value.
+	void SetLodCenter( const Vector3 & value );
+
+	// The ranges of distance that each level of detail applies in.
+	// \return The current value.
+	vector<LODRange > GetLodLevels() const;
+
+	// The ranges of distance that each level of detail applies in.
+	// \param[in] value The new value.
+	void SetLodLevels( const vector<LODRange >& value );
+
+	// Refers to LOD level information, either distance or screen size based.
+	// \return The current value.
+	Ref<NiLODData > GetLodLevelData() const;
+
+	// Refers to LOD level information, either distance or screen size based.
+	// \param[in] value The new value.
+	void SetLodLevelData( Ref<NiLODData > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

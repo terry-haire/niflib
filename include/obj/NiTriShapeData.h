@@ -55,6 +55,50 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Num Triangles times 3.
+	// \return The current value.
+	unsigned int GetNumTrianglePoints() const;
+
+	// Num Triangles times 3.
+	// \param[in] value The new value.
+	void SetNumTrianglePoints( unsigned int value );
+
+	// Do we have triangle data?
+	// \return The current value.
+	bool GetHasTriangles() const;
+
+	// Do we have triangle data?
+	// \param[in] value The new value.
+	void SetHasTriangles( bool value );
+
+	// Triangle data.
+	// \return The current value.
+	vector<Triangle > GetTriangles() const;
+
+	// Triangle data.
+	// \param[in] value The new value.
+	void SetTriangles( const vector<Triangle >& value );
+
+	// Triangle face data.
+	// \return The current value.
+	vector<Triangle > GetTriangles() const;
+
+	// Triangle face data.
+	// \param[in] value The new value.
+	void SetTriangles( const vector<Triangle >& value );
+
+	// The shared normals.
+	// \return The current value.
+	vector<MatchGroup > GetMatchGroups() const;
+
+	// The shared normals.
+	// \param[in] value The new value.
+	void SetMatchGroups( const vector<MatchGroup >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

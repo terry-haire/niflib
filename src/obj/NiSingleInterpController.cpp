@@ -123,6 +123,18 @@ std::list<NiObject *> NiSingleInterpController::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Ref<NiInterpolator > NiSingleInterpController::GetInterpolator() const {
+	return interpolator;
+}
+
+void NiSingleInterpController::SetInterpolator( Ref<NiInterpolator > value ) {
+	interpolator = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<NiInterpolator > NiSingleInterpController::GetInterpolator() const {

@@ -55,6 +55,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The shape's material.
+	// \return The current value.
+	HavokMaterial GetMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	void SetMaterial( const HavokMaterial & value );
+
+	// The radius of the sphere that encloses the shape.
+	// \return The current value.
+	float GetRadius() const;
+
+	// The radius of the sphere that encloses the shape.
+	// \param[in] value The new value.
+	void SetRadius( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

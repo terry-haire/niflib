@@ -207,6 +207,18 @@ std::list<NiObject *> NiArkTextureExtraData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<ArkTexture > NiArkTextureExtraData::GetTextures() const {
+	return textures;
+}
+
+void NiArkTextureExtraData::SetTextures( const vector<ArkTexture >& value ) {
+	textures = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

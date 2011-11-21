@@ -59,6 +59,50 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Refers to a Node to focus on.
+	// \return The current value.
+	NiNode * GetLookAt() const;
+
+	// Refers to a Node to focus on.
+	// \param[in] value The new value.
+	void SetLookAt( NiNode * value );
+
+	// Target node name.
+	// \return The current value.
+	IndexString GetTarget() const;
+
+	// Target node name.
+	// \param[in] value The new value.
+	void SetTarget( const IndexString & value );
+
+	// Translate.
+	// \return The current value.
+	Vector3 GetTranslation() const;
+
+	// Translate.
+	// \param[in] value The new value.
+	void SetTranslation( const Vector3 & value );
+
+	// Rotation.
+	// \return The current value.
+	Quaternion GetRotation() const;
+
+	// Rotation.
+	// \param[in] value The new value.
+	void SetRotation( const Quaternion & value );
+
+	// Scale.
+	// \return The current value.
+	float GetScale() const;
+
+	// Scale.
+	// \param[in] value The new value.
+	void SetScale( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!
@@ -114,7 +158,7 @@ protected:
 	/*! Unknown. */
 	unsigned short unknownShort;
 	/*! Refers to a Node to focus on. */
-	Ref<NiNode > lookAt;
+	NiNode * lookAt;
 	/*! Target node name. */
 	IndexString target;
 	/*! Translate. */

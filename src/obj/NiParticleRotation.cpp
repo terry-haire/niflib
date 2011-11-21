@@ -100,5 +100,33 @@ std::list<NiObject *> NiParticleRotation::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+byte NiParticleRotation::GetRandomInitialAxis_() const {
+	return randomInitialAxis_;
+}
+
+void NiParticleRotation::SetRandomInitialAxis_( byte value ) {
+	randomInitialAxis_ = value;
+}
+
+Vector3 NiParticleRotation::GetInitialAxis_() const {
+	return initialAxis_;
+}
+
+void NiParticleRotation::SetInitialAxis_( const Vector3 & value ) {
+	initialAxis_ = value;
+}
+
+float NiParticleRotation::GetRotationSpeed_() const {
+	return rotationSpeed_;
+}
+
+void NiParticleRotation::SetRotationSpeed_( float value ) {
+	rotationSpeed_ = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

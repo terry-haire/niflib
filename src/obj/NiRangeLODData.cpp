@@ -141,6 +141,26 @@ std::list<NiObject *> NiRangeLODData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Vector3 NiRangeLODData::GetLodCenter() const {
+	return lodCenter;
+}
+
+void NiRangeLODData::SetLodCenter( const Vector3 & value ) {
+	lodCenter = value;
+}
+
+vector<LODRange > NiRangeLODData::GetLodLevels() const {
+	return lodLevels;
+}
+
+void NiRangeLODData::SetLodLevels( const vector<LODRange >& value ) {
+	lodLevels = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Vector3 NiRangeLODData::GetLODCenter() const {

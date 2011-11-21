@@ -54,6 +54,42 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The object name.
+	// \return The current value.
+	IndexString GetName() const;
+
+	// The object name.
+	// \param[in] value The new value.
+	void SetName( const IndexString & value );
+
+	// Modifier ID in the particle modifier chain (always a multiple of 1000)?
+	// \return The current value.
+	unsigned int GetOrder() const;
+
+	// Modifier ID in the particle modifier chain (always a multiple of 1000)?
+	// \param[in] value The new value.
+	void SetOrder( unsigned int value );
+
+	// NiParticleSystem parent of this modifier.
+	// \return The current value.
+	NiParticleSystem * GetTarget() const;
+
+	// NiParticleSystem parent of this modifier.
+	// \param[in] value The new value.
+	void SetTarget( NiParticleSystem * value );
+
+	// Whether the modifier is currently in effect?  Usually true.
+	// \return The current value.
+	bool GetActive() const;
+
+	// Whether the modifier is currently in effect?  Usually true.
+	// \param[in] value The new value.
+	void SetActive( bool value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

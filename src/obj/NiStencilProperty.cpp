@@ -136,6 +136,106 @@ std::list<NiObject *> NiStencilProperty::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+unsigned short NiStencilProperty::GetFlags() const {
+	return flags;
+}
+
+void NiStencilProperty::SetFlags( unsigned short value ) {
+	flags = value;
+}
+
+byte NiStencilProperty::GetStencilEnabled() const {
+	return stencilEnabled;
+}
+
+void NiStencilProperty::SetStencilEnabled( byte value ) {
+	stencilEnabled = value;
+}
+
+StencilCompareMode NiStencilProperty::GetStencilFunction() const {
+	return stencilFunction;
+}
+
+void NiStencilProperty::SetStencilFunction( const StencilCompareMode & value ) {
+	stencilFunction = value;
+}
+
+unsigned int NiStencilProperty::GetStencilRef() const {
+	return stencilRef;
+}
+
+void NiStencilProperty::SetStencilRef( unsigned int value ) {
+	stencilRef = value;
+}
+
+unsigned int NiStencilProperty::GetStencilMask() const {
+	return stencilMask;
+}
+
+void NiStencilProperty::SetStencilMask( unsigned int value ) {
+	stencilMask = value;
+}
+
+StencilAction NiStencilProperty::GetFailAction() const {
+	return failAction;
+}
+
+void NiStencilProperty::SetFailAction( const StencilAction & value ) {
+	failAction = value;
+}
+
+StencilAction NiStencilProperty::GetZFailAction() const {
+	return zFailAction;
+}
+
+void NiStencilProperty::SetZFailAction( const StencilAction & value ) {
+	zFailAction = value;
+}
+
+StencilAction NiStencilProperty::GetPassAction() const {
+	return passAction;
+}
+
+void NiStencilProperty::SetPassAction( const StencilAction & value ) {
+	passAction = value;
+}
+
+FaceDrawMode NiStencilProperty::GetDrawMode() const {
+	return drawMode;
+}
+
+void NiStencilProperty::SetDrawMode( const FaceDrawMode & value ) {
+	drawMode = value;
+}
+
+unsigned short NiStencilProperty::GetFlags() const {
+	return flags;
+}
+
+void NiStencilProperty::SetFlags( unsigned short value ) {
+	flags = value;
+}
+
+unsigned int NiStencilProperty::GetStencilRef() const {
+	return stencilRef;
+}
+
+void NiStencilProperty::SetStencilRef( unsigned int value ) {
+	stencilRef = value;
+}
+
+unsigned int NiStencilProperty::GetStencilMask() const {
+	return stencilMask;
+}
+
+void NiStencilProperty::SetStencilMask( unsigned int value ) {
+	stencilMask = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 unsigned short NiStencilProperty::GetFlags() const {

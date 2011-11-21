@@ -105,6 +105,18 @@ std::list<NiObject *> TileShaderProperty::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+string TileShaderProperty::GetFileName() const {
+	return fileName;
+}
+
+void TileShaderProperty::SetFileName( const string & value ) {
+	fileName = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 string TileShaderProperty::GetFileName() const {

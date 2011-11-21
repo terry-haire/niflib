@@ -94,6 +94,18 @@ std::list<NiObject *> NiTriBasedGeomData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+unsigned short NiTriBasedGeomData::GetNumTriangles() const {
+	return numTriangles;
+}
+
+void NiTriBasedGeomData::SetNumTriangles( unsigned short value ) {
+	numTriangles = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 void NiTriBasedGeomData::SetTriangles( const vector<Triangle> & in ) {

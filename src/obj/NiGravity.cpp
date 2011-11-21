@@ -110,5 +110,41 @@ std::list<NiObject *> NiGravity::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+float NiGravity::GetForce() const {
+	return force;
+}
+
+void NiGravity::SetForce( float value ) {
+	force = value;
+}
+
+FieldType NiGravity::GetType() const {
+	return type;
+}
+
+void NiGravity::SetType( const FieldType & value ) {
+	type = value;
+}
+
+Vector3 NiGravity::GetPosition() const {
+	return position;
+}
+
+void NiGravity::SetPosition( const Vector3 & value ) {
+	position = value;
+}
+
+Vector3 NiGravity::GetDirection() const {
+	return direction;
+}
+
+void NiGravity::SetDirection( const Vector3 & value ) {
+	direction = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

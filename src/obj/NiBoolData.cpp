@@ -126,6 +126,18 @@ std::list<NiObject *> NiBoolData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+KeyGroup<byte > NiBoolData::GetData() const {
+	return data;
+}
+
+void NiBoolData::SetData( const KeyGroup<byte > & value ) {
+	data = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 KeyType NiBoolData::GetKeyType() const {

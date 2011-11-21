@@ -55,6 +55,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The boolean keys.
+	// \return The current value.
+	KeyGroup<byte > GetData() const;
+
+	// The boolean keys.
+	// \param[in] value The new value.
+	void SetData( const KeyGroup<byte > & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*! Retrieves the type of boolean interpolation being used.

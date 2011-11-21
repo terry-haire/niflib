@@ -58,6 +58,44 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Target texture slot (0=base, 4=glow).
+	// \return The current value.
+	TexType GetTextureSlot() const;
+
+	// Target texture slot (0=base, 4=glow).
+	// \param[in] value The new value.
+	void SetTextureSlot( const TexType & value );
+
+	// Time between two flips.
+	//             delta = (start_time - stop_time) / sources.num_indices
+	// \return The current value.
+	float GetDelta() const;
+
+	// Time between two flips.
+	//             delta = (start_time - stop_time) / sources.num_indices
+	// \param[in] value The new value.
+	void SetDelta( float value );
+
+	// The texture sources.
+	// \return The current value.
+	vector<Ref<NiSourceTexture > > GetSources() const;
+
+	// The texture sources.
+	// \param[in] value The new value.
+	void SetSources( const vector<Ref<NiSourceTexture > >& value );
+
+	// The image sources
+	// \return The current value.
+	vector<Ref<NiImage > > GetImages() const;
+
+	// The image sources
+	// \param[in] value The new value.
+	void SetImages( const vector<Ref<NiImage > >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

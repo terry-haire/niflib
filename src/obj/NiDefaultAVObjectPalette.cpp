@@ -147,6 +147,18 @@ std::list<NiObject *> NiDefaultAVObjectPalette::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<AVObject > NiDefaultAVObjectPalette::GetObjs() const {
+	return objs;
+}
+
+void NiDefaultAVObjectPalette::SetObjs( const vector<AVObject >& value ) {
+	objs = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 vector<Ref<NiAVObject> > NiDefaultAVObjectPalette::GetObjs() const {

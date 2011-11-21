@@ -55,6 +55,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Name of this object.
+	// \return The current value.
+	IndexString GetName() const;
+
+	// Name of this object.
+	// \param[in] value The new value.
+	void SetName( const IndexString & value );
+
+	// Block number of the next extra data object.
+	// \return The current value.
+	Ref<NiExtraData > GetNextExtraData() const;
+
+	// Block number of the next extra data object.
+	// \param[in] value The new value.
+	void SetNextExtraData( Ref<NiExtraData > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

@@ -57,6 +57,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Unknown.
+	// \return The current value.
+	bool GetSpawnOnDeath() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetSpawnOnDeath( bool value );
+
+	// Link to NiPSysSpawnModifier object?
+	// \return The current value.
+	Ref<NiPSysSpawnModifier > GetSpawnModifier() const;
+
+	// Link to NiPSysSpawnModifier object?
+	// \param[in] value The new value.
+	void SetSpawnModifier( Ref<NiPSysSpawnModifier > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

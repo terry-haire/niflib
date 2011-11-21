@@ -60,6 +60,106 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The format of the pixels in this internally stored image.
+	// \return The current value.
+	PixelFormat GetPixelFormat() const;
+
+	// The format of the pixels in this internally stored image.
+	// \param[in] value The new value.
+	void SetPixelFormat( const PixelFormat & value );
+
+	// 0x000000ff (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+	// \return The current value.
+	unsigned int GetRedMask() const;
+
+	// 0x000000ff (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+	// \param[in] value The new value.
+	void SetRedMask( unsigned int value );
+
+	// 0x0000ff00 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+	// \return The current value.
+	unsigned int GetGreenMask() const;
+
+	// 0x0000ff00 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+	// \param[in] value The new value.
+	void SetGreenMask( unsigned int value );
+
+	// 0x00ff0000 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+	// \return The current value.
+	unsigned int GetBlueMask() const;
+
+	// 0x00ff0000 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+	// \param[in] value The new value.
+	void SetBlueMask( unsigned int value );
+
+	// 0xff000000 (for 32bpp) or 0x00000000 (for 24bpp and 8bpp)
+	// \return The current value.
+	unsigned int GetAlphaMask() const;
+
+	// 0xff000000 (for 32bpp) or 0x00000000 (for 24bpp and 8bpp)
+	// \param[in] value The new value.
+	void SetAlphaMask( unsigned int value );
+
+	// Bits per pixel, 0 (?), 8, 24 or 32.
+	// \return The current value.
+	byte GetBitsPerPixel() const;
+
+	// Bits per pixel, 0 (?), 8, 24 or 32.
+	// \param[in] value The new value.
+	void SetBitsPerPixel( byte value );
+
+	// Bits per pixel, 0 (?), 8, 24 or 32.
+	// \return The current value.
+	byte GetBitsPerPixel() const;
+
+	// Bits per pixel, 0 (?), 8, 24 or 32.
+	// \param[in] value The new value.
+	void SetBitsPerPixel( byte value );
+
+	// Flags
+	// \return The current value.
+	byte GetFlags() const;
+
+	// Flags
+	// \param[in] value The new value.
+	void SetFlags( byte value );
+
+	// Channel Data
+	// \return The current value.
+	array<4,ChannelData >  GetChannels() const;
+
+	// Channel Data
+	// \param[in] value The new value.
+	void SetChannels( const array<4,ChannelData >&  value );
+
+	// Link to NiPalette, for 8-bit textures.
+	// \return The current value.
+	Ref<NiPalette > GetPalette() const;
+
+	// Link to NiPalette, for 8-bit textures.
+	// \param[in] value The new value.
+	void SetPalette( Ref<NiPalette > value );
+
+	// Bytes per pixel (Bits Per Pixel / 8).
+	// \return The current value.
+	unsigned int GetBytesPerPixel() const;
+
+	// Bytes per pixel (Bits Per Pixel / 8).
+	// \param[in] value The new value.
+	void SetBytesPerPixel( unsigned int value );
+
+	// Mipmap descriptions (width, height, offset).
+	// \return The current value.
+	vector<MipMap > GetMipmaps() const;
+
+	// Mipmap descriptions (width, height, offset).
+	// \param[in] value The new value.
+	void SetMipmaps( const vector<MipMap >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -93,7 +193,7 @@ protected:
 	unsigned int unknownInt3;
 	/*! Flags */
 	byte flags;
-	/*! Seems to always be zero. */
+	/*! Unkown. Often zero. */
 	unsigned int unknownInt4;
 	/*! Unknown. */
 	byte unknownByte1;

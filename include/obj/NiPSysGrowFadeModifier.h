@@ -56,6 +56,50 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Time in seconds to fade in.
+	// \return The current value.
+	float GetGrowTime() const;
+
+	// Time in seconds to fade in.
+	// \param[in] value The new value.
+	void SetGrowTime( float value );
+
+	// Unknown.
+	// \return The current value.
+	unsigned short GetGrowGeneration() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetGrowGeneration( unsigned short value );
+
+	// Time in seconds to fade out.
+	// \return The current value.
+	float GetFadeTime() const;
+
+	// Time in seconds to fade out.
+	// \param[in] value The new value.
+	void SetFadeTime( float value );
+
+	// Unknown.
+	// \return The current value.
+	unsigned short GetFadeGeneration() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetFadeGeneration( unsigned short value );
+
+	// Unknown
+	// \return The current value.
+	float GetBaseScale() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetBaseScale( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

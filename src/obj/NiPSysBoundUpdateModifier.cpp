@@ -94,5 +94,17 @@ std::list<NiObject *> NiPSysBoundUpdateModifier::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+unsigned short NiPSysBoundUpdateModifier::GetUpdateSkip() const {
+	return updateSkip;
+}
+
+void NiPSysBoundUpdateModifier::SetUpdateSkip( unsigned short value ) {
+	updateSkip = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

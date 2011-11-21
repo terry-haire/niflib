@@ -126,6 +126,18 @@ std::list<NiObject *> NiFloatData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+KeyGroup<float > NiFloatData::GetData() const {
+	return data;
+}
+
+void NiFloatData::SetData( const KeyGroup<float > & value ) {
+	data = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 KeyType NiFloatData::GetKeyType() const {

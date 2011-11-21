@@ -58,6 +58,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Frustrum field of view animation interpolater and data.
+	// \return The current value.
+	Ref<NiFloatInterpolator > GetInterpolator() const;
+
+	// Frustrum field of view animation interpolater and data.
+	// \param[in] value The new value.
+	void SetInterpolator( Ref<NiFloatInterpolator > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

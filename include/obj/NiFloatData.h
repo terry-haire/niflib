@@ -55,6 +55,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The keys.
+	// \return The current value.
+	KeyGroup<float > GetData() const;
+
+	// The keys.
+	// \param[in] value The new value.
+	void SetData( const KeyGroup<float > & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*! Retrieves the type of float interpolation being used.

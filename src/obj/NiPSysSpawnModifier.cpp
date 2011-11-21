@@ -122,5 +122,73 @@ std::list<NiObject *> NiPSysSpawnModifier::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+unsigned short NiPSysSpawnModifier::GetNumSpawnGenerations() const {
+	return numSpawnGenerations;
+}
+
+void NiPSysSpawnModifier::SetNumSpawnGenerations( unsigned short value ) {
+	numSpawnGenerations = value;
+}
+
+float NiPSysSpawnModifier::GetPercentageSpawned() const {
+	return percentageSpawned;
+}
+
+void NiPSysSpawnModifier::SetPercentageSpawned( float value ) {
+	percentageSpawned = value;
+}
+
+unsigned short NiPSysSpawnModifier::GetMinNumToSpawn() const {
+	return minNumToSpawn;
+}
+
+void NiPSysSpawnModifier::SetMinNumToSpawn( unsigned short value ) {
+	minNumToSpawn = value;
+}
+
+unsigned short NiPSysSpawnModifier::GetMaxNumToSpawn() const {
+	return maxNumToSpawn;
+}
+
+void NiPSysSpawnModifier::SetMaxNumToSpawn( unsigned short value ) {
+	maxNumToSpawn = value;
+}
+
+float NiPSysSpawnModifier::GetSpawnSpeedChaos() const {
+	return spawnSpeedChaos;
+}
+
+void NiPSysSpawnModifier::SetSpawnSpeedChaos( float value ) {
+	spawnSpeedChaos = value;
+}
+
+float NiPSysSpawnModifier::GetSpawnDirChaos() const {
+	return spawnDirChaos;
+}
+
+void NiPSysSpawnModifier::SetSpawnDirChaos( float value ) {
+	spawnDirChaos = value;
+}
+
+float NiPSysSpawnModifier::GetLifeSpan() const {
+	return lifeSpan;
+}
+
+void NiPSysSpawnModifier::SetLifeSpan( float value ) {
+	lifeSpan = value;
+}
+
+float NiPSysSpawnModifier::GetLifeSpanVariation() const {
+	return lifeSpanVariation;
+}
+
+void NiPSysSpawnModifier::SetLifeSpanVariation( float value ) {
+	lifeSpanVariation = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

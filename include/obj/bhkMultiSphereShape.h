@@ -55,6 +55,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// This array holds the spheres which make up the multi sphere shape.
+	// \return The current value.
+	vector<SphereBV > GetSpheres() const;
+
+	// This array holds the spheres which make up the multi sphere shape.
+	// \param[in] value The new value.
+	void SetSpheres( const vector<SphereBV >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

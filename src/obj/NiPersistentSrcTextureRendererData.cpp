@@ -145,6 +145,18 @@ std::list<NiObject *> NiPersistentSrcTextureRendererData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<vector<byte > > NiPersistentSrcTextureRendererData::GetPixelData() const {
+	return pixelData;
+}
+
+void NiPersistentSrcTextureRendererData::SetPixelData( const vector<byte >& value ) {
+	pixelData = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

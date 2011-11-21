@@ -57,6 +57,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The data for the controller.
+	// \return The current value.
+	Ref<NiFloatData > GetData() const;
+
+	// The data for the controller.
+	// \param[in] value The new value.
+	void SetData( Ref<NiFloatData > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

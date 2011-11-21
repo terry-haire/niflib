@@ -53,6 +53,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Value
+	// \return The current value.
+	int GetValue() const;
+
+	// Value
+	// \param[in] value The new value.
+	void SetValue( int value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

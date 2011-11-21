@@ -52,6 +52,30 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Raw pixel data holding the mipmaps.  Mipmap zero is the full-size texture and
+	// they get smaller by half as the number increases.
+	// \return The current value.
+	vector<vector<byte > > GetPixelData() const;
+
+	// Raw pixel data holding the mipmaps.  Mipmap zero is the full-size texture and
+	// they get smaller by half as the number increases.
+	// \param[in] value The new value.
+	void SetPixelData( const vector<byte >& value );
+
+	// Raw pixel data holding the mipmaps.  Mipmap zero is the full-size texture and
+	// they get smaller by half as the number increases.
+	// \return The current value.
+	vector<array<1,byte >  > GetPixelData() const;
+
+	// Raw pixel data holding the mipmaps.  Mipmap zero is the full-size texture and
+	// they get smaller by half as the number increases.
+	// \param[in] value The new value.
+	void SetPixelData( const array<1,byte >&  value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

@@ -179,6 +179,26 @@ std::list<NiObject *> NiRoomGroup::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+NiNode * NiRoomGroup::GetShellLink() const {
+	return shellLink;
+}
+
+void NiRoomGroup::SetShellLink( NiNode * value ) {
+	shellLink = value;
+}
+
+vector<NiRoom * > NiRoomGroup::GetRooms() const {
+	return rooms;
+}
+
+void NiRoomGroup::SetRooms( const vector<NiRoom * >& value ) {
+	rooms = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

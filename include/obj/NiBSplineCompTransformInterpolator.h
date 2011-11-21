@@ -56,6 +56,58 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Translation Bias
+	// \return The current value.
+	float GetTranslationBias() const;
+
+	// Translation Bias
+	// \param[in] value The new value.
+	void SetTranslationBias( float value );
+
+	// Translation Multiplier
+	// \return The current value.
+	float GetTranslationMultiplier() const;
+
+	// Translation Multiplier
+	// \param[in] value The new value.
+	void SetTranslationMultiplier( float value );
+
+	// Rotation Bias
+	// \return The current value.
+	float GetRotationBias() const;
+
+	// Rotation Bias
+	// \param[in] value The new value.
+	void SetRotationBias( float value );
+
+	// Rotation Multiplier
+	// \return The current value.
+	float GetRotationMultiplier() const;
+
+	// Rotation Multiplier
+	// \param[in] value The new value.
+	void SetRotationMultiplier( float value );
+
+	// Scale Bias
+	// \return The current value.
+	float GetScaleBias() const;
+
+	// Scale Bias
+	// \param[in] value The new value.
+	void SetScaleBias( float value );
+
+	// Scale Multiplier
+	// \return The current value.
+	float GetScaleMultiplier() const;
+
+	// Scale Multiplier
+	// \param[in] value The new value.
+	void SetScaleMultiplier( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

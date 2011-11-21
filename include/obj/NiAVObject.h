@@ -62,6 +62,84 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Some flags; commonly 0x000C or 0x000A.
+	// \return The current value.
+	unsigned short GetFlags() const;
+
+	// Some flags; commonly 0x000C or 0x000A.
+	// \param[in] value The new value.
+	void SetFlags( unsigned short value );
+
+	// The translation vector.
+	// \return The current value.
+	Vector3 GetTranslation() const;
+
+	// The translation vector.
+	// \param[in] value The new value.
+	void SetTranslation( const Vector3 & value );
+
+	// The rotation part of the transformation matrix.
+	// \return The current value.
+	Matrix33 GetRotation() const;
+
+	// The rotation part of the transformation matrix.
+	// \param[in] value The new value.
+	void SetRotation( const Matrix33 & value );
+
+	// Scaling part (only uniform scaling is supported).
+	// \return The current value.
+	float GetScale() const;
+
+	// Scaling part (only uniform scaling is supported).
+	// \param[in] value The new value.
+	void SetScale( float value );
+
+	// Unknown function. Always seems to be (0, 0, 0)
+	// \return The current value.
+	Vector3 GetVelocity() const;
+
+	// Unknown function. Always seems to be (0, 0, 0)
+	// \param[in] value The new value.
+	void SetVelocity( const Vector3 & value );
+
+	// List of node properties.
+	// \return The current value.
+	vector<Ref<NiProperty > > GetProperties() const;
+
+	// List of node properties.
+	// \param[in] value The new value.
+	void SetProperties( const vector<Ref<NiProperty > >& value );
+
+	// Do we have a bounding box?
+	// \return The current value.
+	bool GetHasBoundingBox() const;
+
+	// Do we have a bounding box?
+	// \param[in] value The new value.
+	void SetHasBoundingBox( bool value );
+
+	// The bounding box.
+	// \return The current value.
+	BoundingBox GetBoundingBox() const;
+
+	// The bounding box.
+	// \param[in] value The new value.
+	void SetBoundingBox( const BoundingBox & value );
+
+	// Refers to NiCollisionObject, which is usually a bounding box or other simple
+	// collision shape.  In Oblivion this links the Havok objects.
+	// \return The current value.
+	Ref<NiCollisionObject > GetCollisionObject() const;
+
+	// Refers to NiCollisionObject, which is usually a bounding box or other simple
+	// collision shape.  In Oblivion this links the Havok objects.
+	// \param[in] value The new value.
+	void SetCollisionObject( Ref<NiCollisionObject > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

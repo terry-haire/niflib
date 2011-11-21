@@ -101,6 +101,26 @@ std::list<NiObject *> NiZBufferProperty::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+unsigned short NiZBufferProperty::GetFlags() const {
+	return flags;
+}
+
+void NiZBufferProperty::SetFlags( unsigned short value ) {
+	flags = value;
+}
+
+ZCompareMode NiZBufferProperty::GetFunction() const {
+	return function;
+}
+
+void NiZBufferProperty::SetFunction( const ZCompareMode & value ) {
+	function = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 unsigned short NiZBufferProperty::GetFlags() const {

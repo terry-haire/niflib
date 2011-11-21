@@ -128,5 +128,49 @@ std::list<NiObject *> NiPSysDragModifier::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+NiObject * NiPSysDragModifier::GetParent() const {
+	return parent;
+}
+
+void NiPSysDragModifier::SetParent( NiObject * value ) {
+	parent = value;
+}
+
+Vector3 NiPSysDragModifier::GetDragAxis() const {
+	return dragAxis;
+}
+
+void NiPSysDragModifier::SetDragAxis( const Vector3 & value ) {
+	dragAxis = value;
+}
+
+float NiPSysDragModifier::GetPercentage() const {
+	return percentage;
+}
+
+void NiPSysDragModifier::SetPercentage( float value ) {
+	percentage = value;
+}
+
+float NiPSysDragModifier::GetRange() const {
+	return range;
+}
+
+void NiPSysDragModifier::SetRange( float value ) {
+	range = value;
+}
+
+float NiPSysDragModifier::GetRangeFalloff() const {
+	return rangeFalloff;
+}
+
+void NiPSysDragModifier::SetRangeFalloff( float value ) {
+	rangeFalloff = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

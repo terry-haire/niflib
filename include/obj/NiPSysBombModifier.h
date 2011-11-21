@@ -57,6 +57,58 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Link to a NiNode for bomb to function.
+	// \return The current value.
+	NiNode * GetBombObject() const;
+
+	// Link to a NiNode for bomb to function.
+	// \param[in] value The new value.
+	void SetBombObject( NiNode * value );
+
+	// Orientation of bomb object.
+	// \return The current value.
+	Vector3 GetBombAxis() const;
+
+	// Orientation of bomb object.
+	// \param[in] value The new value.
+	void SetBombAxis( const Vector3 & value );
+
+	// Falloff rate of the bomb object.
+	// \return The current value.
+	float GetDecay() const;
+
+	// Falloff rate of the bomb object.
+	// \param[in] value The new value.
+	void SetDecay( float value );
+
+	// DeltaV /  Strength?
+	// \return The current value.
+	float GetDeltaV() const;
+
+	// DeltaV /  Strength?
+	// \param[in] value The new value.
+	void SetDeltaV( float value );
+
+	// Decay type
+	// \return The current value.
+	DecayType GetDecayType() const;
+
+	// Decay type
+	// \param[in] value The new value.
+	void SetDecayType( const DecayType & value );
+
+	// Shape/symmetry of the bomb object.
+	// \return The current value.
+	SymmetryType GetSymmetryType() const;
+
+	// Shape/symmetry of the bomb object.
+	// \param[in] value The new value.
+	void SetSymmetryType( const SymmetryType & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

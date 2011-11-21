@@ -127,6 +127,18 @@ std::list<NiObject *> BSWArray::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<int > BSWArray::GetItems() const {
+	return items;
+}
+
+void BSWArray::SetItems( const vector<int >& value ) {
+	items = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

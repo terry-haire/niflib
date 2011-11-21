@@ -126,6 +126,18 @@ std::list<NiObject *> NiColorData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+KeyGroup<Color4 > NiColorData::GetData() const {
+	return data;
+}
+
+void NiColorData::SetData( const KeyGroup<Color4 > & value ) {
+	data = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 KeyType NiColorData::GetKeyType() const {

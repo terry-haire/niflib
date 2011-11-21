@@ -128,6 +128,26 @@ std::list<NiObject *> NiExtraData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+IndexString NiExtraData::GetName() const {
+	return name;
+}
+
+void NiExtraData::SetName( const IndexString & value ) {
+	name = value;
+}
+
+Ref<NiExtraData > NiExtraData::GetNextExtraData() const {
+	return nextExtraData;
+}
+
+void NiExtraData::SetNextExtraData( Ref<NiExtraData > value ) {
+	nextExtraData = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 string NiExtraData::GetName() {

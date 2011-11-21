@@ -191,6 +191,34 @@ std::list<NiObject *> hkPackedNiTriStripsData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<hkTriangle > hkPackedNiTriStripsData::GetTriangles() const {
+	return triangles;
+}
+
+void hkPackedNiTriStripsData::SetTriangles( const vector<hkTriangle >& value ) {
+	triangles = value;
+}
+
+vector<Vector3 > hkPackedNiTriStripsData::GetVertices() const {
+	return vertices;
+}
+
+void hkPackedNiTriStripsData::SetVertices( const vector<Vector3 >& value ) {
+	vertices = value;
+}
+
+vector<OblivionSubShape > hkPackedNiTriStripsData::GetSubShapes() const {
+	return subShapes;
+}
+
+void hkPackedNiTriStripsData::SetSubShapes( const vector<OblivionSubShape >& value ) {
+	subShapes = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 vector<Triangle> hkPackedNiTriStripsData::GetTriangles() const {

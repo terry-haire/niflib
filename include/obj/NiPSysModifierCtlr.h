@@ -52,6 +52,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Refers to modifier object by its name?
+	// \return The current value.
+	IndexString GetModifierName() const;
+
+	// Refers to modifier object by its name?
+	// \param[in] value The new value.
+	void SetModifierName( const IndexString & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

@@ -14,14 +14,31 @@ All rights reserved.  Please see niflib.h for license. */
 
 //--END CUSTOM CODE--//
 
-#include "NiProperty.h"
+#include "../RefObject.h"
+#include "../Type.h"
+#include "../Ref.h"
+#include "../nif_basic_types.h"
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <sstream>
+#include <string>
+#include <list>
+#include <map>
+#include <vector>
+// Include structures
+#include "../Ref.h"
 namespace Niflib {
+using namespace std;
 
+// Forward define of referenced NIF objects
+class NiExtraData;
+class NiTimeController;
 class BSShaderProperty;
 typedef Ref<BSShaderProperty> BSShaderPropertyRef;
 
 /*! Bethesda-specific Property node */
-class BSShaderProperty : public NiProperty {
+class BSShaderProperty : public RefObject {
 public:
 	/*! Constructor */
 	NIFLIB_API BSShaderProperty();
@@ -52,6 +69,74 @@ public:
 	 * \return The type constant for the actual type of the object.
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
+
+	/***Begin Example Naive Implementation****
+
+	// Object Name
+	// \return The current value.
+	IndexString GetName() const;
+
+	// Object Name
+	// \param[in] value The new value.
+	void SetName( const IndexString & value );
+
+	// Extra data object index. (The first in a chain)
+	// \return The current value.
+	Ref<NiExtraData > GetExtraData() const;
+
+	// Extra data object index. (The first in a chain)
+	// \param[in] value The new value.
+	void SetExtraData( Ref<NiExtraData > value );
+
+	// List of extra data indices.
+	// \return The current value.
+	vector<Ref<NiExtraData > > GetExtraDataList() const;
+
+	// List of extra data indices.
+	// \param[in] value The new value.
+	void SetExtraDataList( const vector<Ref<NiExtraData > >& value );
+
+	// Controller object index. (The first in a chain)
+	// \return The current value.
+	Ref<NiTimeController > GetController() const;
+
+	// Controller object index. (The first in a chain)
+	// \param[in] value The new value.
+	void SetController( Ref<NiTimeController > value );
+
+	// Unknown
+	// \return The current value.
+	unsigned short GetFlags() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetFlags( unsigned short value );
+
+	// Unknown (Set to 0x21 for NoLighting, 0x11 for Water)
+	// \return The current value.
+	BSShaderType GetShaderType() const;
+
+	// Unknown (Set to 0x21 for NoLighting, 0x11 for Water)
+	// \param[in] value The new value.
+	void SetShaderType( const BSShaderType & value );
+
+	// Shader Property Flags
+	// \return The current value.
+	BSShaderFlags GetShaderFlags() const;
+
+	// Shader Property Flags
+	// \param[in] value The new value.
+	void SetShaderFlags( const BSShaderFlags & value );
+
+	// Unknown
+	// \return The current value.
+	float GetEnvmapScale() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetEnvmapScale( float value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
@@ -91,11 +176,25 @@ public:
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown */
+	unsigned int unknownFlag;
+	/*! Object Name */
+	IndexString name;
+	/*! Extra data object index. (The first in a chain) */
+	Ref<NiExtraData > extraData;
+	/*! The number of Extra Data objects referenced through the list. */
+	mutable unsigned int numExtraDataList;
+	/*! List of extra data indices. */
+	vector<Ref<NiExtraData > > extraDataList;
+	/*! Controller object index. (The first in a chain) */
+	Ref<NiTimeController > controller;
+	/*! Unknown */
 	unsigned short flags;
 	/*! Unknown (Set to 0x21 for NoLighting, 0x11 for Water) */
 	BSShaderType shaderType;
 	/*! Shader Property Flags */
 	BSShaderFlags shaderFlags;
+	/*! Unknown */
+	unsigned short unknownShort1;
 	/*! Unknown */
 	int unknownInt2;
 	/*! Unknown */

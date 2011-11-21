@@ -123,6 +123,18 @@ std::list<NiObject *> NiAlphaController::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Ref<NiFloatData > NiAlphaController::GetData() const {
+	return data;
+}
+
+void NiAlphaController::SetData( Ref<NiFloatData > value ) {
+	data = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<NiFloatData> NiAlphaController::GetData() const {

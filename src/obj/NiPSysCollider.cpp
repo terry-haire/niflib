@@ -196,5 +196,65 @@ std::list<NiObject *> NiPSysCollider::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+float NiPSysCollider::GetBounce() const {
+	return bounce;
+}
+
+void NiPSysCollider::SetBounce( float value ) {
+	bounce = value;
+}
+
+bool NiPSysCollider::GetSpawnOnCollide() const {
+	return spawnOnCollide;
+}
+
+void NiPSysCollider::SetSpawnOnCollide( bool value ) {
+	spawnOnCollide = value;
+}
+
+bool NiPSysCollider::GetDieOnCollide() const {
+	return dieOnCollide;
+}
+
+void NiPSysCollider::SetDieOnCollide( bool value ) {
+	dieOnCollide = value;
+}
+
+Ref<NiPSysSpawnModifier > NiPSysCollider::GetSpawnModifier() const {
+	return spawnModifier;
+}
+
+void NiPSysCollider::SetSpawnModifier( Ref<NiPSysSpawnModifier > value ) {
+	spawnModifier = value;
+}
+
+NiObject * NiPSysCollider::GetParent() const {
+	return parent;
+}
+
+void NiPSysCollider::SetParent( NiObject * value ) {
+	parent = value;
+}
+
+Ref<NiObject > NiPSysCollider::GetNextCollider() const {
+	return nextCollider;
+}
+
+void NiPSysCollider::SetNextCollider( Ref<NiObject > value ) {
+	nextCollider = value;
+}
+
+NiNode * NiPSysCollider::GetColliderObject() const {
+	return colliderObject;
+}
+
+void NiPSysCollider::SetColliderObject( NiNode * value ) {
+	colliderObject = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

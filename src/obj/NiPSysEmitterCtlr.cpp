@@ -152,6 +152,26 @@ std::list<NiObject *> NiPSysEmitterCtlr::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Ref<NiPSysEmitterCtlrData > NiPSysEmitterCtlr::GetData() const {
+	return data;
+}
+
+void NiPSysEmitterCtlr::SetData( Ref<NiPSysEmitterCtlrData > value ) {
+	data = value;
+}
+
+Ref<NiInterpolator > NiPSysEmitterCtlr::GetVisibilityInterpolator() const {
+	return visibilityInterpolator;
+}
+
+void NiPSysEmitterCtlr::SetVisibilityInterpolator( Ref<NiInterpolator > value ) {
+	visibilityInterpolator = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<NiPSysEmitterCtlrData > NiPSysEmitterCtlr::GetData() const {

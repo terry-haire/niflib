@@ -52,6 +52,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The strings.
+	// \return The current value.
+	vector<string > GetData() const;
+
+	// The strings.
+	// \param[in] value The new value.
+	void SetData( const vector<string >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!
@@ -71,7 +83,7 @@ protected:
 	/*! Number of strings. */
 	mutable unsigned int numStrings;
 	/*! The strings. */
-	vector<IndexString > data;
+	vector<string > data;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

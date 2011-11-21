@@ -53,6 +53,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Texture file name
+	// \return The current value.
+	string GetFileName() const;
+
+	// Texture file name
+	// \param[in] value The new value.
+	void SetFileName( const string & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	// Texture file name

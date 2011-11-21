@@ -52,6 +52,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Float values representing the control data.
+	// \return The current value.
+	vector<float > GetFloatControlPoints() const;
+
+	// Float values representing the control data.
+	// \param[in] value The new value.
+	void SetFloatControlPoints( const vector<float >& value );
+
+	// Signed shorts representing the data from 0 to 1 (scaled by SHRT_MAX).
+	// \return The current value.
+	vector<short > GetShortControlPoints() const;
+
+	// Signed shorts representing the data from 0 to 1 (scaled by SHRT_MAX).
+	// \param[in] value The new value.
+	void SetShortControlPoints( const vector<short >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

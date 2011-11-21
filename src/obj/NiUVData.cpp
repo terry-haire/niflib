@@ -137,5 +137,17 @@ std::list<NiObject *> NiUVData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+array<4,KeyGroup<float > >  NiUVData::GetUvGroups() const {
+	return uvGroups;
+}
+
+void NiUVData::SetUvGroups( const array<4,KeyGroup<float > >&  value ) {
+	uvGroups = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

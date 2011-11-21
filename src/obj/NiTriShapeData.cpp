@@ -54,7 +54,7 @@ void NiTriShapeData::Read( istream& in, list<unsigned int> & link_stack, const N
 		};
 	};
 	if ( info.version >= 0x0A000103 ) {
-		if ( (hasTriangles != 0) ) {
+		if ( hasTriangles ) {
 			triangles.resize(numTriangles);
 			for (unsigned int i3 = 0; i3 < triangles.size(); i3++) {
 				NifStream( triangles[i3], in, info );
@@ -93,7 +93,7 @@ void NiTriShapeData::Write( ostream& out, const map<NiObjectRef,unsigned int> & 
 		};
 	};
 	if ( info.version >= 0x0A000103 ) {
-		if ( (hasTriangles != 0) ) {
+		if ( hasTriangles ) {
 			for (unsigned int i3 = 0; i3 < triangles.size(); i3++) {
 				NifStream( triangles[i3], out, info );
 			};
@@ -185,6 +185,50 @@ std::list<NiObject *> NiTriShapeData::GetPtrs() const {
 	ptrs = NiTriBasedGeomData::GetPtrs();
 	return ptrs;
 }
+
+/***Begin Example Naive Implementation****
+
+unsigned int NiTriShapeData::GetNumTrianglePoints() const {
+	return numTrianglePoints;
+}
+
+void NiTriShapeData::SetNumTrianglePoints( unsigned int value ) {
+	numTrianglePoints = value;
+}
+
+bool NiTriShapeData::GetHasTriangles() const {
+	return hasTriangles;
+}
+
+void NiTriShapeData::SetHasTriangles( bool value ) {
+	hasTriangles = value;
+}
+
+vector<Triangle > NiTriShapeData::GetTriangles() const {
+	return triangles;
+}
+
+void NiTriShapeData::SetTriangles( const vector<Triangle >& value ) {
+	triangles = value;
+}
+
+vector<Triangle > NiTriShapeData::GetTriangles() const {
+	return triangles;
+}
+
+void NiTriShapeData::SetTriangles( const vector<Triangle >& value ) {
+	triangles = value;
+}
+
+vector<MatchGroup > NiTriShapeData::GetMatchGroups() const {
+	return matchGroups;
+}
+
+void NiTriShapeData::SetMatchGroups( const vector<MatchGroup >& value ) {
+	matchGroups = value;
+}
+
+****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

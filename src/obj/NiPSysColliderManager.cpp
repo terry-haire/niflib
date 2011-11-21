@@ -116,5 +116,17 @@ std::list<NiObject *> NiPSysColliderManager::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Ref<NiPSysCollider > NiPSysColliderManager::GetCollider() const {
+	return collider;
+}
+
+void NiPSysColliderManager::SetCollider( Ref<NiPSysCollider > value ) {
+	collider = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 //--END CUSTOM CODE--//

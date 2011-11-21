@@ -116,6 +116,18 @@ std::list<NiObject *> NiCollisionObject::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+NiAVObject * NiCollisionObject::GetTarget() const {
+	return target;
+}
+
+void NiCollisionObject::SetTarget( NiAVObject * value ) {
+	target = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<NiAVObject> NiCollisionObject::GetTarget() const {

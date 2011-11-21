@@ -129,6 +129,26 @@ std::list<NiObject *> NiPoint3InterpController::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+TargetColor NiPoint3InterpController::GetTargetColor() const {
+	return targetColor;
+}
+
+void NiPoint3InterpController::SetTargetColor( const TargetColor & value ) {
+	targetColor = value;
+}
+
+Ref<NiPosData > NiPoint3InterpController::GetData() const {
+	return data;
+}
+
+void NiPoint3InterpController::SetData( Ref<NiPosData > value ) {
+	data = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<NiPosData > NiPoint3InterpController::GetData() const {

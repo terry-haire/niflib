@@ -52,6 +52,34 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Defines the Width of the box area.
+	// \return The current value.
+	float GetWidth() const;
+
+	// Defines the Width of the box area.
+	// \param[in] value The new value.
+	void SetWidth( float value );
+
+	// Defines the Height of the box area.
+	// \return The current value.
+	float GetHeight() const;
+
+	// Defines the Height of the box area.
+	// \param[in] value The new value.
+	void SetHeight( float value );
+
+	// Defines the Depth of the box area.
+	// \return The current value.
+	float GetDepth() const;
+
+	// Defines the Depth of the box area.
+	// \param[in] value The new value.
+	void SetDepth( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

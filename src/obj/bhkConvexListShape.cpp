@@ -182,6 +182,26 @@ std::list<NiObject *> bhkConvexListShape::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<Ref<bhkConvexShape > > bhkConvexListShape::GetSubShapes() const {
+	return subShapes;
+}
+
+void bhkConvexListShape::SetSubShapes( const vector<Ref<bhkConvexShape > >& value ) {
+	subShapes = value;
+}
+
+HavokMaterial bhkConvexListShape::GetMaterial() const {
+	return material;
+}
+
+void bhkConvexListShape::SetMaterial( const HavokMaterial & value ) {
+	material = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 HavokMaterial bhkConvexListShape::GetMaterial() const {

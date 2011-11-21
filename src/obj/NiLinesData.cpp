@@ -129,6 +129,18 @@ std::list<NiObject *> NiLinesData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<bool > NiLinesData::GetLines() const {
+	return lines;
+}
+
+void NiLinesData::SetLines( const vector<bool >& value ) {
+	lines = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 //--END CUSTOM CODE--//

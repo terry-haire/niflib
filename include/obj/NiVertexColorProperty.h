@@ -56,6 +56,46 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Property flags. Appears to be unused until 20.1.0.3.
+	//
+	//             Bits 0-2: Unknown
+	//             Bit 3: Lighting Mode?
+	//             Bits 4-5: Vertex Mode?
+	// \return The current value.
+	unsigned short GetFlags() const;
+
+	// Property flags. Appears to be unused until 20.1.0.3.
+	//
+	//             Bits 0-2: Unknown
+	//             Bit 3: Lighting Mode?
+	//             Bits 4-5: Vertex Mode?
+	// \param[in] value The new value.
+	void SetFlags( unsigned short value );
+
+	// Determines how vertex and material colors are mixed.
+	//             related gl function: glColorMaterial
+	//             In Flags from version 20.1.0.3 onwards.
+	// \return The current value.
+	VertMode GetVertexMode() const;
+
+	// Determines how vertex and material colors are mixed.
+	//             related gl function: glColorMaterial
+	//             In Flags from version 20.1.0.3 onwards.
+	// \param[in] value The new value.
+	void SetVertexMode( const VertMode & value );
+
+	// The light mode. In Flags from 20.1.0.3 on.
+	// \return The current value.
+	LightMode GetLightingMode() const;
+
+	// The light mode. In Flags from 20.1.0.3 on.
+	// \param[in] value The new value.
+	void SetLightingMode( const LightMode & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

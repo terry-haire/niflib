@@ -52,6 +52,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The opening angle of the spot.
+	// \return The current value.
+	float GetCutoffAngle() const;
+
+	// The opening angle of the spot.
+	// \param[in] value The new value.
+	void SetCutoffAngle( float value );
+
+	// Describes the distribution of light. (see: glLight)
+	// \return The current value.
+	float GetExponent() const;
+
+	// Describes the distribution of light. (see: glLight)
+	// \param[in] value The new value.
+	void SetExponent( float value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

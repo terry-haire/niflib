@@ -52,6 +52,50 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// The center of the bounding sphere?
+	// \return The current value.
+	Vector3 GetBoundCenter() const;
+
+	// The center of the bounding sphere?
+	// \param[in] value The new value.
+	void SetBoundCenter( const Vector3 & value );
+
+	// The radius of the bounding sphere?
+	// \return The current value.
+	float GetBoundRadius() const;
+
+	// The radius of the bounding sphere?
+	// \param[in] value The new value.
+	void SetBoundRadius( float value );
+
+	// The center of the bounding sphere in world space?
+	// \return The current value.
+	Vector3 GetWorldCenter() const;
+
+	// The center of the bounding sphere in world space?
+	// \param[in] value The new value.
+	void SetWorldCenter( const Vector3 & value );
+
+	// The radius of the bounding sphere in world space?
+	// \return The current value.
+	float GetWorldRadius() const;
+
+	// The radius of the bounding sphere in world space?
+	// \param[in] value The new value.
+	void SetWorldRadius( float value );
+
+	// The LOD levels based on proportion of screen size?
+	// \return The current value.
+	vector<float > GetProportionLevels() const;
+
+	// The LOD levels based on proportion of screen size?
+	// \param[in] value The new value.
+	void SetProportionLevels( const vector<float >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

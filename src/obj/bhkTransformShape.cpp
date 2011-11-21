@@ -144,6 +144,34 @@ std::list<NiObject *> bhkTransformShape::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+Ref<bhkShape > bhkTransformShape::GetShape() const {
+	return shape;
+}
+
+void bhkTransformShape::SetShape( Ref<bhkShape > value ) {
+	shape = value;
+}
+
+HavokMaterial bhkTransformShape::GetMaterial() const {
+	return material;
+}
+
+void bhkTransformShape::SetMaterial( const HavokMaterial & value ) {
+	material = value;
+}
+
+Matrix44 bhkTransformShape::GetTransform() const {
+	return transform;
+}
+
+void bhkTransformShape::SetTransform( const Matrix44 & value ) {
+	transform = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 Ref<bhkShape > bhkTransformShape::GetShape() const {

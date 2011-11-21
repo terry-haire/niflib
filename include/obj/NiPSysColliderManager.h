@@ -60,6 +60,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Link to a NiPSysPlanarCollider or NiPSysSphericalCollider.
+	// \return The current value.
+	Ref<NiPSysCollider > GetCollider() const;
+
+	// Link to a NiPSysPlanarCollider or NiPSysSphericalCollider.
+	// \param[in] value The new value.
+	void SetCollider( Ref<NiPSysCollider > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

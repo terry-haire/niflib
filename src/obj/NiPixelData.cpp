@@ -150,6 +150,26 @@ std::list<NiObject *> NiPixelData::GetPtrs() const {
 	return ptrs;
 }
 
+/***Begin Example Naive Implementation****
+
+vector<vector<byte > > NiPixelData::GetPixelData() const {
+	return pixelData;
+}
+
+void NiPixelData::SetPixelData( const vector<byte >& value ) {
+	pixelData = value;
+}
+
+vector<array<1,byte >  > NiPixelData::GetPixelData() const {
+	return pixelData;
+}
+
+void NiPixelData::SetPixelData( const array<1,byte >&  value ) {
+	pixelData = value;
+}
+
+****End Example Naive Implementation***/
+
 //--BEGIN MISC CUSTOM CODE--//
 
 int NiPixelData::GetHeight() const {

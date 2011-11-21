@@ -58,6 +58,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// This controller's data.
+	// \return The current value.
+	Ref<NiMorphData > GetData() const;
+
+	// This controller's data.
+	// \param[in] value The new value.
+	void SetData( Ref<NiMorphData > value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

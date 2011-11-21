@@ -52,6 +52,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Is the particle rotation array present?
+	// \return The current value.
+	bool GetHasRotations2() const;
+
+	// Is the particle rotation array present?
+	// \param[in] value The new value.
+	void SetHasRotations2( bool value );
+
+	// The individual particle rotations.
+	// \return The current value.
+	vector<Quaternion > GetRotations2() const;
+
+	// The individual particle rotations.
+	// \param[in] value The new value.
+	void SetRotations2( const vector<Quaternion >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:

@@ -59,6 +59,44 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Skinning data reference.
+	// \return The current value.
+	Ref<NiSkinData > GetData() const;
+
+	// Skinning data reference.
+	// \param[in] value The new value.
+	void SetData( Ref<NiSkinData > value );
+
+	// Refers to a NiSkinPartition objects, which partitions the mesh such that every
+	// vertex is only influenced by a limited number of bones.
+	// \return The current value.
+	Ref<NiSkinPartition > GetSkinPartition() const;
+
+	// Refers to a NiSkinPartition objects, which partitions the mesh such that every
+	// vertex is only influenced by a limited number of bones.
+	// \param[in] value The new value.
+	void SetSkinPartition( Ref<NiSkinPartition > value );
+
+	// Armature root node.
+	// \return The current value.
+	NiNode * GetSkeletonRoot() const;
+
+	// Armature root node.
+	// \param[in] value The new value.
+	void SetSkeletonRoot( NiNode * value );
+
+	// List of all armature bones.
+	// \return The current value.
+	vector<NiNode * > GetBones() const;
+
+	// List of all armature bones.
+	// \param[in] value The new value.
+	void SetBones( const vector<NiNode * >& value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!

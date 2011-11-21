@@ -53,6 +53,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Unknown
+	// \return The current value.
+	Vector4 GetAlphaSortBound() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetAlphaSortBound( const Vector4 & value );
+
+	// Unknown
+	// \return The current value.
+	byte GetIsStaticBound() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetIsStaticBound( byte value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

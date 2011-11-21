@@ -54,6 +54,18 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Node parent of this modifier?
+	// \return The current value.
+	NiNode * GetEmitterObject() const;
+
+	// Node parent of this modifier?
+	// \param[in] value The new value.
+	void SetEmitterObject( NiNode * value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:
