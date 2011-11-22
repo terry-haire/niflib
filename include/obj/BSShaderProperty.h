@@ -53,42 +53,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Unknown
-	// \return The current value.
-	unsigned short GetFlags() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetFlags( unsigned short value );
-
-	// Unknown (Set to 0x21 for NoLighting, 0x11 for Water)
-	// \return The current value.
-	BSShaderType GetShaderType() const;
-
-	// Unknown (Set to 0x21 for NoLighting, 0x11 for Water)
-	// \param[in] value The new value.
-	void SetShaderType( const BSShaderType & value );
-
-	// Shader Property Flags
-	// \return The current value.
-	BSShaderFlags GetShaderFlags() const;
-
-	// Shader Property Flags
-	// \param[in] value The new value.
-	void SetShaderFlags( const BSShaderFlags & value );
-
-	// Unknown
-	// \return The current value.
-	float GetEnvmapScale() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetEnvmapScale( float value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 
