@@ -14,20 +14,14 @@ All rights reserved.  Please see niflib.h for license. */
 
 //--END CUSTOM CODE--//
 
-#include "NiObject.h"
-
-// Include structures
-#include "../Ref.h"
+#include "NiProperty.h"
 namespace Niflib {
 
-// Forward define of referenced NIF objects
-class NiExtraData;
-class NiTimeController;
 class BSShaderProperty;
 typedef Ref<BSShaderProperty> BSShaderPropertyRef;
 
 /*! Bethesda-specific Property node */
-class BSShaderProperty : public NiObject {
+class BSShaderProperty : public NiProperty {
 public:
 	/*! Constructor */
 	NIFLIB_API BSShaderProperty();
@@ -60,38 +54,6 @@ public:
 	NIFLIB_API virtual const Type & GetType() const;
 
 	/***Begin Example Naive Implementation****
-
-	// Object Name
-	// \return The current value.
-	IndexString GetName() const;
-
-	// Object Name
-	// \param[in] value The new value.
-	void SetName( const IndexString & value );
-
-	// Extra data object index. (The first in a chain)
-	// \return The current value.
-	Ref<NiExtraData > GetExtraData() const;
-
-	// Extra data object index. (The first in a chain)
-	// \param[in] value The new value.
-	void SetExtraData( Ref<NiExtraData > value );
-
-	// List of extra data indices.
-	// \return The current value.
-	vector<Ref<NiExtraData > > GetExtraDataList() const;
-
-	// List of extra data indices.
-	// \param[in] value The new value.
-	void SetExtraDataList( const vector<Ref<NiExtraData > >& value );
-
-	// Controller object index. (The first in a chain)
-	// \return The current value.
-	Ref<NiTimeController > GetController() const;
-
-	// Controller object index. (The first in a chain)
-	// \param[in] value The new value.
-	void SetController( Ref<NiTimeController > value );
 
 	// Unknown
 	// \return The current value.
@@ -166,16 +128,6 @@ public:
 protected:
 	/*! Unknown */
 	unsigned int unknownFlag;
-	/*! Object Name */
-	IndexString name;
-	/*! Extra data object index. (The first in a chain) */
-	Ref<NiExtraData > extraData;
-	/*! The number of Extra Data objects referenced through the list. */
-	mutable unsigned int numExtraDataList;
-	/*! List of extra data indices. */
-	vector<Ref<NiExtraData > > extraDataList;
-	/*! Controller object index. (The first in a chain) */
-	Ref<NiTimeController > controller;
 	/*! Unknown */
 	unsigned short flags;
 	/*! Unknown (Set to 0x21 for NoLighting, 0x11 for Water) */
