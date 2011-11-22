@@ -96,10 +96,16 @@ protected:
 	unsigned short flags;
 	/*! Unknown (Set to 0x21 for NoLighting, 0x11 for Water) */
 	BSShaderType shaderType;
+	/*! Unknown */
+	byte unknownByte0;
+	/*! Unknown */
+	unsigned short unknownUshort0;
 	/*! Shader Property Flags */
 	BSShaderFlags shaderFlags;
 	/*! Unknown */
 	unsigned short unknownShort1;
+	/*! Unknown */
+	float unknownFloat0;
 	/*! Unknown */
 	int unknownInt2;
 	/*! Unknown */

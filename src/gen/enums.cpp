@@ -854,13 +854,13 @@ ostream & operator<<( ostream & out, CoordGenType const & val ) {
 //--BSShaderType--//
 
 void NifStream( BSShaderType & val, istream& in, const NifInfo & info ) {
-	unsigned int temp;
+	unsigned char temp;
 	NifStream( temp, in, info );
 	val = BSShaderType(temp);
 }
 
 void NifStream( BSShaderType const & val, ostream& out, const NifInfo & info ) {
-	NifStream( (unsigned int)(val), out, info );
+	NifStream( (unsigned char)(val), out, info );
 }
 
 ostream & operator<<( ostream & out, BSShaderType const & val ) {
