@@ -24,7 +24,7 @@ namespace Niflib {
 // Forward define of referenced NIF objects
 class NiGeometryData;
 class NiSkinInstance;
-class NiObject;
+class NiProperty;
 class NiGeometry;
 typedef Ref<NiGeometry> NiGeometryRef;
 
@@ -63,90 +63,6 @@ public:
 	 * \return The type constant for the actual type of the object.
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
-
-	/***Begin Example Naive Implementation****
-
-	// Data index (NiTriShapeData/NiTriStripData).
-	// \return The current value.
-	Ref<NiGeometryData > GetData() const;
-
-	// Data index (NiTriShapeData/NiTriStripData).
-	// \param[in] value The new value.
-	void SetData( Ref<NiGeometryData > value );
-
-	// Skin instance index.
-	// \return The current value.
-	Ref<NiSkinInstance > GetSkinInstance() const;
-
-	// Skin instance index.
-	// \param[in] value The new value.
-	void SetSkinInstance( Ref<NiSkinInstance > value );
-
-	// Unknown string.  Shader?
-	// \return The current value.
-	vector<IndexString > GetMaterialName() const;
-
-	// Unknown string.  Shader?
-	// \param[in] value The new value.
-	void SetMaterialName( const vector<IndexString >& value );
-
-	// Unknown integer; often -1. (Is this a link, array index?)
-	// \return The current value.
-	vector<int > GetMaterialExtraData() const;
-
-	// Unknown integer; often -1. (Is this a link, array index?)
-	// \param[in] value The new value.
-	void SetMaterialExtraData( const vector<int >& value );
-
-	// Active Material; often -1. (Is this a link, array index?)
-	// \return The current value.
-	int GetActiveMaterial() const;
-
-	// Active Material; often -1. (Is this a link, array index?)
-	// \param[in] value The new value.
-	void SetActiveMaterial( int value );
-
-	// Shader.
-	// \return The current value.
-	bool GetHasShader() const;
-
-	// Shader.
-	// \param[in] value The new value.
-	void SetHasShader( bool value );
-
-	// The shader name.
-	// \return The current value.
-	IndexString GetShaderName() const;
-
-	// The shader name.
-	// \param[in] value The new value.
-	void SetShaderName( const IndexString & value );
-
-	// Dirty Flag?
-	// \return The current value.
-	bool GetDirtyFlag() const;
-
-	// Dirty Flag?
-	// \param[in] value The new value.
-	void SetDirtyFlag( bool value );
-
-	// Property Link 1
-	// \return The current value.
-	Ref<NiObject > GetPropertyLink1() const;
-
-	// Property Link 1
-	// \param[in] value The new value.
-	void SetPropertyLink1( Ref<NiObject > value );
-
-	// Property Link 2
-	// \return The current value.
-	Ref<NiObject > GetPropertyLink2() const;
-
-	// Property Link 2
-	// \param[in] value The new value.
-	void SetPropertyLink2( Ref<NiObject > value );
-
-	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
@@ -250,6 +166,24 @@ public:
    // \return The current value.
    NIFLIB_API bool HasShader() const;
 
+
+	/*!
+	 * Adds a property to this object.  Properties specify various characteristics of the object that affect rendering.  They may be shared among objects.
+	 * \param[in] obj The new property that is to affect this object.
+	 */
+	NIFLIB_API virtual void AddProperty( NiProperty * obj );
+
+	/*!
+	 * Removes a property from this object.  Properties specify various characteristics of the object that affect rendering.  They may be shared among objects.
+	 * \param[in] obj The property that is no longer to affect this object.
+	 */
+	NIFLIB_API virtual void RemoveProperty( NiProperty * obj );
+
+	/*!
+	 * Removes all properties from this object.  Properties specify various characteristics of the object that affect rendering.  They may be shared among objects.
+	 */
+	NIFLIB_API virtual void ClearProperties();
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Data index (NiTriShapeData/NiTriStripData). */
@@ -277,9 +211,9 @@ protected:
 	/*! Dirty Flag? */
 	bool dirtyFlag;
 	/*! Property Link 1 */
-	Ref<NiObject > propertyLink1;
+	Ref<NiProperty > propertyLink1;
 	/*! Property Link 2 */
-	Ref<NiObject > propertyLink2;
+	Ref<NiProperty > propertyLink2;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

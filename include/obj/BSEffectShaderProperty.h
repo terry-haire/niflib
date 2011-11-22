@@ -53,26 +53,6 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// points to an external texture.
-	// \return The current value.
-	string GetSourceTexture() const;
-
-	// points to an external texture.
-	// \param[in] value The new value.
-	void SetSourceTexture( const string & value );
-
-	// points to an external texture.
-	// \return The current value.
-	string GetSourceTexture() const;
-
-	// points to an external texture.
-	// \param[in] value The new value.
-	void SetSourceTexture( const string & value );
-
-	****End Example Naive Implementation***/
-
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -91,8 +71,12 @@ protected:
 	string sourceTexture;
 	/*!  */
 	unsigned int unknownInt2;
+	/*! Not correct or finished, but it fits for now. */
+	Matrix33 unknownMatrix1;
 	/*!  */
 	float unknownFloat;
+	/*! points to an external texture. */
+	string gradientTexture;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

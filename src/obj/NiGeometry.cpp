@@ -19,7 +19,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/obj/NiGeometry.h"
 #include "../../include/obj/NiGeometryData.h"
 #include "../../include/obj/NiSkinInstance.h"
-#include "../../include/obj/NiObject.h"
+#include "../../include/obj/NiProperty.h"
 using namespace Niflib;
 
 //Definition of TYPE constant
@@ -265,11 +265,19 @@ void NiGeometry::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<u
 		skinInstance = FixLink<NiSkinInstance>( objects, link_stack, missing_link_stack, info );
 	};
 	if ( ( info.version >= 0x14020007 ) && ( info.userVersion == 12 ) ) {
-		propertyLink1 = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
-		propertyLink2 = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
+		propertyLink1 = FixLink<NiProperty>( objects, link_stack, missing_link_stack, info );
+		propertyLink2 = FixLink<NiProperty>( objects, link_stack, missing_link_stack, info );
 	};
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
+	
+	// add propertylink1 and propertylink2 to properties so GetProperties continues to function
+	if ( ( info.version >= 0x14020007 ) && ( info.userVersion == 12 ) ) {
+		if (propertyLink1 != NULL)
+			properties.push_back(propertyLink1);
+		if (propertyLink2 != NULL)
+			properties.push_back(propertyLink2);
+	}
 	//--END CUSTOM CODE--//
 }
 
@@ -292,90 +300,6 @@ std::list<NiObject *> NiGeometry::GetPtrs() const {
 	ptrs = NiAVObject::GetPtrs();
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-Ref<NiGeometryData > NiGeometry::GetData() const {
-	return data;
-}
-
-void NiGeometry::SetData( Ref<NiGeometryData > value ) {
-	data = value;
-}
-
-Ref<NiSkinInstance > NiGeometry::GetSkinInstance() const {
-	return skinInstance;
-}
-
-void NiGeometry::SetSkinInstance( Ref<NiSkinInstance > value ) {
-	skinInstance = value;
-}
-
-vector<IndexString > NiGeometry::GetMaterialName() const {
-	return materialName;
-}
-
-void NiGeometry::SetMaterialName( const vector<IndexString >& value ) {
-	materialName = value;
-}
-
-vector<int > NiGeometry::GetMaterialExtraData() const {
-	return materialExtraData;
-}
-
-void NiGeometry::SetMaterialExtraData( const vector<int >& value ) {
-	materialExtraData = value;
-}
-
-int NiGeometry::GetActiveMaterial() const {
-	return activeMaterial;
-}
-
-void NiGeometry::SetActiveMaterial( int value ) {
-	activeMaterial = value;
-}
-
-bool NiGeometry::GetHasShader() const {
-	return hasShader;
-}
-
-void NiGeometry::SetHasShader( bool value ) {
-	hasShader = value;
-}
-
-IndexString NiGeometry::GetShaderName() const {
-	return shaderName;
-}
-
-void NiGeometry::SetShaderName( const IndexString & value ) {
-	shaderName = value;
-}
-
-bool NiGeometry::GetDirtyFlag() const {
-	return dirtyFlag;
-}
-
-void NiGeometry::SetDirtyFlag( bool value ) {
-	dirtyFlag = value;
-}
-
-Ref<NiObject > NiGeometry::GetPropertyLink1() const {
-	return propertyLink1;
-}
-
-void NiGeometry::SetPropertyLink1( Ref<NiObject > value ) {
-	propertyLink1 = value;
-}
-
-Ref<NiObject > NiGeometry::GetPropertyLink2() const {
-	return propertyLink2;
-}
-
-void NiGeometry::SetPropertyLink2( Ref<NiObject > value ) {
-	propertyLink2 = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
@@ -719,5 +643,52 @@ bool NiGeometry::HasShader() const {
    return hasShader;
 }
 
+#pragma region Property Management
+// Synchronize PropertyLink 1 and Property Link 2 with Property List
+
+void NiGeometry::AddProperty( NiProperty * obj ) {
+	if (obj == NULL)
+		return;
+
+	properties.push_back( obj );
+	if (propertyLink1 == NULL)
+	{
+		propertyLink1 = obj;
+		return;
+	}
+	if (propertyLink2 == NULL)
+	{
+		propertyLink2 = obj;
+		return;
+	}
+}
+
+void NiGeometry::RemoveProperty( NiProperty * obj ) {
+	//Search property list for the one to remove
+	for ( vector< NiPropertyRef >::iterator it = properties.begin(); it != properties.end(); ) {
+		if ( *it == obj ) {
+			it = properties.erase( it );
+		} else {
+			++it;
+		}
+	}
+	if (propertyLink1 == obj)
+		propertyLink1 = NULL;
+	if (propertyLink2 == obj)
+		propertyLink2 = NULL;
+	if (propertyLink1 == NULL && propertyLink2 != NULL)
+	{
+		propertyLink1 = propertyLink2;
+		propertyLink2 = NULL;
+	}
+}
+
+void NiGeometry::ClearProperties() {
+	properties.clear();
+	propertyLink1 = NULL;
+	propertyLink2 = NULL;
+}
+
+#pragma endregion
 
 //--END CUSTOM CODE--//

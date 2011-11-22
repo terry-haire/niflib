@@ -197,24 +197,24 @@ public:
 	 * Adds a property to this object.  Properties specify various charactaristics of the object that affect rendering.  They may be shared among objects.
 	 * \param[in] obj The new property that is to affect this object.
 	 */
-	NIFLIB_API void AddProperty( NiProperty * obj );
+	NIFLIB_API virtual void AddProperty( NiProperty * obj );
 
 	/*!
 	 * Removes a property from this object.  Properties specify various charactaristics of the object that affect rendering.  They may be shared among objects.
 	 * \param[in] obj The property that is no longer to affect this object.
 	 */
-	NIFLIB_API void RemoveProperty( NiProperty * obj );
+	NIFLIB_API virtual void RemoveProperty( NiProperty * obj );
 
 	/*!
 	 * Removes all properties from this object.  Properties specify various charactaristics of the object that affect rendering.  They may be shared among objects.
 	 */
-	NIFLIB_API void ClearProperties();
+	NIFLIB_API virtual void ClearProperties();
 
 	/*!
 	 * Retrieves a list of all properties that affect this object.  Properties specify various charactaristics of the object that affect rendering.  They may be shared among objects.
 	 * \return All the properties that affect this object.
 	 */
-	NIFLIB_API vector< Ref<NiProperty> > GetProperties() const;
+	NIFLIB_API virtual vector< Ref<NiProperty> > GetProperties() const;
 
 	/*!
 	 * Retrieves the property that matches the specified type, if there is one.  A valid object should not have more than one property of the same type.  Properties specify various charactaristics of the object that affect rendering.  They may be shared among objects.
@@ -222,7 +222,7 @@ public:
 	 * \return The property that matches the specified type, or NULL if there isn't a match.
 	 * \sa NiObject::TypeConst
 	 */
-	NIFLIB_API Ref<NiProperty> GetPropertyByType( const Type & compare_to );
+	NIFLIB_API virtual Ref<NiProperty> GetPropertyByType( const Type & compare_to );
 
 	/*!
 	 * Can be used to get the data stored in the flags field for this object.  It is usually better to call more specific flag-toggle functions if they are availiable.

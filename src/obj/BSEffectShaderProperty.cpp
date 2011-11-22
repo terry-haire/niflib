@@ -53,9 +53,9 @@ void BSEffectShaderProperty::Read( istream& in, list<unsigned int> & link_stack,
 	NifStream( unknownFloats1, in, info );
 	NifStream( sourceTexture, in, info );
 	NifStream( unknownInt2, in, info );
-	NifStream( unknownFloats1, in, info );
+	NifStream( unknownMatrix1, in, info );
 	NifStream( unknownFloat, in, info );
-	NifStream( sourceTexture, in, info );
+	NifStream( gradientTexture, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -75,9 +75,9 @@ void BSEffectShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned
 	NifStream( unknownFloats1, out, info );
 	NifStream( sourceTexture, out, info );
 	NifStream( unknownInt2, out, info );
-	NifStream( unknownFloats1, out, info );
+	NifStream( unknownMatrix1, out, info );
 	NifStream( unknownFloat, out, info );
-	NifStream( sourceTexture, out, info );
+	NifStream( gradientTexture, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -98,7 +98,9 @@ std::string BSEffectShaderProperty::asString( bool verbose ) const {
 	out << "  Unknown Floats 1:  " << unknownFloats1 << endl;
 	out << "  Source Texture:  " << sourceTexture << endl;
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;
+	out << "  Unknown Matrix 1:  " << unknownMatrix1 << endl;
 	out << "  Unknown Float:  " << unknownFloat << endl;
+	out << "  Gradient Texture:  " << gradientTexture << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -129,26 +131,6 @@ std::list<NiObject *> BSEffectShaderProperty::GetPtrs() const {
 	ptrs = NiProperty::GetPtrs();
 	return ptrs;
 }
-
-/***Begin Example Naive Implementation****
-
-string BSEffectShaderProperty::GetSourceTexture() const {
-	return sourceTexture;
-}
-
-void BSEffectShaderProperty::SetSourceTexture( const string & value ) {
-	sourceTexture = value;
-}
-
-string BSEffectShaderProperty::GetSourceTexture() const {
-	return sourceTexture;
-}
-
-void BSEffectShaderProperty::SetSourceTexture( const string & value ) {
-	sourceTexture = value;
-}
-
-****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
