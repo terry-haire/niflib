@@ -139,11 +139,11 @@ void NiGeometryData::Read( istream& in, list<unsigned int> & link_stack, const N
 
 void NiGeometryData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
+	bsNumUvSets = (bsNumUvSets & 0xF000) | (0x0FFF & (unsigned short)(uvSets.size()));
+	numUvSets = (numUvSets & 0xF000) | (0x0FFF & (unsigned short)(uvSets.size()));
 	//--END CUSTOM CODE--//
 
 	NiObject::Write( out, link_map, missing_link_stack, info );
-	bsNumUvSets = (unsigned short)(uvSets.size());
-	numUvSets = (unsigned short)(uvSets.size());
 	numVertices = (unsigned short)(vertices.size());
 	if ( info.version >= 0x0A020000 ) {
 		NifStream( unknownInt, out, info );
@@ -246,13 +246,13 @@ void NiGeometryData::Write( ostream& out, const map<NiObjectRef,unsigned int> & 
 
 std::string NiGeometryData::asString( bool verbose ) const {
 	//--BEGIN PRE-STRING CUSTOM CODE--//
+	bsNumUvSets = (bsNumUvSets & 0xF000) | (0x0FFF & (unsigned short)(uvSets.size()));
+	numUvSets = (numUvSets & 0xF000) | (0x0FFF & (unsigned short)(uvSets.size()));
 	//--END CUSTOM CODE--//
 
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << NiObject::asString();
-	bsNumUvSets = (unsigned short)(uvSets.size());
-	numUvSets = (unsigned short)(uvSets.size());
 	numVertices = (unsigned short)(vertices.size());
 	out << "  Unknown Int:  " << unknownInt << endl;
 	out << "  Num Vertices:  " << numVertices << endl;
@@ -767,14 +767,14 @@ void NiGeometryData::SetBound(Vector3 const & center, float radius)
 }
 
 byte NiGeometryData::GetTspaceFlag() const {
-	if (bsNumUvSets != 0) return (byte)(bsNumUvSets >> 12);
-	if (numUvSets != 0) return (byte)(numUvSets >> 12);
+	if (bsNumUvSets != 0) return (byte)((bsNumUvSets & 0xF000) >> 12);
+	if (numUvSets != 0) return (byte)((numUvSets & 0xF000) >> 12);
 	return 0;
 }
 
 void NiGeometryData::SetTspaceFlag( byte value ) {
-	numUvSets = (numUvSets & 0xF000) & value << 12;
-	bsNumUvSets = (bsNumUvSets & 0xF000) & value << 12;
+	numUvSets = (numUvSets & 0x0FFF) | (value << 12);
+	bsNumUvSets = (bsNumUvSets & 0x0FFF) | (value << 12);
 }
 
 bool NiGeometryData::GetHasNormals() const {
