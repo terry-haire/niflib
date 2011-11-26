@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSLightingShaderProperty::TYPE("BSLightingShaderProperty", &BSShaderPPLightingProperty::TYPE );
 
-BSLightingShaderProperty::BSLightingShaderProperty() : unknownInt1((unsigned int)0), unknownFloatSet1(0.0f) {
+BSLightingShaderProperty::BSLightingShaderProperty() : unknownInt1((unsigned int)3), unknownFloats(9,(float)1.0,0.0,226.0,0.8353,0.8824,0.8902,2.72,5.4,2.8), unknownFloatSet1(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -216,8 +216,15 @@ std::list<NiObject *> BSLightingShaderProperty::GetPtrs() const {
 	return ptrs;
 }
 
-//--This object has no eligable attributes.  No example implementation generated--//
-
 //--BEGIN MISC CUSTOM CODE--//
+NIFLIB_API float BSLightingShaderProperty::GetMaterialFloat( int index )
+{
+	return unknownFloats[index];
+}
+
+NIFLIB_API void BSLightingShaderProperty::SetMaterialFloat( int index, float value)
+{
+	unknownFloats[index] = value;
+}
 
 //--END CUSTOM CODE--//

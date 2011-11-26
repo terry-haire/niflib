@@ -7,19 +7,23 @@ using namespace Niflib;
 
 //Constants
 
-const Matrix44 Matrix44::IDENTITY( 1.0f, 0.0f, 0.0f, 0.0f,
+NIFLIB_API 
+const Matrix44 Niflib::Matrix44::IDENTITY( 1.0f, 0.0f, 0.0f, 0.0f,
 								   0.0f, 1.0f, 0.0f, 0.0f,
 								   0.0f, 0.0f, 1.0f, 0.0f,
 								   0.0f, 0.0f, 0.0f, 1.0f );
 
-const Matrix33 Matrix33::IDENTITY( 1.0f, 0.0f, 0.0f,
+NIFLIB_API 
+const Matrix33 Niflib::Matrix33::IDENTITY( 1.0f, 0.0f, 0.0f,
 								   0.0f, 1.0f, 0.0f,
 								   0.0f, 0.0f, 1.0f );
 
-const Matrix22 Matrix22::IDENTITY( 1.0f, 0.0f,
+NIFLIB_API 
+const Matrix22 Niflib::Matrix22::IDENTITY( 1.0f, 0.0f,
 								   0.0f, 1.0f );
 
-const InertiaMatrix InertiaMatrix::IDENTITY( 
+NIFLIB_API 
+const InertiaMatrix Niflib::InertiaMatrix::IDENTITY( 
 								  1.0f, 0.0f, 0.0f, 0.0f,
 								  0.0f, 1.0f, 0.0f, 0.0f,
 								  0.0f, 0.0f, 1.0f, 0.0f );

@@ -53,9 +53,10 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
-
 	//--BEGIN MISC CUSTOM CODE--//
+
+	NIFLIB_API virtual float GetMaterialFloat( int index );
+	NIFLIB_API virtual void SetMaterialFloat( int index,  float value);
 
 	//--END CUSTOM CODE--//
 protected:
