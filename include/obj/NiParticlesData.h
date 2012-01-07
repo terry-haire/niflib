@@ -13,20 +13,14 @@ All rights reserved.  Please see niflib.h for license. */
 //--BEGIN FILE HEAD CUSTOM CODE--//
 //--END CUSTOM CODE--//
 
-#include "NiObject.h"
-
-// Include structures
-#include "../Ref.h"
+#include "NiGeometryData.h"
 namespace Niflib {
 
-// Forward define of referenced NIF objects
-class NiAdditionalGeometryData;
-class NiObject;
 class NiParticlesData;
 typedef Ref<NiParticlesData> NiParticlesDataRef;
 
 /*! Generic rotating particles data object. */
-class NiParticlesData : public NiObject {
+class NiParticlesData : public NiGeometryData {
 public:
 	/*! Constructor */
 	NIFLIB_API NiParticlesData();
@@ -59,188 +53,6 @@ public:
 	NIFLIB_API virtual const Type & GetType() const;
 
 	/***Begin Example Naive Implementation****
-
-	// Name of this object.
-	// \return The current value.
-	IndexString GetName() const;
-
-	// Name of this object.
-	// \param[in] value The new value.
-	void SetName( const IndexString & value );
-
-	// Used with NiCollision objects when OBB or TRI is set.
-	// \return The current value.
-	byte GetKeepFlags() const;
-
-	// Used with NiCollision objects when OBB or TRI is set.
-	// \param[in] value The new value.
-	void SetKeepFlags( byte value );
-
-	// Unknown.
-	// \return The current value.
-	byte GetCompressFlags() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetCompressFlags( byte value );
-
-	// Is the vertex array present? (Always non-zero.)
-	// \return The current value.
-	bool GetHasVertices() const;
-
-	// Is the vertex array present? (Always non-zero.)
-	// \param[in] value The new value.
-	void SetHasVertices( bool value );
-
-	// The mesh vertices.
-	// \return The current value.
-	vector<Vector3 > GetVertices() const;
-
-	// The mesh vertices.
-	// \param[in] value The new value.
-	void SetVertices( const vector<Vector3 >& value );
-
-	// Methods for saving binormals and tangents saved in upper byte.
-	// \return The current value.
-	byte GetTspaceFlag() const;
-
-	// Methods for saving binormals and tangents saved in upper byte.
-	// \param[in] value The new value.
-	void SetTspaceFlag( byte value );
-
-	// Do we have lighting normals? These are essential for proper lighting: if not
-	// present, the model will only be influenced by ambient light.
-	// \return The current value.
-	bool GetHasNormals() const;
-
-	// Do we have lighting normals? These are essential for proper lighting: if not
-	// present, the model will only be influenced by ambient light.
-	// \param[in] value The new value.
-	void SetHasNormals( bool value );
-
-	// The lighting normals.
-	// \return The current value.
-	vector<Vector3 > GetNormals() const;
-
-	// The lighting normals.
-	// \param[in] value The new value.
-	void SetNormals( const vector<Vector3 >& value );
-
-	// Unknown. Binormal & tangents?
-	// \return The current value.
-	vector<Vector3 > GetTangents() const;
-
-	// Unknown. Binormal & tangents?
-	// \param[in] value The new value.
-	void SetTangents( const vector<Vector3 >& value );
-
-	// Unknown. Binormal & tangents? has_normals must be set as well for this field to
-	// be present.
-	// \return The current value.
-	vector<Vector3 > GetBinormals() const;
-
-	// Unknown. Binormal & tangents? has_normals must be set as well for this field to
-	// be present.
-	// \param[in] value The new value.
-	void SetBinormals( const vector<Vector3 >& value );
-
-	// Center of the bounding box (smallest box that contains all vertices) of the
-	// mesh.
-	// \return The current value.
-	Vector3 GetCenter() const;
-
-	// Center of the bounding box (smallest box that contains all vertices) of the
-	// mesh.
-	// \param[in] value The new value.
-	void SetCenter( const Vector3 & value );
-
-	// Radius of the mesh: maximal Euclidean distance between the center and all
-	// vertices.
-	// \return The current value.
-	float GetRadius() const;
-
-	// Radius of the mesh: maximal Euclidean distance between the center and all
-	// vertices.
-	// \param[in] value The new value.
-	void SetRadius( float value );
-
-	// Do we have vertex colors? These are usually used to fine-tune the lighting of
-	// the model.
-	//
-	//             Note: how vertex colors influence the model can be controlled by
-	// having a NiVertexColorProperty object as a property child of the root node. If
-	// this property object is not present, the vertex colors fine-tune lighting.
-	//
-	//             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
-	// \return The current value.
-	bool GetHasVertexColors() const;
-
-	// Do we have vertex colors? These are usually used to fine-tune the lighting of
-	// the model.
-	//
-	//             Note: how vertex colors influence the model can be controlled by
-	// having a NiVertexColorProperty object as a property child of the root node. If
-	// this property object is not present, the vertex colors fine-tune lighting.
-	//
-	//             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
-	// \param[in] value The new value.
-	void SetHasVertexColors( bool value );
-
-	// The vertex colors.
-	// \return The current value.
-	vector<Color4 > GetVertexColors() const;
-
-	// The vertex colors.
-	// \param[in] value The new value.
-	void SetVertexColors( const vector<Color4 >& value );
-
-	// Methods for saving binormals and tangents saved in upper byte.
-	// \return The current value.
-	byte GetTspaceFlag() const;
-
-	// Methods for saving binormals and tangents saved in upper byte.
-	// \param[in] value The new value.
-	void SetTspaceFlag( byte value );
-
-	// Do we have UV coordinates?
-	//
-	//             Note: for compatibility with NifTexture, set this value to either
-	// 0x00000000 or 0xFFFFFFFF.
-	// \return The current value.
-	bool GetHasUv() const;
-
-	// Do we have UV coordinates?
-	//
-	//             Note: for compatibility with NifTexture, set this value to either
-	// 0x00000000 or 0xFFFFFFFF.
-	// \param[in] value The new value.
-	void SetHasUv( bool value );
-
-	// The UV texture coordinates. They follow the OpenGL standard: some programs may
-	// require you to flip the second coordinate.
-	// \return The current value.
-	vector<vector<TexCoord > > GetUvSets() const;
-
-	// The UV texture coordinates. They follow the OpenGL standard: some programs may
-	// require you to flip the second coordinate.
-	// \param[in] value The new value.
-	void SetUvSets( const vector<TexCoord >& value );
-
-	// Consistency Flags
-	// \return The current value.
-	ConsistencyType GetConsistencyFlags() const;
-
-	// Consistency Flags
-	// \param[in] value The new value.
-	void SetConsistencyFlags( const ConsistencyType & value );
-
-	// Unknown.
-	// \return The current value.
-	Ref<NiAdditionalGeometryData > GetAdditionalData() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetAdditionalData( Ref<NiAdditionalGeometryData > value );
 
 	// The maximum number of particles (matches the number of vertices).
 	// \return The current value.
@@ -353,78 +165,6 @@ public:
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 protected:
-	/*! Name of this object. */
-	IndexString name;
-	/*!
-	 * Number of vertices. For NiPSysData this is max particles. (For Fallout 3 this is
-	 * always zero)
-	 */
-	mutable unsigned short numVertices;
-	/*! Used with NiCollision objects when OBB or TRI is set. */
-	byte keepFlags;
-	/*! Unknown. */
-	byte compressFlags;
-	/*! Is the vertex array present? (Always non-zero.) */
-	bool hasVertices;
-	/*! The mesh vertices. */
-	vector<Vector3 > vertices;
-	/*! Texture flags in lower byte. */
-	mutable byte numUvSets;
-	/*! Methods for saving binormals and tangents saved in upper byte. */
-	byte tspaceFlag;
-	/*!
-	 * Do we have lighting normals? These are essential for proper lighting: if not
-	 * present, the model will only be influenced by ambient light.
-	 */
-	bool hasNormals;
-	/*! The lighting normals. */
-	vector<Vector3 > normals;
-	/*! Unknown. Binormal & tangents? */
-	vector<Vector3 > tangents;
-	/*!
-	 * Unknown. Binormal & tangents? has_normals must be set as well for this field to
-	 * be present.
-	 */
-	vector<Vector3 > binormals;
-	/*!
-	 * Center of the bounding box (smallest box that contains all vertices) of the
-	 * mesh.
-	 */
-	Vector3 center;
-	/*!
-	 * Radius of the mesh: maximal Euclidean distance between the center and all
-	 * vertices.
-	 */
-	float radius;
-	/*!
-	 * Do we have vertex colors? These are usually used to fine-tune the lighting of
-	 * the model.
-	 * 
-	 *             Note: how vertex colors influence the model can be controlled by
-	 * having a NiVertexColorProperty object as a property child of the root node. If
-	 * this property object is not present, the vertex colors fine-tune lighting.
-	 * 
-	 *             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
-	 */
-	bool hasVertexColors;
-	/*! The vertex colors. */
-	vector<Color4 > vertexColors;
-	/*!
-	 * Do we have UV coordinates?
-	 * 
-	 *             Note: for compatibility with NifTexture, set this value to either
-	 * 0x00000000 or 0xFFFFFFFF.
-	 */
-	bool hasUv;
-	/*!
-	 * The UV texture coordinates. They follow the OpenGL standard: some programs may
-	 * require you to flip the second coordinate.
-	 */
-	vector< vector<TexCoord > > uvSets;
-	/*! Consistency Flags */
-	ConsistencyType consistencyFlags;
-	/*! Unknown. */
-	Ref<NiAdditionalGeometryData > additionalData;
 	/*! The maximum number of particles (matches the number of vertices). */
 	unsigned short numParticles;
 	/*! The particles' size. */
@@ -446,10 +186,6 @@ protected:
 	bool hasRotations;
 	/*! The individual particle rotations. */
 	vector<Quaternion > rotations;
-	/*! Unknown, probably a boolean. */
-	byte unknownByte1;
-	/*! Unknown */
-	Ref<NiObject > unknownLink;
 	/*! Are the angles of rotation present? */
 	bool hasRotationAngles;
 	/*! Angles of rotation */

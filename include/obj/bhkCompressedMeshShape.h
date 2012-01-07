@@ -15,14 +15,18 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "bhkShape.h"
+
+// Include structures
+#include "../Ref.h"
 namespace Niflib {
 
 // Forward define of referenced NIF objects
-class NiObject;
+class NiAVObject;
+class bhkCompressedMeshShapeData;
 class bhkCompressedMeshShape;
 typedef Ref<bhkCompressedMeshShape> bhkCompressedMeshShapeRef;
 
-/*! Unknown */
+/*! Compressed collision mesh. */
 class bhkCompressedMeshShape : public bhkShape {
 public:
 	/*! Constructor */
@@ -59,11 +63,11 @@ public:
 
 	// Points to root node?
 	// \return The current value.
-	NiObject * GetRoot() const;
+	NiAVObject * GetTarget() const;
 
 	// Points to root node?
 	// \param[in] value The new value.
-	void SetRoot( NiObject * value );
+	void SetTarget( NiAVObject * value );
 
 	// The shape's material.
 	// \return The current value.
@@ -73,13 +77,13 @@ public:
 	// \param[in] value The new value.
 	void SetMaterial( const HavokMaterial & value );
 
-	// Data Link
+	// The collision mesh data.
 	// \return The current value.
-	NiObject * GetData() const;
+	Ref<bhkCompressedMeshShapeData > GetData() const;
 
-	// Data Link
+	// The collision mesh data.
 	// \param[in] value The new value.
-	void SetData( NiObject * value );
+	void SetData( Ref<bhkCompressedMeshShapeData > value );
 
 	****End Example Naive Implementation***/
 
@@ -88,7 +92,7 @@ public:
 	//--END CUSTOM CODE--//
 protected:
 	/*! Points to root node? */
-	NiObject * root;
+	NiAVObject * target;
 	/*! The shape's material. */
 	HavokMaterial material;
 	/*! Unknown. */
@@ -97,8 +101,8 @@ protected:
 	array<8,byte > unknown8Bytes;
 	/*! Unknown */
 	array<8,float > unknownFloats;
-	/*! Data Link */
-	NiObject * data;
+	/*! The collision mesh data. */
+	Ref<bhkCompressedMeshShapeData > data;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

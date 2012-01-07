@@ -50,7 +50,9 @@ void BSMultiBoundNode::Read( istream& in, list<unsigned int> & link_stack, const
 	NiNode::Read( in, link_stack, info );
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
-	NifStream( unknownInt, in, info );
+	if ( ( info.version >= 0x14020007 ) && ( (info.userVersion >= 12) ) ) {
+		NifStream( unknownInt, in, info );
+	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -80,7 +82,9 @@ void BSMultiBoundNode::Write( ostream& out, const map<NiObjectRef,unsigned int> 
 			missing_link_stack.push_back( NULL );
 		}
 	}
-	NifStream( unknownInt, out, info );
+	if ( ( info.version >= 0x14020007 ) && ( (info.userVersion >= 12) ) ) {
+		NifStream( unknownInt, out, info );
+	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 

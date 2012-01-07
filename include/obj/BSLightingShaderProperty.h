@@ -14,14 +14,22 @@ All rights reserved.  Please see niflib.h for license. */
 
 //--END CUSTOM CODE--//
 
-#include "BSShaderPPLightingProperty.h"
+#include "NiProperty.h"
+
+// Include structures
+#include "../Ref.h"
 namespace Niflib {
 
+// Forward define of referenced NIF objects
+class BSShaderTextureSet;
 class BSLightingShaderProperty;
 typedef Ref<BSLightingShaderProperty> BSLightingShaderPropertyRef;
 
-/*! Bethesda-specific node. */
-class BSLightingShaderProperty : public BSShaderPPLightingProperty {
+/*!
+ * Bethesda-specific node, used in Skyrim to configure material/shader/texture
+ * properties.
+ */
+class BSLightingShaderProperty : public NiProperty {
 public:
 	/*! Constructor */
 	NIFLIB_API BSLightingShaderProperty();
@@ -53,29 +61,347 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Skyrim Shader Flag field 1 (will use SkyrimLightingShaderFlags1)
+	// \return The current value.
+	unsigned int GetShaderFlags1() const;
+
+	// Skyrim Shader Flag field 1 (will use SkyrimLightingShaderFlags1)
+	// \param[in] value The new value.
+	void SetShaderFlags1( unsigned int value );
+
+	// Skyrim Shader Flag field 2 (will use SkyrimLightingShaderFlags2)
+	// \return The current value.
+	unsigned int GetShaderFlags2() const;
+
+	// Skyrim Shader Flag field 2 (will use SkyrimLightingShaderFlags2)
+	// \param[in] value The new value.
+	void SetShaderFlags2( unsigned int value );
+
+	// Offset UVs
+	// \return The current value.
+	TexCoord GetTextureTranslation1() const;
+
+	// Offset UVs
+	// \param[in] value The new value.
+	void SetTextureTranslation1( const TexCoord & value );
+
+	// Offset UVs
+	// \return The current value.
+	TexCoord GetTextureRepeat() const;
+
+	// Offset UVs
+	// \param[in] value The new value.
+	void SetTextureRepeat( const TexCoord & value );
+
+	// Texture Set
+	// \return The current value.
+	Ref<BSShaderTextureSet > GetTextureSet() const;
+
+	// Texture Set
+	// \param[in] value The new value.
+	void SetTextureSet( Ref<BSShaderTextureSet > value );
+
+	// Glow color and alpha
+	// \return The current value.
+	Color3 GetEmissiveColor() const;
+
+	// Glow color and alpha
+	// \param[in] value The new value.
+	void SetEmissiveColor( const Color3 & value );
+
+	// Unknown
+	// \return The current value.
+	float GetEmissiveSaturation() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetEmissiveSaturation( float value );
+
+	// The material transparency (1=non-transparent).
+	// \return The current value.
+	float GetAlpha() const;
+
+	// The material transparency (1=non-transparent).
+	// \param[in] value The new value.
+	void SetAlpha( float value );
+
+	// The material's glossiness. (0-999)
+	// \return The current value.
+	float GetGlossiness() const;
+
+	// The material's glossiness. (0-999)
+	// \param[in] value The new value.
+	void SetGlossiness( float value );
+
+	// Adds a colored highlight.
+	// \return The current value.
+	Color3 GetSpecularColor() const;
+
+	// Adds a colored highlight.
+	// \param[in] value The new value.
+	void SetSpecularColor( const Color3 & value );
+
+	// Brightness of specular highlight. (0=not visible) (0-999)
+	// \return The current value.
+	float GetSpecularStrength() const;
+
+	// Brightness of specular highlight. (0=not visible) (0-999)
+	// \param[in] value The new value.
+	void SetSpecularStrength( float value );
+
+	// Unknown, related to backlight/rim/softlight effect
+	// \return The current value.
+	float GetLightingEffect1() const;
+
+	// Unknown, related to backlight/rim/softlight effect
+	// \param[in] value The new value.
+	void SetLightingEffect1( float value );
+
+	// Unknown, related to backlight/rim/softlight effect
+	// \return The current value.
+	float GetLightingEffect2() const;
+
+	// Unknown, related to backlight/rim/softlight effect
+	// \param[in] value The new value.
+	void SetLightingEffect2( float value );
+
+	// How strong the environment/cube map is. (0-??)
+	// \return The current value.
+	float GetEnvironmentMapStrength() const;
+
+	// How strong the environment/cube map is. (0-??)
+	// \param[in] value The new value.
+	void SetEnvironmentMapStrength( float value );
+
+	// Eye(Skyrim)
+	// \return The current value.
+	float GetEyeCubemapScale() const;
+
+	// Eye(Skyrim)
+	// \param[in] value The new value.
+	void SetEyeCubemapScale( float value );
+
+	// Eye(Skyrim)Left Unknown
+	// \return The current value.
+	Vector3 GetLeftEyeReflectionCenter() const;
+
+	// Eye(Skyrim)Left Unknown
+	// \param[in] value The new value.
+	void SetLeftEyeReflectionCenter( const Vector3 & value );
+
+	// Eye(Skyrim)Right Unknown
+	// \return The current value.
+	Vector3 GetRightEyeReflectionCenter() const;
+
+	// Eye(Skyrim)Right Unknown
+	// \param[in] value The new value.
+	void SetRightEyeReflectionCenter( const Vector3 & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
-	NIFLIB_API virtual float GetMaterialFloat( int index );
-	NIFLIB_API virtual void SetMaterialFloat( int index,  float value);
+	// Skyrim's shaders: 0=default 1=EnvMap, 2=Glow, 5=Skin, 6=Hair, 7=Unknown,
+	// 11=Ice/Parallax, 15=Eye.
+	// \return The current value.
+	int GetSkyrimShaderType() const;
+
+	// Skyrim's shaders: 0=default 1=EnvMap, 2=Glow, 5=Skin, 6=Hair, 7=Unknown,
+	// 11=Ice/Parallax, 15=Eye.
+	// \param[in] value The new value.
+	void SetSkyrimShaderType( int value );
+
+
+	// Skyrim Shader Flag field 1 (will use SkyrimLightingShaderFlags1)
+	// \return The current value.
+	unsigned int GetShaderFlags1() const;
+
+	// Skyrim Shader Flag field 1 (will use SkyrimLightingShaderFlags1)
+	// \param[in] value The new value.
+	void SetShaderFlags1( unsigned int value );
+
+	// Skyrim Shader Flag field 2 (will use SkyrimLightingShaderFlags2)
+	// \return The current value.
+	unsigned int GetShaderFlags2() const;
+
+	// Skyrim Shader Flag field 2 (will use SkyrimLightingShaderFlags2)
+	// \param[in] value The new value.
+	void SetShaderFlags2( unsigned int value );
+
+	// Offset UVs
+	// \return The current value.
+	TexCoord GetTextureTranslation1() const;
+
+	// Offset UVs
+	// \param[in] value The new value.
+	void SetTextureTranslation1( const TexCoord & value );
+
+	// Offset UVs
+	// \return The current value.
+	TexCoord GetTextureRepeat() const;
+
+	// Offset UVs
+	// \param[in] value The new value.
+	void SetTextureRepeat( const TexCoord & value );
+
+	// Texture Set
+	// \return The current value.
+	Ref<BSShaderTextureSet > GetTextureSet() const;
+
+	// Texture Set
+	// \param[in] value The new value.
+	void SetTextureSet( Ref<BSShaderTextureSet > value );
+
+	// Glow color and alpha
+	// \return The current value.
+	Color3 GetEmissiveColor() const;
+
+	// Glow color and alpha
+	// \param[in] value The new value.
+	void SetEmissiveColor( const Color3 & value );
+
+	// Unknown
+	// \return The current value.
+	float GetEmissiveSaturation() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetEmissiveSaturation( float value );
+
+	// The material transparency (1=non-transparent).
+	// \return The current value.
+	float GetAlpha() const;
+
+	// The material transparency (1=non-transparent).
+	// \param[in] value The new value.
+	void SetAlpha( float value );
+
+	// The material's glossiness. (0-999)
+	// \return The current value.
+	float GetGlossiness() const;
+
+	// The material's glossiness. (0-999)
+	// \param[in] value The new value.
+	void SetGlossiness( float value );
+
+	// Adds a colored highlight.
+	// \return The current value.
+	Color3 GetSpecularColor() const;
+
+	// Adds a colored highlight.
+	// \param[in] value The new value.
+	void SetSpecularColor( const Color3 & value );
+
+	// Brightness of specular highlight. (0=not visible) (0-999)
+	// \return The current value.
+	float GetSpecularStrength() const;
+
+	// Brightness of specular highlight. (0=not visible) (0-999)
+	// \param[in] value The new value.
+	void SetSpecularStrength( float value );
+
+	// Unknown, related to backlight/rim/softlight effect
+	// \return The current value.
+	float GetLightingEffect1() const;
+
+	// Unknown, related to backlight/rim/softlight effect
+	// \param[in] value The new value.
+	void SetLightingEffect1( float value );
+
+	// Unknown, related to backlight/rim/softlight effect
+	// \return The current value.
+	float GetLightingEffect2() const;
+
+	// Unknown, related to backlight/rim/softlight effect
+	// \param[in] value The new value.
+	void SetLightingEffect2( float value );
+
+	// How strong the environment/cube map is. (0-??)
+	// \return The current value.
+	float GetEnvironmentMapStrength() const;
+
+	// How strong the environment/cube map is. (0-??)
+	// \param[in] value The new value.
+	void SetEnvironmentMapStrength( float value );
+
+	// Eye(Skyrim)
+	// \return The current value.
+	float GetEyeCubemapScale() const;
+
+	// Eye(Skyrim)
+	// \param[in] value The new value.
+	void SetEyeCubemapScale( float value );
+
+	// Eye(Skyrim)Left Unknown
+	// \return The current value.
+	Vector3 GetLeftEyeReflectionCenter() const;
+
+	// Eye(Skyrim)Left Unknown
+	// \param[in] value The new value.
+	void SetLeftEyeReflectionCenter( const Vector3 & value );
+
+	// Eye(Skyrim)Right Unknown
+	// \return The current value.
+	Vector3 GetRightEyeReflectionCenter() const;
+
+	// Eye(Skyrim)Right Unknown
+	// \param[in] value The new value.
+	void SetRightEyeReflectionCenter( const Vector3 & value );
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown. */
-	unsigned int unknownInt1;
-	/*! Skyrim, MaterialProperty might be merged in some form here. */
-	array<9,float > unknownFloats;
+	/*! Skyrim Shader Flag field 1 (will use SkyrimLightingShaderFlags1) */
+	unsigned int shaderFlags1;
+	/*! Skyrim Shader Flag field 2 (will use SkyrimLightingShaderFlags2) */
+	unsigned int shaderFlags2;
+	/*! Offset UVs */
+	TexCoord textureTranslation1;
+	/*! Offset UVs */
+	TexCoord textureRepeat;
+	/*! Texture Set */
+	Ref<BSShaderTextureSet > textureSet;
+	/*! Glow color and alpha */
+	Color3 emissiveColor;
 	/*! Unknown */
-	float unknownFloatSet1;
+	float emissiveSaturation;
+	/*! Unknown, always 3? */
+	unsigned int unknownInt7;
+	/*! The material transparency (1=non-transparent). */
+	float alpha;
 	/*! Unknown */
-	Vector3 unknownVector3Set1;
+	float unknownFloat2;
+	/*! The material's glossiness. (0-999) */
+	float glossiness;
+	/*! Adds a colored highlight. */
+	Color3 specularColor;
+	/*! Brightness of specular highlight. (0=not visible) (0-999) */
+	float specularStrength;
+	/*! Unknown, related to backlight/rim/softlight effect */
+	float lightingEffect1;
+	/*! Unknown, related to backlight/rim/softlight effect */
+	float lightingEffect2;
+	/*! How strong the environment/cube map is. (0-??) */
+	float environmentMapStrength;
+	/*! Unknown, related to skin */
+	Vector3 unknownFloatSet1;
+	/*! Unknown, related to hair */
+	Color3 unknownColor1;
 	/*! Unknown */
-	array<7,float > unknownFloatSet2;
-	/*! Unknown */
-	Vector3 unknownVector3Set2;
-	/*! Unknown */
-	array<5,float > unknownFloatSet3;
-	/*! Unknown */
-	Vector4 unknownVector4Set3;
+	array<2,float > unknownFloatSet3;
+	/*! Unknown, related to ice or parallax */
+	float unknownFloat9;
+	/*! Unknown, related to ice parallax */
+	Color4 unknownColor2;
+	/*! Unknown, also related to ice? */
+	Vector4 unknownFloatSet5;
+	/*! Eye(Skyrim) */
+	float eyeCubemapScale;
+	/*! Eye(Skyrim)Left Unknown */
+	Vector3 leftEyeReflectionCenter;
+	/*! Eye(Skyrim)Right Unknown */
+	Vector3 rightEyeReflectionCenter;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

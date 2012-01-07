@@ -15,12 +15,21 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "NiFloatInterpController.h"
+
+// Include structures
+#include "../Ref.h"
 namespace Niflib {
 
+// Forward define of referenced NIF objects
+class NiInterpolator;
 class BSProceduralLightningController;
 typedef Ref<BSProceduralLightningController> BSProceduralLightningControllerRef;
 
-/*!  */
+/*!
+ * Skyrim, Paired with dummy TriShapes, this controller generates lightning shapes
+ * for special effects.
+ *     First interpolator controls Generation.
+ */
 class BSProceduralLightningController : public NiFloatInterpController {
 public:
 	/*! Constructor */
@@ -55,77 +64,77 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Unknown
+	// References interpolator for Mutation of strips
 	// \return The current value.
-	unsigned int GetTarget___() const;
+	Ref<NiInterpolator > GetInterpolator2_Mutation() const;
 
-	// Unknown
+	// References interpolator for Mutation of strips
 	// \param[in] value The new value.
-	void SetTarget___( unsigned int value );
-
-	// Unknown
-	// \return The current value.
-	unsigned int GetTarget___1() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetTarget___1( unsigned int value );
+	void SetInterpolator2_Mutation( Ref<NiInterpolator > value );
 
 	// Unknown
 	// \return The current value.
-	unsigned int GetTarget___2() const;
+	Ref<NiInterpolator > GetInterpolator3() const;
 
 	// Unknown
 	// \param[in] value The new value.
-	void SetTarget___2( unsigned int value );
+	void SetInterpolator3( Ref<NiInterpolator > value );
 
 	// Unknown
 	// \return The current value.
-	unsigned int GetTarget___3() const;
+	Ref<NiInterpolator > GetInterpolator4() const;
 
 	// Unknown
 	// \param[in] value The new value.
-	void SetTarget___3( unsigned int value );
+	void SetInterpolator4( Ref<NiInterpolator > value );
 
 	// Unknown
 	// \return The current value.
-	unsigned int GetTarget___4() const;
+	Ref<NiInterpolator > GetInterpolator5() const;
 
 	// Unknown
 	// \param[in] value The new value.
-	void SetTarget___4( unsigned int value );
+	void SetInterpolator5( Ref<NiInterpolator > value );
 
 	// Unknown
 	// \return The current value.
-	unsigned int GetTarget___5() const;
+	Ref<NiInterpolator > GetInterpolator6() const;
 
 	// Unknown
 	// \param[in] value The new value.
-	void SetTarget___5( unsigned int value );
+	void SetInterpolator6( Ref<NiInterpolator > value );
 
 	// Unknown
 	// \return The current value.
-	unsigned int GetTarget___6() const;
+	Ref<NiInterpolator > GetInterpolator7() const;
 
 	// Unknown
 	// \param[in] value The new value.
-	void SetTarget___6( unsigned int value );
+	void SetInterpolator7( Ref<NiInterpolator > value );
 
 	// Unknown
 	// \return The current value.
-	unsigned int GetTarget___7() const;
+	Ref<NiInterpolator > GetInterpolator8() const;
 
 	// Unknown
 	// \param[in] value The new value.
-	void SetTarget___7( unsigned int value );
+	void SetInterpolator8( Ref<NiInterpolator > value );
 
-	// Unknown
+	// References interpolator for Amplitutde control. 0=straight, 50=wide
 	// \return The current value.
-	float GetFloat1() const;
+	Ref<NiInterpolator > GetInterpolator9_ArcOffset() const;
 
-	// Unknown
+	// References interpolator for Amplitutde control. 0=straight, 50=wide
 	// \param[in] value The new value.
-	void SetFloat1( float value );
+	void SetInterpolator9_ArcOffset( Ref<NiInterpolator > value );
+
+	// How far lightning will stretch to.
+	// \return The current value.
+	float GetDistanceWeight() const;
+
+	// How far lightning will stretch to.
+	// \param[in] value The new value.
+	void SetDistanceWeight( float value );
 
 	// Unknown
 	// \return The current value.
@@ -135,21 +144,21 @@ public:
 	// \param[in] value The new value.
 	void SetFloat2( float value );
 
-	// Unknown
+	// How wide the bolt will be
 	// \return The current value.
-	float GetFloat3() const;
+	float GetStripWidth() const;
 
-	// Unknown
+	// How wide the bolt will be
 	// \param[in] value The new value.
-	void SetFloat3( float value );
+	void SetStripWidth( float value );
 
-	// Unknown
+	// Influences forking behavior
 	// \return The current value.
-	float GetFloat4() const;
+	float GetFork() const;
 
-	// Unknown
+	// Influences forking behavior
 	// \param[in] value The new value.
-	void SetFloat4( float value );
+	void SetFork( float value );
 
 	// Unknown
 	// \return The current value.
@@ -183,13 +192,13 @@ public:
 	// \param[in] value The new value.
 	void SetByte3( byte value );
 
-	// Unknown
+	// Unknown, unsure if this is actually another interpolator link.
 	// \return The current value.
-	unsigned int GetTarget___8() const;
+	Ref<NiInterpolator > GetInterpolator10_() const;
 
-	// Unknown
+	// Unknown, unsure if this is actually another interpolator link.
 	// \param[in] value The new value.
-	void SetTarget___8( unsigned int value );
+	void SetInterpolator10_( Ref<NiInterpolator > value );
 
 	****End Example Naive Implementation***/
 
@@ -197,36 +206,36 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
+	/*! References interpolator for Mutation of strips */
+	Ref<NiInterpolator > interpolator2_Mutation;
 	/*! Unknown */
-	unsigned int target___;
+	Ref<NiInterpolator > interpolator3;
 	/*! Unknown */
-	unsigned int target___1;
+	Ref<NiInterpolator > interpolator4;
 	/*! Unknown */
-	unsigned int target___2;
+	Ref<NiInterpolator > interpolator5;
 	/*! Unknown */
-	unsigned int target___3;
+	Ref<NiInterpolator > interpolator6;
 	/*! Unknown */
-	unsigned int target___4;
+	Ref<NiInterpolator > interpolator7;
 	/*! Unknown */
-	unsigned int target___5;
-	/*! Unknown */
-	unsigned int target___6;
-	/*! Unknown */
-	unsigned int target___7;
+	Ref<NiInterpolator > interpolator8;
+	/*! References interpolator for Amplitutde control. 0=straight, 50=wide */
+	Ref<NiInterpolator > interpolator9_ArcOffset;
 	/*! Unknown */
 	unsigned short unknownShort1;
 	/*! Unknown */
 	unsigned short unknownShort2;
 	/*! Unknown */
 	unsigned short unknownShort3;
-	/*! Unknown */
-	float float1;
+	/*! How far lightning will stretch to. */
+	float distanceWeight;
 	/*! Unknown */
 	float float2;
-	/*! Unknown */
-	float float3;
-	/*! Unknown */
-	float float4;
+	/*! How wide the bolt will be */
+	float stripWidth;
+	/*! Influences forking behavior */
+	float fork;
 	/*! Unknown */
 	float float5;
 	/*! Unknown */
@@ -235,8 +244,8 @@ protected:
 	byte byte2;
 	/*! Unknown */
 	byte byte3;
-	/*! Unknown */
-	unsigned int target___8;
+	/*! Unknown, unsure if this is actually another interpolator link. */
+	Ref<NiInterpolator > interpolator10_;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

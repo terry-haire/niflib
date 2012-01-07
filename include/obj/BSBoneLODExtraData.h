@@ -60,19 +60,11 @@ public:
 	//--END CUSTOM CODE--//
 protected:
 	/*!  */
-	unsigned int unknownInt1;
+	mutable unsigned int unknownInt1;
 	/*!  */
-	unsigned int unknownInt2;
+	vector<unsigned int > unknownIntA1;
 	/*!  */
-	unsigned int unknownInt3;
-	/*!  */
-	unsigned int unknownInt4;
-	/*!  */
-	unsigned int unknownInt5;
-	/*!  */
-	unsigned int unknownInt6;
-	/*!  */
-	unsigned int unknownInt7;
+	vector<unsigned int > unknownIntA2;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

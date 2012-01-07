@@ -27,11 +27,11 @@ typedef Ref<bhkListShape> bhkListShapeRef;
 /*!
  * A list of shapes.
  * 
- *         Do not put a bhkPackedNiTriStripsShape in the Sub Shapes. Use a
- *         separate collision nodes without a list shape for those.
+ *     Do not put a bhkPackedNiTriStripsShape in the Sub Shapes. Use a
+ *     separate collision nodes without a list shape for those.
  * 
- *         Also, shapes collected in a bhkListShape may not have the correct
- *         walking noise, so only use it for non-walkable objects.
+ *     Also, shapes collected in a bhkListShape may not have the correct
+ *     walking noise, so only use it for non-walkable objects.
  */
 class bhkListShape : public bhkShapeCollection {
 public:

@@ -22,7 +22,7 @@ class NiNode;
 class NiFurSpringController;
 typedef Ref<NiFurSpringController> NiFurSpringControllerRef;
 
-/*! Unknown. */
+/*!  */
 class NiFurSpringController : public NiTimeController {
 public:
 	/*! Constructor */

@@ -14,14 +14,14 @@ All rights reserved.  Please see niflib.h for license. */
 
 //--END CUSTOM CODE--//
 
-#include "NiObject.h"
+#include "BSMultiBoundData.h"
 namespace Niflib {
 
 class BSMultiBoundOBB;
 typedef Ref<BSMultiBoundOBB> BSMultiBoundOBBRef;
 
-/*! Bethesda-specific node. */
-class BSMultiBoundOBB : public NiObject {
+/*! Oriented bounding box. */
+class BSMultiBoundOBB : public BSMultiBoundData {
 public:
 	/*! Constructor */
 	NIFLIB_API BSMultiBoundOBB();
@@ -53,14 +53,44 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+	// Center of the box.
+	// \return The current value.
+	Vector3 GetCenter() const;
+
+	// Center of the box.
+	// \param[in] value The new value.
+	void SetCenter( const Vector3 & value );
+
+	// Size of the box along each axis.
+	// \return The current value.
+	Vector3 GetSize() const;
+
+	// Size of the box along each axis.
+	// \param[in] value The new value.
+	void SetSize( const Vector3 & value );
+
+	// Rotation of the bounding box.
+	// \return The current value.
+	Matrix33 GetRotation() const;
+
+	// Rotation of the bounding box.
+	// \param[in] value The new value.
+	void SetRotation( const Matrix33 & value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown */
-	array<15,float > unknownFloats;
+	/*! Center of the box. */
+	Vector3 center;
+	/*! Size of the box along each axis. */
+	Vector3 size;
+	/*! Rotation of the bounding box. */
+	Matrix33 rotation;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

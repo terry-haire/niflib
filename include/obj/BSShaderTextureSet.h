@@ -56,22 +56,22 @@ public:
 	/***Begin Example Naive Implementation****
 
 	// Textures.
-	//             0: Diffuse
-	//             1: Normal/Gloss
-	//             2: Glow/Skin/Hair
-	//             3: Height/Parallax
-	//             4: Environment
-	//             5: Environment Mask
+	//       0: Diffuse
+	//       1: Normal/Gloss
+	//       2: Glow/Skin/Hair
+	//       3: Height/Parallax
+	//       4: Environment
+	//       5: Environment Mask
 	// \return The current value.
 	vector<string > GetTextures() const;
 
 	// Textures.
-	//             0: Diffuse
-	//             1: Normal/Gloss
-	//             2: Glow/Skin/Hair
-	//             3: Height/Parallax
-	//             4: Environment
-	//             5: Environment Mask
+	//       0: Diffuse
+	//       1: Normal/Gloss
+	//       2: Glow/Skin/Hair
+	//       3: Height/Parallax
+	//       4: Environment
+	//       5: Environment Mask
 	// \param[in] value The new value.
 	void SetTextures( const vector<string >& value );
 
@@ -102,12 +102,12 @@ protected:
 	mutable int numTextures;
 	/*!
 	 * Textures.
-	 *             0: Diffuse
-	 *             1: Normal/Gloss
-	 *             2: Glow/Skin/Hair
-	 *             3: Height/Parallax
-	 *             4: Environment
-	 *             5: Environment Mask
+	 *       0: Diffuse
+	 *       1: Normal/Gloss
+	 *       2: Glow/Skin/Hair
+	 *       3: Height/Parallax
+	 *       4: Environment
+	 *       5: Environment Mask
 	 */
 	vector<string > textures;
 public:

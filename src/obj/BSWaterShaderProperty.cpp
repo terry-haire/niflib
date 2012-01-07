@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSWaterShaderProperty::TYPE("BSWaterShaderProperty", &NiProperty::TYPE );
 
-BSWaterShaderProperty::BSWaterShaderProperty() : unknownShort1((unsigned short)0), unknownShort2((unsigned short)0), unknownInt1((unsigned int)0), unknownInt2((unsigned int)0), unknownInt3((unsigned int)0), unknownFloat1(0.0f), unknownFloat2(0.0f), unknownShort3((unsigned short)0), unknownShort4((unsigned short)0) {
+BSWaterShaderProperty::BSWaterShaderProperty() : unknownByte1((byte)0), unknownShort1((unsigned short)0), unknownInt1((unsigned int)0), unknownByte2((byte)0), textureRepeat(1.0, 1.0), waterShaderFlags((SkyrimWaterShaderFlags)0), waterDirection((byte)3), unknownShort3((unsigned short)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,15 +46,15 @@ void BSWaterShaderProperty::Read( istream& in, list<unsigned int> & link_stack, 
 	//--END CUSTOM CODE--//
 
 	NiProperty::Read( in, link_stack, info );
+	NifStream( unknownByte1, in, info );
 	NifStream( unknownShort1, in, info );
-	NifStream( unknownShort2, in, info );
 	NifStream( unknownInt1, in, info );
-	NifStream( unknownInt2, in, info );
-	NifStream( unknownInt3, in, info );
-	NifStream( unknownFloat1, in, info );
-	NifStream( unknownFloat2, in, info );
+	NifStream( unknownByte2, in, info );
+	NifStream( textureTranslation1, in, info );
+	NifStream( textureRepeat, in, info );
+	NifStream( waterShaderFlags, in, info );
+	NifStream( waterDirection, in, info );
 	NifStream( unknownShort3, in, info );
-	NifStream( unknownShort4, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -67,15 +67,15 @@ void BSWaterShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned 
 	//--END CUSTOM CODE--//
 
 	NiProperty::Write( out, link_map, missing_link_stack, info );
+	NifStream( unknownByte1, out, info );
 	NifStream( unknownShort1, out, info );
-	NifStream( unknownShort2, out, info );
 	NifStream( unknownInt1, out, info );
-	NifStream( unknownInt2, out, info );
-	NifStream( unknownInt3, out, info );
-	NifStream( unknownFloat1, out, info );
-	NifStream( unknownFloat2, out, info );
+	NifStream( unknownByte2, out, info );
+	NifStream( textureTranslation1, out, info );
+	NifStream( textureRepeat, out, info );
+	NifStream( waterShaderFlags, out, info );
+	NifStream( waterDirection, out, info );
 	NifStream( unknownShort3, out, info );
-	NifStream( unknownShort4, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -89,15 +89,15 @@ std::string BSWaterShaderProperty::asString( bool verbose ) const {
 
 	stringstream out;
 	out << NiProperty::asString();
+	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;
-	out << "  Unknown Short 2:  " << unknownShort2 << endl;
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
-	out << "  Unknown Int 2:  " << unknownInt2 << endl;
-	out << "  Unknown Int 3:  " << unknownInt3 << endl;
-	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
-	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
+	out << "  Unknown Byte 2:  " << unknownByte2 << endl;
+	out << "  Texture Translation 1:  " << textureTranslation1 << endl;
+	out << "  Texture Repeat:  " << textureRepeat << endl;
+	out << "  Water Shader Flags:  " << waterShaderFlags << endl;
+	out << "  Water Direction:  " << waterDirection << endl;
 	out << "  Unknown Short 3:  " << unknownShort3 << endl;
-	out << "  Unknown Short 4:  " << unknownShort4 << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -129,7 +129,41 @@ std::list<NiObject *> BSWaterShaderProperty::GetPtrs() const {
 	return ptrs;
 }
 
-//--This object has no eligable attributes.  No example implementation generated--//
+/***Begin Example Naive Implementation****
+
+TexCoord BSWaterShaderProperty::GetTextureTranslation1() const {
+	return textureTranslation1;
+}
+
+void BSWaterShaderProperty::SetTextureTranslation1( const TexCoord & value ) {
+	textureTranslation1 = value;
+}
+
+TexCoord BSWaterShaderProperty::GetTextureRepeat() const {
+	return textureRepeat;
+}
+
+void BSWaterShaderProperty::SetTextureRepeat( const TexCoord & value ) {
+	textureRepeat = value;
+}
+
+SkyrimWaterShaderFlags BSWaterShaderProperty::GetWaterShaderFlags() const {
+	return waterShaderFlags;
+}
+
+void BSWaterShaderProperty::SetWaterShaderFlags( const SkyrimWaterShaderFlags & value ) {
+	waterShaderFlags = value;
+}
+
+byte BSWaterShaderProperty::GetWaterDirection() const {
+	return waterDirection;
+}
+
+void BSWaterShaderProperty::SetWaterDirection( byte value ) {
+	waterDirection = value;
+}
+
+****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

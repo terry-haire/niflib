@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSBehaviorGraphExtraData::TYPE("BSBehaviorGraphExtraData", &NiExtraData::TYPE );
 
-BSBehaviorGraphExtraData::BSBehaviorGraphExtraData() : unknownInt1((unsigned int)0), unknownByte1((byte)0) {
+BSBehaviorGraphExtraData::BSBehaviorGraphExtraData() : unknownByte1((byte)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,7 +46,7 @@ void BSBehaviorGraphExtraData::Read( istream& in, list<unsigned int> & link_stac
 	//--END CUSTOM CODE--//
 
 	NiExtraData::Read( in, link_stack, info );
-	NifStream( unknownInt1, in, info );
+	NifStream( behaviourGraphFile, in, info );
 	NifStream( unknownByte1, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -60,7 +60,7 @@ void BSBehaviorGraphExtraData::Write( ostream& out, const map<NiObjectRef,unsign
 	//--END CUSTOM CODE--//
 
 	NiExtraData::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownInt1, out, info );
+	NifStream( behaviourGraphFile, out, info );
 	NifStream( unknownByte1, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -75,7 +75,7 @@ std::string BSBehaviorGraphExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	out << NiExtraData::asString();
-	out << "  Unknown Int 1:  " << unknownInt1 << endl;
+	out << "  Behaviour Graph File:  " << behaviourGraphFile << endl;
 	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
 	return out.str();
 
@@ -108,7 +108,17 @@ std::list<NiObject *> BSBehaviorGraphExtraData::GetPtrs() const {
 	return ptrs;
 }
 
-//--This object has no eligable attributes.  No example implementation generated--//
+/***Begin Example Naive Implementation****
+
+IndexString BSBehaviorGraphExtraData::GetBehaviourGraphFile() const {
+	return behaviourGraphFile;
+}
+
+void BSBehaviorGraphExtraData::SetBehaviourGraphFile( const IndexString & value ) {
+	behaviourGraphFile = value;
+}
+
+****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

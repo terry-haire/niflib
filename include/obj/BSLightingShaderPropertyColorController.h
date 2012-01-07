@@ -53,24 +53,14 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	/***Begin Example Naive Implementation****
-
-	// Unknown
-	// \return The current value.
-	unsigned int GetTarget___() const;
-
-	// Unknown
-	// \param[in] value The new value.
-	void SetTarget___( unsigned int value );
-
-	****End Example Naive Implementation***/
+	//--This object has no eligable attributes.  No example implementation generated--//
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown */
-	unsigned int target___;
+	unsigned int unknownInt2;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

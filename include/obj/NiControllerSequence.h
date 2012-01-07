@@ -26,6 +26,7 @@ namespace Niflib {
 class NiTextKeyExtraData;
 class NiControllerManager;
 class NiStringPalette;
+class BSAnimNotes;
 class NiControllerSequence;
 typedef Ref<NiControllerSequence> NiControllerSequenceRef;
 
@@ -137,6 +138,14 @@ public:
 	// Refers to NiStringPalette.
 	// \param[in] value The new value.
 	void SetStringPalette( Ref<NiStringPalette > value );
+
+	// Unknown
+	// \return The current value.
+	Ref<BSAnimNotes > GetAnimNotes() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetAnimNotes( Ref<BSAnimNotes > value );
 
 	****End Example Naive Implementation***/
 
@@ -359,9 +368,9 @@ protected:
 	/*! Refers to NiStringPalette. */
 	Ref<NiStringPalette > stringPalette;
 	/*! Unknown */
-	short unknownShort1;
+	Ref<BSAnimNotes > animNotes;
 	/*! Unknown */
-	short unknownShort2;
+	short unknownShort1;
 	/*!
 	 * Unknown, found in some Lazeska and Krazy Rain .KFs (seems to be 64 when
 	 * present).

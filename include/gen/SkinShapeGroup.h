@@ -29,7 +29,7 @@ struct SkinShapeGroup {
 	mutable unsigned int numLinkPairs;
 	/*!
 	 * First link is a NiTriShape object.
-	 *             Second link is a NiSkinInstance object.
+	 *       Second link is a NiSkinInstance object.
 	 */
 	vector<SkinShape > linkPairs;
 	//--BEGIN MISC CUSTOM CODE--//

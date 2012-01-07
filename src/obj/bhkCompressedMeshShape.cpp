@@ -15,13 +15,14 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/ObjectRegistry.h"
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/bhkCompressedMeshShape.h"
-#include "../../include/obj/NiObject.h"
+#include "../../include/obj/NiAVObject.h"
+#include "../../include/obj/bhkCompressedMeshShapeData.h"
 using namespace Niflib;
 
 //Definition of TYPE constant
 const Type bhkCompressedMeshShape::TYPE("bhkCompressedMeshShape", &bhkShape::TYPE );
 
-bhkCompressedMeshShape::bhkCompressedMeshShape() : root(NULL), material((HavokMaterial)0), unknownFloat1(0.0f), data(NULL) {
+bhkCompressedMeshShape::bhkCompressedMeshShape() : target(NULL), material((HavokMaterial)0), unknownFloat1(0.0f), data(NULL) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -73,16 +74,16 @@ void bhkCompressedMeshShape::Write( ostream& out, const map<NiObjectRef,unsigned
 
 	bhkShape::Write( out, link_map, missing_link_stack, info );
 	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*root), out );
+		WritePtr32( &(*target), out );
 	} else {
-		if ( root != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(root) );
+		if ( target != NULL ) {
+			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(target) );
 			if (it != link_map.end()) {
 				NifStream( it->second, out, info );
 				missing_link_stack.push_back( NULL );
 			} else {
 				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( root );
+				missing_link_stack.push_back( target );
 			}
 		} else {
 			NifStream( 0xFFFFFFFF, out, info );
@@ -128,7 +129,7 @@ std::string bhkCompressedMeshShape::asString( bool verbose ) const {
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << bhkShape::asString();
-	out << "  Root:  " << root << endl;
+	out << "  Target:  " << target << endl;
 	out << "  Material:  " << material << endl;
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	array_output_count = 0;
@@ -169,8 +170,8 @@ void bhkCompressedMeshShape::FixLinks( const map<unsigned int,NiObjectRef> & obj
 	//--END CUSTOM CODE--//
 
 	bhkShape::FixLinks( objects, link_stack, missing_link_stack, info );
-	root = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
-	data = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
+	target = FixLink<NiAVObject>( objects, link_stack, missing_link_stack, info );
+	data = FixLink<bhkCompressedMeshShapeData>( objects, link_stack, missing_link_stack, info );
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
@@ -180,27 +181,27 @@ void bhkCompressedMeshShape::FixLinks( const map<unsigned int,NiObjectRef> & obj
 std::list<NiObjectRef> bhkCompressedMeshShape::GetRefs() const {
 	list<Ref<NiObject> > refs;
 	refs = bhkShape::GetRefs();
+	if ( data != NULL )
+		refs.push_back(StaticCast<NiObject>(data));
 	return refs;
 }
 
 std::list<NiObject *> bhkCompressedMeshShape::GetPtrs() const {
 	list<NiObject *> ptrs;
 	ptrs = bhkShape::GetPtrs();
-	if ( root != NULL )
-		ptrs.push_back((NiObject *)(root));
-	if ( data != NULL )
-		ptrs.push_back((NiObject *)(data));
+	if ( target != NULL )
+		ptrs.push_back((NiObject *)(target));
 	return ptrs;
 }
 
 /***Begin Example Naive Implementation****
 
-NiObject * bhkCompressedMeshShape::GetRoot() const {
-	return root;
+NiAVObject * bhkCompressedMeshShape::GetTarget() const {
+	return target;
 }
 
-void bhkCompressedMeshShape::SetRoot( NiObject * value ) {
-	root = value;
+void bhkCompressedMeshShape::SetTarget( NiAVObject * value ) {
+	target = value;
 }
 
 HavokMaterial bhkCompressedMeshShape::GetMaterial() const {
@@ -211,11 +212,11 @@ void bhkCompressedMeshShape::SetMaterial( const HavokMaterial & value ) {
 	material = value;
 }
 
-NiObject * bhkCompressedMeshShape::GetData() const {
+Ref<bhkCompressedMeshShapeData > bhkCompressedMeshShape::GetData() const {
 	return data;
 }
 
-void bhkCompressedMeshShape::SetData( NiObject * value ) {
+void bhkCompressedMeshShape::SetData( Ref<bhkCompressedMeshShapeData > value ) {
 	data = value;
 }
 

@@ -367,8 +367,8 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/obj/bhkLiquidAction.h"
 #include "../../include/obj/BSMultiBoundNode.h"
 #include "../../include/obj/BSMultiBound.h"
-#include "../../include/obj/BSMultiBoundOBB.h"
 #include "../../include/obj/BSMultiBoundData.h"
+#include "../../include/obj/BSMultiBoundOBB.h"
 #include "../../include/obj/BSMultiBoundSphere.h"
 #include "../../include/obj/BSSegmentedTriShape.h"
 #include "../../include/obj/BSMultiBoundAABB.h"
@@ -811,8 +811,8 @@ namespace Niflib {
 		ObjectRegistry::RegisterObject( "bhkLiquidAction", bhkLiquidAction::Create );
 		ObjectRegistry::RegisterObject( "BSMultiBoundNode", BSMultiBoundNode::Create );
 		ObjectRegistry::RegisterObject( "BSMultiBound", BSMultiBound::Create );
-		ObjectRegistry::RegisterObject( "BSMultiBoundOBB", BSMultiBoundOBB::Create );
 		ObjectRegistry::RegisterObject( "BSMultiBoundData", BSMultiBoundData::Create );
+		ObjectRegistry::RegisterObject( "BSMultiBoundOBB", BSMultiBoundOBB::Create );
 		ObjectRegistry::RegisterObject( "BSMultiBoundSphere", BSMultiBoundSphere::Create );
 		ObjectRegistry::RegisterObject( "BSSegmentedTriShape", BSSegmentedTriShape::Create );
 		ObjectRegistry::RegisterObject( "BSMultiBoundAABB", BSMultiBoundAABB::Create );

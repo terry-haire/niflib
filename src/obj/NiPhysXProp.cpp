@@ -16,8 +16,8 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/NiPhysXProp.h"
 #include "../../include/obj/NiObject.h"
-#include "../../include/obj/NiPhysXTransformDest.h"
 #include "../../include/obj/NiPhysXPropDesc.h"
+#include "../../include/obj/NiPhysXTransformDest.h"
 using namespace Niflib;
 
 //Definition of TYPE constant

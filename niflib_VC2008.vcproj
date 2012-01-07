@@ -567,7 +567,7 @@
 				Version="0.7.3"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
-				ImportLibrary="lib/niflib_dll_debug.lib"
+				ImportLibrary="lib/niflib_dll_debug_x64.lib"
 				TargetMachine="17"
 			/>
 			<Tool
@@ -2542,6 +2542,14 @@
 				</File>
 				<File
 					RelativePath=".\src\gen\BSTreadTransfInfo.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\gen\BSTreadTransform.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\gen\BSTreadTransformData.cpp"
 					>
 				</File>
 				<File
@@ -4708,6 +4716,14 @@
 				</File>
 				<File
 					RelativePath=".\include\gen\BSTreadTransfInfo.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\gen\BSTreadTransform.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\gen\BSTreadTransformData.h"
 					>
 				</File>
 				<File

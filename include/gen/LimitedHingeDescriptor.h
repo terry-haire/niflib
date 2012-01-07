@@ -15,7 +15,10 @@ All rights reserved.  Please see niflib.h for license. */
 namespace Niflib {
 
 
-/*!  */
+/*!
+ * This constraint allows rotation about a specified axis, limited by specified
+ * boundaries.
+ */
 struct LimitedHingeDescriptor {
 	/*! Default Constructor */
 	NIFLIB_API LimitedHingeDescriptor();

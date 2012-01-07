@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiPSysData::TYPE("NiPSysData", &NiRotatingParticlesData::TYPE );
 
-NiPSysData::NiPSysData() : hasUnknownFloats3(false), unknownShort1((unsigned short)0), unknownShort2((unsigned short)0), unknownByte2((byte)0), hasVertexColors2((byte)0), numVertexColors2((unsigned int)0), unknownInt3((unsigned int)0), unknownInt4((unsigned int)0), unknownInt5((unsigned int)0), unknownInt6((unsigned int)0), unknownShort3((unsigned short)0), unknownByte4((byte)0) {
+NiPSysData::NiPSysData() : hasUnknownFloats3(false), unknownShort1((unsigned short)0), unknownShort2((unsigned short)0), hasVertexColors2((byte)0), numVertexColors2((unsigned int)0), unknownInt3((unsigned int)0), unknownByte2((byte)0), unknownByte3((byte)0), unknownByte4((byte)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -72,9 +72,6 @@ void NiPSysData::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 		NifStream( unknownShort2, in, info );
 	};
 	if ( ((info.version >= 0x14020007) && (info.userVersion >= 12)) ) {
-		NifStream( unknownByte2, in, info );
-		NifStream( unknownShort1, in, info );
-		NifStream( unknownShort2, in, info );
 		NifStream( hasVertexColors2, in, info );
 		NifStream( numVertexColors2, in, info );
 		NifStream( unknownInt3, in, info );
@@ -84,10 +81,9 @@ void NiPSysData::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 				NifStream( vertexColors[i3], in, info );
 			};
 		};
-		NifStream( unknownInt4, in, info );
-		NifStream( unknownInt5, in, info );
-		NifStream( unknownInt6, in, info );
-		NifStream( unknownShort3, in, info );
+		NifStream( unknownByte2, in, info );
+		NifStream( unknownByte3, in, info );
+		NifStream( unknownFloats4, in, info );
 		NifStream( unknownByte4, in, info );
 	};
 
@@ -128,9 +124,6 @@ void NiPSysData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 		NifStream( unknownShort2, out, info );
 	};
 	if ( ((info.version >= 0x14020007) && (info.userVersion >= 12)) ) {
-		NifStream( unknownByte2, out, info );
-		NifStream( unknownShort1, out, info );
-		NifStream( unknownShort2, out, info );
 		NifStream( hasVertexColors2, out, info );
 		NifStream( numVertexColors2, out, info );
 		NifStream( unknownInt3, out, info );
@@ -139,10 +132,9 @@ void NiPSysData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 				NifStream( vertexColors[i3], out, info );
 			};
 		};
-		NifStream( unknownInt4, out, info );
-		NifStream( unknownInt5, out, info );
-		NifStream( unknownInt6, out, info );
-		NifStream( unknownShort3, out, info );
+		NifStream( unknownByte2, out, info );
+		NifStream( unknownByte3, out, info );
+		NifStream( unknownFloats4, out, info );
 		NifStream( unknownByte4, out, info );
 	};
 
@@ -199,7 +191,6 @@ std::string NiPSysData::asString( bool verbose ) const {
 	};
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;
 	out << "  Unknown Short 2:  " << unknownShort2 << endl;
-	out << "  Unknown Byte 2:  " << unknownByte2 << endl;
 	out << "  Has Vertex Colors 2:  " << hasVertexColors2 << endl;
 	out << "  Num Vertex Colors 2:  " << numVertexColors2 << endl;
 	out << "  Unknown Int 3:  " << unknownInt3 << endl;
@@ -217,10 +208,9 @@ std::string NiPSysData::asString( bool verbose ) const {
 			array_output_count++;
 		};
 	};
-	out << "  Unknown Int 4:  " << unknownInt4 << endl;
-	out << "  Unknown Int 5:  " << unknownInt5 << endl;
-	out << "  Unknown Int 6:  " << unknownInt6 << endl;
-	out << "  Unknown Short 3:  " << unknownShort3 << endl;
+	out << "  Unknown Byte 2:  " << unknownByte2 << endl;
+	out << "  Unknown Byte 3:  " << unknownByte3 << endl;
+	out << "  Unknown Floats 4:  " << unknownFloats4 << endl;
 	out << "  Unknown Byte 4:  " << unknownByte4 << endl;
 	return out.str();
 

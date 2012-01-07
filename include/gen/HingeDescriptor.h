@@ -13,7 +13,7 @@ All rights reserved.  Please see niflib.h for license. */
 namespace Niflib {
 
 
-/*!  */
+/*! This constraint allows rotation about a specified axis. */
 struct HingeDescriptor {
 	/*! Default Constructor */
 	NIFLIB_API HingeDescriptor();

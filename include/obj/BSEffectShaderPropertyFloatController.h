@@ -20,7 +20,20 @@ namespace Niflib {
 class BSEffectShaderPropertyFloatController;
 typedef Ref<BSEffectShaderPropertyFloatController> BSEffectShaderPropertyFloatControllerRef;
 
-/*!  */
+/*!
+ * This controller is used to animate variables in
+ * BSEffectShaderPropertyFloatController, target is a number in order they appear:
+ *     0: Visibility?
+ *     1:
+ *     2:
+ *     3:
+ *     4: Emissive or Saturation?
+ *     5: Alpha Transparency
+ *     6: Texture Translation U
+ *     7: Texture Repeat U
+ *     8: Texture Translate V
+ *     9: Texture Repeat V
+ */
 class BSEffectShaderPropertyFloatController : public NiFloatInterpController {
 public:
 	/*! Constructor */
@@ -55,13 +68,13 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// NifSkope throws infinite loop if type=Ref.
+	// Unknown
 	// \return The current value.
-	unsigned int GetTarget_() const;
+	unsigned int GetTargetVariable() const;
 
-	// NifSkope throws infinite loop if type=Ref.
+	// Unknown
 	// \param[in] value The new value.
-	void SetTarget_( unsigned int value );
+	void SetTargetVariable( unsigned int value );
 
 	****End Example Naive Implementation***/
 
@@ -69,8 +82,8 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! NifSkope throws infinite loop if type=Ref. */
-	unsigned int target_;
+	/*! Unknown */
+	unsigned int targetVariable;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

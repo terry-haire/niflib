@@ -21,7 +21,7 @@ typedef Ref<NiVertWeightsExtraData> NiVertWeightsExtraDataRef;
 
 /*!
  * Not used in skinning.
- *         Unsure of use - perhaps for morphing animation or gravity.
+ *     Unsure of use - perhaps for morphing animation or gravity.
  */
 class NiVertWeightsExtraData : public NiExtraData {
 public:

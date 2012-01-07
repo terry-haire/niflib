@@ -289,10 +289,34 @@ void NifStream( EmitFrom & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( EmitFrom const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
+//---SkyrimWaterShaderFlags---//
+
+void NifStream( SkyrimWaterShaderFlags & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( SkyrimWaterShaderFlags const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
 //---BSShaderFlags---//
 
 void NifStream( BSShaderFlags & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( BSShaderFlags const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
+//---BSPartFlag---//
+
+void NifStream( BSPartFlag & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( BSPartFlag const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
+//---SkyrimLightingShaderFlags2---//
+
+void NifStream( SkyrimLightingShaderFlags2 & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( SkyrimLightingShaderFlags2 const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
+//---SkyrimLightingShaderFlags1---//
+
+void NifStream( SkyrimLightingShaderFlags1 & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( SkyrimLightingShaderFlags1 const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
 //---DataStreamAccess---//
@@ -301,10 +325,16 @@ void NifStream( DataStreamAccess & val, istream& in, const NifInfo & info = NifI
 void NifStream( DataStreamAccess const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
-//---BSPartFlag---//
+//---SkyrimEffectShaderFlags2---//
 
-void NifStream( BSPartFlag & val, istream& in, const NifInfo & info = NifInfo() );
-void NifStream( BSPartFlag const & val, ostream& out, const NifInfo & info = NifInfo() );
+void NifStream( SkyrimEffectShaderFlags2 & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( SkyrimEffectShaderFlags2 const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
+//---SkyrimEffectShaderFlags1---//
+
+void NifStream( SkyrimEffectShaderFlags1 & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( SkyrimEffectShaderFlags1 const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 }
 #endif

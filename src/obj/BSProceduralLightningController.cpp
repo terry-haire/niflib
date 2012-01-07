@@ -15,12 +15,13 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/ObjectRegistry.h"
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/BSProceduralLightningController.h"
+#include "../../include/obj/NiInterpolator.h"
 using namespace Niflib;
 
 //Definition of TYPE constant
 const Type BSProceduralLightningController::TYPE("BSProceduralLightningController", &NiFloatInterpController::TYPE );
 
-BSProceduralLightningController::BSProceduralLightningController() : target___((unsigned int)0), target___1((unsigned int)0), target___2((unsigned int)0), target___3((unsigned int)0), target___4((unsigned int)0), target___5((unsigned int)0), target___6((unsigned int)0), target___7((unsigned int)0), unknownShort1((unsigned short)0), unknownShort2((unsigned short)0), unknownShort3((unsigned short)0), float1(0.0f), float2(0.0f), float3(0.0f), float4(0.0f), float5(0.0f), byte1((byte)0), byte2((byte)0), byte3((byte)0), target___8((unsigned int)0) {
+BSProceduralLightningController::BSProceduralLightningController() : interpolator2_Mutation(NULL), interpolator3(NULL), interpolator4(NULL), interpolator5(NULL), interpolator6(NULL), interpolator7(NULL), interpolator8(NULL), interpolator9_ArcOffset(NULL), unknownShort1((unsigned short)0), unknownShort2((unsigned short)0), unknownShort3((unsigned short)0), distanceWeight(0.0f), float2(0.0f), stripWidth(0.0f), fork(0.0f), float5(0.0f), byte1((byte)0), byte2((byte)0), byte3((byte)0), interpolator10_(NULL) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -45,27 +46,37 @@ void BSProceduralLightningController::Read( istream& in, list<unsigned int> & li
 
 	//--END CUSTOM CODE--//
 
+	unsigned int block_num;
 	NiFloatInterpController::Read( in, link_stack, info );
-	NifStream( target___, in, info );
-	NifStream( target___1, in, info );
-	NifStream( target___2, in, info );
-	NifStream( target___3, in, info );
-	NifStream( target___4, in, info );
-	NifStream( target___5, in, info );
-	NifStream( target___6, in, info );
-	NifStream( target___7, in, info );
+	NifStream( block_num, in, info );
+	link_stack.push_back( block_num );
+	NifStream( block_num, in, info );
+	link_stack.push_back( block_num );
+	NifStream( block_num, in, info );
+	link_stack.push_back( block_num );
+	NifStream( block_num, in, info );
+	link_stack.push_back( block_num );
+	NifStream( block_num, in, info );
+	link_stack.push_back( block_num );
+	NifStream( block_num, in, info );
+	link_stack.push_back( block_num );
+	NifStream( block_num, in, info );
+	link_stack.push_back( block_num );
+	NifStream( block_num, in, info );
+	link_stack.push_back( block_num );
 	NifStream( unknownShort1, in, info );
 	NifStream( unknownShort2, in, info );
 	NifStream( unknownShort3, in, info );
-	NifStream( float1, in, info );
+	NifStream( distanceWeight, in, info );
 	NifStream( float2, in, info );
-	NifStream( float3, in, info );
-	NifStream( float4, in, info );
+	NifStream( stripWidth, in, info );
+	NifStream( fork, in, info );
 	NifStream( float5, in, info );
 	NifStream( byte1, in, info );
 	NifStream( byte2, in, info );
 	NifStream( byte3, in, info );
-	NifStream( target___8, in, info );
+	NifStream( block_num, in, info );
+	link_stack.push_back( block_num );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -78,26 +89,170 @@ void BSProceduralLightningController::Write( ostream& out, const map<NiObjectRef
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Write( out, link_map, missing_link_stack, info );
-	NifStream( target___, out, info );
-	NifStream( target___1, out, info );
-	NifStream( target___2, out, info );
-	NifStream( target___3, out, info );
-	NifStream( target___4, out, info );
-	NifStream( target___5, out, info );
-	NifStream( target___6, out, info );
-	NifStream( target___7, out, info );
+	if ( info.version < VER_3_3_0_13 ) {
+		WritePtr32( &(*interpolator2_Mutation), out );
+	} else {
+		if ( interpolator2_Mutation != NULL ) {
+			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(interpolator2_Mutation) );
+			if (it != link_map.end()) {
+				NifStream( it->second, out, info );
+				missing_link_stack.push_back( NULL );
+			} else {
+				NifStream( 0xFFFFFFFF, out, info );
+				missing_link_stack.push_back( interpolator2_Mutation );
+			}
+		} else {
+			NifStream( 0xFFFFFFFF, out, info );
+			missing_link_stack.push_back( NULL );
+		}
+	}
+	if ( info.version < VER_3_3_0_13 ) {
+		WritePtr32( &(*interpolator3), out );
+	} else {
+		if ( interpolator3 != NULL ) {
+			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(interpolator3) );
+			if (it != link_map.end()) {
+				NifStream( it->second, out, info );
+				missing_link_stack.push_back( NULL );
+			} else {
+				NifStream( 0xFFFFFFFF, out, info );
+				missing_link_stack.push_back( interpolator3 );
+			}
+		} else {
+			NifStream( 0xFFFFFFFF, out, info );
+			missing_link_stack.push_back( NULL );
+		}
+	}
+	if ( info.version < VER_3_3_0_13 ) {
+		WritePtr32( &(*interpolator4), out );
+	} else {
+		if ( interpolator4 != NULL ) {
+			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(interpolator4) );
+			if (it != link_map.end()) {
+				NifStream( it->second, out, info );
+				missing_link_stack.push_back( NULL );
+			} else {
+				NifStream( 0xFFFFFFFF, out, info );
+				missing_link_stack.push_back( interpolator4 );
+			}
+		} else {
+			NifStream( 0xFFFFFFFF, out, info );
+			missing_link_stack.push_back( NULL );
+		}
+	}
+	if ( info.version < VER_3_3_0_13 ) {
+		WritePtr32( &(*interpolator5), out );
+	} else {
+		if ( interpolator5 != NULL ) {
+			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(interpolator5) );
+			if (it != link_map.end()) {
+				NifStream( it->second, out, info );
+				missing_link_stack.push_back( NULL );
+			} else {
+				NifStream( 0xFFFFFFFF, out, info );
+				missing_link_stack.push_back( interpolator5 );
+			}
+		} else {
+			NifStream( 0xFFFFFFFF, out, info );
+			missing_link_stack.push_back( NULL );
+		}
+	}
+	if ( info.version < VER_3_3_0_13 ) {
+		WritePtr32( &(*interpolator6), out );
+	} else {
+		if ( interpolator6 != NULL ) {
+			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(interpolator6) );
+			if (it != link_map.end()) {
+				NifStream( it->second, out, info );
+				missing_link_stack.push_back( NULL );
+			} else {
+				NifStream( 0xFFFFFFFF, out, info );
+				missing_link_stack.push_back( interpolator6 );
+			}
+		} else {
+			NifStream( 0xFFFFFFFF, out, info );
+			missing_link_stack.push_back( NULL );
+		}
+	}
+	if ( info.version < VER_3_3_0_13 ) {
+		WritePtr32( &(*interpolator7), out );
+	} else {
+		if ( interpolator7 != NULL ) {
+			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(interpolator7) );
+			if (it != link_map.end()) {
+				NifStream( it->second, out, info );
+				missing_link_stack.push_back( NULL );
+			} else {
+				NifStream( 0xFFFFFFFF, out, info );
+				missing_link_stack.push_back( interpolator7 );
+			}
+		} else {
+			NifStream( 0xFFFFFFFF, out, info );
+			missing_link_stack.push_back( NULL );
+		}
+	}
+	if ( info.version < VER_3_3_0_13 ) {
+		WritePtr32( &(*interpolator8), out );
+	} else {
+		if ( interpolator8 != NULL ) {
+			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(interpolator8) );
+			if (it != link_map.end()) {
+				NifStream( it->second, out, info );
+				missing_link_stack.push_back( NULL );
+			} else {
+				NifStream( 0xFFFFFFFF, out, info );
+				missing_link_stack.push_back( interpolator8 );
+			}
+		} else {
+			NifStream( 0xFFFFFFFF, out, info );
+			missing_link_stack.push_back( NULL );
+		}
+	}
+	if ( info.version < VER_3_3_0_13 ) {
+		WritePtr32( &(*interpolator9_ArcOffset), out );
+	} else {
+		if ( interpolator9_ArcOffset != NULL ) {
+			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(interpolator9_ArcOffset) );
+			if (it != link_map.end()) {
+				NifStream( it->second, out, info );
+				missing_link_stack.push_back( NULL );
+			} else {
+				NifStream( 0xFFFFFFFF, out, info );
+				missing_link_stack.push_back( interpolator9_ArcOffset );
+			}
+		} else {
+			NifStream( 0xFFFFFFFF, out, info );
+			missing_link_stack.push_back( NULL );
+		}
+	}
 	NifStream( unknownShort1, out, info );
 	NifStream( unknownShort2, out, info );
 	NifStream( unknownShort3, out, info );
-	NifStream( float1, out, info );
+	NifStream( distanceWeight, out, info );
 	NifStream( float2, out, info );
-	NifStream( float3, out, info );
-	NifStream( float4, out, info );
+	NifStream( stripWidth, out, info );
+	NifStream( fork, out, info );
 	NifStream( float5, out, info );
 	NifStream( byte1, out, info );
 	NifStream( byte2, out, info );
 	NifStream( byte3, out, info );
-	NifStream( target___8, out, info );
+	if ( info.version < VER_3_3_0_13 ) {
+		WritePtr32( &(*interpolator10_), out );
+	} else {
+		if ( interpolator10_ != NULL ) {
+			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(interpolator10_) );
+			if (it != link_map.end()) {
+				NifStream( it->second, out, info );
+				missing_link_stack.push_back( NULL );
+			} else {
+				NifStream( 0xFFFFFFFF, out, info );
+				missing_link_stack.push_back( interpolator10_ );
+			}
+		} else {
+			NifStream( 0xFFFFFFFF, out, info );
+			missing_link_stack.push_back( NULL );
+		}
+	}
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -111,26 +266,26 @@ std::string BSProceduralLightningController::asString( bool verbose ) const {
 
 	stringstream out;
 	out << NiFloatInterpController::asString();
-	out << "  Target(?):  " << target___ << endl;
-	out << "  Target(?)1:  " << target___1 << endl;
-	out << "  Target(?)2:  " << target___2 << endl;
-	out << "  Target(?)3:  " << target___3 << endl;
-	out << "  Target(?)4:  " << target___4 << endl;
-	out << "  Target(?)5:  " << target___5 << endl;
-	out << "  Target(?)6:  " << target___6 << endl;
-	out << "  Target(?)7:  " << target___7 << endl;
+	out << "  Interpolator 2: Mutation:  " << interpolator2_Mutation << endl;
+	out << "  Interpolator 3:  " << interpolator3 << endl;
+	out << "  Interpolator 4:  " << interpolator4 << endl;
+	out << "  Interpolator 5:  " << interpolator5 << endl;
+	out << "  Interpolator 6:  " << interpolator6 << endl;
+	out << "  Interpolator 7:  " << interpolator7 << endl;
+	out << "  Interpolator 8:  " << interpolator8 << endl;
+	out << "  Interpolator 9: Arc Offset:  " << interpolator9_ArcOffset << endl;
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;
 	out << "  Unknown Short 2:  " << unknownShort2 << endl;
 	out << "  Unknown Short 3:  " << unknownShort3 << endl;
-	out << "  Float 1:  " << float1 << endl;
+	out << "  Distance Weight:  " << distanceWeight << endl;
 	out << "  Float 2:  " << float2 << endl;
-	out << "  Float 3:  " << float3 << endl;
-	out << "  Float 4:  " << float4 << endl;
+	out << "  Strip Width:  " << stripWidth << endl;
+	out << "  Fork:  " << fork << endl;
 	out << "  Float 5:  " << float5 << endl;
 	out << "  Byte 1:  " << byte1 << endl;
 	out << "  Byte 2:  " << byte2 << endl;
 	out << "  Byte 3:  " << byte3 << endl;
-	out << "  Target(?)8:  " << target___8 << endl;
+	out << "  Interpolator 10?:  " << interpolator10_ << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -144,6 +299,15 @@ void BSProceduralLightningController::FixLinks( const map<unsigned int,NiObjectR
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::FixLinks( objects, link_stack, missing_link_stack, info );
+	interpolator2_Mutation = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
+	interpolator3 = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
+	interpolator4 = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
+	interpolator5 = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
+	interpolator6 = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
+	interpolator7 = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
+	interpolator8 = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
+	interpolator9_ArcOffset = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
+	interpolator10_ = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
@@ -153,6 +317,24 @@ void BSProceduralLightningController::FixLinks( const map<unsigned int,NiObjectR
 std::list<NiObjectRef> BSProceduralLightningController::GetRefs() const {
 	list<Ref<NiObject> > refs;
 	refs = NiFloatInterpController::GetRefs();
+	if ( interpolator2_Mutation != NULL )
+		refs.push_back(StaticCast<NiObject>(interpolator2_Mutation));
+	if ( interpolator3 != NULL )
+		refs.push_back(StaticCast<NiObject>(interpolator3));
+	if ( interpolator4 != NULL )
+		refs.push_back(StaticCast<NiObject>(interpolator4));
+	if ( interpolator5 != NULL )
+		refs.push_back(StaticCast<NiObject>(interpolator5));
+	if ( interpolator6 != NULL )
+		refs.push_back(StaticCast<NiObject>(interpolator6));
+	if ( interpolator7 != NULL )
+		refs.push_back(StaticCast<NiObject>(interpolator7));
+	if ( interpolator8 != NULL )
+		refs.push_back(StaticCast<NiObject>(interpolator8));
+	if ( interpolator9_ArcOffset != NULL )
+		refs.push_back(StaticCast<NiObject>(interpolator9_ArcOffset));
+	if ( interpolator10_ != NULL )
+		refs.push_back(StaticCast<NiObject>(interpolator10_));
 	return refs;
 }
 
@@ -164,76 +346,76 @@ std::list<NiObject *> BSProceduralLightningController::GetPtrs() const {
 
 /***Begin Example Naive Implementation****
 
-unsigned int BSProceduralLightningController::GetTarget___() const {
-	return target___;
+Ref<NiInterpolator > BSProceduralLightningController::GetInterpolator2_Mutation() const {
+	return interpolator2_Mutation;
 }
 
-void BSProceduralLightningController::SetTarget___( unsigned int value ) {
-	target___ = value;
+void BSProceduralLightningController::SetInterpolator2_Mutation( Ref<NiInterpolator > value ) {
+	interpolator2_Mutation = value;
 }
 
-unsigned int BSProceduralLightningController::GetTarget___1() const {
-	return target___1;
+Ref<NiInterpolator > BSProceduralLightningController::GetInterpolator3() const {
+	return interpolator3;
 }
 
-void BSProceduralLightningController::SetTarget___1( unsigned int value ) {
-	target___1 = value;
+void BSProceduralLightningController::SetInterpolator3( Ref<NiInterpolator > value ) {
+	interpolator3 = value;
 }
 
-unsigned int BSProceduralLightningController::GetTarget___2() const {
-	return target___2;
+Ref<NiInterpolator > BSProceduralLightningController::GetInterpolator4() const {
+	return interpolator4;
 }
 
-void BSProceduralLightningController::SetTarget___2( unsigned int value ) {
-	target___2 = value;
+void BSProceduralLightningController::SetInterpolator4( Ref<NiInterpolator > value ) {
+	interpolator4 = value;
 }
 
-unsigned int BSProceduralLightningController::GetTarget___3() const {
-	return target___3;
+Ref<NiInterpolator > BSProceduralLightningController::GetInterpolator5() const {
+	return interpolator5;
 }
 
-void BSProceduralLightningController::SetTarget___3( unsigned int value ) {
-	target___3 = value;
+void BSProceduralLightningController::SetInterpolator5( Ref<NiInterpolator > value ) {
+	interpolator5 = value;
 }
 
-unsigned int BSProceduralLightningController::GetTarget___4() const {
-	return target___4;
+Ref<NiInterpolator > BSProceduralLightningController::GetInterpolator6() const {
+	return interpolator6;
 }
 
-void BSProceduralLightningController::SetTarget___4( unsigned int value ) {
-	target___4 = value;
+void BSProceduralLightningController::SetInterpolator6( Ref<NiInterpolator > value ) {
+	interpolator6 = value;
 }
 
-unsigned int BSProceduralLightningController::GetTarget___5() const {
-	return target___5;
+Ref<NiInterpolator > BSProceduralLightningController::GetInterpolator7() const {
+	return interpolator7;
 }
 
-void BSProceduralLightningController::SetTarget___5( unsigned int value ) {
-	target___5 = value;
+void BSProceduralLightningController::SetInterpolator7( Ref<NiInterpolator > value ) {
+	interpolator7 = value;
 }
 
-unsigned int BSProceduralLightningController::GetTarget___6() const {
-	return target___6;
+Ref<NiInterpolator > BSProceduralLightningController::GetInterpolator8() const {
+	return interpolator8;
 }
 
-void BSProceduralLightningController::SetTarget___6( unsigned int value ) {
-	target___6 = value;
+void BSProceduralLightningController::SetInterpolator8( Ref<NiInterpolator > value ) {
+	interpolator8 = value;
 }
 
-unsigned int BSProceduralLightningController::GetTarget___7() const {
-	return target___7;
+Ref<NiInterpolator > BSProceduralLightningController::GetInterpolator9_ArcOffset() const {
+	return interpolator9_ArcOffset;
 }
 
-void BSProceduralLightningController::SetTarget___7( unsigned int value ) {
-	target___7 = value;
+void BSProceduralLightningController::SetInterpolator9_ArcOffset( Ref<NiInterpolator > value ) {
+	interpolator9_ArcOffset = value;
 }
 
-float BSProceduralLightningController::GetFloat1() const {
-	return float1;
+float BSProceduralLightningController::GetDistanceWeight() const {
+	return distanceWeight;
 }
 
-void BSProceduralLightningController::SetFloat1( float value ) {
-	float1 = value;
+void BSProceduralLightningController::SetDistanceWeight( float value ) {
+	distanceWeight = value;
 }
 
 float BSProceduralLightningController::GetFloat2() const {
@@ -244,20 +426,20 @@ void BSProceduralLightningController::SetFloat2( float value ) {
 	float2 = value;
 }
 
-float BSProceduralLightningController::GetFloat3() const {
-	return float3;
+float BSProceduralLightningController::GetStripWidth() const {
+	return stripWidth;
 }
 
-void BSProceduralLightningController::SetFloat3( float value ) {
-	float3 = value;
+void BSProceduralLightningController::SetStripWidth( float value ) {
+	stripWidth = value;
 }
 
-float BSProceduralLightningController::GetFloat4() const {
-	return float4;
+float BSProceduralLightningController::GetFork() const {
+	return fork;
 }
 
-void BSProceduralLightningController::SetFloat4( float value ) {
-	float4 = value;
+void BSProceduralLightningController::SetFork( float value ) {
+	fork = value;
 }
 
 float BSProceduralLightningController::GetFloat5() const {
@@ -292,12 +474,12 @@ void BSProceduralLightningController::SetByte3( byte value ) {
 	byte3 = value;
 }
 
-unsigned int BSProceduralLightningController::GetTarget___8() const {
-	return target___8;
+Ref<NiInterpolator > BSProceduralLightningController::GetInterpolator10_() const {
+	return interpolator10_;
 }
 
-void BSProceduralLightningController::SetTarget___8( unsigned int value ) {
-	target___8 = value;
+void BSProceduralLightningController::SetInterpolator10_( Ref<NiInterpolator > value ) {
+	interpolator10_ = value;
 }
 
 ****End Example Naive Implementation***/

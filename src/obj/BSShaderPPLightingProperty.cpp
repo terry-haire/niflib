@@ -50,13 +50,16 @@ void BSShaderPPLightingProperty::Read( istream& in, list<unsigned int> & link_st
 	BSShaderLightingProperty::Read( in, link_stack, info );
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
-	if ( ((info.userVersion >= 11) && (info.userVersion2 > 14)) ) {
+	if ( ((info.userVersion == 11) && (info.userVersion2 > 14)) ) {
 		NifStream( unknownFloat2, in, info );
 		NifStream( refractionPeriod, in, info );
 	};
-	if ( ((info.userVersion >= 11) && (info.userVersion2 > 24)) ) {
+	if ( ((info.userVersion == 11) && (info.userVersion2 > 24)) ) {
 		NifStream( unknownFloat4, in, info );
 		NifStream( unknownFloat5, in, info );
+	};
+	if ( (info.userVersion >= 12) ) {
+		NifStream( emissiveColor, in, info );
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -87,13 +90,16 @@ void BSShaderPPLightingProperty::Write( ostream& out, const map<NiObjectRef,unsi
 			missing_link_stack.push_back( NULL );
 		}
 	}
-	if ( ((info.userVersion >= 11) && (info.userVersion2 > 14)) ) {
+	if ( ((info.userVersion == 11) && (info.userVersion2 > 14)) ) {
 		NifStream( unknownFloat2, out, info );
 		NifStream( refractionPeriod, out, info );
 	};
-	if ( ((info.userVersion >= 11) && (info.userVersion2 > 24)) ) {
+	if ( ((info.userVersion == 11) && (info.userVersion2 > 24)) ) {
 		NifStream( unknownFloat4, out, info );
 		NifStream( unknownFloat5, out, info );
+	};
+	if ( (info.userVersion >= 12) ) {
+		NifStream( emissiveColor, out, info );
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -113,6 +119,7 @@ std::string BSShaderPPLightingProperty::asString( bool verbose ) const {
 	out << "  Refraction Period:  " << refractionPeriod << endl;
 	out << "  Unknown Float 4:  " << unknownFloat4 << endl;
 	out << "  Unknown Float 5:  " << unknownFloat5 << endl;
+	out << "  Emissive Color:  " << emissiveColor << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -163,6 +170,14 @@ int BSShaderPPLightingProperty::GetRefractionPeriod() const {
 
 void BSShaderPPLightingProperty::SetRefractionPeriod( int value ) {
 	refractionPeriod = value;
+}
+
+Color4 BSShaderPPLightingProperty::GetEmissiveColor() const {
+	return emissiveColor;
+}
+
+void BSShaderPPLightingProperty::SetEmissiveColor( const Color4 & value ) {
+	emissiveColor = value;
 }
 
 ****End Example Naive Implementation***/

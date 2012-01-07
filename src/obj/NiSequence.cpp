@@ -15,10 +15,10 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/NiSequence.h"
 #include "../../include/gen/ControllerLink.h"
-#include "../../include/obj/NiTimeController.h"
 #include "../../include/obj/NiInterpolator.h"
 #include "../../include/obj/NiObject.h"
 #include "../../include/obj/NiStringPalette.h"
+#include "../../include/obj/NiTimeController.h"
 #include "../../include/obj/NiTextKeyExtraData.h"
 using namespace Niflib;
 

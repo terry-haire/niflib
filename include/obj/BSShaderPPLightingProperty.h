@@ -76,6 +76,14 @@ public:
 	// \param[in] value The new value.
 	void SetRefractionPeriod( int value );
 
+	// Glow color and alpha
+	// \return The current value.
+	Color4 GetEmissiveColor() const;
+
+	// Glow color and alpha
+	// \param[in] value The new value.
+	void SetEmissiveColor( const Color4 & value );
+
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
@@ -100,6 +108,8 @@ protected:
 	float unknownFloat4;
 	/*! Unknown */
 	float unknownFloat5;
+	/*! Glow color and alpha */
+	Color4 emissiveColor;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

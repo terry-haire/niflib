@@ -97,23 +97,19 @@ protected:
 	/*! Unknown. */
 	unsigned short unknownShort2;
 	/*! Unknown, probably a boolean. */
-	byte unknownByte2;
-	/*! Unknown, probably a boolean. */
 	byte hasVertexColors2;
-	/*! Num bytes per */
+	/*! Unknown, particle bit depth? */
 	mutable unsigned int numVertexColors2;
 	/*! Unknown */
 	unsigned int unknownInt3;
 	/*! Unknown */
 	vector<Color4 > vertexColors;
 	/*! Unknown */
-	unsigned int unknownInt4;
+	byte unknownByte2;
 	/*! Unknown */
-	unsigned int unknownInt5;
+	byte unknownByte3;
 	/*! Unknown */
-	unsigned int unknownInt6;
-	/*! Unknown */
-	unsigned short unknownShort3;
+	Vector3 unknownFloats4;
 	/*! Unknown */
 	byte unknownByte4;
 public:

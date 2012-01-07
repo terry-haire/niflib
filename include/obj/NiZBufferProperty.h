@@ -55,14 +55,12 @@ public:
 	/***Begin Example Naive Implementation****
 
 	// Bit 0 enables the z test
-	//             Bit 1 controls wether the Z buffer is read only (0) or read/write
-	// (1)
+	//       Bit 1 controls wether the Z buffer is read only (0) or read/write (1)
 	// \return The current value.
 	unsigned short GetFlags() const;
 
 	// Bit 0 enables the z test
-	//             Bit 1 controls wether the Z buffer is read only (0) or read/write
-	// (1)
+	//       Bit 1 controls wether the Z buffer is read only (0) or read/write (1)
 	// \param[in] value The new value.
 	void SetFlags( unsigned short value );
 
@@ -106,8 +104,7 @@ public:
 protected:
 	/*!
 	 * Bit 0 enables the z test
-	 *             Bit 1 controls wether the Z buffer is read only (0) or read/write
-	 * (1)
+	 *       Bit 1 controls wether the Z buffer is read only (0) or read/write (1)
 	 */
 	unsigned short flags;
 	/*! Z-Test function (see: glDepthFunc). In Flags from 20.1.0.3 on. */

@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSLightingShaderPropertyColorController::TYPE("BSLightingShaderPropertyColorController", &NiFloatInterpController::TYPE );
 
-BSLightingShaderPropertyColorController::BSLightingShaderPropertyColorController() : target___((unsigned int)0) {
+BSLightingShaderPropertyColorController::BSLightingShaderPropertyColorController() : unknownInt2((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,7 +46,7 @@ void BSLightingShaderPropertyColorController::Read( istream& in, list<unsigned i
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Read( in, link_stack, info );
-	NifStream( target___, in, info );
+	NifStream( unknownInt2, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -59,7 +59,7 @@ void BSLightingShaderPropertyColorController::Write( ostream& out, const map<NiO
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Write( out, link_map, missing_link_stack, info );
-	NifStream( target___, out, info );
+	NifStream( unknownInt2, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -73,7 +73,7 @@ std::string BSLightingShaderPropertyColorController::asString( bool verbose ) co
 
 	stringstream out;
 	out << NiFloatInterpController::asString();
-	out << "  Target(?):  " << target___ << endl;
+	out << "  Unknown Int 2:  " << unknownInt2 << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -105,17 +105,7 @@ std::list<NiObject *> BSLightingShaderPropertyColorController::GetPtrs() const {
 	return ptrs;
 }
 
-/***Begin Example Naive Implementation****
-
-unsigned int BSLightingShaderPropertyColorController::GetTarget___() const {
-	return target___;
-}
-
-void BSLightingShaderPropertyColorController::SetTarget___( unsigned int value ) {
-	target___ = value;
-}
-
-****End Example Naive Implementation***/
+//--This object has no eligable attributes.  No example implementation generated--//
 
 //--BEGIN MISC CUSTOM CODE--//
 

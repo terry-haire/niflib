@@ -14,9 +14,9 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/ObjectRegistry.h"
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/NiLookAtInterpolator.h"
+#include "../../include/obj/NiFloatInterpolator.h"
 #include "../../include/obj/NiNode.h"
 #include "../../include/obj/NiPoint3Interpolator.h"
-#include "../../include/obj/NiFloatInterpolator.h"
 using namespace Niflib;
 
 //Definition of TYPE constant

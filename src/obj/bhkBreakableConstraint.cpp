@@ -56,9 +56,7 @@ void bhkBreakableConstraint::Read( istream& in, list<unsigned int> & link_stack,
 	};
 	if ( (info.userVersion == 12) ) {
 		NifStream( unknownInt1, in, info );
-	};
-	NifStream( numEntities2, in, info );
-	if ( (info.userVersion == 12) ) {
+		NifStream( numEntities2, in, info );
 		entities2.resize(numEntities2);
 		for (unsigned int i2 = 0; i2 < entities2.size(); i2++) {
 			NifStream( block_num, in, info );
@@ -96,9 +94,7 @@ void bhkBreakableConstraint::Write( ostream& out, const map<NiObjectRef,unsigned
 	};
 	if ( (info.userVersion == 12) ) {
 		NifStream( unknownInt1, out, info );
-	};
-	NifStream( numEntities2, out, info );
-	if ( (info.userVersion == 12) ) {
+		NifStream( numEntities2, out, info );
 		for (unsigned int i2 = 0; i2 < entities2.size(); i2++) {
 			if ( info.version < VER_3_3_0_13 ) {
 				WritePtr32( &(*entities2[i2]), out );

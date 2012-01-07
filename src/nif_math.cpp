@@ -668,6 +668,22 @@ Quaternion Quaternion::Inverse() const {
 }
 
 
+float Quaternion::Magnitude() const {
+	return sqrt( x * x + y * y + z * z + w * w );
+}
+
+Quaternion Quaternion::Normalized() const {
+	Quaternion v(*this);
+	float m = Magnitude();
+	return Quaternion(
+		w / m, //w
+		x / m, //x
+		y / m, //y
+		z / m  //z
+		);
+}
+
+
 /*
 * InertiaMatrix Methods
 */

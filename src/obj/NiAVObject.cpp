@@ -16,8 +16,8 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/NiAVObject.h"
 #include "../../include/gen/BoundingBox.h"
-#include "../../include/obj/NiProperty.h"
 #include "../../include/obj/NiCollisionObject.h"
+#include "../../include/obj/NiProperty.h"
 using namespace Niflib;
 
 //Definition of TYPE constant

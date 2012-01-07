@@ -60,29 +60,29 @@ public:
 
 	// Property flags. Appears to be unused until 20.1.0.3.
 	//
-	//             Bits 0-2: Unknown
-	//             Bit 3: Lighting Mode?
-	//             Bits 4-5: Vertex Mode?
+	//       Bits 0-2: Unknown
+	//       Bit 3: Lighting Mode?
+	//       Bits 4-5: Vertex Mode?
 	// \return The current value.
 	unsigned short GetFlags() const;
 
 	// Property flags. Appears to be unused until 20.1.0.3.
 	//
-	//             Bits 0-2: Unknown
-	//             Bit 3: Lighting Mode?
-	//             Bits 4-5: Vertex Mode?
+	//       Bits 0-2: Unknown
+	//       Bit 3: Lighting Mode?
+	//       Bits 4-5: Vertex Mode?
 	// \param[in] value The new value.
 	void SetFlags( unsigned short value );
 
 	// Determines how vertex and material colors are mixed.
-	//             related gl function: glColorMaterial
-	//             In Flags from version 20.1.0.3 onwards.
+	//       related gl function: glColorMaterial
+	//       In Flags from version 20.1.0.3 onwards.
 	// \return The current value.
 	VertMode GetVertexMode() const;
 
 	// Determines how vertex and material colors are mixed.
-	//             related gl function: glColorMaterial
-	//             In Flags from version 20.1.0.3 onwards.
+	//       related gl function: glColorMaterial
+	//       In Flags from version 20.1.0.3 onwards.
 	// \param[in] value The new value.
 	void SetVertexMode( const VertMode & value );
 
@@ -139,15 +139,15 @@ protected:
 	/*!
 	 * Property flags. Appears to be unused until 20.1.0.3.
 	 * 
-	 *             Bits 0-2: Unknown
-	 *             Bit 3: Lighting Mode?
-	 *             Bits 4-5: Vertex Mode?
+	 *       Bits 0-2: Unknown
+	 *       Bit 3: Lighting Mode?
+	 *       Bits 4-5: Vertex Mode?
 	 */
 	unsigned short flags;
 	/*!
 	 * Determines how vertex and material colors are mixed.
-	 *             related gl function: glColorMaterial
-	 *             In Flags from version 20.1.0.3 onwards.
+	 *       related gl function: glColorMaterial
+	 *       In Flags from version 20.1.0.3 onwards.
 	 */
 	VertMode vertexMode;
 	/*! The light mode. In Flags from 20.1.0.3 on. */

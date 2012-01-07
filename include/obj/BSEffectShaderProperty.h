@@ -53,28 +53,120 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Shader options, will use SkyrimEffectShaderFlags1
+	// \return The current value.
+	unsigned int GetEffectShaderFlags1() const;
+
+	// Shader options, will use SkyrimEffectShaderFlags1
+	// \param[in] value The new value.
+	void SetEffectShaderFlags1( unsigned int value );
+
+	// Offset UVs
+	// \return The current value.
+	TexCoord GetTextureTranslation1() const;
+
+	// Offset UVs
+	// \param[in] value The new value.
+	void SetTextureTranslation1( const TexCoord & value );
+
+	// Offset UV Scale to repeat tiling textures
+	// \return The current value.
+	TexCoord GetTextureRepeat() const;
+
+	// Offset UV Scale to repeat tiling textures
+	// \param[in] value The new value.
+	void SetTextureRepeat( const TexCoord & value );
+
+	// points to an external texture.
+	// \return The current value.
+	string GetSourceTexture() const;
+
+	// points to an external texture.
+	// \param[in] value The new value.
+	void SetSourceTexture( const string & value );
+
+	// hader options, will use SkyrimEffectShaderFlags12
+	// \return The current value.
+	unsigned short GetEffectShaderFlags2() const;
+
+	// hader options, will use SkyrimEffectShaderFlags12
+	// \param[in] value The new value.
+	void SetEffectShaderFlags2( unsigned short value );
+
+	// Color
+	// \return The current value.
+	Color3 GetDiffuseColor() const;
+
+	// Color
+	// \param[in] value The new value.
+	void SetDiffuseColor( const Color3 & value );
+
+	// The material's transparency
+	// \return The current value.
+	float GetAlpha() const;
+
+	// The material's transparency
+	// \param[in] value The new value.
+	void SetAlpha( float value );
+
+	// Adds a glow effect
+	// \return The current value.
+	float GetEmissive() const;
+
+	// Adds a glow effect
+	// \param[in] value The new value.
+	void SetEmissive( float value );
+
+	// points to an external texture.
+	// \return The current value.
+	string GetGradientTexture() const;
+
+	// points to an external texture.
+	// \param[in] value The new value.
+	void SetGradientTexture( const string & value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! 8/16? */
+	/*! 8/16? (nope, also 122,atronachflame) */
 	byte unknownByte1;
 	/*!  */
 	unsigned short unknownShort1;
 	/*! always 80? */
 	byte unknownByte2;
-	/*!  */
-	unsigned int unknownInt1;
-	/*!  */
-	Vector4 unknownFloats1;
+	/*! Shader options, will use SkyrimEffectShaderFlags1 */
+	unsigned int effectShaderFlags1;
+	/*! Offset UVs */
+	TexCoord textureTranslation1;
+	/*! Offset UV Scale to repeat tiling textures */
+	TexCoord textureRepeat;
 	/*! points to an external texture. */
 	string sourceTexture;
-	/*!  */
-	unsigned int unknownInt2;
-	/*! Not correct or finished, but it fits for now. */
-	Matrix33 unknownMatrix1;
-	/*!  */
-	float unknownFloat;
+	/*! hader options, will use SkyrimEffectShaderFlags12 */
+	unsigned short effectShaderFlags2;
+	/*! Unknown */
+	unsigned short unknownShort2;
+	/*! Unknown */
+	float unknownFloat1;
+	/*! Unknown */
+	float unknownFloat2;
+	/*! Unknown */
+	float unknownFloat3;
+	/*! Unknown */
+	float unknownFloat4;
+	/*! Color */
+	Color3 diffuseColor;
+	/*! The material's transparency */
+	float alpha;
+	/*! Adds a glow effect */
+	float emissive;
+	/*! Unknown */
+	float unknownFloat5;
 	/*! points to an external texture. */
 	string gradientTexture;
 public:

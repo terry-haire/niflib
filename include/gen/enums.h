@@ -185,7 +185,7 @@ ostream & operator<<( ostream & out, MipMapFormat const & val );
 /*!
  * This enum defines the various actions used in conjunction with the stencil
  * buffer.
- *         For a detailed description of the individual options please refer to the
+ *     For a detailed description of the individual options please refer to the
  * OpenGL docs.
  */
 enum StencilAction {
@@ -228,6 +228,12 @@ enum BSDismemberBodyPartType {
 	BP_RIGHTLEG2 = 11, /*!< Right Leg 2 */
 	BP_RIGHTLEG3 = 12, /*!< Right Leg 3 */
 	BP_BRAIN = 13, /*!< Brain */
+	BP_SKY_HEAD = 30, /*!< Skyrim Head */
+	BP_SKY_TORSO1 = 32, /*!< Skyrim Torso 1 */
+	BP_SKY_GLOVES1 = 33, /*!< Skyrim Gloves 1 */
+	BP_SKY_GLOVES2 = 34, /*!< Skyrim Gloves 2 */
+	BP_SKY_FEET = 37, /*!< Skyrim Feet */
+	BP_SKY_TORSO2 = 38, /*!< Skyrim Torso 2 */
 	BP_SECTIONCAP_HEAD = 101, /*!< Section Cap | Head */
 	BP_SECTIONCAP_HEAD2 = 102, /*!< Section Cap | Head 2 */
 	BP_SECTIONCAP_LEFTARM = 103, /*!< Section Cap | Left Arm */
@@ -362,9 +368,9 @@ ostream & operator<<( ostream & out, PSLoopBehavior const & val );
 
 /*!
  * A list of possible solver deactivation settings. This value defines how the
- *         solver deactivates objects. The solver works on a per object basis.
- *         Note: Solver deactivation does not save CPU, but reduces creeping of
- *         movable objects in a pile quite dramatically.
+ *     solver deactivates objects. The solver works on a per object basis.
+ *     Note: Solver deactivation does not save CPU, but reduces creeping of
+ *     movable objects in a pile quite dramatically.
  */
 enum SolverDeactivation {
 	SOLVER_DEACTIVATION_INVALID = 0, /*!< Invalid */
@@ -781,43 +787,141 @@ enum EmitFrom {
 
 ostream & operator<<( ostream & out, EmitFrom const & val );
 
+/*! Skyrim Water Shader Property Flags */
+enum SkyrimWaterShaderFlags {
+	SWSF1_UNKNOWN0 = 1, /*!< Unknown */
+	SWSF1_BYPASS_REFRACTION_MAP = 2, /*!< Bypasses refraction map when set to 1 */
+	SWSF1_WATER_TOGGLE = 4, /*!< Main water Layer on/off */
+	SWSF1_UNKNOWN3 = 8, /*!< Unknown */
+	SWSF1_UNKNOWN4 = 16, /*!< Unknown */
+	SWSF1_UNKNOWN5 = 32, /*!< Unknown */
+	SWSF1_HIGHLIGHT_LAYER_TOGGLE = 64, /*!< Reflection layer 2 on/off. (is this scene reflection?) */
+	SWSF1_ENABLED = 128, /*!< Water layer on/off */
+};
+
+ostream & operator<<( ostream & out, SkyrimWaterShaderFlags const & val );
+
 /*! Shader Property Flags */
 enum BSShaderFlags {
-	SF_ZBUFFER_TEST = 1, /*!< ZBuffer Test (1=on) */
-	SF_SHADOW_MAP = 2, /*!< Shadow Map */
-	SF_EXTERNAL_EMITTANCE = 4, /*!< External Emittance */
-	SF_PARALLAX_OCCLUSION = 8, /*!< Parallax Occlusion */
-	SF_DYNAMIC_DECAL = 16, /*!< Dynamic Decal */
-	SF_DECAL = 32, /*!< Decal */
-	SF_UNKNOWN_6 = 64, /*!< Unknown\Light fade? (if 0 and envmap is on, "envmap light fade" is not present) */
-	SF_MULTIPLE_TEXTURES = 128, /*!< Multiple Textures (base diff/norm become null) */
-	SF_SHADOW_FRUSTUM = 256, /*!< Shadow Frustum */
-	SF_TREE_BILLBOARD = 512, /*!< Tree Billboard */
-	SF_WINDOW_ENVIRONMENT_MAPPING = 1024, /*!< Window Environment Mapping */
-	SF_LOCALMAP_HIDE_SECRET = 2048, /*!< Localmap Hide Secret */
-	SF_DYNAMIC_ALPHA = 4096, /*!< Dynamic Alpha */
-	SF_HAIR = 8192, /*!< Hair */
-	SF_EYE_ENVIRONMENT_MAPPING = 16384, /*!< Eye Environment Mapping (does not use envmap light fade or envmap scale) */
-	SF_FIRE_REFRACTION = 32768, /*!< Fire Refraction (switches on refraction power/period) */
-	SF_REFRACTION = 65536, /*!< Refraction (switches on refraction power) */
-	SF_UNKNOWN_17 = 131072, /*!< Unknown/Crash */
-	NON_PROJECTIVE_SHADOWS = 262144, /*!< Non-Projective Shadows */
-	SF_UNKNOWN_19 = 524288, /*!< Unknown/Crash */
-	SF_PARALLAX = 1048576, /*!< Parallax */
-	SF_FACEGEN_SKIN = 2097152, /*!< Facegen\Skin */
-	SF_UNKNOWN_22 = 4194304, /*!< Unknown (Always 0?) */
-	SF_UNKNOWN_23 = 8388608, /*!< Unknown (usually 1) */
-	SF_ENVIRONMENT_MAPPING = 16777216, /*!< Environment mapping (uses Envmap Scale) */
-	SF_EMPTY = 33554432, /*!< EMPTY (usually seen w/texture animation) */
-	SF_SINGLE_PASS = 67108864, /*!< Single Pass (uses same default shader path as diff/norm/spec setup BSSM_ADTS10) */
-	SF_UNKNOWN_27 = 134217728, /*!< Unknown (Always 0?) */
-	SF_VERTEX_ALPHA = 268435456, /*!< Vertex Alpha */
-	SF_LOWDDETAIL = 536870912, /*!< Lowddetail (seems to use standard diff/norm/spec shader) */
-	SF_SKINNED = 1073741824, /*!< Skinned. */
-	SF_UNKNOWN_31 = 2147483648, /*!< Unknown */
+	SF_SPECULAR = 1, /*!< Enables Specularity */
+	SF_SKINNED = 2, /*!< Required For Skinned Meshes */
+	SF_LOWDETAIL = 4, /*!< Lowddetail (seems to use standard diff/norm/spec shader) */
+	SF_VERTEX_ALPHA = 8, /*!< Vertex Alpha */
+	SF_UNKNOWN_1 = 16, /*!< Unknown */
+	SF_SINGLE_PASS = 32, /*!< Single Pass */
+	SF_EMPTY = 64, /*!< Unknown */
+	SF_ENVIRONMENT_MAPPING = 128, /*!< Environment mapping (uses Envmap Scale) */
+	SF_ALPHA_TEXTURE = 256, /*!< Alpha Texture Requires NiAlphaProperty to Enable */
+	SF_UNKNOWN_2 = 512, /*!< Unknown */
+	SF_FACEGEN = 1024, /*!< FaceGen */
+	SF_PARALLAX_SHADER_INDEX_15 = 2048, /*!< Parallax */
+	SF_UNKNOWN_3 = 4096, /*!< Unknown/Crash */
+	SF_NON_PROJECTIVE_SHADOWS = 8192, /*!< Non-Projective Shadows */
+	SF_UNKNOWN_4 = 16384, /*!< Unknown/Crash */
+	SF_REFRACTION = 32768, /*!< Refraction (switches on refraction power) */
+	SF_FIRE_REFRACTION = 65536, /*!< Fire Refraction (switches on refraction power/period) */
+	SF_EYE_ENVIRONMENT_MAPPING = 131072, /*!< Eye Environment Mapping (does not use envmap light fade or envmap scale) */
+	SF_HAIR = 262144, /*!< Hair */
+	SF_DYNAMIC_ALPHA = 524288, /*!< Dynamic Alpha */
+	SF_LOCALMAP_HIDE_SECRET = 1048576, /*!< Localmap Hide Secret */
+	SF_WINDOW_ENVIRONMENT_MAPPING = 2097152, /*!< Window Environment Mapping */
+	SF_TREE_BILLBOARD = 4194304, /*!< Tree Billboard */
+	SF_SHADOW_FRUSTUM = 8388608, /*!< Shadow Frustum */
+	SF_MULTIPLE_TEXTURES = 16777216, /*!< Multiple Textures (base diff/norm become null) */
+	SF_REMAPPABLE_TEXTURES = 33554432, /*!< usually seen w/texture animation */
+	SF_DECAL_SINGLE_PASS = 67108864, /*!< Decal */
+	SF_DYNAMIC_DECAL_SINGLE_PASS = 134217728, /*!< Dynamic Decal */
+	SF_PARALLAX_OCCULSION = 268435456, /*!< Parallax Occlusion */
+	SF_EXTERNAL_EMITTANCE = 536870912, /*!< External Emittance */
+	SF_SHADOW_MAP = 1073741824, /*!< Shadow Map */
+	SF_ZBUFFER_TEST = 2147483648, /*!< ZBuffer Test (1=on) */
 };
 
 ostream & operator<<( ostream & out, BSShaderFlags const & val );
+
+/*! Editor flags for the Body Partitions. */
+enum BSPartFlag {
+	PF_EDITOR_VISIBLE = 1, /*!< Visible in Editor */
+	PF_START_NET_BONESET = 256, /*!< Start a new shared boneset.  It is expected this BoneSet and the following sets in the Skin Partition will have the same bones. */
+};
+
+ostream & operator<<( ostream & out, BSPartFlag const & val );
+
+/*! Skyrim Shader Property Flags 2 */
+enum SkyrimLightingShaderFlags2 {
+	SLSF2_ZBUFFER_WRITE = 1, /*!< Enables writing to the Z-Buffer */
+	SLSF2_1 = 2, /*!< SLSF2_1 */
+	SLSF2_2 = 4, /*!< SLSF2_2 */
+	SLSF2_3 = 8, /*!< SLSF2_3 */
+	SLSF2_DOUBLE_SIDED = 16, /*!< Double-sided rendering */
+	SLSF2_VERTEX_COLOR = 32, /*!< Has Vertex Colors (Maybe, could be Vertex Alpha?) */
+	SLSF2_GLOW_MAP = 64, /*!< Use Glow Map */
+	SLSF2_7 = 128, /*!< SLSF2_7 */
+	SLSF2_8 = 256, /*!< SLSF2_8 */
+	SLSF2_9 = 512, /*!< SLSF2_9 */
+	SLSF2_10 = 1024, /*!< SLSF2_10 */
+	SLSF2_11 = 2048, /*!< SLSF2_11 */
+	SLSF2_12 = 4096, /*!< SLSF2_12 */
+	SLSF2_13 = 8192, /*!< SLSF2_13 */
+	SLSF2_14 = 16384, /*!< SLSF2_14 */
+	SLSF2_15 = 32768, /*!< SLSF2_15 */
+	SLSF2_16 = 65536, /*!< Wireframe (Seems to only work on particles) */
+	SLSF2_17 = 131072, /*!< SLSF2_17 */
+	SLSF2_18 = 262144, /*!< SLSF2_18 */
+	SLSF2_19 = 524288, /*!< SLSF2_19 */
+	SLSF2_20 = 1048576, /*!< SLSF2_20 */
+	SLSF2_21 = 2097152, /*!< SLSF2_21 */
+	SLSF2_22 = 4194304, /*!< SLSF2_22 */
+	SLSF2_23 = 8388608, /*!< SLSF2_23 */
+	SLSF2_MULTI_LAYER = 16777216, /*!< Use Multilayer (inner-layer) Map */
+	SLSF2_SOFT_LIGHT = 33554432, /*!< Use Soft Lighting Map */
+	SLSF2_RIM_LIGHT = 67108864, /*!< Use Rim Lighting Map */
+	SLSF2_BACK_LIGHT = 134217728, /*!< Use Back Lighting Map */
+	SLSF2_28 = 268435456, /*!< SLSF2_28 */
+	SLSF2_VERTEX_ANIMATION = 536870912, /*!< Enables Vertex Animation */
+	SLSF2_30 = 1073741824, /*!< SLSF2_30 */
+	SLSF2_31 = 2147483648, /*!< SLSF2_31 */
+};
+
+ostream & operator<<( ostream & out, SkyrimLightingShaderFlags2 const & val );
+
+/*! Skyrim Shader Property Flags 1 */
+enum SkyrimLightingShaderFlags1 {
+	SLSF1_SPECULAR = 1, /*!< Enables Specularity */
+	SLSF1_SKINNED = 2, /*!< Required For Skinned Meshes */
+	SLSF1_2 = 4, /*!< SLSF1_2 */
+	SLSF1_3 = 8, /*!< SLSF1_3 */
+	SLSF1_4 = 16, /*!< SLSF1_4 */
+	SLSF1_5 = 32, /*!< SLSF1_5 */
+	SLSF1_6 = 64, /*!< SLSF1_6 */
+	SLSF1_ENVIRONMENT_MAPPING = 128, /*!< Environment mapping (uses Envmap Scale) */
+	SLSF1_8 = 256, /*!< SLSF1_8 */
+	SLSF1_CAST_SHADOWS = 512, /*!< Can cast shadows */
+	SLSF1_10 = 1024, /*!< SLSF1_10 */
+	SLSF1_11 = 2048, /*!< SLSF1_11 */
+	SLSF1_SPECULAR_MAP = 4096, /*!< Use Specular Map */
+	SLSF1_13 = 8192, /*!< SLSF1_13 */
+	SLSF1_14 = 16384, /*!< SLSF1_14 */
+	SLSF1_15 = 32768, /*!< SLSF1_15 */
+	SLSF1_16 = 65536, /*!< SLSF1_16 */
+	SLSF1_EYE_ENVIRONMENT_MAPPING = 131072, /*!< Eye Environment Mapping (Must use the Eye shader and the model must be skinned) */
+	SLSF1_18 = 262144, /*!< SLSF1_18 */
+	SLSF1_19 = 524288, /*!< SLSF1_19 */
+	SLSF1_20 = 1048576, /*!< SLSF1_20 */
+	SLSF1_21 = 2097152, /*!< SLSF1_21 */
+	SLSF1_22 = 4194304, /*!< SLSF1_22 */
+	SLSF1_23 = 8388608, /*!< SLSF1_23 */
+	SLSF1_24 = 16777216, /*!< SLSF1_24 */
+	SLSF1_25 = 33554432, /*!< SLSF1_25 */
+	SLSF1_26 = 67108864, /*!< SLSF1_26 */
+	SLSF1_27 = 134217728, /*!< SLSF1_27 */
+	SLSF1_28 = 268435456, /*!< SLSF1_28 */
+	SLSF1_29 = 536870912, /*!< SLSF1_29 */
+	SLSF1_30 = 1073741824, /*!< SLSF1_30 */
+	SLSF1_ZBUFFER_TEST = 2147483648, /*!< ZBuffer Test (1=on) */
+};
+
+ostream & operator<<( ostream & out, SkyrimLightingShaderFlags1 const & val );
 
 /*! Determines how the data stream is accessed? */
 enum DataStreamAccess {
@@ -832,13 +936,33 @@ enum DataStreamAccess {
 
 ostream & operator<<( ostream & out, DataStreamAccess const & val );
 
-/*! Editor flags for the Body Partitions. */
-enum BSPartFlag {
-	PF_EDITOR_VISIBLE = 1, /*!< Visible in Editor */
-	PF_START_NET_BONESET = 256, /*!< Start a new shared boneset.  It is expected this BoneSet and the following sets in the Skin Partition will have the same bones. */
+/*! Skyrim Shader Property Flags 2 */
+enum SkyrimEffectShaderFlags2 {
+	SESF2_TEXTURE_TRANSFORM_U = 1, /*!< Has Texture Transform (U?) */
+	SESF2_TEXTURE_TRANSFORM_V = 2, /*!< Has Texture Transform (V?) */
+	SESF2_2 = 4, /*!< SESF2_2 */
+	SESF2_3 = 8, /*!< SESF2_3 */
+	SESF2_4 = 16, /*!< SESF2_4 */
+	SESF2_5 = 32, /*!< SESF2_5 */
+	SESF2_6 = 64, /*!< SESF2_6 */
+	SESF2_7 = 128, /*!< SESF2_7 */
 };
 
-ostream & operator<<( ostream & out, BSPartFlag const & val );
+ostream & operator<<( ostream & out, SkyrimEffectShaderFlags2 const & val );
+
+/*! Skyrim Shader Property Flags 1 */
+enum SkyrimEffectShaderFlags1 {
+	SESF1_0 = 1, /*!< SESF1_0 */
+	SESF1_1 = 2, /*!< SESF1_1 */
+	SESF1_2 = 4, /*!< SESF1_2 */
+	SESF1_3 = 8, /*!< SESF1_3 */
+	SESF1_DOUBLE_SIDED = 16, /*!< Draw textures double-sided */
+	SESF1_5 = 32, /*!< SESF1_5 */
+	SESF1_6 = 64, /*!< SESF1_6 */
+	SESF1_7 = 128, /*!< SESF1_7 */
+};
+
+ostream & operator<<( ostream & out, SkyrimEffectShaderFlags1 const & val );
 
 }
 #endif

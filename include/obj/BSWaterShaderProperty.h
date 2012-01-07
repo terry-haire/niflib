@@ -20,7 +20,7 @@ namespace Niflib {
 class BSWaterShaderProperty;
 typedef Ref<BSWaterShaderProperty> BSWaterShaderPropertyRef;
 
-/*! Water Shader Property, different from "WaterShaderProperty" */
+/*! Water Shader Property, different from "WaterShaderProperty" seen in Fallout. */
 class BSWaterShaderProperty : public NiProperty {
 public:
 	/*! Constructor */
@@ -53,30 +53,74 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+	// Offset UVs. Seems to be unused, but it fits with the other Skyrim shader
+	// properties.
+	// \return The current value.
+	TexCoord GetTextureTranslation1() const;
+
+	// Offset UVs. Seems to be unused, but it fits with the other Skyrim shader
+	// properties.
+	// \param[in] value The new value.
+	void SetTextureTranslation1( const TexCoord & value );
+
+	// Offset UV Scale to repeat tiling textures, see above.
+	// \return The current value.
+	TexCoord GetTextureRepeat() const;
+
+	// Offset UV Scale to repeat tiling textures, see above.
+	// \param[in] value The new value.
+	void SetTextureRepeat( const TexCoord & value );
+
+	// Defines attributes for the water shader (will use SkyrimWaterShaderFlags)
+	// \return The current value.
+	SkyrimWaterShaderFlags GetWaterShaderFlags() const;
+
+	// Defines attributes for the water shader (will use SkyrimWaterShaderFlags)
+	// \param[in] value The new value.
+	void SetWaterShaderFlags( const SkyrimWaterShaderFlags & value );
+
+	// A bitflag, only the first/second bit controls water flow positive or negative
+	// along UVs.
+	// \return The current value.
+	byte GetWaterDirection() const;
+
+	// A bitflag, only the first/second bit controls water flow positive or negative
+	// along UVs.
+	// \param[in] value The new value.
+	void SetWaterDirection( byte value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown, flag? */
-	unsigned short unknownShort1;
+	byte unknownByte1;
 	/*! Unknown, flag? */
-	unsigned short unknownShort2;
+	unsigned short unknownShort1;
 	/*! Unknown */
 	unsigned int unknownInt1;
-	/*! Unknown */
-	unsigned int unknownInt2;
-	/*! Unknown */
-	unsigned int unknownInt3;
-	/*! Unknown */
-	float unknownFloat1;
-	/*! Unknown */
-	float unknownFloat2;
+	/*! Unknown, flag? */
+	byte unknownByte2;
+	/*!
+	 * Offset UVs. Seems to be unused, but it fits with the other Skyrim shader
+	 * properties.
+	 */
+	TexCoord textureTranslation1;
+	/*! Offset UV Scale to repeat tiling textures, see above. */
+	TexCoord textureRepeat;
+	/*! Defines attributes for the water shader (will use SkyrimWaterShaderFlags) */
+	SkyrimWaterShaderFlags waterShaderFlags;
+	/*!
+	 * A bitflag, only the first/second bit controls water flow positive or negative
+	 * along UVs.
+	 */
+	byte waterDirection;
 	/*! Unknown, flag? */
 	unsigned short unknownShort3;
-	/*! Unknown, flag? */
-	unsigned short unknownShort4;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

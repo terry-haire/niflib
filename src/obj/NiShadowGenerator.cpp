@@ -15,8 +15,8 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/ObjectRegistry.h"
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/NiShadowGenerator.h"
-#include "../../include/obj/NiNode.h"
 #include "../../include/obj/NiLight.h"
+#include "../../include/obj/NiNode.h"
 using namespace Niflib;
 
 //Definition of TYPE constant

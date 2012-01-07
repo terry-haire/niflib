@@ -25,15 +25,14 @@ struct SemanticData {
 	NIFLIB_API SemanticData & operator=( const SemanticData & src );
 	/*!
 	 * Type of data (POSITION, POSITION_BP, INDEX, NORMAL, NORMAL_BP,
-	 *             TEXCOORD, BLENDINDICES, BLENDWEIGHT, BONE_PALETTE, COLOR,
-	 * DISPLAYLIST,
-	 *             MORPH_POSITION, BINORMAL_BP, TANGENT_BP).
+	 *       TEXCOORD, BLENDINDICES, BLENDWEIGHT, BONE_PALETTE, COLOR, DISPLAYLIST,
+	 *       MORPH_POSITION, BINORMAL_BP, TANGENT_BP).
 	 */
 	IndexString name;
 	/*!
 	 * An extra index of the data. For example, if there are 3 uv maps,
-	 *             then the corresponding TEXCOORD data components would have indices
-	 *             0, 1, and 2, respectively.
+	 *       then the corresponding TEXCOORD data components would have indices
+	 *       0, 1, and 2, respectively.
 	 */
 	unsigned int index;
 	//--BEGIN MISC CUSTOM CODE--//

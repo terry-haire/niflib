@@ -28,11 +28,12 @@ struct RagdollDescriptor {
 	NIFLIB_API RagdollDescriptor( const RagdollDescriptor & src );
 	/*! Copy Operator */
 	NIFLIB_API RagdollDescriptor & operator=( const RagdollDescriptor & src );
-	/*! Point around which the object will rotate. */
+	/*! The point where the constraint is attached to its parent rigidbody. */
 	Vector4 pivotA;
 	/*!
-	 * Defines the orthogonal directions in which the shape can be controlled (namely
-	 * in this direction, and in the direction orthogonal on this one and Twist A).
+	 * Defines the orthogonal plane in which the body can move, the orthogonal
+	 * directions in which the shape can be controlled (the direction orthogonal on
+	 * this one and Twist A).
 	 */
 	Vector4 planeA;
 	/*!
@@ -40,11 +41,17 @@ struct RagdollDescriptor {
 	 * Plane A.
 	 */
 	Vector4 twistA;
-	/*! Pivot A in second entity coordinate system. */
+	/*! The point where the constraint is attached to the other rigidbody. */
 	Vector4 pivotB;
-	/*! Plane A in second entity coordinate system. */
+	/*!
+	 * Defines the orthogonal plane in which the shape can be controlled (the direction
+	 * orthogonal on this one and Twist B).
+	 */
 	Vector4 planeB;
-	/*! Twist A in second entity coordinate system. */
+	/*!
+	 * Central directed axis of the cone in which the object can rotate. Orthogonal on
+	 * Plane B.
+	 */
 	Vector4 twistB;
 	/*!
 	 * Defines the orthogonal directions in which the shape can be controlled (namely

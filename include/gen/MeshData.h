@@ -30,17 +30,17 @@ struct MeshData {
 	NIFLIB_API MeshData & operator=( const MeshData & src );
 	/*!
 	 * Reference to a data stream object which holds the data used by
-	 *             this reference.
+	 *       this reference.
 	 */
 	Ref<NiDataStream > stream;
 	/*!
 	 * Sets whether this stream data is per-instance data for use in
-	 *             hardware instancing.
+	 *       hardware instancing.
 	 */
 	bool isPerInstance;
 	/*!
 	 * The number of submesh-to-region mappings that this data stream
-	 *             has.
+	 *       has.
 	 */
 	mutable unsigned short numSubmeshes;
 	/*!  */

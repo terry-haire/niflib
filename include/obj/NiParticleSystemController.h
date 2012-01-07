@@ -87,16 +87,16 @@ public:
 	void SetSpeedRandom( float value );
 
 	// vertical emit direction [radians]
-	//             0.0 : up
-	//             1.6 : horizontal
-	//             3.1416 : down
+	//       0.0 : up
+	//       1.6 : horizontal
+	//       3.1416 : down
 	// \return The current value.
 	float GetVerticalDirection() const;
 
 	// vertical emit direction [radians]
-	//             0.0 : up
-	//             1.6 : horizontal
-	//             3.1416 : down
+	//       0.0 : up
+	//       1.6 : horizontal
+	//       3.1416 : down
 	// \param[in] value The new value.
 	void SetVerticalDirection( float value );
 
@@ -303,9 +303,9 @@ protected:
 	float speedRandom;
 	/*!
 	 * vertical emit direction [radians]
-	 *             0.0 : up
-	 *             1.6 : horizontal
-	 *             3.1416 : down
+	 *       0.0 : up
+	 *       1.6 : horizontal
+	 *       3.1416 : down
 	 */
 	float verticalDirection;
 	/*! emitter's vertical opening angle [radians] */

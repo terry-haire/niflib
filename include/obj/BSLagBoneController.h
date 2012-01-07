@@ -53,18 +53,36 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+	// How long it takes to rotate about an actor back to rest position.
+	// \return The current value.
+	float GetRotationLag() const;
+
+	// How long it takes to rotate about an actor back to rest position.
+	// \param[in] value The new value.
+	void SetRotationLag( float value );
+
+	// How far bone will tail an actor.
+	// \return The current value.
+	float GetLength() const;
+
+	// How far bone will tail an actor.
+	// \param[in] value The new value.
+	void SetLength( float value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown */
-	float unknownFloat2;
+	/*! How long it takes to rotate about an actor back to rest position. */
+	float rotationLag;
 	/*! Unknown */
 	float unknownFloat3;
-	/*! Unknown */
-	float unknownFloat4;
+	/*! How far bone will tail an actor. */
+	float length;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

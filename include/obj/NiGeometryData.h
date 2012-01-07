@@ -59,6 +59,14 @@ public:
 
 	/***Begin Example Naive Implementation****
 
+	// Bethesda uses this for max number of particles in NiPSysData.
+	// \return The current value.
+	unsigned short GetBsMaxVertices() const;
+
+	// Bethesda uses this for max number of particles in NiPSysData.
+	// \param[in] value The new value.
+	void SetBsMaxVertices( unsigned short value );
+
 	// Used with NiCollision objects when OBB or TRI is set.
 	// \return The current value.
 	byte GetKeepFlags() const;
@@ -150,22 +158,22 @@ public:
 	// Do we have vertex colors? These are usually used to fine-tune the lighting of
 	// the model.
 	//
-	//             Note: how vertex colors influence the model can be controlled by
-	// having a NiVertexColorProperty object as a property child of the root node. If
-	// this property object is not present, the vertex colors fine-tune lighting.
+	//       Note: how vertex colors influence the model can be controlled by having a
+	// NiVertexColorProperty object as a property child of the root node. If this
+	// property object is not present, the vertex colors fine-tune lighting.
 	//
-	//             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
+	//       Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
 	// \return The current value.
 	bool GetHasVertexColors() const;
 
 	// Do we have vertex colors? These are usually used to fine-tune the lighting of
 	// the model.
 	//
-	//             Note: how vertex colors influence the model can be controlled by
-	// having a NiVertexColorProperty object as a property child of the root node. If
-	// this property object is not present, the vertex colors fine-tune lighting.
+	//       Note: how vertex colors influence the model can be controlled by having a
+	// NiVertexColorProperty object as a property child of the root node. If this
+	// property object is not present, the vertex colors fine-tune lighting.
 	//
-	//             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
+	//       Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
 	// \param[in] value The new value.
 	void SetHasVertexColors( bool value );
 
@@ -179,14 +187,14 @@ public:
 
 	// Do we have UV coordinates?
 	//
-	//             Note: for compatibility with NifTexture, set this value to either
+	//       Note: for compatibility with NifTexture, set this value to either
 	// 0x00000000 or 0xFFFFFFFF.
 	// \return The current value.
 	bool GetHasUv() const;
 
 	// Do we have UV coordinates?
 	//
-	//             Note: for compatibility with NifTexture, set this value to either
+	//       Note: for compatibility with NifTexture, set this value to either
 	// 0x00000000 or 0xFFFFFFFF.
 	// \param[in] value The new value.
 	void SetHasUv( bool value );
@@ -431,8 +439,10 @@ public:
 protected:
 	/*! Unknown identifier. Always 0. */
 	int unknownInt;
-	/*! Number of vertices. For NiPSysData this is max particles. */
+	/*! Number of vertices. */
 	mutable unsigned short numVertices;
+	/*! Bethesda uses this for max number of particles in NiPSysData. */
+	unsigned short bsMaxVertices;
 	/*! Used with NiCollision objects when OBB or TRI is set. */
 	byte keepFlags;
 	/*! Unknown. */
@@ -452,6 +462,8 @@ protected:
 	 * meshes/architecture/megaton/megatonrampturn45sml.nif in Fallout 3.
 	 */
 	mutable unsigned short bsNumUvSets;
+	/*! Unknown, seen in Skyrim. */
+	unsigned int unknownInt2;
 	/*!
 	 * Do we have lighting normals? These are essential for proper lighting: if not
 	 * present, the model will only be influenced by ambient light.
@@ -482,11 +494,11 @@ protected:
 	 * Do we have vertex colors? These are usually used to fine-tune the lighting of
 	 * the model.
 	 * 
-	 *             Note: how vertex colors influence the model can be controlled by
-	 * having a NiVertexColorProperty object as a property child of the root node. If
-	 * this property object is not present, the vertex colors fine-tune lighting.
+	 *       Note: how vertex colors influence the model can be controlled by having a
+	 * NiVertexColorProperty object as a property child of the root node. If this
+	 * property object is not present, the vertex colors fine-tune lighting.
 	 * 
-	 *             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
+	 *       Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
 	 */
 	bool hasVertexColors;
 	/*! The vertex colors. */
@@ -494,7 +506,7 @@ protected:
 	/*!
 	 * Do we have UV coordinates?
 	 * 
-	 *             Note: for compatibility with NifTexture, set this value to either
+	 *       Note: for compatibility with NifTexture, set this value to either
 	 * 0x00000000 or 0xFFFFFFFF.
 	 */
 	bool hasUv;

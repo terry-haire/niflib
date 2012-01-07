@@ -64,6 +64,82 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
+	/***Begin Example Naive Implementation****
+
+	// Data index (NiTriShapeData/NiTriStripData).
+	// \return The current value.
+	Ref<NiGeometryData > GetData() const;
+
+	// Data index (NiTriShapeData/NiTriStripData).
+	// \param[in] value The new value.
+	void SetData( Ref<NiGeometryData > value );
+
+	// Skin instance index.
+	// \return The current value.
+	Ref<NiSkinInstance > GetSkinInstance() const;
+
+	// Skin instance index.
+	// \param[in] value The new value.
+	void SetSkinInstance( Ref<NiSkinInstance > value );
+
+	// Unknown string.  Shader?
+	// \return The current value.
+	vector<IndexString > GetMaterialName() const;
+
+	// Unknown string.  Shader?
+	// \param[in] value The new value.
+	void SetMaterialName( const vector<IndexString >& value );
+
+	// Unknown integer; often -1. (Is this a link, array index?)
+	// \return The current value.
+	vector<int > GetMaterialExtraData() const;
+
+	// Unknown integer; often -1. (Is this a link, array index?)
+	// \param[in] value The new value.
+	void SetMaterialExtraData( const vector<int >& value );
+
+	// Active Material; often -1. (Is this a link, array index?)
+	// \return The current value.
+	int GetActiveMaterial() const;
+
+	// Active Material; often -1. (Is this a link, array index?)
+	// \param[in] value The new value.
+	void SetActiveMaterial( int value );
+
+	// Shader.
+	// \return The current value.
+	bool GetHasShader() const;
+
+	// Shader.
+	// \param[in] value The new value.
+	void SetHasShader( bool value );
+
+	// The shader name.
+	// \return The current value.
+	IndexString GetShaderName() const;
+
+	// The shader name.
+	// \param[in] value The new value.
+	void SetShaderName( const IndexString & value );
+
+	// Dirty Flag?
+	// \return The current value.
+	bool GetDirtyFlag() const;
+
+	// Dirty Flag?
+	// \param[in] value The new value.
+	void SetDirtyFlag( bool value );
+
+	// Two property links, used by Bethesda.
+	// \return The current value.
+	array<2,Ref<NiProperty > >  GetBsProperties() const;
+
+	// Two property links, used by Bethesda.
+	// \param[in] value The new value.
+	void SetBsProperties( const array<2,Ref<NiProperty > >&  value );
+
+	****End Example Naive Implementation***/
+
 	//--BEGIN MISC CUSTOM CODE--//
 
 	/*!
@@ -210,10 +286,8 @@ protected:
 	int unknownInteger2;
 	/*! Dirty Flag? */
 	bool dirtyFlag;
-	/*! Property Link 1 */
-	Ref<NiProperty > propertyLink1;
-	/*! Property Link 2 */
-	Ref<NiProperty > propertyLink2;
+	/*! Two property links, used by Bethesda. */
+	array<2,Ref<NiProperty > > bsProperties;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

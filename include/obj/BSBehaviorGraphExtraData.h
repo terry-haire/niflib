@@ -20,7 +20,10 @@ namespace Niflib {
 class BSBehaviorGraphExtraData;
 typedef Ref<BSBehaviorGraphExtraData> BSBehaviorGraphExtraDataRef;
 
-/*! Unkown */
+/*!
+ * Links a nif with a Havok Behavior .hkx animation file
+ *     Unknown. Links to a hkx file.
+ */
 class BSBehaviorGraphExtraData : public NiExtraData {
 public:
 	/*! Constructor */
@@ -53,15 +56,25 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+	// Name of the hkx file.
+	// \return The current value.
+	IndexString GetBehaviourGraphFile() const;
+
+	// Name of the hkx file.
+	// \param[in] value The new value.
+	void SetBehaviourGraphFile( const IndexString & value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown, possibly a link */
-	unsigned int unknownInt1;
-	/*! Unknown */
+	/*! Name of the hkx file. */
+	IndexString behaviourGraphFile;
+	/*! Unknown, has to do with blending on an actor. */
 	byte unknownByte1;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */

@@ -20,7 +20,14 @@ namespace Niflib {
 class BSInvMarker;
 typedef Ref<BSInvMarker> BSInvMarkerRef;
 
-/*! Unkown */
+/*!
+ * Orientation marker for Skyrim's inventory view.
+ *     How to show the nif in the player's inventory.
+ *     Typically attached to the root node of the nif tree.
+ *     If not present, then Skyrim will still show the nif in inventory,
+ *     using the default values.
+ *     Name should be 'INV' (without the quotes).
+ */
 class BSInvMarker : public NiExtraData {
 public:
 	/*! Constructor */
@@ -53,14 +60,44 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+	// Up-down rotation, in radians * 1000.
+	// \return The current value.
+	unsigned int GetRotation1() const;
+
+	// Up-down rotation, in radians * 1000.
+	// \param[in] value The new value.
+	void SetRotation1( unsigned int value );
+
+	// Left-right rotation, in radians * 1000.
+	// \return The current value.
+	unsigned int GetRotation2() const;
+
+	// Left-right rotation, in radians * 1000.
+	// \param[in] value The new value.
+	void SetRotation2( unsigned int value );
+
+	// Zoom factor. 16000 is really far away, 16600 is really close by.
+	// \return The current value.
+	unsigned short GetZoom() const;
+
+	// Zoom factor. 16000 is really far away, 16600 is really close by.
+	// \param[in] value The new value.
+	void SetZoom( unsigned short value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*!  */
-	unsigned int unknown;
+	/*! Up-down rotation, in radians * 1000. */
+	unsigned int rotation1;
+	/*! Left-right rotation, in radians * 1000. */
+	unsigned int rotation2;
+	/*! Zoom factor. 16000 is really far away, 16600 is really close by. */
+	unsigned short zoom;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSEffectShaderPropertyFloatController::TYPE("BSEffectShaderPropertyFloatController", &NiFloatInterpController::TYPE );
 
-BSEffectShaderPropertyFloatController::BSEffectShaderPropertyFloatController() : target_((unsigned int)0) {
+BSEffectShaderPropertyFloatController::BSEffectShaderPropertyFloatController() : targetVariable((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,7 +46,7 @@ void BSEffectShaderPropertyFloatController::Read( istream& in, list<unsigned int
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Read( in, link_stack, info );
-	NifStream( target_, in, info );
+	NifStream( targetVariable, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -59,7 +59,7 @@ void BSEffectShaderPropertyFloatController::Write( ostream& out, const map<NiObj
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Write( out, link_map, missing_link_stack, info );
-	NifStream( target_, out, info );
+	NifStream( targetVariable, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -73,7 +73,7 @@ std::string BSEffectShaderPropertyFloatController::asString( bool verbose ) cons
 
 	stringstream out;
 	out << NiFloatInterpController::asString();
-	out << "  Target?:  " << target_ << endl;
+	out << "  Target Variable:  " << targetVariable << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -107,12 +107,12 @@ std::list<NiObject *> BSEffectShaderPropertyFloatController::GetPtrs() const {
 
 /***Begin Example Naive Implementation****
 
-unsigned int BSEffectShaderPropertyFloatController::GetTarget_() const {
-	return target_;
+unsigned int BSEffectShaderPropertyFloatController::GetTargetVariable() const {
+	return targetVariable;
 }
 
-void BSEffectShaderPropertyFloatController::SetTarget_( unsigned int value ) {
-	target_ = value;
+void BSEffectShaderPropertyFloatController::SetTargetVariable( unsigned int value ) {
+	targetVariable = value;
 }
 
 ****End Example Naive Implementation***/

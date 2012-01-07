@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSBoneLODExtraData::TYPE("BSBoneLODExtraData", &NiExtraData::TYPE );
 
-BSBoneLODExtraData::BSBoneLODExtraData() : unknownInt1((unsigned int)0), unknownInt2((unsigned int)0), unknownInt3((unsigned int)0), unknownInt4((unsigned int)0), unknownInt5((unsigned int)0), unknownInt6((unsigned int)0), unknownInt7((unsigned int)0) {
+BSBoneLODExtraData::BSBoneLODExtraData() : unknownInt1((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -47,16 +47,14 @@ void BSBoneLODExtraData::Read( istream& in, list<unsigned int> & link_stack, con
 
 	NiExtraData::Read( in, link_stack, info );
 	NifStream( unknownInt1, in, info );
-	NifStream( unknownInt2, in, info );
-	NifStream( unknownInt3, in, info );
 	if ( (info.userVersion >= 12) ) {
-		if ( (unknownInt1 >= 2) ) {
-			NifStream( unknownInt4, in, info );
-			NifStream( unknownInt5, in, info );
+		unknownIntA1.resize(unknownInt1);
+		for (unsigned int i2 = 0; i2 < unknownIntA1.size(); i2++) {
+			NifStream( unknownIntA1[i2], in, info );
 		};
-		if ( (unknownInt1 == 3) ) {
-			NifStream( unknownInt6, in, info );
-			NifStream( unknownInt7, in, info );
+		unknownIntA2.resize(unknownInt1);
+		for (unsigned int i2 = 0; i2 < unknownIntA2.size(); i2++) {
+			NifStream( unknownIntA2[i2], in, info );
 		};
 	};
 
@@ -71,17 +69,14 @@ void BSBoneLODExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int
 	//--END CUSTOM CODE--//
 
 	NiExtraData::Write( out, link_map, missing_link_stack, info );
+	unknownInt1 = (unsigned int)(unknownIntA1.size());
 	NifStream( unknownInt1, out, info );
-	NifStream( unknownInt2, out, info );
-	NifStream( unknownInt3, out, info );
 	if ( (info.userVersion >= 12) ) {
-		if ( (unknownInt1 >= 2) ) {
-			NifStream( unknownInt4, out, info );
-			NifStream( unknownInt5, out, info );
+		for (unsigned int i2 = 0; i2 < unknownIntA1.size(); i2++) {
+			NifStream( unknownIntA1[i2], out, info );
 		};
-		if ( (unknownInt1 == 3) ) {
-			NifStream( unknownInt6, out, info );
-			NifStream( unknownInt7, out, info );
+		for (unsigned int i2 = 0; i2 < unknownIntA2.size(); i2++) {
+			NifStream( unknownIntA2[i2], out, info );
 		};
 	};
 
@@ -96,17 +91,33 @@ std::string BSBoneLODExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
+	unsigned int array_output_count = 0;
 	out << NiExtraData::asString();
+	unknownInt1 = (unsigned int)(unknownIntA1.size());
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
-	out << "  Unknown Int 2:  " << unknownInt2 << endl;
-	out << "  Unknown Int 3:  " << unknownInt3 << endl;
-	if ( (unknownInt1 >= 2) ) {
-		out << "    Unknown Int 4:  " << unknownInt4 << endl;
-		out << "    Unknown Int 5:  " << unknownInt5 << endl;
+	array_output_count = 0;
+	for (unsigned int i1 = 0; i1 < unknownIntA1.size(); i1++) {
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
+			break;
+		};
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			break;
+		};
+		out << "    Unknown Int A1[" << i1 << "]:  " << unknownIntA1[i1] << endl;
+		array_output_count++;
 	};
-	if ( (unknownInt1 == 3) ) {
-		out << "    Unknown Int 6:  " << unknownInt6 << endl;
-		out << "    Unknown Int 7:  " << unknownInt7 << endl;
+	array_output_count = 0;
+	for (unsigned int i1 = 0; i1 < unknownIntA2.size(); i1++) {
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
+			break;
+		};
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			break;
+		};
+		out << "    Unknown Int A2[" << i1 << "]:  " << unknownIntA2[i1] << endl;
+		array_output_count++;
 	};
 	return out.str();
 

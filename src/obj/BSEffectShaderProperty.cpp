@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSEffectShaderProperty::TYPE("BSEffectShaderProperty", &NiProperty::TYPE );
 
-BSEffectShaderProperty::BSEffectShaderProperty() : unknownByte1((byte)0), unknownShort1((unsigned short)0), unknownByte2((byte)0), unknownInt1((unsigned int)0), unknownInt2((unsigned int)0), unknownFloat(0.0f) {
+BSEffectShaderProperty::BSEffectShaderProperty() : unknownByte1((byte)0), unknownShort1((unsigned short)0), unknownByte2((byte)0), effectShaderFlags1((unsigned int)0), textureRepeat(1.0, 1.0), effectShaderFlags2((unsigned short)0), unknownShort2((unsigned short)0), unknownFloat1(0.0f), unknownFloat2(0.0f), unknownFloat3(0.0f), unknownFloat4(0.0f), alpha(1.0f), emissive(0.0f), unknownFloat5(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -49,12 +49,20 @@ void BSEffectShaderProperty::Read( istream& in, list<unsigned int> & link_stack,
 	NifStream( unknownByte1, in, info );
 	NifStream( unknownShort1, in, info );
 	NifStream( unknownByte2, in, info );
-	NifStream( unknownInt1, in, info );
-	NifStream( unknownFloats1, in, info );
+	NifStream( effectShaderFlags1, in, info );
+	NifStream( textureTranslation1, in, info );
+	NifStream( textureRepeat, in, info );
 	NifStream( sourceTexture, in, info );
-	NifStream( unknownInt2, in, info );
-	NifStream( unknownMatrix1, in, info );
-	NifStream( unknownFloat, in, info );
+	NifStream( effectShaderFlags2, in, info );
+	NifStream( unknownShort2, in, info );
+	NifStream( unknownFloat1, in, info );
+	NifStream( unknownFloat2, in, info );
+	NifStream( unknownFloat3, in, info );
+	NifStream( unknownFloat4, in, info );
+	NifStream( diffuseColor, in, info );
+	NifStream( alpha, in, info );
+	NifStream( emissive, in, info );
+	NifStream( unknownFloat5, in, info );
 	NifStream( gradientTexture, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -71,12 +79,20 @@ void BSEffectShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned
 	NifStream( unknownByte1, out, info );
 	NifStream( unknownShort1, out, info );
 	NifStream( unknownByte2, out, info );
-	NifStream( unknownInt1, out, info );
-	NifStream( unknownFloats1, out, info );
+	NifStream( effectShaderFlags1, out, info );
+	NifStream( textureTranslation1, out, info );
+	NifStream( textureRepeat, out, info );
 	NifStream( sourceTexture, out, info );
-	NifStream( unknownInt2, out, info );
-	NifStream( unknownMatrix1, out, info );
-	NifStream( unknownFloat, out, info );
+	NifStream( effectShaderFlags2, out, info );
+	NifStream( unknownShort2, out, info );
+	NifStream( unknownFloat1, out, info );
+	NifStream( unknownFloat2, out, info );
+	NifStream( unknownFloat3, out, info );
+	NifStream( unknownFloat4, out, info );
+	NifStream( diffuseColor, out, info );
+	NifStream( alpha, out, info );
+	NifStream( emissive, out, info );
+	NifStream( unknownFloat5, out, info );
 	NifStream( gradientTexture, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -94,12 +110,20 @@ std::string BSEffectShaderProperty::asString( bool verbose ) const {
 	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;
 	out << "  Unknown Byte 2:  " << unknownByte2 << endl;
-	out << "  Unknown Int 1:  " << unknownInt1 << endl;
-	out << "  Unknown Floats 1:  " << unknownFloats1 << endl;
+	out << "  Effect Shader Flags 1:  " << effectShaderFlags1 << endl;
+	out << "  Texture Translation 1:  " << textureTranslation1 << endl;
+	out << "  Texture Repeat:  " << textureRepeat << endl;
 	out << "  Source Texture:  " << sourceTexture << endl;
-	out << "  Unknown Int 2:  " << unknownInt2 << endl;
-	out << "  Unknown Matrix 1:  " << unknownMatrix1 << endl;
-	out << "  Unknown Float:  " << unknownFloat << endl;
+	out << "  Effect Shader Flags 2:  " << effectShaderFlags2 << endl;
+	out << "  Unknown Short 2:  " << unknownShort2 << endl;
+	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
+	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
+	out << "  Unknown Float 3:  " << unknownFloat3 << endl;
+	out << "  Unknown Float 4:  " << unknownFloat4 << endl;
+	out << "  Diffuse Color:  " << diffuseColor << endl;
+	out << "  Alpha:  " << alpha << endl;
+	out << "  Emissive:  " << emissive << endl;
+	out << "  Unknown Float 5:  " << unknownFloat5 << endl;
 	out << "  Gradient Texture:  " << gradientTexture << endl;
 	return out.str();
 
@@ -131,6 +155,82 @@ std::list<NiObject *> BSEffectShaderProperty::GetPtrs() const {
 	ptrs = NiProperty::GetPtrs();
 	return ptrs;
 }
+
+/***Begin Example Naive Implementation****
+
+unsigned int BSEffectShaderProperty::GetEffectShaderFlags1() const {
+	return effectShaderFlags1;
+}
+
+void BSEffectShaderProperty::SetEffectShaderFlags1( unsigned int value ) {
+	effectShaderFlags1 = value;
+}
+
+TexCoord BSEffectShaderProperty::GetTextureTranslation1() const {
+	return textureTranslation1;
+}
+
+void BSEffectShaderProperty::SetTextureTranslation1( const TexCoord & value ) {
+	textureTranslation1 = value;
+}
+
+TexCoord BSEffectShaderProperty::GetTextureRepeat() const {
+	return textureRepeat;
+}
+
+void BSEffectShaderProperty::SetTextureRepeat( const TexCoord & value ) {
+	textureRepeat = value;
+}
+
+string BSEffectShaderProperty::GetSourceTexture() const {
+	return sourceTexture;
+}
+
+void BSEffectShaderProperty::SetSourceTexture( const string & value ) {
+	sourceTexture = value;
+}
+
+unsigned short BSEffectShaderProperty::GetEffectShaderFlags2() const {
+	return effectShaderFlags2;
+}
+
+void BSEffectShaderProperty::SetEffectShaderFlags2( unsigned short value ) {
+	effectShaderFlags2 = value;
+}
+
+Color3 BSEffectShaderProperty::GetDiffuseColor() const {
+	return diffuseColor;
+}
+
+void BSEffectShaderProperty::SetDiffuseColor( const Color3 & value ) {
+	diffuseColor = value;
+}
+
+float BSEffectShaderProperty::GetAlpha() const {
+	return alpha;
+}
+
+void BSEffectShaderProperty::SetAlpha( float value ) {
+	alpha = value;
+}
+
+float BSEffectShaderProperty::GetEmissive() const {
+	return emissive;
+}
+
+void BSEffectShaderProperty::SetEmissive( float value ) {
+	emissive = value;
+}
+
+string BSEffectShaderProperty::GetGradientTexture() const {
+	return gradientTexture;
+}
+
+void BSEffectShaderProperty::SetGradientTexture( const string & value ) {
+	gradientTexture = value;
+}
+
+****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

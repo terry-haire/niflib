@@ -19,8 +19,8 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/obj/NiGeomMorpherController.h"
 #include "../../include/gen/MorphWeight.h"
 #include "../../include/obj/NiInterpolator.h"
-#include "../../include/obj/NiMorphData.h"
 #include "../../include/obj/NiInterpolator.h"
+#include "../../include/obj/NiMorphData.h"
 using namespace Niflib;
 
 //Definition of TYPE constant

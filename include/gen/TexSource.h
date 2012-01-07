@@ -33,9 +33,9 @@ struct TexSource {
 	/*!
 	 * The external texture file name.
 	 * 
-	 *             Note: all original morrowind nifs use name.ext only for addressing
-	 * the textures, but most mods use something like textures/[subdir/]name.ext. This
-	 * is due to a feature in Morrowind resource manager: it loads name.ext,
+	 *       Note: all original morrowind nifs use name.ext only for addressing the
+	 * textures, but most mods use something like textures/[subdir/]name.ext. This is
+	 * due to a feature in Morrowind resource manager: it loads name.ext,
 	 * textures/name.ext and textures/subdir/name.ext but NOT subdir/name.ext.
 	 */
 	IndexString fileName;

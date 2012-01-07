@@ -65,7 +65,9 @@ void bhkMoppBvTreeShape::Read( istream& in, list<unsigned int> & link_stack, con
 			NifStream( moppData[i2], in, info );
 		};
 	};
-	NifStream( unknownByte1, in, info );
+	if ( (info.userVersion >= 12) ) {
+		NifStream( unknownByte1, in, info );
+	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
@@ -111,7 +113,9 @@ void bhkMoppBvTreeShape::Write( ostream& out, const map<NiObjectRef,unsigned int
 			NifStream( moppData[i2], out, info );
 		};
 	};
-	NifStream( unknownByte1, out, info );
+	if ( (info.userVersion >= 12) ) {
+		NifStream( unknownByte1, out, info );
+	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//

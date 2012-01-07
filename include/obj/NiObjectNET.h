@@ -60,6 +60,16 @@ public:
 
 	/***Begin Example Naive Implementation****
 
+	// Skyrim's shaders: 0=default 1=EnvMap, 2=Glow, 5=Skin, 6=Hair, 7=Unknown,
+	// 11=Ice/Parallax, 15=Eye.
+	// \return The current value.
+	int GetSkyrimShaderType() const;
+
+	// Skyrim's shaders: 0=default 1=EnvMap, 2=Glow, 5=Skin, 6=Hair, 7=Unknown,
+	// 11=Ice/Parallax, 15=Eye.
+	// \param[in] value The new value.
+	void SetSkyrimShaderType( int value );
+
 	// Name of this controllable object, used to refer to the object in .kf files.
 	// \return The current value.
 	IndexString GetName() const;
@@ -200,6 +210,11 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
+	/*!
+	 * Skyrim's shaders: 0=default 1=EnvMap, 2=Glow, 5=Skin, 6=Hair, 7=Unknown,
+	 * 11=Ice/Parallax, 15=Eye.
+	 */
+	int skyrimShaderType;
 	/*! Name of this controllable object, used to refer to the object in .kf files. */
 	IndexString name;
 	/*! Extra data for pre-3.0 versions. */

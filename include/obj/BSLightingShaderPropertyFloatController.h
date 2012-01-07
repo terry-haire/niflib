@@ -20,7 +20,15 @@ namespace Niflib {
 class BSLightingShaderPropertyFloatController;
 typedef Ref<BSLightingShaderPropertyFloatController> BSLightingShaderPropertyFloatControllerRef;
 
-/*!  */
+/*!
+ * This controller is used to animate variables in
+ * BSLightingShaderPropertyFloatController, target is a number in order they
+ * appear:
+ *     5: Texture Translation U
+ *     6: Texture Translation V
+ *     7: Texture Repeat U
+ *     8: Texture Repeat V
+ */
 class BSLightingShaderPropertyFloatController : public NiFloatInterpController {
 public:
 	/*! Constructor */
@@ -57,11 +65,11 @@ public:
 
 	// Unknown
 	// \return The current value.
-	unsigned int GetTarget___() const;
+	unsigned int GetTargetVariable() const;
 
 	// Unknown
 	// \param[in] value The new value.
-	void SetTarget___( unsigned int value );
+	void SetTargetVariable( unsigned int value );
 
 	****End Example Naive Implementation***/
 
@@ -70,7 +78,7 @@ public:
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown */
-	unsigned int target___;
+	unsigned int targetVariable;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

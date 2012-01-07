@@ -18,7 +18,7 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSMultiBoundOBB::TYPE("BSMultiBoundOBB", &NiObject::TYPE );
+const Type BSMultiBoundOBB::TYPE("BSMultiBoundOBB", &BSMultiBoundData::TYPE );
 
 BSMultiBoundOBB::BSMultiBoundOBB() {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
@@ -45,10 +45,10 @@ void BSMultiBoundOBB::Read( istream& in, list<unsigned int> & link_stack, const 
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Read( in, link_stack, info );
-	for (unsigned int i1 = 0; i1 < 15; i1++) {
-		NifStream( unknownFloats[i1], in, info );
-	};
+	BSMultiBoundData::Read( in, link_stack, info );
+	NifStream( center, in, info );
+	NifStream( size, in, info );
+	NifStream( rotation, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -60,10 +60,10 @@ void BSMultiBoundOBB::Write( ostream& out, const map<NiObjectRef,unsigned int> &
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	for (unsigned int i1 = 0; i1 < 15; i1++) {
-		NifStream( unknownFloats[i1], out, info );
-	};
+	BSMultiBoundData::Write( out, link_map, missing_link_stack, info );
+	NifStream( center, out, info );
+	NifStream( size, out, info );
+	NifStream( rotation, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -76,20 +76,10 @@ std::string BSMultiBoundOBB::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	unsigned int array_output_count = 0;
-	out << NiObject::asString();
-	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 15; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
-			break;
-		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			break;
-		};
-		out << "    Unknown Floats[" << i1 << "]:  " << unknownFloats[i1] << endl;
-		array_output_count++;
-	};
+	out << BSMultiBoundData::asString();
+	out << "  Center:  " << center << endl;
+	out << "  Size:  " << size << endl;
+	out << "  Rotation:  " << rotation << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -102,7 +92,7 @@ void BSMultiBoundOBB::FixLinks( const map<unsigned int,NiObjectRef> & objects, l
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	BSMultiBoundData::FixLinks( objects, link_stack, missing_link_stack, info );
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
@@ -111,17 +101,43 @@ void BSMultiBoundOBB::FixLinks( const map<unsigned int,NiObjectRef> & objects, l
 
 std::list<NiObjectRef> BSMultiBoundOBB::GetRefs() const {
 	list<Ref<NiObject> > refs;
-	refs = NiObject::GetRefs();
+	refs = BSMultiBoundData::GetRefs();
 	return refs;
 }
 
 std::list<NiObject *> BSMultiBoundOBB::GetPtrs() const {
 	list<NiObject *> ptrs;
-	ptrs = NiObject::GetPtrs();
+	ptrs = BSMultiBoundData::GetPtrs();
 	return ptrs;
 }
 
-//--This object has no eligable attributes.  No example implementation generated--//
+/***Begin Example Naive Implementation****
+
+Vector3 BSMultiBoundOBB::GetCenter() const {
+	return center;
+}
+
+void BSMultiBoundOBB::SetCenter( const Vector3 & value ) {
+	center = value;
+}
+
+Vector3 BSMultiBoundOBB::GetSize() const {
+	return size;
+}
+
+void BSMultiBoundOBB::SetSize( const Vector3 & value ) {
+	size = value;
+}
+
+Matrix33 BSMultiBoundOBB::GetRotation() const {
+	return rotation;
+}
+
+void BSMultiBoundOBB::SetRotation( const Matrix33 & value ) {
+	rotation = value;
+}
+
+****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

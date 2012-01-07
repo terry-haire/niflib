@@ -20,7 +20,7 @@ namespace Niflib {
 class NiPSSphericalCollider;
 typedef Ref<NiPSSphericalCollider> NiPSSphericalColliderRef;
 
-/*! Unknown. */
+/*!  */
 class NiPSSphericalCollider : public NiObject {
 public:
 	/*! Constructor */

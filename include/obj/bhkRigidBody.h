@@ -28,11 +28,10 @@ typedef Ref<bhkRigidBody> bhkRigidBodyRef;
 /*!
  * This is the default body type for all "normal" usable and static world objects.
  * The "T" suffix
- *         marks this body as active for translation and rotation, a normal
+ *     marks this body as active for translation and rotation, a normal
  * bhkRigidBody ignores those
- *         properties. Because the properties are equal, a bhkRigidBody may be
- * renamed
- *         into a bhkRigidBodyT and vice-versa.
+ *     properties. Because the properties are equal, a bhkRigidBody may be renamed
+ *     into a bhkRigidBodyT and vice-versa.
  */
 class bhkRigidBody : public bhkEntity {
 public:
@@ -191,17 +190,17 @@ public:
 	void SetFriction( float value );
 
 	// The body's restitution (elasticity).
-	//             If the restitution is not 0.0 the object will need extra CPU for all
-	// new collisions.
-	//             Try to set restitution to 0 for maximum performance (e.g. collapsing
+	//       If the restitution is not 0.0 the object will need extra CPU for all new
+	// collisions.
+	//       Try to set restitution to 0 for maximum performance (e.g. collapsing
 	// buildings)
 	// \return The current value.
 	float GetRestitution() const;
 
 	// The body's restitution (elasticity).
-	//             If the restitution is not 0.0 the object will need extra CPU for all
-	// new collisions.
-	//             Try to set restitution to 0 for maximum performance (e.g. collapsing
+	//       If the restitution is not 0.0 the object will need extra CPU for all new
+	// collisions.
+	//       Try to set restitution to 0 for maximum performance (e.g. collapsing
 	// buildings)
 	// \param[in] value The new value.
 	void SetRestitution( float value );
@@ -223,16 +222,16 @@ public:
 	void SetMaxAngularVelocity( float value );
 
 	// The maximum allowed penetration for this object.
-	//             This is a hint to the engine to see how much CPU the engine should
-	// invest to keep this object from penetrating.
-	//             A good choice is 5% - 20% of the smallest diameter of the object.
+	//       This is a hint to the engine to see how much CPU the engine should invest
+	// to keep this object from penetrating.
+	//       A good choice is 5% - 20% of the smallest diameter of the object.
 	// \return The current value.
 	float GetPenetrationDepth() const;
 
 	// The maximum allowed penetration for this object.
-	//             This is a hint to the engine to see how much CPU the engine should
-	// invest to keep this object from penetrating.
-	//             A good choice is 5% - 20% of the smallest diameter of the object.
+	//       This is a hint to the engine to see how much CPU the engine should invest
+	// to keep this object from penetrating.
+	//       A good choice is 5% - 20% of the smallest diameter of the object.
 	// \param[in] value The new value.
 	void SetPenetrationDepth( float value );
 
@@ -592,9 +591,9 @@ protected:
 	float friction;
 	/*!
 	 * The body's restitution (elasticity).
-	 *             If the restitution is not 0.0 the object will need extra CPU for all
-	 * new collisions.
-	 *             Try to set restitution to 0 for maximum performance (e.g. collapsing
+	 *       If the restitution is not 0.0 the object will need extra CPU for all new
+	 * collisions.
+	 *       Try to set restitution to 0 for maximum performance (e.g. collapsing
 	 * buildings)
 	 */
 	float restitution;
@@ -610,9 +609,9 @@ protected:
 	float maxAngularVelocity;
 	/*!
 	 * The maximum allowed penetration for this object.
-	 *             This is a hint to the engine to see how much CPU the engine should
-	 * invest to keep this object from penetrating.
-	 *             A good choice is 5% - 20% of the smallest diameter of the object.
+	 *       This is a hint to the engine to see how much CPU the engine should invest
+	 * to keep this object from penetrating.
+	 *       A good choice is 5% - 20% of the smallest diameter of the object.
 	 */
 	float penetrationDepth;
 	/*! Motion system? Overrides Quality when on Keyframed? */
