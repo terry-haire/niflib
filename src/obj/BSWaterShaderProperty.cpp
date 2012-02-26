@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSWaterShaderProperty::TYPE("BSWaterShaderProperty", &NiProperty::TYPE );
 
-BSWaterShaderProperty::BSWaterShaderProperty() : unknownByte1((byte)0), unknownShort1((unsigned short)0), unknownInt1((unsigned int)0), unknownByte2((byte)0), textureRepeat(1.0, 1.0), waterShaderFlags((SkyrimWaterShaderFlags)0), waterDirection((byte)3), unknownShort3((unsigned short)0) {
+BSWaterShaderProperty::BSWaterShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)0), shaderFlags2((SkyrimShaderPropertyFlags2)0), uvScale(1.0, 1.0), waterShaderFlags((SkyrimWaterShaderFlags)0), waterDirection((byte)3), unknownShort3((unsigned short)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,12 +46,10 @@ void BSWaterShaderProperty::Read( istream& in, list<unsigned int> & link_stack, 
 	//--END CUSTOM CODE--//
 
 	NiProperty::Read( in, link_stack, info );
-	NifStream( unknownByte1, in, info );
-	NifStream( unknownShort1, in, info );
-	NifStream( unknownInt1, in, info );
-	NifStream( unknownByte2, in, info );
-	NifStream( textureTranslation1, in, info );
-	NifStream( textureRepeat, in, info );
+	NifStream( shaderFlags1, in, info );
+	NifStream( shaderFlags2, in, info );
+	NifStream( uvOffset, in, info );
+	NifStream( uvScale, in, info );
 	NifStream( waterShaderFlags, in, info );
 	NifStream( waterDirection, in, info );
 	NifStream( unknownShort3, in, info );
@@ -67,12 +65,10 @@ void BSWaterShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned 
 	//--END CUSTOM CODE--//
 
 	NiProperty::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownByte1, out, info );
-	NifStream( unknownShort1, out, info );
-	NifStream( unknownInt1, out, info );
-	NifStream( unknownByte2, out, info );
-	NifStream( textureTranslation1, out, info );
-	NifStream( textureRepeat, out, info );
+	NifStream( shaderFlags1, out, info );
+	NifStream( shaderFlags2, out, info );
+	NifStream( uvOffset, out, info );
+	NifStream( uvScale, out, info );
 	NifStream( waterShaderFlags, out, info );
 	NifStream( waterDirection, out, info );
 	NifStream( unknownShort3, out, info );
@@ -89,12 +85,10 @@ std::string BSWaterShaderProperty::asString( bool verbose ) const {
 
 	stringstream out;
 	out << NiProperty::asString();
-	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
-	out << "  Unknown Short 1:  " << unknownShort1 << endl;
-	out << "  Unknown Int 1:  " << unknownInt1 << endl;
-	out << "  Unknown Byte 2:  " << unknownByte2 << endl;
-	out << "  Texture Translation 1:  " << textureTranslation1 << endl;
-	out << "  Texture Repeat:  " << textureRepeat << endl;
+	out << "  Shader Flags 1:  " << shaderFlags1 << endl;
+	out << "  Shader Flags 2:  " << shaderFlags2 << endl;
+	out << "  UV Offset:  " << uvOffset << endl;
+	out << "  UV Scale:  " << uvScale << endl;
 	out << "  Water Shader Flags:  " << waterShaderFlags << endl;
 	out << "  Water Direction:  " << waterDirection << endl;
 	out << "  Unknown Short 3:  " << unknownShort3 << endl;
@@ -131,20 +125,36 @@ std::list<NiObject *> BSWaterShaderProperty::GetPtrs() const {
 
 /***Begin Example Naive Implementation****
 
-TexCoord BSWaterShaderProperty::GetTextureTranslation1() const {
-	return textureTranslation1;
+SkyrimShaderPropertyFlags1 BSWaterShaderProperty::GetShaderFlags1() const {
+	return shaderFlags1;
 }
 
-void BSWaterShaderProperty::SetTextureTranslation1( const TexCoord & value ) {
-	textureTranslation1 = value;
+void BSWaterShaderProperty::SetShaderFlags1( const SkyrimShaderPropertyFlags1 & value ) {
+	shaderFlags1 = value;
 }
 
-TexCoord BSWaterShaderProperty::GetTextureRepeat() const {
-	return textureRepeat;
+SkyrimShaderPropertyFlags2 BSWaterShaderProperty::GetShaderFlags2() const {
+	return shaderFlags2;
 }
 
-void BSWaterShaderProperty::SetTextureRepeat( const TexCoord & value ) {
-	textureRepeat = value;
+void BSWaterShaderProperty::SetShaderFlags2( const SkyrimShaderPropertyFlags2 & value ) {
+	shaderFlags2 = value;
+}
+
+TexCoord BSWaterShaderProperty::GetUvOffset() const {
+	return uvOffset;
+}
+
+void BSWaterShaderProperty::SetUvOffset( const TexCoord & value ) {
+	uvOffset = value;
+}
+
+TexCoord BSWaterShaderProperty::GetUvScale() const {
+	return uvScale;
+}
+
+void BSWaterShaderProperty::SetUvScale( const TexCoord & value ) {
+	uvScale = value;
 }
 
 SkyrimWaterShaderFlags BSWaterShaderProperty::GetWaterShaderFlags() const {

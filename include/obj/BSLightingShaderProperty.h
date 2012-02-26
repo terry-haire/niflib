@@ -25,10 +25,7 @@ class BSShaderTextureSet;
 class BSLightingShaderProperty;
 typedef Ref<BSLightingShaderProperty> BSLightingShaderPropertyRef;
 
-/*!
- * Bethesda-specific node, used in Skyrim to configure material/shader/texture
- * properties.
- */
+/*! Skyrim PP shader for assigning material/shader/texture. */
 class BSLightingShaderProperty : public NiProperty {
 public:
 	/*! Constructor */
@@ -63,43 +60,43 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Skyrim Shader Flag field 1 (will use SkyrimLightingShaderFlags1)
+	// Skyrim Shader Flags for setting render/shader options.
 	// \return The current value.
-	unsigned int GetShaderFlags1() const;
+	SkyrimShaderPropertyFlags1 GetShaderFlags1() const;
 
-	// Skyrim Shader Flag field 1 (will use SkyrimLightingShaderFlags1)
+	// Skyrim Shader Flags for setting render/shader options.
 	// \param[in] value The new value.
-	void SetShaderFlags1( unsigned int value );
+	void SetShaderFlags1( const SkyrimShaderPropertyFlags1 & value );
 
-	// Skyrim Shader Flag field 2 (will use SkyrimLightingShaderFlags2)
+	// Skyrim Shader Flags for setting render/shader options.
 	// \return The current value.
-	unsigned int GetShaderFlags2() const;
+	SkyrimShaderPropertyFlags2 GetShaderFlags2() const;
 
-	// Skyrim Shader Flag field 2 (will use SkyrimLightingShaderFlags2)
+	// Skyrim Shader Flags for setting render/shader options.
 	// \param[in] value The new value.
-	void SetShaderFlags2( unsigned int value );
+	void SetShaderFlags2( const SkyrimShaderPropertyFlags2 & value );
 
-	// Offset UVs
+	// UV Offset
 	// \return The current value.
-	TexCoord GetTextureTranslation1() const;
+	TexCoord GetUvOffset() const;
 
-	// Offset UVs
+	// UV Offset
 	// \param[in] value The new value.
-	void SetTextureTranslation1( const TexCoord & value );
+	void SetUvOffset( const TexCoord & value );
 
-	// Offset UVs
+	// UV Scale
 	// \return The current value.
-	TexCoord GetTextureRepeat() const;
+	TexCoord GetUvScale() const;
 
-	// Offset UVs
+	// UV Scale
 	// \param[in] value The new value.
-	void SetTextureRepeat( const TexCoord & value );
+	void SetUvScale( const TexCoord & value );
 
-	// Texture Set
+	// Texture Set, can have override in an esm/esp
 	// \return The current value.
 	Ref<BSShaderTextureSet > GetTextureSet() const;
 
-	// Texture Set
+	// Texture Set, can have override in an esm/esp
 	// \param[in] value The new value.
 	void SetTextureSet( Ref<BSShaderTextureSet > value );
 
@@ -111,29 +108,37 @@ public:
 	// \param[in] value The new value.
 	void SetEmissiveColor( const Color3 & value );
 
-	// Unknown
+	// Multiplied emissive colors
 	// \return The current value.
-	float GetEmissiveSaturation() const;
+	float GetEmissiveMultiple() const;
 
-	// Unknown
+	// Multiplied emissive colors
 	// \param[in] value The new value.
-	void SetEmissiveSaturation( float value );
+	void SetEmissiveMultiple( float value );
 
-	// The material transparency (1=non-transparent).
+	// How to handle texture borders.
+	// \return The current value.
+	TexClampMode GetTextureClampMode() const;
+
+	// How to handle texture borders.
+	// \param[in] value The new value.
+	void SetTextureClampMode( const TexClampMode & value );
+
+	// The materials opacity (1=non-transparent).
 	// \return The current value.
 	float GetAlpha() const;
 
-	// The material transparency (1=non-transparent).
+	// The materials opacity (1=non-transparent).
 	// \param[in] value The new value.
 	void SetAlpha( float value );
 
 	// The material's glossiness. (0-999)
 	// \return The current value.
-	float GetGlossiness() const;
+	float GetSpecularPower_Glossiness() const;
 
 	// The material's glossiness. (0-999)
 	// \param[in] value The new value.
-	void SetGlossiness( float value );
+	void SetSpecularPower_Glossiness( float value );
 
 	// Adds a colored highlight.
 	// \return The current value.
@@ -151,51 +156,123 @@ public:
 	// \param[in] value The new value.
 	void SetSpecularStrength( float value );
 
-	// Unknown, related to backlight/rim/softlight effect
+	// Controls strength for envmap/backlight/rim/softlight lighting effect?
 	// \return The current value.
 	float GetLightingEffect1() const;
 
-	// Unknown, related to backlight/rim/softlight effect
+	// Controls strength for envmap/backlight/rim/softlight lighting effect?
 	// \param[in] value The new value.
 	void SetLightingEffect1( float value );
 
-	// Unknown, related to backlight/rim/softlight effect
+	// Controls strength for envmap/backlight/rim/softlight lighting effect?
 	// \return The current value.
 	float GetLightingEffect2() const;
 
-	// Unknown, related to backlight/rim/softlight effect
+	// Controls strength for envmap/backlight/rim/softlight lighting effect?
 	// \param[in] value The new value.
 	void SetLightingEffect2( float value );
 
+	// Scales the environment/cube map. (0-??)
+	// \return The current value.
+	float GetEnvironmentMapScale() const;
+
+	// Scales the environment/cube map. (0-??)
+	// \param[in] value The new value.
+	void SetEnvironmentMapScale( float value );
+
+	// Tints the base texture. Overridden by game settings.
+	// \return The current value.
+	Color3 GetSkinTintColor() const;
+
+	// Tints the base texture. Overridden by game settings.
+	// \param[in] value The new value.
+	void SetSkinTintColor( const Color3 & value );
+
+	// Tints the base texture. Overridden by game settings.
+	// \return The current value.
+	Color3 GetHairTintColor() const;
+
+	// Tints the base texture. Overridden by game settings.
+	// \param[in] value The new value.
+	void SetHairTintColor( const Color3 & value );
+
+	// Max Passes
+	// \return The current value.
+	float GetMaxPasses() const;
+
+	// Max Passes
+	// \param[in] value The new value.
+	void SetMaxPasses( float value );
+
+	// Scale
+	// \return The current value.
+	float GetScale() const;
+
+	// Scale
+	// \param[in] value The new value.
+	void SetScale( float value );
+
+	// How far from the surface the inner layer appears to be.
+	// \return The current value.
+	float GetParallaxInnerLayerThickness() const;
+
+	// How far from the surface the inner layer appears to be.
+	// \param[in] value The new value.
+	void SetParallaxInnerLayerThickness( float value );
+
+	// Depth of inner parallax layer effect.
+	// \return The current value.
+	float GetParallaxRefractionScale() const;
+
+	// Depth of inner parallax layer effect.
+	// \param[in] value The new value.
+	void SetParallaxRefractionScale( float value );
+
+	// Scales the inner parallax layer texture.
+	// \return The current value.
+	TexCoord GetParallaxInnerLayerTextureScale() const;
+
+	// Scales the inner parallax layer texture.
+	// \param[in] value The new value.
+	void SetParallaxInnerLayerTextureScale( const TexCoord & value );
+
 	// How strong the environment/cube map is. (0-??)
 	// \return The current value.
-	float GetEnvironmentMapStrength() const;
+	float GetParallaxEnvmapStrength() const;
 
 	// How strong the environment/cube map is. (0-??)
 	// \param[in] value The new value.
-	void SetEnvironmentMapStrength( float value );
+	void SetParallaxEnvmapStrength( float value );
 
-	// Eye(Skyrim)
+	// Unknown/unused?  CK lists "snow material" when used.
+	// \return The current value.
+	Vector4 GetSparkleParamaters() const;
+
+	// Unknown/unused?  CK lists "snow material" when used.
+	// \param[in] value The new value.
+	void SetSparkleParamaters( const Vector4 & value );
+
+	// Eye cubemap scale
 	// \return The current value.
 	float GetEyeCubemapScale() const;
 
-	// Eye(Skyrim)
+	// Eye cubemap scale
 	// \param[in] value The new value.
 	void SetEyeCubemapScale( float value );
 
-	// Eye(Skyrim)Left Unknown
+	// Offset to set center for left eye cubemap
 	// \return The current value.
 	Vector3 GetLeftEyeReflectionCenter() const;
 
-	// Eye(Skyrim)Left Unknown
+	// Offset to set center for left eye cubemap
 	// \param[in] value The new value.
 	void SetLeftEyeReflectionCenter( const Vector3 & value );
 
-	// Eye(Skyrim)Right Unknown
+	// Offset to set center for right eye cubemap
 	// \return The current value.
 	Vector3 GetRightEyeReflectionCenter() const;
 
-	// Eye(Skyrim)Right Unknown
+	// Offset to set center for right eye cubemap
 	// \param[in] value The new value.
 	void SetRightEyeReflectionCenter( const Vector3 & value );
 
@@ -206,201 +283,287 @@ public:
 	// Skyrim's shaders: 0=default 1=EnvMap, 2=Glow, 5=Skin, 6=Hair, 7=Unknown,
 	// 11=Ice/Parallax, 15=Eye.
 	// \return The current value.
-	int GetSkyrimShaderType() const;
+	BSLightingShaderPropertyShaderType GetSkyrimShaderType() const;
 
 	// Skyrim's shaders: 0=default 1=EnvMap, 2=Glow, 5=Skin, 6=Hair, 7=Unknown,
 	// 11=Ice/Parallax, 15=Eye.
 	// \param[in] value The new value.
-	void SetSkyrimShaderType( int value );
+	void SetSkyrimShaderType( BSLightingShaderPropertyShaderType value );
 
 
-	// Skyrim Shader Flag field 1 (will use SkyrimLightingShaderFlags1)
-	// \return The current value.
-	unsigned int GetShaderFlags1() const;
+   // Skyrim Shader Flags for setting render/shader options.
+   // \return The current value.
+   SkyrimShaderPropertyFlags1 GetShaderFlags1() const;
 
-	// Skyrim Shader Flag field 1 (will use SkyrimLightingShaderFlags1)
-	// \param[in] value The new value.
-	void SetShaderFlags1( unsigned int value );
+   // Skyrim Shader Flags for setting render/shader options.
+   // \param[in] value The new value.
+   void SetShaderFlags1( const SkyrimShaderPropertyFlags1 & value );
 
-	// Skyrim Shader Flag field 2 (will use SkyrimLightingShaderFlags2)
-	// \return The current value.
-	unsigned int GetShaderFlags2() const;
+   // Skyrim Shader Flags for setting render/shader options.
+   // \return The current value.
+   SkyrimShaderPropertyFlags2 GetShaderFlags2() const;
 
-	// Skyrim Shader Flag field 2 (will use SkyrimLightingShaderFlags2)
-	// \param[in] value The new value.
-	void SetShaderFlags2( unsigned int value );
+   // Skyrim Shader Flags for setting render/shader options.
+   // \param[in] value The new value.
+   void SetShaderFlags2( const SkyrimShaderPropertyFlags2 & value );
 
-	// Offset UVs
-	// \return The current value.
-	TexCoord GetTextureTranslation1() const;
+   // UV Offset
+   // \return The current value.
+   TexCoord GetUvOffset() const;
 
-	// Offset UVs
-	// \param[in] value The new value.
-	void SetTextureTranslation1( const TexCoord & value );
+   // UV Offset
+   // \param[in] value The new value.
+   void SetUvOffset( const TexCoord & value );
 
-	// Offset UVs
-	// \return The current value.
-	TexCoord GetTextureRepeat() const;
+   // UV Scale
+   // \return The current value.
+   TexCoord GetUvScale() const;
 
-	// Offset UVs
-	// \param[in] value The new value.
-	void SetTextureRepeat( const TexCoord & value );
+   // UV Scale
+   // \param[in] value The new value.
+   void SetUvScale( const TexCoord & value );
 
-	// Texture Set
-	// \return The current value.
-	Ref<BSShaderTextureSet > GetTextureSet() const;
+   // Texture Set, can have override in an esm/esp
+   // \return The current value.
+   Ref<BSShaderTextureSet > GetTextureSet() const;
 
-	// Texture Set
-	// \param[in] value The new value.
-	void SetTextureSet( Ref<BSShaderTextureSet > value );
+   // Texture Set, can have override in an esm/esp
+   // \param[in] value The new value.
+   void SetTextureSet( Ref<BSShaderTextureSet > value );
 
-	// Glow color and alpha
-	// \return The current value.
-	Color3 GetEmissiveColor() const;
+   // Glow color and alpha
+   // \return The current value.
+   Color3 GetEmissiveColor() const;
 
-	// Glow color and alpha
-	// \param[in] value The new value.
-	void SetEmissiveColor( const Color3 & value );
+   // Glow color and alpha
+   // \param[in] value The new value.
+   void SetEmissiveColor( const Color3 & value );
 
-	// Unknown
-	// \return The current value.
-	float GetEmissiveSaturation() const;
+   // Multiplied emissive colors
+   // \return The current value.
+   float GetEmissiveMultiple() const;
 
-	// Unknown
-	// \param[in] value The new value.
-	void SetEmissiveSaturation( float value );
+   // Multiplied emissive colors
+   // \param[in] value The new value.
+   void SetEmissiveMultiple( float value );
 
-	// The material transparency (1=non-transparent).
-	// \return The current value.
-	float GetAlpha() const;
+   // How to handle texture borders.
+   // \return The current value.
+   TexClampMode GetTextureClampMode() const;
 
-	// The material transparency (1=non-transparent).
-	// \param[in] value The new value.
-	void SetAlpha( float value );
+   // How to handle texture borders.
+   // \param[in] value The new value.
+   void SetTextureClampMode( const TexClampMode & value );
 
-	// The material's glossiness. (0-999)
-	// \return The current value.
-	float GetGlossiness() const;
+   // The materials opacity (1=non-transparent).
+   // \return The current value.
+   float GetAlpha() const;
 
-	// The material's glossiness. (0-999)
-	// \param[in] value The new value.
-	void SetGlossiness( float value );
+   // The materials opacity (1=non-transparent).
+   // \param[in] value The new value.
+   void SetAlpha( float value );
 
-	// Adds a colored highlight.
-	// \return The current value.
-	Color3 GetSpecularColor() const;
+   // The material's glossiness. (0-999)
+   // \return The current value.
+   float GetSpecularPower_Glossiness() const;
 
-	// Adds a colored highlight.
-	// \param[in] value The new value.
-	void SetSpecularColor( const Color3 & value );
+   // The material's glossiness. (0-999)
+   // \param[in] value The new value.
+   void SetSpecularPower_Glossiness( float value );
 
-	// Brightness of specular highlight. (0=not visible) (0-999)
-	// \return The current value.
-	float GetSpecularStrength() const;
+   // Adds a colored highlight.
+   // \return The current value.
+   Color3 GetSpecularColor() const;
 
-	// Brightness of specular highlight. (0=not visible) (0-999)
-	// \param[in] value The new value.
-	void SetSpecularStrength( float value );
+   // Adds a colored highlight.
+   // \param[in] value The new value.
+   void SetSpecularColor( const Color3 & value );
 
-	// Unknown, related to backlight/rim/softlight effect
-	// \return The current value.
-	float GetLightingEffect1() const;
+   // Brightness of specular highlight. (0=not visible) (0-999)
+   // \return The current value.
+   float GetSpecularStrength() const;
 
-	// Unknown, related to backlight/rim/softlight effect
-	// \param[in] value The new value.
-	void SetLightingEffect1( float value );
+   // Brightness of specular highlight. (0=not visible) (0-999)
+   // \param[in] value The new value.
+   void SetSpecularStrength( float value );
 
-	// Unknown, related to backlight/rim/softlight effect
-	// \return The current value.
-	float GetLightingEffect2() const;
+   // Controls strength for envmap/backlight/rim/softlight lighting effect?
+   // \return The current value.
+   float GetLightingEffect1() const;
 
-	// Unknown, related to backlight/rim/softlight effect
-	// \param[in] value The new value.
-	void SetLightingEffect2( float value );
+   // Controls strength for envmap/backlight/rim/softlight lighting effect?
+   // \param[in] value The new value.
+   void SetLightingEffect1( float value );
 
-	// How strong the environment/cube map is. (0-??)
-	// \return The current value.
-	float GetEnvironmentMapStrength() const;
+   // Controls strength for envmap/backlight/rim/softlight lighting effect?
+   // \return The current value.
+   float GetLightingEffect2() const;
 
-	// How strong the environment/cube map is. (0-??)
-	// \param[in] value The new value.
-	void SetEnvironmentMapStrength( float value );
+   // Controls strength for envmap/backlight/rim/softlight lighting effect?
+   // \param[in] value The new value.
+   void SetLightingEffect2( float value );
 
-	// Eye(Skyrim)
-	// \return The current value.
-	float GetEyeCubemapScale() const;
+   // Scales the environment/cube map. (0-??)
+   // \return The current value.
+   float GetEnvironmentMapScale() const;
 
-	// Eye(Skyrim)
-	// \param[in] value The new value.
-	void SetEyeCubemapScale( float value );
+   // Scales the environment/cube map. (0-??)
+   // \param[in] value The new value.
+   void SetEnvironmentMapScale( float value );
 
-	// Eye(Skyrim)Left Unknown
-	// \return The current value.
-	Vector3 GetLeftEyeReflectionCenter() const;
+   // Tints the base texture. Overridden by game settings.
+   // \return The current value.
+   Color3 GetSkinTintColor() const;
 
-	// Eye(Skyrim)Left Unknown
-	// \param[in] value The new value.
-	void SetLeftEyeReflectionCenter( const Vector3 & value );
+   // Tints the base texture. Overridden by game settings.
+   // \param[in] value The new value.
+   void SetSkinTintColor( const Color3 & value );
 
-	// Eye(Skyrim)Right Unknown
-	// \return The current value.
-	Vector3 GetRightEyeReflectionCenter() const;
+   // Tints the base texture. Overridden by game settings.
+   // \return The current value.
+   Color3 GetHairTintColor() const;
 
-	// Eye(Skyrim)Right Unknown
-	// \param[in] value The new value.
-	void SetRightEyeReflectionCenter( const Vector3 & value );
+   // Tints the base texture. Overridden by game settings.
+   // \param[in] value The new value.
+   void SetHairTintColor( const Color3 & value );
+
+   // Max Passes
+   // \return The current value.
+   float GetMaxPasses() const;
+
+   // Max Passes
+   // \param[in] value The new value.
+   void SetMaxPasses( float value );
+
+   // Scale
+   // \return The current value.
+   float GetScale() const;
+
+   // Scale
+   // \param[in] value The new value.
+   void SetScale( float value );
+
+   // How far from the surface the inner layer appears to be.
+   // \return The current value.
+   float GetParallaxInnerLayerThickness() const;
+
+   // How far from the surface the inner layer appears to be.
+   // \param[in] value The new value.
+   void SetParallaxInnerLayerThickness( float value );
+
+   // Depth of inner parallax layer effect.
+   // \return The current value.
+   float GetParallaxRefractionScale() const;
+
+   // Depth of inner parallax layer effect.
+   // \param[in] value The new value.
+   void SetParallaxRefractionScale( float value );
+
+   // Scales the inner parallax layer texture.
+   // \return The current value.
+   TexCoord GetParallaxInnerLayerTextureScale() const;
+
+   // Scales the inner parallax layer texture.
+   // \param[in] value The new value.
+   void SetParallaxInnerLayerTextureScale( const TexCoord & value );
+
+   // How strong the environment/cube map is. (0-??)
+   // \return The current value.
+   float GetParallaxEnvmapStrength() const;
+
+   // How strong the environment/cube map is. (0-??)
+   // \param[in] value The new value.
+   void SetParallaxEnvmapStrength( float value );
+
+   // Unknown/unused?  CK lists "snow material" when used.
+   // \return The current value.
+   Vector4 GetSparkleParamaters() const;
+
+   // Unknown/unused?  CK lists "snow material" when used.
+   // \param[in] value The new value.
+   void SetSparkleParamaters( const Vector4 & value );
+
+   // Eye cubemap scale
+   // \return The current value.
+   float GetEyeCubemapScale() const;
+
+   // Eye cubemap scale
+   // \param[in] value The new value.
+   void SetEyeCubemapScale( float value );
+
+   // Offset to set center for left eye cubemap
+   // \return The current value.
+   Vector3 GetLeftEyeReflectionCenter() const;
+
+   // Offset to set center for left eye cubemap
+   // \param[in] value The new value.
+   void SetLeftEyeReflectionCenter( const Vector3 & value );
+
+   // Offset to set center for right eye cubemap
+   // \return The current value.
+   Vector3 GetRightEyeReflectionCenter() const;
+
+   // Offset to set center for right eye cubemap
+   // \param[in] value The new value.
+   void SetRightEyeReflectionCenter( const Vector3 & value );
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Skyrim Shader Flag field 1 (will use SkyrimLightingShaderFlags1) */
-	unsigned int shaderFlags1;
-	/*! Skyrim Shader Flag field 2 (will use SkyrimLightingShaderFlags2) */
-	unsigned int shaderFlags2;
-	/*! Offset UVs */
-	TexCoord textureTranslation1;
-	/*! Offset UVs */
-	TexCoord textureRepeat;
-	/*! Texture Set */
+	/*! Skyrim Shader Flags for setting render/shader options. */
+	SkyrimShaderPropertyFlags1 shaderFlags1;
+	/*! Skyrim Shader Flags for setting render/shader options. */
+	SkyrimShaderPropertyFlags2 shaderFlags2;
+	/*! UV Offset */
+	TexCoord uvOffset;
+	/*! UV Scale */
+	TexCoord uvScale;
+	/*! Texture Set, can have override in an esm/esp */
 	Ref<BSShaderTextureSet > textureSet;
 	/*! Glow color and alpha */
 	Color3 emissiveColor;
-	/*! Unknown */
-	float emissiveSaturation;
-	/*! Unknown, always 3? */
-	unsigned int unknownInt7;
-	/*! The material transparency (1=non-transparent). */
+	/*! Multiplied emissive colors */
+	float emissiveMultiple;
+	/*! How to handle texture borders. */
+	TexClampMode textureClampMode;
+	/*! The materials opacity (1=non-transparent). */
 	float alpha;
 	/*! Unknown */
 	float unknownFloat2;
 	/*! The material's glossiness. (0-999) */
-	float glossiness;
+	float specularPower_Glossiness;
 	/*! Adds a colored highlight. */
 	Color3 specularColor;
 	/*! Brightness of specular highlight. (0=not visible) (0-999) */
 	float specularStrength;
-	/*! Unknown, related to backlight/rim/softlight effect */
+	/*! Controls strength for envmap/backlight/rim/softlight lighting effect? */
 	float lightingEffect1;
-	/*! Unknown, related to backlight/rim/softlight effect */
+	/*! Controls strength for envmap/backlight/rim/softlight lighting effect? */
 	float lightingEffect2;
+	/*! Scales the environment/cube map. (0-??) */
+	float environmentMapScale;
+	/*! Tints the base texture. Overridden by game settings. */
+	Color3 skinTintColor;
+	/*! Tints the base texture. Overridden by game settings. */
+	Color3 hairTintColor;
+	/*! Max Passes */
+	float maxPasses;
+	/*! Scale */
+	float scale;
+	/*! How far from the surface the inner layer appears to be. */
+	float parallaxInnerLayerThickness;
+	/*! Depth of inner parallax layer effect. */
+	float parallaxRefractionScale;
+	/*! Scales the inner parallax layer texture. */
+	TexCoord parallaxInnerLayerTextureScale;
 	/*! How strong the environment/cube map is. (0-??) */
-	float environmentMapStrength;
-	/*! Unknown, related to skin */
-	Vector3 unknownFloatSet1;
-	/*! Unknown, related to hair */
-	Color3 unknownColor1;
-	/*! Unknown */
-	array<2,float > unknownFloatSet3;
-	/*! Unknown, related to ice or parallax */
-	float unknownFloat9;
-	/*! Unknown, related to ice parallax */
-	Color4 unknownColor2;
-	/*! Unknown, also related to ice? */
-	Vector4 unknownFloatSet5;
-	/*! Eye(Skyrim) */
+	float parallaxEnvmapStrength;
+	/*! Unknown/unused?  CK lists "snow material" when used. */
+	Vector4 sparkleParamaters;
+	/*! Eye cubemap scale */
 	float eyeCubemapScale;
-	/*! Eye(Skyrim)Left Unknown */
+	/*! Offset to set center for left eye cubemap */
 	Vector3 leftEyeReflectionCenter;
-	/*! Eye(Skyrim)Right Unknown */
+	/*! Offset to set center for right eye cubemap */
 	Vector3 rightEyeReflectionCenter;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */

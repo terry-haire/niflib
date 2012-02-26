@@ -22,7 +22,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type bhkRigidBody::TYPE("bhkRigidBody", &bhkEntity::TYPE );
 
-bhkRigidBody::bhkRigidBody() : unknownInt1((int)0), unknownInt2((int)0x00000001), unknown3Ints(3,(int)0,(int)0,(int)0x80000000), collisionResponse_((hkResponseType)RESPONSE_SIMPLE_CONTACT), unknownByte((byte)0xbe), processContactCallbackDelay_((unsigned short)0xffff), unknown2Shorts(2,(unsigned short)35899,(unsigned short)16336), layerCopy((OblivionLayer)OL_STATIC), colFilterCopy((byte)0), unknown7Shorts(7,(unsigned short)0,(unsigned short)21280,(unsigned short)2481,(unsigned short)62977,(unsigned short)65535,(unsigned short)44,(unsigned short)0), mass(1.0f), linearDamping(0.1f), angularDamping(0.05f), friction(0.3f), restitution(0.3f), unknownFloat51(0.0f), unknownFloat52(0.0f), unknownFloat53(0.0f), maxLinearVelocity(250.0f), maxAngularVelocity(31.4159f), penetrationDepth(0.15f), motionSystem((MotionSystem)MO_SYS_DYNAMIC), deactivatorType((DeactivatorType)DEACTIVATOR_NEVER), solverDeactivation((SolverDeactivation)SOLVER_DEACTIVATION_OFF), qualityType((MotionQuality)MO_QUAL_FIXED), unknownInt6((unsigned int)512), unknownInt7((unsigned int)160), unknownInt8((unsigned int)161), unknownInt81((unsigned int)0), numConstraints((unsigned int)0), unknownInt9((unsigned int)0), unknownInt91((unsigned short)0) {
+bhkRigidBody::bhkRigidBody() : unknownInt1((int)0), unknownInt2((int)0x00000001), unknown3Ints(3,(int)0,(int)0,(int)0x80000000), collisionResponse_((hkResponseType)RESPONSE_SIMPLE_CONTACT), unknownByte((byte)0xbe), processContactCallbackDelay_((unsigned short)0xffff), unknown2Shorts(2,(unsigned short)35899,(unsigned short)16336), layerCopy((OblivionLayer)OL_STATIC), colFilterCopy((byte)0), unknown7Shorts(7,(unsigned short)0,(unsigned short)21280,(unsigned short)2481,(unsigned short)62977,(unsigned short)65535,(unsigned short)44,(unsigned short)0), mass(1.0f), linearDamping(0.1f), angularDamping(0.05f), timefactorOrGravityfactor_(0.0f), friction(0.3f), rollingfrictionmultiplier_(0.0f), restitution(0.3f), maxLinearVelocity(250.0f), maxAngularVelocity(31.4159f), penetrationDepth(0.15f), motionSystem((MotionSystem)MO_SYS_DYNAMIC), deactivatorType((DeactivatorType)DEACTIVATOR_NEVER), solverDeactivation((SolverDeactivation)SOLVER_DEACTIVATION_OFF), qualityType((MotionQuality)MO_QUAL_FIXED), unknownInt6((unsigned int)512), unknownInt7((unsigned int)160), unknownInt8((unsigned int)161), unknownInt81((unsigned int)0), numConstraints((unsigned int)0), unknownInt9((unsigned int)0), unknownInt91((unsigned short)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -69,18 +69,20 @@ void bhkRigidBody::Read( istream& in, list<unsigned int> & link_stack, const Nif
 	NifStream( rotation.w, in, info );
 	NifStream( linearVelocity, in, info );
 	NifStream( angularVelocity, in, info );
-	NifStream( inertia, in, info );
+	NifStream( inertiaTensors, in, info );
 	NifStream( center, in, info );
 	NifStream( mass, in, info );
 	NifStream( linearDamping, in, info );
 	NifStream( angularDamping, in, info );
-	NifStream( friction, in, info );
-	NifStream( restitution, in, info );
 	if ( (info.userVersion >= 12) ) {
-		NifStream( unknownFloat51, in, info );
-		NifStream( unknownFloat52, in, info );
-		NifStream( unknownFloat53, in, info );
+		NifStream( timefactorOrGravityfactor_, in, info );
+		NifStream( timefactorOrGravityfactor_, in, info );
 	};
+	NifStream( friction, in, info );
+	if ( (info.userVersion >= 12) ) {
+		NifStream( rollingfrictionmultiplier_, in, info );
+	};
+	NifStream( restitution, in, info );
 	NifStream( maxLinearVelocity, in, info );
 	NifStream( maxAngularVelocity, in, info );
 	NifStream( penetrationDepth, in, info );
@@ -140,18 +142,20 @@ void bhkRigidBody::Write( ostream& out, const map<NiObjectRef,unsigned int> & li
 	NifStream( rotation.w, out, info );
 	NifStream( linearVelocity, out, info );
 	NifStream( angularVelocity, out, info );
-	NifStream( inertia, out, info );
+	NifStream( inertiaTensors, out, info );
 	NifStream( center, out, info );
 	NifStream( mass, out, info );
 	NifStream( linearDamping, out, info );
 	NifStream( angularDamping, out, info );
-	NifStream( friction, out, info );
-	NifStream( restitution, out, info );
 	if ( (info.userVersion >= 12) ) {
-		NifStream( unknownFloat51, out, info );
-		NifStream( unknownFloat52, out, info );
-		NifStream( unknownFloat53, out, info );
+		NifStream( timefactorOrGravityfactor_, out, info );
+		NifStream( timefactorOrGravityfactor_, out, info );
 	};
+	NifStream( friction, out, info );
+	if ( (info.userVersion >= 12) ) {
+		NifStream( rollingfrictionmultiplier_, out, info );
+	};
+	NifStream( restitution, out, info );
 	NifStream( maxLinearVelocity, out, info );
 	NifStream( maxAngularVelocity, out, info );
 	NifStream( penetrationDepth, out, info );
@@ -254,16 +258,15 @@ std::string bhkRigidBody::asString( bool verbose ) const {
 	out << "  w:  " << rotation.w << endl;
 	out << "  Linear Velocity:  " << linearVelocity << endl;
 	out << "  Angular Velocity:  " << angularVelocity << endl;
-	out << "  Inertia:  " << inertia << endl;
+	out << "  Inertia Tensors:  " << inertiaTensors << endl;
 	out << "  Center:  " << center << endl;
 	out << "  Mass:  " << mass << endl;
 	out << "  Linear Damping:  " << linearDamping << endl;
 	out << "  Angular Damping:  " << angularDamping << endl;
+	out << "  TimeFactor or GravityFactor?:  " << timefactorOrGravityfactor_ << endl;
 	out << "  Friction:  " << friction << endl;
+	out << "  RollingFrictionMultiplier?:  " << rollingfrictionmultiplier_ << endl;
 	out << "  Restitution:  " << restitution << endl;
-	out << "  Unknown Float 51:  " << unknownFloat51 << endl;
-	out << "  Unknown Float 52:  " << unknownFloat52 << endl;
-	out << "  Unknown Float 53:  " << unknownFloat53 << endl;
 	out << "  Max Linear Velocity:  " << maxLinearVelocity << endl;
 	out << "  Max Angular Velocity:  " << maxAngularVelocity << endl;
 	out << "  Penetration Depth:  " << penetrationDepth << endl;
@@ -393,12 +396,12 @@ void bhkRigidBody::SetAngularVelocity( const Vector4 & value ) {
 	angularVelocity = value;
 }
 
-InertiaMatrix bhkRigidBody::GetInertia() const {
-	return inertia;
+InertiaMatrix bhkRigidBody::GetInertiaTensors() const {
+	return inertiaTensors;
 }
 
-void bhkRigidBody::SetInertia( const InertiaMatrix & value ) {
-	inertia = value;
+void bhkRigidBody::SetInertiaTensors( const InertiaMatrix & value ) {
+	inertiaTensors = value;
 }
 
 Vector4 bhkRigidBody::GetCenter() const {
@@ -433,12 +436,36 @@ void bhkRigidBody::SetAngularDamping( float value ) {
 	angularDamping = value;
 }
 
+float bhkRigidBody::GetTimefactorOrGravityfactor_() const {
+	return timefactorOrGravityfactor_;
+}
+
+void bhkRigidBody::SetTimefactorOrGravityfactor_( float value ) {
+	timefactorOrGravityfactor_ = value;
+}
+
+float bhkRigidBody::GetTimefactorOrGravityfactor_() const {
+	return timefactorOrGravityfactor_;
+}
+
+void bhkRigidBody::SetTimefactorOrGravityfactor_( float value ) {
+	timefactorOrGravityfactor_ = value;
+}
+
 float bhkRigidBody::GetFriction() const {
 	return friction;
 }
 
 void bhkRigidBody::SetFriction( float value ) {
 	friction = value;
+}
+
+float bhkRigidBody::GetRollingfrictionmultiplier_() const {
+	return rollingfrictionmultiplier_;
+}
+
+void bhkRigidBody::SetRollingfrictionmultiplier_( float value ) {
+	rollingfrictionmultiplier_ = value;
 }
 
 float bhkRigidBody::GetRestitution() const {
@@ -558,11 +585,11 @@ void bhkRigidBody::SetAngularVelocity( const Vector4 & value ) {
 }
 
 InertiaMatrix  bhkRigidBody::GetInertia() const {
-	return inertia;
+	return inertiaTensors;
 }
 
 void bhkRigidBody::SetInertia( const InertiaMatrix&  value ) {
-	inertia = value;
+	inertiaTensors = value;
 }
 
 Vector4 bhkRigidBody::GetCenter() const {
@@ -703,7 +730,7 @@ void bhkRigidBody::ApplyScale(float scale)
     center *= scale;
 
     // apply scale on inertia tensor
-    inertia *= pow(scale, 2.0f);
+    inertiaTensors *= pow(scale, 2.0f);
 
     //# apply scale on all blocks down the hierarchy
     //ApplyScale(scale)
@@ -722,13 +749,13 @@ void bhkRigidBody::UpdateMassProperties(float density, bool solid, float mass)
 	{
 		float volume;
 		Vector3 com;
-		shape->CalcMassProperties(density, solid, this->mass, volume, com, inertia);
+		shape->CalcMassProperties(density, solid, this->mass, volume, com, inertiaTensors);
 		center = com;
 		if (mass != 0.0f)
 		{
 			float mass_correction = (this->mass != 0.0f) ? mass / this->mass : 1.0f;
 			this->mass = mass;
-			inertia *= mass_correction;
+			inertiaTensors *= mass_correction;
 		}
 	}
 }

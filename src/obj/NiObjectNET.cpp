@@ -22,7 +22,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiObjectNET::TYPE("NiObjectNET", &NiObject::TYPE );
 
-NiObjectNET::NiObjectNET() : skyrimShaderType((int)0), hasOldExtraData(false), oldExtraInternalId((unsigned int)0), unknownByte((byte)0), extraData(NULL), numExtraDataList((unsigned int)0), controller(NULL) {
+NiObjectNET::NiObjectNET() : skyrimShaderType((BSLightingShaderPropertyShaderType)0), hasOldExtraData(false), oldExtraInternalId((unsigned int)0), unknownByte((byte)0), extraData(NULL), numExtraDataList((unsigned int)0), controller(NULL) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -51,7 +51,7 @@ void NiObjectNET::Read( istream& in, list<unsigned int> & link_stack, const NifI
 
 	unsigned int block_num;
 	NiObject::Read( in, link_stack, info );
-	if ( (info.userVersion >= 12) ) {
+	if ( ( info.version >= 0x14020007 ) && ( (info.userVersion >= 12) ) ) {
 		if ( IsDerivedType(BSLightingShaderProperty::TYPE) ) {
 			NifStream( skyrimShaderType, in, info );
 		};
@@ -93,7 +93,7 @@ void NiObjectNET::Write( ostream& out, const map<NiObjectRef,unsigned int> & lin
 
 	NiObject::Write( out, link_map, missing_link_stack, info );
 	numExtraDataList = (unsigned int)(extraDataList.size());
-	if ( (info.userVersion >= 12) ) {
+	if ( ( info.version >= 0x14020007 ) && ( (info.userVersion >= 12) ) ) {
 		if ( IsDerivedType(BSLightingShaderProperty::TYPE) ) {
 			NifStream( skyrimShaderType, out, info );
 		};
@@ -258,11 +258,11 @@ std::list<NiObject *> NiObjectNET::GetPtrs() const {
 
 /***Begin Example Naive Implementation****
 
-int NiObjectNET::GetSkyrimShaderType() const {
+BSLightingShaderPropertyShaderType NiObjectNET::GetSkyrimShaderType() const {
 	return skyrimShaderType;
 }
 
-void NiObjectNET::SetSkyrimShaderType( int value ) {
+void NiObjectNET::SetSkyrimShaderType( const BSLightingShaderPropertyShaderType & value ) {
 	skyrimShaderType = value;
 }
 

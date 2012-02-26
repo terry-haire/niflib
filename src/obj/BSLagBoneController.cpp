@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSLagBoneController::TYPE("BSLagBoneController", &NiTimeController::TYPE );
 
-BSLagBoneController::BSLagBoneController() : rotationLag(0.0f), unknownFloat3(0.0f), length(0.0f) {
+BSLagBoneController::BSLagBoneController() : linearVelocity(0.0f), linearRotation(0.0f), maximumDistance(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,9 +46,9 @@ void BSLagBoneController::Read( istream& in, list<unsigned int> & link_stack, co
 	//--END CUSTOM CODE--//
 
 	NiTimeController::Read( in, link_stack, info );
-	NifStream( rotationLag, in, info );
-	NifStream( unknownFloat3, in, info );
-	NifStream( length, in, info );
+	NifStream( linearVelocity, in, info );
+	NifStream( linearRotation, in, info );
+	NifStream( maximumDistance, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -61,9 +61,9 @@ void BSLagBoneController::Write( ostream& out, const map<NiObjectRef,unsigned in
 	//--END CUSTOM CODE--//
 
 	NiTimeController::Write( out, link_map, missing_link_stack, info );
-	NifStream( rotationLag, out, info );
-	NifStream( unknownFloat3, out, info );
-	NifStream( length, out, info );
+	NifStream( linearVelocity, out, info );
+	NifStream( linearRotation, out, info );
+	NifStream( maximumDistance, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -77,9 +77,9 @@ std::string BSLagBoneController::asString( bool verbose ) const {
 
 	stringstream out;
 	out << NiTimeController::asString();
-	out << "  Rotation Lag:  " << rotationLag << endl;
-	out << "  Unknown Float 3:  " << unknownFloat3 << endl;
-	out << "  Length:  " << length << endl;
+	out << "  Linear Velocity:  " << linearVelocity << endl;
+	out << "  Linear Rotation:  " << linearRotation << endl;
+	out << "  Maximum Distance:  " << maximumDistance << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -113,20 +113,28 @@ std::list<NiObject *> BSLagBoneController::GetPtrs() const {
 
 /***Begin Example Naive Implementation****
 
-float BSLagBoneController::GetRotationLag() const {
-	return rotationLag;
+float BSLagBoneController::GetLinearVelocity() const {
+	return linearVelocity;
 }
 
-void BSLagBoneController::SetRotationLag( float value ) {
-	rotationLag = value;
+void BSLagBoneController::SetLinearVelocity( float value ) {
+	linearVelocity = value;
 }
 
-float BSLagBoneController::GetLength() const {
-	return length;
+float BSLagBoneController::GetLinearRotation() const {
+	return linearRotation;
 }
 
-void BSLagBoneController::SetLength( float value ) {
-	length = value;
+void BSLagBoneController::SetLinearRotation( float value ) {
+	linearRotation = value;
+}
+
+float BSLagBoneController::GetMaximumDistance() const {
+	return maximumDistance;
+}
+
+void BSLagBoneController::SetMaximumDistance( float value ) {
+	maximumDistance = value;
 }
 
 ****End Example Naive Implementation***/

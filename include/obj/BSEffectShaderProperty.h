@@ -20,7 +20,7 @@ namespace Niflib {
 class BSEffectShaderProperty;
 typedef Ref<BSEffectShaderProperty> BSEffectShaderPropertyRef;
 
-/*!  */
+/*! Skyrim non-PP shader model, used primarily for transparency effects. */
 class BSEffectShaderProperty : public NiProperty {
 public:
 	/*! Constructor */
@@ -55,29 +55,37 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Shader options, will use SkyrimEffectShaderFlags1
+	// Unknown.
 	// \return The current value.
-	unsigned int GetEffectShaderFlags1() const;
+	SkyrimShaderPropertyFlags1 GetShaderFlags1() const;
 
-	// Shader options, will use SkyrimEffectShaderFlags1
+	// Unknown.
 	// \param[in] value The new value.
-	void SetEffectShaderFlags1( unsigned int value );
+	void SetShaderFlags1( const SkyrimShaderPropertyFlags1 & value );
 
-	// Offset UVs
+	// Unknown.
 	// \return The current value.
-	TexCoord GetTextureTranslation1() const;
+	SkyrimShaderPropertyFlags2 GetShaderFlags2() const;
 
-	// Offset UVs
+	// Unknown.
 	// \param[in] value The new value.
-	void SetTextureTranslation1( const TexCoord & value );
+	void SetShaderFlags2( const SkyrimShaderPropertyFlags2 & value );
 
-	// Offset UV Scale to repeat tiling textures
+	// UV OffSet
 	// \return The current value.
-	TexCoord GetTextureRepeat() const;
+	TexCoord GetUvOffset() const;
 
-	// Offset UV Scale to repeat tiling textures
+	// UV OffSet
 	// \param[in] value The new value.
-	void SetTextureRepeat( const TexCoord & value );
+	void SetUvOffset( const TexCoord & value );
+
+	// UV Scale
+	// \return The current value.
+	TexCoord GetUvScale() const;
+
+	// UV Scale
+	// \param[in] value The new value.
+	void SetUvScale( const TexCoord & value );
 
 	// points to an external texture.
 	// \return The current value.
@@ -87,45 +95,77 @@ public:
 	// \param[in] value The new value.
 	void SetSourceTexture( const string & value );
 
-	// hader options, will use SkyrimEffectShaderFlags12
+	// How to handle texture borders.
 	// \return The current value.
-	unsigned short GetEffectShaderFlags2() const;
+	unsigned int GetTextureClampMode() const;
 
-	// hader options, will use SkyrimEffectShaderFlags12
+	// How to handle texture borders.
 	// \param[in] value The new value.
-	void SetEffectShaderFlags2( unsigned short value );
+	void SetTextureClampMode( unsigned int value );
 
-	// Color
+	// Unknown.
 	// \return The current value.
-	Color3 GetDiffuseColor() const;
+	float GetFalloffStartAngle() const;
 
-	// Color
+	// Unknown.
 	// \param[in] value The new value.
-	void SetDiffuseColor( const Color3 & value );
+	void SetFalloffStartAngle( float value );
 
-	// The material's transparency
+	// Unknown.
 	// \return The current value.
-	float GetAlpha() const;
+	float GetFalloffStopAngle() const;
 
-	// The material's transparency
+	// Unknown.
 	// \param[in] value The new value.
-	void SetAlpha( float value );
+	void SetFalloffStopAngle( float value );
 
-	// Adds a glow effect
+	// Texture will fade in within this proximity.
 	// \return The current value.
-	float GetEmissive() const;
+	float GetFalloffStartOpacity() const;
 
-	// Adds a glow effect
+	// Texture will fade in within this proximity.
 	// \param[in] value The new value.
-	void SetEmissive( float value );
+	void SetFalloffStartOpacity( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetFalloffStopOpacity() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetFalloffStopOpacity( float value );
+
+	// Emissive color
+	// \return The current value.
+	Color4 GetEmissiveColor() const;
+
+	// Emissive color
+	// \param[in] value The new value.
+	void SetEmissiveColor( const Color4 & value );
+
+	// Multipled Emissive Colors
+	// \return The current value.
+	float GetEmissiveMultiple() const;
+
+	// Multipled Emissive Colors
+	// \param[in] value The new value.
+	void SetEmissiveMultiple( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetSoftFalloffDepth() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetSoftFalloffDepth( float value );
 
 	// points to an external texture.
 	// \return The current value.
-	string GetGradientTexture() const;
+	string GetGreyscaleTexture() const;
 
 	// points to an external texture.
 	// \param[in] value The new value.
-	void SetGradientTexture( const string & value );
+	void SetGreyscaleTexture( const string & value );
 
 	****End Example Naive Implementation***/
 
@@ -133,42 +173,34 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! 8/16? (nope, also 122,atronachflame) */
-	byte unknownByte1;
-	/*!  */
-	unsigned short unknownShort1;
-	/*! always 80? */
-	byte unknownByte2;
-	/*! Shader options, will use SkyrimEffectShaderFlags1 */
-	unsigned int effectShaderFlags1;
-	/*! Offset UVs */
-	TexCoord textureTranslation1;
-	/*! Offset UV Scale to repeat tiling textures */
-	TexCoord textureRepeat;
+	/*! Unknown. */
+	SkyrimShaderPropertyFlags1 shaderFlags1;
+	/*! Unknown. */
+	SkyrimShaderPropertyFlags2 shaderFlags2;
+	/*! UV OffSet */
+	TexCoord uvOffset;
+	/*! UV Scale */
+	TexCoord uvScale;
 	/*! points to an external texture. */
 	string sourceTexture;
-	/*! hader options, will use SkyrimEffectShaderFlags12 */
-	unsigned short effectShaderFlags2;
-	/*! Unknown */
-	unsigned short unknownShort2;
-	/*! Unknown */
-	float unknownFloat1;
-	/*! Unknown */
-	float unknownFloat2;
-	/*! Unknown */
-	float unknownFloat3;
-	/*! Unknown */
-	float unknownFloat4;
-	/*! Color */
-	Color3 diffuseColor;
-	/*! The material's transparency */
-	float alpha;
-	/*! Adds a glow effect */
-	float emissive;
-	/*! Unknown */
-	float unknownFloat5;
+	/*! How to handle texture borders. */
+	unsigned int textureClampMode;
+	/*! Unknown. */
+	float falloffStartAngle;
+	/*! Unknown. */
+	float falloffStopAngle;
+	/*! Texture will fade in within this proximity. */
+	float falloffStartOpacity;
+	/*! Unknown. */
+	float falloffStopOpacity;
+	/*! Emissive color */
+	Color4 emissiveColor;
+	/*! Multipled Emissive Colors */
+	float emissiveMultiple;
+	/*! Unknown. */
+	float softFalloffDepth;
 	/*! points to an external texture. */
-	string gradientTexture;
+	string greyscaleTexture;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

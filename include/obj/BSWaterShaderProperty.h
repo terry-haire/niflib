@@ -20,7 +20,10 @@ namespace Niflib {
 class BSWaterShaderProperty;
 typedef Ref<BSWaterShaderProperty> BSWaterShaderPropertyRef;
 
-/*! Water Shader Property, different from "WaterShaderProperty" seen in Fallout. */
+/*!
+ * Skyrim water shader property, different from "WaterShaderProperty" seen in
+ * Fallout.
+ */
 class BSWaterShaderProperty : public NiProperty {
 public:
 	/*! Constructor */
@@ -55,23 +58,39 @@ public:
 
 	/***Begin Example Naive Implementation****
 
+	// Unknown.
+	// \return The current value.
+	SkyrimShaderPropertyFlags1 GetShaderFlags1() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetShaderFlags1( const SkyrimShaderPropertyFlags1 & value );
+
+	// Unknown.
+	// \return The current value.
+	SkyrimShaderPropertyFlags2 GetShaderFlags2() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetShaderFlags2( const SkyrimShaderPropertyFlags2 & value );
+
 	// Offset UVs. Seems to be unused, but it fits with the other Skyrim shader
 	// properties.
 	// \return The current value.
-	TexCoord GetTextureTranslation1() const;
+	TexCoord GetUvOffset() const;
 
 	// Offset UVs. Seems to be unused, but it fits with the other Skyrim shader
 	// properties.
 	// \param[in] value The new value.
-	void SetTextureTranslation1( const TexCoord & value );
+	void SetUvOffset( const TexCoord & value );
 
 	// Offset UV Scale to repeat tiling textures, see above.
 	// \return The current value.
-	TexCoord GetTextureRepeat() const;
+	TexCoord GetUvScale() const;
 
 	// Offset UV Scale to repeat tiling textures, see above.
 	// \param[in] value The new value.
-	void SetTextureRepeat( const TexCoord & value );
+	void SetUvScale( const TexCoord & value );
 
 	// Defines attributes for the water shader (will use SkyrimWaterShaderFlags)
 	// \return The current value.
@@ -97,21 +116,17 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown, flag? */
-	byte unknownByte1;
-	/*! Unknown, flag? */
-	unsigned short unknownShort1;
-	/*! Unknown */
-	unsigned int unknownInt1;
-	/*! Unknown, flag? */
-	byte unknownByte2;
+	/*! Unknown. */
+	SkyrimShaderPropertyFlags1 shaderFlags1;
+	/*! Unknown. */
+	SkyrimShaderPropertyFlags2 shaderFlags2;
 	/*!
 	 * Offset UVs. Seems to be unused, but it fits with the other Skyrim shader
 	 * properties.
 	 */
-	TexCoord textureTranslation1;
+	TexCoord uvOffset;
 	/*! Offset UV Scale to repeat tiling textures, see above. */
-	TexCoord textureRepeat;
+	TexCoord uvScale;
 	/*! Defines attributes for the water shader (will use SkyrimWaterShaderFlags) */
 	SkyrimWaterShaderFlags waterShaderFlags;
 	/*!

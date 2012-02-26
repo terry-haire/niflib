@@ -63,11 +63,11 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Unknown
+	// Which variable in the shader to animate.
 	// \return The current value.
 	unsigned int GetTargetVariable() const;
 
-	// Unknown
+	// Which variable in the shader to animate.
 	// \param[in] value The new value.
 	void SetTargetVariable( unsigned int value );
 
@@ -77,7 +77,7 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown */
+	/*! Which variable in the shader to animate. */
 	unsigned int targetVariable;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */

@@ -139,11 +139,11 @@ public:
 
 	// Defines how the mass is distributed among the body.
 	// \return The current value.
-	InertiaMatrix GetInertia() const;
+	InertiaMatrix GetInertiaTensors() const;
 
 	// Defines how the mass is distributed among the body.
 	// \param[in] value The new value.
-	void SetInertia( const InertiaMatrix & value );
+	void SetInertiaTensors( const InertiaMatrix & value );
 
 	// This seems to be used to relocate the object's center of mass. Useful for
 	// balancing objects in contraints.
@@ -181,6 +181,22 @@ public:
 	// \param[in] value The new value.
 	void SetAngularDamping( float value );
 
+	// Unknown.
+	// \return The current value.
+	float GetTimefactorOrGravityfactor_() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetTimefactorOrGravityfactor_( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetTimefactorOrGravityfactor_() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetTimefactorOrGravityfactor_( float value );
+
 	// The body's friction.
 	// \return The current value.
 	float GetFriction() const;
@@ -188,6 +204,14 @@ public:
 	// The body's friction.
 	// \param[in] value The new value.
 	void SetFriction( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetRollingfrictionmultiplier_() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetRollingfrictionmultiplier_( float value );
 
 	// The body's restitution (elasticity).
 	//       If the restitution is not 0.0 the object will need extra CPU for all new
@@ -572,7 +596,7 @@ protected:
 	/*! Angular velocity. */
 	Vector4 angularVelocity;
 	/*! Defines how the mass is distributed among the body. */
-	InertiaMatrix inertia;
+	InertiaMatrix inertiaTensors;
 	/*!
 	 * This seems to be used to relocate the object's center of mass. Useful for
 	 * balancing objects in contraints.
@@ -587,8 +611,12 @@ protected:
 	float linearDamping;
 	/*! Damping value for angular movement. */
 	float angularDamping;
+	/*! Unknown. */
+	float timefactorOrGravityfactor_;
 	/*! The body's friction. */
 	float friction;
+	/*! Unknown. */
+	float rollingfrictionmultiplier_;
 	/*!
 	 * The body's restitution (elasticity).
 	 *       If the restitution is not 0.0 the object will need extra CPU for all new
@@ -597,12 +625,6 @@ protected:
 	 * buildings)
 	 */
 	float restitution;
-	/*! Unknown. */
-	float unknownFloat51;
-	/*! Unknown. */
-	float unknownFloat52;
-	/*! Unknown. */
-	float unknownFloat53;
 	/*! Maximal linear velocity. */
 	float maxLinearVelocity;
 	/*! Maximal angular velocity. Pi x 10? */

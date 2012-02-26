@@ -65,21 +65,29 @@ public:
 	// \param[in] value The new value.
 	void SetParticleDescriptions( const vector<ParticleDesc >& value );
 
-	// Unknown, probably a boolean.
+	// Boolean for Num Subtexture Offset UVs
 	// \return The current value.
-	byte GetHasVertexColors2() const;
+	bool GetHasSubtextureOffsetUvs() const;
 
-	// Unknown, probably a boolean.
+	// Boolean for Num Subtexture Offset UVs
 	// \param[in] value The new value.
-	void SetHasVertexColors2( byte value );
+	void SetHasSubtextureOffsetUvs( bool value );
 
-	// Unknown
+	// Sets aspect ratio for Subtexture Offset UV quads
 	// \return The current value.
-	vector<Color4 > GetVertexColors() const;
+	float GetAspectRatio() const;
 
-	// Unknown
+	// Sets aspect ratio for Subtexture Offset UV quads
 	// \param[in] value The new value.
-	void SetVertexColors( const vector<Color4 >& value );
+	void SetAspectRatio( float value );
+
+	// Defines UV offsets
+	// \return The current value.
+	vector<Vector4 > GetSubtextureOffsetUvs() const;
+
+	// Defines UV offsets
+	// \param[in] value The new value.
+	void SetSubtextureOffsetUvs( const vector<Vector4 >& value );
 
 	****End Example Naive Implementation***/
 
@@ -96,20 +104,22 @@ protected:
 	unsigned short unknownShort1;
 	/*! Unknown. */
 	unsigned short unknownShort2;
-	/*! Unknown, probably a boolean. */
-	byte hasVertexColors2;
-	/*! Unknown, particle bit depth? */
-	mutable unsigned int numVertexColors2;
+	/*! Boolean for Num Subtexture Offset UVs */
+	bool hasSubtextureOffsetUvs;
+	/*! How many quads to use in BSPSysSubTexModifier for texture atlasing */
+	mutable unsigned int numSubtextureOffsetUvs;
+	/*! Sets aspect ratio for Subtexture Offset UV quads */
+	float aspectRatio;
+	/*! Defines UV offsets */
+	vector<Vector4 > subtextureOffsetUvs;
 	/*! Unknown */
-	unsigned int unknownInt3;
+	unsigned int unknownInt4;
 	/*! Unknown */
-	vector<Color4 > vertexColors;
+	unsigned int unknownInt5;
 	/*! Unknown */
-	byte unknownByte2;
+	unsigned int unknownInt6;
 	/*! Unknown */
-	byte unknownByte3;
-	/*! Unknown */
-	Vector3 unknownFloats4;
+	unsigned short unknownShort3;
 	/*! Unknown */
 	byte unknownByte4;
 public:

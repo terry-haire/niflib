@@ -20,7 +20,7 @@ namespace Niflib {
 class BSLODTriShape;
 typedef Ref<BSLODTriShape> BSLODTriShapeRef;
 
-/*! Unkown */
+/*! A variation on NiTriShape, for visibility control over vertex groups. */
 class BSLODTriShape : public NiTriBasedGeom {
 public:
 	/*! Constructor */
@@ -53,18 +53,44 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+	// Unknown
+	// \return The current value.
+	unsigned int GetLevel0Size() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetLevel0Size( unsigned int value );
+
+	// Unknown
+	// \return The current value.
+	unsigned int GetLevel1Size() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetLevel1Size( unsigned int value );
+
+	// Unknown
+	// \return The current value.
+	unsigned int GetLevel2Size() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetLevel2Size( unsigned int value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown */
-	unsigned int unknownInt1;
+	unsigned int level0Size;
 	/*! Unknown */
-	unsigned int unknownInt2;
+	unsigned int level1Size;
 	/*! Unknown */
-	unsigned int unknownInt3;
+	unsigned int level2Size;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

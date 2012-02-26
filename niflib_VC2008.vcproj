@@ -2509,6 +2509,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\gen\bhkCMSDBigTris.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\gen\bhkCMSDChunk.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\gen\bhkCMSDContainer.cpp"
 					>
 				</File>
@@ -2517,7 +2525,15 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\gen\bhkCMSDMaterial.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\gen\BodyPartList.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\gen\BoneLOD.cpp"
 					>
 				</File>
 				<File
@@ -2534,6 +2550,10 @@
 				</File>
 				<File
 					RelativePath=".\src\gen\BSPackedAdditionalDataBlock.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\gen\BSSegment.cpp"
 					>
 				</File>
 				<File
@@ -2673,6 +2693,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\gen\MTransform.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\gen\MultiTextureElement.cpp"
 					>
 				</File>
@@ -2709,6 +2733,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\gen\QTransform.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\gen\QuaternionXYZW.cpp"
 					>
 				</File>
@@ -2738,6 +2766,10 @@
 				</File>
 				<File
 					RelativePath=".\src\gen\SkinPartition.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\gen\SkinPartitionUnknownItem1.cpp"
 					>
 				</File>
 				<File
@@ -2816,6 +2848,12 @@
 					RelativePath=".\TriStripper\tri_stripper.cpp"
 					>
 				</File>
+			</Filter>
+			<Filter
+				Name="Resource Files"
+				Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+				UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
+				>
 			</Filter>
 		</Filter>
 		<Filter
@@ -4683,6 +4721,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\include\gen\bhkCMSDBigTris.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\gen\bhkCMSDChunk.h"
+					>
+				</File>
+				<File
 					RelativePath=".\include\gen\bhkCMSDContainer.h"
 					>
 				</File>
@@ -4691,7 +4737,15 @@
 					>
 				</File>
 				<File
+					RelativePath=".\include\gen\bhkCMSDMaterial.h"
+					>
+				</File>
+				<File
 					RelativePath=".\include\gen\BodyPartList.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\gen\BoneLOD.h"
 					>
 				</File>
 				<File
@@ -4708,6 +4762,10 @@
 				</File>
 				<File
 					RelativePath=".\include\gen\BSPackedAdditionalDataBlock.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\gen\BSSegment.h"
 					>
 				</File>
 				<File
@@ -4851,6 +4909,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\include\gen\MTransform.h"
+					>
+				</File>
+				<File
 					RelativePath=".\include\gen\MultiTextureElement.h"
 					>
 				</File>
@@ -4887,6 +4949,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\include\gen\QTransform.h"
+					>
+				</File>
+				<File
 					RelativePath=".\include\gen\QuaternionXYZW.h"
 					>
 				</File>
@@ -4916,6 +4982,10 @@
 				</File>
 				<File
 					RelativePath=".\include\gen\SkinPartition.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\gen\SkinPartitionUnknownItem1.h"
 					>
 				</File>
 				<File
@@ -5019,12 +5089,6 @@
 					>
 				</File>
 			</Filter>
-		</Filter>
-		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
-			>
 		</Filter>
 	</Files>
 	<Globals>

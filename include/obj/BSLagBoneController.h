@@ -57,19 +57,27 @@ public:
 
 	// How long it takes to rotate about an actor back to rest position.
 	// \return The current value.
-	float GetRotationLag() const;
+	float GetLinearVelocity() const;
 
 	// How long it takes to rotate about an actor back to rest position.
 	// \param[in] value The new value.
-	void SetRotationLag( float value );
+	void SetLinearVelocity( float value );
+
+	// How the bone lags rotation
+	// \return The current value.
+	float GetLinearRotation() const;
+
+	// How the bone lags rotation
+	// \param[in] value The new value.
+	void SetLinearRotation( float value );
 
 	// How far bone will tail an actor.
 	// \return The current value.
-	float GetLength() const;
+	float GetMaximumDistance() const;
 
 	// How far bone will tail an actor.
 	// \param[in] value The new value.
-	void SetLength( float value );
+	void SetMaximumDistance( float value );
 
 	****End Example Naive Implementation***/
 
@@ -78,11 +86,11 @@ public:
 	//--END CUSTOM CODE--//
 protected:
 	/*! How long it takes to rotate about an actor back to rest position. */
-	float rotationLag;
-	/*! Unknown */
-	float unknownFloat3;
+	float linearVelocity;
+	/*! How the bone lags rotation */
+	float linearRotation;
 	/*! How far bone will tail an actor. */
-	float length;
+	float maximumDistance;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

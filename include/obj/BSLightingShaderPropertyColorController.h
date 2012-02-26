@@ -53,14 +53,24 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+	// Which variable in the shader to animate.
+	// \return The current value.
+	unsigned int GetTargetVariable() const;
+
+	// Which variable in the shader to animate.
+	// \param[in] value The new value.
+	void SetTargetVariable( unsigned int value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown */
-	unsigned int unknownInt2;
+	/*! Which variable in the shader to animate. */
+	unsigned int targetVariable;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

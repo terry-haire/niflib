@@ -17,16 +17,16 @@ All rights reserved.  Please see niflib.h for license. */
 #include "NiObject.h"
 
 // Include structures
-#include "../gen/bhkCMSD_Something.h"
+#include "../gen/bhkCMSDMaterial.h"
 #include "../gen/bhkCMSDData.h"
-#include "../gen/bhkCMSD_Shape.h"
-#include "../gen/bhkCMSDContainer.h"
+#include "../gen/bhkCMSDBigTris.h"
+#include "../gen/bhkCMSDChunk.h"
 namespace Niflib {
 
 class bhkCompressedMeshShapeData;
 typedef Ref<bhkCompressedMeshShapeData> bhkCompressedMeshShapeDataRef;
 
-/*!  */
+/*! A compressed mesh shape for collision in Skyrim. */
 class bhkCompressedMeshShapeData : public NiObject {
 public:
 	/*! Constructor */
@@ -79,27 +79,19 @@ public:
 
 	// Compressed Vertices?
 	// \return The current value.
-	vector<Vector4 > GetVertices() const;
+	vector<Vector4 > GetBigVerts() const;
 
 	// Compressed Vertices?
 	// \param[in] value The new value.
-	void SetVertices( const vector<Vector4 >& value );
+	void SetBigVerts( const vector<Vector4 >& value );
 
 	// Unknown
 	// \return The current value.
-	array<4,bhkCMSD_Shape >  GetShapeSet1() const;
+	vector<bhkCMSDBigTris > GetBigTris() const;
 
 	// Unknown
 	// \param[in] value The new value.
-	void SetShapeSet1( const array<4,bhkCMSD_Shape >&  value );
-
-	// Unknown, The first set is always present if 1.
-	// \return The current value.
-	vector<bhkCMSDContainer > GetShapeSet2() const;
-
-	// Unknown, The first set is always present if 1.
-	// \param[in] value The new value.
-	void SetShapeSet2( const vector<bhkCMSDContainer >& value );
+	void SetBigTris( const vector<bhkCMSDBigTris >& value );
 
 	****End Example Naive Implementation***/
 
@@ -121,9 +113,9 @@ protected:
 	unsigned short unknownShort4;
 	/*! Unknown. */
 	float unknownFloat1;
-	/*! Unknown. */
+	/*! Seems to define bounding shape, this is lower left corner? */
 	Vector4 unknownFloats1;
-	/*! Unknown. */
+	/*! see above, upper right? */
 	Vector4 unknownFloats2;
 	/*! Unknown */
 	byte unknownByte1;
@@ -135,10 +127,10 @@ protected:
 	unsigned int unknownInt5;
 	/*! Unknown */
 	byte unknownByte2;
-	/*! Number of bhkCMSDSomething */
-	mutable unsigned int somethingCount;
-	/*! Unknown */
-	vector<bhkCMSD_Something > unknownIntSomething;
+	/*! Number of chunk materials */
+	mutable unsigned int numMaterials;
+	/*! Assigns materials to individual chunks? */
+	vector<bhkCMSDMaterial > chunkMaterials;
 	/*! Unknown */
 	unsigned int unknownInt6;
 	/*! Format for vertices/? */
@@ -156,27 +148,17 @@ protected:
 	/*! Unknown */
 	float unknownFloat2;
 	/*! Unknown */
-	mutable unsigned int numVertices;
+	mutable unsigned int numBigVerts;
 	/*! Compressed Vertices? */
-	vector<Vector4 > vertices;
+	vector<Vector4 > bigVerts;
 	/*! Unknown */
-	mutable unsigned int numBytes2;
+	mutable unsigned int numBigTris;
 	/*! Unknown */
-	vector< array<12,byte > > unknownBytes;
+	vector<bhkCMSDBigTris > bigTris;
 	/*! Unknown */
-	mutable unsigned int numSubshapes;
-	/*! Unknown */
-	Vector3 unknownFloats3;
-	/*! Unknown */
-	unsigned int unknownInt10;
-	/*! Unknown */
-	unsigned int unknownInt11;
-	/*! Unknown */
-	float unknownFloat3;
-	/*! Unknown */
-	array<4,bhkCMSD_Shape > shapeSet1;
-	/*! Unknown, The first set is always present if 1. */
-	vector<bhkCMSDContainer > shapeSet2;
+	mutable unsigned int numChunks;
+	/*! Unknown. */
+	vector<bhkCMSDChunk > chunks;
 	/*! Unknown, end of block. */
 	unsigned int unknownInt12;
 public:

@@ -17,7 +17,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "NiTriShape.h"
 
 // Include structures
-#include "../gen/BSSegmentedTriangle.h"
+#include "../gen/BSSegment.h"
 namespace Niflib {
 
 class BSSegmentedTriShape;
@@ -58,13 +58,13 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Unknown
+	// Configuration of each segment
 	// \return The current value.
-	vector<BSSegmentedTriangle > GetSegTriangles() const;
+	vector<BSSegment > GetSegment() const;
 
-	// Unknown
+	// Configuration of each segment
 	// \param[in] value The new value.
-	void SetSegTriangles( const vector<BSSegmentedTriangle >& value );
+	void SetSegment( const vector<BSSegment >& value );
 
 	****End Example Naive Implementation***/
 
@@ -72,10 +72,10 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown */
-	mutable int numSegTriangles;
-	/*! Unknown */
-	vector<BSSegmentedTriangle > segTriangles;
+	/*! Number of segments in the square grid */
+	mutable int numSegments;
+	/*! Configuration of each segment */
+	vector<BSSegment > segment;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

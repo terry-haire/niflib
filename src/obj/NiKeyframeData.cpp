@@ -98,6 +98,7 @@ void NiKeyframeData::Write( ostream& out, const map<NiObjectRef,unsigned int> & 
 	//--END CUSTOM CODE--//
 
 	NiObject::Write( out, link_map, missing_link_stack, info );
+	NifStream( numRotationKeys, out, info );
 	if ( (numRotationKeys != 0) ) {
 		NifStream( rotationType, out, info );
 	};
@@ -151,6 +152,7 @@ std::string NiKeyframeData::asString( bool verbose ) const {
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << NiObject::asString();
+	out << "  Num Rotation Keys:  " << numRotationKeys << endl;
 	if ( (numRotationKeys != 0) ) {
 		out << "    Rotation Type:  " << rotationType << endl;
 	};

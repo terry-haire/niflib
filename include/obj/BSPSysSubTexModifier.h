@@ -20,7 +20,10 @@ namespace Niflib {
 class BSPSysSubTexModifier;
 typedef Ref<BSPSysSubTexModifier> BSPSysSubTexModifierRef;
 
-/*!  */
+/*!
+ * Similar to a Flip Controller, this handles particle texture animation on a
+ * single texture atlas
+ */
 class BSPSysSubTexModifier : public NiPSysModifier {
 public:
 	/*! Constructor */
@@ -53,26 +56,84 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+	// Starting frame/position on atlas
+	// \return The current value.
+	unsigned int GetStartFrame() const;
+
+	// Starting frame/position on atlas
+	// \param[in] value The new value.
+	void SetStartFrame( unsigned int value );
+
+	// Random chance to start on a different frame?
+	// \return The current value.
+	float GetStartFrameFudge() const;
+
+	// Random chance to start on a different frame?
+	// \param[in] value The new value.
+	void SetStartFrameFudge( float value );
+
+	// Ending frame/position on atlas
+	// \return The current value.
+	float GetEndFrame() const;
+
+	// Ending frame/position on atlas
+	// \param[in] value The new value.
+	void SetEndFrame( float value );
+
+	// Frame to start looping
+	// \return The current value.
+	float GetLoopStartFrame() const;
+
+	// Frame to start looping
+	// \param[in] value The new value.
+	void SetLoopStartFrame( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetLoopStartFrameFudge() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetLoopStartFrameFudge( float value );
+
+	// Unknown
+	// \return The current value.
+	float GetFrameCount() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetFrameCount( float value );
+
+	// Unknown
+	// \return The current value.
+	float GetFrameCountFudge() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetFrameCountFudge( float value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
+	/*! Starting frame/position on atlas */
+	unsigned int startFrame;
+	/*! Random chance to start on a different frame? */
+	float startFrameFudge;
+	/*! Ending frame/position on atlas */
+	float endFrame;
+	/*! Frame to start looping */
+	float loopStartFrame;
+	/*! Unknown. */
+	float loopStartFrameFudge;
 	/*! Unknown */
-	unsigned int unknownInt1;
-	/*! These seem to relate to the texture slots in a TextureSet */
-	float unknownFloat1;
+	float frameCount;
 	/*! Unknown */
-	float unknownFloat2;
-	/*! Unknown */
-	float unknownFloat3;
-	/*! Unknown */
-	float unknownFloat4;
-	/*! Unknown */
-	float unknownFloat5;
-	/*! Unknown */
-	float unknownFloat6;
+	float frameCountFudge;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

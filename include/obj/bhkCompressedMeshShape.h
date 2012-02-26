@@ -98,9 +98,13 @@ protected:
 	/*! Unknown. */
 	float unknownFloat1;
 	/*! Unknown. */
-	array<8,byte > unknown8Bytes;
+	array<4,byte > unknown8Bytes;
 	/*! Unknown */
-	array<8,float > unknownFloats;
+	Vector4 unknownFloats1;
+	/*! Unknown */
+	Vector4 unknownFloats2;
+	/*! Unknown */
+	float unknownFloat2;
 	/*! The collision mesh data. */
 	Ref<bhkCompressedMeshShapeData > data;
 public:

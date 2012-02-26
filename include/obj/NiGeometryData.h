@@ -59,14 +59,6 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Bethesda uses this for max number of particles in NiPSysData.
-	// \return The current value.
-	unsigned short GetBsMaxVertices() const;
-
-	// Bethesda uses this for max number of particles in NiPSysData.
-	// \param[in] value The new value.
-	void SetBsMaxVertices( unsigned short value );
-
 	// Used with NiCollision objects when OBB or TRI is set.
 	// \return The current value.
 	byte GetKeepFlags() const;
@@ -439,10 +431,8 @@ public:
 protected:
 	/*! Unknown identifier. Always 0. */
 	int unknownInt;
-	/*! Number of vertices. */
+	/*! Number of vertices. For NiPSysData this is max particles. */
 	mutable unsigned short numVertices;
-	/*! Bethesda uses this for max number of particles in NiPSysData. */
-	unsigned short bsMaxVertices;
 	/*! Used with NiCollision objects when OBB or TRI is set. */
 	byte keepFlags;
 	/*! Unknown. */

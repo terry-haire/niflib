@@ -15,12 +15,15 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "NiExtraData.h"
+
+// Include structures
+#include "../gen/BoneLOD.h"
 namespace Niflib {
 
 class BSBoneLODExtraData;
 typedef Ref<BSBoneLODExtraData> BSBoneLODExtraDataRef;
 
-/*! Unkown */
+/*! Unknown */
 class BSBoneLODExtraData : public NiExtraData {
 public:
 	/*! Constructor */
@@ -53,18 +56,26 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+	// Bone Entry
+	// \return The current value.
+	vector<BoneLOD > GetBonelodInfo() const;
+
+	// Bone Entry
+	// \param[in] value The new value.
+	void SetBonelodInfo( const vector<BoneLOD >& value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*!  */
-	mutable unsigned int unknownInt1;
-	/*!  */
-	vector<unsigned int > unknownIntA1;
-	/*!  */
-	vector<unsigned int > unknownIntA2;
+	/*! Number of bone entries */
+	mutable unsigned int bonelodCount;
+	/*! Bone Entry */
+	vector<BoneLOD > bonelodInfo;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

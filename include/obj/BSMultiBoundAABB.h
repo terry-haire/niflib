@@ -53,14 +53,34 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+	// Position of the AABB's center
+	// \return The current value.
+	Vector3 GetPosition() const;
+
+	// Position of the AABB's center
+	// \param[in] value The new value.
+	void SetPosition( const Vector3 & value );
+
+	// Extent of the AABB in all directions
+	// \return The current value.
+	Vector3 GetExtent() const;
+
+	// Extent of the AABB in all directions
+	// \param[in] value The new value.
+	void SetExtent( const Vector3 & value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown */
-	array<6,float > unknownFloats1;
+	/*! Position of the AABB's center */
+	Vector3 position;
+	/*! Extent of the AABB in all directions */
+	Vector3 extent;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

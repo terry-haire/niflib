@@ -27,6 +27,8 @@ typedef Ref<BSInvMarker> BSInvMarkerRef;
  *     If not present, then Skyrim will still show the nif in inventory,
  *     using the default values.
  *     Name should be 'INV' (without the quotes).
+ *     For rotations, a short of "4712" appears as "4.712" but "959" appears as
+ * "0.959"  meshes\weapons\daedric\daedricbowskinned.nif
  */
 class BSInvMarker : public NiExtraData {
 public:
@@ -62,29 +64,37 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Up-down rotation, in radians * 1000.
+	// Rotation in radians * 1000.
 	// \return The current value.
-	unsigned int GetRotation1() const;
+	unsigned short GetRotationX() const;
 
-	// Up-down rotation, in radians * 1000.
+	// Rotation in radians * 1000.
 	// \param[in] value The new value.
-	void SetRotation1( unsigned int value );
+	void SetRotationX( unsigned short value );
 
-	// Left-right rotation, in radians * 1000.
+	// Rotation in radians * 1000.
 	// \return The current value.
-	unsigned int GetRotation2() const;
+	unsigned short GetRotationY() const;
 
-	// Left-right rotation, in radians * 1000.
+	// Rotation in radians * 1000.
 	// \param[in] value The new value.
-	void SetRotation2( unsigned int value );
+	void SetRotationY( unsigned short value );
 
-	// Zoom factor. 16000 is really far away, 16600 is really close by.
+	// Rotation in radians * 1000.
 	// \return The current value.
-	unsigned short GetZoom() const;
+	unsigned short GetRotationZ() const;
 
-	// Zoom factor. 16000 is really far away, 16600 is really close by.
+	// Rotation in radians * 1000.
 	// \param[in] value The new value.
-	void SetZoom( unsigned short value );
+	void SetRotationZ( unsigned short value );
+
+	// Zoom factor.
+	// \return The current value.
+	float GetZoom() const;
+
+	// Zoom factor.
+	// \param[in] value The new value.
+	void SetZoom( float value );
 
 	****End Example Naive Implementation***/
 
@@ -92,12 +102,14 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Up-down rotation, in radians * 1000. */
-	unsigned int rotation1;
-	/*! Left-right rotation, in radians * 1000. */
-	unsigned int rotation2;
-	/*! Zoom factor. 16000 is really far away, 16600 is really close by. */
-	unsigned short zoom;
+	/*! Rotation in radians * 1000. */
+	unsigned short rotationX;
+	/*! Rotation in radians * 1000. */
+	unsigned short rotationY;
+	/*! Rotation in radians * 1000. */
+	unsigned short rotationZ;
+	/*! Zoom factor. */
+	float zoom;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

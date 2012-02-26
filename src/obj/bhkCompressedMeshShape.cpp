@@ -22,7 +22,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type bhkCompressedMeshShape::TYPE("bhkCompressedMeshShape", &bhkShape::TYPE );
 
-bhkCompressedMeshShape::bhkCompressedMeshShape() : target(NULL), material((HavokMaterial)0), unknownFloat1(0.0f), data(NULL) {
+bhkCompressedMeshShape::bhkCompressedMeshShape() : target(NULL), material((HavokMaterial)0), unknownFloat1(0.0f), unknownFloat2(0.0f), data(NULL) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -53,12 +53,12 @@ void bhkCompressedMeshShape::Read( istream& in, list<unsigned int> & link_stack,
 	link_stack.push_back( block_num );
 	NifStream( material, in, info );
 	NifStream( unknownFloat1, in, info );
-	for (unsigned int i1 = 0; i1 < 8; i1++) {
+	for (unsigned int i1 = 0; i1 < 4; i1++) {
 		NifStream( unknown8Bytes[i1], in, info );
 	};
-	for (unsigned int i1 = 0; i1 < 8; i1++) {
-		NifStream( unknownFloats[i1], in, info );
-	};
+	NifStream( unknownFloats1, in, info );
+	NifStream( unknownFloats2, in, info );
+	NifStream( unknownFloat2, in, info );
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
 
@@ -92,12 +92,12 @@ void bhkCompressedMeshShape::Write( ostream& out, const map<NiObjectRef,unsigned
 	}
 	NifStream( material, out, info );
 	NifStream( unknownFloat1, out, info );
-	for (unsigned int i1 = 0; i1 < 8; i1++) {
+	for (unsigned int i1 = 0; i1 < 4; i1++) {
 		NifStream( unknown8Bytes[i1], out, info );
 	};
-	for (unsigned int i1 = 0; i1 < 8; i1++) {
-		NifStream( unknownFloats[i1], out, info );
-	};
+	NifStream( unknownFloats1, out, info );
+	NifStream( unknownFloats2, out, info );
+	NifStream( unknownFloat2, out, info );
 	if ( info.version < VER_3_3_0_13 ) {
 		WritePtr32( &(*data), out );
 	} else {
@@ -133,7 +133,7 @@ std::string bhkCompressedMeshShape::asString( bool verbose ) const {
 	out << "  Material:  " << material << endl;
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 8; i1++) {
+	for (unsigned int i1 = 0; i1 < 4; i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
@@ -144,18 +144,9 @@ std::string bhkCompressedMeshShape::asString( bool verbose ) const {
 		out << "    Unknown 8 Bytes[" << i1 << "]:  " << unknown8Bytes[i1] << endl;
 		array_output_count++;
 	};
-	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 8; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
-			break;
-		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			break;
-		};
-		out << "    Unknown Floats[" << i1 << "]:  " << unknownFloats[i1] << endl;
-		array_output_count++;
-	};
+	out << "  Unknown Floats 1:  " << unknownFloats1 << endl;
+	out << "  Unknown Floats 2:  " << unknownFloats2 << endl;
+	out << "  Unknown Float  2:  " << unknownFloat2 << endl;
 	out << "  Data:  " << data << endl;
 	return out.str();
 

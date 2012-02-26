@@ -73,6 +73,38 @@ public:
 	// \param[in] value The new value.
 	void SetPriority2( unsigned int value );
 
+	// Unknown
+	// \return The current value.
+	Vector3 GetPosition() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetPosition( const Vector3 & value );
+
+	// Unknown
+	// \return The current value.
+	Vector3 GetRotation() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetRotation( const Vector3 & value );
+
+	// Unknown
+	// \return The current value.
+	float GetThreshold() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetThreshold( float value );
+
+	// Unknown
+	// \return The current value.
+	byte GetRemoveIfBroken() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetRemoveIfBroken( byte value );
+
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
@@ -94,15 +126,17 @@ protected:
 	/*! Unknown */
 	unsigned int unknownInt2;
 	/*! Unknown */
-	Vector3 unknownFloats1;
+	Vector3 position;
 	/*! Unknown */
-	Vector3 unknownFloats2;
+	Vector3 rotation;
 	/*! Unknown */
 	unsigned int unknownInt3;
 	/*! Unknown */
+	float threshold;
+	/*! Unknown */
 	float unknownFloat1;
 	/*! Unknown */
-	byte unknownByte1;
+	byte removeIfBroken;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

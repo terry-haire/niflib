@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSEffectShaderProperty::TYPE("BSEffectShaderProperty", &NiProperty::TYPE );
 
-BSEffectShaderProperty::BSEffectShaderProperty() : unknownByte1((byte)0), unknownShort1((unsigned short)0), unknownByte2((byte)0), effectShaderFlags1((unsigned int)0), textureRepeat(1.0, 1.0), effectShaderFlags2((unsigned short)0), unknownShort2((unsigned short)0), unknownFloat1(0.0f), unknownFloat2(0.0f), unknownFloat3(0.0f), unknownFloat4(0.0f), alpha(1.0f), emissive(0.0f), unknownFloat5(0.0f) {
+BSEffectShaderProperty::BSEffectShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)0), shaderFlags2((SkyrimShaderPropertyFlags2)0), uvScale(1.0, 1.0), textureClampMode((unsigned int)0), falloffStartAngle(1.0f), falloffStopAngle(1.0f), falloffStartOpacity(0.0f), falloffStopOpacity(0.0f), emissiveMultiple(0.0f), softFalloffDepth(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,24 +46,20 @@ void BSEffectShaderProperty::Read( istream& in, list<unsigned int> & link_stack,
 	//--END CUSTOM CODE--//
 
 	NiProperty::Read( in, link_stack, info );
-	NifStream( unknownByte1, in, info );
-	NifStream( unknownShort1, in, info );
-	NifStream( unknownByte2, in, info );
-	NifStream( effectShaderFlags1, in, info );
-	NifStream( textureTranslation1, in, info );
-	NifStream( textureRepeat, in, info );
+	NifStream( shaderFlags1, in, info );
+	NifStream( shaderFlags2, in, info );
+	NifStream( uvOffset, in, info );
+	NifStream( uvScale, in, info );
 	NifStream( sourceTexture, in, info );
-	NifStream( effectShaderFlags2, in, info );
-	NifStream( unknownShort2, in, info );
-	NifStream( unknownFloat1, in, info );
-	NifStream( unknownFloat2, in, info );
-	NifStream( unknownFloat3, in, info );
-	NifStream( unknownFloat4, in, info );
-	NifStream( diffuseColor, in, info );
-	NifStream( alpha, in, info );
-	NifStream( emissive, in, info );
-	NifStream( unknownFloat5, in, info );
-	NifStream( gradientTexture, in, info );
+	NifStream( textureClampMode, in, info );
+	NifStream( falloffStartAngle, in, info );
+	NifStream( falloffStopAngle, in, info );
+	NifStream( falloffStartOpacity, in, info );
+	NifStream( falloffStopOpacity, in, info );
+	NifStream( emissiveColor, in, info );
+	NifStream( emissiveMultiple, in, info );
+	NifStream( softFalloffDepth, in, info );
+	NifStream( greyscaleTexture, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -76,24 +72,20 @@ void BSEffectShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned
 	//--END CUSTOM CODE--//
 
 	NiProperty::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownByte1, out, info );
-	NifStream( unknownShort1, out, info );
-	NifStream( unknownByte2, out, info );
-	NifStream( effectShaderFlags1, out, info );
-	NifStream( textureTranslation1, out, info );
-	NifStream( textureRepeat, out, info );
+	NifStream( shaderFlags1, out, info );
+	NifStream( shaderFlags2, out, info );
+	NifStream( uvOffset, out, info );
+	NifStream( uvScale, out, info );
 	NifStream( sourceTexture, out, info );
-	NifStream( effectShaderFlags2, out, info );
-	NifStream( unknownShort2, out, info );
-	NifStream( unknownFloat1, out, info );
-	NifStream( unknownFloat2, out, info );
-	NifStream( unknownFloat3, out, info );
-	NifStream( unknownFloat4, out, info );
-	NifStream( diffuseColor, out, info );
-	NifStream( alpha, out, info );
-	NifStream( emissive, out, info );
-	NifStream( unknownFloat5, out, info );
-	NifStream( gradientTexture, out, info );
+	NifStream( textureClampMode, out, info );
+	NifStream( falloffStartAngle, out, info );
+	NifStream( falloffStopAngle, out, info );
+	NifStream( falloffStartOpacity, out, info );
+	NifStream( falloffStopOpacity, out, info );
+	NifStream( emissiveColor, out, info );
+	NifStream( emissiveMultiple, out, info );
+	NifStream( softFalloffDepth, out, info );
+	NifStream( greyscaleTexture, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -107,24 +99,20 @@ std::string BSEffectShaderProperty::asString( bool verbose ) const {
 
 	stringstream out;
 	out << NiProperty::asString();
-	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
-	out << "  Unknown Short 1:  " << unknownShort1 << endl;
-	out << "  Unknown Byte 2:  " << unknownByte2 << endl;
-	out << "  Effect Shader Flags 1:  " << effectShaderFlags1 << endl;
-	out << "  Texture Translation 1:  " << textureTranslation1 << endl;
-	out << "  Texture Repeat:  " << textureRepeat << endl;
+	out << "  Shader Flags 1:  " << shaderFlags1 << endl;
+	out << "  Shader Flags 2:  " << shaderFlags2 << endl;
+	out << "  UV OffSet:  " << uvOffset << endl;
+	out << "  UV Scale:  " << uvScale << endl;
 	out << "  Source Texture:  " << sourceTexture << endl;
-	out << "  Effect Shader Flags 2:  " << effectShaderFlags2 << endl;
-	out << "  Unknown Short 2:  " << unknownShort2 << endl;
-	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
-	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
-	out << "  Unknown Float 3:  " << unknownFloat3 << endl;
-	out << "  Unknown Float 4:  " << unknownFloat4 << endl;
-	out << "  Diffuse Color:  " << diffuseColor << endl;
-	out << "  Alpha:  " << alpha << endl;
-	out << "  Emissive:  " << emissive << endl;
-	out << "  Unknown Float 5:  " << unknownFloat5 << endl;
-	out << "  Gradient Texture:  " << gradientTexture << endl;
+	out << "  Texture Clamp Mode:  " << textureClampMode << endl;
+	out << "  Falloff Start Angle:  " << falloffStartAngle << endl;
+	out << "  Falloff Stop Angle:  " << falloffStopAngle << endl;
+	out << "  Falloff Start Opacity:  " << falloffStartOpacity << endl;
+	out << "  Falloff Stop Opacity:  " << falloffStopOpacity << endl;
+	out << "  Emissive Color:  " << emissiveColor << endl;
+	out << "  Emissive Multiple:  " << emissiveMultiple << endl;
+	out << "  Soft Falloff Depth:  " << softFalloffDepth << endl;
+	out << "  Greyscale Texture:  " << greyscaleTexture << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -158,28 +146,36 @@ std::list<NiObject *> BSEffectShaderProperty::GetPtrs() const {
 
 /***Begin Example Naive Implementation****
 
-unsigned int BSEffectShaderProperty::GetEffectShaderFlags1() const {
-	return effectShaderFlags1;
+SkyrimShaderPropertyFlags1 BSEffectShaderProperty::GetShaderFlags1() const {
+	return shaderFlags1;
 }
 
-void BSEffectShaderProperty::SetEffectShaderFlags1( unsigned int value ) {
-	effectShaderFlags1 = value;
+void BSEffectShaderProperty::SetShaderFlags1( const SkyrimShaderPropertyFlags1 & value ) {
+	shaderFlags1 = value;
 }
 
-TexCoord BSEffectShaderProperty::GetTextureTranslation1() const {
-	return textureTranslation1;
+SkyrimShaderPropertyFlags2 BSEffectShaderProperty::GetShaderFlags2() const {
+	return shaderFlags2;
 }
 
-void BSEffectShaderProperty::SetTextureTranslation1( const TexCoord & value ) {
-	textureTranslation1 = value;
+void BSEffectShaderProperty::SetShaderFlags2( const SkyrimShaderPropertyFlags2 & value ) {
+	shaderFlags2 = value;
 }
 
-TexCoord BSEffectShaderProperty::GetTextureRepeat() const {
-	return textureRepeat;
+TexCoord BSEffectShaderProperty::GetUvOffset() const {
+	return uvOffset;
 }
 
-void BSEffectShaderProperty::SetTextureRepeat( const TexCoord & value ) {
-	textureRepeat = value;
+void BSEffectShaderProperty::SetUvOffset( const TexCoord & value ) {
+	uvOffset = value;
+}
+
+TexCoord BSEffectShaderProperty::GetUvScale() const {
+	return uvScale;
+}
+
+void BSEffectShaderProperty::SetUvScale( const TexCoord & value ) {
+	uvScale = value;
 }
 
 string BSEffectShaderProperty::GetSourceTexture() const {
@@ -190,44 +186,76 @@ void BSEffectShaderProperty::SetSourceTexture( const string & value ) {
 	sourceTexture = value;
 }
 
-unsigned short BSEffectShaderProperty::GetEffectShaderFlags2() const {
-	return effectShaderFlags2;
+unsigned int BSEffectShaderProperty::GetTextureClampMode() const {
+	return textureClampMode;
 }
 
-void BSEffectShaderProperty::SetEffectShaderFlags2( unsigned short value ) {
-	effectShaderFlags2 = value;
+void BSEffectShaderProperty::SetTextureClampMode( unsigned int value ) {
+	textureClampMode = value;
 }
 
-Color3 BSEffectShaderProperty::GetDiffuseColor() const {
-	return diffuseColor;
+float BSEffectShaderProperty::GetFalloffStartAngle() const {
+	return falloffStartAngle;
 }
 
-void BSEffectShaderProperty::SetDiffuseColor( const Color3 & value ) {
-	diffuseColor = value;
+void BSEffectShaderProperty::SetFalloffStartAngle( float value ) {
+	falloffStartAngle = value;
 }
 
-float BSEffectShaderProperty::GetAlpha() const {
-	return alpha;
+float BSEffectShaderProperty::GetFalloffStopAngle() const {
+	return falloffStopAngle;
 }
 
-void BSEffectShaderProperty::SetAlpha( float value ) {
-	alpha = value;
+void BSEffectShaderProperty::SetFalloffStopAngle( float value ) {
+	falloffStopAngle = value;
 }
 
-float BSEffectShaderProperty::GetEmissive() const {
-	return emissive;
+float BSEffectShaderProperty::GetFalloffStartOpacity() const {
+	return falloffStartOpacity;
 }
 
-void BSEffectShaderProperty::SetEmissive( float value ) {
-	emissive = value;
+void BSEffectShaderProperty::SetFalloffStartOpacity( float value ) {
+	falloffStartOpacity = value;
 }
 
-string BSEffectShaderProperty::GetGradientTexture() const {
-	return gradientTexture;
+float BSEffectShaderProperty::GetFalloffStopOpacity() const {
+	return falloffStopOpacity;
 }
 
-void BSEffectShaderProperty::SetGradientTexture( const string & value ) {
-	gradientTexture = value;
+void BSEffectShaderProperty::SetFalloffStopOpacity( float value ) {
+	falloffStopOpacity = value;
+}
+
+Color4 BSEffectShaderProperty::GetEmissiveColor() const {
+	return emissiveColor;
+}
+
+void BSEffectShaderProperty::SetEmissiveColor( const Color4 & value ) {
+	emissiveColor = value;
+}
+
+float BSEffectShaderProperty::GetEmissiveMultiple() const {
+	return emissiveMultiple;
+}
+
+void BSEffectShaderProperty::SetEmissiveMultiple( float value ) {
+	emissiveMultiple = value;
+}
+
+float BSEffectShaderProperty::GetSoftFalloffDepth() const {
+	return softFalloffDepth;
+}
+
+void BSEffectShaderProperty::SetSoftFalloffDepth( float value ) {
+	softFalloffDepth = value;
+}
+
+string BSEffectShaderProperty::GetGreyscaleTexture() const {
+	return greyscaleTexture;
+}
+
+void BSEffectShaderProperty::SetGreyscaleTexture( const string & value ) {
+	greyscaleTexture = value;
 }
 
 ****End Example Naive Implementation***/
