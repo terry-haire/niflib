@@ -9,6 +9,7 @@ All rights reserved.  Please see niflib.h for license. */
 
 //--BEGIN FILE HEAD CUSTOM CODE--//
 #include "../../include/Inertia.h"
+#include <algorithm>
 //--END CUSTOM CODE--//
 
 #include "../../include/FixLink.h"
