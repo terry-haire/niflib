@@ -40,9 +40,9 @@ struct FurniturePosition {
 	/*! Similar to Orientation, in float form. */
 	float heading;
 	/*! Unknown */
-	unsigned short animationType;
+	AnimationType animationType;
 	/*! Unknown/unused in nif? */
-	unsigned short entryProperties;
+	FurnitureEntryPoints entryProperties;
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 };

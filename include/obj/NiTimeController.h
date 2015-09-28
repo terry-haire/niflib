@@ -68,18 +68,18 @@ public:
 	void SetNextController( Ref<NiTimeController > value );
 
 	// Controller flags (usually 0x000C). Probably controls loops.
-	//       Bit 0 : Anim type, 0=APP_TIME 1=APP_INIT
-	//       Bit 1-2 : Cycle type  00=Loop 01=Reverse 10=Loop
-	//       Bit 3 : Active
-	//       Bit 4 : Play backwards
+	//             Bit 0 : Anim type, 0=APP_TIME 1=APP_INIT
+	//             Bit 1-2 : Cycle type  00=Loop 01=Reverse 10=Loop
+	//             Bit 3 : Active
+	//             Bit 4 : Play backwards
 	// \return The current value.
 	unsigned short GetFlags() const;
 
 	// Controller flags (usually 0x000C). Probably controls loops.
-	//       Bit 0 : Anim type, 0=APP_TIME 1=APP_INIT
-	//       Bit 1-2 : Cycle type  00=Loop 01=Reverse 10=Loop
-	//       Bit 3 : Active
-	//       Bit 4 : Play backwards
+	//             Bit 0 : Anim type, 0=APP_TIME 1=APP_INIT
+	//             Bit 1-2 : Cycle type  00=Loop 01=Reverse 10=Loop
+	//             Bit 3 : Active
+	//             Bit 4 : Play backwards
 	// \param[in] value The new value.
 	void SetFlags( unsigned short value );
 
@@ -229,10 +229,10 @@ protected:
 	Ref<NiTimeController > nextController;
 	/*!
 	 * Controller flags (usually 0x000C). Probably controls loops.
-	 *       Bit 0 : Anim type, 0=APP_TIME 1=APP_INIT
-	 *       Bit 1-2 : Cycle type  00=Loop 01=Reverse 10=Loop
-	 *       Bit 3 : Active
-	 *       Bit 4 : Play backwards
+	 *             Bit 0 : Anim type, 0=APP_TIME 1=APP_INIT
+	 *             Bit 1-2 : Cycle type  00=Loop 01=Reverse 10=Loop
+	 *             Bit 3 : Active
+	 *             Bit 4 : Play backwards
 	 */
 	unsigned short flags;
 	/*! Frequency (is usually 1.0). */

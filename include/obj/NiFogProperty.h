@@ -55,19 +55,19 @@ public:
 	/***Begin Example Naive Implementation****
 
 	// 1's bit: Enables Fog
-	//       2's bit: Sets Fog Function to FOG_RANGE_SQ
-	//       4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
+	//             2's bit: Sets Fog Function to FOG_RANGE_SQ
+	//             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
 	//
-	//       If 2's and 4's bit are not set, but fog is enabled, Fog function is
+	//             If 2's and 4's bit are not set, but fog is enabled, Fog function is
 	// FOG_Z_LINEAR.
 	// \return The current value.
 	unsigned short GetFlags() const;
 
 	// 1's bit: Enables Fog
-	//       2's bit: Sets Fog Function to FOG_RANGE_SQ
-	//       4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
+	//             2's bit: Sets Fog Function to FOG_RANGE_SQ
+	//             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
 	//
-	//       If 2's and 4's bit are not set, but fog is enabled, Fog function is
+	//             If 2's and 4's bit are not set, but fog is enabled, Fog function is
 	// FOG_Z_LINEAR.
 	// \param[in] value The new value.
 	void SetFlags( unsigned short value );
@@ -132,10 +132,10 @@ public:
 protected:
 	/*!
 	 * 1's bit: Enables Fog
-	 *       2's bit: Sets Fog Function to FOG_RANGE_SQ
-	 *       4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
+	 *             2's bit: Sets Fog Function to FOG_RANGE_SQ
+	 *             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
 	 * 
-	 *       If 2's and 4's bit are not set, but fog is enabled, Fog function is
+	 *             If 2's and 4's bit are not set, but fog is enabled, Fog function is
 	 * FOG_Z_LINEAR.
 	 */
 	unsigned short flags;

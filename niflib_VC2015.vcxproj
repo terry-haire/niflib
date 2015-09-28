@@ -335,6 +335,7 @@
     <ClCompile Include="src\gen\bhkCMSDContainer.cpp" />
     <ClCompile Include="src\gen\bhkCMSDData.cpp" />
     <ClCompile Include="src\gen\bhkCMSDMaterial.cpp" />
+    <ClCompile Include="src\gen\bhkCMSDTransform.cpp" />
     <ClCompile Include="src\gen\bhkCMSD_Shape.cpp" />
     <ClCompile Include="src\gen\bhkCMSD_Something.cpp" />
     <ClCompile Include="src\gen\BodyPartList.cpp" />
@@ -893,6 +894,7 @@
     <ClInclude Include="include\gen\bhkCMSDContainer.h" />
     <ClInclude Include="include\gen\bhkCMSDData.h" />
     <ClInclude Include="include\gen\bhkCMSDMaterial.h" />
+    <ClInclude Include="include\gen\bhkCMSDTransform.h" />
     <ClInclude Include="include\gen\bhkCMSD_Shape.h" />
     <ClInclude Include="include\gen\bhkCMSD_Something.h" />
     <ClInclude Include="include\gen\BodyPartList.h" />

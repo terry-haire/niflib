@@ -130,14 +130,6 @@ public:
 	// \param[in] value The new value.
 	void SetDirtyFlag( bool value );
 
-	// Two property links, used by Bethesda.
-	// \return The current value.
-	array<2,Ref<NiProperty > >  GetBsProperties() const;
-
-	// Two property links, used by Bethesda.
-	// \param[in] value The new value.
-	void SetBsProperties( const array<2,Ref<NiProperty > >&  value );
-
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
@@ -259,6 +251,14 @@ public:
 	 * Removes all properties from this object.  Properties specify various characteristics of the object that affect rendering.  They may be shared among objects.
 	 */
 	NIFLIB_API virtual void ClearProperties();
+
+	// Two property links, used by Bethesda.
+	// \return The current value.
+	NIFLIB_API array<2, Ref<NiProperty > >  GetBSProperties() const;
+
+	// Two property links, used by Bethesda.
+	// \param[in] value The new value.
+	NIFLIB_API void SetBSProperties(const array<2, Ref<NiProperty > >&  value);
 
 	//--END CUSTOM CODE--//
 protected:

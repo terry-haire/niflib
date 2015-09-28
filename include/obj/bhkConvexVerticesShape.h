@@ -21,8 +21,8 @@ typedef Ref<bhkConvexVerticesShape> bhkConvexVerticesShapeRef;
 
 /*!
  * A convex shape built from vertices. Note that if the shape is used in
- *     a non-static object (such as clutter), then they will simply fall
- *     through ground when they are under a bhkListShape.
+ *         a non-static object (such as clutter), then they will simply fall
+ *         through ground when they are under a bhkListShape.
  */
 class bhkConvexVerticesShape : public bhkConvexShape {
 public:

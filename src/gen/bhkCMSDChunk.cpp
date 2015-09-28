@@ -9,7 +9,7 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-bhkCMSDChunk::bhkCMSDChunk() : numVertices((unsigned int)0), numIndices((unsigned int)0), numStrips((unsigned int)0), numIndices2((unsigned int)0) {};
+bhkCMSDChunk::bhkCMSDChunk() : materialIndex((unsigned int)0), unknownShort1((unsigned short)0), transformIndex((unsigned short)0), numVertices((unsigned int)0), numIndices((unsigned int)0), numStrips((unsigned int)0), numIndices2((unsigned int)0) {};
 
 //Copy Constructor
 bhkCMSDChunk::bhkCMSDChunk( const bhkCMSDChunk & src ) {
@@ -18,8 +18,10 @@ bhkCMSDChunk::bhkCMSDChunk( const bhkCMSDChunk & src ) {
 
 //Copy Operator
 bhkCMSDChunk & bhkCMSDChunk::operator=( const bhkCMSDChunk & src ) {
-	this->unknownFloats1 = src.unknownFloats1;
-	this->unknownFloats2 = src.unknownFloats2;
+	this->translation = src.translation;
+	this->materialIndex = src.materialIndex;
+	this->unknownShort1 = src.unknownShort1;
+	this->transformIndex = src.transformIndex;
 	this->numVertices = src.numVertices;
 	this->vertices = src.vertices;
 	this->numIndices = src.numIndices;

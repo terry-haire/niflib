@@ -180,9 +180,9 @@ protected:
 	array<3,byte > unknown3Bytes;
 	/*!
 	 * [96,8,130,0,0,65,0,0] if 24 bits per pixel
-	 *       [129,8,130,32,0,65,12,0] if 32 bits per pixel
-	 *       [34,0,0,0,0,0,0,0] if 8 bits per pixel
-	 *       [4,0,0,0,0,0,0,0] if 0 (?) bits per pixel
+	 *             [129,8,130,32,0,65,12,0] if 32 bits per pixel
+	 *             [34,0,0,0,0,0,0,0] if 8 bits per pixel
+	 *             [4,0,0,0,0,0,0,0] if 0 (?) bits per pixel
 	 */
 	array<8,byte > unknown8Bytes;
 	/*! Seems to always be zero. */

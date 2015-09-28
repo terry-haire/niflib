@@ -56,22 +56,26 @@ public:
 	/***Begin Example Naive Implementation****
 
 	// Textures.
-	//       0: Diffuse
-	//       1: Normal/Gloss
-	//       2: Glow/Skin/Hair
-	//       3: Height/Parallax
-	//       4: Environment
-	//       5: Environment Mask
+	//             0: Diffuse
+	//             1: Normal/Gloss
+	//             2: Glow(SLSF2_Glow_Map)/Skin/Hair/Rim light(SLSF2_Rim_Lighting)
+	//             3: Height/Parallax
+	//             4: Environment
+	//             5: Environment Mask
+	//             6: Subsurface for Multilayer Parallax
+	//             7: Back Lighting Map (SLSF2_Back_Lighting)
 	// \return The current value.
 	vector<string > GetTextures() const;
 
 	// Textures.
-	//       0: Diffuse
-	//       1: Normal/Gloss
-	//       2: Glow/Skin/Hair
-	//       3: Height/Parallax
-	//       4: Environment
-	//       5: Environment Mask
+	//             0: Diffuse
+	//             1: Normal/Gloss
+	//             2: Glow(SLSF2_Glow_Map)/Skin/Hair/Rim light(SLSF2_Rim_Lighting)
+	//             3: Height/Parallax
+	//             4: Environment
+	//             5: Environment Mask
+	//             6: Subsurface for Multilayer Parallax
+	//             7: Back Lighting Map (SLSF2_Back_Lighting)
 	// \param[in] value The new value.
 	void SetTextures( const vector<string >& value );
 
@@ -102,12 +106,14 @@ protected:
 	mutable int numTextures;
 	/*!
 	 * Textures.
-	 *       0: Diffuse
-	 *       1: Normal/Gloss
-	 *       2: Glow/Skin/Hair
-	 *       3: Height/Parallax
-	 *       4: Environment
-	 *       5: Environment Mask
+	 *             0: Diffuse
+	 *             1: Normal/Gloss
+	 *             2: Glow(SLSF2_Glow_Map)/Skin/Hair/Rim light(SLSF2_Rim_Lighting)
+	 *             3: Height/Parallax
+	 *             4: Environment
+	 *             5: Environment Mask
+	 *             6: Subsurface for Multilayer Parallax
+	 *             7: Back Lighting Map (SLSF2_Back_Lighting)
 	 */
 	vector<string > textures;
 public:

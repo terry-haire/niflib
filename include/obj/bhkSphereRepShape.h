@@ -65,6 +65,14 @@ public:
 	// \param[in] value The new value.
 	void SetMaterial( const HavokMaterial & value );
 
+	// The shape's material.
+	// \return The current value.
+	SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	void SetSkyrimMaterial( const SkyrimHavokMaterial & value );
+
 	// The radius of the sphere that encloses the shape.
 	// \return The current value.
 	float GetRadius() const;
@@ -115,6 +123,8 @@ public:
 protected:
 	/*! The shape's material. */
 	HavokMaterial material;
+	/*! The shape's material. */
+	SkyrimHavokMaterial skyrimMaterial;
 	/*! The radius of the sphere that encloses the shape. */
 	float radius;
 public:

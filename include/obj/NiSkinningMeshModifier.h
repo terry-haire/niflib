@@ -62,12 +62,12 @@ public:
 	/***Begin Example Naive Implementation****
 
 	// USE_SOFTWARE_SKINNING = 0x0001
-	//       RECOMPUTE_BOUNDS = 0x0002
+	//             RECOMPUTE_BOUNDS = 0x0002
 	// \return The current value.
 	unsigned short GetFlags() const;
 
 	// USE_SOFTWARE_SKINNING = 0x0001
-	//       RECOMPUTE_BOUNDS = 0x0002
+	//             RECOMPUTE_BOUNDS = 0x0002
 	// \param[in] value The new value.
 	void SetFlags( unsigned short value );
 
@@ -121,7 +121,7 @@ public:
 protected:
 	/*!
 	 * USE_SOFTWARE_SKINNING = 0x0001
-	 *       RECOMPUTE_BOUNDS = 0x0002
+	 *             RECOMPUTE_BOUNDS = 0x0002
 	 */
 	unsigned short flags;
 	/*! The root bone of the skeleton. */

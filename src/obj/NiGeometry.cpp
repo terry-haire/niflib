@@ -74,7 +74,7 @@ void NiGeometry::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 			NifStream( unknownInteger, in, info );
 		};
 	};
-	if ( ( info.userVersion == 1 ) && ( ((info.version == 0x0A020000) || ((info.version != 0x14000005) && (info.userVersion2 == 1))) ) ) {
+	if ( info.userVersion == 1 ) {
 		NifStream( unknownByte, in, info );
 	};
 	if ( ( info.version >= 0x0A040001 ) && ( info.version <= 0x0A040001 ) ) {
@@ -153,7 +153,7 @@ void NiGeometry::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 			NifStream( unknownInteger, out, info );
 		};
 	};
-	if ( ( info.userVersion == 1 ) && ( ((info.version == 0x0A020000) || ((info.version != 0x14000005) && (info.userVersion2 == 1))) ) ) {
+	if ( info.userVersion == 1 ) {
 		NifStream( unknownByte, out, info );
 	};
 	if ( ( info.version >= 0x0A040001 ) && ( info.version <= 0x0A040001 ) ) {
@@ -762,6 +762,15 @@ void NiGeometry::ClearProperties() {
 	properties.clear();
 	bsProperties[0] = NULL;
 	bsProperties[1] = NULL;
+}
+
+
+Niflib::array<2, Ref<NiProperty>> NiGeometry::GetBSProperties() const {
+	return bsProperties;
+}
+
+void NiGeometry::SetBSProperties(const Niflib::array<2, Ref<NiProperty > >&  value) {
+	bsProperties = value;
 }
 
 #pragma endregion

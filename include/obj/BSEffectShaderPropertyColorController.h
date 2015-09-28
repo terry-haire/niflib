@@ -20,7 +20,7 @@ namespace Niflib {
 class BSEffectShaderPropertyColorController;
 typedef Ref<BSEffectShaderPropertyColorController> BSEffectShaderPropertyColorControllerRef;
 
-/*! Unkown */
+/*! This controller is used to animate colors in BSEffectShaderProperty. */
 class BSEffectShaderPropertyColorController : public NiFloatInterpController {
 public:
 	/*! Constructor */
@@ -53,14 +53,24 @@ public:
 	 */
 	NIFLIB_API virtual const Type & GetType() const;
 
-	//--This object has no eligable attributes.  No example implementation generated--//
+	/***Begin Example Naive Implementation****
+
+// Which color in BSEffectShaderProperty to animate:
+	// \return The current value.
+	EffectShaderControlledColor GetTypeOfControlledColor() const;
+
+// Which color in BSEffectShaderProperty to animate:
+	// \param[in] value The new value.
+	void SetTypeOfControlledColor( const EffectShaderControlledColor & value );
+
+	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown */
-	unsigned int unknownInt1;
+	/*! Which color in BSEffectShaderProperty to animate: */
+	EffectShaderControlledColor typeOfControlledColor;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

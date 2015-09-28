@@ -27,11 +27,11 @@ typedef Ref<bhkListShape> bhkListShapeRef;
 /*!
  * A list of shapes.
  * 
- *     Do not put a bhkPackedNiTriStripsShape in the Sub Shapes. Use a
- *     separate collision nodes without a list shape for those.
+ *         Do not put a bhkPackedNiTriStripsShape in the Sub Shapes. Use a
+ *         separate collision nodes without a list shape for those.
  * 
- *     Also, shapes collected in a bhkListShape may not have the correct
- *     walking noise, so only use it for non-walkable objects.
+ *         Also, shapes collected in a bhkListShape may not have the correct
+ *         walking noise, so only use it for non-walkable objects.
  */
 class bhkListShape : public bhkShapeCollection {
 public:
@@ -83,6 +83,14 @@ public:
 	// \param[in] value The new value.
 	void SetMaterial( const HavokMaterial & value );
 
+	// The shape's material.
+	// \return The current value.
+	SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	void SetSkyrimMaterial( const SkyrimHavokMaterial & value );
+
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
@@ -129,6 +137,8 @@ protected:
 	vector<Ref<bhkShape > > subShapes;
 	/*! The shape's material. */
 	HavokMaterial material;
+	/*! The shape's material. */
+	SkyrimHavokMaterial skyrimMaterial;
 	/*! Unknown. Set to (0.0,0.0,-0.0,0.0,0.0,-0.0), where -0.0 is 0x80000000 in hex. */
 	array<6,float > unknownFloats;
 	/*! Count. */

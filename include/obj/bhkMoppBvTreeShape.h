@@ -75,6 +75,14 @@ public:
 	// \param[in] value The new value.
 	void SetMaterial( const HavokMaterial & value );
 
+	// The shape's material.
+	// \return The current value.
+	SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	void SetSkyrimMaterial( const SkyrimHavokMaterial & value );
+
 	// Origin of the object in mopp coordinates. This is the minimum of all vertices in
 	// the packed shape along each axis, minus 0.1.
 	// \return The current value.
@@ -108,6 +116,14 @@ public:
 	// script).
 	// \param[in] value The new value.
 	void SetOldMoppData( const vector<byte >& value );
+
+	// Tells if MOPP Data was organized into smaller chunks (PS3) or not (PC)
+	// \return The current value.
+	MoppDataBuildType GetBuildType() const;
+
+	// Tells if MOPP Data was organized into smaller chunks (PS3) or not (PC)
+	// \param[in] value The new value.
+	void SetBuildType( const MoppDataBuildType & value );
 
 	// The tree of bounding volume data.
 	// \return The current value.
@@ -202,16 +218,19 @@ public:
 	 */
 	NIFLIB_API virtual void CalcMassProperties(float density, bool solid, float &mass, float &volume, Vector3 &center, InertiaMatrix& inertia);
 
+	// size calculation helper
+	NIFLIB_HIDDEN unsigned int moppDataSizeCalc(const NifInfo& info) const;
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! The shape. */
 	Ref<bhkShape > shape;
 	/*! The shape's material. */
 	HavokMaterial material;
-	/*! Unknown */
-	unsigned int unknownInt1;
-	/*! Unknown */
-	unsigned int unknownInt2;
+	/*! The shape's material. */
+	SkyrimHavokMaterial skyrimMaterial;
+	/*! Unknown bytes. */
+	array<8,byte > unknown8Bytes;
 	/*! Unknown float, might be scale. */
 	float unknownFloat;
 	/*! Number of bytes for MOPP data. */
@@ -233,10 +252,10 @@ protected:
 	 * script).
 	 */
 	vector<byte > oldMoppData;
+	/*! Tells if MOPP Data was organized into smaller chunks (PS3) or not (PC) */
+	MoppDataBuildType buildType;
 	/*! The tree of bounding volume data. */
 	vector<byte > moppData;
-	/*! Unknown */
-	byte unknownByte1;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

@@ -5,27 +5,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 //To change this file, alter the niftools/docsys/gen_niflib.py Python script.
 
-#include "../../include/gen/HalfSpaceBV.h"
+#include "../../include/gen/bhkCMSDTransform.h"
+#include "../../include/gen/QuaternionXYZW.h"
 using namespace Niflib;
 
 //Constructor
-HalfSpaceBV::HalfSpaceBV() : unknownFloat1(0.0f) {};
+bhkCMSDTransform::bhkCMSDTransform() {};
 
 //Copy Constructor
-HalfSpaceBV::HalfSpaceBV( const HalfSpaceBV & src ) {
+bhkCMSDTransform::bhkCMSDTransform( const bhkCMSDTransform & src ) {
 	*this = src;
 };
 
 //Copy Operator
-HalfSpaceBV & HalfSpaceBV::operator=( const HalfSpaceBV & src ) {
-	this->normal = src.normal;
-	this->center = src.center;
-	this->unknownFloat1 = src.unknownFloat1;
+bhkCMSDTransform & bhkCMSDTransform::operator=( const bhkCMSDTransform & src ) {
+	this->translation = src.translation;
+	this->rotation = src.rotation;
 	return *this;
 };
 
 //Destructor
-HalfSpaceBV::~HalfSpaceBV() {};
+bhkCMSDTransform::~bhkCMSDTransform() {};
 
 //--BEGIN MISC CUSTOM CODE--//
+
 //--END CUSTOM CODE--//

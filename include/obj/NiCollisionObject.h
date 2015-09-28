@@ -24,10 +24,10 @@ typedef Ref<NiCollisionObject> NiCollisionObjectRef;
 /*!
  * This is the most common collision object found in NIF files. It acts as a real
  * object that
- *     is visible and possibly (if the body allows for it) interactive. The node
- * itself
- *     is simple, it only has three properties.
- *     For this type of collision object, bhkRigidBody or bhkRigidBodyT is
+ *         is visible and possibly (if the body allows for it) interactive. The
+ * node itself
+ *         is simple, it only has three properties.
+ *         For this type of collision object, bhkRigidBody or bhkRigidBodyT is
  * generally used.
  */
 class NiCollisionObject : public NiObject {

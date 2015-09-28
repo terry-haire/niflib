@@ -89,6 +89,98 @@ public:
 	// \param[in] value The new value.
 	void SetColFilter( byte value );
 
+	// Physical purpose of collision object? The setting affects objetct's havok
+	// behavior in game.
+	// \return The current value.
+	SkyrimLayer GetSkyrimLayer() const;
+
+	// Physical purpose of collision object? The setting affects objetct's havok
+	// behavior in game.
+	// \param[in] value The new value.
+	void SetSkyrimLayer( const SkyrimLayer & value );
+
+// FLAGS are stored in highest 3 bits:
+	//                 Bit 7: sets the LINK property and controls whether this body is
+	// physically linked to others.
+	//                 Bit 6: turns collision off (not used for Layer SKYL_BIPED).
+	//                 Bit 5: sets the SCALED property.
+	//
+	//                 PART NUMBER in a linked body list is stored in lowest 5 bits
+// (used only when Skyrim Layer is set to SKYL_BIPED):
+	//                 0 - OTHER
+	//                 1 - HEAD
+	//                 2 - BODY
+	//                 3 - SPINE1
+	//                 4 - SPINE2
+	//                 5 - LUPPERARM
+	//                 6 - LFOREARM
+	//                 7 - LHAND
+	//                 8 - LTHIGH
+	//                 9 - LCALF
+	//                 10 - LFOOT
+	//                 11 - RUPPERARM
+	//                 12 - RFOREARM
+	//                 13 - RHAND
+	//                 14 - RTHIGH
+	//                 15 - RCALF
+	//                 16 - RFOOT
+	//                 17 - TAIL
+	//                 18 - SHIELD
+	//                 19 - QUIVER
+	//                 20 - WEAPON
+	//                 21 - PONYTAIL
+	//                 22 - WING
+	//                 23 - PACK
+	//                 24 - CHAIN
+	//                 25 - ADDONHEAD
+	//                 26 - ADDONCHEST
+	//                 27 - ADDONARM
+	//                 28 - ADDONLEG
+	//                 29-31 - NULL
+	// \return The current value.
+	byte GetFlagsAndPartNumber() const;
+
+// FLAGS are stored in highest 3 bits:
+	//                 Bit 7: sets the LINK property and controls whether this body is
+	// physically linked to others.
+	//                 Bit 6: turns collision off (not used for Layer SKYL_BIPED).
+	//                 Bit 5: sets the SCALED property.
+	//
+	//                 PART NUMBER in a linked body list is stored in lowest 5 bits
+// (used only when Skyrim Layer is set to SKYL_BIPED):
+	//                 0 - OTHER
+	//                 1 - HEAD
+	//                 2 - BODY
+	//                 3 - SPINE1
+	//                 4 - SPINE2
+	//                 5 - LUPPERARM
+	//                 6 - LFOREARM
+	//                 7 - LHAND
+	//                 8 - LTHIGH
+	//                 9 - LCALF
+	//                 10 - LFOOT
+	//                 11 - RUPPERARM
+	//                 12 - RFOREARM
+	//                 13 - RHAND
+	//                 14 - RTHIGH
+	//                 15 - RCALF
+	//                 16 - RFOOT
+	//                 17 - TAIL
+	//                 18 - SHIELD
+	//                 19 - QUIVER
+	//                 20 - WEAPON
+	//                 21 - PONYTAIL
+	//                 22 - WING
+	//                 23 - PACK
+	//                 24 - CHAIN
+	//                 25 - ADDONHEAD
+	//                 26 - ADDONCHEST
+	//                 27 - ADDONARM
+	//                 28 - ADDONLEG
+	//                 29-31 - NULL
+	// \param[in] value The new value.
+	void SetFlagsAndPartNumber( byte value );
+
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
@@ -131,6 +223,52 @@ protected:
 	 * of this part in a linked body list.
 	 */
 	byte colFilter;
+	/*!
+	 * Physical purpose of collision object? The setting affects objetct's havok
+	 * behavior in game.
+	 */
+	SkyrimLayer skyrimLayer;
+	/*!
+	 * FLAGS are stored in highest 3 bits:
+	 *                 Bit 7: sets the LINK property and controls whether this body is
+	 * physically linked to others.
+	 *                 Bit 6: turns collision off (not used for Layer SKYL_BIPED).
+	 *                 Bit 5: sets the SCALED property.
+	 * 
+	 *                 PART NUMBER in a linked body list is stored in lowest 5 bits
+	 * (used only when Skyrim Layer is set to SKYL_BIPED):
+	 *                 0 - OTHER
+	 *                 1 - HEAD
+	 *                 2 - BODY
+	 *                 3 - SPINE1
+	 *                 4 - SPINE2
+	 *                 5 - LUPPERARM
+	 *                 6 - LFOREARM
+	 *                 7 - LHAND
+	 *                 8 - LTHIGH
+	 *                 9 - LCALF
+	 *                 10 - LFOOT
+	 *                 11 - RUPPERARM
+	 *                 12 - RFOREARM
+	 *                 13 - RHAND
+	 *                 14 - RTHIGH
+	 *                 15 - RCALF
+	 *                 16 - RFOOT
+	 *                 17 - TAIL
+	 *                 18 - SHIELD
+	 *                 19 - QUIVER
+	 *                 20 - WEAPON
+	 *                 21 - PONYTAIL
+	 *                 22 - WING
+	 *                 23 - PACK
+	 *                 24 - CHAIN
+	 *                 25 - ADDONHEAD
+	 *                 26 - ADDONCHEST
+	 *                 27 - ADDONARM
+	 *                 28 - ADDONLEG
+	 *                 29-31 - NULL
+	 */
+	byte flagsAndPartNumber;
 	/*! Unknown. */
 	unsigned short unknownShort;
 public:

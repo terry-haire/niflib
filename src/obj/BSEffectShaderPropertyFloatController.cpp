@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSEffectShaderPropertyFloatController::TYPE("BSEffectShaderPropertyFloatController", &NiFloatInterpController::TYPE );
 
-BSEffectShaderPropertyFloatController::BSEffectShaderPropertyFloatController() : targetVariable((unsigned int)0) {
+BSEffectShaderPropertyFloatController::BSEffectShaderPropertyFloatController() : typeOfControlledVariable((EffectShaderControlledVariable)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,7 +46,7 @@ void BSEffectShaderPropertyFloatController::Read( istream& in, list<unsigned int
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Read( in, link_stack, info );
-	NifStream( targetVariable, in, info );
+	NifStream( typeOfControlledVariable, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -59,7 +59,7 @@ void BSEffectShaderPropertyFloatController::Write( ostream& out, const map<NiObj
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Write( out, link_map, missing_link_stack, info );
-	NifStream( targetVariable, out, info );
+	NifStream( typeOfControlledVariable, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -73,7 +73,7 @@ std::string BSEffectShaderPropertyFloatController::asString( bool verbose ) cons
 
 	stringstream out;
 	out << NiFloatInterpController::asString();
-	out << "  Target Variable:  " << targetVariable << endl;
+	out << "  Type of Controlled Variable:  " << typeOfControlledVariable << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -107,12 +107,12 @@ std::list<NiObject *> BSEffectShaderPropertyFloatController::GetPtrs() const {
 
 /***Begin Example Naive Implementation****
 
-unsigned int BSEffectShaderPropertyFloatController::GetTargetVariable() const {
-	return targetVariable;
+EffectShaderControlledVariable BSEffectShaderPropertyFloatController::GetTypeOfControlledVariable() const {
+	return typeOfControlledVariable;
 }
 
-void BSEffectShaderPropertyFloatController::SetTargetVariable( unsigned int value ) {
-	targetVariable = value;
+void BSEffectShaderPropertyFloatController::SetTypeOfControlledVariable( const EffectShaderControlledVariable & value ) {
+	typeOfControlledVariable = value;
 }
 
 ****End Example Naive Implementation***/

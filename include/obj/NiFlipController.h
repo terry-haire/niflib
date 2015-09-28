@@ -69,12 +69,12 @@ public:
 	void SetTextureSlot( const TexType & value );
 
 	// Time between two flips.
-	//       delta = (start_time - stop_time) / sources.num_indices
+	//             delta = (start_time - stop_time) / sources.num_indices
 	// \return The current value.
 	float GetDelta() const;
 
 	// Time between two flips.
-	//       delta = (start_time - stop_time) / sources.num_indices
+	//             delta = (start_time - stop_time) / sources.num_indices
 	// \param[in] value The new value.
 	void SetDelta( float value );
 
@@ -105,7 +105,7 @@ protected:
 	unsigned int unknownInt2;
 	/*!
 	 * Time between two flips.
-	 *       delta = (start_time - stop_time) / sources.num_indices
+	 *             delta = (start_time - stop_time) / sources.num_indices
 	 */
 	float delta;
 	/*! The number of source objects. */

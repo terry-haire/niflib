@@ -59,22 +59,22 @@ public:
 	/***Begin Example Naive Implementation****
 
 	// FLAG_RELATIVETARGETS = 0x01
-	//       FLAG_UPDATENORMALS   = 0x02
-	//       FLAG_NEEDSUPDATE     = 0x04
-	//       FLAG_ALWAYSUPDATE    = 0x08
-	//       FLAG_NEEDSCOMPLETION = 0x10
-	//       FLAG_SKINNED         = 0x20
-	//       FLAG_SWSKINNED       = 0x40
+	//             FLAG_UPDATENORMALS   = 0x02
+	//             FLAG_NEEDSUPDATE     = 0x04
+	//             FLAG_ALWAYSUPDATE    = 0x08
+	//             FLAG_NEEDSCOMPLETION = 0x10
+	//             FLAG_SKINNED         = 0x20
+	//             FLAG_SWSKINNED       = 0x40
 	// \return The current value.
 	byte GetFlags() const;
 
 	// FLAG_RELATIVETARGETS = 0x01
-	//       FLAG_UPDATENORMALS   = 0x02
-	//       FLAG_NEEDSUPDATE     = 0x04
-	//       FLAG_ALWAYSUPDATE    = 0x08
-	//       FLAG_NEEDSCOMPLETION = 0x10
-	//       FLAG_SKINNED         = 0x20
-	//       FLAG_SWSKINNED       = 0x40
+	//             FLAG_UPDATENORMALS   = 0x02
+	//             FLAG_NEEDSUPDATE     = 0x04
+	//             FLAG_ALWAYSUPDATE    = 0x08
+	//             FLAG_NEEDSCOMPLETION = 0x10
+	//             FLAG_SKINNED         = 0x20
+	//             FLAG_SWSKINNED       = 0x40
 	// \param[in] value The new value.
 	void SetFlags( byte value );
 
@@ -102,12 +102,12 @@ public:
 protected:
 	/*!
 	 * FLAG_RELATIVETARGETS = 0x01
-	 *       FLAG_UPDATENORMALS   = 0x02
-	 *       FLAG_NEEDSUPDATE     = 0x04
-	 *       FLAG_ALWAYSUPDATE    = 0x08
-	 *       FLAG_NEEDSCOMPLETION = 0x10
-	 *       FLAG_SKINNED         = 0x20
-	 *       FLAG_SWSKINNED       = 0x40
+	 *             FLAG_UPDATENORMALS   = 0x02
+	 *             FLAG_NEEDSUPDATE     = 0x04
+	 *             FLAG_ALWAYSUPDATE    = 0x08
+	 *             FLAG_NEEDSCOMPLETION = 0x10
+	 *             FLAG_SKINNED         = 0x20
+	 *             FLAG_SWSKINNED       = 0x40
 	 */
 	byte flags;
 	/*! The number of morph targets. */

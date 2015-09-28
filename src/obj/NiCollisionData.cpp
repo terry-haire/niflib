@@ -76,6 +76,7 @@ void NiCollisionData::Read( istream& in, list<unsigned int> & link_stack, const 
 		if ( (boundingVolume.collisionType == 5) ) {
 			NifStream( boundingVolume.halfspace.normal, in, info );
 			NifStream( boundingVolume.halfspace.center, in, info );
+			NifStream( boundingVolume.halfspace.unknownFloat1, in, info );
 		};
 	};
 
@@ -117,6 +118,7 @@ void NiCollisionData::Write( ostream& out, const map<NiObjectRef,unsigned int> &
 		if ( (boundingVolume.collisionType == 5) ) {
 			NifStream( boundingVolume.halfspace.normal, out, info );
 			NifStream( boundingVolume.halfspace.center, out, info );
+			NifStream( boundingVolume.halfspace.unknownFloat1, out, info );
 		};
 	};
 
@@ -176,6 +178,7 @@ std::string NiCollisionData::asString( bool verbose ) const {
 		if ( (boundingVolume.collisionType == 5) ) {
 			out << "      Normal:  " << boundingVolume.halfspace.normal << endl;
 			out << "      Center:  " << boundingVolume.halfspace.center << endl;
+			out << "      Unknown Float 1:  " << boundingVolume.halfspace.unknownFloat1 << endl;
 		};
 	};
 	return out.str();

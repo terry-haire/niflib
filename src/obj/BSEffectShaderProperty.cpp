@@ -101,7 +101,7 @@ std::string BSEffectShaderProperty::asString( bool verbose ) const {
 	out << NiProperty::asString();
 	out << "  Shader Flags 1:  " << shaderFlags1 << endl;
 	out << "  Shader Flags 2:  " << shaderFlags2 << endl;
-	out << "  UV OffSet:  " << uvOffset << endl;
+	out << "  UV Offset:  " << uvOffset << endl;
 	out << "  UV Scale:  " << uvScale << endl;
 	out << "  Source Texture:  " << sourceTexture << endl;
 	out << "  Texture Clamp Mode:  " << textureClampMode << endl;

@@ -69,7 +69,7 @@ void NiSkinningMeshModifier::Read( istream& in, list<unsigned int> & link_stack,
 		NifStream( boneTransforms[i1].translation, in, info );
 		NifStream( boneTransforms[i1].scale, in, info );
 	};
-	if ( (flags & 2) ) {
+	if ( ((flags & 2) != 0) ) {
 		boneBounds.resize(numBones);
 		for (unsigned int i2 = 0; i2 < boneBounds.size(); i2++) {
 			NifStream( boneBounds[i2].center, in, info );
@@ -135,7 +135,7 @@ void NiSkinningMeshModifier::Write( ostream& out, const map<NiObjectRef,unsigned
 		NifStream( boneTransforms[i1].translation, out, info );
 		NifStream( boneTransforms[i1].scale, out, info );
 	};
-	if ( (flags & 2) ) {
+	if ( ((flags & 2) != 0) ) {
 		for (unsigned int i2 = 0; i2 < boneBounds.size(); i2++) {
 			NifStream( boneBounds[i2].center, out, info );
 			NifStream( boneBounds[i2].radius, out, info );
@@ -184,7 +184,7 @@ std::string NiSkinningMeshModifier::asString( bool verbose ) const {
 		out << "    Translation:  " << boneTransforms[i1].translation << endl;
 		out << "    Scale:  " << boneTransforms[i1].scale << endl;
 	};
-	if ( (flags & 2) ) {
+	if ( ((flags & 2) != 0) ) {
 		array_output_count = 0;
 		for (unsigned int i2 = 0; i2 < boneBounds.size(); i2++) {
 			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {

@@ -112,24 +112,24 @@ void NiLookAtController::FixLinks( const map<unsigned int,NiObjectRef> & objects
 std::list<NiObjectRef> NiLookAtController::GetRefs() const {
 	list<Ref<NiObject> > refs;
 	refs = NiTimeController::GetRefs();
-	if ( lookAtNode != NULL )
-		refs.push_back(StaticCast<NiObject>(lookAtNode));
 	return refs;
 }
 
 std::list<NiObject *> NiLookAtController::GetPtrs() const {
 	list<NiObject *> ptrs;
 	ptrs = NiTimeController::GetPtrs();
+	if ( lookAtNode != NULL )
+		ptrs.push_back((NiObject *)(lookAtNode));
 	return ptrs;
 }
 
 /***Begin Example Naive Implementation****
 
-Ref<NiNode > NiLookAtController::GetLookAtNode() const {
+NiNode * NiLookAtController::GetLookAtNode() const {
 	return lookAtNode;
 }
 
-void NiLookAtController::SetLookAtNode( Ref<NiNode > value ) {
+void NiLookAtController::SetLookAtNode( NiNode * value ) {
 	lookAtNode = value;
 }
 

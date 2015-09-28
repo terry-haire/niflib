@@ -22,7 +22,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type bhkCompressedMeshShape::TYPE("bhkCompressedMeshShape", &bhkShape::TYPE );
 
-bhkCompressedMeshShape::bhkCompressedMeshShape() : target(NULL), material((HavokMaterial)0), unknownFloat1(0.0f), unknownFloat2(0.0f), data(NULL) {
+bhkCompressedMeshShape::bhkCompressedMeshShape() : target(NULL), skyrimMaterial((SkyrimHavokMaterial)0), unknownFloat1(0.0f), radius(0.0f), scale(0.0f), unknownFloat3(0.0f), unknownFloat4(0.0f), unknownFloat5(0.0f), data(NULL) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -51,14 +51,17 @@ void bhkCompressedMeshShape::Read( istream& in, list<unsigned int> & link_stack,
 	bhkShape::Read( in, link_stack, info );
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
-	NifStream( material, in, info );
+	NifStream( skyrimMaterial, in, info );
 	NifStream( unknownFloat1, in, info );
 	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		NifStream( unknown8Bytes[i1], in, info );
+		NifStream( unknown4Bytes[i1], in, info );
 	};
 	NifStream( unknownFloats1, in, info );
-	NifStream( unknownFloats2, in, info );
-	NifStream( unknownFloat2, in, info );
+	NifStream( radius, in, info );
+	NifStream( scale, in, info );
+	NifStream( unknownFloat3, in, info );
+	NifStream( unknownFloat4, in, info );
+	NifStream( unknownFloat5, in, info );
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
 
@@ -90,14 +93,17 @@ void bhkCompressedMeshShape::Write( ostream& out, const map<NiObjectRef,unsigned
 			missing_link_stack.push_back( NULL );
 		}
 	}
-	NifStream( material, out, info );
+	NifStream( skyrimMaterial, out, info );
 	NifStream( unknownFloat1, out, info );
 	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		NifStream( unknown8Bytes[i1], out, info );
+		NifStream( unknown4Bytes[i1], out, info );
 	};
 	NifStream( unknownFloats1, out, info );
-	NifStream( unknownFloats2, out, info );
-	NifStream( unknownFloat2, out, info );
+	NifStream( radius, out, info );
+	NifStream( scale, out, info );
+	NifStream( unknownFloat3, out, info );
+	NifStream( unknownFloat4, out, info );
+	NifStream( unknownFloat5, out, info );
 	if ( info.version < VER_3_3_0_13 ) {
 		WritePtr32( &(*data), out );
 	} else {
@@ -130,7 +136,7 @@ std::string bhkCompressedMeshShape::asString( bool verbose ) const {
 	unsigned int array_output_count = 0;
 	out << bhkShape::asString();
 	out << "  Target:  " << target << endl;
-	out << "  Material:  " << material << endl;
+	out << "  Skyrim Material:  " << skyrimMaterial << endl;
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 4; i1++) {
@@ -141,12 +147,15 @@ std::string bhkCompressedMeshShape::asString( bool verbose ) const {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 			break;
 		};
-		out << "    Unknown 8 Bytes[" << i1 << "]:  " << unknown8Bytes[i1] << endl;
+		out << "    Unknown 4 Bytes[" << i1 << "]:  " << unknown4Bytes[i1] << endl;
 		array_output_count++;
 	};
 	out << "  Unknown Floats 1:  " << unknownFloats1 << endl;
-	out << "  Unknown Floats 2:  " << unknownFloats2 << endl;
-	out << "  Unknown Float  2:  " << unknownFloat2 << endl;
+	out << "  Radius:  " << radius << endl;
+	out << "  Scale:  " << scale << endl;
+	out << "  Unknown Float 3:  " << unknownFloat3 << endl;
+	out << "  Unknown Float 4:  " << unknownFloat4 << endl;
+	out << "  Unknown Float 5:  " << unknownFloat5 << endl;
 	out << "  Data:  " << data << endl;
 	return out.str();
 
@@ -195,12 +204,28 @@ void bhkCompressedMeshShape::SetTarget( NiAVObject * value ) {
 	target = value;
 }
 
-HavokMaterial bhkCompressedMeshShape::GetMaterial() const {
-	return material;
+SkyrimHavokMaterial bhkCompressedMeshShape::GetSkyrimMaterial() const {
+	return skyrimMaterial;
 }
 
-void bhkCompressedMeshShape::SetMaterial( const HavokMaterial & value ) {
-	material = value;
+void bhkCompressedMeshShape::SetSkyrimMaterial( const SkyrimHavokMaterial & value ) {
+	skyrimMaterial = value;
+}
+
+float bhkCompressedMeshShape::GetRadius() const {
+	return radius;
+}
+
+void bhkCompressedMeshShape::SetRadius( float value ) {
+	radius = value;
+}
+
+float bhkCompressedMeshShape::GetScale() const {
+	return scale;
+}
+
+void bhkCompressedMeshShape::SetScale( float value ) {
+	scale = value;
 }
 
 Ref<bhkCompressedMeshShapeData > bhkCompressedMeshShape::GetData() const {

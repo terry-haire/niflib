@@ -7,23 +7,19 @@ using namespace Niflib;
 
 //Constants
 
-NIFLIB_API 
-const Matrix44 Niflib::Matrix44::IDENTITY( 1.0f, 0.0f, 0.0f, 0.0f,
+const Matrix44 Matrix44::IDENTITY( 1.0f, 0.0f, 0.0f, 0.0f,
 								   0.0f, 1.0f, 0.0f, 0.0f,
 								   0.0f, 0.0f, 1.0f, 0.0f,
 								   0.0f, 0.0f, 0.0f, 1.0f );
 
-NIFLIB_API 
-const Matrix33 Niflib::Matrix33::IDENTITY( 1.0f, 0.0f, 0.0f,
+const Matrix33 Matrix33::IDENTITY( 1.0f, 0.0f, 0.0f,
 								   0.0f, 1.0f, 0.0f,
 								   0.0f, 0.0f, 1.0f );
 
-NIFLIB_API 
-const Matrix22 Niflib::Matrix22::IDENTITY( 1.0f, 0.0f,
+const Matrix22 Matrix22::IDENTITY( 1.0f, 0.0f,
 								   0.0f, 1.0f );
 
-NIFLIB_API 
-const InertiaMatrix Niflib::InertiaMatrix::IDENTITY( 
+const InertiaMatrix InertiaMatrix::IDENTITY( 
 								  1.0f, 0.0f, 0.0f, 0.0f,
 								  0.0f, 1.0f, 0.0f, 0.0f,
 								  0.0f, 0.0f, 1.0f, 0.0f );
@@ -61,10 +57,24 @@ Vector3 Vector3::operator+( const Vector3 & rh) const {
 	return v;
 }
 
+Vector3 Vector3::operator+( const float & rh) const {
+	Vector3 v(*this);
+	v += rh;
+	return v;
+}
+
 Vector3 & Vector3::operator+=( const Vector3 & rh ) {
 	x += rh.x;
 	y += rh.y;
 	z += rh.z;
+
+	return *this;
+}
+
+Vector3 & Vector3::operator+=( const float & rh ) {
+	x += rh;
+	y += rh;
+	z += rh;
 
 	return *this;
 }
@@ -75,10 +85,24 @@ Vector3 Vector3::operator-( const Vector3 & rh) const {
 	return v;
 }
 
+Vector3 Vector3::operator-( const float & rh) const {
+	Vector3 v(*this);
+	v -= rh;
+	return v;
+}
+
 Vector3 & Vector3::operator-=( const Vector3 & rh ) {
 	x -= rh.x;
 	y -= rh.y;
 	z -= rh.z;
+
+	return *this;
+}
+
+Vector3 & Vector3::operator-=( const float & rh ) {
+	x -= rh;
+	y -= rh;
+	z -= rh;
 
 	return *this;
 }
@@ -300,6 +324,10 @@ Matrix22::Matrix22() {
 
 Matrix33::Matrix33() {
 	*this = Matrix33::IDENTITY;
+}
+
+Matrix33::Matrix33(const Matrix33& src) {
+	*this = src;
 }
 
 Quaternion Matrix33::AsQuaternion() const {

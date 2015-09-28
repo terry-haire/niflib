@@ -20,7 +20,10 @@ namespace Niflib {
 class BSEffectShaderProperty;
 typedef Ref<BSEffectShaderProperty> BSEffectShaderPropertyRef;
 
-/*! Skyrim non-PP shader model, used primarily for transparency effects. */
+/*!
+ * Skyrim non-PP shader model, used primarily for transparency effects, often as
+ * decal.
+ */
 class BSEffectShaderProperty : public NiProperty {
 public:
 	/*! Constructor */
@@ -71,19 +74,19 @@ public:
 	// \param[in] value The new value.
 	void SetShaderFlags2( const SkyrimShaderPropertyFlags2 & value );
 
-	// UV OffSet
+	// Offset UVs
 	// \return The current value.
 	TexCoord GetUvOffset() const;
 
-	// UV OffSet
+	// Offset UVs
 	// \param[in] value The new value.
 	void SetUvOffset( const TexCoord & value );
 
-	// UV Scale
+	// Offset UV Scale to repeat tiling textures
 	// \return The current value.
 	TexCoord GetUvScale() const;
 
-	// UV Scale
+	// Offset UV Scale to repeat tiling textures
 	// \param[in] value The new value.
 	void SetUvScale( const TexCoord & value );
 
@@ -103,35 +106,35 @@ public:
 	// \param[in] value The new value.
 	void SetTextureClampMode( unsigned int value );
 
-	// Unknown.
+	// At this cosine of angle falloff will be equal to Falloff Start Opacity
 	// \return The current value.
 	float GetFalloffStartAngle() const;
 
-	// Unknown.
+	// At this cosine of angle falloff will be equal to Falloff Start Opacity
 	// \param[in] value The new value.
 	void SetFalloffStartAngle( float value );
 
-	// Unknown.
+	// At this cosine of angle falloff will be equal to Falloff Stop Opacity
 	// \return The current value.
 	float GetFalloffStopAngle() const;
 
-	// Unknown.
+	// At this cosine of angle falloff will be equal to Falloff Stop Opacity
 	// \param[in] value The new value.
 	void SetFalloffStopAngle( float value );
 
-	// Texture will fade in within this proximity.
+	// Alpha falloff multiplier at start angle
 	// \return The current value.
 	float GetFalloffStartOpacity() const;
 
-	// Texture will fade in within this proximity.
+	// Alpha falloff multiplier at start angle
 	// \param[in] value The new value.
 	void SetFalloffStartOpacity( float value );
 
-	// Unknown.
+	// Alpha falloff multiplier at end angle
 	// \return The current value.
 	float GetFalloffStopOpacity() const;
 
-	// Unknown.
+	// Alpha falloff multiplier at end angle
 	// \param[in] value The new value.
 	void SetFalloffStopOpacity( float value );
 
@@ -143,11 +146,11 @@ public:
 	// \param[in] value The new value.
 	void SetEmissiveColor( const Color4 & value );
 
-	// Multipled Emissive Colors
+	// Multiplier for Emissive Color (RGB part)
 	// \return The current value.
 	float GetEmissiveMultiple() const;
 
-	// Multipled Emissive Colors
+	// Multiplier for Emissive Color (RGB part)
 	// \param[in] value The new value.
 	void SetEmissiveMultiple( float value );
 
@@ -159,11 +162,13 @@ public:
 	// \param[in] value The new value.
 	void SetSoftFalloffDepth( float value );
 
-	// points to an external texture.
+	// Points to an external texture, used as palette for
+	// SLSF1_Greyscale_To_PaletteColor/SLSF1_Greyscale_To_PaletteAlpha.
 	// \return The current value.
 	string GetGreyscaleTexture() const;
 
-	// points to an external texture.
+	// Points to an external texture, used as palette for
+	// SLSF1_Greyscale_To_PaletteColor/SLSF1_Greyscale_To_PaletteAlpha.
 	// \param[in] value The new value.
 	void SetGreyscaleTexture( const string & value );
 
@@ -177,29 +182,32 @@ protected:
 	SkyrimShaderPropertyFlags1 shaderFlags1;
 	/*! Unknown. */
 	SkyrimShaderPropertyFlags2 shaderFlags2;
-	/*! UV OffSet */
+	/*! Offset UVs */
 	TexCoord uvOffset;
-	/*! UV Scale */
+	/*! Offset UV Scale to repeat tiling textures */
 	TexCoord uvScale;
 	/*! points to an external texture. */
 	string sourceTexture;
 	/*! How to handle texture borders. */
 	unsigned int textureClampMode;
-	/*! Unknown. */
+	/*! At this cosine of angle falloff will be equal to Falloff Start Opacity */
 	float falloffStartAngle;
-	/*! Unknown. */
+	/*! At this cosine of angle falloff will be equal to Falloff Stop Opacity */
 	float falloffStopAngle;
-	/*! Texture will fade in within this proximity. */
+	/*! Alpha falloff multiplier at start angle */
 	float falloffStartOpacity;
-	/*! Unknown. */
+	/*! Alpha falloff multiplier at end angle */
 	float falloffStopOpacity;
 	/*! Emissive color */
 	Color4 emissiveColor;
-	/*! Multipled Emissive Colors */
+	/*! Multiplier for Emissive Color (RGB part) */
 	float emissiveMultiple;
 	/*! Unknown. */
 	float softFalloffDepth;
-	/*! points to an external texture. */
+	/*!
+	 * Points to an external texture, used as palette for
+	 * SLSF1_Greyscale_To_PaletteColor/SLSF1_Greyscale_To_PaletteAlpha.
+	 */
 	string greyscaleTexture;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */

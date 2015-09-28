@@ -20,7 +20,7 @@ namespace Niflib {
 class BSLightingShaderPropertyColorController;
 typedef Ref<BSLightingShaderPropertyColorController> BSLightingShaderPropertyColorControllerRef;
 
-/*!  */
+/*! This controller is used to animate colors in BSLightingShaderProperty. */
 class BSLightingShaderPropertyColorController : public NiFloatInterpController {
 public:
 	/*! Constructor */
@@ -55,13 +55,13 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Which variable in the shader to animate.
+// Which color in BSLightingShaderProperty to animate:
 	// \return The current value.
-	unsigned int GetTargetVariable() const;
+	LightingShaderControlledColor GetTypeOfControlledColor() const;
 
-	// Which variable in the shader to animate.
+// Which color in BSLightingShaderProperty to animate:
 	// \param[in] value The new value.
-	void SetTargetVariable( unsigned int value );
+	void SetTypeOfControlledColor( const LightingShaderControlledColor & value );
 
 	****End Example Naive Implementation***/
 
@@ -69,8 +69,8 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Which variable in the shader to animate. */
-	unsigned int targetVariable;
+	/*! Which color in BSLightingShaderProperty to animate: */
+	LightingShaderControlledColor typeOfControlledColor;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

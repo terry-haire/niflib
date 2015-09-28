@@ -153,12 +153,14 @@ public:
 	 */
 	NIFLIB_API virtual void SetTriangles( const vector<Triangle> & in );
 
+	// custom calculation 
+	NIFLIB_HIDDEN bool hasTrianglesCalc(const NifInfo& info) const;
 	//--END CUSTOM CODE--//
 protected:
 	/*! Num Triangles times 3. */
 	unsigned int numTrianglePoints;
 	/*! Do we have triangle data? */
-	bool hasTriangles;
+	mutable bool hasTriangles;
 	/*! Triangle data. */
 	vector<Triangle > triangles;
 	/*! Number of shared normals groups. */

@@ -21,7 +21,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSLightingShaderProperty::TYPE("BSLightingShaderProperty", &NiProperty::TYPE );
 
-BSLightingShaderProperty::BSLightingShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)2185233153), shaderFlags2((SkyrimShaderPropertyFlags2)32801), textureSet(NULL), emissiveMultiple(0.0f), textureClampMode((TexClampMode)0), alpha(1.0f), unknownFloat2(0.0f), specularPower_Glossiness(0.0f), specularStrength(1.0f), lightingEffect1(0.0f), lightingEffect2(0.0f), environmentMapScale(0.0f), maxPasses(0.0f), scale(0.0f), parallaxInnerLayerThickness(0.0f), parallaxRefractionScale(0.0f), parallaxEnvmapStrength(0.0f), eyeCubemapScale(0.0f) {
+BSLightingShaderProperty::BSLightingShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)2185233153), shaderFlags2((SkyrimShaderPropertyFlags2)32801), uvScale(1.0, 1.0), textureSet(NULL), emissiveMultiple(0.0f), textureClampMode((TexClampMode)0), alpha(1.0f), unknownFloat2(0.0f), glossiness(0.0f), specularStrength(1.0f), lightingEffect1(0.0f), lightingEffect2(0.0f), environmentMapScale(0.0f), maxPasses(0.0f), scale(0.0f), parallaxInnerLayerThickness(0.0f), parallaxRefractionScale(0.0f), parallaxEnvmapStrength(0.0f), eyeCubemapScale(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -61,7 +61,7 @@ void BSLightingShaderProperty::Read( istream& in, list<unsigned int> & link_stac
 	NifStream( textureClampMode, in, info );
 	NifStream( alpha, in, info );
 	NifStream( unknownFloat2, in, info );
-	NifStream( specularPower_Glossiness, in, info );
+	NifStream( glossiness, in, info );
 	NifStream( specularColor, in, info );
 	NifStream( specularStrength, in, info );
 	NifStream( lightingEffect1, in, info );
@@ -86,7 +86,7 @@ void BSLightingShaderProperty::Read( istream& in, list<unsigned int> & link_stac
 		NifStream( parallaxEnvmapStrength, in, info );
 	};
 	if ( (skyrimShaderType == 14) ) {
-		NifStream( sparkleParamaters, in, info );
+		NifStream( sparkleParameters, in, info );
 	};
 	if ( (skyrimShaderType == 16) ) {
 		NifStream( eyeCubemapScale, in, info );
@@ -133,7 +133,7 @@ void BSLightingShaderProperty::Write( ostream& out, const map<NiObjectRef,unsign
 	NifStream( textureClampMode, out, info );
 	NifStream( alpha, out, info );
 	NifStream( unknownFloat2, out, info );
-	NifStream( specularPower_Glossiness, out, info );
+	NifStream( glossiness, out, info );
 	NifStream( specularColor, out, info );
 	NifStream( specularStrength, out, info );
 	NifStream( lightingEffect1, out, info );
@@ -158,7 +158,7 @@ void BSLightingShaderProperty::Write( ostream& out, const map<NiObjectRef,unsign
 		NifStream( parallaxEnvmapStrength, out, info );
 	};
 	if ( (skyrimShaderType == 14) ) {
-		NifStream( sparkleParamaters, out, info );
+		NifStream( sparkleParameters, out, info );
 	};
 	if ( (skyrimShaderType == 16) ) {
 		NifStream( eyeCubemapScale, out, info );
@@ -188,7 +188,7 @@ std::string BSLightingShaderProperty::asString( bool verbose ) const {
 	out << "  Texture Clamp Mode:  " << textureClampMode << endl;
 	out << "  Alpha:  " << alpha << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
-	out << "  Specular Power - Glossiness:  " << specularPower_Glossiness << endl;
+	out << "  Glossiness:  " << glossiness << endl;
 	out << "  Specular Color:  " << specularColor << endl;
 	out << "  Specular Strength:  " << specularStrength << endl;
 	out << "  Lighting Effect 1:  " << lightingEffect1 << endl;
@@ -213,7 +213,7 @@ std::string BSLightingShaderProperty::asString( bool verbose ) const {
 		out << "    Parallax Envmap Strength:  " << parallaxEnvmapStrength << endl;
 	};
 	if ( (skyrimShaderType == 14) ) {
-		out << "    Sparkle Paramaters:  " << sparkleParamaters << endl;
+		out << "    Sparkle Parameters:  " << sparkleParameters << endl;
 	};
 	if ( (skyrimShaderType == 16) ) {
 		out << "    Eye Cubemap Scale:  " << eyeCubemapScale << endl;
@@ -328,12 +328,12 @@ void BSLightingShaderProperty::SetAlpha( float value ) {
 	alpha = value;
 }
 
-float BSLightingShaderProperty::GetSpecularPower_Glossiness() const {
-	return specularPower_Glossiness;
+float BSLightingShaderProperty::GetGlossiness() const {
+	return glossiness;
 }
 
-void BSLightingShaderProperty::SetSpecularPower_Glossiness( float value ) {
-	specularPower_Glossiness = value;
+void BSLightingShaderProperty::SetGlossiness( float value ) {
+	glossiness = value;
 }
 
 Color3 BSLightingShaderProperty::GetSpecularColor() const {
@@ -440,12 +440,12 @@ void BSLightingShaderProperty::SetParallaxEnvmapStrength( float value ) {
 	parallaxEnvmapStrength = value;
 }
 
-Vector4 BSLightingShaderProperty::GetSparkleParamaters() const {
-	return sparkleParamaters;
+Vector4 BSLightingShaderProperty::GetSparkleParameters() const {
+	return sparkleParameters;
 }
 
-void BSLightingShaderProperty::SetSparkleParamaters( const Vector4 & value ) {
-	sparkleParamaters = value;
+void BSLightingShaderProperty::SetSparkleParameters( const Vector4 & value ) {
+	sparkleParameters = value;
 }
 
 float BSLightingShaderProperty::GetEyeCubemapScale() const {
@@ -556,11 +556,11 @@ void BSLightingShaderProperty::SetAlpha( float value ) {
 }
 
 float BSLightingShaderProperty::GetSpecularPower_Glossiness() const {
-   return specularPower_Glossiness;
+   return glossiness;
 }
 
 void BSLightingShaderProperty::SetSpecularPower_Glossiness( float value ) {
-   specularPower_Glossiness = value;
+   glossiness = value;
 }
 
 Color3 BSLightingShaderProperty::GetSpecularColor() const {
@@ -667,12 +667,12 @@ void BSLightingShaderProperty::SetParallaxEnvmapStrength( float value ) {
    parallaxEnvmapStrength = value;
 }
 
-Vector4 BSLightingShaderProperty::GetSparkleParamaters() const {
-   return sparkleParamaters;
+Vector4 BSLightingShaderProperty::GetSparkleParameters() const {
+   return sparkleParameters;
 }
 
-void BSLightingShaderProperty::SetSparkleParamaters( const Vector4 & value ) {
-   sparkleParamaters = value;
+void BSLightingShaderProperty::SetSparkleParameters( const Vector4 & value ) {
+   sparkleParameters = value;
 }
 
 float BSLightingShaderProperty::GetEyeCubemapScale() const {

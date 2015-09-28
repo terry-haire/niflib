@@ -71,11 +71,27 @@ public:
 
 	// The shape's material.
 	// \return The current value.
-	HavokMaterial GetMaterial() const;
+	SkyrimHavokMaterial GetSkyrimMaterial() const;
 
 	// The shape's material.
 	// \param[in] value The new value.
-	void SetMaterial( const HavokMaterial & value );
+	void SetSkyrimMaterial( const SkyrimHavokMaterial & value );
+
+	// A shell with that radius is added around the shape.
+	// \return The current value.
+	float GetRadius() const;
+
+	// A shell with that radius is added around the shape.
+	// \param[in] value The new value.
+	void SetRadius( float value );
+
+	// Scale
+	// \return The current value.
+	float GetScale() const;
+
+	// Scale
+	// \param[in] value The new value.
+	void SetScale( float value );
 
 	// The collision mesh data.
 	// \return The current value.
@@ -94,17 +110,23 @@ protected:
 	/*! Points to root node? */
 	NiAVObject * target;
 	/*! The shape's material. */
-	HavokMaterial material;
+	SkyrimHavokMaterial skyrimMaterial;
 	/*! Unknown. */
 	float unknownFloat1;
 	/*! Unknown. */
-	array<4,byte > unknown8Bytes;
+	array<4,byte > unknown4Bytes;
 	/*! Unknown */
 	Vector4 unknownFloats1;
+	/*! A shell with that radius is added around the shape. */
+	float radius;
+	/*! Scale */
+	float scale;
 	/*! Unknown */
-	Vector4 unknownFloats2;
+	float unknownFloat3;
 	/*! Unknown */
-	float unknownFloat2;
+	float unknownFloat4;
+	/*! Unknown */
+	float unknownFloat5;
 	/*! The collision mesh data. */
 	Ref<bhkCompressedMeshShapeData > data;
 public:

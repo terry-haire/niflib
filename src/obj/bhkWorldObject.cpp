@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type bhkWorldObject::TYPE("bhkWorldObject", &bhkSerializable::TYPE );
 
-bhkWorldObject::bhkWorldObject() : shape(NULL), layer((OblivionLayer)OL_STATIC), colFilter((byte)0), unknownShort((unsigned short)0) {
+bhkWorldObject::bhkWorldObject() : shape(NULL), layer((OblivionLayer)OL_STATIC), colFilter((byte)0), skyrimLayer((SkyrimLayer)SKYL_STATIC), flagsAndPartNumber((byte)0), unknownShort((unsigned short)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -46,8 +46,14 @@ void bhkWorldObject::Read( istream& in, list<unsigned int> & link_stack, const N
 	bhkSerializable::Read( in, link_stack, info );
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
-	NifStream( layer, in, info );
-	NifStream( colFilter, in, info );
+	if ( (info.userVersion < 12) ) {
+		NifStream( layer, in, info );
+		NifStream( colFilter, in, info );
+	};
+	if ( (info.userVersion >= 12) ) {
+		NifStream( skyrimLayer, in, info );
+		NifStream( flagsAndPartNumber, in, info );
+	};
 	NifStream( unknownShort, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -76,8 +82,14 @@ void bhkWorldObject::Write( ostream& out, const map<NiObjectRef,unsigned int> & 
 			missing_link_stack.push_back( NULL );
 		}
 	}
-	NifStream( layer, out, info );
-	NifStream( colFilter, out, info );
+	if ( (info.userVersion < 12) ) {
+		NifStream( layer, out, info );
+		NifStream( colFilter, out, info );
+	};
+	if ( (info.userVersion >= 12) ) {
+		NifStream( skyrimLayer, out, info );
+		NifStream( flagsAndPartNumber, out, info );
+	};
 	NifStream( unknownShort, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -93,6 +105,8 @@ std::string bhkWorldObject::asString( bool verbose ) const {
 	out << "  Shape:  " << shape << endl;
 	out << "  Layer:  " << layer << endl;
 	out << "  Col Filter:  " << colFilter << endl;
+	out << "  Skyrim Layer:  " << skyrimLayer << endl;
+	out << "  Flags And Part Number:  " << flagsAndPartNumber << endl;
 	out << "  Unknown Short:  " << unknownShort << endl;
 	return out.str();
 
@@ -149,6 +163,22 @@ byte bhkWorldObject::GetColFilter() const {
 
 void bhkWorldObject::SetColFilter( byte value ) {
 	colFilter = value;
+}
+
+SkyrimLayer bhkWorldObject::GetSkyrimLayer() const {
+	return skyrimLayer;
+}
+
+void bhkWorldObject::SetSkyrimLayer( const SkyrimLayer & value ) {
+	skyrimLayer = value;
+}
+
+byte bhkWorldObject::GetFlagsAndPartNumber() const {
+	return flagsAndPartNumber;
+}
+
+void bhkWorldObject::SetFlagsAndPartNumber( byte value ) {
+	flagsAndPartNumber = value;
 }
 
 ****End Example Naive Implementation***/

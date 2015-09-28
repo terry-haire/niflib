@@ -75,7 +75,7 @@ void NiPSysData::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 		NifStream( hasSubtextureOffsetUvs, in, info );
 		NifStream( numSubtextureOffsetUvs, in, info );
 		NifStream( aspectRatio, in, info );
-		if ( (hasSubtextureOffsetUvs == 1) ) {
+		if ( hasSubtextureOffsetUvs ) {
 			subtextureOffsetUvs.resize(numSubtextureOffsetUvs);
 			for (unsigned int i3 = 0; i3 < subtextureOffsetUvs.size(); i3++) {
 				NifStream( subtextureOffsetUvs[i3], in, info );
@@ -128,7 +128,7 @@ void NiPSysData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 		NifStream( hasSubtextureOffsetUvs, out, info );
 		NifStream( numSubtextureOffsetUvs, out, info );
 		NifStream( aspectRatio, out, info );
-		if ( (hasSubtextureOffsetUvs == 1) ) {
+		if ( hasSubtextureOffsetUvs ) {
 			for (unsigned int i3 = 0; i3 < subtextureOffsetUvs.size(); i3++) {
 				NifStream( subtextureOffsetUvs[i3], out, info );
 			};
@@ -196,7 +196,7 @@ std::string NiPSysData::asString( bool verbose ) const {
 	out << "  Has Subtexture Offset UVs:  " << hasSubtextureOffsetUvs << endl;
 	out << "  Num Subtexture Offset UVs:  " << numSubtextureOffsetUvs << endl;
 	out << "  Aspect Ratio:  " << aspectRatio << endl;
-	if ( (hasSubtextureOffsetUvs == 1) ) {
+	if ( hasSubtextureOffsetUvs ) {
 		array_output_count = 0;
 		for (unsigned int i2 = 0; i2 < subtextureOffsetUvs.size(); i2++) {
 			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {

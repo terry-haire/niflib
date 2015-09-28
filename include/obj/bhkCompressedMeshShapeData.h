@@ -14,11 +14,11 @@ All rights reserved.  Please see niflib.h for license. */
 
 //--END CUSTOM CODE--//
 
-#include "NiObject.h"
+#include "bhkRefObject.h"
 
 // Include structures
 #include "../gen/bhkCMSDMaterial.h"
-#include "../gen/bhkCMSDData.h"
+#include "../gen/bhkCMSDTransform.h"
 #include "../gen/bhkCMSDBigTris.h"
 #include "../gen/bhkCMSDChunk.h"
 namespace Niflib {
@@ -27,7 +27,7 @@ class bhkCompressedMeshShapeData;
 typedef Ref<bhkCompressedMeshShapeData> bhkCompressedMeshShapeDataRef;
 
 /*! A compressed mesh shape for collision in Skyrim. */
-class bhkCompressedMeshShapeData : public NiObject {
+class bhkCompressedMeshShapeData : public bhkRefObject {
 public:
 	/*! Constructor */
 	NIFLIB_API bhkCompressedMeshShapeData();
@@ -61,21 +61,67 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Unknown
+	// Number of bits in the shape-key reserved for a triangle index
 	// \return The current value.
-	vector<bhkCMSDData > GetDataSet1() const;
+	unsigned int GetBitsPerIndex() const;
 
-	// Unknown
+	// Number of bits in the shape-key reserved for a triangle index
 	// \param[in] value The new value.
-	void SetDataSet1( const vector<bhkCMSDData >& value );
+	void SetBitsPerIndex( unsigned int value );
 
-	// Unknown
+	// Number of bits in the shape-key reserved for a triangle index and its winding
 	// \return The current value.
-	vector<bhkCMSDData > GetDataSet2() const;
+	unsigned int GetBitsPerWIndex() const;
 
-	// Unknown
+	// Number of bits in the shape-key reserved for a triangle index and its winding
 	// \param[in] value The new value.
-	void SetDataSet2( const vector<bhkCMSDData >& value );
+	void SetBitsPerWIndex( unsigned int value );
+
+	// Mask used to get the triangle index and winding from a shape-key (common: 262143
+	// = 0x3ffff)
+	// \return The current value.
+	unsigned int GetMaskWIndex() const;
+
+	// Mask used to get the triangle index and winding from a shape-key (common: 262143
+	// = 0x3ffff)
+	// \param[in] value The new value.
+	void SetMaskWIndex( unsigned int value );
+
+	// Mask used to get the triangle index from a shape-key (common: 131071 = 0x1ffff)
+	// \return The current value.
+	unsigned int GetMaskIndex() const;
+
+	// Mask used to get the triangle index from a shape-key (common: 131071 = 0x1ffff)
+	// \param[in] value The new value.
+	void SetMaskIndex( unsigned int value );
+
+	// The radius of the storage mesh shape? Quantization error?
+	// \return The current value.
+	float GetError() const;
+
+	// The radius of the storage mesh shape? Quantization error?
+	// \param[in] value The new value.
+	void SetError( float value );
+
+	// The minimum boundary of the AABB (the coordinates of the corner with the lowest
+	// numerical values)
+	// \return The current value.
+	Vector4 GetBoundsMin() const;
+
+	// The minimum boundary of the AABB (the coordinates of the corner with the lowest
+	// numerical values)
+	// \param[in] value The new value.
+	void SetBoundsMin( const Vector4 & value );
+
+	// The maximum boundary of the AABB (the coordinates of the corner with the highest
+	// numerical values)
+	// \return The current value.
+	Vector4 GetBoundsMax() const;
+
+	// The maximum boundary of the AABB (the coordinates of the corner with the highest
+	// numerical values)
+	// \param[in] value The new value.
+	void SetBoundsMax( const Vector4 & value );
 
 	// Compressed Vertices?
 	// \return The current value.
@@ -99,24 +145,29 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown */
-	unsigned int unknownInt1;
-	/*! Unknown */
-	unsigned int unknownInt2;
-	/*! Unknown */
-	unsigned short unknownShort1;
-	/*! Unknown */
-	unsigned short unknownShort2;
-	/*! Unknown */
-	unsigned short unknownShort3;
-	/*! Unknown */
-	unsigned short unknownShort4;
-	/*! Unknown. */
-	float unknownFloat1;
-	/*! Seems to define bounding shape, this is lower left corner? */
-	Vector4 unknownFloats1;
-	/*! see above, upper right? */
-	Vector4 unknownFloats2;
+	/*! Number of bits in the shape-key reserved for a triangle index */
+	unsigned int bitsPerIndex;
+	/*! Number of bits in the shape-key reserved for a triangle index and its winding */
+	unsigned int bitsPerWIndex;
+	/*!
+	 * Mask used to get the triangle index and winding from a shape-key (common: 262143
+	 * = 0x3ffff)
+	 */
+	unsigned int maskWIndex;
+	/*! Mask used to get the triangle index from a shape-key (common: 131071 = 0x1ffff) */
+	unsigned int maskIndex;
+	/*! The radius of the storage mesh shape? Quantization error? */
+	float error;
+	/*!
+	 * The minimum boundary of the AABB (the coordinates of the corner with the lowest
+	 * numerical values)
+	 */
+	Vector4 boundsMin;
+	/*!
+	 * The maximum boundary of the AABB (the coordinates of the corner with the highest
+	 * numerical values)
+	 */
+	Vector4 boundsMax;
 	/*! Unknown */
 	byte unknownByte1;
 	/*! Unknown */
@@ -129,24 +180,17 @@ protected:
 	byte unknownByte2;
 	/*! Number of chunk materials */
 	mutable unsigned int numMaterials;
-	/*! Assigns materials to individual chunks? */
+	/*! Table (array) with sets of materials. Chunks refers to this table by index. */
 	vector<bhkCMSDMaterial > chunkMaterials;
 	/*! Unknown */
 	unsigned int unknownInt6;
-	/*! Format for vertices/? */
-	mutable unsigned int numDataSet;
-	/*! Unknown */
-	unsigned int unknownInt7;
-	/*! Unknown */
-	unsigned int unknownInt8;
-	/*! Unknown */
-	unsigned int unknownInt9;
-	/*! Unknown */
-	vector<bhkCMSDData > dataSet1;
-	/*! Unknown */
-	vector<bhkCMSDData > dataSet2;
-	/*! Unknown */
-	float unknownFloat2;
+	/*! Number of chunk transformations */
+	mutable unsigned int numTransforms;
+	/*!
+	 * Table (array) with sets of transformations. Chunks refers to this table by
+	 * index.
+	 */
+	vector<bhkCMSDTransform > chunkTransforms;
 	/*! Unknown */
 	mutable unsigned int numBigVerts;
 	/*! Compressed Vertices? */

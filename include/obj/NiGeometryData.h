@@ -59,6 +59,14 @@ public:
 
 	/***Begin Example Naive Implementation****
 
+	// Bethesda uses this for max number of particles in NiPSysData.
+	// \return The current value.
+	unsigned short GetBsMaxVertices() const;
+
+	// Bethesda uses this for max number of particles in NiPSysData.
+	// \param[in] value The new value.
+	void SetBsMaxVertices( unsigned short value );
+
 	// Used with NiCollision objects when OBB or TRI is set.
 	// \return The current value.
 	byte GetKeepFlags() const;
@@ -91,6 +99,34 @@ public:
 	// \param[in] value The new value.
 	void SetVertices( const vector<Vector3 >& value );
 
+	// Flag for tangents and bitangents in upper byte. Texture flags in lower byte.
+	// \return The current value.
+	unsigned short GetNumUvSets() const;
+
+	// Flag for tangents and bitangents in upper byte. Texture flags in lower byte.
+	// \param[in] value The new value.
+	void SetNumUvSets( unsigned short value );
+
+	// Bethesda's version of this field for nif versions 20.2.0.7 and up. Only a single
+	// bit denotes whether uv's are present. For example, see
+	// meshes/architecture/megaton/megatonrampturn45sml.nif in Fallout 3.
+	// \return The current value.
+	unsigned short GetBsNumUvSets() const;
+
+	// Bethesda's version of this field for nif versions 20.2.0.7 and up. Only a single
+	// bit denotes whether uv's are present. For example, see
+	// meshes/architecture/megaton/megatonrampturn45sml.nif in Fallout 3.
+	// \param[in] value The new value.
+	void SetBsNumUvSets( unsigned short value );
+
+	// Material
+	// \return The current value.
+	SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// Material
+	// \param[in] value The new value.
+	void SetSkyrimMaterial( const SkyrimHavokMaterial & value );
+
 	// Do we have lighting normals? These are essential for proper lighting: if not
 	// present, the model will only be influenced by ambient light.
 	// \return The current value.
@@ -109,23 +145,21 @@ public:
 	// \param[in] value The new value.
 	void SetNormals( const vector<Vector3 >& value );
 
-	// Unknown. Binormal & tangents?
+	// Tangent vectors.
 	// \return The current value.
 	vector<Vector3 > GetTangents() const;
 
-	// Unknown. Binormal & tangents?
+	// Tangent vectors.
 	// \param[in] value The new value.
 	void SetTangents( const vector<Vector3 >& value );
 
-	// Unknown. Binormal & tangents? has_normals must be set as well for this field to
-	// be present.
+	// Bitangent vectors.
 	// \return The current value.
-	vector<Vector3 > GetBinormals() const;
+	vector<Vector3 > GetBitangents() const;
 
-	// Unknown. Binormal & tangents? has_normals must be set as well for this field to
-	// be present.
+	// Bitangent vectors.
 	// \param[in] value The new value.
-	void SetBinormals( const vector<Vector3 >& value );
+	void SetBitangents( const vector<Vector3 >& value );
 
 	// Center of the bounding box (smallest box that contains all vertices) of the
 	// mesh.
@@ -150,22 +184,22 @@ public:
 	// Do we have vertex colors? These are usually used to fine-tune the lighting of
 	// the model.
 	//
-	//       Note: how vertex colors influence the model can be controlled by having a
-	// NiVertexColorProperty object as a property child of the root node. If this
-	// property object is not present, the vertex colors fine-tune lighting.
+	//             Note: how vertex colors influence the model can be controlled by
+	// having a NiVertexColorProperty object as a property child of the root node. If
+	// this property object is not present, the vertex colors fine-tune lighting.
 	//
-	//       Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
+	//             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
 	// \return The current value.
 	bool GetHasVertexColors() const;
 
 	// Do we have vertex colors? These are usually used to fine-tune the lighting of
 	// the model.
 	//
-	//       Note: how vertex colors influence the model can be controlled by having a
-	// NiVertexColorProperty object as a property child of the root node. If this
-	// property object is not present, the vertex colors fine-tune lighting.
+	//             Note: how vertex colors influence the model can be controlled by
+	// having a NiVertexColorProperty object as a property child of the root node. If
+	// this property object is not present, the vertex colors fine-tune lighting.
 	//
-	//       Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
+	//             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
 	// \param[in] value The new value.
 	void SetHasVertexColors( bool value );
 
@@ -177,29 +211,31 @@ public:
 	// \param[in] value The new value.
 	void SetVertexColors( const vector<Color4 >& value );
 
+	// The lower 6 (or less?) bits of this field represent the number of UV texture
+	// sets. The other bits are probably flag bits. For versions 10.1.0.0 and up, if
+	// bit 12 is set then extra vectors are present after the normals.
+	// \return The current value.
+	unsigned short GetNumUvSets() const;
+
+	// The lower 6 (or less?) bits of this field represent the number of UV texture
+	// sets. The other bits are probably flag bits. For versions 10.1.0.0 and up, if
+	// bit 12 is set then extra vectors are present after the normals.
+	// \param[in] value The new value.
+	void SetNumUvSets( unsigned short value );
+
 	// Do we have UV coordinates?
 	//
-	//       Note: for compatibility with NifTexture, set this value to either
+	//             Note: for compatibility with NifTexture, set this value to either
 	// 0x00000000 or 0xFFFFFFFF.
 	// \return The current value.
 	bool GetHasUv() const;
 
 	// Do we have UV coordinates?
 	//
-	//       Note: for compatibility with NifTexture, set this value to either
+	//             Note: for compatibility with NifTexture, set this value to either
 	// 0x00000000 or 0xFFFFFFFF.
 	// \param[in] value The new value.
 	void SetHasUv( bool value );
-
-	// The UV texture coordinates. They follow the OpenGL standard: some programs may
-	// require you to flip the second coordinate.
-	// \return The current value.
-	vector<vector<TexCoord > > GetUvSets() const;
-
-	// The UV texture coordinates. They follow the OpenGL standard: some programs may
-	// require you to flip the second coordinate.
-	// \param[in] value The new value.
-	void SetUvSets( const vector<TexCoord >& value );
 
 	// The UV texture coordinates. They follow the OpenGL standard: some programs may
 	// require you to flip the second coordinate.
@@ -218,6 +254,22 @@ public:
 	// Consistency Flags
 	// \param[in] value The new value.
 	void SetConsistencyFlags( const ConsistencyType & value );
+
+	// Consistency Flags
+	// \return The current value.
+	ConsistencyType GetConsistencyFlags() const;
+
+	// Consistency Flags
+	// \param[in] value The new value.
+	void SetConsistencyFlags( const ConsistencyType & value );
+
+	// Unknown.
+	// \return The current value.
+	Ref<AbstractAdditionalGeometryData > GetAdditionalData() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetAdditionalData( Ref<AbstractAdditionalGeometryData > value );
 
 	// Unknown.
 	// \return The current value.
@@ -412,12 +464,12 @@ public:
    // Unknown. Binormal & tangents? has_normals must be set as well for this field to
    // be present.
    // \return The current value.
-   NIFLIB_API vector<Vector3 > GetBinormals() const;
+   NIFLIB_API vector<Vector3 > GetBitangents() const;
 
    // Unknown. Binormal & tangents? has_normals must be set as well for this field to
    // be present.
    // \param[in] value The new value.
-   NIFLIB_API void SetBinormals( const vector<Vector3 >& value );
+   NIFLIB_API void SetBitangents( const vector<Vector3 >& value );
 
    // Unknown. Binormal & tangents?
    // \return The current value.
@@ -427,12 +479,20 @@ public:
    // \param[in] value The new value.
    NIFLIB_API void SetTangents( const vector<Vector3 >& value );
 
+   // size calculation helper
+   NIFLIB_HIDDEN unsigned short bsNumUvSetsCalc(const NifInfo& info) const;
+
+   // size calculation helper
+   NIFLIB_HIDDEN unsigned short numUvSetsCalc(const NifInfo& info) const;
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown identifier. Always 0. */
 	int unknownInt;
-	/*! Number of vertices. For NiPSysData this is max particles. */
+	/*! Number of vertices. */
 	mutable unsigned short numVertices;
+	/*! Bethesda uses this for max number of particles in NiPSysData. */
+	unsigned short bsMaxVertices;
 	/*! Used with NiCollision objects when OBB or TRI is set. */
 	byte keepFlags;
 	/*! Unknown. */
@@ -441,10 +501,7 @@ protected:
 	bool hasVertices;
 	/*! The mesh vertices. */
 	vector<Vector3 > vertices;
-	/*!
-	 * Methods for saving binormals and tangents saved in upper byte.  Texture flags in
-	 * lower byte.
-	 */
+	/*! Flag for tangents and bitangents in upper byte. Texture flags in lower byte. */
 	mutable unsigned short numUvSets;
 	/*!
 	 * Bethesda's version of this field for nif versions 20.2.0.7 and up. Only a single
@@ -452,8 +509,8 @@ protected:
 	 * meshes/architecture/megaton/megatonrampturn45sml.nif in Fallout 3.
 	 */
 	mutable unsigned short bsNumUvSets;
-	/*! Unknown, seen in Skyrim. */
-	unsigned int unknownInt2;
+	/*! Material */
+	SkyrimHavokMaterial skyrimMaterial;
 	/*!
 	 * Do we have lighting normals? These are essential for proper lighting: if not
 	 * present, the model will only be influenced by ambient light.
@@ -461,13 +518,10 @@ protected:
 	bool hasNormals;
 	/*! The lighting normals. */
 	vector<Vector3 > normals;
-	/*! Unknown. Binormal & tangents? */
+	/*! Tangent vectors. */
 	vector<Vector3 > tangents;
-	/*!
-	 * Unknown. Binormal & tangents? has_normals must be set as well for this field to
-	 * be present.
-	 */
-	vector<Vector3 > binormals;
+	/*! Bitangent vectors. */
+	vector<Vector3 > bitangents;
 	/*!
 	 * Center of the bounding box (smallest box that contains all vertices) of the
 	 * mesh.
@@ -484,11 +538,11 @@ protected:
 	 * Do we have vertex colors? These are usually used to fine-tune the lighting of
 	 * the model.
 	 * 
-	 *       Note: how vertex colors influence the model can be controlled by having a
-	 * NiVertexColorProperty object as a property child of the root node. If this
-	 * property object is not present, the vertex colors fine-tune lighting.
+	 *             Note: how vertex colors influence the model can be controlled by
+	 * having a NiVertexColorProperty object as a property child of the root node. If
+	 * this property object is not present, the vertex colors fine-tune lighting.
 	 * 
-	 *       Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
+	 *             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
 	 */
 	bool hasVertexColors;
 	/*! The vertex colors. */
@@ -496,7 +550,7 @@ protected:
 	/*!
 	 * Do we have UV coordinates?
 	 * 
-	 *       Note: for compatibility with NifTexture, set this value to either
+	 *             Note: for compatibility with NifTexture, set this value to either
 	 * 0x00000000 or 0xFFFFFFFF.
 	 */
 	bool hasUv;

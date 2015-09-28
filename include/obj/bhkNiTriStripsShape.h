@@ -68,6 +68,14 @@ public:
 	// \param[in] value The new value.
 	void SetMaterial( const HavokMaterial & value );
 
+	// The shape's material.
+	// \return The current value.
+	SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	void SetSkyrimMaterial( const SkyrimHavokMaterial & value );
+
 	// Scale. Usually (1.0, 1.0, 1.0).
 	// \return The current value.
 	Vector3 GetScale() const;
@@ -181,6 +189,8 @@ public:
 protected:
 	/*! The shape's material. */
 	HavokMaterial material;
+	/*! The shape's material. */
+	SkyrimHavokMaterial skyrimMaterial;
 	/*! Unknown. */
 	float unknownFloat1;
 	/*! Unknown. */

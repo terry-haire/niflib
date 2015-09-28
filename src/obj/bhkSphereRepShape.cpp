@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type bhkSphereRepShape::TYPE("bhkSphereRepShape", &bhkShape::TYPE );
 
-bhkSphereRepShape::bhkSphereRepShape() : material((HavokMaterial)0), radius(0.0f) {
+bhkSphereRepShape::bhkSphereRepShape() : material((HavokMaterial)0), skyrimMaterial((SkyrimHavokMaterial)0), radius(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -43,7 +43,12 @@ void bhkSphereRepShape::Read( istream& in, list<unsigned int> & link_stack, cons
 	//--END CUSTOM CODE--//
 
 	bhkShape::Read( in, link_stack, info );
-	NifStream( material, in, info );
+	if ( (info.userVersion < 12) ) {
+		NifStream( material, in, info );
+	};
+	if ( (info.userVersion >= 12) ) {
+		NifStream( skyrimMaterial, in, info );
+	};
 	NifStream( radius, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -55,7 +60,12 @@ void bhkSphereRepShape::Write( ostream& out, const map<NiObjectRef,unsigned int>
 	//--END CUSTOM CODE--//
 
 	bhkShape::Write( out, link_map, missing_link_stack, info );
-	NifStream( material, out, info );
+	if ( (info.userVersion < 12) ) {
+		NifStream( material, out, info );
+	};
+	if ( (info.userVersion >= 12) ) {
+		NifStream( skyrimMaterial, out, info );
+	};
 	NifStream( radius, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -69,6 +79,7 @@ std::string bhkSphereRepShape::asString( bool verbose ) const {
 	stringstream out;
 	out << bhkShape::asString();
 	out << "  Material:  " << material << endl;
+	out << "  Skyrim Material:  " << skyrimMaterial << endl;
 	out << "  Radius:  " << radius << endl;
 	return out.str();
 
@@ -106,6 +117,14 @@ HavokMaterial bhkSphereRepShape::GetMaterial() const {
 
 void bhkSphereRepShape::SetMaterial( const HavokMaterial & value ) {
 	material = value;
+}
+
+SkyrimHavokMaterial bhkSphereRepShape::GetSkyrimMaterial() const {
+	return skyrimMaterial;
+}
+
+void bhkSphereRepShape::SetSkyrimMaterial( const SkyrimHavokMaterial & value ) {
+	skyrimMaterial = value;
 }
 
 float bhkSphereRepShape::GetRadius() const {

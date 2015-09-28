@@ -61,6 +61,7 @@ class NiObject;
 class NiNode;
 class NiAVObject;
 class NiControllerSequence;
+struct Header;
 
 #ifndef NULL
 #define NULL 0  /*!< Definition used to detect null pointers. */ 
@@ -83,26 +84,6 @@ enum ExportOptions {
 	EXPORT_NIF_KF_MULTI = 2, /*!< NIF + multiple KF + KFM */
 	EXPORT_KF = 3, /*!< single KF */
 	EXPORT_KF_MULTI = 4 /*!< multiple KF */
-};
-
-/*! 
- * Used to specify control how the NIF file is to be written or retrieved.
- */
-struct NifOptions {
-	NifOptions() 
-		: exceptionOnErrors(true) 
-		, export_files(EXPORT_NIF)
-		, kf_type(KF_MW)
-	{}
-
-	/* Export Options */
-	ExportOptions export_files;
-	/* Export Options */
-	NifGame kf_type;
-	/*! Exception handling control. Throw exception if there are any errors while reading or writing. */
-	bool exceptionOnErrors;
-	/*! Exception handling control. Messages if errors in nif are present. */
-	string errorMsgs;
 };
 
 //--Main Functions--//
@@ -128,6 +109,21 @@ struct NifOptions {
 NIFLIB_API unsigned int GetNifVersion( string const & file_name );
 
 /*!
+ * Returns the nif info without reading the entire file which includes the nif version,
+ * the nif user version1 and the nif user version2
+ * \param The full path to the nif file which includes the file name and the location of the nif file
+ * \return The nif info structure which contains the nif header info
+ */
+NIFLIB_API NifInfo ReadHeaderInfo( string const & file_name );
+
+/*!
+ * Returns the nif header without reading the entire file 
+ * \param The full path to the nif file which includes the file name and the location of the nif file
+ * \return The nif info structure which contains the nif header
+ */
+NIFLIB_API Header ReadHeader( string const & file_name );
+
+/*!
  * Return the missing link stack with objects replaced from nif trees at specified root.
  */
 NIFLIB_API list<Ref<NiObject> > ResolveMissingLinkStack(
@@ -141,7 +137,7 @@ NIFLIB_API list<Ref<NiObject> > ResolveMissingLinkStack(
  * \param info Optionally, a NifInfo structure pointer can be passed in, and it will be filled with information from the header of the NIF file.
  * \return All the NIF objects read from the stream.
  */
-NIFLIB_API vector<Ref<NiObject> > ReadNifList( istream & in, list<Ref<NiObject> > & missing_link_stack, NifInfo * info = NULL, NifOptions * nif_opts = NULL );
+NIFLIB_API vector<Ref<NiObject> > ReadNifList( istream & in, list<Ref<NiObject> > & missing_link_stack, NifInfo * info );
 
 /*!
  * Reads the given file by file name and returns a vector of object references
@@ -150,7 +146,7 @@ NIFLIB_API vector<Ref<NiObject> > ReadNifList( istream & in, list<Ref<NiObject> 
  * \return All the NIF objects read from the Nif file. 
  * \sa ReadNifTree, WriteNifTree
  */
-NIFLIB_API vector< Ref<NiObject> > ReadNifList( string const & file_name, NifInfo * info = NULL, NifOptions * nif_opts = NULL );
+NIFLIB_API vector< Ref<NiObject> > ReadNifList( string const & file_name, NifInfo * info = NULL );
 
 /*!
  * Reads the given input stream and returns a vector of object references
@@ -158,12 +154,12 @@ NIFLIB_API vector< Ref<NiObject> > ReadNifList( string const & file_name, NifInf
  * \param info Optionally, a NifInfo structure pointer can be passed in, and it will be filled with information from the header of the NIF file.
  * \return All the NIF objects read from the stream.
  */
-NIFLIB_API vector< Ref<NiObject> > ReadNifList( istream & in, NifInfo * info = NULL, NifOptions * nif_opts = NULL );
+NIFLIB_API vector< Ref<NiObject> > ReadNifList( istream & in, NifInfo * info = NULL );
 
 /*!
  * Like ReadNifList but returns root.
  */
-NIFLIB_API Ref<NiObject> ReadNifTree( istream & in, list<Ref<NiObject> > & missing_link_stack, NifInfo * info = NULL, NifOptions * nif_opts = NULL);
+NIFLIB_API Ref<NiObject> ReadNifTree( istream & in, list<Ref<NiObject> > & missing_link_stack, NifInfo * info = NULL);
 
 /*!
  * Reads the given file by file name and returns a reference to the root object.
@@ -172,7 +168,7 @@ NIFLIB_API Ref<NiObject> ReadNifTree( istream & in, list<Ref<NiObject> > & missi
  * \return The root of tree of NIF objects contained in the NIF file.
  * \sa ReadNifList, WriteNifTree
  */
-NIFLIB_API Ref<NiObject> ReadNifTree( string const & file_name, NifInfo * info = NULL, NifOptions * nif_opts = NULL );
+NIFLIB_API Ref<NiObject> ReadNifTree( string const & file_name, NifInfo * info = NULL );
 
 /*!
  * Reads the given input stream and returns a reference to the root object.
@@ -180,7 +176,7 @@ NIFLIB_API Ref<NiObject> ReadNifTree( string const & file_name, NifInfo * info =
  * \param[out] info Optionally, a NifInfo structure pointer can be passed in, and it will be filled with information from the header of the NIF file.
  * \return The root of the tree of NIF Objects contained in the NIF file.
  */
-NIFLIB_API Ref<NiObject> ReadNifTree( istream & in, NifInfo * info = NULL, NifOptions * nif_opts = NULL );
+NIFLIB_API Ref<NiObject> ReadNifTree( istream & in, NifInfo * info = NULL );
 
 /*!
  * Creates a new NIF file of the given file name by crawling through the data tree starting with the root objects given, and keeps track of links that cannot been written.
@@ -190,7 +186,7 @@ NIFLIB_API Ref<NiObject> ReadNifTree( istream & in, NifInfo * info = NULL, NifOp
  * \param[in] info A NifInfo structure that contains information such as the version of the NIF file to create.
  * \sa ReadNifList, WriteNifTree
  */
-NIFLIB_API void WriteNifTree( ostream & out, NiObject *root, list<NiObject *> & missing_link_stack, const NifInfo & info = NifInfo(), NifOptions * nif_opts = NULL );
+NIFLIB_API void WriteNifTree( ostream & out, NiObject *root, list<NiObject *> & missing_link_stack, const NifInfo & info = NifInfo() );
 
 /*!
  * Creates a new NIF file of the given file name by crawling through the data tree starting with the root object given.
@@ -199,7 +195,7 @@ NIFLIB_API void WriteNifTree( ostream & out, NiObject *root, list<NiObject *> & 
  * \param[in] info A NifInfo structure that contains information such as the version of the NIF file to create.
  * \sa ReadNifList, WriteNifTree
  */
-NIFLIB_API void WriteNifTree( string const & file_name, NiObject * root, const NifInfo & info = NifInfo(), NifOptions * nif_opts = NULL );
+NIFLIB_API void WriteNifTree( string const & file_name, NiObject * root, const NifInfo & info = NifInfo() );
 
 /*!
  * Writes a nif tree to an ostream starting at the given root object.
@@ -207,7 +203,7 @@ NIFLIB_API void WriteNifTree( string const & file_name, NiObject * root, const N
  * \param[in] root The root object to start from when writing out the NIF data.  All decedents of this object will be written to the stream in tree-descending order.
  * \param[in] info A NifInfo structure that contains information such as the version of the NIF file to create.
  */
-NIFLIB_API void WriteNifTree( ostream & out, NiObject * root, const NifInfo & info = NifInfo(), NifOptions * nif_opts = NULL );
+NIFLIB_API void WriteNifTree( ostream & out, NiObject * root, const NifInfo & info = NifInfo() );
 
 /*!
  * Writes a bunch of files given a base file name, and a pointer to the root object of the Nif file tree.

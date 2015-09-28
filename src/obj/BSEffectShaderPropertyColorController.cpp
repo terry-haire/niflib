@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSEffectShaderPropertyColorController::TYPE("BSEffectShaderPropertyColorController", &NiFloatInterpController::TYPE );
 
-BSEffectShaderPropertyColorController::BSEffectShaderPropertyColorController() : unknownInt1((unsigned int)0) {
+BSEffectShaderPropertyColorController::BSEffectShaderPropertyColorController() : typeOfControlledColor((EffectShaderControlledColor)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,7 +46,7 @@ void BSEffectShaderPropertyColorController::Read( istream& in, list<unsigned int
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Read( in, link_stack, info );
-	NifStream( unknownInt1, in, info );
+	NifStream( typeOfControlledColor, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -59,7 +59,7 @@ void BSEffectShaderPropertyColorController::Write( ostream& out, const map<NiObj
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownInt1, out, info );
+	NifStream( typeOfControlledColor, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -73,7 +73,7 @@ std::string BSEffectShaderPropertyColorController::asString( bool verbose ) cons
 
 	stringstream out;
 	out << NiFloatInterpController::asString();
-	out << "  Unknown Int 1:  " << unknownInt1 << endl;
+	out << "  Type of Controlled Color:  " << typeOfControlledColor << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -105,7 +105,17 @@ std::list<NiObject *> BSEffectShaderPropertyColorController::GetPtrs() const {
 	return ptrs;
 }
 
-//--This object has no eligable attributes.  No example implementation generated--//
+/***Begin Example Naive Implementation****
+
+EffectShaderControlledColor BSEffectShaderPropertyColorController::GetTypeOfControlledColor() const {
+	return typeOfControlledColor;
+}
+
+void BSEffectShaderPropertyColorController::SetTypeOfControlledColor( const EffectShaderControlledColor & value ) {
+	typeOfControlledColor = value;
+}
+
+****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 

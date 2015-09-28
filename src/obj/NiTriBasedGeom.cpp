@@ -329,7 +329,7 @@ void NiTriBasedGeom::UpdateTangentSpace(int method) {
    {
       // swap binormals and tangents: [ niftools-Bugs-2466995 ]
       niTriGeomData->SetTangents(binormals);
-      niTriGeomData->SetBinormals(tangents);
+      niTriGeomData->SetBitangents(tangents);
    }
 }
 

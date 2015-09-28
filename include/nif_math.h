@@ -45,6 +45,9 @@ struct TexCoord {
 	/*! Default constructor	*/
 	NIFLIB_API TexCoord() : u(0.0f), v(0.0f) {}
 
+	/*! Copy constructor	*/
+	NIFLIB_API TexCoord(const TexCoord& src) : u(src.u), v(src.v) {}
+
 	NIFLIB_API TexCoord operator+(const TexCoord& rhs) const
 	{
 		TexCoord ret;
@@ -200,22 +203,26 @@ struct Vector3 {
 	 * \return The result of the addition.
 	 */
 	NIFLIB_API Vector3 operator+( const Vector3 & rh ) const;
+	NIFLIB_API Vector3 operator+( const float & rh ) const;
 
 	/* Adds the two vectors and then sets the result to the left-hand vector.
 	 * \return This vector is returned.
 	 */
 	NIFLIB_API Vector3 & operator+=( const Vector3 & rh );
+	NIFLIB_API Vector3 & operator+=( const float & rh );
 
 	/* Allows the subtraction of vectors.  Each component, x, y, y, is subtracted from
 	 * the same component of the other vector.
 	 * \return The result of the subtraction.
 	 */
 	NIFLIB_API Vector3 operator-( const Vector3 & rh ) const;
+	NIFLIB_API Vector3 operator-( const float & rh ) const;
 
 	/* This operator subtracts the two vectors and then sets the result to the left-hand vector.
 	 * \return This vector is returned.
 	 */
 	NIFLIB_API Vector3 & operator-=( const Vector3 & rh);
+	NIFLIB_API Vector3 & operator-=( const float & rh );
 
 	/* Allows scaler multiplication, that is multipying all components of the
 	 * vector, x, y and z, by the same number.
@@ -226,7 +233,7 @@ struct Vector3 {
 	/* Multipies a vector by a scalar and then sets the result to the left-hand vector.
 	 * \return This vector is returned.
 	 */
-	Vector3 & operator*=( const float & rh );
+	NIFLIB_API Vector3 & operator*=( const float & rh );
 
 	/* Multiplies a vector by a vector using the dot product
 	 * \return The dot product of the two vectors.
@@ -247,7 +254,7 @@ struct Vector3 {
 	/* Divides a vector by a scalar and then sets the result to the left-hand vector.
 	 * \return This vector is returned.
 	 */
-	Vector3 & operator/=( const float & rh );
+	NIFLIB_API Vector3 & operator/=( const float & rh );
 
 	/* Sets the components of this Vector3 to those of another Vector3 
 	 * \return This vector is returned.
@@ -603,6 +610,9 @@ struct Matrix33 {
 	/*! Default constructor.   Initializes matrix to identity.  */
 	NIFLIB_API Matrix33();
 
+	/*! Copy constructor.   */
+	NIFLIB_API Matrix33(const Matrix33& src);
+
 	/*! This constructor can be used to set all values in this matrix during initialization
 	 * \param[in] m11 The value to set at row 1, column 1.
 	 * \param[in] m12 The value to set at row 1, column 2.
@@ -955,6 +965,13 @@ struct Color3 {
 	/*! Default constructor */
 	NIFLIB_API Color3() {}
 
+	/*! Copy constructor */
+	NIFLIB_API Color3(const Color3& src) {
+		this->r = src.r;
+		this->g = src.g;
+		this->b = src.b;
+	}
+
 	/*! This constructor can be used to set all values in this structure during initialization
 	 * \param[in] r The value to set the red component of this color to.  Should be between 0.0f and 1.0f.
 	 * \param[in] g The value to set the green component of this color to. Should be between 0.0f and 1.0f.
@@ -996,6 +1013,39 @@ struct Color4 {
 		return ret;
 	}
 
+	NIFLIB_API Color4 operator-(const Color4& rhs) const
+	{
+		Color4 ret;
+		ret = *this;
+		ret.r -= rhs.r;
+		ret.g -= rhs.g;
+		ret.b -= rhs.b;
+		ret.a -= rhs.a;
+		return ret;
+	}
+
+	NIFLIB_API Color4 operator+(const float rhs) const
+	{
+		Color4 ret;
+		ret = *this;
+		ret.r += rhs;
+		ret.g += rhs;
+		ret.b += rhs;
+		ret.a += rhs;
+		return ret;
+	}
+
+	NIFLIB_API Color4 operator-(const float rhs) const
+	{
+		Color4 ret;
+		ret = *this;
+		ret.r -= rhs;
+		ret.g -= rhs;
+		ret.b -= rhs;
+		ret.a -= rhs;
+		return ret;
+	}
+
 	NIFLIB_API Color4 operator*(const float rhs) const
 	{
 		Color4 ret;
@@ -1007,8 +1057,22 @@ struct Color4 {
 		return ret;
 	}
 
+	NIFLIB_API Color4 operator/(const float rhs) const
+	{
+		Color4 ret;
+		ret = *this;
+		ret.r /= rhs;
+		ret.g /= rhs;
+		ret.b /= rhs;
+		ret.a /= rhs;
+		return ret;
+	}
+
 	/*! Default constructor */
 	NIFLIB_API Color4() : r(0.0f), g(0.0f), b(0.0f), a(0.0f) {}
+
+	/*! Copy constructor */
+	NIFLIB_API Color4(const Color4& src) : r(src.r), g(src.g), b(src.b), a(src.a) {}
 
 	/*! This constructor can be used to set all values in this structure during initialization
 	 * \param[in] r The value to set the red component of this color to.  Should be between 0.0f and 1.0f.
@@ -1066,6 +1130,41 @@ struct Quaternion {
 		this->x = x;
 		this->y = y;
 		this->z = z;
+	}
+
+	/* Dot-product */
+	NIFLIB_API float Dot(const Quaternion &rhs) const {
+		return  x * rhs.x + 
+			y * rhs.y + 
+			z * rhs.z + 
+			w * rhs.w;
+	}
+
+	/* Multiplication */
+	NIFLIB_API Quaternion operator*(const float &rhs) const {
+		Quaternion ret;
+		ret = *this;
+		ret.x *= rhs;
+		ret.y *= rhs;
+		ret.z *= rhs;
+		ret.w *= rhs;
+		return ret;
+	}
+
+	/* Addition */
+	NIFLIB_API Quaternion operator+(const Quaternion &rhs) const {
+		Quaternion ret;
+		ret = *this;
+		ret.x += rhs.x;
+		ret.y += rhs.y;
+		ret.z += rhs.z;
+		ret.w += rhs.w;
+		return ret;
+	}
+
+	/* Equality */
+	NIFLIB_API bool operator==( const Quaternion & n ) const {
+		return ( x == n.x && y == n.y && z == n.z && w == n.w );
 	}
 
 	/*! This function can be used to set all values in the structure at the same time.

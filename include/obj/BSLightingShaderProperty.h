@@ -76,19 +76,19 @@ public:
 	// \param[in] value The new value.
 	void SetShaderFlags2( const SkyrimShaderPropertyFlags2 & value );
 
-	// UV Offset
+	// Offset UVs
 	// \return The current value.
 	TexCoord GetUvOffset() const;
 
-	// UV Offset
+	// Offset UVs
 	// \param[in] value The new value.
 	void SetUvOffset( const TexCoord & value );
 
-	// UV Scale
+	// Offset UV Scale to repeat tiling textures, see above.
 	// \return The current value.
 	TexCoord GetUvScale() const;
 
-	// UV Scale
+	// Offset UV Scale to repeat tiling textures, see above.
 	// \param[in] value The new value.
 	void SetUvScale( const TexCoord & value );
 
@@ -132,13 +132,13 @@ public:
 	// \param[in] value The new value.
 	void SetAlpha( float value );
 
-	// The material's glossiness. (0-999)
+	// The material's specular power, or glossiness (0-999).
 	// \return The current value.
-	float GetSpecularPower_Glossiness() const;
+	float GetGlossiness() const;
 
-	// The material's glossiness. (0-999)
+	// The material's specular power, or glossiness (0-999).
 	// \param[in] value The new value.
-	void SetSpecularPower_Glossiness( float value );
+	void SetGlossiness( float value );
 
 	// Adds a colored highlight.
 	// \return The current value.
@@ -172,11 +172,11 @@ public:
 	// \param[in] value The new value.
 	void SetLightingEffect2( float value );
 
-	// Scales the environment/cube map. (0-??)
+	// Scales the intensity of the environment/cube map. (0-1)
 	// \return The current value.
 	float GetEnvironmentMapScale() const;
 
-	// Scales the environment/cube map. (0-??)
+	// Scales the intensity of the environment/cube map. (0-1)
 	// \param[in] value The new value.
 	void SetEnvironmentMapScale( float value );
 
@@ -246,11 +246,11 @@ public:
 
 	// Unknown/unused?  CK lists "snow material" when used.
 	// \return The current value.
-	Vector4 GetSparkleParamaters() const;
+	Vector4 GetSparkleParameters() const;
 
 	// Unknown/unused?  CK lists "snow material" when used.
 	// \param[in] value The new value.
-	void SetSparkleParamaters( const Vector4 & value );
+	void SetSparkleParameters( const Vector4 & value );
 
 	// Eye cubemap scale
 	// \return The current value.
@@ -477,11 +477,11 @@ public:
 
    // Unknown/unused?  CK lists "snow material" when used.
    // \return The current value.
-   Vector4 GetSparkleParamaters() const;
+   Vector4 GetSparkleParameters() const;
 
    // Unknown/unused?  CK lists "snow material" when used.
    // \param[in] value The new value.
-   void SetSparkleParamaters( const Vector4 & value );
+   void SetSparkleParameters( const Vector4 & value );
 
    // Eye cubemap scale
    // \return The current value.
@@ -513,9 +513,9 @@ protected:
 	SkyrimShaderPropertyFlags1 shaderFlags1;
 	/*! Skyrim Shader Flags for setting render/shader options. */
 	SkyrimShaderPropertyFlags2 shaderFlags2;
-	/*! UV Offset */
+	/*! Offset UVs */
 	TexCoord uvOffset;
-	/*! UV Scale */
+	/*! Offset UV Scale to repeat tiling textures, see above. */
 	TexCoord uvScale;
 	/*! Texture Set, can have override in an esm/esp */
 	Ref<BSShaderTextureSet > textureSet;
@@ -529,8 +529,8 @@ protected:
 	float alpha;
 	/*! Unknown */
 	float unknownFloat2;
-	/*! The material's glossiness. (0-999) */
-	float specularPower_Glossiness;
+	/*! The material's specular power, or glossiness (0-999). */
+	float glossiness;
 	/*! Adds a colored highlight. */
 	Color3 specularColor;
 	/*! Brightness of specular highlight. (0=not visible) (0-999) */
@@ -539,7 +539,7 @@ protected:
 	float lightingEffect1;
 	/*! Controls strength for envmap/backlight/rim/softlight lighting effect? */
 	float lightingEffect2;
-	/*! Scales the environment/cube map. (0-??) */
+	/*! Scales the intensity of the environment/cube map. (0-1) */
 	float environmentMapScale;
 	/*! Tints the base texture. Overridden by game settings. */
 	Color3 skinTintColor;
@@ -558,7 +558,7 @@ protected:
 	/*! How strong the environment/cube map is. (0-??) */
 	float parallaxEnvmapStrength;
 	/*! Unknown/unused?  CK lists "snow material" when used. */
-	Vector4 sparkleParamaters;
+	Vector4 sparkleParameters;
 	/*! Eye cubemap scale */
 	float eyeCubemapScale;
 	/*! Offset to set center for left eye cubemap */

@@ -51,7 +51,7 @@ void NiObjectNET::Read( istream& in, list<unsigned int> & link_stack, const NifI
 
 	unsigned int block_num;
 	NiObject::Read( in, link_stack, info );
-	if ( ( info.version >= 0x14020007 ) && ( (info.userVersion >= 12) ) ) {
+	if ( (info.userVersion >= 12) ) {
 		if ( IsDerivedType(BSLightingShaderProperty::TYPE) ) {
 			NifStream( skyrimShaderType, in, info );
 		};
@@ -93,7 +93,7 @@ void NiObjectNET::Write( ostream& out, const map<NiObjectRef,unsigned int> & lin
 
 	NiObject::Write( out, link_map, missing_link_stack, info );
 	numExtraDataList = (unsigned int)(extraDataList.size());
-	if ( ( info.version >= 0x14020007 ) && ( (info.userVersion >= 12) ) ) {
+	if ( (info.userVersion >= 12) ) {
 		if ( IsDerivedType(BSLightingShaderProperty::TYPE) ) {
 			NifStream( skyrimShaderType, out, info );
 		};

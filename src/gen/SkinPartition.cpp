@@ -51,6 +51,10 @@ SkinPartition::~SkinPartition() {};
 
 //--BEGIN MISC CUSTOM CODE--//
 
+unsigned short SkinPartition::numTrianglesCalc(const NifInfo& info) const {
+	return numTrianglesCalc();
+}
+
 unsigned short SkinPartition::numTrianglesCalc() const {
 	int len = 0;
 	if (numStrips == 0) {

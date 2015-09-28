@@ -22,12 +22,12 @@ typedef Ref<BSInvMarker> BSInvMarkerRef;
 
 /*!
  * Orientation marker for Skyrim's inventory view.
- *     How to show the nif in the player's inventory.
- *     Typically attached to the root node of the nif tree.
- *     If not present, then Skyrim will still show the nif in inventory,
- *     using the default values.
- *     Name should be 'INV' (without the quotes).
- *     For rotations, a short of "4712" appears as "4.712" but "959" appears as
+ *         How to show the nif in the player's inventory.
+ *         Typically attached to the root node of the nif tree.
+ *         If not present, then Skyrim will still show the nif in inventory,
+ *         using the default values.
+ *         Name should be 'INV' (without the quotes).
+ *         For rotations, a short of "4712" appears as "4.712" but "959" appears as
  * "0.959"  meshes\weapons\daedric\daedricbowskinned.nif
  */
 class BSInvMarker : public NiExtraData {
@@ -64,27 +64,27 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Rotation in radians * 1000.
+	// Unknown.
 	// \return The current value.
 	unsigned short GetRotationX() const;
 
-	// Rotation in radians * 1000.
+	// Unknown.
 	// \param[in] value The new value.
 	void SetRotationX( unsigned short value );
 
-	// Rotation in radians * 1000.
+	// Unknown.
 	// \return The current value.
 	unsigned short GetRotationY() const;
 
-	// Rotation in radians * 1000.
+	// Unknown.
 	// \param[in] value The new value.
 	void SetRotationY( unsigned short value );
 
-	// Rotation in radians * 1000.
+	// Unknown.
 	// \return The current value.
 	unsigned short GetRotationZ() const;
 
-	// Rotation in radians * 1000.
+	// Unknown.
 	// \param[in] value The new value.
 	void SetRotationZ( unsigned short value );
 
@@ -102,11 +102,11 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Rotation in radians * 1000. */
+	/*! Unknown. */
 	unsigned short rotationX;
-	/*! Rotation in radians * 1000. */
+	/*! Unknown. */
 	unsigned short rotationY;
-	/*! Rotation in radians * 1000. */
+	/*! Unknown. */
 	unsigned short rotationZ;
 	/*! Zoom factor. */
 	float zoom;

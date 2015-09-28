@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSLightingShaderPropertyFloatController::TYPE("BSLightingShaderPropertyFloatController", &NiFloatInterpController::TYPE );
 
-BSLightingShaderPropertyFloatController::BSLightingShaderPropertyFloatController() : targetVariable((unsigned int)0) {
+BSLightingShaderPropertyFloatController::BSLightingShaderPropertyFloatController() : typeOfControlledVariable((LightingShaderControlledVariable)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -46,7 +46,7 @@ void BSLightingShaderPropertyFloatController::Read( istream& in, list<unsigned i
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Read( in, link_stack, info );
-	NifStream( targetVariable, in, info );
+	NifStream( typeOfControlledVariable, in, info );
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -59,7 +59,7 @@ void BSLightingShaderPropertyFloatController::Write( ostream& out, const map<NiO
 	//--END CUSTOM CODE--//
 
 	NiFloatInterpController::Write( out, link_map, missing_link_stack, info );
-	NifStream( targetVariable, out, info );
+	NifStream( typeOfControlledVariable, out, info );
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -73,7 +73,7 @@ std::string BSLightingShaderPropertyFloatController::asString( bool verbose ) co
 
 	stringstream out;
 	out << NiFloatInterpController::asString();
-	out << "  Target Variable:  " << targetVariable << endl;
+	out << "  Type of Controlled Variable:  " << typeOfControlledVariable << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -107,12 +107,12 @@ std::list<NiObject *> BSLightingShaderPropertyFloatController::GetPtrs() const {
 
 /***Begin Example Naive Implementation****
 
-unsigned int BSLightingShaderPropertyFloatController::GetTargetVariable() const {
-	return targetVariable;
+LightingShaderControlledVariable BSLightingShaderPropertyFloatController::GetTypeOfControlledVariable() const {
+	return typeOfControlledVariable;
 }
 
-void BSLightingShaderPropertyFloatController::SetTargetVariable( unsigned int value ) {
-	targetVariable = value;
+void BSLightingShaderPropertyFloatController::SetTypeOfControlledVariable( const LightingShaderControlledVariable & value ) {
+	typeOfControlledVariable = value;
 }
 
 ****End Example Naive Implementation***/

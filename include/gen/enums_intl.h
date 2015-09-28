@@ -21,6 +21,12 @@ namespace Niflib {
 void NifStream( ForceType & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( ForceType const & val, ostream& out, const NifInfo & info = NifInfo() );
 
+
+//---EffectShaderControlledColor---//
+
+void NifStream( EffectShaderControlledColor & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( EffectShaderControlledColor const & val, ostream& out, const NifInfo & info = NifInfo() );
+
 void NifStream( CollisionMode & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( CollisionMode const & val, ostream& out, const NifInfo & info = NifInfo() );
 
@@ -42,6 +48,12 @@ void NifStream( TexTransform const & val, ostream& out, const NifInfo & info = N
 void NifStream( HavokMaterial & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( HavokMaterial const & val, ostream& out, const NifInfo & info = NifInfo() );
 
+
+//---EmitFrom---//
+
+void NifStream( EmitFrom & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( EmitFrom const & val, ostream& out, const NifInfo & info = NifInfo() );
+
 void NifStream( EndianType & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( EndianType const & val, ostream& out, const NifInfo & info = NifInfo() );
 
@@ -50,6 +62,12 @@ void NifStream( EndianType const & val, ostream& out, const NifInfo & info = Nif
 
 void NifStream( VelocityType & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( VelocityType const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
+//---AnimationType---//
+
+void NifStream( AnimationType & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( AnimationType const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
 //---DataStreamUsage---//
@@ -62,6 +80,12 @@ void NifStream( DataStreamUsage const & val, ostream& out, const NifInfo & info 
 
 void NifStream( StencilCompareMode & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( StencilCompareMode const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
+//---EffectShaderControlledVariable---//
+
+void NifStream( EffectShaderControlledVariable & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( EffectShaderControlledVariable const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
 //---TexFilterMode---//
@@ -100,10 +124,28 @@ void NifStream( SyncPoint & val, istream& in, const NifInfo & info = NifInfo() )
 void NifStream( SyncPoint const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
+//---TexType---//
+
+void NifStream( TexType & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( TexType const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
+//---LightingShaderControlledVariable---//
+
+void NifStream( LightingShaderControlledVariable & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( LightingShaderControlledVariable const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
 //---BSDismemberBodyPartType---//
 
 void NifStream( BSDismemberBodyPartType & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( BSDismemberBodyPartType const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
+//---MoppDataBuildType---//
+
+void NifStream( MoppDataBuildType & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( MoppDataBuildType const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 void NifStream( ChannelType & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( ChannelType const & val, ostream& out, const NifInfo & info = NifInfo() );
@@ -213,11 +255,8 @@ void NifStream( ZCompareMode const & val, ostream& out, const NifInfo & info = N
 void NifStream( TargetColor & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( TargetColor const & val, ostream& out, const NifInfo & info = NifInfo() );
 
-
-//---TexType---//
-
-void NifStream( TexType & val, istream& in, const NifInfo & info = NifInfo() );
-void NifStream( TexType const & val, ostream& out, const NifInfo & info = NifInfo() );
+void NifStream( SkyrimHavokMaterial & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( SkyrimHavokMaterial const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 void NifStream( ChannelConvention & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( ChannelConvention const & val, ostream& out, const NifInfo & info = NifInfo() );
@@ -229,10 +268,10 @@ void NifStream( ImageType & val, istream& in, const NifInfo & info = NifInfo() )
 void NifStream( ImageType const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
-//---BSSegmentFlags---//
+//---LightingShaderControlledColor---//
 
-void NifStream( BSSegmentFlags & val, istream& in, const NifInfo & info = NifInfo() );
-void NifStream( BSSegmentFlags const & val, ostream& out, const NifInfo & info = NifInfo() );
+void NifStream( LightingShaderControlledColor & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( LightingShaderControlledColor const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
 //---PixelLayout---//
@@ -304,10 +343,10 @@ void NifStream( DecayType & val, istream& in, const NifInfo & info = NifInfo() )
 void NifStream( DecayType const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
-//---EmitFrom---//
+//---SkyrimLayer---//
 
-void NifStream( EmitFrom & val, istream& in, const NifInfo & info = NifInfo() );
-void NifStream( EmitFrom const & val, ostream& out, const NifInfo & info = NifInfo() );
+void NifStream( SkyrimLayer & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( SkyrimLayer const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
 //---SkyrimWaterShaderFlags---//
@@ -328,10 +367,10 @@ void NifStream( BSShaderFlags & val, istream& in, const NifInfo & info = NifInfo
 void NifStream( BSShaderFlags const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
-//---DataStreamAccess---//
+//---FurnitureEntryPoints---//
 
-void NifStream( DataStreamAccess & val, istream& in, const NifInfo & info = NifInfo() );
-void NifStream( DataStreamAccess const & val, ostream& out, const NifInfo & info = NifInfo() );
+void NifStream( FurnitureEntryPoints & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( FurnitureEntryPoints const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
 //---BSPartFlag---//
@@ -340,10 +379,22 @@ void NifStream( BSPartFlag & val, istream& in, const NifInfo & info = NifInfo() 
 void NifStream( BSPartFlag const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 
+//---DataStreamAccess---//
+
+void NifStream( DataStreamAccess & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( DataStreamAccess const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
 //---SkyrimShaderPropertyFlags2---//
 
 void NifStream( SkyrimShaderPropertyFlags2 & val, istream& in, const NifInfo & info = NifInfo() );
 void NifStream( SkyrimShaderPropertyFlags2 const & val, ostream& out, const NifInfo & info = NifInfo() );
+
+
+//---BSSegmentFlags---//
+
+void NifStream( BSSegmentFlags & val, istream& in, const NifInfo & info = NifInfo() );
+void NifStream( BSSegmentFlags const & val, ostream& out, const NifInfo & info = NifInfo() );
 
 }
 #endif

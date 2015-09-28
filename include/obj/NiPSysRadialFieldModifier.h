@@ -22,7 +22,7 @@ typedef Ref<NiPSysRadialFieldModifier> NiPSysRadialFieldModifierRef;
 
 /*!
  * Particle system modifier, used for controlling the particle
- *     velocity in force field.
+ *         velocity in force field.
  */
 class NiPSysRadialFieldModifier : public NiPSysFieldModifier {
 public:

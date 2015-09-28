@@ -23,10 +23,14 @@ struct bhkCMSDChunk {
 	NIFLIB_API bhkCMSDChunk( const bhkCMSDChunk & src );
 	/*! Copy Operator */
 	NIFLIB_API bhkCMSDChunk & operator=( const bhkCMSDChunk & src );
-	/*! Origin? */
-	Vector3 unknownFloats1;
-	/*! Rotation? */
-	Vector3 unknownFloats2;
+	/*! Local translation */
+	Vector4 translation;
+	/*! Index of material in bhkCompressedMeshShapeData::Chunk Materials */
+	unsigned int materialIndex;
+	/*! Always 65535? */
+	unsigned short unknownShort1;
+	/*! Index of transformation in bhkCompressedMeshShapeData::Chunk Transforms */
+	unsigned short transformIndex;
 	/*! Number of compressed vertices */
 	mutable unsigned int numVertices;
 	/*! Compressed vertices */

@@ -21,6 +21,16 @@ enum ForceType {
 
 ostream & operator<<( ostream & out, ForceType const & val );
 
+/*!
+ * An unsigned 32-bit integer, describing which color in BSEffectShaderProperty to
+ * animate.
+ */
+enum EffectShaderControlledColor {
+	ESCC_EMISSIVE_COLOR = 0, /*!< Emissive Color. */
+};
+
+ostream & operator<<( ostream & out, EffectShaderControlledColor const & val );
+
 enum CollisionMode {
 	CM_USE_OBB = 0, /*!< Use Bounding Box */
 	CM_USE_TRI = 1, /*!< Use Triangles */
@@ -93,19 +103,20 @@ enum HavokMaterial {
 	HAV_MAT_SNOW_STAIRS = 29, /*!< Snow Stairs */
 	HAV_MAT_ELEVATOR = 30, /*!< Elevator */
 	HAV_MAT_RUBBER = 31, /*!< Rubber */
-	SKY_HAV_MAT_LIGHT_WOOD = 365420259, /*!< Light Wood */
-	SKY_HAV_MAT_WOOD = 500811281, /*!< Wood */
-	SKY_HAV_MAT_MATERIAL_BASKET = 790784366, /*!< Material Basket */
-	SKY_HAV_MAT_MATERIAL_BLADE_1HAND = 1060167844, /*!< Material Blade 1 Hand */
-	SKY_HAV_MAT_MATERIALBOOK = 1264672850, /*!< Material Book */
-	SKY_HAV_MAT_SOLID_METAL = 1288358971, /*!< Solid Metal */
-	SKY_HAV_MAT_MATERIAL_AXE_1HAND = 1305674443, /*!< Material Axe 1Hand */
-	SKY_HAV_MAT_STAIRS_WOOD = 1461712277, /*!< Stairs Wood */
-	SKY_HAV_MAT_MATERIAL_BOWS_STAVES = 1607128641, /*!< Material Bows Staves */
-	SKY_HAV_MAT_MATERIAL_BLADE_2HAND = 2022742644, /*!< Material Blade 2Hand */
 };
 
 ostream & operator<<( ostream & out, HavokMaterial const & val );
+
+/*! Controls which parts of the mesh that the particles are emitted from. */
+enum EmitFrom {
+	EMIT_FROM_VERTICES = 0, /*!< Emit particles from the vertices of the mesh. */
+	EMIT_FROM_FACE_CENTER = 1, /*!< Emit particles from the center of the faces of the mesh. */
+	EMIT_FROM_EDGE_CENTER = 2, /*!< Emit particles from the center of the edges of the mesh. */
+	EMIT_FROM_FACE_SURFACE = 3, /*!< Perhaps randomly emit particles from anywhere on the faces of the mesh? */
+	EMIT_FROM_EDGE_SURFACE = 4, /*!< Perhaps randomly emit particles from anywhere on the edges of the mesh? */
+};
+
+ostream & operator<<( ostream & out, EmitFrom const & val );
 
 enum EndianType {
 	ENDIAN_BIG = 0, /*!< The numbers are stored in big endian format, such as those used by PowerPC Mac processors. */
@@ -125,6 +136,18 @@ enum VelocityType {
 };
 
 ostream & operator<<( ostream & out, VelocityType const & val );
+
+/*!
+ * Animation type used on this position. This specifies the function of this
+ * position.
+ */
+enum AnimationType {
+	SIT = 1, /*!< Actor use sit animation. */
+	SLEEP = 2, /*!< Actor use sleep animation. */
+	LEAN = 4, /*!< Used for lean animations? */
+};
+
+ostream & operator<<( ostream & out, AnimationType const & val );
 
 /*! Determines how a data stream is used? */
 enum DataStreamUsage {
@@ -149,6 +172,25 @@ enum StencilCompareMode {
 };
 
 ostream & operator<<( ostream & out, StencilCompareMode const & val );
+
+/*!
+ * An unsigned 32-bit integer, describing which float variable in
+ * BSEffectShaderProperty to animate.
+ */
+enum EffectShaderControlledVariable {
+	ESCV_EMISSIVEMULTIPLE = 0, /*!< EmissiveMultiple. */
+	ESCV_FALLOFF_START_ANGLE = 1, /*!< Falloff Start Angle (degrees). */
+	ESCV_FALLOFF_STOP_ANGLE = 2, /*!< Falloff Stop Angle (degrees). */
+	ESCV_FALLOFF_START_OPACITY = 3, /*!< Falloff Start Opacity. */
+	ESCV_FALLOFF_STOP_OPACITY = 4, /*!< Falloff Stop Opacity. */
+	ESCV_ALPHA_TRANSPARENCY = 5, /*!< Alpha Transparency (Emissive alpha?). */
+	ESCV_U_OFFSET = 6, /*!< U Offset. */
+	ESCV_U_SCALE = 7, /*!< U Scale. */
+	ESCV_V_OFFSET = 8, /*!< V Offset. */
+	ESCV_V_SCALE = 9, /*!< V Scale. */
+};
+
+ostream & operator<<( ostream & out, EffectShaderControlledVariable const & val );
 
 /*!
  * Specifies the availiable texture filter modes.  That is, the way pixels within a
@@ -195,7 +237,7 @@ ostream & operator<<( ostream & out, MipMapFormat const & val );
 /*!
  * This enum defines the various actions used in conjunction with the stencil
  * buffer.
- *     For a detailed description of the individual options please refer to the
+ *         For a detailed description of the individual options please refer to the
  * OpenGL docs.
  */
 enum StencilAction {
@@ -223,11 +265,48 @@ enum SyncPoint {
 
 ostream & operator<<( ostream & out, SyncPoint const & val );
 
+/*! The type of texture. */
+enum TexType {
+	BASE_MAP = 0, /*!< The basic texture used by most meshes. */
+	DARK_MAP = 1, /*!< Used to darken the model with false lighting. */
+	DETAIL_MAP = 2, /*!< Combined with base map for added detail.  Usually tiled over the mesh many times for close-up view. */
+	GLOSS_MAP = 3, /*!< Allows the specularity (glossyness) of an object to differ across its surface. */
+	GLOW_MAP = 4, /*!< Creates a glowing effect.  Basically an incandescence map. */
+	BUMP_MAP = 5, /*!< Used to make the object appear to have more detail than it really does. */
+	NORMAL_MAP = 6, /*!< Used to make the object appear to have more detail than it really does. */
+	UNKNOWN2_MAP = 7, /*!< Unknown map. */
+	DECAL_0_MAP = 8, /*!< For placing images on the object like stickers. */
+	DECAL_1_MAP = 9, /*!< For placing images on the object like stickers. */
+	DECAL_2_MAP = 10, /*!< For placing images on the object like stickers. */
+	DECAL_3_MAP = 11, /*!< For placing images on the object like stickers. */
+};
+
+ostream & operator<<( ostream & out, TexType const & val );
+
+/*!
+ * An unsigned 32-bit integer, describing which float variable in
+ * BSLightingShaderProperty to animate.
+ */
+enum LightingShaderControlledVariable {
+	LSCV_UNKNOWN1 = 0, /*!< Unknown Float 2. */
+	LSCV_ENVIRONMENTMAPSCALE = 8, /*!< Environment Map Scale. */
+	LSCV_GLOSSINESS = 9, /*!< Glossiness. */
+	LSCV_SPECULAR_STRENGTH = 10, /*!< Specular Strength. */
+	LSCV_EMISSIVE_MULTIPLE = 11, /*!< Emissive Multiple. */
+	LSCV_ALPHA = 12, /*!< Alpha. */
+	LSCV_U_OFFSET = 20, /*!< U Offset. */
+	LSCV_U_SCALE = 21, /*!< U Scale. */
+	LSCV_V_OFFSET = 22, /*!< V Offset. */
+	LSCV_V_SCALE = 23, /*!< V Scale. */
+};
+
+ostream & operator<<( ostream & out, LightingShaderControlledVariable const & val );
+
 /*!
  * Biped bodypart data used for visibility control of triangles.  Options are
  * Fallout 3, except where marked for Skyrim (uses SBP prefix)
- *     Skyrim BP names are listed only for vanilla names, different creatures have
- * different defnitions for naming.
+ *         Skyrim BP names are listed only for vanilla names, different creatures
+ * have different defnitions for naming.
  */
 enum BSDismemberBodyPartType {
 	BP_TORSO = 0, /*!< Torso */
@@ -258,12 +337,23 @@ enum BSDismemberBodyPartType {
 	SBP_41_LONGHAIR = 41, /*!< Skyrim, Long Hair(Human), Skeleton02(Dragon),FXParticles(Dragonpriest) */
 	SBP_42_CIRCLET = 42, /*!< Skyrim, Circlet(Human, MouthFireEffect(Dragon) */
 	SBP_43_EARS = 43, /*!< Skyrim, Ears */
-	SBP_44_BLOODHEAD = 44, /*!< Skyrim, Bloodied dragon head */
-	SBP_45_BLOODWINGL = 45, /*!< Skyrim, Left Bloodied dragon wing, Saddle(Horse) */
-	SBP_46_BLOODWINGR = 46, /*!< Skyrim, Right Bloodied dragon wing */
-	SBP_47_BLOODTAIL = 47, /*!< Skyrim, Bloodied dragon tail */
+	SBP_44_DRAGON_BLOODHEAD_OR_MOD_MOUTH = 44, /*!< Skyrim, Bloodied dragon head, or NPC face/mouth */
+	SBP_45_DRAGON_BLOODWINGL_OR_MOD_NECK = 45, /*!< Skyrim, Left Bloodied dragon wing, Saddle(Horse), or NPC cape, scarf, shawl, neck-tie, etc. */
+	SBP_46_DRAGON_BLOODWINGR_OR_MOD_CHEST_PRIMARY = 46, /*!< Skyrim, Right Bloodied dragon wing, or NPC chest primary or outergarment */
+	SBP_47_DRAGON_BLOODTAIL_OR_MOD_BACK = 47, /*!< Skyrim, Bloodied dragon tail, or NPC backpack/wings/... */
+	SBP_48_MOD_MISC1 = 48, /*!< Anything that does not fit in the list */
+	SBP_49_MOD_PELVIS_PRIMARY = 49, /*!< Pelvis primary or outergarment */
 	SBP_50_DECAPITATEDHEAD = 50, /*!< Skyrim, Decapitated Head */
 	SBP_51_DECAPITATE = 51, /*!< Skyrim, Decapitate, neck gore */
+	SBP_52_MOD_PELVIS_SECONDARY = 52, /*!< Pelvis secondary or undergarment */
+	SBP_53_MOD_LEG_RIGHT = 53, /*!< Leg primary or outergarment or right leg */
+	SBP_54_MOD_LEG_LEFT = 54, /*!< Leg secondary or undergarment or left leg */
+	SBP_55_MOD_FACE_JEWELRY = 55, /*!< Face alternate or jewelry */
+	SBP_56_MOD_CHEST_SECONDARY = 56, /*!< Chest secondary or undergarment */
+	SBP_57_MOD_SHOULDER = 57, /*!< Shoulder */
+	SBP_58_MOD_ARM_LEFT = 58, /*!< Arm secondary or undergarment or left arm */
+	SBP_59_MOD_ARM_RIGHT = 59, /*!< Arm primary or outergarment or right arm */
+	SBP_60_MOD_MISC2 = 60, /*!< Anything that does not fit in the list */
 	SBP_61_FX01 = 61, /*!< Skyrim, FX01(Humanoid) */
 	BP_SECTIONCAP_HEAD = 101, /*!< Section Cap | Head */
 	BP_SECTIONCAP_HEAD2 = 102, /*!< Section Cap | Head 2 */
@@ -314,6 +404,15 @@ enum BSDismemberBodyPartType {
 };
 
 ostream & operator<<( ostream & out, BSDismemberBodyPartType const & val );
+
+/*! A byte describing if MOPP Data is organized into chunks (PS3) or not (PC) */
+enum MoppDataBuildType {
+	BUILT_WITH_CHUNK_SUBDIVISION = 0, /*!< Organized in chunks for PS3. */
+	BUILT_WITHOUT_CHUNK_SUBDIVISION = 1, /*!< Not organized in chunks for PC. (Default) */
+	BUILD_NOT_SET = 2, /*!< Build type not set yet. */
+};
+
+ostream & operator<<( ostream & out, MoppDataBuildType const & val );
 
 enum ChannelType {
 	CHNL_RED = 0, /*!< Red */
@@ -418,9 +517,9 @@ ostream & operator<<( ostream & out, PSLoopBehavior const & val );
 
 /*!
  * A list of possible solver deactivation settings. This value defines how the
- *     solver deactivates objects. The solver works on a per object basis.
- *     Note: Solver deactivation does not save CPU, but reduces creeping of
- *     movable objects in a pile quite dramatically.
+ *         solver deactivates objects. The solver works on a per object basis.
+ *         Note: Solver deactivation does not save CPU, but reduces creeping of
+ *         movable objects in a pile quite dramatically.
  */
 enum SolverDeactivation {
 	SOLVER_DEACTIVATION_INVALID = 0, /*!< Invalid */
@@ -465,7 +564,7 @@ enum AlphaFormat {
 ostream & operator<<( ostream & out, AlphaFormat const & val );
 
 enum BoundVolumeType {
-	BASE_BV = -1, /*!< Default */
+	BASE_BV = 0xffffffff, /*!< Default */
 	SPHERE_BV = 0, /*!< Sphere */
 	BOX_BV = 1, /*!< Box */
 	CAPSULE_BV = 2, /*!< Capsule */
@@ -612,23 +711,68 @@ enum TargetColor {
 
 ostream & operator<<( ostream & out, TargetColor const & val );
 
-/*! The type of texture. */
-enum TexType {
-	BASE_MAP = 0, /*!< The basic texture used by most meshes. */
-	DARK_MAP = 1, /*!< Used to darken the model with false lighting. */
-	DETAIL_MAP = 2, /*!< Combined with base map for added detail.  Usually tiled over the mesh many times for close-up view. */
-	GLOSS_MAP = 3, /*!< Allows the specularity (glossyness) of an object to differ across its surface. */
-	GLOW_MAP = 4, /*!< Creates a glowing effect.  Basically an incandescence map. */
-	BUMP_MAP = 5, /*!< Used to make the object appear to have more detail than it really does. */
-	NORMAL_MAP = 6, /*!< Used to make the object appear to have more detail than it really does. */
-	UNKNOWN2_MAP = 7, /*!< Unknown map. */
-	DECAL_0_MAP = 8, /*!< For placing images on the object like stickers. */
-	DECAL_1_MAP = 9, /*!< For placing images on the object like stickers. */
-	DECAL_2_MAP = 10, /*!< For placing images on the object like stickers. */
-	DECAL_3_MAP = 11, /*!< For placing images on the object like stickers. */
+enum SkyrimHavokMaterial {
+	SKY_HAV_MAT_LIGHT_WOOD = 365420259, /*!< Light Wood */
+	SKY_HAV_MAT_BROKEN_STONE = 131151687, /*!< Broken Stone */
+	SKY_HAV_MAT_SNOW = 398949039, /*!< Snow */
+	SKY_HAV_MAT_GRAVEL = 428587608, /*!< Gravel */
+	SKY_HAV_MAT_MATERIAL_CHAIN_METAL = 438912228, /*!< Material Chain Metal */
+	SKY_HAV_MAT_BOTTLE = 493553910, /*!< Bottle */
+	SKY_HAV_MAT_WOOD = 500811281, /*!< Wood */
+	SKY_HAV_MAT_SKIN = 591247106, /*!< Skin */
+	SKY_HAV_MAT_BARREL = 732141076, /*!< Barrel */
+	SKY_HAV_MAT_MATERIAL_CERAMIC_MEDIUM = 781661019, /*!< Material Ceramic Medium */
+	SKY_HAV_MAT_MATERIAL_BASKET = 790784366, /*!< Material Basket */
+	SKY_HAV_MAT_ICE = 873356572, /*!< Ice */
+	SKY_HAV_MAT_STAIRS_STONE = 899511101, /*!< Stairs Stone */
+	SKY_HAV_MAT_MATERIAL_BLADE_1HAND = 1060167844, /*!< Material Blade 1 Hand */
+	SKY_HAV_MAT_WATER = 1024582599, /*!< Water */
+	SKY_HAV_MAT_UNKNOWN_1028101969 = 1028101969, /*!< Unknown in Creation Kit v1.6.89.0. Found in actors\draugr\character assets\skeletons.nif. */
+	SKY_HAV_MAT_MATERIAL_BOOK = 1264672850, /*!< Material Book */
+	SKY_HAV_MAT_MATERIAL_CARPET = 1286705471, /*!< Material Carpet */
+	SKY_HAV_MAT_SOLID_METAL = 1288358971, /*!< Solid Metal */
+	SKY_HAV_MAT_MATERIAL_AXE_1HAND = 1305674443, /*!< Material Axe 1Hand */
+	SKY_HAV_MAT_UNKNOWN_1440721808 = 1440721808, /*!< Unknown in Creation Kit v1.6.89.0. Found in armor\draugr\draugrbootsfemale_go.nif or armor\amuletsandrings\amuletgnd.nif. */
+	SKY_HAV_MAT_STAIRS_WOOD = 1461712277, /*!< Stairs Wood */
+	SKY_HAV_MAT_MUD = 1486385281, /*!< Mud */
+	SKY_HAV_MAT_MATERIAL_BOULDER_SMALL = 1550912982, /*!< Material Boulder Small */
+	SKY_HAV_MAT_STAIRS_SNOW = 1560365355, /*!< Stairs Snow */
+	SKY_HAV_MAT_HEAVY_STONE = 1570821952, /*!< Heavy Stone */
+	SKY_HAV_MAT_UNKNOWN_1574477864 = 1574477864, /*!< Unknown in Creation Kit v1.6.89.0. Found in actors\dragon\character assets\skeleton.nif. */
+	SKY_HAV_MAT_UNKNOWN_1591009235 = 1591009235, /*!< Unknown in Creation Kit v1.6.89.0. Found in trap objects or clutter\displaycases\displaycaselgangled01.nif or actors\deer\character assets\skeleton.nif. */
+	SKY_HAV_MAT_MATERIAL_BOWS_STAVES = 1607128641, /*!< Material Bows Staves */
+	SKY_HAV_MAT_MATERIAL_WOOD_AS_STAIRS = 1803571212, /*!< Material Wood As Stairs */
+	SKY_HAV_MAT_GRASS = 1848600814, /*!< Grass */
+	SKY_HAV_MAT_MATERIAL_BOULDER_LARGE = 1885326971, /*!< Material Boulder Large */
+	SKY_HAV_MAT_MATERIAL_STONE_AS_STAIRS = 1886078335, /*!< Material Stone As Stairs */
+	SKY_HAV_MAT_MATERIAL_BLADE_2HAND = 2022742644, /*!< Material Blade 2Hand */
+	SKY_HAV_MAT_MATERIAL_BOTTLE_SMALL = 2025794648, /*!< Material Bottle Small */
+	SKY_HAV_MAT_SAND = 2168343821, /*!< Sand */
+	SKY_HAV_MAT_HEAVY_METAL = 2229413539, /*!< Heavy Metal */
+	SKY_HAV_MAT_DRAGON = 2518321175, /*!< Dragon */
+	SKY_HAV_MAT_MATERIAL_BLADE_1HAND_SMALL = 2617944780, /*!< Material Blade 1Hand Small */
+	SKY_HAV_MAT_MATERIAL_SKIN_SMALL = 2632367422, /*!< Material Skin Small */
+	SKY_HAV_MAT_STAIRS_BROKEN_STONE = 2892392795, /*!< Stairs Broken Stone */
+	SKY_HAV_MAT_MATERIAL_SKIN_LARGE = 2965929619, /*!< Material Skin Large */
+	SKY_HAV_MAT_ORGANIC = 2974920155, /*!< Organic */
+	SKY_HAV_MAT_MATERIAL_BONE = 3049421844, /*!< Material Bone */
+	SKY_HAV_MAT_HEAVY_WOOD = 3070783559, /*!< Heavy Wood */
+	SKY_HAV_MAT_MATERIAL_CHAIN = 3074114406, /*!< Material Chain */
+	SKY_HAV_MAT_DIRT = 3106094762, /*!< Dirt */
+	SKY_HAV_MAT_MATERIAL_ARMOR_LIGHT = 3424720541, /*!< Material Armor Light */
+	SKY_HAV_MAT_MATERIAL_SHIELD_LIGHT = 3448167928, /*!< Material Shield Light */
+	SKY_HAV_MAT_MATERIAL_COIN = 3589100606, /*!< Material Coin */
+	SKY_HAV_MAT_MATERIAL_SHIELD_HEAVY = 3702389584, /*!< Material Shield Heavy */
+	SKY_HAV_MAT_MATERIAL_ARMOR_HEAVY = 3708432437, /*!< Material Armor Heavy */
+	SKY_HAV_MAT_MATERIAL_ARROW = 3725505938, /*!< Material Arrow */
+	SKY_HAV_MAT_GLASS = 3739830338, /*!< Glass */
+	SKY_HAV_MAT_STONE = 3741512247, /*!< Stone */
+	SKY_HAV_MAT_CLOTH = 3839073443, /*!< Cloth */
+	SKY_HAV_MAT_MATERIAL_BLUNT_2HAND = 3969592277, /*!< Material Blunt 2Hand */
+	SKY_HAV_MAT_MATERIAL_BOULDER_MEDIUM = 4283869410, /*!< Material Boulder Medium */
 };
 
-ostream & operator<<( ostream & out, TexType const & val );
+ostream & operator<<( ostream & out, SkyrimHavokMaterial const & val );
 
 enum ChannelConvention {
 	CC_FIXED = 0, /*!< Fixed */
@@ -647,12 +791,16 @@ enum ImageType {
 
 ostream & operator<<( ostream & out, ImageType const & val );
 
-/*! An unsigned 32-bit integer, describing what's inside the segment. */
-enum BSSegmentFlags {
-	BSSEG_WATER = 9, /*!< Contains water. */
+/*!
+ * An unsigned 32-bit integer, describing which color in BSLightingShaderProperty
+ * to animate.
+ */
+enum LightingShaderControlledColor {
+	LSCC_SPECULAR_COLOR = 0, /*!< Specular Color. */
+	LSCC_EMISSIVE_COLOR = 1, /*!< Emissive Color. */
 };
 
-ostream & operator<<( ostream & out, BSSegmentFlags const & val );
+ostream & operator<<( ostream & out, LightingShaderControlledColor const & val );
 
 /*! An unsigned 32-bit integer, describing the color depth of a texture. */
 enum PixelLayout {
@@ -826,26 +974,26 @@ ostream & operator<<( ostream & out, FieldType const & val );
 
 /*! Values for configuring the shader type in a BSLightingShaderProperty */
 enum BSLightingShaderPropertyShaderType {
-	DEFAULT = 0, /*!< Default */
-	ENVIRONMENT_MAP = 1, /*!< Enables EnvMap Mask(TS6), EnvMap Scale */
-	GLOW_SHADER = 2, /*!< Enables Glow(TS3) */
-	HEIGHTMAP = 3, /*!< Enables Height(TS4) */
-	FACE_TINT = 4, /*!< Enables SubSurface(TS3), Detail(TS4), Tint(TS7) */
-	SKIN_TINT = 5, /*!< Enables Skin Tint Color */
-	HAIR_TINT = 6, /*!< Enables Hair Tint Color */
-	PARALLAX_OCC_MATERIAL = 7, /*!< Enables Height(TS4), Max Passes, Scale.  Unused? */
-	WORLD_MULTITEXTURE = 8, /*!< World Multitexture */
-	WORLDMAP1 = 9, /*!< WorldMap1 */
-	UNUSED_10 = 10, /*!< Unused_10 */
-	MULTILAYER_PARALLAX = 11, /*!< Enables EnvMap Mask(TS6), Layer(TS7), Parallax Layer Thickness, Parallax Refraction Scale, Parallax Inner Layer U Scale, Parallax Inner Layer V Scale, EnvMap Scale */
-	UNUSED_12 = 12, /*!< Unused_12 */
-	WORLDMAP2 = 13, /*!< WorldMap2 */
-	SPARKLE_SNOW = 14, /*!< Enables SparkleParams */
-	WORLDMAP3 = 15, /*!< WorldMap3 */
-	EYE_ENVMAP = 16, /*!< Enables EnvMap Mask(TS6), Eye EnvMap Scale */
-	UNUSED_17 = 17, /*!< Unused_17 */
-	WORLDMAP4 = 18, /*!< WorldMap4 */
-	WORLD_LOD_MULTITEXTURE = 19, /*!< World LOD Multitexture */
+	LSPST_DEFAULT = 0, /*!< LSPST_Default */
+	LSPST_ENVIRONMENT_MAP = 1, /*!< Enables EnvMap Mask(TS6), EnvMap Scale */
+	LSPST_GLOW_SHADER = 2, /*!< Enables Glow(TS3) */
+	LSPST_HEIGHTMAP = 3, /*!< Enables Height(TS4) */
+	LSPST_FACE_TINT = 4, /*!< Enables SubSurface(TS3), Detail(TS4), Tint(TS7) */
+	LSPST_SKIN_TINT = 5, /*!< Enables Skin Tint Color */
+	LSPST_HAIR_TINT = 6, /*!< Enables Hair Tint Color */
+	LSPST_PARALLAX_OCC_MATERIAL = 7, /*!< Enables Height(TS4), Max Passes, Scale.  Unused? */
+	LSPST_WORLD_MULTITEXTURE = 8, /*!< LSPST_World Multitexture */
+	LSPST_WORLDMAP1 = 9, /*!< LSPST_WorldMap1 */
+	LSPST_UNKNOWN_10 = 10, /*!< LSPST_Unknown 10 */
+	LSPST_MULTILAYER_PARALLAX = 11, /*!< Enables EnvMap Mask(TS6), Layer(TS7), Parallax Layer Thickness, Parallax Refraction Scale, Parallax Inner Layer U Scale, Parallax Inner Layer V Scale, EnvMap Scale */
+	LSPST_UNKNOWN_12 = 12, /*!< LSPST_Unknown 12 */
+	LSPST_WORLDMAP2 = 13, /*!< LSPST_WorldMap2 */
+	LSPST_SPARKLE_SNOW = 14, /*!< Enables SparkleParams */
+	LSPST_WORLDMAP3 = 15, /*!< LSPST_WorldMap3 */
+	LSPST_EYE_ENVMAP = 16, /*!< Enables EnvMap Mask(TS6), Eye EnvMap Scale */
+	LSPST_UNKNOWN_17 = 17, /*!< LSPST_Unknown 17 */
+	LSPST_WORLDMAP4 = 18, /*!< LSPST_WorldMap4 */
+	LSPST_WORLD_LOD_MULTITEXTURE = 19, /*!< LSPST_World LOD Multitexture */
 };
 
 ostream & operator<<( ostream & out, BSLightingShaderPropertyShaderType const & val );
@@ -859,16 +1007,62 @@ enum DecayType {
 
 ostream & operator<<( ostream & out, DecayType const & val );
 
-/*! Controls which parts of the mesh that the particles are emitted from. */
-enum EmitFrom {
-	EMIT_FROM_VERTICES = 0, /*!< Emit particles from the vertices of the mesh. */
-	EMIT_FROM_FACE_CENTER = 1, /*!< Emit particles from the center of the faces of the mesh. */
-	EMIT_FROM_EDGE_CENTER = 2, /*!< Emit particles from the center of the edges of the mesh. */
-	EMIT_FROM_FACE_SURFACE = 3, /*!< Perhaps randomly emit particles from anywhere on the faces of the mesh? */
-	EMIT_FROM_EDGE_SURFACE = 4, /*!< Perhaps randomly emit particles from anywhere on the edges of the mesh? */
+/*!
+ * Physical purpose of collision object? The setting affects objetct's havok
+ * behavior in game. Anything higher than 47 is also null.
+ */
+enum SkyrimLayer {
+	SKYL_UNIDENTIFIED = 0, /*!< Unidentified */
+	SKYL_STATIC = 1, /*!< Static */
+	SKYL_ANIMSTATIC = 2, /*!< Anim Static */
+	SKYL_TRANSPARENT = 3, /*!< Transparent */
+	SKYL_CLUTTER = 4, /*!< Clutter. Object with this layer will float on water surface. */
+	SKYL_WEAPON = 5, /*!< Weapon */
+	SKYL_PROJECTILE = 6, /*!< Projectile */
+	SKYL_SPELL = 7, /*!< Spell */
+	SKYL_BIPED = 8, /*!< Biped. Seems to apply to all creatures/NPCs */
+	SKYL_TREES = 9, /*!< Trees */
+	SKYL_PROPS = 10, /*!< Props */
+	SKYL_WATER = 11, /*!< Water */
+	SKYL_TRIGGER = 12, /*!< Trigger */
+	SKYL_TERRAIN = 13, /*!< Terrain */
+	SKYL_TRAP = 14, /*!< Trap */
+	SKYL_NONCOLLIDABLE = 15, /*!< NonCollidable */
+	SKYL_CLOUD_TRAP = 16, /*!< CloudTrap */
+	SKYL_GROUND = 17, /*!< Ground. It seems that produces no sound when collide. */
+	SKYL_PORTAL = 18, /*!< Portal */
+	SKYL_DEBRIS_SMALL = 19, /*!< Debris Small */
+	SKYL_DEBRIS_LARGE = 20, /*!< Debris Large */
+	SKYL_ACOUSTIC_SPACE = 21, /*!< Acoustic Space */
+	SKYL_ACTORZONE = 22, /*!< Actor Zone */
+	SKYL_PROJECTILEZONE = 23, /*!< Projectile Zone */
+	SKYL_GASTRAP = 24, /*!< Gas Trap */
+	SKYL_SHELLCASING = 25, /*!< Shell Casing */
+	SKYL_TRANSPARENT_SMALL = 26, /*!< Transparent Small */
+	SKYL_INVISIBLE_WALL = 27, /*!< Invisible Wall */
+	SKYL_TRANSPARENT_SMALL_ANIM = 28, /*!< Transparent Small Anim */
+	SKYL_WARD = 29, /*!< Ward */
+	SKYL_CHARCONTROLLER = 30, /*!< Char Controller */
+	SKYL_STAIRHELPER = 31, /*!< Stair Helper */
+	SKYL_DEADBIP = 32, /*!< Dead Bip */
+	SKYL_BIPED_NO_CC = 33, /*!< Biped No CC */
+	SKYL_AVOIDBOX = 34, /*!< Avoid Box */
+	SKYL_COLLISIONBOX = 35, /*!< Collision Box */
+	SKYL_CAMERASHPERE = 36, /*!< Camera Sphere */
+	SKYL_DOORDETECTION = 37, /*!< Door Detection */
+	SKYL_CONEPROJECTILE = 38, /*!< Cone Projectile */
+	SKYL_CAMERAPICK = 39, /*!< Camera Pick */
+	SKYL_ITEMPICK = 40, /*!< Item Pick */
+	SKYL_LINEOFSIGHT = 41, /*!< Line of Sight */
+	SKYL_PATHPICK = 42, /*!< Path Pick */
+	SKYL_CUSTOMPICK1 = 43, /*!< Custom Pick 1 */
+	SKYL_CUSTOMPICK2 = 44, /*!< Custom Pick 2 */
+	SKYL_SPELLEXPLOSION = 45, /*!< Spell Explosion */
+	SKYL_DROPPINGPICK = 46, /*!< Dropping Pick */
+	SKYL_NULL = 47, /*!< Null */
 };
 
-ostream & operator<<( ostream & out, EmitFrom const & val );
+ostream & operator<<( ostream & out, SkyrimLayer const & val );
 
 /*! Skyrim water shader property flags */
 enum SkyrimWaterShaderFlags {
@@ -935,7 +1129,7 @@ enum BSShaderFlags {
 	SF_ALPHA_TEXTURE = 256, /*!< Alpha Texture Requires NiAlphaProperty to Enable */
 	SF_UNKNOWN_2 = 512, /*!< Unknown */
 	SF_FACEGEN = 1024, /*!< FaceGen */
-	SF_PARALLAX = 2048, /*!< Parallax */
+	SF_PARALLAX_SHADER_INDEX_15 = 2048, /*!< Parallax */
 	SF_UNKNOWN_3 = 4096, /*!< Unknown/Crash */
 	SF_NON_PROJECTIVE_SHADOWS = 8192, /*!< Non-Projective Shadows */
 	SF_UNKNOWN_4 = 16384, /*!< Unknown/Crash */
@@ -960,6 +1154,28 @@ enum BSShaderFlags {
 
 ostream & operator<<( ostream & out, BSShaderFlags const & val );
 
+/*!
+ * Furniture entry points. It specifies the direction(s) from where the actor is
+ * able to enter (and leave) the position.
+ */
+enum FurnitureEntryPoints {
+	FRONT = 1, /*!< front entry point */
+	BEHIND = 2, /*!< behind entry point */
+	RIGHT = 4, /*!< right entry point */
+	LEFT = 8, /*!< left entry point */
+	UP = 16, /*!< up entry point - unknown function. Used on some beds in Skyrim, probably for blocking of sleeping position. */
+};
+
+ostream & operator<<( ostream & out, FurnitureEntryPoints const & val );
+
+/*! Editor flags for the Body Partitions. */
+enum BSPartFlag {
+	PF_EDITOR_VISIBLE = 1, /*!< Visible in Editor */
+	PF_START_NET_BONESET = 256, /*!< Start a new shared boneset.  It is expected this BoneSet and the following sets in the Skin Partition will have the same bones. */
+};
+
+ostream & operator<<( ostream & out, BSPartFlag const & val );
+
 /*! Determines how the data stream is accessed? */
 enum DataStreamAccess {
 	CPU_READ = 1, /*!< CPU Read */
@@ -972,14 +1188,6 @@ enum DataStreamAccess {
 };
 
 ostream & operator<<( ostream & out, DataStreamAccess const & val );
-
-/*! Editor flags for the Body Partitions. */
-enum BSPartFlag {
-	PF_EDITOR_VISIBLE = 1, /*!< Visible in Editor */
-	PF_START_NET_BONESET = 256, /*!< Start a new shared boneset.  It is expected this BoneSet and the following sets in the Skin Partition will have the same bones. */
-};
-
-ostream & operator<<( ostream & out, BSPartFlag const & val );
 
 /*! Skyrim Shader Property Flags 2 */
 enum SkyrimShaderPropertyFlags2 {
@@ -1018,6 +1226,13 @@ enum SkyrimShaderPropertyFlags2 {
 };
 
 ostream & operator<<( ostream & out, SkyrimShaderPropertyFlags2 const & val );
+
+/*! An unsigned 32-bit integer, describing what's inside the segment. */
+enum BSSegmentFlags {
+	BSSEG_WATER = 512, /*!< Contains water. */
+};
+
+ostream & operator<<( ostream & out, BSSegmentFlags const & val );
 
 }
 #endif

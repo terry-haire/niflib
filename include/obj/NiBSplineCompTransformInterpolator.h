@@ -21,8 +21,8 @@ typedef Ref<NiBSplineCompTransformInterpolator> NiBSplineCompTransformInterpolat
 
 /*!
  * An interpolator for storing transform keyframes via a compressed
- *     B-spline (that is, using shorts rather than floats in the B-spline
- *     data).
+ *         B-spline (that is, using shorts rather than floats in the B-spline
+ *         data).
  */
 class NiBSplineCompTransformInterpolator : public NiBSplineTransformInterpolator {
 public:

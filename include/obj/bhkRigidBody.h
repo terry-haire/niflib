@@ -28,10 +28,11 @@ typedef Ref<bhkRigidBody> bhkRigidBodyRef;
 /*!
  * This is the default body type for all "normal" usable and static world objects.
  * The "T" suffix
- *     marks this body as active for translation and rotation, a normal
+ *         marks this body as active for translation and rotation, a normal
  * bhkRigidBody ignores those
- *     properties. Because the properties are equal, a bhkRigidBody may be renamed
- *     into a bhkRigidBodyT and vice-versa.
+ *         properties. Because the properties are equal, a bhkRigidBody may be
+ * renamed
+ *         into a bhkRigidBodyT and vice-versa.
  */
 class bhkRigidBody : public bhkEntity {
 public:
@@ -101,6 +102,22 @@ public:
 	// \param[in] value The new value.
 	void SetColFilterCopy( byte value );
 
+	// Copy of Skyrim Layer value?
+	// \return The current value.
+	SkyrimLayer GetSkyrimLayerCopy() const;
+
+	// Copy of Skyrim Layer value?
+	// \param[in] value The new value.
+	void SetSkyrimLayerCopy( const SkyrimLayer & value );
+
+	// Copy of Flags & Part number?
+	// \return The current value.
+	byte GetFlagsAndPartNumberCopy() const;
+
+	// Copy of Flags & Part number?
+	// \param[in] value The new value.
+	void SetFlagsAndPartNumberCopy( byte value );
+
 	// A vector that moves the body by the specified amount. Only enabled in
 	// bhkRigidBodyT objects.
 	// \return The current value.
@@ -139,11 +156,11 @@ public:
 
 	// Defines how the mass is distributed among the body.
 	// \return The current value.
-	InertiaMatrix GetInertiaTensors() const;
+	InertiaMatrix GetInertia() const;
 
 	// Defines how the mass is distributed among the body.
 	// \param[in] value The new value.
-	void SetInertiaTensors( const InertiaMatrix & value );
+	void SetInertia( const InertiaMatrix & value );
 
 	// This seems to be used to relocate the object's center of mass. Useful for
 	// balancing objects in contraints.
@@ -181,22 +198,6 @@ public:
 	// \param[in] value The new value.
 	void SetAngularDamping( float value );
 
-	// Unknown.
-	// \return The current value.
-	float GetTimefactorOrGravityfactor_() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetTimefactorOrGravityfactor_( float value );
-
-	// Unknown.
-	// \return The current value.
-	float GetTimefactorOrGravityfactor_() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetTimefactorOrGravityfactor_( float value );
-
 	// The body's friction.
 	// \return The current value.
 	float GetFriction() const;
@@ -214,17 +215,17 @@ public:
 	void SetRollingfrictionmultiplier_( float value );
 
 	// The body's restitution (elasticity).
-	//       If the restitution is not 0.0 the object will need extra CPU for all new
-	// collisions.
-	//       Try to set restitution to 0 for maximum performance (e.g. collapsing
+	//             If the restitution is not 0.0 the object will need extra CPU for all
+	// new collisions.
+	//             Try to set restitution to 0 for maximum performance (e.g. collapsing
 	// buildings)
 	// \return The current value.
 	float GetRestitution() const;
 
 	// The body's restitution (elasticity).
-	//       If the restitution is not 0.0 the object will need extra CPU for all new
-	// collisions.
-	//       Try to set restitution to 0 for maximum performance (e.g. collapsing
+	//             If the restitution is not 0.0 the object will need extra CPU for all
+	// new collisions.
+	//             Try to set restitution to 0 for maximum performance (e.g. collapsing
 	// buildings)
 	// \param[in] value The new value.
 	void SetRestitution( float value );
@@ -246,16 +247,16 @@ public:
 	void SetMaxAngularVelocity( float value );
 
 	// The maximum allowed penetration for this object.
-	//       This is a hint to the engine to see how much CPU the engine should invest
-	// to keep this object from penetrating.
-	//       A good choice is 5% - 20% of the smallest diameter of the object.
+	//             This is a hint to the engine to see how much CPU the engine should
+	// invest to keep this object from penetrating.
+	//             A good choice is 5% - 20% of the smallest diameter of the object.
 	// \return The current value.
 	float GetPenetrationDepth() const;
 
 	// The maximum allowed penetration for this object.
-	//       This is a hint to the engine to see how much CPU the engine should invest
-	// to keep this object from penetrating.
-	//       A good choice is 5% - 20% of the smallest diameter of the object.
+	//             This is a hint to the engine to see how much CPU the engine should
+	// invest to keep this object from penetrating.
+	//             A good choice is 5% - 20% of the smallest diameter of the object.
 	// \param[in] value The new value.
 	void SetPenetrationDepth( float value );
 
@@ -579,7 +580,16 @@ protected:
 	OblivionLayer layerCopy;
 	/*! Copy of Col Filter value? */
 	byte colFilterCopy;
-	/*! Unknown. */
+	/*! Copy of Skyrim Layer value? */
+	SkyrimLayer skyrimLayerCopy;
+	/*! Copy of Flags & Part number? */
+	byte flagsAndPartNumberCopy;
+	/*!
+	 * Unknown.
+	 *             Oblivion defaults: 0 21280 2481 62977 65535 44 0
+	 *             Skyrim defaults: 0 56896 1343 0 0 1 65535 (fourth and fifth element
+	 * *must* be zero)
+	 */
 	array<7,unsigned short > unknown7Shorts;
 	/*!
 	 * A vector that moves the body by the specified amount. Only enabled in
@@ -596,7 +606,7 @@ protected:
 	/*! Angular velocity. */
 	Vector4 angularVelocity;
 	/*! Defines how the mass is distributed among the body. */
-	InertiaMatrix inertiaTensors;
+	InertiaMatrix inertia;
 	/*!
 	 * This seems to be used to relocate the object's center of mass. Useful for
 	 * balancing objects in contraints.
@@ -612,16 +622,18 @@ protected:
 	/*! Damping value for angular movement. */
 	float angularDamping;
 	/*! Unknown. */
-	float timefactorOrGravityfactor_;
+	float unknownTimefactorOrGravityfactor1;
+	/*! Unknown. */
+	float unknownTimefactorOrGravityfactor2;
 	/*! The body's friction. */
 	float friction;
 	/*! Unknown. */
 	float rollingfrictionmultiplier_;
 	/*!
 	 * The body's restitution (elasticity).
-	 *       If the restitution is not 0.0 the object will need extra CPU for all new
-	 * collisions.
-	 *       Try to set restitution to 0 for maximum performance (e.g. collapsing
+	 *             If the restitution is not 0.0 the object will need extra CPU for all
+	 * new collisions.
+	 *             Try to set restitution to 0 for maximum performance (e.g. collapsing
 	 * buildings)
 	 */
 	float restitution;
@@ -631,9 +643,9 @@ protected:
 	float maxAngularVelocity;
 	/*!
 	 * The maximum allowed penetration for this object.
-	 *       This is a hint to the engine to see how much CPU the engine should invest
-	 * to keep this object from penetrating.
-	 *       A good choice is 5% - 20% of the smallest diameter of the object.
+	 *             This is a hint to the engine to see how much CPU the engine should
+	 * invest to keep this object from penetrating.
+	 *             A good choice is 5% - 20% of the smallest diameter of the object.
 	 */
 	float penetrationDepth;
 	/*! Motion system? Overrides Quality when on Keyframed? */

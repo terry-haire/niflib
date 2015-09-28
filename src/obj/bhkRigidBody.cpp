@@ -22,7 +22,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type bhkRigidBody::TYPE("bhkRigidBody", &bhkEntity::TYPE );
 
-bhkRigidBody::bhkRigidBody() : unknownInt1((int)0), unknownInt2((int)0x00000001), unknown3Ints(3,(int)0,(int)0,(int)0x80000000), collisionResponse_((hkResponseType)RESPONSE_SIMPLE_CONTACT), unknownByte((byte)0xbe), processContactCallbackDelay_((unsigned short)0xffff), unknown2Shorts(2,(unsigned short)35899,(unsigned short)16336), layerCopy((OblivionLayer)OL_STATIC), colFilterCopy((byte)0), unknown7Shorts(7,(unsigned short)0,(unsigned short)21280,(unsigned short)2481,(unsigned short)62977,(unsigned short)65535,(unsigned short)44,(unsigned short)0), mass(1.0f), linearDamping(0.1f), angularDamping(0.05f), timefactorOrGravityfactor_(0.0f), friction(0.3f), rollingfrictionmultiplier_(0.0f), restitution(0.3f), maxLinearVelocity(250.0f), maxAngularVelocity(31.4159f), penetrationDepth(0.15f), motionSystem((MotionSystem)MO_SYS_DYNAMIC), deactivatorType((DeactivatorType)DEACTIVATOR_NEVER), solverDeactivation((SolverDeactivation)SOLVER_DEACTIVATION_OFF), qualityType((MotionQuality)MO_QUAL_FIXED), unknownInt6((unsigned int)512), unknownInt7((unsigned int)160), unknownInt8((unsigned int)161), unknownInt81((unsigned int)0), numConstraints((unsigned int)0), unknownInt9((unsigned int)0), unknownInt91((unsigned short)0) {
+bhkRigidBody::bhkRigidBody() : unknownInt1((int)0), unknownInt2((int)0x00000001), unknown3Ints(3,(int)0,(int)0,(int)0x80000000), collisionResponse_((hkResponseType)RESPONSE_SIMPLE_CONTACT), unknownByte((byte)0xbe), processContactCallbackDelay_((unsigned short)0xffff), unknown2Shorts(2,(unsigned short)35899,(unsigned short)16336), layerCopy((OblivionLayer)OL_STATIC), colFilterCopy((byte)0), skyrimLayerCopy((SkyrimLayer)SKYL_STATIC), flagsAndPartNumberCopy((byte)0), unknown7Shorts(7,(unsigned short)0,(unsigned short)21280,(unsigned short)2481,(unsigned short)62977,(unsigned short)65535,(unsigned short)44,(unsigned short)0), mass(1.0f), linearDamping(0.1f), angularDamping(0.05f), unknownTimefactorOrGravityfactor1(0.0f), unknownTimefactorOrGravityfactor2(0.0f), friction(0.3f), rollingfrictionmultiplier_(0.0f), restitution(0.3f), maxLinearVelocity(250.0f), maxAngularVelocity(31.4159f), penetrationDepth(0.15f), motionSystem((MotionSystem)MO_SYS_DYNAMIC), deactivatorType((DeactivatorType)DEACTIVATOR_NEVER), solverDeactivation((SolverDeactivation)SOLVER_DEACTIVATION_OFF), qualityType((MotionQuality)MO_QUAL_FIXED), unknownInt6((unsigned int)512), unknownInt7((unsigned int)160), unknownInt8((unsigned int)161), unknownInt81((unsigned int)0), numConstraints((unsigned int)0), unknownInt9((unsigned int)0), unknownInt91((unsigned short)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -57,8 +57,14 @@ void bhkRigidBody::Read( istream& in, list<unsigned int> & link_stack, const Nif
 	for (unsigned int i1 = 0; i1 < 2; i1++) {
 		NifStream( unknown2Shorts[i1], in, info );
 	};
-	NifStream( layerCopy, in, info );
-	NifStream( colFilterCopy, in, info );
+	if ( (info.userVersion < 12) ) {
+		NifStream( layerCopy, in, info );
+		NifStream( colFilterCopy, in, info );
+	};
+	if ( (info.userVersion >= 12) ) {
+		NifStream( skyrimLayerCopy, in, info );
+		NifStream( flagsAndPartNumberCopy, in, info );
+	};
 	for (unsigned int i1 = 0; i1 < 7; i1++) {
 		NifStream( unknown7Shorts[i1], in, info );
 	};
@@ -69,14 +75,14 @@ void bhkRigidBody::Read( istream& in, list<unsigned int> & link_stack, const Nif
 	NifStream( rotation.w, in, info );
 	NifStream( linearVelocity, in, info );
 	NifStream( angularVelocity, in, info );
-	NifStream( inertiaTensors, in, info );
+	NifStream( inertia, in, info );
 	NifStream( center, in, info );
 	NifStream( mass, in, info );
 	NifStream( linearDamping, in, info );
 	NifStream( angularDamping, in, info );
 	if ( (info.userVersion >= 12) ) {
-		NifStream( timefactorOrGravityfactor_, in, info );
-		NifStream( timefactorOrGravityfactor_, in, info );
+		NifStream( unknownTimefactorOrGravityfactor1, in, info );
+		NifStream( unknownTimefactorOrGravityfactor2, in, info );
 	};
 	NifStream( friction, in, info );
 	if ( (info.userVersion >= 12) ) {
@@ -130,8 +136,14 @@ void bhkRigidBody::Write( ostream& out, const map<NiObjectRef,unsigned int> & li
 	for (unsigned int i1 = 0; i1 < 2; i1++) {
 		NifStream( unknown2Shorts[i1], out, info );
 	};
-	NifStream( layerCopy, out, info );
-	NifStream( colFilterCopy, out, info );
+	if ( (info.userVersion < 12) ) {
+		NifStream( layerCopy, out, info );
+		NifStream( colFilterCopy, out, info );
+	};
+	if ( (info.userVersion >= 12) ) {
+		NifStream( skyrimLayerCopy, out, info );
+		NifStream( flagsAndPartNumberCopy, out, info );
+	};
 	for (unsigned int i1 = 0; i1 < 7; i1++) {
 		NifStream( unknown7Shorts[i1], out, info );
 	};
@@ -142,14 +154,14 @@ void bhkRigidBody::Write( ostream& out, const map<NiObjectRef,unsigned int> & li
 	NifStream( rotation.w, out, info );
 	NifStream( linearVelocity, out, info );
 	NifStream( angularVelocity, out, info );
-	NifStream( inertiaTensors, out, info );
+	NifStream( inertia, out, info );
 	NifStream( center, out, info );
 	NifStream( mass, out, info );
 	NifStream( linearDamping, out, info );
 	NifStream( angularDamping, out, info );
 	if ( (info.userVersion >= 12) ) {
-		NifStream( timefactorOrGravityfactor_, out, info );
-		NifStream( timefactorOrGravityfactor_, out, info );
+		NifStream( unknownTimefactorOrGravityfactor1, out, info );
+		NifStream( unknownTimefactorOrGravityfactor2, out, info );
 	};
 	NifStream( friction, out, info );
 	if ( (info.userVersion >= 12) ) {
@@ -239,6 +251,8 @@ std::string bhkRigidBody::asString( bool verbose ) const {
 	};
 	out << "  Layer Copy:  " << layerCopy << endl;
 	out << "  Col Filter Copy:  " << colFilterCopy << endl;
+	out << "  Skyrim Layer Copy:  " << skyrimLayerCopy << endl;
+	out << "  Flags And Part Number Copy:  " << flagsAndPartNumberCopy << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 7; i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
@@ -258,12 +272,13 @@ std::string bhkRigidBody::asString( bool verbose ) const {
 	out << "  w:  " << rotation.w << endl;
 	out << "  Linear Velocity:  " << linearVelocity << endl;
 	out << "  Angular Velocity:  " << angularVelocity << endl;
-	out << "  Inertia Tensors:  " << inertiaTensors << endl;
+	out << "  Inertia:  " << inertia << endl;
 	out << "  Center:  " << center << endl;
 	out << "  Mass:  " << mass << endl;
 	out << "  Linear Damping:  " << linearDamping << endl;
 	out << "  Angular Damping:  " << angularDamping << endl;
-	out << "  TimeFactor or GravityFactor?:  " << timefactorOrGravityfactor_ << endl;
+	out << "  Unknown TimeFactor or GravityFactor 1:  " << unknownTimefactorOrGravityfactor1 << endl;
+	out << "  Unknown TimeFactor or GravityFactor 2:  " << unknownTimefactorOrGravityfactor2 << endl;
 	out << "  Friction:  " << friction << endl;
 	out << "  RollingFrictionMultiplier?:  " << rollingfrictionmultiplier_ << endl;
 	out << "  Restitution:  " << restitution << endl;
@@ -364,6 +379,22 @@ void bhkRigidBody::SetColFilterCopy( byte value ) {
 	colFilterCopy = value;
 }
 
+SkyrimLayer bhkRigidBody::GetSkyrimLayerCopy() const {
+	return skyrimLayerCopy;
+}
+
+void bhkRigidBody::SetSkyrimLayerCopy( const SkyrimLayer & value ) {
+	skyrimLayerCopy = value;
+}
+
+byte bhkRigidBody::GetFlagsAndPartNumberCopy() const {
+	return flagsAndPartNumberCopy;
+}
+
+void bhkRigidBody::SetFlagsAndPartNumberCopy( byte value ) {
+	flagsAndPartNumberCopy = value;
+}
+
 Vector4 bhkRigidBody::GetTranslation() const {
 	return translation;
 }
@@ -396,12 +427,12 @@ void bhkRigidBody::SetAngularVelocity( const Vector4 & value ) {
 	angularVelocity = value;
 }
 
-InertiaMatrix bhkRigidBody::GetInertiaTensors() const {
-	return inertiaTensors;
+InertiaMatrix bhkRigidBody::GetInertia() const {
+	return inertia;
 }
 
-void bhkRigidBody::SetInertiaTensors( const InertiaMatrix & value ) {
-	inertiaTensors = value;
+void bhkRigidBody::SetInertia( const InertiaMatrix & value ) {
+	inertia = value;
 }
 
 Vector4 bhkRigidBody::GetCenter() const {
@@ -434,22 +465,6 @@ float bhkRigidBody::GetAngularDamping() const {
 
 void bhkRigidBody::SetAngularDamping( float value ) {
 	angularDamping = value;
-}
-
-float bhkRigidBody::GetTimefactorOrGravityfactor_() const {
-	return timefactorOrGravityfactor_;
-}
-
-void bhkRigidBody::SetTimefactorOrGravityfactor_( float value ) {
-	timefactorOrGravityfactor_ = value;
-}
-
-float bhkRigidBody::GetTimefactorOrGravityfactor_() const {
-	return timefactorOrGravityfactor_;
-}
-
-void bhkRigidBody::SetTimefactorOrGravityfactor_( float value ) {
-	timefactorOrGravityfactor_ = value;
 }
 
 float bhkRigidBody::GetFriction() const {
@@ -585,11 +600,11 @@ void bhkRigidBody::SetAngularVelocity( const Vector4 & value ) {
 }
 
 InertiaMatrix  bhkRigidBody::GetInertia() const {
-	return inertiaTensors;
+	return inertia;
 }
 
 void bhkRigidBody::SetInertia( const InertiaMatrix&  value ) {
-	inertiaTensors = value;
+	inertia = value;
 }
 
 Vector4 bhkRigidBody::GetCenter() const {
@@ -730,7 +745,7 @@ void bhkRigidBody::ApplyScale(float scale)
     center *= scale;
 
     // apply scale on inertia tensor
-    inertiaTensors *= pow(scale, 2.0f);
+    inertia *= pow(scale, 2.0f);
 
     //# apply scale on all blocks down the hierarchy
     //ApplyScale(scale)
@@ -749,13 +764,13 @@ void bhkRigidBody::UpdateMassProperties(float density, bool solid, float mass)
 	{
 		float volume;
 		Vector3 com;
-		shape->CalcMassProperties(density, solid, this->mass, volume, com, inertiaTensors);
+		shape->CalcMassProperties(density, solid, this->mass, volume, com, inertia);
 		center = com;
 		if (mass != 0.0f)
 		{
 			float mass_correction = (this->mass != 0.0f) ? mass / this->mass : 1.0f;
 			this->mass = mass;
-			inertiaTensors *= mass_correction;
+			inertia *= mass_correction;
 		}
 	}
 }

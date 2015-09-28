@@ -21,10 +21,11 @@ typedef Ref<NiClodData> NiClodDataRef;
 
 /*!
  * Holds mesh data for continuous level of detail shapes.
- *     Pesumably a progressive mesh with triangles specified by edge splits.
- *     Seems to be specific to Freedom Force.
- *     The structure of this is uncertain and highly experimental at this point.
- *     No file with this data can currently be read properly.
+ *         Pesumably a progressive mesh with triangles specified by edge splits.
+ *         Seems to be specific to Freedom Force.
+ *         The structure of this is uncertain and highly experimental at this
+ * point.
+ *         No file with this data can currently be read properly.
  */
 class NiClodData : public NiTriBasedGeomData {
 public:

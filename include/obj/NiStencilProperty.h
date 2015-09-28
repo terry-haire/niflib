@@ -127,22 +127,22 @@ public:
 	void SetDrawMode( const FaceDrawMode & value );
 
 // Property flags:
-	//       Bit 0: Stencil Enable
-	//       Bits 1-3: Fail Action
-	//       Bits 4-6: Z Fail Action
-	//       Bits 7-9: Pass Action
-	//       Bits 10-11: Draw Mode
-	//       Bits 12-14: Stencil Function
+	//             Bit 0: Stencil Enable
+	//             Bits 1-3: Fail Action
+	//             Bits 4-6: Z Fail Action
+	//             Bits 7-9: Pass Action
+	//             Bits 10-11: Draw Mode
+	//             Bits 12-14: Stencil Function
 	// \return The current value.
 	unsigned short GetFlags() const;
 
 // Property flags:
-	//       Bit 0: Stencil Enable
-	//       Bits 1-3: Fail Action
-	//       Bits 4-6: Z Fail Action
-	//       Bits 7-9: Pass Action
-	//       Bits 10-11: Draw Mode
-	//       Bits 12-14: Stencil Function
+	//             Bit 0: Stencil Enable
+	//             Bits 1-3: Fail Action
+	//             Bits 4-6: Z Fail Action
+	//             Bits 7-9: Pass Action
+	//             Bits 10-11: Draw Mode
+	//             Bits 12-14: Stencil Function
 	// \param[in] value The new value.
 	void SetFlags( unsigned short value );
 

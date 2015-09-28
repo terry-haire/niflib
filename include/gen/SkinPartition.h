@@ -83,9 +83,11 @@ struct SkinPartition {
 	unsigned short unknown00004;
 	/*! Unknown. */
 	vector<SkinPartitionUnknownItem1 > unknownArr1;
+
 	//--BEGIN MISC CUSTOM CODE--//
 	/*! Calculate proper value of numTriangles field. */
 	unsigned short numTrianglesCalc() const;
+	unsigned short numTrianglesCalc(const NifInfo& info) const;
 	//--END CUSTOM CODE--//
 };
 

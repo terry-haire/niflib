@@ -75,6 +75,14 @@ public:
 	// \param[in] value The new value.
 	void SetMaterial( const HavokMaterial & value );
 
+	// The shape's material.
+	// \return The current value.
+	SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	void SetSkyrimMaterial( const SkyrimHavokMaterial & value );
+
 	// A transform matrix.
 	// \return The current value.
 	Matrix44 GetTransform() const;
@@ -139,6 +147,8 @@ protected:
 	Ref<bhkShape > shape;
 	/*! The shape's material. */
 	HavokMaterial material;
+	/*! The shape's material. */
+	SkyrimHavokMaterial skyrimMaterial;
 	/*! Unknown. */
 	float unknownFloat1;
 	/*! Unknown. */

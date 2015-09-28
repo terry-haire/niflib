@@ -20,20 +20,7 @@ namespace Niflib {
 class BSEffectShaderPropertyFloatController;
 typedef Ref<BSEffectShaderPropertyFloatController> BSEffectShaderPropertyFloatControllerRef;
 
-/*!
- * This controller is used to animate variables in
- * BSEffectShaderPropertyFloatController, target is a number in order they appear:
- *     0: Visibility?
- *     1:
- *     2:
- *     3:
- *     4: Emissive or Saturation?
- *     5: Alpha Transparency
- *     6: Texture Translation U
- *     7: Texture Repeat U
- *     8: Texture Translate V
- *     9: Texture Repeat V
- */
+/*! This controller is used to animate float variables in BSEffectShaderProperty. */
 class BSEffectShaderPropertyFloatController : public NiFloatInterpController {
 public:
 	/*! Constructor */
@@ -68,13 +55,13 @@ public:
 
 	/***Begin Example Naive Implementation****
 
-	// Unknown
+// Which float variable in BSEffectShaderProperty to animate:
 	// \return The current value.
-	unsigned int GetTargetVariable() const;
+	EffectShaderControlledVariable GetTypeOfControlledVariable() const;
 
-	// Unknown
+// Which float variable in BSEffectShaderProperty to animate:
 	// \param[in] value The new value.
-	void SetTargetVariable( unsigned int value );
+	void SetTypeOfControlledVariable( const EffectShaderControlledVariable & value );
 
 	****End Example Naive Implementation***/
 
@@ -82,8 +69,8 @@ public:
 
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown */
-	unsigned int targetVariable;
+	/*! Which float variable in BSEffectShaderProperty to animate: */
+	EffectShaderControlledVariable typeOfControlledVariable;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
