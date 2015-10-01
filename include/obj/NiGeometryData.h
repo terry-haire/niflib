@@ -355,6 +355,17 @@ public:
 	 */
 	NIFLIB_API vector<Vector3> GetNormals() const;
 
+	// Do we have vertex colors? These are usually used to fine-tune the lighting of
+	// the model.
+	//
+	//             Note: how vertex colors influence the model can be controlled by
+	// having a NiVertexColorProperty object as a property child of the root node. If
+	// this property object is not present, the vertex colors fine-tune lighting.
+	//
+	//             Note 2: set to either 0 or 0xFFFFFFFF for NifTexture compatibility.
+	// \return The current value.
+	NIFLIB_API bool HasColors() const;
+
 	/*! 
 	 * Used to retrive the vertex colors used by this mesh.  The size of the vector will either be zero if no vertex colors are used, or be the same as the vertex count retrieved with the IShapeData::GetVertexCount function.
 	 * \return A vector cntaining the vertex colors used by this mesh, if any.

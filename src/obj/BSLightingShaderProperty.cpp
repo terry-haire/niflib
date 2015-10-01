@@ -21,7 +21,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSLightingShaderProperty::TYPE("BSLightingShaderProperty", &NiProperty::TYPE );
 
-BSLightingShaderProperty::BSLightingShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)2185233153), shaderFlags2((SkyrimShaderPropertyFlags2)32801), uvScale(1.0, 1.0), textureSet(NULL), emissiveMultiple(0.0f), textureClampMode((TexClampMode)0), alpha(1.0f), unknownFloat2(0.0f), glossiness(0.0f), specularStrength(1.0f), lightingEffect1(0.0f), lightingEffect2(0.0f), environmentMapScale(0.0f), maxPasses(0.0f), scale(0.0f), parallaxInnerLayerThickness(0.0f), parallaxRefractionScale(0.0f), parallaxEnvmapStrength(0.0f), eyeCubemapScale(0.0f) {
+BSLightingShaderProperty::BSLightingShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)2185233153), shaderFlags2((SkyrimShaderPropertyFlags2)32801), uvScale(1.0, 1.0), textureSet(NULL), emissiveMultiple(0.0f), textureClampMode((TexClampMode)0), alpha(1.0f), refractionStrength(0.0f), glossiness(0.0f), specularStrength(1.0f), lightingEffect1(0.0f), lightingEffect2(0.0f), environmentMapScale(0.0f), maxPasses(0.0f), scale(0.0f), parallaxInnerLayerThickness(0.0f), parallaxRefractionScale(0.0f), parallaxEnvmapStrength(0.0f), eyeCubemapScale(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -60,7 +60,7 @@ void BSLightingShaderProperty::Read( istream& in, list<unsigned int> & link_stac
 	NifStream( emissiveMultiple, in, info );
 	NifStream( textureClampMode, in, info );
 	NifStream( alpha, in, info );
-	NifStream( unknownFloat2, in, info );
+	NifStream( refractionStrength, in, info );
 	NifStream( glossiness, in, info );
 	NifStream( specularColor, in, info );
 	NifStream( specularStrength, in, info );
@@ -132,7 +132,7 @@ void BSLightingShaderProperty::Write( ostream& out, const map<NiObjectRef,unsign
 	NifStream( emissiveMultiple, out, info );
 	NifStream( textureClampMode, out, info );
 	NifStream( alpha, out, info );
-	NifStream( unknownFloat2, out, info );
+	NifStream( refractionStrength, out, info );
 	NifStream( glossiness, out, info );
 	NifStream( specularColor, out, info );
 	NifStream( specularStrength, out, info );
@@ -187,7 +187,7 @@ std::string BSLightingShaderProperty::asString( bool verbose ) const {
 	out << "  Emissive Multiple:  " << emissiveMultiple << endl;
 	out << "  Texture Clamp Mode:  " << textureClampMode << endl;
 	out << "  Alpha:  " << alpha << endl;
-	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
+	out << "  Unknown Float 2:  " << refractionStrength << endl;
 	out << "  Glossiness:  " << glossiness << endl;
 	out << "  Specular Color:  " << specularColor << endl;
 	out << "  Specular Strength:  " << specularStrength << endl;
@@ -543,7 +543,7 @@ TexClampMode BSLightingShaderProperty::GetTextureClampMode() const {
    return textureClampMode;
 }
 
-void BSLightingShaderProperty::SetTextureClampMode( const TexClampMode & value ) {
+void BSLightingShaderProperty::SetTextureClampMode( TexClampMode value ) {
    textureClampMode = value;
 }
 
@@ -697,6 +697,14 @@ Vector3 BSLightingShaderProperty::GetRightEyeReflectionCenter() const {
 
 void BSLightingShaderProperty::SetRightEyeReflectionCenter( const Vector3 & value ) {
    rightEyeReflectionCenter = value;
+}
+
+float BSLightingShaderProperty::GetRefractionStrength() const {
+	return refractionStrength;
+}
+
+void BSLightingShaderProperty::SetRefractionStrength(float value) {
+	refractionStrength = value;
 }
 
 //--END CUSTOM CODE--//

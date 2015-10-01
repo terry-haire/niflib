@@ -353,7 +353,7 @@ public:
 
    // How to handle texture borders.
    // \param[in] value The new value.
-   void SetTextureClampMode( const TexClampMode & value );
+   void SetTextureClampMode( TexClampMode value );
 
    // The materials opacity (1=non-transparent).
    // \return The current value.
@@ -507,6 +507,14 @@ public:
    // \param[in] value The new value.
    void SetRightEyeReflectionCenter( const Vector3 & value );
 
+   // Refraction strength increases as value increases
+   // \return The current value.
+   float GetRefractionStrength() const;
+
+   // Refraction strength increases as value increases
+   // \param[in] value The new value.
+   void SetRefractionStrength(float value);
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Skyrim Shader Flags for setting render/shader options. */
@@ -527,8 +535,8 @@ protected:
 	TexClampMode textureClampMode;
 	/*! The materials opacity (1=non-transparent). */
 	float alpha;
-	/*! Unknown */
-	float unknownFloat2;
+	/*! Refraction strength increases as value increases */
+	float refractionStrength;
 	/*! The material's specular power, or glossiness (0-999). */
 	float glossiness;
 	/*! Adds a colored highlight. */

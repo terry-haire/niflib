@@ -722,6 +722,10 @@ vector<Vector3> NiGeometryData::GetNormals() const {
 	return normals;
 }
 
+bool NiGeometryData::HasColors() const {
+	return vertexColors.size() > 0;
+}
+
 vector<Color4> NiGeometryData::GetColors() const {
 	return vertexColors;
 }
