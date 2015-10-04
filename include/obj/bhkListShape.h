@@ -119,6 +119,14 @@ public:
 	 */
 	NIFLIB_API void SetMaterial( HavokMaterial value );
 
+	// The shape's material.
+	// \return The current value.
+	NIFLIB_API SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSkyrimMaterial(SkyrimHavokMaterial value);
+
 	/*! Helper routine for calculating mass properties.
 	 *  \param[in]  density Uniform density of object
 	 *  \param[in]  solid Determines whether the object is assumed to be solid or not

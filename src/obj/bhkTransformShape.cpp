@@ -209,6 +209,14 @@ void bhkTransformShape::SetMaterial( HavokMaterial value ) {
 	material = value;
 }
 
+SkyrimHavokMaterial bhkTransformShape::GetSkyrimMaterial() const {
+	return skyrimMaterial;
+}
+
+void bhkTransformShape::SetSkyrimMaterial(SkyrimHavokMaterial value) {
+	skyrimMaterial = value;
+}
+
 Matrix44 bhkTransformShape::GetTransform() const {
 	return transform;
 }

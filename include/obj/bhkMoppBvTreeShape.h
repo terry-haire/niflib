@@ -161,6 +161,14 @@ public:
 	 */
 	NIFLIB_API void SetMaterial( HavokMaterial value );
 
+	// The shape's material.
+	// \return The current value.
+	NIFLIB_API SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSkyrimMaterial(SkyrimHavokMaterial value);
+
 	/*!
 	* Get the shape's bounding volume code.  The code is specific to the Havok Physics engine.
 	* \return A byte vector containing the code representing the MOPP.

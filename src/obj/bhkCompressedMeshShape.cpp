@@ -240,4 +240,44 @@ void bhkCompressedMeshShape::SetData( Ref<bhkCompressedMeshShapeData > value ) {
 
 //--BEGIN MISC CUSTOM CODE--//
 
+NiAVObject * bhkCompressedMeshShape::GetTarget() const {
+	return target;
+}
+
+void bhkCompressedMeshShape::SetTarget(NiAVObject * value) {
+	target = value;
+}
+
+SkyrimHavokMaterial bhkCompressedMeshShape::GetSkyrimMaterial() const {
+	return skyrimMaterial;
+}
+
+void bhkCompressedMeshShape::SetSkyrimMaterial(SkyrimHavokMaterial value) {
+	skyrimMaterial = value;
+}
+
+float bhkCompressedMeshShape::GetRadius() const {
+	return radius;
+}
+
+void bhkCompressedMeshShape::SetRadius(float value) {
+	radius = value;
+}
+
+float bhkCompressedMeshShape::GetScale() const {
+	return scale;
+}
+
+void bhkCompressedMeshShape::SetScale(float value) {
+	scale = value;
+}
+
+bhkCompressedMeshShapeDataRef bhkCompressedMeshShape::GetData() const {
+	return data;
+}
+
+void bhkCompressedMeshShape::SetData(bhkCompressedMeshShapeDataRef value) {
+	data = value;
+}
+
 //--END CUSTOM CODE--//

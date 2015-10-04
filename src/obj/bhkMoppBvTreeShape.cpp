@@ -301,6 +301,14 @@ void bhkMoppBvTreeShape::SetMaterial( HavokMaterial value ) {
 	material = value;
 }
 
+SkyrimHavokMaterial bhkMoppBvTreeShape::GetSkyrimMaterial() const {
+	return skyrimMaterial;
+}
+
+void bhkMoppBvTreeShape::SetSkyrimMaterial(SkyrimHavokMaterial value) {
+	skyrimMaterial = value;
+}
+
 vector<byte> bhkMoppBvTreeShape::GetMoppCode() const {
 	return moppData;
 }

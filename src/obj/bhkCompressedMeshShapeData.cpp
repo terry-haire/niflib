@@ -470,4 +470,113 @@ void bhkCompressedMeshShapeData::SetBigTris( const vector<bhkCMSDBigTris >& valu
 
 //--BEGIN MISC CUSTOM CODE--//
 
+
+unsigned int bhkCompressedMeshShapeData::GetBitsPerIndex() const {
+	return bitsPerIndex;
+}
+
+void bhkCompressedMeshShapeData::SetBitsPerIndex(unsigned int value) {
+	bitsPerIndex = value;
+}
+
+unsigned int bhkCompressedMeshShapeData::GetBitsPerWIndex() const {
+	return bitsPerWIndex;
+}
+
+void bhkCompressedMeshShapeData::SetBitsPerWIndex(unsigned int value) {
+	bitsPerWIndex = value;
+}
+
+unsigned int bhkCompressedMeshShapeData::GetMaskWIndex() const {
+	return maskWIndex;
+}
+
+void bhkCompressedMeshShapeData::SetMaskWIndex(unsigned int value) {
+	maskWIndex = value;
+}
+
+unsigned int bhkCompressedMeshShapeData::GetMaskIndex() const {
+	return maskIndex;
+}
+
+void bhkCompressedMeshShapeData::SetMaskIndex(unsigned int value) {
+	maskIndex = value;
+}
+
+float bhkCompressedMeshShapeData::GetError() const {
+	return error;
+}
+
+void bhkCompressedMeshShapeData::SetError(float value) {
+	error = value;
+}
+
+Vector4 bhkCompressedMeshShapeData::GetBoundsMin() const {
+	return boundsMin;
+}
+
+void bhkCompressedMeshShapeData::SetBoundsMin(const Vector4 & value) {
+	boundsMin = value;
+}
+
+Vector4 bhkCompressedMeshShapeData::GetBoundsMax() const {
+	return boundsMax;
+}
+
+void bhkCompressedMeshShapeData::SetBoundsMax(const Vector4 & value) {
+	boundsMax = value;
+}
+	
+const vector<Vector4>& bhkCompressedMeshShapeData::GetBigVerts() const {
+	return bigVerts;
+}
+
+void bhkCompressedMeshShapeData::SetBigVerts(const vector<Vector4 >& value) {
+	bigVerts = value;
+}
+
+const vector<bhkCMSDBigTris>& bhkCompressedMeshShapeData::GetBigTris() const {
+	return bigTris;
+}
+
+void bhkCompressedMeshShapeData::SetBigTris(const vector<bhkCMSDBigTris >& value) {
+	bigTris = value;
+}
+
+// Unknown
+// \return The current value.
+const vector<bhkCMSDMaterial>& bhkCompressedMeshShapeData::GetChunkMaterials() const {
+	return chunkMaterials;
+}
+
+// Unknown
+// \param[in] value The new value.
+void bhkCompressedMeshShapeData::SetChunkMaterials(const vector<bhkCMSDMaterial >& value) {
+	chunkMaterials = value;
+}
+
+// Unknown
+// \return The current value.
+const vector<bhkCMSDTransform>& bhkCompressedMeshShapeData::GetChunkTransforms() const {
+	return chunkTransforms;
+}
+
+// Unknown
+// \param[in] value The new value.
+void bhkCompressedMeshShapeData::SetChunkTransforms(const vector<bhkCMSDTransform >& value) {
+	chunkTransforms = value;
+}
+
+// Unknown
+// \return The current value.
+const vector<bhkCMSDChunk>& bhkCompressedMeshShapeData::GetChunks() const {
+	return chunks;
+}
+
+// Unknown
+// \param[in] value The new value.
+void bhkCompressedMeshShapeData::SetChunks(const vector<bhkCMSDChunk >& value) {
+	chunks = value;
+}
+
 //--END CUSTOM CODE--//

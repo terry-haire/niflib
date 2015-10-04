@@ -304,6 +304,14 @@ void bhkNiTriStripsShape::SetMaterial( HavokMaterial value ) {
 	material = value;
 }
 
+SkyrimHavokMaterial bhkNiTriStripsShape::GetSkyrimMaterial() const {
+	return skyrimMaterial;
+}
+
+void bhkNiTriStripsShape::SetSkyrimMaterial(SkyrimHavokMaterial value) {
+	skyrimMaterial = value;
+}
+
 unsigned int bhkNiTriStripsShape::GetNumDataLayers() const {
 	return numDataLayers;
 }

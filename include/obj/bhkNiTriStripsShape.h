@@ -152,7 +152,16 @@ public:
 	*/
 	NIFLIB_API void SetMaterial( HavokMaterial value );
 
-	unsigned int GetNumDataLayers() const;
+	
+	// The shape's material.
+	// \return The current value.
+	NIFLIB_API SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSkyrimMaterial(SkyrimHavokMaterial value);
+
+	NIFLIB_API unsigned int GetNumDataLayers() const;
 
 	/*!
 	* Sets the number of OblivionColFilter objects referenced by this shape.

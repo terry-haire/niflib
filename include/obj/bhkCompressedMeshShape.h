@@ -11,7 +11,7 @@ All rights reserved.  Please see niflib.h for license. */
 #define _BHKCOMPRESSEDMESHSHAPE_H_
 
 //--BEGIN FILE HEAD CUSTOM CODE--//
-
+#include "obj/bhkCompressedMeshShapeData.h"
 //--END CUSTOM CODE--//
 
 #include "bhkShape.h"
@@ -104,6 +104,46 @@ public:
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
+
+	// Points to root node?
+	// \return The current value.
+	NiAVObject * GetTarget() const;
+
+	// Points to root node?
+	// \param[in] value The new value.
+	void SetTarget(NiAVObject * value);
+
+	// The shape's material.
+	// \return The current value.
+	SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	void SetSkyrimMaterial(SkyrimHavokMaterial value);
+
+	// A shell with that radius is added around the shape.
+	// \return The current value.
+	float GetRadius() const;
+
+	// A shell with that radius is added around the shape.
+	// \param[in] value The new value.
+	void SetRadius(float value);
+
+	// Scale
+	// \return The current value.
+	float GetScale() const;
+
+	// Scale
+	// \param[in] value The new value.
+	void SetScale(float value);
+
+	// The collision mesh data.
+	// \return The current value.
+	bhkCompressedMeshShapeDataRef GetData() const;
+
+	// The collision mesh data.
+	// \param[in] value The new value.
+	void SetData(bhkCompressedMeshShapeDataRef value);
 
 	//--END CUSTOM CODE--//
 protected:

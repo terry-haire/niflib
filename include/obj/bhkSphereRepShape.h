@@ -97,6 +97,14 @@ public:
 	 */
 	NIFLIB_API void SetMaterial( HavokMaterial value );
 
+	// The shape's material.
+	// \return The current value.
+	NIFLIB_API SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSkyrimMaterial(SkyrimHavokMaterial value);
+
 	/*!
 	* Gets the capsule's radius.
 	* \return The radius of the capsule.

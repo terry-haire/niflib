@@ -231,6 +231,15 @@ void bhkConvexListShape::SetMaterial( HavokMaterial value ) {
 	material = value;
 }
 
+SkyrimHavokMaterial bhkConvexListShape::GetSkyrimMaterial() const {
+	return skyrimMaterial;
+}
+
+void bhkConvexListShape::SetSkyrimMaterial(SkyrimHavokMaterial value) {
+	skyrimMaterial = value;
+}
+
+
 vector<Ref<bhkConvexShape > > bhkConvexListShape::GetSubShapes() const {
 	return subShapes;
 }

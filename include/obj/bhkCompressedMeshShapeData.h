@@ -143,6 +143,109 @@ public:
 
 	//--BEGIN MISC CUSTOM CODE--//
 
+
+	// Number of bits in the shape-key reserved for a triangle index
+	// \return The current value.
+	NIFLIB_API unsigned int GetBitsPerIndex() const;
+
+	// Number of bits in the shape-key reserved for a triangle index
+	// \param[in] value The new value.
+	NIFLIB_API void SetBitsPerIndex(unsigned int value);
+
+	// Number of bits in the shape-key reserved for a triangle index and its winding
+	// \return The current value.
+	NIFLIB_API unsigned int GetBitsPerWIndex() const;
+
+	// Number of bits in the shape-key reserved for a triangle index and its winding
+	// \param[in] value The new value.
+	NIFLIB_API void SetBitsPerWIndex(unsigned int value);
+
+	// Mask used to get the triangle index and winding from a shape-key (common: 262143
+	// = 0x3ffff)
+	// \return The current value.
+	NIFLIB_API unsigned int GetMaskWIndex() const;
+
+	// Mask used to get the triangle index and winding from a shape-key (common: 262143
+	// = 0x3ffff)
+	// \param[in] value The new value.
+	NIFLIB_API void SetMaskWIndex(unsigned int value);
+
+	// Mask used to get the triangle index from a shape-key (common: 131071 = 0x1ffff)
+	// \return The current value.
+	NIFLIB_API unsigned int GetMaskIndex() const;
+
+	// Mask used to get the triangle index from a shape-key (common: 131071 = 0x1ffff)
+	// \param[in] value The new value.
+	NIFLIB_API void SetMaskIndex(unsigned int value);
+
+	// The radius of the storage mesh shape? Quantization error?
+	// \return The current value.
+	NIFLIB_API float GetError() const;
+
+	// The radius of the storage mesh shape? Quantization error?
+	// \param[in] value The new value.
+	NIFLIB_API void SetError(float value);
+
+	// The minimum boundary of the AABB (the coordinates of the corner with the lowest
+	// numerical values)
+	// \return The current value.
+	NIFLIB_API Vector4 GetBoundsMin() const;
+
+	// The minimum boundary of the AABB (the coordinates of the corner with the lowest
+	// numerical values)
+	// \param[in] value The new value.
+	NIFLIB_API void SetBoundsMin(const Vector4 & value);
+
+	// The maximum boundary of the AABB (the coordinates of the corner with the highest
+	// numerical values)
+	// \return The current value.
+	NIFLIB_API Vector4 GetBoundsMax() const;
+
+	// The maximum boundary of the AABB (the coordinates of the corner with the highest
+	// numerical values)
+	// \param[in] value The new value.
+	NIFLIB_API void SetBoundsMax(const Vector4 & value);
+
+	// Compressed Vertices?
+	// \return The current value.
+	NIFLIB_API const vector<Vector4>& GetBigVerts() const;
+
+	// Compressed Vertices?
+	// \param[in] value The new value.
+	NIFLIB_API void SetBigVerts(const vector<Vector4 >& value);
+
+	// Unknown
+	// \return The current value.
+	NIFLIB_API const vector<bhkCMSDBigTris>& GetBigTris() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	NIFLIB_API void SetBigTris(const vector<bhkCMSDBigTris >& value);
+
+	// Unknown
+	// \return The current value.
+	NIFLIB_API const vector<bhkCMSDMaterial>& GetChunkMaterials() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	NIFLIB_API void SetChunkMaterials(const vector<bhkCMSDMaterial >& value);
+
+	// Unknown
+	// \return The current value.
+	NIFLIB_API const vector<bhkCMSDTransform>& GetChunkTransforms() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	NIFLIB_API void SetChunkTransforms(const vector<bhkCMSDTransform >& value);
+
+	// Unknown
+	// \return The current value.
+	NIFLIB_API const vector<bhkCMSDChunk>& GetChunks() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	NIFLIB_API void SetChunks(const vector<bhkCMSDChunk >& value);
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Number of bits in the shape-key reserved for a triangle index */

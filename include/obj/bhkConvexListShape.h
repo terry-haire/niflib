@@ -121,6 +121,14 @@ public:
 	 */
 	NIFLIB_API void SetMaterial( HavokMaterial value );
 
+	// The shape's material.
+	// \return The current value.
+	NIFLIB_API SkyrimHavokMaterial GetSkyrimMaterial() const;
+
+	// The shape's material.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSkyrimMaterial(SkyrimHavokMaterial value);
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! The number of sub shapes referenced. */
