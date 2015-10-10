@@ -176,6 +176,120 @@ public:
 
 	//--BEGIN MISC CUSTOM CODE--//
 
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API SkyrimShaderPropertyFlags1 GetShaderFlags1() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetShaderFlags1( const SkyrimShaderPropertyFlags1 & value );
+
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API SkyrimShaderPropertyFlags2 GetShaderFlags2() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetShaderFlags2( const SkyrimShaderPropertyFlags2 & value );
+
+	// Offset UVs
+	// \return The current value.
+	NIFLIB_API TexCoord GetUvOffset() const;
+
+	// Offset UVs
+	// \param[in] value The new value.
+	NIFLIB_API void SetUvOffset( const TexCoord & value );
+
+	// Offset UV Scale to repeat tiling textures
+	// \return The current value.
+	NIFLIB_API TexCoord GetUvScale() const;
+
+	// Offset UV Scale to repeat tiling textures
+	// \param[in] value The new value.
+	NIFLIB_API void SetUvScale( const TexCoord & value );
+
+	// points to an external texture.
+	// \return The current value.
+	NIFLIB_API string GetSourceTexture() const;
+
+	// points to an external texture.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSourceTexture( const string & value );
+
+	// How to handle texture borders.
+	// \return The current value.
+	NIFLIB_API unsigned int GetTextureClampMode() const;
+
+	// How to handle texture borders.
+	// \param[in] value The new value.
+	NIFLIB_API void SetTextureClampMode( unsigned int value );
+
+	// At this cosine of angle falloff will be equal to Falloff Start Opacity
+	// \return The current value.
+	NIFLIB_API float GetFalloffStartAngle() const;
+
+	// At this cosine of angle falloff will be equal to Falloff Start Opacity
+	// \param[in] value The new value.
+	NIFLIB_API void SetFalloffStartAngle( float value );
+
+	// At this cosine of angle falloff will be equal to Falloff Stop Opacity
+	// \return The current value.
+	NIFLIB_API float GetFalloffStopAngle() const;
+
+	// At this cosine of angle falloff will be equal to Falloff Stop Opacity
+	// \param[in] value The new value.
+	NIFLIB_API void SetFalloffStopAngle( float value );
+
+	// Alpha falloff multiplier at start angle
+	// \return The current value.
+	NIFLIB_API float GetFalloffStartOpacity() const;
+
+	// Alpha falloff multiplier at start angle
+	// \param[in] value The new value.
+	NIFLIB_API void SetFalloffStartOpacity( float value );
+
+	// Alpha falloff multiplier at end angle
+	// \return The current value.
+	NIFLIB_API float GetFalloffStopOpacity() const;
+
+	// Alpha falloff multiplier at end angle
+	// \param[in] value The new value.
+	NIFLIB_API void SetFalloffStopOpacity( float value );
+
+	// Emissive color
+	// \return The current value.
+	NIFLIB_API Color4 GetEmissiveColor() const;
+
+	// Emissive color
+	// \param[in] value The new value.
+	NIFLIB_API void SetEmissiveColor( const Color4 & value );
+
+	// Multiplier for Emissive Color (RGB part)
+	// \return The current value.
+	NIFLIB_API float GetEmissiveMultiple() const;
+
+	// Multiplier for Emissive Color (RGB part)
+	// \param[in] value The new value.
+	NIFLIB_API void SetEmissiveMultiple( float value );
+
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API float GetSoftFalloffDepth() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSoftFalloffDepth( float value );
+
+	// Points to an external texture, used as palette for
+	// SLSF1_Greyscale_To_PaletteColor/SLSF1_Greyscale_To_PaletteAlpha.
+	// \return The current value.
+	NIFLIB_API string GetGreyscaleTexture() const;
+
+	// Points to an external texture, used as palette for
+	// SLSF1_Greyscale_To_PaletteColor/SLSF1_Greyscale_To_PaletteAlpha.
+	// \param[in] value The new value.
+	NIFLIB_API void SetGreyscaleTexture( const string & value );
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown. */

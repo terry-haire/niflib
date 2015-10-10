@@ -66,6 +66,14 @@ public:
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
+	// Which float variable in BSLightingShaderProperty to animate:
+	// \return The current value.
+	LightingShaderControlledVariable GetTypeOfControlledVariable() const;
+
+	// Which float variable in BSLightingShaderProperty to animate:
+	// \param[in] value The new value.
+	void SetTypeOfControlledVariable(const LightingShaderControlledVariable & value);
+
 
 	//--END CUSTOM CODE--//
 protected:

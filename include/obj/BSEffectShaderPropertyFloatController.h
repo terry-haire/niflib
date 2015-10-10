@@ -67,6 +67,14 @@ public:
 
 	//--BEGIN MISC CUSTOM CODE--//
 
+	// Which float variable in BSEffectShaderProperty to animate:
+	// \return The current value.
+	EffectShaderControlledVariable GetTypeOfControlledVariable() const;
+
+	// Which float variable in BSEffectShaderProperty to animate:
+	// \param[in] value The new value.
+	void SetTypeOfControlledVariable(const EffectShaderControlledVariable & value);
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Which float variable in BSEffectShaderProperty to animate: */

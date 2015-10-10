@@ -262,4 +262,116 @@ void BSEffectShaderProperty::SetGreyscaleTexture( const string & value ) {
 
 //--BEGIN MISC CUSTOM CODE--//
 
+SkyrimShaderPropertyFlags1 BSEffectShaderProperty::GetShaderFlags1() const {
+	return shaderFlags1;
+}
+
+void BSEffectShaderProperty::SetShaderFlags1(const SkyrimShaderPropertyFlags1 & value) {
+	shaderFlags1 = value;
+}
+
+SkyrimShaderPropertyFlags2 BSEffectShaderProperty::GetShaderFlags2() const {
+	return shaderFlags2;
+}
+
+void BSEffectShaderProperty::SetShaderFlags2(const SkyrimShaderPropertyFlags2 & value) {
+	shaderFlags2 = value;
+}
+
+TexCoord BSEffectShaderProperty::GetUvOffset() const {
+	return uvOffset;
+}
+
+void BSEffectShaderProperty::SetUvOffset(const TexCoord & value) {
+	uvOffset = value;
+}
+
+TexCoord BSEffectShaderProperty::GetUvScale() const {
+	return uvScale;
+}
+
+void BSEffectShaderProperty::SetUvScale(const TexCoord & value) {
+	uvScale = value;
+}
+
+string BSEffectShaderProperty::GetSourceTexture() const {
+	return sourceTexture;
+}
+
+void BSEffectShaderProperty::SetSourceTexture(const string & value) {
+	sourceTexture = value;
+}
+
+unsigned int BSEffectShaderProperty::GetTextureClampMode() const {
+	return textureClampMode;
+}
+
+void BSEffectShaderProperty::SetTextureClampMode(unsigned int value) {
+	textureClampMode = value;
+}
+
+float BSEffectShaderProperty::GetFalloffStartAngle() const {
+	return falloffStartAngle;
+}
+
+void BSEffectShaderProperty::SetFalloffStartAngle(float value) {
+	falloffStartAngle = value;
+}
+
+float BSEffectShaderProperty::GetFalloffStopAngle() const {
+	return falloffStopAngle;
+}
+
+void BSEffectShaderProperty::SetFalloffStopAngle(float value) {
+	falloffStopAngle = value;
+}
+
+float BSEffectShaderProperty::GetFalloffStartOpacity() const {
+	return falloffStartOpacity;
+}
+
+void BSEffectShaderProperty::SetFalloffStartOpacity(float value) {
+	falloffStartOpacity = value;
+}
+
+float BSEffectShaderProperty::GetFalloffStopOpacity() const {
+	return falloffStopOpacity;
+}
+
+void BSEffectShaderProperty::SetFalloffStopOpacity(float value) {
+	falloffStopOpacity = value;
+}
+
+Color4 BSEffectShaderProperty::GetEmissiveColor() const {
+	return emissiveColor;
+}
+
+void BSEffectShaderProperty::SetEmissiveColor(const Color4 & value) {
+	emissiveColor = value;
+}
+
+float BSEffectShaderProperty::GetEmissiveMultiple() const {
+	return emissiveMultiple;
+}
+
+void BSEffectShaderProperty::SetEmissiveMultiple(float value) {
+	emissiveMultiple = value;
+}
+
+float BSEffectShaderProperty::GetSoftFalloffDepth() const {
+	return softFalloffDepth;
+}
+
+void BSEffectShaderProperty::SetSoftFalloffDepth(float value) {
+	softFalloffDepth = value;
+}
+
+string BSEffectShaderProperty::GetGreyscaleTexture() const {
+	return greyscaleTexture;
+}
+
+void BSEffectShaderProperty::SetGreyscaleTexture(const string & value) {
+	greyscaleTexture = value;
+}
+
 //--END CUSTOM CODE--//

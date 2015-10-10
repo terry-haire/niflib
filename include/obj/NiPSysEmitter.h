@@ -145,6 +145,93 @@ public:
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
+	// Speed / Inertia of particle movement.
+	// \return The current value.
+	NIFLIB_API float GetSpeed() const;
+
+	// Speed / Inertia of particle movement.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSpeed(float value);
+
+	// Adds an amount of randomness to Speed.
+	// \return The current value.
+	NIFLIB_API float GetSpeedVariation() const;
+
+	// Adds an amount of randomness to Speed.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSpeedVariation(float value);
+
+	// Declination / First axis.
+	// \return The current value.
+	NIFLIB_API float GetDeclination() const;
+
+	// Declination / First axis.
+	// \param[in] value The new value.
+	NIFLIB_API void SetDeclination(float value);
+
+	// Declination randomness / First axis.
+	// \return The current value.
+	NIFLIB_API float GetDeclinationVariation() const;
+
+	// Declination randomness / First axis.
+	// \param[in] value The new value.
+	NIFLIB_API void SetDeclinationVariation(float value);
+
+	// Planar Angle / Second axis.
+	// \return The current value.
+	NIFLIB_API float GetPlanarAngle() const;
+
+	// Planar Angle / Second axis.
+	// \param[in] value The new value.
+	NIFLIB_API void SetPlanarAngle(float value);
+
+	// Planar Angle randomness / Second axis .
+	// \return The current value.
+	NIFLIB_API float GetPlanarAngleVariation() const;
+
+	// Planar Angle randomness / Second axis .
+	// \param[in] value The new value.
+	NIFLIB_API void SetPlanarAngleVariation(float value);
+
+	// Defines color of a birthed particle.
+	// \return The current value.
+	NIFLIB_API Color4 GetInitialColor() const;
+
+	// Defines color of a birthed particle.
+	// \param[in] value The new value.
+	NIFLIB_API void SetInitialColor(const Color4 & value);
+
+	// Size of a birthed particle.
+	// \return The current value.
+	NIFLIB_API float GetInitialRadius() const;
+
+	// Size of a birthed particle.
+	// \param[in] value The new value.
+	NIFLIB_API void SetInitialRadius(float value);
+
+	// Particle Radius randomness.
+	// \return The current value.
+	NIFLIB_API float GetRadiusVariation() const;
+
+	// Particle Radius randomness.
+	// \param[in] value The new value.
+	NIFLIB_API void SetRadiusVariation(float value);
+
+	// Duration until a particle dies.
+	// \return The current value.
+	NIFLIB_API float GetLifeSpan() const;
+
+	// Duration until a particle dies.
+	// \param[in] value The new value.
+	NIFLIB_API void SetLifeSpan(float value);
+
+	// Adds randomness to Life Span.
+	// \return The current value.
+	NIFLIB_API float GetLifeSpanVariation() const;
+
+	// Adds randomness to Life Span.
+	// \param[in] value The new value.
+	NIFLIB_API void SetLifeSpanVariation(float value);
 	//--END CUSTOM CODE--//
 protected:
 	/*! Speed / Inertia of particle movement. */

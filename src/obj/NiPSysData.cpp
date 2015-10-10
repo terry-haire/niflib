@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiPSysData::TYPE("NiPSysData", &NiRotatingParticlesData::TYPE );
 
-NiPSysData::NiPSysData() : hasUnknownFloats3(false), unknownShort1((unsigned short)0), unknownShort2((unsigned short)0), hasSubtextureOffsetUvs(false), numSubtextureOffsetUvs((unsigned int)0), aspectRatio(0.0f), unknownInt4((unsigned int)0), unknownInt5((unsigned int)0), unknownInt6((unsigned int)0), unknownShort3((unsigned short)0), unknownByte4((byte)0) {
+NiPSysData::NiPSysData() : hasUnknownFloats3(false), unknownShort1((unsigned short)0), unknownShort2((unsigned short)0), hasSubtextureOffsetUvs(false), numSubtextureOffsetUvs((unsigned int)0), aspectRatio(0.0f), unknownInt4((unsigned int)0), unknownInt5((unsigned int)0), unknownInt6((unsigned int)0), maxBsParticles((unsigned short)0), unknownByte4((byte)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -84,7 +84,7 @@ void NiPSysData::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 		NifStream( unknownInt4, in, info );
 		NifStream( unknownInt5, in, info );
 		NifStream( unknownInt6, in, info );
-		NifStream( unknownShort3, in, info );
+		NifStream(maxBsParticles, in, info );
 		NifStream( unknownByte4, in, info );
 	};
 
@@ -136,7 +136,7 @@ void NiPSysData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 		NifStream( unknownInt4, out, info );
 		NifStream( unknownInt5, out, info );
 		NifStream( unknownInt6, out, info );
-		NifStream( unknownShort3, out, info );
+		NifStream(maxBsParticles, out, info );
 		NifStream( unknownByte4, out, info );
 	};
 
@@ -213,7 +213,7 @@ std::string NiPSysData::asString( bool verbose ) const {
 	out << "  Unknown Int 4:  " << unknownInt4 << endl;
 	out << "  Unknown Int 5:  " << unknownInt5 << endl;
 	out << "  Unknown Int 6:  " << unknownInt6 << endl;
-	out << "  Unknown Short 3:  " << unknownShort3 << endl;
+	out << "  Max BS Particles:  " << maxBsParticles << endl;
 	out << "  Unknown Byte 4:  " << unknownByte4 << endl;
 	return out.str();
 
@@ -280,4 +280,41 @@ void NiPSysData::SetSubtextureOffsetUvs( const vector<Vector4 >& value ) {
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
+vector<ParticleDesc > NiPSysData::GetParticleDescriptions() const {
+	return particleDescriptions;
+}
+
+void NiPSysData::SetParticleDescriptions(const vector<ParticleDesc >& value) {
+	particleDescriptions = value;
+}
+
+bool NiPSysData::GetHasSubtextureOffsetUvs() const {
+	return hasSubtextureOffsetUvs;
+}
+
+void NiPSysData::SetHasSubtextureOffsetUvs(bool value) {
+	hasSubtextureOffsetUvs = value;
+}
+
+float NiPSysData::GetAspectRatio() const {
+	return aspectRatio;
+}
+
+void NiPSysData::SetAspectRatio(float value) {
+	aspectRatio = value;
+}
+
+vector<Vector4 > NiPSysData::GetSubtextureOffsetUvs() const {
+	return subtextureOffsetUvs;
+}
+
+void NiPSysData::SetSubtextureOffsetUvs(const vector<Vector4 >& value) {
+	subtextureOffsetUvs = value;
+}
+
+unsigned short NiPSysData::GetBSMaxParticles()
+{
+	return maxBsParticles;
+}
+
 //--END CUSTOM CODE--//

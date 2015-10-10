@@ -119,4 +119,12 @@ void BSLightingShaderPropertyFloatController::SetTypeOfControlledVariable( const
 
 //--BEGIN MISC CUSTOM CODE--//
 
+LightingShaderControlledVariable BSLightingShaderPropertyFloatController::GetTypeOfControlledVariable() const {
+	return typeOfControlledVariable;
+}
+
+void BSLightingShaderPropertyFloatController::SetTypeOfControlledVariable(const LightingShaderControlledVariable & value) {
+	typeOfControlledVariable = value;
+}
+
 //--END CUSTOM CODE--//

@@ -190,4 +190,37 @@ void NiPSysMeshEmitter::SetEmissionAxis( const Vector3 & value ) {
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
+
+
+vector<Ref<NiTriBasedGeom > > NiPSysMeshEmitter::GetEmitterMeshes() const {
+	return emitterMeshes;
+}
+
+void NiPSysMeshEmitter::SetEmitterMeshes(const vector<Ref<NiTriBasedGeom > >& value) {
+	emitterMeshes = value;
+}
+
+VelocityType NiPSysMeshEmitter::GetInitialVelocityType() const {
+	return initialVelocityType;
+}
+
+void NiPSysMeshEmitter::SetInitialVelocityType(VelocityType value) {
+	initialVelocityType = value;
+}
+
+EmitFrom NiPSysMeshEmitter::GetEmissionType() const {
+	return emissionType;
+}
+
+void NiPSysMeshEmitter::SetEmissionType(EmitFrom value) {
+	emissionType = value;
+}
+
+Vector3 NiPSysMeshEmitter::GetEmissionAxis() const {
+	return emissionAxis;
+}
+
+void NiPSysMeshEmitter::SetEmissionAxis(const Vector3 & value) {
+	emissionAxis = value;
+}
 //--END CUSTOM CODE--//

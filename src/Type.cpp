@@ -14,18 +14,18 @@ Type::Type(const Type& src) : name(src.name), base_type(src.base_type), internal
 Type::~Type() {}
 
 bool Type::operator<( const Type & compare_to ) const {
-	return (this < &compare_to);
+	return (internal_type_number < compare_to.internal_type_number);
 }
 
 bool Type::IsSameType( const Type & compare_to ) const {
-	return &compare_to == this;
+	return compare_to.internal_type_number == internal_type_number;
 }
 
 bool Type::IsDerivedType( const Type & compare_to ) const {
 
 	const Type * search = this;
 	while ( search != NULL ) {
-		if ( search == &compare_to ) {
+		if ( search->internal_type_number == compare_to.internal_type_number ) {
 			return true;
 		}
 		search = search->base_type;

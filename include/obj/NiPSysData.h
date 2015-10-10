@@ -92,6 +92,42 @@ public:
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
+
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API vector<ParticleDesc > GetParticleDescriptions() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetParticleDescriptions(const vector<ParticleDesc >& value);
+
+	// Boolean for Num Subtexture Offset UVs
+	// \return The current value.
+	NIFLIB_API bool GetHasSubtextureOffsetUvs() const;
+
+	// Boolean for Num Subtexture Offset UVs
+	// \param[in] value The new value.
+	NIFLIB_API void SetHasSubtextureOffsetUvs(bool value);
+
+	// Sets aspect ratio for Subtexture Offset UV quads
+	// \return The current value.
+	NIFLIB_API float GetAspectRatio() const;
+
+	// Sets aspect ratio for Subtexture Offset UV quads
+	// \param[in] value The new value.
+	NIFLIB_API void SetAspectRatio(float value);
+
+	// Defines UV offsets
+	// \return The current value.
+	NIFLIB_API vector<Vector4 > GetSubtextureOffsetUvs() const;
+
+	// Defines UV offsets
+	// \param[in] value The new value.
+	NIFLIB_API void SetSubtextureOffsetUvs(const vector<Vector4 >& value);
+
+	// Get Maximum Number of Particles
+	// \return The maximum number of particles.
+	NIFLIB_API unsigned short GetBSMaxParticles();
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown. */
@@ -119,7 +155,7 @@ protected:
 	/*! Unknown */
 	unsigned int unknownInt6;
 	/*! Unknown */
-	unsigned short unknownShort3;
+	unsigned short maxBsParticles;
 	/*! Unknown */
 	byte unknownByte4;
 public:

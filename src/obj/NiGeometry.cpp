@@ -765,14 +765,65 @@ void NiGeometry::ClearProperties() {
 }
 
 
-Niflib::array<2, Ref<NiProperty>> NiGeometry::GetBSProperties() const {
-	return bsProperties;
+NiPropertyRef NiGeometry::GetBSProperty(int index) const {
+	return bsProperties[index];
 }
 
-void NiGeometry::SetBSProperties(const Niflib::array<2, Ref<NiProperty > >&  value) {
-	bsProperties = value;
+void NiGeometry::SetBSProperty(int index, const NiPropertyRef&  value) {
+	bsProperties[index] = value;
 }
 
 #pragma endregion
 
+
+void NiGeometry::SetSkinInstance(NiSkinInstance* value) {
+	skinInstance = value;
+}
+
+vector<int > NiGeometry::GetMaterialExtraData() const {
+	return materialExtraData;
+}
+
+void NiGeometry::SetMaterialExtraData(const vector<int >& value) {
+	materialExtraData = value;
+}
+
+bool NiGeometry::GetHasShader() const {
+	return hasShader;
+}
+
+void NiGeometry::SetHasShader(bool value) {
+	hasShader = value;
+}
+
+const NiProperty * NiGeometry::GetBSPropertyOfType(const Niflib::Type& type) const {
+	if (this == nullptr) return nullptr;
+
+	const NiPropertyRef& object = bsProperties[0];
+	if (object && object->IsDerivedType(type)) {
+		return (const NiProperty*)object;
+	}
+	else {
+		const NiPropertyRef& object = bsProperties[1];
+		if (object && object->IsDerivedType(type)) {
+			return (const NiProperty*)object;
+		}
+	}
+	return nullptr;
+}
+NiProperty * NiGeometry::GetBSPropertyOfType(const Niflib::Type& type) {
+	if (this == nullptr) return nullptr;
+
+	NiPropertyRef& object = bsProperties[0];
+	if (object && object->IsDerivedType(type)) {
+		return (NiProperty*)object;
+	}
+	else {
+		NiPropertyRef& object = bsProperties[1];
+		if (object && object->IsDerivedType(type)) {
+			return (NiProperty*)object;
+		}
+	}
+	return nullptr;
+}
 //--END CUSTOM CODE--//

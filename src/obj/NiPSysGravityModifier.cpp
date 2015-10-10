@@ -202,4 +202,60 @@ void NiPSysGravityModifier::SetTurbulenceScale( float value ) {
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
+
+NiNode * NiPSysGravityModifier::GetGravityObject() const {
+	return gravityObject;
+}
+
+void NiPSysGravityModifier::SetGravityObject(NiNode * value) {
+	gravityObject = value;
+}
+
+Vector3 NiPSysGravityModifier::GetGravityAxis() const {
+	return gravityAxis;
+}
+
+void NiPSysGravityModifier::SetGravityAxis(const Vector3 & value) {
+	gravityAxis = value;
+}
+
+float NiPSysGravityModifier::GetDecay() const {
+	return decay;
+}
+
+void NiPSysGravityModifier::SetDecay(float value) {
+	decay = value;
+}
+
+float NiPSysGravityModifier::GetStrength() const {
+	return strength;
+}
+
+void NiPSysGravityModifier::SetStrength(float value) {
+	strength = value;
+}
+
+ForceType NiPSysGravityModifier::GetForceType() const {
+	return forceType;
+}
+
+void NiPSysGravityModifier::SetForceType(ForceType value) {
+	forceType = value;
+}
+
+float NiPSysGravityModifier::GetTurbulence() const {
+	return turbulence;
+}
+
+void NiPSysGravityModifier::SetTurbulence(float value) {
+	turbulence = value;
+}
+
+float NiPSysGravityModifier::GetTurbulenceScale() const {
+	return turbulenceScale;
+}
+
+void NiPSysGravityModifier::SetTurbulenceScale(float value) {
+	turbulenceScale = value;
+}
 //--END CUSTOM CODE--//

@@ -94,6 +94,39 @@ public:
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
+
+	// Links to meshes used for emitting.
+	// \return The current value.
+	vector<Ref<NiTriBasedGeom > > GetEmitterMeshes() const;
+
+	// Links to meshes used for emitting.
+	// \param[in] value The new value.
+	void SetEmitterMeshes(const vector<Ref<NiTriBasedGeom > >& value);
+
+	// The way the particles get their initial direction and speed.
+	// \return The current value.
+	VelocityType GetInitialVelocityType() const;
+
+	// The way the particles get their initial direction and speed.
+	// \param[in] value The new value.
+	void SetInitialVelocityType(VelocityType value);
+
+	// The parts of the mesh that the particles emit from.
+	// \return The current value.
+	EmitFrom GetEmissionType() const;
+
+	// The parts of the mesh that the particles emit from.
+	// \param[in] value The new value.
+	void SetEmissionType(EmitFrom value);
+
+	// The emission axis.
+	// \return The current value.
+	Vector3 GetEmissionAxis() const;
+
+	// The emission axis.
+	// \param[in] value The new value.
+	void SetEmissionAxis(const Vector3 & value);
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! The number of references to emitter meshes that follow. */

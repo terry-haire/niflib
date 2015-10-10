@@ -119,4 +119,12 @@ void BSEffectShaderPropertyFloatController::SetTypeOfControlledVariable( const E
 
 //--BEGIN MISC CUSTOM CODE--//
 
+EffectShaderControlledVariable BSEffectShaderPropertyFloatController::GetTypeOfControlledVariable() const {
+	return typeOfControlledVariable;
+}
+
+void BSEffectShaderPropertyFloatController::SetTypeOfControlledVariable(const EffectShaderControlledVariable & value) {
+	typeOfControlledVariable = value;
+}
+
 //--END CUSTOM CODE--//

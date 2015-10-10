@@ -187,4 +187,19 @@ void NiParticleSystem::SetModifiers( const vector<Ref<NiPSysModifier > >& value 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
+bool NiParticleSystem::GetWorldSpace() const {
+	return worldSpace;
+}
+
+void NiParticleSystem::SetWorldSpace(bool value) {
+	worldSpace = value;
+}
+
+vector<Ref<NiPSysModifier > > NiParticleSystem::GetModifiers() const {
+	return modifiers;
+}
+
+void NiParticleSystem::SetModifiers(const vector<Ref<NiPSysModifier > >& value) {
+	modifiers = value;
+}
 //--END CUSTOM CODE--//

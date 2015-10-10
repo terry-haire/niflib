@@ -260,12 +260,13 @@ void ComplexShape::Merge(NiAVObject * root) {
 		vector<NiPropertyRef> current_property_group = (*geom)->GetProperties();
 
 		//Special code to handle the Bethesda Skyrim properties
-		array<2, NiPropertyRef> bs_properties = (*geom)->GetBSProperties();
-		if(bs_properties[0] != NULL) {
-			current_property_group.push_back(bs_properties[0]);
-		}
-		if(bs_properties[1] != NULL) {
-			current_property_group.push_back(bs_properties[1]);
+		NiPropertyRef property = (*geom)->GetBSProperty(0);
+		if (property != nullptr) {
+			current_property_group.push_back(property);
+			property = (*geom)->GetBSProperty(1);
+			if (property != nullptr) {
+				current_property_group.push_back(property);
+			}
 		}
 
 		//Get properties of this shape
@@ -404,14 +405,14 @@ void ComplexShape::Merge(NiAVObject * root) {
 		if (niProp != NULL) {
 			bsTexProp = DynamicCast<BSShaderTextureSet>(niProp);
 		}
-		niProp = (*geom)->GetBSProperties()[0];
+		niProp = (*geom)->GetBSProperty(0);
 		if(niProp != NULL &&  niProp->GetType().IsSameType(BSLightingShaderProperty::TYPE)) {
 			BSLightingShaderPropertyRef bs_shader = DynamicCast<BSLightingShaderProperty>(niProp);
 			if(bs_shader->GetTextureSet() != NULL) {
 				bsTexProp = bs_shader->GetTextureSet();
 			}
 		}
-		niProp = (*geom)->GetBSProperties()[1];
+		niProp = (*geom)->GetBSProperty(1);
 		if(niProp != NULL &&  niProp->GetType().IsSameType(BSLightingShaderProperty::TYPE)) {
 			BSLightingShaderPropertyRef bs_shader = DynamicCast<BSLightingShaderProperty>(niProp);
 			if(bs_shader->GetTextureSet() != NULL) {
@@ -965,10 +966,8 @@ Ref<NiAVObject> ComplexShape::Split(NiNode * parent, Matrix44 & transform, int m
 						alpha_property = DynamicCast<NiAlphaProperty>((*prop));
 					}
 				}
-				array<2, NiPropertyRef> bs_properties;
-				bs_properties[0] = shader_property;
-				bs_properties[1] = alpha_property;
-				shapes[shape_num]->SetBSProperties(bs_properties);
+				shapes[shape_num]->SetBSProperty(0, DynamicCast<NiProperty>(shader_property));
+				shapes[shape_num]->SetBSProperty(1, DynamicCast<NiProperty>(alpha_property));
 			}
 		}
 		//--Set Shape Data--//

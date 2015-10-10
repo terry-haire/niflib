@@ -80,6 +80,25 @@ public:
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
+
+	// If true, Particles are birthed into world space.  If false, Particles are
+	// birthed into object space.
+	// \return The current value.
+	NIFLIB_API bool GetWorldSpace() const;
+
+	// If true, Particles are birthed into world space.  If false, Particles are
+	// birthed into object space.
+	// \param[in] value The new value.
+	NIFLIB_API void SetWorldSpace(bool value);
+
+	// The list of particle modifiers.
+	// \return The current value.
+	NIFLIB_API vector<Ref<NiPSysModifier > > GetModifiers() const;
+
+	// The list of particle modifiers.
+	// \param[in] value The new value.
+	NIFLIB_API void SetModifiers(const vector<Ref<NiPSysModifier > >& value);
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown */
