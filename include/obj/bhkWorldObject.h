@@ -209,6 +209,16 @@ public:
 	 */
 	NIFLIB_API void SetLayer( OblivionLayer value );
 
+	// Physical purpose of collision object? The setting affects objetct's havok
+	// behavior in game.
+	// \return The current value.
+	NIFLIB_API SkyrimLayer GetSkyrimLayer() const;
+
+	// Physical purpose of collision object? The setting affects objetct's havok
+	// behavior in game.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSkyrimLayer(SkyrimLayer value);
+
 
 	//--END CUSTOM CODE--//
 protected:

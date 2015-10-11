@@ -201,4 +201,12 @@ void bhkWorldObject::SetLayer( OblivionLayer value ) {
 	layer = value;
 }
 
+SkyrimLayer bhkWorldObject::GetSkyrimLayer() const {
+	return skyrimLayer;
+}
+
+void bhkWorldObject::SetSkyrimLayer(SkyrimLayer value) {
+	skyrimLayer = value;
+}
+
 //--END CUSTOM CODE--//
