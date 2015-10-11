@@ -210,7 +210,7 @@ void NiControllerManager::SetCumulative( bool value ) {
 	cumulative = value;
 }
 
-vector<Ref<NiControllerSequence > > NiControllerManager::GetControllerSequences() const {
+const vector<Ref<NiControllerSequence > >& NiControllerManager::GetControllerSequences() const {
 	return controllerSequences;
 }
 

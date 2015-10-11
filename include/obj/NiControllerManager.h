@@ -104,7 +104,7 @@ public:
 	 * Retrives the list of controller sequences that this controller manager references.
 	 * \return The controller sequences.
 	 */
-	NIFLIB_API vector< Ref<NiControllerSequence> > GetControllerSequences() const;
+	NIFLIB_API const vector< Ref<NiControllerSequence> >& GetControllerSequences() const;
 
 	/*!
 	 * Sets the list of controller sequences that this controller manager references.
