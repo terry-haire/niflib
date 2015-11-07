@@ -65,6 +65,38 @@ public:
 	// \param[in] value The new value.
 	void SetParticleDescriptions( const vector<ParticleDesc >& value );
 
+	// Has Rotation Speeds.
+	// \return The current value.
+	bool GetHasRotationSpeeds() const;
+
+	// Has Rotation Speeds.
+	// \param[in] value The new value.
+	void SetHasRotationSpeeds( bool value );
+
+	// Rotation Speeds
+	// \return The current value.
+	vector<float > GetRotationSpeeds() const;
+
+	// Rotation Speeds
+	// \param[in] value The new value.
+	void SetRotationSpeeds( const vector<float >& value );
+
+	// Num Added Particles
+	// \return The current value.
+	unsigned short GetNumAddedParticles() const;
+
+	// Num Added Particles
+	// \param[in] value The new value.
+	void SetNumAddedParticles( unsigned short value );
+
+	// Added Particles Base
+	// \return The current value.
+	unsigned short GetAddedParticlesBase() const;
+
+	// Added Particles Base
+	// \param[in] value The new value.
+	void SetAddedParticlesBase( unsigned short value );
+
 	// Boolean for Num Subtexture Offset UVs
 	// \return The current value.
 	bool GetHasSubtextureOffsetUvs() const;
@@ -88,6 +120,14 @@ public:
 	// Defines UV offsets
 	// \param[in] value The new value.
 	void SetSubtextureOffsetUvs( const vector<Vector4 >& value );
+
+	// Unknown
+	// \return The current value.
+	unsigned short GetMaxBsParticles() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetMaxBsParticles( unsigned short value );
 
 	****End Example Naive Implementation***/
 
@@ -132,14 +172,14 @@ public:
 protected:
 	/*! Unknown. */
 	vector<ParticleDesc > particleDescriptions;
-	/*! Unknown. */
-	bool hasUnknownFloats3;
-	/*! Unknown. */
-	vector<float > unknownFloats3;
-	/*! Unknown. */
-	unsigned short unknownShort1;
-	/*! Unknown. */
-	unsigned short unknownShort2;
+	/*! Has Rotation Speeds. */
+	bool hasRotationSpeeds;
+	/*! Rotation Speeds */
+	vector<float > rotationSpeeds;
+	/*! Num Added Particles */
+	unsigned short numAddedParticles;
+	/*! Added Particles Base */
+	unsigned short addedParticlesBase;
 	/*! Boolean for Num Subtexture Offset UVs */
 	bool hasSubtextureOffsetUvs;
 	/*! How many quads to use in BSPSysSubTexModifier for texture atlasing */

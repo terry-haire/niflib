@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiPSysData::TYPE("NiPSysData", &NiRotatingParticlesData::TYPE );
 
-NiPSysData::NiPSysData() : hasUnknownFloats3(false), unknownShort1((unsigned short)0), unknownShort2((unsigned short)0), hasSubtextureOffsetUvs(false), numSubtextureOffsetUvs((unsigned int)0), aspectRatio(0.0f), unknownInt4((unsigned int)0), unknownInt5((unsigned int)0), unknownInt6((unsigned int)0), maxBsParticles((unsigned short)0), unknownByte4((byte)0) {
+NiPSysData::NiPSysData() : hasRotationSpeeds(false), numAddedParticles((unsigned short)0), addedParticlesBase((unsigned short)0), hasSubtextureOffsetUvs(false), numSubtextureOffsetUvs((unsigned int)0), aspectRatio(0.0f), unknownInt4((unsigned int)0), unknownInt5((unsigned int)0), unknownInt6((unsigned int)0), maxBsParticles((unsigned short)0), unknownByte4((byte)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -59,17 +59,17 @@ void NiPSysData::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 		};
 	};
 	if ( ( info.version >= 0x14000004 ) && ( (!((info.version >= 0x14020007) && (info.userVersion >= 11))) ) ) {
-		NifStream( hasUnknownFloats3, in, info );
-		if ( hasUnknownFloats3 ) {
-			unknownFloats3.resize(numVertices);
-			for (unsigned int i3 = 0; i3 < unknownFloats3.size(); i3++) {
-				NifStream( unknownFloats3[i3], in, info );
+		NifStream( hasRotationSpeeds, in, info );
+		if ( hasRotationSpeeds ) {
+			rotationSpeeds.resize(numVertices);
+			for (unsigned int i3 = 0; i3 < rotationSpeeds.size(); i3++) {
+				NifStream( rotationSpeeds[i3], in, info );
 			};
 		};
 	};
 	if ( (!((info.version >= 0x14020007) && (info.userVersion == 11))) ) {
-		NifStream( unknownShort1, in, info );
-		NifStream( unknownShort2, in, info );
+		NifStream( numAddedParticles, in, info );
+		NifStream( addedParticlesBase, in, info );
 	};
 	if ( ((info.version >= 0x14020007) && (info.userVersion >= 12)) ) {
 		NifStream( hasSubtextureOffsetUvs, in, info );
@@ -84,7 +84,7 @@ void NiPSysData::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 		NifStream( unknownInt4, in, info );
 		NifStream( unknownInt5, in, info );
 		NifStream( unknownInt6, in, info );
-		NifStream(maxBsParticles, in, info );
+		NifStream( maxBsParticles, in, info );
 		NifStream( unknownByte4, in, info );
 	};
 
@@ -113,16 +113,16 @@ void NiPSysData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 		};
 	};
 	if ( ( info.version >= 0x14000004 ) && ( (!((info.version >= 0x14020007) && (info.userVersion >= 11))) ) ) {
-		NifStream( hasUnknownFloats3, out, info );
-		if ( hasUnknownFloats3 ) {
-			for (unsigned int i3 = 0; i3 < unknownFloats3.size(); i3++) {
-				NifStream( unknownFloats3[i3], out, info );
+		NifStream( hasRotationSpeeds, out, info );
+		if ( hasRotationSpeeds ) {
+			for (unsigned int i3 = 0; i3 < rotationSpeeds.size(); i3++) {
+				NifStream( rotationSpeeds[i3], out, info );
 			};
 		};
 	};
 	if ( (!((info.version >= 0x14020007) && (info.userVersion == 11))) ) {
-		NifStream( unknownShort1, out, info );
-		NifStream( unknownShort2, out, info );
+		NifStream( numAddedParticles, out, info );
+		NifStream( addedParticlesBase, out, info );
 	};
 	if ( ((info.version >= 0x14020007) && (info.userVersion >= 12)) ) {
 		NifStream( hasSubtextureOffsetUvs, out, info );
@@ -136,7 +136,7 @@ void NiPSysData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 		NifStream( unknownInt4, out, info );
 		NifStream( unknownInt5, out, info );
 		NifStream( unknownInt6, out, info );
-		NifStream(maxBsParticles, out, info );
+		NifStream( maxBsParticles, out, info );
 		NifStream( unknownByte4, out, info );
 	};
 
@@ -176,10 +176,10 @@ std::string NiPSysData::asString( bool verbose ) const {
 		out << "    Unknown Float 3:  " << particleDescriptions[i1].unknownFloat3 << endl;
 		out << "    Unknown Int 1:  " << particleDescriptions[i1].unknownInt1 << endl;
 	};
-	out << "  Has Unknown Floats 3:  " << hasUnknownFloats3 << endl;
-	if ( hasUnknownFloats3 ) {
+	out << "  Has Rotation Speeds:  " << hasRotationSpeeds << endl;
+	if ( hasRotationSpeeds ) {
 		array_output_count = 0;
-		for (unsigned int i2 = 0; i2 < unknownFloats3.size(); i2++) {
+		for (unsigned int i2 = 0; i2 < rotationSpeeds.size(); i2++) {
 			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 				break;
@@ -187,12 +187,12 @@ std::string NiPSysData::asString( bool verbose ) const {
 			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 				break;
 			};
-			out << "      Unknown Floats 3[" << i2 << "]:  " << unknownFloats3[i2] << endl;
+			out << "      Rotation Speeds[" << i2 << "]:  " << rotationSpeeds[i2] << endl;
 			array_output_count++;
 		};
 	};
-	out << "  Unknown Short 1:  " << unknownShort1 << endl;
-	out << "  Unknown Short 2:  " << unknownShort2 << endl;
+	out << "  Num Added Particles:  " << numAddedParticles << endl;
+	out << "  Added Particles Base:  " << addedParticlesBase << endl;
 	out << "  Has Subtexture Offset UVs:  " << hasSubtextureOffsetUvs << endl;
 	out << "  Num Subtexture Offset UVs:  " << numSubtextureOffsetUvs << endl;
 	out << "  Aspect Ratio:  " << aspectRatio << endl;
@@ -253,6 +253,38 @@ void NiPSysData::SetParticleDescriptions( const vector<ParticleDesc >& value ) {
 	particleDescriptions = value;
 }
 
+bool NiPSysData::GetHasRotationSpeeds() const {
+	return hasRotationSpeeds;
+}
+
+void NiPSysData::SetHasRotationSpeeds( bool value ) {
+	hasRotationSpeeds = value;
+}
+
+vector<float > NiPSysData::GetRotationSpeeds() const {
+	return rotationSpeeds;
+}
+
+void NiPSysData::SetRotationSpeeds( const vector<float >& value ) {
+	rotationSpeeds = value;
+}
+
+unsigned short NiPSysData::GetNumAddedParticles() const {
+	return numAddedParticles;
+}
+
+void NiPSysData::SetNumAddedParticles( unsigned short value ) {
+	numAddedParticles = value;
+}
+
+unsigned short NiPSysData::GetAddedParticlesBase() const {
+	return addedParticlesBase;
+}
+
+void NiPSysData::SetAddedParticlesBase( unsigned short value ) {
+	addedParticlesBase = value;
+}
+
 bool NiPSysData::GetHasSubtextureOffsetUvs() const {
 	return hasSubtextureOffsetUvs;
 }
@@ -275,6 +307,14 @@ vector<Vector4 > NiPSysData::GetSubtextureOffsetUvs() const {
 
 void NiPSysData::SetSubtextureOffsetUvs( const vector<Vector4 >& value ) {
 	subtextureOffsetUvs = value;
+}
+
+unsigned short NiPSysData::GetMaxBsParticles() const {
+	return maxBsParticles;
+}
+
+void NiPSysData::SetMaxBsParticles( unsigned short value ) {
+	maxBsParticles = value;
 }
 
 ****End Example Naive Implementation***/

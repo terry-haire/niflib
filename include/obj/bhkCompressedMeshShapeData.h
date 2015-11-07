@@ -246,6 +246,11 @@ public:
 	// \param[in] value The new value.
 	NIFLIB_API void SetChunks(const vector<bhkCMSDChunk >& value);
 
+	// Append Chunk to chunk list
+	// \param[in] value The new value.
+	NIFLIB_API void AppendChunk(const bhkCMSDChunk& value);
+
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Number of bits in the shape-key reserved for a triangle index */

@@ -99,13 +99,19 @@ public:
 	 * Retrieves the child shape objects that this body is using.
 	 * \return The shape objects being used by this body.
 	 */
-	NIFLIB_API vector<Ref<bhkShape > > GetSubShapes() const;
+	NIFLIB_API const vector<Ref<bhkShape > >& GetSubShapes() const;
 
 	/*!
 	* Sets the child shape objects that this body is using.
 	* \param[in] shapes The shape objects being used by this body.
 	*/
 	NIFLIB_API void SetSubShapes(const vector<Ref<bhkShape > >& shapes);
+
+	/*!
+	* Retrieves the child shape objects that this body is using.
+	* \return The shape objects being used by this body.
+	*/
+	NIFLIB_API void AppendSubShape(const Ref<bhkShape>& shape);
 
 	/*!
 	 * Get the shape's material.  This determines the type of noises the object makes as it collides in Oblivion.

@@ -17,6 +17,7 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "../gen/KeyGroup.h"
+#include "../gen/PosKeyGroup.h"
 namespace Niflib {
 
 class NiKeyframeData;
@@ -85,11 +86,11 @@ public:
 
 	// Translation keys.
 	// \return The current value.
-	KeyGroup<Vector3 > GetTranslations() const;
+	PosKeyGroup<Vector3 > GetTranslations() const;
 
 	// Translation keys.
 	// \param[in] value The new value.
-	void SetTranslations( const KeyGroup<Vector3 > & value );
+	void SetTranslations( const PosKeyGroup<Vector3 > & value );
 
 	// Scale keys.
 	// \return The current value.
@@ -267,7 +268,7 @@ public:
 	NIFLIB_API void SetScaleKeys( vector< Key<float> > const & keys );
 
 protected:
-	void UpdateRotationKeyCount();
+	unsigned int numRotationKeysCalc(const NifInfo & info) const;
 
 	//--END CUSTOM CODE--//
 protected:
@@ -289,7 +290,7 @@ protected:
 	/*! Individual arrays of keys for rotating X, Y, and Z individually. */
 	array<3,KeyGroup<float > > xyzRotations;
 	/*! Translation keys. */
-	KeyGroup<Vector3 > translations;
+	PosKeyGroup<Vector3 > translations;
 	/*! Scale keys. */
 	KeyGroup<float > scales;
 public:

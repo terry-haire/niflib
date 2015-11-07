@@ -9,7 +9,7 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-bhkCMSDChunk::bhkCMSDChunk() : materialIndex((unsigned int)0), unknownShort1((unsigned short)0), transformIndex((unsigned short)0), numVertices((unsigned int)0), numIndices((unsigned int)0), numStrips((unsigned int)0), numIndices2((unsigned int)0) {};
+bhkCMSDChunk::bhkCMSDChunk() : materialIndex((unsigned int)0), reference((unsigned short)65535), transformIndex((unsigned short)0), numVertices((unsigned int)0), numIndices((unsigned int)0), numStrips((unsigned int)0), numWeldings((unsigned int)0) {};
 
 //Copy Constructor
 bhkCMSDChunk::bhkCMSDChunk( const bhkCMSDChunk & src ) {
@@ -20,7 +20,7 @@ bhkCMSDChunk::bhkCMSDChunk( const bhkCMSDChunk & src ) {
 bhkCMSDChunk & bhkCMSDChunk::operator=( const bhkCMSDChunk & src ) {
 	this->translation = src.translation;
 	this->materialIndex = src.materialIndex;
-	this->unknownShort1 = src.unknownShort1;
+	this->reference = src.reference;
 	this->transformIndex = src.transformIndex;
 	this->numVertices = src.numVertices;
 	this->vertices = src.vertices;
@@ -28,8 +28,8 @@ bhkCMSDChunk & bhkCMSDChunk::operator=( const bhkCMSDChunk & src ) {
 	this->indices = src.indices;
 	this->numStrips = src.numStrips;
 	this->strips = src.strips;
-	this->numIndices2 = src.numIndices2;
-	this->indices2 = src.indices2;
+	this->numWeldings = src.numWeldings;
+	this->weldings = src.weldings;
 	return *this;
 };
 

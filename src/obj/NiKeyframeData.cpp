@@ -15,7 +15,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/NiKeyframeData.h"
 #include "../../include/gen/KeyGroup.h"
-#include "../../include/gen/KeyGroup.h"
+#include "../../include/gen/PosKeyGroup.h"
 #include "../../include/gen/KeyGroup.h"
 using namespace Niflib;
 
@@ -98,7 +98,7 @@ void NiKeyframeData::Write( ostream& out, const map<NiObjectRef,unsigned int> & 
 	//--END CUSTOM CODE--//
 
 	NiObject::Write( out, link_map, missing_link_stack, info );
-	numRotationKeys = (unsigned int)(quaternionKeys.size());
+	numRotationKeys = numRotationKeysCalc(info);
 	NifStream( numRotationKeys, out, info );
 	if ( (numRotationKeys != 0) ) {
 		NifStream( rotationType, out, info );
@@ -153,7 +153,6 @@ std::string NiKeyframeData::asString( bool verbose ) const {
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << NiObject::asString();
-	numRotationKeys = (unsigned int)(quaternionKeys.size());
 	out << "  Num Rotation Keys:  " << numRotationKeys << endl;
 	if ( (numRotationKeys != 0) ) {
 		out << "    Rotation Type:  " << rotationType << endl;
@@ -287,11 +286,11 @@ void NiKeyframeData::SetXyzRotations( const array<3,KeyGroup<float > >&  value )
 	xyzRotations = value;
 }
 
-KeyGroup<Vector3 > NiKeyframeData::GetTranslations() const {
+PosKeyGroup<Vector3 > NiKeyframeData::GetTranslations() const {
 	return translations;
 }
 
-void NiKeyframeData::SetTranslations( const KeyGroup<Vector3 > & value ) {
+void NiKeyframeData::SetTranslations( const PosKeyGroup<Vector3 > & value ) {
 	translations = value;
 }
 
@@ -323,24 +322,21 @@ KeyType NiKeyframeData::GetRotateType() const {
 
 void NiKeyframeData::SetRotateType( KeyType t ) {
 	rotationType = t;
-	UpdateRotationKeyCount();
 }
 
 vector< Key<Quaternion> > NiKeyframeData::GetQuatRotateKeys() const {
 	return quaternionKeys;
 }
 
-void NiKeyframeData::UpdateRotationKeyCount() {
-	if ( rotationType == XYZ_ROTATION_KEY ) {
-		numRotationKeys = 1;
-	} else {
-		numRotationKeys = (unsigned int)(quaternionKeys.size());
+unsigned int NiKeyframeData::numRotationKeysCalc(const NifInfo & info) const {
+	if (rotationType == XYZ_ROTATION_KEY) {
+		return 1;
 	}
-};
+	return (unsigned int)(quaternionKeys.size());
+}
 
 void NiKeyframeData::SetQuatRotateKeys( const vector< Key<Quaternion> > & keys ) {
 	quaternionKeys = keys;
-	UpdateRotationKeyCount();
 }
 
 KeyType NiKeyframeData::GetXRotateType() const {

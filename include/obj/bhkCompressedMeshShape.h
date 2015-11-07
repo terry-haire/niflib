@@ -151,10 +151,10 @@ protected:
 	NiAVObject * target;
 	/*! The shape's material. */
 	SkyrimHavokMaterial skyrimMaterial;
-	/*! Unknown. */
+	/*! Possibly radius */
 	float unknownFloat1;
 	/*! Unknown. */
-	array<4,byte > unknown4Bytes;
+	int unknownInt1;
 	/*! Unknown */
 	Vector4 unknownFloats1;
 	/*! A shell with that radius is added around the shape. */

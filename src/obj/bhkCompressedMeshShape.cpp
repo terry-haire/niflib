@@ -22,7 +22,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type bhkCompressedMeshShape::TYPE("bhkCompressedMeshShape", &bhkShape::TYPE );
 
-bhkCompressedMeshShape::bhkCompressedMeshShape() : target(NULL), skyrimMaterial((SkyrimHavokMaterial)0), unknownFloat1(0.0f), radius(0.0f), scale(0.0f), unknownFloat3(0.0f), unknownFloat4(0.0f), unknownFloat5(0.0f), data(NULL) {
+bhkCompressedMeshShape::bhkCompressedMeshShape() : target(NULL), skyrimMaterial((SkyrimHavokMaterial)0), unknownFloat1(0.0050f), unknownInt1((int)0), unknownFloats1(1.0,1.0,1.0,0.0), radius(0.0f), scale(1.0f), unknownFloat3(1.0f), unknownFloat4(1.0f), unknownFloat5(0.0f), data(NULL) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -53,9 +53,7 @@ void bhkCompressedMeshShape::Read( istream& in, list<unsigned int> & link_stack,
 	link_stack.push_back( block_num );
 	NifStream( skyrimMaterial, in, info );
 	NifStream( unknownFloat1, in, info );
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		NifStream( unknown4Bytes[i1], in, info );
-	};
+	NifStream( unknownInt1, in, info );
 	NifStream( unknownFloats1, in, info );
 	NifStream( radius, in, info );
 	NifStream( scale, in, info );
@@ -95,9 +93,7 @@ void bhkCompressedMeshShape::Write( ostream& out, const map<NiObjectRef,unsigned
 	}
 	NifStream( skyrimMaterial, out, info );
 	NifStream( unknownFloat1, out, info );
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		NifStream( unknown4Bytes[i1], out, info );
-	};
+	NifStream( unknownInt1, out, info );
 	NifStream( unknownFloats1, out, info );
 	NifStream( radius, out, info );
 	NifStream( scale, out, info );
@@ -133,23 +129,11 @@ std::string bhkCompressedMeshShape::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	unsigned int array_output_count = 0;
 	out << bhkShape::asString();
 	out << "  Target:  " << target << endl;
 	out << "  Skyrim Material:  " << skyrimMaterial << endl;
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
-	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
-			break;
-		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			break;
-		};
-		out << "    Unknown 4 Bytes[" << i1 << "]:  " << unknown4Bytes[i1] << endl;
-		array_output_count++;
-	};
+	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Floats 1:  " << unknownFloats1 << endl;
 	out << "  Radius:  " << radius << endl;
 	out << "  Scale:  " << scale << endl;

@@ -187,7 +187,7 @@ std::string BSLightingShaderProperty::asString( bool verbose ) const {
 	out << "  Emissive Multiple:  " << emissiveMultiple << endl;
 	out << "  Texture Clamp Mode:  " << textureClampMode << endl;
 	out << "  Alpha:  " << alpha << endl;
-	out << "  Unknown Float 2:  " << refractionStrength << endl;
+	out << "  Refraction Strength:  " << refractionStrength << endl;
 	out << "  Glossiness:  " << glossiness << endl;
 	out << "  Specular Color:  " << specularColor << endl;
 	out << "  Specular Strength:  " << specularStrength << endl;
@@ -326,6 +326,14 @@ float BSLightingShaderProperty::GetAlpha() const {
 
 void BSLightingShaderProperty::SetAlpha( float value ) {
 	alpha = value;
+}
+
+float BSLightingShaderProperty::GetRefractionStrength() const {
+	return refractionStrength;
+}
+
+void BSLightingShaderProperty::SetRefractionStrength( float value ) {
+	refractionStrength = value;
 }
 
 float BSLightingShaderProperty::GetGlossiness() const {
@@ -555,6 +563,14 @@ void BSLightingShaderProperty::SetAlpha( float value ) {
    alpha = value;
 }
 
+float BSLightingShaderProperty::GetRefractionStrength() const {
+	return refractionStrength;
+}
+
+void BSLightingShaderProperty::SetRefractionStrength( float value ) {
+	refractionStrength = value;
+}
+
 float BSLightingShaderProperty::GetSpecularPower_Glossiness() const {
    return glossiness;
 }
@@ -697,14 +713,6 @@ Vector3 BSLightingShaderProperty::GetRightEyeReflectionCenter() const {
 
 void BSLightingShaderProperty::SetRightEyeReflectionCenter( const Vector3 & value ) {
    rightEyeReflectionCenter = value;
-}
-
-float BSLightingShaderProperty::GetRefractionStrength() const {
-	return refractionStrength;
-}
-
-void BSLightingShaderProperty::SetRefractionStrength(float value) {
-	refractionStrength = value;
 }
 
 //--END CUSTOM CODE--//

@@ -27,8 +27,8 @@ struct bhkCMSDChunk {
 	Vector4 translation;
 	/*! Index of material in bhkCompressedMeshShapeData::Chunk Materials */
 	unsigned int materialIndex;
-	/*! Always 65535? */
-	unsigned short unknownShort1;
+	/*! Reference to another chunk - an index in the chunks list */
+	unsigned short reference;
 	/*! Index of transformation in bhkCompressedMeshShapeData::Chunk Transforms */
 	unsigned short transformIndex;
 	/*! Number of compressed vertices */
@@ -43,10 +43,10 @@ struct bhkCMSDChunk {
 	mutable unsigned int numStrips;
 	/*! Compressed strips */
 	vector<unsigned short > strips;
-	/*! Number of */
-	mutable unsigned int numIndices2;
-	/*! Compressed */
-	vector<unsigned short > indices2;
+	/*! Number of welding info */
+	mutable unsigned int numWeldings;
+	/*! Welding info per triangle */
+	vector<unsigned short > weldings;
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

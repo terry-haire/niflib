@@ -132,6 +132,14 @@ public:
 	// \param[in] value The new value.
 	void SetAlpha( float value );
 
+	// Refraction strength increases as value increases
+	// \return The current value.
+	float GetRefractionStrength() const;
+
+	// Refraction strength increases as value increases
+	// \param[in] value The new value.
+	void SetRefractionStrength( float value );
+
 	// The material's specular power, or glossiness (0-999).
 	// \return The current value.
 	float GetGlossiness() const;
@@ -363,6 +371,15 @@ public:
    // \param[in] value The new value.
    void SetAlpha( float value );
 
+
+	// Refraction strength increases as value increases
+	// \return The current value.
+	float GetRefractionStrength() const;
+
+	// Refraction strength increases as value increases
+	// \param[in] value The new value.
+	void SetRefractionStrength( float value );
+
    // The material's glossiness. (0-999)
    // \return The current value.
    float GetSpecularPower_Glossiness() const;
@@ -506,14 +523,6 @@ public:
    // Offset to set center for right eye cubemap
    // \param[in] value The new value.
    void SetRightEyeReflectionCenter( const Vector3 & value );
-
-   // Refraction strength increases as value increases
-   // \return The current value.
-   float GetRefractionStrength() const;
-
-   // Refraction strength increases as value increases
-   // \param[in] value The new value.
-   void SetRefractionStrength(float value);
 
 	//--END CUSTOM CODE--//
 protected:

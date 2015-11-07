@@ -19,122 +19,128 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "../Ref.h"
-#include "NiProperty.h"
-
 namespace Niflib {
 
-	// Forward define of referenced NIF objects
-	class NiGeometryData;
-	class NiSkinInstance;
-	class NiProperty;
-	class NiGeometry;
-	typedef Ref<NiGeometry> NiGeometryRef;
+// Forward define of referenced NIF objects
+class NiGeometryData;
+class NiSkinInstance;
+class NiProperty;
+class NiGeometry;
+typedef Ref<NiGeometry> NiGeometryRef;
+
+/*!
+ * Describes a visible scene element with vertices like a mesh, a particle system,
+ * lines, etc.
+ */
+class NiGeometry : public NiAVObject {
+public:
+	/*! Constructor */
+	NIFLIB_API NiGeometry();
+
+	/*! Destructor */
+	NIFLIB_API virtual ~NiGeometry();
 
 	/*!
-	 * Describes a visible scene element with vertices like a mesh, a particle system,
-	 * lines, etc.
+	 * A constant value which uniquly identifies objects of this type.
 	 */
-	class NiGeometry : public NiAVObject {
-	public:
-		/*! Constructor */
-		NIFLIB_API NiGeometry();
+	NIFLIB_API static const Type TYPE;
 
-		/*! Destructor */
-		NIFLIB_API virtual ~NiGeometry();
+	/*!
+	 * A factory function used during file reading to create an instance of this type of object.
+	 * \return A pointer to a newly allocated instance of this type of object.
+	 */
+	NIFLIB_API static NiObject * Create();
 
-		/*!
-		 * A constant value which uniquly identifies objects of this type.
-		 */
-		NIFLIB_API static const Type TYPE;
+	/*!
+	 * Summarizes the information contained in this object in English.
+	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+	 */
+	NIFLIB_API virtual string asString( bool verbose = false ) const;
 
-		/*!
-		 * A factory function used during file reading to create an instance of this type of object.
-		 * \return A pointer to a newly allocated instance of this type of object.
-		 */
-		NIFLIB_API static NiObject * Create();
+	/*!
+	 * Used to determine the type of a particular instance of this object.
+	 * \return The type constant for the actual type of the object.
+	 */
+	NIFLIB_API virtual const Type & GetType() const;
 
-		/*!
-		 * Summarizes the information contained in this object in English.
-		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-		 */
-		NIFLIB_API virtual string asString(bool verbose = false) const;
+	/***Begin Example Naive Implementation****
 
-		/*!
-		 * Used to determine the type of a particular instance of this object.
-		 * \return The type constant for the actual type of the object.
-		 */
-		NIFLIB_API virtual const Type & GetType() const;
+	// Data index (NiTriShapeData/NiTriStripData).
+	// \return The current value.
+	Ref<NiGeometryData > GetData() const;
 
-		/***Begin Example Naive Implementation****
+	// Data index (NiTriShapeData/NiTriStripData).
+	// \param[in] value The new value.
+	void SetData( Ref<NiGeometryData > value );
 
-		// Data index (NiTriShapeData/NiTriStripData).
-		// \return The current value.
-		Ref<NiGeometryData > GetData() const;
+	// Skin instance index.
+	// \return The current value.
+	Ref<NiSkinInstance > GetSkinInstance() const;
 
-		// Data index (NiTriShapeData/NiTriStripData).
-		// \param[in] value The new value.
-		void SetData( Ref<NiGeometryData > value );
+	// Skin instance index.
+	// \param[in] value The new value.
+	void SetSkinInstance( Ref<NiSkinInstance > value );
 
-		// Skin instance index.
-		// \return The current value.
-		Ref<NiSkinInstance > GetSkinInstance() const;
+	// Unknown string.  Shader?
+	// \return The current value.
+	vector<IndexString > GetMaterialName() const;
 
-		// Skin instance index.
-		// \param[in] value The new value.
-		void SetSkinInstance( Ref<NiSkinInstance > value );
+	// Unknown string.  Shader?
+	// \param[in] value The new value.
+	void SetMaterialName( const vector<IndexString >& value );
 
-		// Unknown string.  Shader?
-		// \return The current value.
-		vector<IndexString > GetMaterialName() const;
+	// Unknown integer; often -1. (Is this a link, array index?)
+	// \return The current value.
+	vector<int > GetMaterialExtraData() const;
 
-		// Unknown string.  Shader?
-		// \param[in] value The new value.
-		void SetMaterialName( const vector<IndexString >& value );
+	// Unknown integer; often -1. (Is this a link, array index?)
+	// \param[in] value The new value.
+	void SetMaterialExtraData( const vector<int >& value );
 
-		// Unknown integer; often -1. (Is this a link, array index?)
-		// \return The current value.
-		vector<int > GetMaterialExtraData() const;
+	// Active Material; often -1. (Is this a link, array index?)
+	// \return The current value.
+	int GetActiveMaterial() const;
 
-		// Unknown integer; often -1. (Is this a link, array index?)
-		// \param[in] value The new value.
-		void SetMaterialExtraData( const vector<int >& value );
+	// Active Material; often -1. (Is this a link, array index?)
+	// \param[in] value The new value.
+	void SetActiveMaterial( int value );
 
-		// Active Material; often -1. (Is this a link, array index?)
-		// \return The current value.
-		int GetActiveMaterial() const;
+	// Shader.
+	// \return The current value.
+	bool GetHasShader() const;
 
-		// Active Material; often -1. (Is this a link, array index?)
-		// \param[in] value The new value.
-		void SetActiveMaterial( int value );
+	// Shader.
+	// \param[in] value The new value.
+	void SetHasShader( bool value );
 
-		// Shader.
-		// \return The current value.
-		bool GetHasShader() const;
+	// The shader name.
+	// \return The current value.
+	IndexString GetShaderName() const;
 
-		// Shader.
-		// \param[in] value The new value.
-		void SetHasShader( bool value );
+	// The shader name.
+	// \param[in] value The new value.
+	void SetShaderName( const IndexString & value );
 
-		// The shader name.
-		// \return The current value.
-		IndexString GetShaderName() const;
+	// Dirty Flag?
+	// \return The current value.
+	bool GetDirtyFlag() const;
 
-		// The shader name.
-		// \param[in] value The new value.
-		void SetShaderName( const IndexString & value );
+	// Dirty Flag?
+	// \param[in] value The new value.
+	void SetDirtyFlag( bool value );
 
-		// Dirty Flag?
-		// \return The current value.
-		bool GetDirtyFlag() const;
+	// Two property links, used by Bethesda.
+	// \return The current value.
+	array<2,Ref<NiProperty > >  GetBsProperties() const;
 
-		// Dirty Flag?
-		// \param[in] value The new value.
-		void SetDirtyFlag( bool value );
+	// Two property links, used by Bethesda.
+	// \param[in] value The new value.
+	void SetBsProperties( const array<2,Ref<NiProperty > >&  value );
 
-		****End Example Naive Implementation***/
+	****End Example Naive Implementation***/
 
-		//--BEGIN MISC CUSTOM CODE--//
+	//--BEGIN MISC CUSTOM CODE--//
 
 		/*!
 		 * Binds this geometry to a list of bones.  Creates and attatches a
@@ -293,49 +299,49 @@ namespace Niflib {
 		const NiProperty* GetBSPropertyOfType(const Niflib::Type& type) const;
 		NiProperty* GetBSPropertyOfType(const Niflib::Type& type);
 
-		//--END CUSTOM CODE--//
-	protected:
-		/*! Data index (NiTriShapeData/NiTriStripData). */
-		Ref<NiGeometryData > data;
-		/*! Skin instance index. */
-		Ref<NiSkinInstance > skinInstance;
-		/*! Num Materials */
-		mutable unsigned int numMaterials;
-		/*! Unknown string.  Shader? */
-		vector<IndexString > materialName;
-		/*! Unknown integer; often -1. (Is this a link, array index?) */
-		vector<int > materialExtraData;
-		/*! Active Material; often -1. (Is this a link, array index?) */
-		int activeMaterial;
-		/*! Shader. */
-		bool hasShader;
-		/*! The shader name. */
-		IndexString shaderName;
-		/*! Unknown value, usually -1. (Not a link) */
-		int unknownInteger;
-		/*! Cyanide extension (only in version 10.2.0.0?). */
-		byte unknownByte;
-		/*! Unknown. */
-		int unknownInteger2;
-		/*! Dirty Flag? */
-		bool dirtyFlag;
-		/*! Two property links, used by Bethesda. */
-		array<2, Ref<NiProperty > > bsProperties;
-	public:
-		/*! NIFLIB_HIDDEN function.  For internal use only. */
-		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
-		/*! NIFLIB_HIDDEN function.  For internal use only. */
-		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
-		/*! NIFLIB_HIDDEN function.  For internal use only. */
-		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
-		/*! NIFLIB_HIDDEN function.  For internal use only. */
-		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-		/*! NIFLIB_HIDDEN function.  For internal use only. */
-		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-	};
-
-	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
+protected:
+	/*! Data index (NiTriShapeData/NiTriStripData). */
+	Ref<NiGeometryData > data;
+	/*! Skin instance index. */
+	Ref<NiSkinInstance > skinInstance;
+	/*! Num Materials */
+	mutable unsigned int numMaterials;
+	/*! Unknown string.  Shader? */
+	vector<IndexString > materialName;
+	/*! Unknown integer; often -1. (Is this a link, array index?) */
+	vector<int > materialExtraData;
+	/*! Active Material; often -1. (Is this a link, array index?) */
+	int activeMaterial;
+	/*! Shader. */
+	bool hasShader;
+	/*! The shader name. */
+	IndexString shaderName;
+	/*! Unknown value, usually -1. (Not a link) */
+	int unknownInteger;
+	/*! Cyanide extension (only in version 10.2.0.0?). */
+	byte unknownByte;
+	/*! Unknown. */
+	int unknownInteger2;
+	/*! Dirty Flag? */
+	bool dirtyFlag;
+	/*! Two property links, used by Bethesda. */
+	array<2,Ref<NiProperty > > bsProperties;
+public:
+	/*! NIFLIB_HIDDEN function.  For internal use only. */
+	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
+	/*! NIFLIB_HIDDEN function.  For internal use only. */
+	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
+	/*! NIFLIB_HIDDEN function.  For internal use only. */
+	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
+	/*! NIFLIB_HIDDEN function.  For internal use only. */
+	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+	/*! NIFLIB_HIDDEN function.  For internal use only. */
+	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+};
+
+//--BEGIN FILE FOOT CUSTOM CODE--//
+//--END CUSTOM CODE--//
 
 } //End Niflib namespace
 #endif

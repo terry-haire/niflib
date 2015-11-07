@@ -448,14 +448,16 @@ void NiControllerSequence::AddInterpolator( NiSingleInterpController * obj, byte
 	cl.priority = priority;
 	cl.stringPalette = stringPalette;
 	cl.nodeName = target->GetName();
-	cl.nodeNameOffset = stringPalette->AddSubStr( target->GetName() );
+	cl.nodeNameOffset = stringPalette->AddSubStr(cl.nodeName);
 
 	NiPropertyRef prop = DynamicCast<NiProperty>(target);
 	if ( prop != NULL ) {
-		cl.propertyTypeOffset = stringPalette->AddSubStr( prop->GetType().GetTypeName() );
+		cl.propertyType = prop->GetType().GetTypeName();
+		cl.propertyTypeOffset = stringPalette->AddSubStr(cl.propertyType);
 	}
 
-	cl.controllerTypeOffset = stringPalette->AddSubStr( obj->GetType().GetTypeName() );
+	cl.controllerType = obj->GetType().GetTypeName();
+	cl.controllerTypeOffset = stringPalette->AddSubStr(cl.controllerType);
 
 	//Add finished ControllerLink to list
 	controlledBlocks.push_back( cl );

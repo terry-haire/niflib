@@ -25,12 +25,10 @@ struct bhkCMSDMaterial {
 	NIFLIB_API bhkCMSDMaterial & operator=( const bhkCMSDMaterial & src );
 	/*! Material. */
 	SkyrimHavokMaterial skyrimMaterial;
-	/*! Copy of Skyrim Layer from bhkRigidBody. The value is stored as 32-bit integer. */
+	/*! Copy of Skyrim Layer from bhkRigidBody */
 	SkyrimLayer skyrimLayer;
-	/*! Skyrim Layer is 32-bit int here.  This is padding. */
-	byte unknown1;
-	/*! Skyrim Layer is 32-bit int here.  This is padding. */
-	unsigned short unknown2;
+	/*! This is padding. */
+	array<3,byte > unknownArray;
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

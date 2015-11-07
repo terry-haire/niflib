@@ -247,7 +247,7 @@ void bhkListShape::SetSkyrimMaterial(SkyrimHavokMaterial value) {
 	skyrimMaterial = value;
 }
 
-vector<Ref<bhkShape > > bhkListShape::GetSubShapes() const {
+const vector<Ref<bhkShape > >& bhkListShape::GetSubShapes() const {
 	return subShapes;
 }
 
@@ -261,6 +261,13 @@ void bhkListShape::SetSubShapes(const vector<Ref<bhkShape > >& shapes) {
 	// Becuase this vector matches the subshape vector
 	unknownInts.resize(subShapes.size(), 0);
 }
+
+void bhkListShape::AppendSubShape(const Ref<bhkShape>& shape)
+{
+	subShapes.push_back(shape);
+	unknownInts.push_back(0); // Because this vector matches the subshape vector
+}
+
 
 void bhkListShape::CalcMassProperties(float density, bool solid, float &mass, float &volume, Vector3 &center, InertiaMatrix& inertia)
 {
