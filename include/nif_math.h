@@ -1391,6 +1391,12 @@ struct InertiaMatrix {
 	NIFLIB_API float Adjoint( int skip_r, int skip_c ) const;
 };
 
+// Declaration of half float
+typedef uint16_t hfloat;
+
+NIFLIB_API float ConvertHFloatToFloat(hfloat h);
+NIFLIB_API hfloat ConvertFloatToHFloat(float f);
+
 
 //--ostream functions for printing with cout--//
 

@@ -44,22 +44,18 @@ void NiDynamicEffect::Read( istream& in, list<unsigned int> & link_stack, const 
 
 	unsigned int block_num;
 	NiAVObject::Read( in, link_stack, info );
-	if ( info.version >= 0x0A01006A ) {
+	if ( ( info.version >= 0x0A01006A ) && ( (info.userVersion2 < 130) ) ) {
 		NifStream( switchState, in, info );
 	};
 	if ( info.version <= 0x04000002 ) {
 		NifStream( numAffectedNodeListPointers, in, info );
-	};
-	if ( info.version >= 0x0A010000 ) {
-		NifStream( numAffectedNodes, in, info );
-	};
-	if ( info.version <= 0x04000002 ) {
 		affectedNodeListPointers.resize(numAffectedNodeListPointers);
 		for (unsigned int i2 = 0; i2 < affectedNodeListPointers.size(); i2++) {
 			NifStream( affectedNodeListPointers[i2], in, info );
 		};
 	};
-	if ( info.version >= 0x0A010000 ) {
+	if ( ( info.version >= 0x0A010000 ) && ( (info.userVersion2 < 130) ) ) {
+		NifStream( numAffectedNodes, in, info );
 		affectedNodes.resize(numAffectedNodes);
 		for (unsigned int i2 = 0; i2 < affectedNodes.size(); i2++) {
 			NifStream( block_num, in, info );
@@ -78,21 +74,17 @@ void NiDynamicEffect::Write( ostream& out, const map<NiObjectRef,unsigned int> &
 	NiAVObject::Write( out, link_map, missing_link_stack, info );
 	numAffectedNodes = (unsigned int)(affectedNodes.size());
 	numAffectedNodeListPointers = (unsigned int)(affectedNodeListPointers.size());
-	if ( info.version >= 0x0A01006A ) {
+	if ( ( info.version >= 0x0A01006A ) && ( (info.userVersion2 < 130) ) ) {
 		NifStream( switchState, out, info );
 	};
 	if ( info.version <= 0x04000002 ) {
 		NifStream( numAffectedNodeListPointers, out, info );
-	};
-	if ( info.version >= 0x0A010000 ) {
-		NifStream( numAffectedNodes, out, info );
-	};
-	if ( info.version <= 0x04000002 ) {
 		for (unsigned int i2 = 0; i2 < affectedNodeListPointers.size(); i2++) {
 			NifStream( affectedNodeListPointers[i2], out, info );
 		};
 	};
-	if ( info.version >= 0x0A010000 ) {
+	if ( ( info.version >= 0x0A010000 ) && ( (info.userVersion2 < 130) ) ) {
+		NifStream( numAffectedNodes, out, info );
 		for (unsigned int i2 = 0; i2 < affectedNodes.size(); i2++) {
 			if ( info.version < VER_3_3_0_13 ) {
 				WritePtr32( &(*affectedNodes[i2]), out );
@@ -129,7 +121,6 @@ std::string NiDynamicEffect::asString( bool verbose ) const {
 	numAffectedNodeListPointers = (unsigned int)(affectedNodeListPointers.size());
 	out << "  Switch State:  " << switchState << endl;
 	out << "  Num Affected Node List Pointers:  " << numAffectedNodeListPointers << endl;
-	out << "  Num Affected Nodes:  " << numAffectedNodes << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < affectedNodeListPointers.size(); i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
@@ -142,6 +133,7 @@ std::string NiDynamicEffect::asString( bool verbose ) const {
 		out << "    Affected Node List Pointers[" << i1 << "]:  " << affectedNodeListPointers[i1] << endl;
 		array_output_count++;
 	};
+	out << "  Num Affected Nodes:  " << numAffectedNodes << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < affectedNodes.size(); i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
@@ -165,7 +157,7 @@ void NiDynamicEffect::FixLinks( const map<unsigned int,NiObjectRef> & objects, l
 	//--END CUSTOM CODE--//
 
 	NiAVObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	if ( info.version >= 0x0A010000 ) {
+	if ( ( info.version >= 0x0A010000 ) && ( (info.userVersion2 < 130) ) ) {
 		for (unsigned int i2 = 0; i2 < affectedNodes.size(); i2++) {
 			affectedNodes[i2] = FixLink<NiAVObject>( objects, link_stack, missing_link_stack, info );
 		};

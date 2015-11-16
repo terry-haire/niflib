@@ -21,7 +21,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSLightingShaderProperty::TYPE("BSLightingShaderProperty", &NiProperty::TYPE );
 
-BSLightingShaderProperty::BSLightingShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)2185233153), shaderFlags2((SkyrimShaderPropertyFlags2)32801), uvScale(1.0, 1.0), textureSet(NULL), emissiveMultiple(0.0f), textureClampMode((TexClampMode)0), alpha(1.0f), refractionStrength(0.0f), glossiness(0.0f), specularStrength(1.0f), lightingEffect1(0.0f), lightingEffect2(0.0f), environmentMapScale(0.0f), maxPasses(0.0f), scale(0.0f), parallaxInnerLayerThickness(0.0f), parallaxRefractionScale(0.0f), parallaxEnvmapStrength(0.0f), eyeCubemapScale(0.0f) {
+BSLightingShaderProperty::BSLightingShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)2185233153), shaderFlags2((SkyrimShaderPropertyFlags2)32801), uvScale(1.0, 1.0), textureSet(NULL), emissiveMultiple(0.0f), wetMaterial((unsigned int)0), textureClampMode((TexClampMode)0), alpha(1.0f), refractionStrength(0.0f), glossiness(0.0f), specularStrength(1.0f), lightingEffect1(0.0f), lightingEffect2(0.0f), environmentMapScale(0.0f), unknownEmapInt1((unsigned short)0), unknownTintInt1((unsigned int)0), maxPasses(0.0f), scale(0.0f), parallaxInnerLayerThickness(0.0f), parallaxRefractionScale(0.0f), parallaxEnvmapStrength(0.0f), eyeCubemapScale(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -58,6 +58,9 @@ void BSLightingShaderProperty::Read( istream& in, list<unsigned int> & link_stac
 	link_stack.push_back( block_num );
 	NifStream( emissiveColor, in, info );
 	NifStream( emissiveMultiple, in, info );
+	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
+		NifStream( wetMaterial, in, info );
+	};
 	NifStream( textureClampMode, in, info );
 	NifStream( alpha, in, info );
 	NifStream( refractionStrength, in, info );
@@ -66,11 +69,26 @@ void BSLightingShaderProperty::Read( istream& in, list<unsigned int> & link_stac
 	NifStream( specularStrength, in, info );
 	NifStream( lightingEffect1, in, info );
 	NifStream( lightingEffect2, in, info );
+	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
+		for (unsigned int i2 = 0; i2 < 9; i2++) {
+			NifStream( unknownFloats1[i2], in, info );
+		};
+	};
 	if ( (skyrimShaderType == 1) ) {
 		NifStream( environmentMapScale, in, info );
 	};
+	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
+		if ( (skyrimShaderType == 1) ) {
+			NifStream( unknownEmapInt1, in, info );
+		};
+	};
 	if ( (skyrimShaderType == 5) ) {
 		NifStream( skinTintColor, in, info );
+	};
+	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
+		if ( (skyrimShaderType == 5) ) {
+			NifStream( unknownTintInt1, in, info );
+		};
 	};
 	if ( (skyrimShaderType == 6) ) {
 		NifStream( hairTintColor, in, info );
@@ -130,6 +148,9 @@ void BSLightingShaderProperty::Write( ostream& out, const map<NiObjectRef,unsign
 	}
 	NifStream( emissiveColor, out, info );
 	NifStream( emissiveMultiple, out, info );
+	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
+		NifStream( wetMaterial, out, info );
+	};
 	NifStream( textureClampMode, out, info );
 	NifStream( alpha, out, info );
 	NifStream( refractionStrength, out, info );
@@ -138,11 +159,26 @@ void BSLightingShaderProperty::Write( ostream& out, const map<NiObjectRef,unsign
 	NifStream( specularStrength, out, info );
 	NifStream( lightingEffect1, out, info );
 	NifStream( lightingEffect2, out, info );
+	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
+		for (unsigned int i2 = 0; i2 < 9; i2++) {
+			NifStream( unknownFloats1[i2], out, info );
+		};
+	};
 	if ( (skyrimShaderType == 1) ) {
 		NifStream( environmentMapScale, out, info );
 	};
+	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
+		if ( (skyrimShaderType == 1) ) {
+			NifStream( unknownEmapInt1, out, info );
+		};
+	};
 	if ( (skyrimShaderType == 5) ) {
 		NifStream( skinTintColor, out, info );
+	};
+	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
+		if ( (skyrimShaderType == 5) ) {
+			NifStream( unknownTintInt1, out, info );
+		};
 	};
 	if ( (skyrimShaderType == 6) ) {
 		NifStream( hairTintColor, out, info );
@@ -177,6 +213,7 @@ std::string BSLightingShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
+	unsigned int array_output_count = 0;
 	out << NiProperty::asString();
 	out << "  Shader Flags 1:  " << shaderFlags1 << endl;
 	out << "  Shader Flags 2:  " << shaderFlags2 << endl;
@@ -185,6 +222,7 @@ std::string BSLightingShaderProperty::asString( bool verbose ) const {
 	out << "  Texture Set:  " << textureSet << endl;
 	out << "  Emissive Color:  " << emissiveColor << endl;
 	out << "  Emissive Multiple:  " << emissiveMultiple << endl;
+	out << "  Wet Material:  " << wetMaterial << endl;
 	out << "  Texture Clamp Mode:  " << textureClampMode << endl;
 	out << "  Alpha:  " << alpha << endl;
 	out << "  Refraction Strength:  " << refractionStrength << endl;
@@ -193,11 +231,25 @@ std::string BSLightingShaderProperty::asString( bool verbose ) const {
 	out << "  Specular Strength:  " << specularStrength << endl;
 	out << "  Lighting Effect 1:  " << lightingEffect1 << endl;
 	out << "  Lighting Effect 2:  " << lightingEffect2 << endl;
+	array_output_count = 0;
+	for (unsigned int i1 = 0; i1 < 9; i1++) {
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
+			break;
+		};
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			break;
+		};
+		out << "    Unknown Floats 1[" << i1 << "]:  " << unknownFloats1[i1] << endl;
+		array_output_count++;
+	};
 	if ( (skyrimShaderType == 1) ) {
 		out << "    Environment Map Scale:  " << environmentMapScale << endl;
+		out << "    Unknown EMap Int 1:  " << unknownEmapInt1 << endl;
 	};
 	if ( (skyrimShaderType == 5) ) {
 		out << "    Skin Tint Color:  " << skinTintColor << endl;
+		out << "    Unknown Tint Int 1:  " << unknownTintInt1 << endl;
 	};
 	if ( (skyrimShaderType == 6) ) {
 		out << "    Hair Tint Color:  " << hairTintColor << endl;
@@ -310,6 +362,14 @@ float BSLightingShaderProperty::GetEmissiveMultiple() const {
 
 void BSLightingShaderProperty::SetEmissiveMultiple( float value ) {
 	emissiveMultiple = value;
+}
+
+unsigned int BSLightingShaderProperty::GetWetMaterial() const {
+	return wetMaterial;
+}
+
+void BSLightingShaderProperty::SetWetMaterial( unsigned int value ) {
+	wetMaterial = value;
 }
 
 TexClampMode BSLightingShaderProperty::GetTextureClampMode() const {

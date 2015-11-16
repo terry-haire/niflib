@@ -20,6 +20,7 @@ All rights reserved.  Please see niflib.h for license. */
 namespace Niflib {
 
 // Forward define of referenced NIF objects
+class NiPSysData;
 class NiPSysModifier;
 class NiParticleSystem;
 typedef Ref<NiParticleSystem> NiParticleSystemRef;
@@ -58,6 +59,14 @@ public:
 	NIFLIB_API virtual const Type & GetType() const;
 
 	/***Begin Example Naive Implementation****
+
+	// Unknown
+	// \return The current value.
+	Ref<NiPSysData > GetData_() const;
+
+	// Unknown
+	// \param[in] value The new value.
+	void SetData_( Ref<NiPSysData > value );
 
 	// If true, Particles are birthed into world space.  If false, Particles are
 	// birthed into object space.
@@ -107,6 +116,12 @@ protected:
 	unsigned short unknownShort3;
 	/*! Unknown */
 	unsigned int unknownInt1;
+	/*! Unknown */
+	int unknownInteger3;
+	/*! Unknown */
+	int unknownInteger4;
+	/*! Unknown */
+	Ref<NiPSysData > data_;
 	/*!
 	 * If true, Particles are birthed into world space.  If false, Particles are
 	 * birthed into object space.

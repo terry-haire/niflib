@@ -20,7 +20,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSEffectShaderProperty::TYPE("BSEffectShaderProperty", &NiProperty::TYPE );
 
-BSEffectShaderProperty::BSEffectShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)0), shaderFlags2((SkyrimShaderPropertyFlags2)0), uvScale(1.0, 1.0), textureClampMode((unsigned int)0), falloffStartAngle(1.0f), falloffStopAngle(1.0f), falloffStartOpacity(0.0f), falloffStopOpacity(0.0f), emissiveMultiple(0.0f), softFalloffDepth(0.0f) {
+BSEffectShaderProperty::BSEffectShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)0), shaderFlags2((SkyrimShaderPropertyFlags2)0), uvScale(1.0, 1.0), textureClampMode((unsigned int)0), falloffStartAngle(1.0f), falloffStopAngle(1.0f), falloffStartOpacity(0.0f), falloffStopOpacity(0.0f), emissiveMultiple(0.0f), softFalloffDepth(0.0f), unknownFloat1(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -52,14 +52,25 @@ void BSEffectShaderProperty::Read( istream& in, list<unsigned int> & link_stack,
 	NifStream( uvScale, in, info );
 	NifStream( sourceTexture, in, info );
 	NifStream( textureClampMode, in, info );
-	NifStream( falloffStartAngle, in, info );
-	NifStream( falloffStopAngle, in, info );
-	NifStream( falloffStartOpacity, in, info );
-	NifStream( falloffStopOpacity, in, info );
-	NifStream( emissiveColor, in, info );
-	NifStream( emissiveMultiple, in, info );
-	NifStream( softFalloffDepth, in, info );
-	NifStream( greyscaleTexture, in, info );
+	if ( (info.userVersion2 < 130) ) {
+		NifStream( falloffStartAngle, in, info );
+		NifStream( falloffStopAngle, in, info );
+		NifStream( falloffStartOpacity, in, info );
+		NifStream( falloffStopOpacity, in, info );
+		NifStream( emissiveColor, in, info );
+		NifStream( emissiveMultiple, in, info );
+		NifStream( softFalloffDepth, in, info );
+		NifStream( greyscaleTexture, in, info );
+	};
+	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
+		for (unsigned int i2 = 0; i2 < 10; i2++) {
+			NifStream( unknown10Floats[i2], in, info );
+		};
+		for (unsigned int i2 = 0; i2 < 4; i2++) {
+			NifStream( textures[i2], in, info );
+		};
+		NifStream( unknownFloat1, in, info );
+	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
@@ -78,14 +89,25 @@ void BSEffectShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned
 	NifStream( uvScale, out, info );
 	NifStream( sourceTexture, out, info );
 	NifStream( textureClampMode, out, info );
-	NifStream( falloffStartAngle, out, info );
-	NifStream( falloffStopAngle, out, info );
-	NifStream( falloffStartOpacity, out, info );
-	NifStream( falloffStopOpacity, out, info );
-	NifStream( emissiveColor, out, info );
-	NifStream( emissiveMultiple, out, info );
-	NifStream( softFalloffDepth, out, info );
-	NifStream( greyscaleTexture, out, info );
+	if ( (info.userVersion2 < 130) ) {
+		NifStream( falloffStartAngle, out, info );
+		NifStream( falloffStopAngle, out, info );
+		NifStream( falloffStartOpacity, out, info );
+		NifStream( falloffStopOpacity, out, info );
+		NifStream( emissiveColor, out, info );
+		NifStream( emissiveMultiple, out, info );
+		NifStream( softFalloffDepth, out, info );
+		NifStream( greyscaleTexture, out, info );
+	};
+	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
+		for (unsigned int i2 = 0; i2 < 10; i2++) {
+			NifStream( unknown10Floats[i2], out, info );
+		};
+		for (unsigned int i2 = 0; i2 < 4; i2++) {
+			NifStream( textures[i2], out, info );
+		};
+		NifStream( unknownFloat1, out, info );
+	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
@@ -98,6 +120,7 @@ std::string BSEffectShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
+	unsigned int array_output_count = 0;
 	out << NiProperty::asString();
 	out << "  Shader Flags 1:  " << shaderFlags1 << endl;
 	out << "  Shader Flags 2:  " << shaderFlags2 << endl;
@@ -113,6 +136,31 @@ std::string BSEffectShaderProperty::asString( bool verbose ) const {
 	out << "  Emissive Multiple:  " << emissiveMultiple << endl;
 	out << "  Soft Falloff Depth:  " << softFalloffDepth << endl;
 	out << "  Greyscale Texture:  " << greyscaleTexture << endl;
+	array_output_count = 0;
+	for (unsigned int i1 = 0; i1 < 10; i1++) {
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
+			break;
+		};
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			break;
+		};
+		out << "    Unknown 10 Floats[" << i1 << "]:  " << unknown10Floats[i1] << endl;
+		array_output_count++;
+	};
+	array_output_count = 0;
+	for (unsigned int i1 = 0; i1 < 4; i1++) {
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
+			break;
+		};
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			break;
+		};
+		out << "    Textures[" << i1 << "]:  " << textures[i1] << endl;
+		array_output_count++;
+	};
+	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -256,6 +304,14 @@ string BSEffectShaderProperty::GetGreyscaleTexture() const {
 
 void BSEffectShaderProperty::SetGreyscaleTexture( const string & value ) {
 	greyscaleTexture = value;
+}
+
+array<4,string >  BSEffectShaderProperty::GetTextures() const {
+	return textures;
+}
+
+void BSEffectShaderProperty::SetTextures( const array<4,string >&  value ) {
+	textures = value;
 }
 
 ****End Example Naive Implementation***/

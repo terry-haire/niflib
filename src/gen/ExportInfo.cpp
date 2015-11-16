@@ -22,6 +22,7 @@ ExportInfo & ExportInfo::operator=( const ExportInfo & src ) {
 	this->creator = src.creator;
 	this->exportInfo1 = src.exportInfo1;
 	this->exportInfo2 = src.exportInfo2;
+	this->exportInfo3 = src.exportInfo3;
 	return *this;
 };
 

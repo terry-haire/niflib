@@ -3,6 +3,7 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../include/nif_math.h"
 #include <iomanip>
+#include "half.h"
 using namespace Niflib;
 
 //Constants
@@ -23,6 +24,16 @@ const InertiaMatrix InertiaMatrix::IDENTITY(
 								  1.0f, 0.0f, 0.0f, 0.0f,
 								  0.0f, 1.0f, 0.0f, 0.0f,
 								  0.0f, 0.0f, 1.0f, 0.0f );
+
+
+float Niflib::ConvertHFloatToFloat(hfloat h) {
+	uint32_t tmp = half_to_float(h);
+	return *static_cast<float*>(static_cast<void*>(&tmp));
+}
+
+hfloat Niflib::ConvertFloatToHFloat(float f) {
+	return half_to_float(*static_cast<uint32_t*>(static_cast<void*>(&f)));
+}
 
 /* TexCoord Methods
  *

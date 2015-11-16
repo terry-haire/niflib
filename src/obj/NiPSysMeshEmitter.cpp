@@ -14,7 +14,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/ObjectRegistry.h"
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/NiPSysMeshEmitter.h"
-#include "../../include/obj/NiTriBasedGeom.h"
+#include "../../include/obj/NiAVObject.h"
 using namespace Niflib;
 
 //Definition of TYPE constant
@@ -128,7 +128,7 @@ void NiPSysMeshEmitter::FixLinks( const map<unsigned int,NiObjectRef> & objects,
 
 	NiPSysEmitter::FixLinks( objects, link_stack, missing_link_stack, info );
 	for (unsigned int i1 = 0; i1 < emitterMeshes.size(); i1++) {
-		emitterMeshes[i1] = FixLink<NiTriBasedGeom>( objects, link_stack, missing_link_stack, info );
+		emitterMeshes[i1] = FixLink<NiAVObject>( objects, link_stack, missing_link_stack, info );
 	};
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
@@ -155,11 +155,11 @@ std::list<NiObject *> NiPSysMeshEmitter::GetPtrs() const {
 
 /***Begin Example Naive Implementation****
 
-vector<Ref<NiTriBasedGeom > > NiPSysMeshEmitter::GetEmitterMeshes() const {
+vector<Ref<NiAVObject > > NiPSysMeshEmitter::GetEmitterMeshes() const {
 	return emitterMeshes;
 }
 
-void NiPSysMeshEmitter::SetEmitterMeshes( const vector<Ref<NiTriBasedGeom > >& value ) {
+void NiPSysMeshEmitter::SetEmitterMeshes( const vector<Ref<NiAVObject > >& value ) {
 	emitterMeshes = value;
 }
 
@@ -192,11 +192,11 @@ void NiPSysMeshEmitter::SetEmissionAxis( const Vector3 & value ) {
 //--BEGIN MISC CUSTOM CODE--//
 
 
-vector<Ref<NiTriBasedGeom > > NiPSysMeshEmitter::GetEmitterMeshes() const {
+vector<Ref<NiAVObject > > NiPSysMeshEmitter::GetEmitterMeshes() const {
 	return emitterMeshes;
 }
 
-void NiPSysMeshEmitter::SetEmitterMeshes(const vector<Ref<NiTriBasedGeom > >& value) {
+void NiPSysMeshEmitter::SetEmitterMeshes(const vector<Ref<NiAVObject> >& value) {
 	emitterMeshes = value;
 }
 

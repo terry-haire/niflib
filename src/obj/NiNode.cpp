@@ -67,11 +67,13 @@ void NiNode::Read( istream& in, list<unsigned int> & link_stack, const NifInfo &
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 	};
-	NifStream( numEffects, in, info );
-	effects.resize(numEffects);
-	for (unsigned int i1 = 0; i1 < effects.size(); i1++) {
-		NifStream( block_num, in, info );
-		link_stack.push_back( block_num );
+	if ( (!((info.userVersion == 12) && (info.userVersion2 >= 130))) ) {
+		NifStream( numEffects, in, info );
+		effects.resize(numEffects);
+		for (unsigned int i2 = 0; i2 < effects.size(); i2++) {
+			NifStream( block_num, in, info );
+			link_stack.push_back( block_num );
+		};
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -105,25 +107,27 @@ void NiNode::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map
 			}
 		}
 	};
-	NifStream( numEffects, out, info );
-	for (unsigned int i1 = 0; i1 < effects.size(); i1++) {
-		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*effects[i1]), out );
-		} else {
-			if ( effects[i1] != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(effects[i1]) );
-				if (it != link_map.end()) {
-					NifStream( it->second, out, info );
-					missing_link_stack.push_back( NULL );
+	if ( (!((info.userVersion == 12) && (info.userVersion2 >= 130))) ) {
+		NifStream( numEffects, out, info );
+		for (unsigned int i2 = 0; i2 < effects.size(); i2++) {
+			if ( info.version < VER_3_3_0_13 ) {
+				WritePtr32( &(*effects[i2]), out );
+			} else {
+				if ( effects[i2] != NULL ) {
+					map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(effects[i2]) );
+					if (it != link_map.end()) {
+						NifStream( it->second, out, info );
+						missing_link_stack.push_back( NULL );
+					} else {
+						NifStream( 0xFFFFFFFF, out, info );
+						missing_link_stack.push_back( effects[i2] );
+					}
 				} else {
 					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( effects[i1] );
+					missing_link_stack.push_back( NULL );
 				}
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( NULL );
 			}
-		}
+		};
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -179,8 +183,10 @@ void NiNode::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsig
 	for (unsigned int i1 = 0; i1 < children.size(); i1++) {
 		children[i1] = FixLink<NiAVObject>( objects, link_stack, missing_link_stack, info );
 	};
-	for (unsigned int i1 = 0; i1 < effects.size(); i1++) {
-		effects[i1] = FixLink<NiDynamicEffect>( objects, link_stack, missing_link_stack, info );
+	if ( (!((info.userVersion == 12) && (info.userVersion2 >= 130))) ) {
+		for (unsigned int i2 = 0; i2 < effects.size(); i2++) {
+			effects[i2] = FixLink<NiDynamicEffect>( objects, link_stack, missing_link_stack, info );
+		};
 	};
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//

@@ -172,6 +172,14 @@ public:
 	// \param[in] value The new value.
 	void SetGreyscaleTexture( const string & value );
 
+	// Unknown.
+	// \return The current value.
+	array<4,string >  GetTextures() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetTextures( const array<4,string >&  value );
+
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
@@ -323,6 +331,12 @@ protected:
 	 * SLSF1_Greyscale_To_PaletteColor/SLSF1_Greyscale_To_PaletteAlpha.
 	 */
 	string greyscaleTexture;
+	/*! Unknown. */
+	array<10,float > unknown10Floats;
+	/*! Unknown. */
+	array<4,string > textures;
+	/*! Unknown. */
+	float unknownFloat1;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

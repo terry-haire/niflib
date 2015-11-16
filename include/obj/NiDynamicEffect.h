@@ -123,8 +123,6 @@ protected:
 	bool switchState;
 	/*! The number of affected nodes referenced. */
 	mutable unsigned int numAffectedNodeListPointers;
-	/*! The number of affected nodes referenced. */
-	mutable unsigned int numAffectedNodes;
 	/*!
 	 * This is probably the list of affected nodes. For some reason i do not know the
 	 * max exporter seems to write pointers instead of links. But it doesn't matter
@@ -132,6 +130,8 @@ protected:
 	 * engine during the load stage.
 	 */
 	vector<unsigned int > affectedNodeListPointers;
+	/*! The number of affected nodes referenced. */
+	mutable unsigned int numAffectedNodes;
 	/*! The list of affected nodes? */
 	vector<Ref<NiAVObject > > affectedNodes;
 public:

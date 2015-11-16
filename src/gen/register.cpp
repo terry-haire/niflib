@@ -446,6 +446,22 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/obj/BSFurnitureMarkerNode.h"
 #include "../../include/obj/BSLeafAnimNode.h"
 #include "../../include/obj/BSTreeNode.h"
+#include "../../include/obj/NiLightRadiusController.h"
+#include "../../include/obj/BSShape.h"
+#include "../../include/obj/BSTriShape.h"
+#include "../../include/obj/BSSubIndexTriShape.h"
+#include "../../include/obj/BSMeshLODTriShape.h"
+#include "../../include/obj/bhkNPCollisionObject.h"
+#include "../../include/obj/BSExtraData.h"
+#include "../../include/obj/bhkPhysicsSystem.h"
+#include "../../include/obj/bhkRagdollSystem.h"
+#include "../../include/obj/BSClothExtraData.h"
+#include "../../include/obj/BSSkin__Instance.h"
+#include "../../include/obj/BSSkin__BoneData.h"
+#include "../../include/obj/BSPositionData.h"
+#include "../../include/obj/BSConnectPoint__Parents.h"
+#include "../../include/obj/BSConnectPoint__Children.h"
+#include "../../include/obj/BSEyeCenterExtraData.h"
 
 namespace Niflib {
 	void RegisterObjects() {
@@ -890,6 +906,22 @@ namespace Niflib {
 		ObjectRegistry::RegisterObject( "BSFurnitureMarkerNode", BSFurnitureMarkerNode::Create );
 		ObjectRegistry::RegisterObject( "BSLeafAnimNode", BSLeafAnimNode::Create );
 		ObjectRegistry::RegisterObject( "BSTreeNode", BSTreeNode::Create );
+		ObjectRegistry::RegisterObject( "NiLightRadiusController", NiLightRadiusController::Create );
+		ObjectRegistry::RegisterObject( "BSShape", BSShape::Create );
+		ObjectRegistry::RegisterObject( "BSTriShape", BSTriShape::Create );
+		ObjectRegistry::RegisterObject( "BSSubIndexTriShape", BSSubIndexTriShape::Create );
+		ObjectRegistry::RegisterObject( "BSMeshLODTriShape", BSMeshLODTriShape::Create );
+		ObjectRegistry::RegisterObject( "bhkNPCollisionObject", bhkNPCollisionObject::Create );
+		ObjectRegistry::RegisterObject( "BSExtraData", BSExtraData::Create );
+		ObjectRegistry::RegisterObject( "bhkPhysicsSystem", bhkPhysicsSystem::Create );
+		ObjectRegistry::RegisterObject( "bhkRagdollSystem", bhkRagdollSystem::Create );
+		ObjectRegistry::RegisterObject( "BSClothExtraData", BSClothExtraData::Create );
+		ObjectRegistry::RegisterObject( "BSSkin__Instance", BSSkin__Instance::Create );
+		ObjectRegistry::RegisterObject( "BSSkin__BoneData", BSSkin__BoneData::Create );
+		ObjectRegistry::RegisterObject( "BSPositionData", BSPositionData::Create );
+		ObjectRegistry::RegisterObject( "BSConnectPoint__Parents", BSConnectPoint__Parents::Create );
+		ObjectRegistry::RegisterObject( "BSConnectPoint__Children", BSConnectPoint__Children::Create );
+		ObjectRegistry::RegisterObject( "BSEyeCenterExtraData", BSEyeCenterExtraData::Create );
 
 	}
 }

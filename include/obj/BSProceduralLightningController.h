@@ -22,6 +22,7 @@ namespace Niflib {
 
 // Forward define of referenced NIF objects
 class NiInterpolator;
+class NiObject;
 class BSProceduralLightningController;
 typedef Ref<BSProceduralLightningController> BSProceduralLightningControllerRef;
 
@@ -194,11 +195,11 @@ public:
 
 	// Unknown, unsure if this is actually another interpolator link.
 	// \return The current value.
-	Ref<NiInterpolator > GetInterpolator10_() const;
+	Ref<NiObject > GetInterpolator10_() const;
 
 	// Unknown, unsure if this is actually another interpolator link.
 	// \param[in] value The new value.
-	void SetInterpolator10_( Ref<NiInterpolator > value );
+	void SetInterpolator10_( Ref<NiObject > value );
 
 	****End Example Naive Implementation***/
 
@@ -245,7 +246,7 @@ protected:
 	/*! Unknown */
 	byte byte3;
 	/*! Unknown, unsure if this is actually another interpolator link. */
-	Ref<NiInterpolator > interpolator10_;
+	Ref<NiObject > interpolator10_;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

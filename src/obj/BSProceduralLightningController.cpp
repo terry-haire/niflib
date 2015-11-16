@@ -16,6 +16,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/BSProceduralLightningController.h"
 #include "../../include/obj/NiInterpolator.h"
+#include "../../include/obj/NiObject.h"
 using namespace Niflib;
 
 //Definition of TYPE constant
@@ -307,7 +308,7 @@ void BSProceduralLightningController::FixLinks( const map<unsigned int,NiObjectR
 	interpolator7 = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
 	interpolator8 = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
 	interpolator9_ArcOffset = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
-	interpolator10_ = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
+	interpolator10_ = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
@@ -474,11 +475,11 @@ void BSProceduralLightningController::SetByte3( byte value ) {
 	byte3 = value;
 }
 
-Ref<NiInterpolator > BSProceduralLightningController::GetInterpolator10_() const {
+Ref<NiObject > BSProceduralLightningController::GetInterpolator10_() const {
 	return interpolator10_;
 }
 
-void BSProceduralLightningController::SetInterpolator10_( Ref<NiInterpolator > value ) {
+void BSProceduralLightningController::SetInterpolator10_( Ref<NiObject > value ) {
 	interpolator10_ = value;
 }
 

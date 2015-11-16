@@ -131,6 +131,10 @@ void NifStream( float const & val, ostream& out, const NifInfo & info);
 void NifStream( string & val, istream& in, const NifInfo & info);
 void NifStream( string const & val, ostream& out, const NifInfo & info);
 
+//hfloat
+void NifStream(hfloat & val, istream& in, const NifInfo & info);
+void NifStream(hfloat const & val, ostream& out, const NifInfo & info);
+
 //--Structs--//
 
 //TexCoord

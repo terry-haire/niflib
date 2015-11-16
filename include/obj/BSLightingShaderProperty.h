@@ -116,6 +116,14 @@ public:
 	// \param[in] value The new value.
 	void SetEmissiveMultiple( float value );
 
+	// Unknown.
+	// \return The current value.
+	unsigned int GetWetMaterial() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetWetMaterial( unsigned int value );
+
 	// How to handle texture borders.
 	// \return The current value.
 	TexClampMode GetTextureClampMode() const;
@@ -540,6 +548,8 @@ protected:
 	Color3 emissiveColor;
 	/*! Multiplied emissive colors */
 	float emissiveMultiple;
+	/*! Unknown. */
+	unsigned int wetMaterial;
 	/*! How to handle texture borders. */
 	TexClampMode textureClampMode;
 	/*! The materials opacity (1=non-transparent). */
@@ -556,10 +566,16 @@ protected:
 	float lightingEffect1;
 	/*! Controls strength for envmap/backlight/rim/softlight lighting effect? */
 	float lightingEffect2;
+	/*! Fallout 4 Unknown */
+	array<9,float > unknownFloats1;
 	/*! Scales the intensity of the environment/cube map. (0-1) */
 	float environmentMapScale;
+	/*! Unknown */
+	unsigned short unknownEmapInt1;
 	/*! Tints the base texture. Overridden by game settings. */
 	Color3 skinTintColor;
+	/*! Unknown */
+	unsigned int unknownTintInt1;
 	/*! Tints the base texture. Overridden by game settings. */
 	Color3 hairTintColor;
 	/*! Max Passes */

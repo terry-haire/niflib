@@ -18,6 +18,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/NiGeometry.h"
 #include "../../include/obj/NiGeometryData.h"
+#include "../../include/obj/NiParticleSystem.h"
 #include "../../include/obj/NiProperty.h"
 #include "../../include/obj/NiSkinInstance.h"
 using namespace Niflib;
@@ -25,7 +26,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiGeometry::TYPE("NiGeometry", &NiAVObject::TYPE );
 
-NiGeometry::NiGeometry() : data(NULL), skinInstance(NULL), numMaterials((unsigned int)0), activeMaterial((int)0), hasShader(false), unknownInteger((int)0), unknownByte((byte)255), unknownInteger2((int)0), dirtyFlag(false) {
+NiGeometry::NiGeometry() : data(NULL), skinInstance(NULL), numMaterials((unsigned int)0), activeMaterial((int)0), hasShader(false), unknownInteger((int)0), unknownByte((byte)255), unknownInteger2((int)0), dirtyFlag(false), unknownInteger3((int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -49,11 +50,20 @@ void NiGeometry::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 
 	unsigned int block_num;
 	NiAVObject::Read( in, link_stack, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	if ( info.version >= 0x0303000D ) {
+	if ( (!IsDerivedType(NiParticleSystem::TYPE)) ) {
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
+	};
+	if ( info.version >= 0x0303000D ) {
+		if ( (!IsDerivedType(NiParticleSystem::TYPE)) ) {
+			NifStream( block_num, in, info );
+			link_stack.push_back( block_num );
+		};
+	};
+	if ( IsDerivedType(NiParticleSystem::TYPE) ) {
+		for (unsigned int i2 = 0; i2 < 2; i2++) {
+			NifStream( emptyRefs[i2], in, info );
+		};
 	};
 	if ( info.version >= 0x14020007 ) {
 		NifStream( numMaterials, in, info );
@@ -80,8 +90,11 @@ void NiGeometry::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 	if ( ( info.version >= 0x0A040001 ) && ( info.version <= 0x0A040001 ) ) {
 		NifStream( unknownInteger2, in, info );
 	};
-	if ( info.version >= 0x14020007 ) {
+	if ( ( info.version >= 0x14020007 ) && ( (info.userVersion2 < 130) ) ) {
 		NifStream( dirtyFlag, in, info );
+	};
+	if ( ((info.userVersion >= 12) && (info.userVersion2 >= 130)) ) {
+		NifStream( unknownInteger3, in, info );
 	};
 	if ( ( info.version >= 0x14020007 ) && ( info.userVersion == 12 ) ) {
 		for (unsigned int i2 = 0; i2 < 2; i2++) {
@@ -100,41 +113,50 @@ void NiGeometry::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 
 	NiAVObject::Write( out, link_map, missing_link_stack, info );
 	numMaterials = (unsigned int)(materialName.size());
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*data), out );
-	} else {
-		if ( data != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(data) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( data );
-			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
-		}
-	}
-	if ( info.version >= 0x0303000D ) {
+	if ( (!IsDerivedType(NiParticleSystem::TYPE)) ) {
 		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*skinInstance), out );
+			WritePtr32( &(*data), out );
 		} else {
-			if ( skinInstance != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(skinInstance) );
+			if ( data != NULL ) {
+				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(data) );
 				if (it != link_map.end()) {
 					NifStream( it->second, out, info );
 					missing_link_stack.push_back( NULL );
 				} else {
 					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( skinInstance );
+					missing_link_stack.push_back( data );
 				}
 			} else {
 				NifStream( 0xFFFFFFFF, out, info );
 				missing_link_stack.push_back( NULL );
 			}
 		}
+	};
+	if ( info.version >= 0x0303000D ) {
+		if ( (!IsDerivedType(NiParticleSystem::TYPE)) ) {
+			if ( info.version < VER_3_3_0_13 ) {
+				WritePtr32( &(*skinInstance), out );
+			} else {
+				if ( skinInstance != NULL ) {
+					map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(skinInstance) );
+					if (it != link_map.end()) {
+						NifStream( it->second, out, info );
+						missing_link_stack.push_back( NULL );
+					} else {
+						NifStream( 0xFFFFFFFF, out, info );
+						missing_link_stack.push_back( skinInstance );
+					}
+				} else {
+					NifStream( 0xFFFFFFFF, out, info );
+					missing_link_stack.push_back( NULL );
+				}
+			}
+		};
+	};
+	if ( IsDerivedType(NiParticleSystem::TYPE) ) {
+		for (unsigned int i2 = 0; i2 < 2; i2++) {
+			NifStream( emptyRefs[i2], out, info );
+		};
 	};
 	if ( info.version >= 0x14020007 ) {
 		NifStream( numMaterials, out, info );
@@ -159,8 +181,11 @@ void NiGeometry::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 	if ( ( info.version >= 0x0A040001 ) && ( info.version <= 0x0A040001 ) ) {
 		NifStream( unknownInteger2, out, info );
 	};
-	if ( info.version >= 0x14020007 ) {
+	if ( ( info.version >= 0x14020007 ) && ( (info.userVersion2 < 130) ) ) {
 		NifStream( dirtyFlag, out, info );
+	};
+	if ( ((info.userVersion >= 12) && (info.userVersion2 >= 130)) ) {
+		NifStream( unknownInteger3, out, info );
 	};
 	if ( ( info.version >= 0x14020007 ) && ( info.userVersion == 12 ) ) {
 		for (unsigned int i2 = 0; i2 < 2; i2++) {
@@ -196,8 +221,24 @@ std::string NiGeometry::asString( bool verbose ) const {
 	unsigned int array_output_count = 0;
 	out << NiAVObject::asString();
 	numMaterials = (unsigned int)(materialName.size());
-	out << "  Data:  " << data << endl;
-	out << "  Skin Instance:  " << skinInstance << endl;
+	if ( (!IsDerivedType(NiParticleSystem::TYPE)) ) {
+		out << "    Data:  " << data << endl;
+		out << "    Skin Instance:  " << skinInstance << endl;
+	};
+	if ( IsDerivedType(NiParticleSystem::TYPE) ) {
+		array_output_count = 0;
+		for (unsigned int i2 = 0; i2 < 2; i2++) {
+			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
+				break;
+			};
+			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+				break;
+			};
+			out << "      Empty Refs[" << i2 << "]:  " << emptyRefs[i2] << endl;
+			array_output_count++;
+		};
+	};
 	out << "  Num Materials:  " << numMaterials << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < materialName.size(); i1++) {
@@ -232,6 +273,7 @@ std::string NiGeometry::asString( bool verbose ) const {
 	out << "  Unknown Byte:  " << unknownByte << endl;
 	out << "  Unknown Integer 2:  " << unknownInteger2 << endl;
 	out << "  Dirty Flag:  " << dirtyFlag << endl;
+	out << "  Unknown Integer 3:  " << unknownInteger3 << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 2; i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
@@ -255,9 +297,13 @@ void NiGeometry::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<u
 	//--END CUSTOM CODE--//
 
 	NiAVObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	data = FixLink<NiGeometryData>( objects, link_stack, missing_link_stack, info );
+	if ( (!IsDerivedType(NiParticleSystem::TYPE)) ) {
+		data = FixLink<NiGeometryData>( objects, link_stack, missing_link_stack, info );
+	};
 	if ( info.version >= 0x0303000D ) {
-		skinInstance = FixLink<NiSkinInstance>( objects, link_stack, missing_link_stack, info );
+		if ( (!IsDerivedType(NiParticleSystem::TYPE)) ) {
+			skinInstance = FixLink<NiSkinInstance>( objects, link_stack, missing_link_stack, info );
+		};
 	};
 	if ( ( info.version >= 0x14020007 ) && ( info.userVersion == 12 ) ) {
 		for (unsigned int i2 = 0; i2 < 2; i2++) {
@@ -316,6 +362,14 @@ Ref<NiSkinInstance > NiGeometry::GetSkinInstance() const {
 
 void NiGeometry::SetSkinInstance( Ref<NiSkinInstance > value ) {
 	skinInstance = value;
+}
+
+array<2,unsigned int >  NiGeometry::GetEmptyRefs() const {
+	return emptyRefs;
+}
+
+void NiGeometry::SetEmptyRefs( const array<2,unsigned int >&  value ) {
+	emptyRefs = value;
 }
 
 vector<IndexString > NiGeometry::GetMaterialName() const {

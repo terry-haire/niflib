@@ -82,6 +82,14 @@ public:
 	// \param[in] value The new value.
 	void SetSkinInstance( Ref<NiSkinInstance > value );
 
+	// Replacement for Data and Skin Instance
+	// \return The current value.
+	array<2,unsigned int >  GetEmptyRefs() const;
+
+	// Replacement for Data and Skin Instance
+	// \param[in] value The new value.
+	void SetEmptyRefs( const array<2,unsigned int >&  value );
+
 	// Unknown string.  Shader?
 	// \return The current value.
 	vector<IndexString > GetMaterialName() const;
@@ -305,6 +313,8 @@ protected:
 	Ref<NiGeometryData > data;
 	/*! Skin instance index. */
 	Ref<NiSkinInstance > skinInstance;
+	/*! Replacement for Data and Skin Instance */
+	array<2,unsigned int > emptyRefs;
 	/*! Num Materials */
 	mutable unsigned int numMaterials;
 	/*! Unknown string.  Shader? */
@@ -325,6 +335,8 @@ protected:
 	int unknownInteger2;
 	/*! Dirty Flag? */
 	bool dirtyFlag;
+	/*! Dirty Flag? */
+	int unknownInteger3;
 	/*! Two property links, used by Bethesda. */
 	array<2,Ref<NiProperty > > bsProperties;
 public:

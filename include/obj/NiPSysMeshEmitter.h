@@ -20,7 +20,7 @@ All rights reserved.  Please see niflib.h for license. */
 namespace Niflib {
 
 // Forward define of referenced NIF objects
-class NiTriBasedGeom;
+class NiAVObject;
 class NiPSysMeshEmitter;
 typedef Ref<NiPSysMeshEmitter> NiPSysMeshEmitterRef;
 
@@ -61,11 +61,11 @@ public:
 
 	// Links to meshes used for emitting.
 	// \return The current value.
-	vector<Ref<NiTriBasedGeom > > GetEmitterMeshes() const;
+	vector<Ref<NiAVObject > > GetEmitterMeshes() const;
 
 	// Links to meshes used for emitting.
 	// \param[in] value The new value.
-	void SetEmitterMeshes( const vector<Ref<NiTriBasedGeom > >& value );
+	void SetEmitterMeshes( const vector<Ref<NiAVObject > >& value );
 
 	// The way the particles get their initial direction and speed.
 	// \return The current value.
@@ -97,11 +97,11 @@ public:
 
 	// Links to meshes used for emitting.
 	// \return The current value.
-	vector<Ref<NiTriBasedGeom > > GetEmitterMeshes() const;
+	vector<Ref<NiAVObject > > GetEmitterMeshes() const;
 
 	// Links to meshes used for emitting.
 	// \param[in] value The new value.
-	void SetEmitterMeshes(const vector<Ref<NiTriBasedGeom > >& value);
+	void SetEmitterMeshes(const vector<Ref<NiAVObject > >& value);
 
 	// The way the particles get their initial direction and speed.
 	// \return The current value.
@@ -132,7 +132,7 @@ protected:
 	/*! The number of references to emitter meshes that follow. */
 	mutable unsigned int numEmitterMeshes;
 	/*! Links to meshes used for emitting. */
-	vector<Ref<NiTriBasedGeom > > emitterMeshes;
+	vector<Ref<NiAVObject > > emitterMeshes;
 	/*! The way the particles get their initial direction and speed. */
 	VelocityType initialVelocityType;
 	/*! The parts of the mesh that the particles emit from. */
