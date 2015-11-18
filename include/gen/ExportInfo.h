@@ -34,8 +34,6 @@ struct ExportInfo {
 	 * like 'Default Export Script'.
 	 */
 	ShortString exportInfo2;
-	/*! Unknown. */
-	ShortString exportInfo3;
 	//--BEGIN MISC CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 };

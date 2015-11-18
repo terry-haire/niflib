@@ -20,7 +20,7 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSSkin__Instance::TYPE("BSSkin__Instance", &NiObject::TYPE );
+const Type BSSkin__Instance::TYPE("BSSkin::Instance", &NiObject::TYPE );
 
 BSSkin__Instance::BSSkin__Instance() : unknownInt1((unsigned int)0), boneData(NULL), numBones((unsigned int)0), numVector31((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
@@ -235,5 +235,27 @@ void BSSkin::Instance::SetVector31( const vector<Vector3 >& value ) {
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
+
+
+Ref<BSSkin__BoneData > BSSkin__Instance::GetBoneData() const {
+	return boneData;
+}
+
+void BSSkin__Instance::SetBoneData(Ref<BSSkin__BoneData > value) {
+	boneData = value;
+}
+
+vector<NiNodeRef > BSSkin__Instance::GetBones() const {
+	vector<NiNodeRef> result;
+	result.reserve(bones.size());	
+	for (vector<NiNode*>::const_iterator itr = bones.begin(); itr != bones.end(); ++itr)
+		result.push_back(*itr);
+	return result;
+}
+
+void BSSkin__Instance::SetBones(const vector<Ref<NiNode> >& value) {
+	//bones = value;
+}
+
 
 //--END CUSTOM CODE--//

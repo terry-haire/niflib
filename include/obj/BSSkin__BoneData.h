@@ -70,6 +70,40 @@ public:
 
 	//--BEGIN MISC CUSTOM CODE--//
 
+	/*!
+	* Retrieves the current overall transform for this skin.  This is the transform from the geometry node back to its skeleton root.
+	* \return The current overall transform for this skin.
+	*/
+	NIFLIB_API Matrix44 GetOverallTransform() const;
+
+	/*!
+	* Sets the overall transform for this skin.  This is the transform from the geometry node back to the skeleton root.
+	* \param[in] transform The new overall transform for this skin.
+	*/
+	NIFLIB_API void SetOverallTransform(const Matrix44 & transform);
+
+	/*!
+	* Retrieves the number of bones influences affecting this skin.  These are NiNodes which cause the skin to deform when they move.
+	* \return The number of bonees influencing this skin.
+	*/
+	NIFLIB_API unsigned int GetBoneCount() const;
+
+	/*!
+	* Retrieves the transform for a particular bone.  This is the transform from geometry node back to this bone in skeleton root coordinates.
+	* \param[in] bone_index The numeric index of the bone that the transform matrix should be returned for.  Must be >= zero and < the number returned by GetBoneCount.
+	* \return The transform matrix for the specified bone.
+	*/
+	NIFLIB_API Matrix44 GetBoneTransform(unsigned int bone_index) const;
+
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API vector<BSSkinBoneTrans > GetBones() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetBones(const vector<BSSkinBoneTrans >& value);
+
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown. */

@@ -19,7 +19,7 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSConnectPoint__Parents::TYPE("BSConnectPoint__Parents", &NiExtraData::TYPE );
+const Type BSConnectPoint__Parents::TYPE("BSConnectPoint::Parents", &NiExtraData::TYPE );
 
 BSConnectPoint__Parents::BSConnectPoint__Parents() : numConnectPoints((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//

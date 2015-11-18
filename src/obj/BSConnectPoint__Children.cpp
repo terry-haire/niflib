@@ -18,7 +18,7 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSConnectPoint__Children::TYPE("BSConnectPoint__Children", &NiExtraData::TYPE );
+const Type BSConnectPoint__Children::TYPE("BSConnectPoint::Children", &NiExtraData::TYPE );
 
 BSConnectPoint__Children::BSConnectPoint__Children() : unknownByte((byte)0), numTargets((int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//

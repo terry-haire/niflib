@@ -29,6 +29,7 @@ Header & Header::operator=( const Header & src ) {
 	this->userVersion2 = src.userVersion2;
 	this->unknownInt3 = src.unknownInt3;
 	this->exportInfo = src.exportInfo;
+	this->exportInfo3 = src.exportInfo3;
 	this->numBlockTypes = src.numBlockTypes;
 	this->blockTypes = src.blockTypes;
 	this->blockTypeIndex = src.blockTypeIndex;
@@ -79,9 +80,6 @@ NifInfo Header::Read( istream& in ) {
 		NifStream( exportInfo.creator, in, info );
 		NifStream( exportInfo.exportInfo1, in, info );
 		NifStream( exportInfo.exportInfo2, in, info );
-		if ( ((info.version >= 0x14020007) && ((info.userVersion >= 12) && (info.userVersion2 >= 130))) ) {
-			NifStream( exportInfo.exportInfo3, in, info );
-		};
 	};
 	if ( info.version >= 0x0A010000 ) {
 		if ( ((userVersion >= 10) || ((userVersion == 1) && (version != 0x0A020000))) ) {
@@ -91,10 +89,10 @@ NifInfo Header::Read( istream& in ) {
 			NifStream( exportInfo.creator, in, info );
 			NifStream( exportInfo.exportInfo1, in, info );
 			NifStream( exportInfo.exportInfo2, in, info );
-			if ( ((info.version >= 0x14020007) && ((info.userVersion >= 12) && (info.userVersion2 >= 130))) ) {
-				NifStream( exportInfo.exportInfo3, in, info );
-			};
 		};
+	};
+	if ( ((version >= 0x14020007) && ((userVersion >= 12) && (userVersion2 >= 130))) ) {
+		NifStream( exportInfo3, in, info );
 	};
 	if ( info.version >= 0x0A000100 ) {
 		NifStream( numBlockTypes, in, info );
@@ -177,9 +175,6 @@ void Header::Write( ostream& out, const NifInfo & info ) const {
 		NifStream( exportInfo.creator, out, info );
 		NifStream( exportInfo.exportInfo1, out, info );
 		NifStream( exportInfo.exportInfo2, out, info );
-		if ( ((info.version >= 0x14020007) && ((info.userVersion >= 12) && (info.userVersion2 >= 130))) ) {
-			NifStream( exportInfo.exportInfo3, out, info );
-		};
 	};
 	if ( info.version >= 0x0A010000 ) {
 		if ( ((userVersion >= 10) || ((userVersion == 1) && (version != 0x0A020000))) ) {
@@ -189,10 +184,10 @@ void Header::Write( ostream& out, const NifInfo & info ) const {
 			NifStream( exportInfo.creator, out, info );
 			NifStream( exportInfo.exportInfo1, out, info );
 			NifStream( exportInfo.exportInfo2, out, info );
-			if ( ((info.version >= 0x14020007) && ((info.userVersion >= 12) && (info.userVersion2 >= 130))) ) {
-				NifStream( exportInfo.exportInfo3, out, info );
-			};
 		};
+	};
+	if ( ((version >= 0x14020007) && ((userVersion >= 12) && (userVersion2 >= 130))) ) {
+		NifStream( exportInfo3, out, info );
 	};
 	if ( info.version >= 0x0A000100 ) {
 		NifStream( numBlockTypes, out, info );
@@ -251,7 +246,9 @@ string Header::asString( bool verbose ) const {
 	out << "  Creator:  " << exportInfo.creator << endl;
 	out << "  Export Info 1:  " << exportInfo.exportInfo1 << endl;
 	out << "  Export Info 2:  " << exportInfo.exportInfo2 << endl;
-	out << "  Export Info 3:  " << exportInfo.exportInfo3 << endl;
+	if ( ((version >= 0x14020007) && ((userVersion >= 12) && (userVersion2 >= 130))) ) {
+		out << "    Export Info 3:  " << exportInfo3 << endl;
+	};
 	out << "  Num Block Types:  " << numBlockTypes << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < blockTypes.size(); i1++) {

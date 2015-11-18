@@ -916,11 +916,11 @@ namespace Niflib {
 		ObjectRegistry::RegisterObject( "bhkPhysicsSystem", bhkPhysicsSystem::Create );
 		ObjectRegistry::RegisterObject( "bhkRagdollSystem", bhkRagdollSystem::Create );
 		ObjectRegistry::RegisterObject( "BSClothExtraData", BSClothExtraData::Create );
-		ObjectRegistry::RegisterObject( "BSSkin__Instance", BSSkin__Instance::Create );
-		ObjectRegistry::RegisterObject( "BSSkin__BoneData", BSSkin__BoneData::Create );
+		ObjectRegistry::RegisterObject( "BSSkin::Instance", BSSkin__Instance::Create );
+		ObjectRegistry::RegisterObject( "BSSkin::BoneData", BSSkin__BoneData::Create );
 		ObjectRegistry::RegisterObject( "BSPositionData", BSPositionData::Create );
-		ObjectRegistry::RegisterObject( "BSConnectPoint__Parents", BSConnectPoint__Parents::Create );
-		ObjectRegistry::RegisterObject( "BSConnectPoint__Children", BSConnectPoint__Children::Create );
+		ObjectRegistry::RegisterObject( "BSConnectPoint::Parents", BSConnectPoint__Parents::Create );
+		ObjectRegistry::RegisterObject( "BSConnectPoint::Children", BSConnectPoint__Children::Create );
 		ObjectRegistry::RegisterObject( "BSEyeCenterExtraData", BSEyeCenterExtraData::Create );
 
 	}

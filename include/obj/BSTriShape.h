@@ -236,7 +236,7 @@ public:
 	// Do we have lighting normals? These are essential for proper lighting: if not
 	// present, the model will only be influenced by ambient light.
 	// \return The current value.
-	NIFLIB_API bool GetHasNormals() const;
+	NIFLIB_API bool HasNormals() const;
 
 	// Unknown. Binormal & tangents? has_normals must be set as well for this field to
 	// be present.
@@ -247,8 +247,24 @@ public:
 	// \return The current value.
 	NIFLIB_API vector<Vector3 > GetTangents() const;
 
+	// Do we have bone weights?
+	// \return Whether skinning data is present
+	NIFLIB_API bool HasSkin() const;
 
+	/*!
+	* Retrieves the skin weights for a particular bone.  This information includes the vertex index into the geometry data's vertex array, and the percentage weight that defines how much the movement of this bone influences its position.
+	* \param[in] bone_index The numeric index of the bone that the skin weight data should be returned for.  Must be >= zero and < the number returned by GetBoneCount.
+	* \return The skin weight data for the specified bone.
+	*/
+	NIFLIB_API int GetBoneWeights(unsigned int vertexIdx, float weights[4], int bones[4]) const;
+	
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API Ref<NiObject > GetSkin() const;
 
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSkin(Ref<NiObject > value);
 
 	// Unknown.
 	// \return The current value.

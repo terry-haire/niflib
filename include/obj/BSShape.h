@@ -20,7 +20,7 @@ namespace Niflib {
 class BSShape;
 typedef Ref<BSShape> BSShapeRef;
 
-/*!  */
+/*! Fallout 4 */
 class BSShape : public NiAVObject {
 public:
 	/*! Constructor */

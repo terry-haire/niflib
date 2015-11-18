@@ -359,6 +359,8 @@
     <ClCompile Include="src\gen\ByteColor3.cpp" />
     <ClCompile Include="src\gen\ByteColor4.cpp" />
     <ClCompile Include="src\gen\ByteMatrix.cpp" />
+    <ClCompile Include="src\gen\ByteVector3.cpp" />
+    <ClCompile Include="src\gen\ByteVector4.cpp" />
     <ClCompile Include="src\gen\CapsuleBV.cpp" />
     <ClCompile Include="src\gen\ChannelData.cpp" />
     <ClCompile Include="src\gen\ControllerLink.cpp" />
@@ -944,6 +946,8 @@
     <ClInclude Include="include\gen\ByteColor3.h" />
     <ClInclude Include="include\gen\ByteColor4.h" />
     <ClInclude Include="include\gen\ByteMatrix.h" />
+    <ClInclude Include="include\gen\ByteVector3.h" />
+    <ClInclude Include="include\gen\ByteVector4.h" />
     <ClInclude Include="include\gen\CapsuleBV.h" />
     <ClInclude Include="include\gen\ChannelData.h" />
     <ClInclude Include="include\gen\ControllerLink.h" />

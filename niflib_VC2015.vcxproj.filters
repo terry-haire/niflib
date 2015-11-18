@@ -1743,6 +1743,12 @@
     <ClCompile Include="src\obj\NiLightRadiusController.cpp">
       <Filter>Source Files\obj</Filter>
     </ClCompile>
+    <ClCompile Include="src\gen\ByteVector4.cpp">
+      <Filter>Source Files\gen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gen\ByteVector3.cpp">
+      <Filter>Source Files\gen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ComplexShape.h">
@@ -3483,6 +3489,12 @@
       <Filter>Header Files\gen</Filter>
     </ClInclude>
     <ClInclude Include="include\gen\PosKeyGroup.h">
+      <Filter>Header Files\gen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gen\ByteVector4.h">
+      <Filter>Header Files\gen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gen\ByteVector3.h">
       <Filter>Header Files\gen</Filter>
     </ClInclude>
   </ItemGroup>

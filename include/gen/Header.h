@@ -54,6 +54,8 @@ struct Header {
 	unsigned int unknownInt3;
 	/*! Unknown. */
 	ExportInfo exportInfo;
+	/*! Unknown. */
+	ShortString exportInfo3;
 	/*! Number of object types in this NIF file. */
 	mutable unsigned short numBlockTypes;
 	/*! List of all object types used in this NIF file. */

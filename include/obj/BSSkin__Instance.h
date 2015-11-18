@@ -89,6 +89,23 @@ public:
 
 	//--BEGIN MISC CUSTOM CODE--//
 
+
+	// Unknown.
+	// \return The current value.
+	Ref<BSSkin__BoneData> GetBoneData() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetBoneData(Ref<BSSkin__BoneData > value);
+
+	// Unknown.
+	// \return The current value.
+	vector<Ref<NiNode>> GetBones() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetBones(const vector<Ref<NiNode> >& value);
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown. */

@@ -13,6 +13,7 @@ All rights reserved.  Please see niflib.h for license. */
 // Include structures
 #include "HalfVector3.h"
 #include "HalfTexCoord.h"
+#include "ByteVector3.h"
 #include "ByteColor4.h"
 namespace Niflib {
 
@@ -30,23 +31,27 @@ struct BSVertexData {
 	/*! Unknown. */
 	HalfVector3 vertex;
 	/*! Unknown. */
-	hfloat dotnormal_;
-	/*! Unknown. */
-	HalfTexCoord uv;
-	/*! Unknown. */
-	array<8,byte > unknown8Bytes;
-	/*! Unknown. */
-	ByteColor4 vertexColors;
-	/*! Unknown. */
-	array<2,unsigned int > unknown2Ints;
-	/*! Unknown. */
-	array<4,hfloat > unknown4Halfs;
-	/*! Unknown. */
-	array<4,byte > unknown4Bytes;
+	hfloat unknownDot;
 	/*! Unknown. */
 	unsigned int unknownInt1;
 	/*! Unknown. */
-	array<2,unsigned int > unknown2Ints2;
+	HalfTexCoord uv;
+	/*! Unknown. */
+	ByteVector3 normal;
+	/*! Unknown. */
+	byte unknownByte1;
+	/*! Unknown. */
+	ByteVector3 tangent;
+	/*! Unknown. */
+	byte unknownByte2;
+	/*! Unknown. */
+	ByteColor4 vertexColors;
+	/*! Unknown. */
+	array<4,hfloat > boneWeights;
+	/*! Unknown. */
+	array<4,byte > boneIndices;
+	/*! Unknown. */
+	unsigned int unknownInt2;
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

@@ -19,7 +19,7 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSSkin__BoneData::TYPE("BSSkin__BoneData", &NiObject::TYPE );
+const Type BSSkin__BoneData::TYPE("BSSkin::BoneData", &NiObject::TYPE );
 
 BSSkin__BoneData::BSSkin__BoneData() : numBones((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
@@ -149,5 +149,37 @@ void BSSkin::BoneData::SetBones( const vector<BSSkinBoneTrans >& value ) {
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
+
+
+Matrix44 BSSkin__BoneData::GetOverallTransform() const {
+	//return Matrix44(skinTransform.translation, skinTransform.rotation, skinTransform.scale);
+	return Matrix44::IDENTITY;
+}
+
+void BSSkin__BoneData::SetOverallTransform(const Matrix44 & transform) {
+	//transform.Decompose(skinTransform.translation, skinTransform.rotation, skinTransform.scale);
+}
+
+vector<BSSkinBoneTrans > BSSkin__BoneData::GetBones() const {
+	return bones;
+}
+
+void BSSkin__BoneData::SetBones(const vector<BSSkinBoneTrans >& value) {
+	bones = value;
+}
+
+
+unsigned int BSSkin__BoneData::GetBoneCount() const {
+	return (unsigned int)(bones.size());
+}
+
+Matrix44 BSSkin__BoneData::GetBoneTransform(unsigned int bone_index) const {
+	if (bone_index > bones.size()) {
+		throw runtime_error("The specified bone index was larger than the number of bones in this BSSkin::BoneData.");
+	}
+	return Matrix44(bones[bone_index].translation
+		, bones[bone_index].rotation
+		, bones[bone_index].scale);
+}
 
 //--END CUSTOM CODE--//

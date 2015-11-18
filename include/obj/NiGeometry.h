@@ -82,11 +82,11 @@ public:
 	// \param[in] value The new value.
 	void SetSkinInstance( Ref<NiSkinInstance > value );
 
-	// Replacement for Data and Skin Instance
+	// Placeholder for Skin and data for NiParticleSystem
 	// \return The current value.
 	array<2,unsigned int >  GetEmptyRefs() const;
 
-	// Replacement for Data and Skin Instance
+	// Placeholder for Skin and data for NiParticleSystem
 	// \param[in] value The new value.
 	void SetEmptyRefs( const array<2,unsigned int >&  value );
 
@@ -304,8 +304,8 @@ public:
 			return StaticCast<U>(GetBSPropertyOfType(U::TYPE));
 		}
 	protected:
-		const NiProperty* GetBSPropertyOfType(const Niflib::Type& type) const;
-		NiProperty* GetBSPropertyOfType(const Niflib::Type& type);
+		NIFLIB_API const NiProperty* GetBSPropertyOfType(const Niflib::Type& type) const;
+		NIFLIB_API NiProperty* GetBSPropertyOfType(const Niflib::Type& type);
 
 	//--END CUSTOM CODE--//
 protected:
@@ -313,7 +313,7 @@ protected:
 	Ref<NiGeometryData > data;
 	/*! Skin instance index. */
 	Ref<NiSkinInstance > skinInstance;
-	/*! Replacement for Data and Skin Instance */
+	/*! Placeholder for Skin and data for NiParticleSystem */
 	array<2,unsigned int > emptyRefs;
 	/*! Num Materials */
 	mutable unsigned int numMaterials;

@@ -5,28 +5,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 //To change this file, alter the niftools/docsys/gen_niflib.py Python script.
 
-#include "../../include/gen/ExportInfo.h"
+#include "../../include/gen/ByteVector3.h"
 using namespace Niflib;
 
 //Constructor
-ExportInfo::ExportInfo() : unknown((unsigned int)3) {};
+ByteVector3::ByteVector3() : x((byte)0), y((byte)0), z((byte)0) {};
 
 //Copy Constructor
-ExportInfo::ExportInfo( const ExportInfo & src ) {
+ByteVector3::ByteVector3( const ByteVector3 & src ) {
 	*this = src;
 };
 
 //Copy Operator
-ExportInfo & ExportInfo::operator=( const ExportInfo & src ) {
-	this->unknown = src.unknown;
-	this->creator = src.creator;
-	this->exportInfo1 = src.exportInfo1;
-	this->exportInfo2 = src.exportInfo2;
+ByteVector3 & ByteVector3::operator=( const ByteVector3 & src ) {
+	this->x = src.x;
+	this->y = src.y;
+	this->z = src.z;
 	return *this;
 };
 
 //Destructor
-ExportInfo::~ExportInfo() {};
+ByteVector3::~ByteVector3() {};
 
 //--BEGIN MISC CUSTOM CODE--//
+
 //--END CUSTOM CODE--//
