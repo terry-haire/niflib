@@ -80,67 +80,11 @@ public:
 
 	// Unknown.
 	// \return The current value.
-	byte GetVertexflag1() const;
+	array<8,byte >  GetVertexFlags() const;
 
 	// Unknown.
 	// \param[in] value The new value.
-	void SetVertexflag1( byte value );
-
-	// Unknown.
-	// \return The current value.
-	byte GetVertexflag2() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetVertexflag2( byte value );
-
-	// Unknown.
-	// \return The current value.
-	byte GetVertexflag3() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetVertexflag3( byte value );
-
-	// Unknown.
-	// \return The current value.
-	byte GetVertexflag4() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetVertexflag4( byte value );
-
-	// Unknown.
-	// \return The current value.
-	byte GetVertexflag5() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetVertexflag5( byte value );
-
-	// Unknown.
-	// \return The current value.
-	byte GetVertexflag6() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetVertexflag6( byte value );
-
-	// Unknown.
-	// \return The current value.
-	byte GetVertexflag7() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetVertexflag7( byte value );
-
-	// Unknown.
-	// \return The current value.
-	byte GetVertexflag8() const;
-
-	// Unknown.
-	// \param[in] value The new value.
-	void SetVertexflag8( byte value );
+	void SetVertexFlags( const array<8,byte >&  value );
 
 	// Unknown.
 	// \return The current value.
@@ -238,6 +182,11 @@ public:
 	// \return The current value.
 	NIFLIB_API bool HasNormals() const;
 
+	// Do we have lighting normals? These are essential for proper lighting: if not
+	// present, the model will only be influenced by ambient light.
+	// \return The current value.
+	NIFLIB_API bool HasTangentSpace() const;
+
 	// Unknown. Binormal & tangents? has_normals must be set as well for this field to
 	// be present.
 	// \return The current value.
@@ -291,21 +240,7 @@ protected:
 	/*! Unknown. */
 	array<2,Ref<NiProperty > > bsProperties;
 	/*! Unknown. */
-	byte vertexflag1;
-	/*! Unknown. */
-	byte vertexflag2;
-	/*! Unknown. */
-	byte vertexflag3;
-	/*! Unknown. */
-	byte vertexflag4;
-	/*! Unknown. */
-	byte vertexflag5;
-	/*! Unknown. */
-	byte vertexflag6;
-	/*! Unknown. */
-	byte vertexflag7;
-	/*! Unknown. */
-	byte vertexflag8;
+	array<8,byte > vertexFlags;
 	/*! Unknown. */
 	mutable unsigned int numTriangles;
 	/*! Unknown. */

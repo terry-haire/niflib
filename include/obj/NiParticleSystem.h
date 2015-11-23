@@ -117,9 +117,9 @@ protected:
 	/*! Unknown */
 	unsigned int unknownInt1;
 	/*! Unknown */
-	int unknownInteger3;
-	/*! Unknown */
 	int unknownInteger4;
+	/*! Unknown */
+	int unknownInteger5;
 	/*! Unknown */
 	Ref<NiPSysData > data_;
 	/*!

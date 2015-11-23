@@ -27,7 +27,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSTriShape::TYPE("BSTriShape", &BSShape::TYPE );
 
-BSTriShape::BSTriShape() : skin(NULL), vertexflag1((byte)0), vertexflag2((byte)0), vertexflag3((byte)0), vertexflag4((byte)0), vertexflag5((byte)0), vertexflag6((byte)0), vertexflag7((byte)0), vertexflag8((byte)0), numTriangles((unsigned int)0), numVertices((unsigned short)0), dataSize((unsigned int)0) {
+BSTriShape::BSTriShape() : skin(NULL), numTriangles((unsigned int)0), numVertices((unsigned short)0), dataSize((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -60,14 +60,9 @@ void BSTriShape::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 	};
-	NifStream( vertexflag1, in, info );
-	NifStream( vertexflag2, in, info );
-	NifStream( vertexflag3, in, info );
-	NifStream( vertexflag4, in, info );
-	NifStream( vertexflag5, in, info );
-	NifStream( vertexflag6, in, info );
-	NifStream( vertexflag7, in, info );
-	NifStream( vertexflag8, in, info );
+	for (unsigned int i1 = 0; i1 < 8; i1++) {
+		NifStream( vertexFlags[i1], in, info );
+	};
 	NifStream( numTriangles, in, info );
 	NifStream( numVertices, in, info );
 	NifStream( dataSize, in, info );
@@ -77,31 +72,35 @@ void BSTriShape::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 			NifStream( vertexData[i2].vertex.x, in, info );
 			NifStream( vertexData[i2].vertex.y, in, info );
 			NifStream( vertexData[i2].vertex.z, in, info );
-			NifStream( vertexData[i2].unknownDot, in, info );
-			if ( (vertexflag1 == 3) ) {
-				NifStream( vertexData[i2].unknownInt1, in, info );
+			if ( ((vertexFlags[5] & 0x80) && (vertexFlags[2] & 0x40)) ) {
+				NifStream( vertexData[i2].bitangentX, in, info );
 			};
-			if ( (vertexflag1 > 4) ) {
+			if ( (!((vertexFlags[5] & 0x80) && (vertexFlags[2] & 0x40))) ) {
+				NifStream( vertexData[i2].unknownShort1, in, info );
+			};
+			if ( (vertexFlags[5] & 0x20) ) {
 				NifStream( vertexData[i2].uv.u, in, info );
 				NifStream( vertexData[i2].uv.v, in, info );
 			};
-			if ( ((vertexflag1 > 3) && (vertexflag1 != 7)) ) {
+			if ( (vertexFlags[5] & 0x80) ) {
 				NifStream( vertexData[i2].normal.x, in, info );
 				NifStream( vertexData[i2].normal.y, in, info );
 				NifStream( vertexData[i2].normal.z, in, info );
-				NifStream( vertexData[i2].unknownByte1, in, info );
+				NifStream( vertexData[i2].bitangentY, in, info );
+			};
+			if ( (vertexFlags[2] & 0x40) ) {
 				NifStream( vertexData[i2].tangent.x, in, info );
 				NifStream( vertexData[i2].tangent.y, in, info );
 				NifStream( vertexData[i2].tangent.z, in, info );
-				NifStream( vertexData[i2].unknownByte2, in, info );
+				NifStream( vertexData[i2].bitangentZ, in, info );
 			};
-			if ( ((vertexflag1 == 6) || ((vertexflag1 == 7) || ((vertexflag1 == 9) || (vertexflag1 == 10)))) ) {
+			if ( (vertexFlags[6] & 0x02) ) {
 				NifStream( vertexData[i2].vertexColors.r, in, info );
 				NifStream( vertexData[i2].vertexColors.g, in, info );
 				NifStream( vertexData[i2].vertexColors.b, in, info );
 				NifStream( vertexData[i2].vertexColors.a, in, info );
 			};
-			if ( (vertexflag1 > 6) ) {
+			if ( (vertexFlags[6] & 0x04) ) {
 				for (unsigned int i4 = 0; i4 < 4; i4++) {
 					NifStream( vertexData[i2].boneWeights[i4], in, info );
 				};
@@ -109,7 +108,7 @@ void BSTriShape::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 					NifStream( vertexData[i2].boneIndices[i4], in, info );
 				};
 			};
-			if ( (vertexflag1 == 10) ) {
+			if ( (vertexFlags[6] & 0x10) ) {
 				NifStream( vertexData[i2].unknownInt2, in, info );
 			};
 		};
@@ -169,14 +168,9 @@ void BSTriShape::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 			}
 		}
 	};
-	NifStream( vertexflag1, out, info );
-	NifStream( vertexflag2, out, info );
-	NifStream( vertexflag3, out, info );
-	NifStream( vertexflag4, out, info );
-	NifStream( vertexflag5, out, info );
-	NifStream( vertexflag6, out, info );
-	NifStream( vertexflag7, out, info );
-	NifStream( vertexflag8, out, info );
+	for (unsigned int i1 = 0; i1 < 8; i1++) {
+		NifStream( vertexFlags[i1], out, info );
+	};
 	NifStream( numTriangles, out, info );
 	NifStream( numVertices, out, info );
 	NifStream( dataSize, out, info );
@@ -185,31 +179,35 @@ void BSTriShape::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 			NifStream( vertexData[i2].vertex.x, out, info );
 			NifStream( vertexData[i2].vertex.y, out, info );
 			NifStream( vertexData[i2].vertex.z, out, info );
-			NifStream( vertexData[i2].unknownDot, out, info );
-			if ( (vertexflag1 == 3) ) {
-				NifStream( vertexData[i2].unknownInt1, out, info );
+			if ( ((vertexFlags[5] & 0x80) && (vertexFlags[2] & 0x40)) ) {
+				NifStream( vertexData[i2].bitangentX, out, info );
 			};
-			if ( (vertexflag1 > 4) ) {
+			if ( (!((vertexFlags[5] & 0x80) && (vertexFlags[2] & 0x40))) ) {
+				NifStream( vertexData[i2].unknownShort1, out, info );
+			};
+			if ( (vertexFlags[5] & 0x20) ) {
 				NifStream( vertexData[i2].uv.u, out, info );
 				NifStream( vertexData[i2].uv.v, out, info );
 			};
-			if ( ((vertexflag1 > 3) && (vertexflag1 != 7)) ) {
+			if ( (vertexFlags[5] & 0x80) ) {
 				NifStream( vertexData[i2].normal.x, out, info );
 				NifStream( vertexData[i2].normal.y, out, info );
 				NifStream( vertexData[i2].normal.z, out, info );
-				NifStream( vertexData[i2].unknownByte1, out, info );
+				NifStream( vertexData[i2].bitangentY, out, info );
+			};
+			if ( (vertexFlags[2] & 0x40) ) {
 				NifStream( vertexData[i2].tangent.x, out, info );
 				NifStream( vertexData[i2].tangent.y, out, info );
 				NifStream( vertexData[i2].tangent.z, out, info );
-				NifStream( vertexData[i2].unknownByte2, out, info );
+				NifStream( vertexData[i2].bitangentZ, out, info );
 			};
-			if ( ((vertexflag1 == 6) || ((vertexflag1 == 7) || ((vertexflag1 == 9) || (vertexflag1 == 10)))) ) {
+			if ( (vertexFlags[6] & 0x02) ) {
 				NifStream( vertexData[i2].vertexColors.r, out, info );
 				NifStream( vertexData[i2].vertexColors.g, out, info );
 				NifStream( vertexData[i2].vertexColors.b, out, info );
 				NifStream( vertexData[i2].vertexColors.a, out, info );
 			};
-			if ( (vertexflag1 > 6) ) {
+			if ( (vertexFlags[6] & 0x04) ) {
 				for (unsigned int i4 = 0; i4 < 4; i4++) {
 					NifStream( vertexData[i2].boneWeights[i4], out, info );
 				};
@@ -217,7 +215,7 @@ void BSTriShape::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 					NifStream( vertexData[i2].boneIndices[i4], out, info );
 				};
 			};
-			if ( (vertexflag1 == 10) ) {
+			if ( (vertexFlags[6] & 0x10) ) {
 				NifStream( vertexData[i2].unknownInt2, out, info );
 			};
 		};
@@ -264,14 +262,18 @@ std::string BSTriShape::asString( bool verbose ) const {
 		out << "    BS Properties[" << i1 << "]:  " << bsProperties[i1] << endl;
 		array_output_count++;
 	};
-	out << "  VertexFlag1:  " << vertexflag1 << endl;
-	out << "  VertexFlag2:  " << vertexflag2 << endl;
-	out << "  VertexFlag3:  " << vertexflag3 << endl;
-	out << "  VertexFlag4:  " << vertexflag4 << endl;
-	out << "  VertexFlag5:  " << vertexflag5 << endl;
-	out << "  VertexFlag6:  " << vertexflag6 << endl;
-	out << "  VertexFlag7:  " << vertexflag7 << endl;
-	out << "  VertexFlag8:  " << vertexflag8 << endl;
+	array_output_count = 0;
+	for (unsigned int i1 = 0; i1 < 8; i1++) {
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
+			break;
+		};
+		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			break;
+		};
+		out << "    Vertex Flags[" << i1 << "]:  " << vertexFlags[i1] << endl;
+		array_output_count++;
+	};
 	out << "  Num Triangles:  " << numTriangles << endl;
 	out << "  Num Vertices:  " << numVertices << endl;
 	out << "  Data Size:  " << dataSize << endl;
@@ -285,31 +287,35 @@ std::string BSTriShape::asString( bool verbose ) const {
 			out << "      x:  " << vertexData[i2].vertex.x << endl;
 			out << "      y:  " << vertexData[i2].vertex.y << endl;
 			out << "      z:  " << vertexData[i2].vertex.z << endl;
-			out << "      Unknown Dot:  " << vertexData[i2].unknownDot << endl;
-			if ( (vertexflag1 == 3) ) {
-				out << "        Unknown Int 1:  " << vertexData[i2].unknownInt1 << endl;
+			if ( ((vertexFlags[5] & 0x80) && (vertexFlags[2] & 0x40)) ) {
+				out << "        Bitangent x:  " << vertexData[i2].bitangentX << endl;
 			};
-			if ( (vertexflag1 > 4) ) {
+			if ( (!((vertexFlags[5] & 0x80) && (vertexFlags[2] & 0x40))) ) {
+				out << "        Unknown Short 1:  " << vertexData[i2].unknownShort1 << endl;
+			};
+			if ( (vertexFlags[5] & 0x20) ) {
 				out << "        u:  " << vertexData[i2].uv.u << endl;
 				out << "        v:  " << vertexData[i2].uv.v << endl;
 			};
-			if ( ((vertexflag1 > 3) && (vertexflag1 != 7)) ) {
+			if ( (vertexFlags[5] & 0x80) ) {
 				out << "        x:  " << vertexData[i2].normal.x << endl;
 				out << "        y:  " << vertexData[i2].normal.y << endl;
 				out << "        z:  " << vertexData[i2].normal.z << endl;
-				out << "        Unknown Byte 1:  " << vertexData[i2].unknownByte1 << endl;
+				out << "        Bitangent y:  " << vertexData[i2].bitangentY << endl;
+			};
+			if ( (vertexFlags[2] & 0x40) ) {
 				out << "        x:  " << vertexData[i2].tangent.x << endl;
 				out << "        y:  " << vertexData[i2].tangent.y << endl;
 				out << "        z:  " << vertexData[i2].tangent.z << endl;
-				out << "        Unknown Byte 2:  " << vertexData[i2].unknownByte2 << endl;
+				out << "        Bitangent z:  " << vertexData[i2].bitangentZ << endl;
 			};
-			if ( ((vertexflag1 == 6) || ((vertexflag1 == 7) || ((vertexflag1 == 9) || (vertexflag1 == 10)))) ) {
+			if ( (vertexFlags[6] & 0x02) ) {
 				out << "        r:  " << vertexData[i2].vertexColors.r << endl;
 				out << "        g:  " << vertexData[i2].vertexColors.g << endl;
 				out << "        b:  " << vertexData[i2].vertexColors.b << endl;
 				out << "        a:  " << vertexData[i2].vertexColors.a << endl;
 			};
-			if ( (vertexflag1 > 6) ) {
+			if ( (vertexFlags[6] & 0x04) ) {
 				array_output_count = 0;
 				for (unsigned int i4 = 0; i4 < 4; i4++) {
 					if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
@@ -335,7 +341,7 @@ std::string BSTriShape::asString( bool verbose ) const {
 					array_output_count++;
 				};
 			};
-			if ( (vertexflag1 == 10) ) {
+			if ( (vertexFlags[6] & 0x10) ) {
 				out << "        Unknown Int 2:  " << vertexData[i2].unknownInt2 << endl;
 			};
 		};
@@ -417,68 +423,12 @@ void BSTriShape::SetBsProperties( const array<2,Ref<NiProperty > >&  value ) {
 	bsProperties = value;
 }
 
-byte BSTriShape::GetVertexflag1() const {
-	return vertexflag1;
+array<8,byte >  BSTriShape::GetVertexFlags() const {
+	return vertexFlags;
 }
 
-void BSTriShape::SetVertexflag1( byte value ) {
-	vertexflag1 = value;
-}
-
-byte BSTriShape::GetVertexflag2() const {
-	return vertexflag2;
-}
-
-void BSTriShape::SetVertexflag2( byte value ) {
-	vertexflag2 = value;
-}
-
-byte BSTriShape::GetVertexflag3() const {
-	return vertexflag3;
-}
-
-void BSTriShape::SetVertexflag3( byte value ) {
-	vertexflag3 = value;
-}
-
-byte BSTriShape::GetVertexflag4() const {
-	return vertexflag4;
-}
-
-void BSTriShape::SetVertexflag4( byte value ) {
-	vertexflag4 = value;
-}
-
-byte BSTriShape::GetVertexflag5() const {
-	return vertexflag5;
-}
-
-void BSTriShape::SetVertexflag5( byte value ) {
-	vertexflag5 = value;
-}
-
-byte BSTriShape::GetVertexflag6() const {
-	return vertexflag6;
-}
-
-void BSTriShape::SetVertexflag6( byte value ) {
-	vertexflag6 = value;
-}
-
-byte BSTriShape::GetVertexflag7() const {
-	return vertexflag7;
-}
-
-void BSTriShape::SetVertexflag7( byte value ) {
-	vertexflag7 = value;
-}
-
-byte BSTriShape::GetVertexflag8() const {
-	return vertexflag8;
-}
-
-void BSTriShape::SetVertexflag8( byte value ) {
-	vertexflag8 = value;
+void BSTriShape::SetVertexFlags( const array<8,byte >&  value ) {
+	vertexFlags = value;
 }
 
 unsigned int BSTriShape::GetDataSize() const {
@@ -509,6 +459,11 @@ void BSTriShape::SetTriangles( const vector<Triangle >& value ) {
 
 //--BEGIN MISC CUSTOM CODE--//
 
+static inline float ConvertByteToFloat(byte value) {
+	//return float(value) * 2.0f / 255.0f - 1.0f;
+	return float(value)  * 255.0f / 128.0f - 1.0f;
+}
+
 
 int BSTriShape::GetVertexCount() const {
 	return int(vertexData.size());
@@ -536,16 +491,16 @@ vector<Vector3> BSTriShape::GetVertices() const {
 
 vector<Vector3> BSTriShape::GetNormals() const {
 	vector<Vector3> normals;
+	normals.reserve(vertexData.size());
+	for (vector<BSVertexData>::const_iterator itr = vertexData.begin(); itr != vertexData.end(); ++itr) {
+		normals.push_back(Vector3(ConvertByteToFloat(itr->normal.x),
+			ConvertByteToFloat(itr->normal.y), ConvertByteToFloat(itr->normal.z)));
+	}
 	return normals;
 }
 
 bool BSTriShape::HasColors() const {
-	return (((vertexflag1 == 7) || ((vertexflag1 == 9) || (vertexflag1 == 10))));
-}
-
-static inline float ConvertByteToFloat(byte value) {
-	//return float(value) * 2.0f / 255.0f - 1.0f;
-	return float(value)  * 255.0f / 128.0f - 1.0f;
+	return (vertexFlags[5] & 0x20) != 0;
 }
 
 vector<Color4> BSTriShape::GetColors() const {
@@ -567,10 +522,14 @@ vector<TexCoord> BSTriShape::GetUVSet() const {
 	return tcs;
 }
 
-bool BSTriShape::HasNormals() const
-{
-	return (((vertexflag1 > 3) && ((vertexflag1 != 6) && (vertexflag1 != 7))));
+bool BSTriShape::HasNormals() const {
+	return (vertexFlags[5] & 0x80) != 0;
 }
+
+bool BSTriShape::HasTangentSpace() const {
+	return (vertexFlags[2] & 0x40) != 0;
+}
+
 
 vector<Vector3> BSTriShape::GetBitangents() const
 {
@@ -592,7 +551,7 @@ vector<Vector3> BSTriShape::GetTangents() const
 // Do we have bone weights?
 // \return Whether skinning data is present
 bool BSTriShape::HasSkin() const {
-	return (vertexflag1 >= 6);
+	return (vertexFlags[6] & 0x04) != 0;
 }
 
 Ref<NiObject > BSTriShape::GetSkin() const {

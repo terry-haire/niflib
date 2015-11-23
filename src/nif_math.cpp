@@ -32,7 +32,7 @@ float Niflib::ConvertHFloatToFloat(hfloat h) {
 }
 
 hfloat Niflib::ConvertFloatToHFloat(float f) {
-	return half_to_float(*static_cast<uint32_t*>(static_cast<void*>(&f)));
+	return half_from_float(*static_cast<uint32_t*>(static_cast<void*>(&f)));
 }
 
 /* TexCoord Methods

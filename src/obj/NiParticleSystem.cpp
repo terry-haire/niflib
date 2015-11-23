@@ -21,7 +21,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type NiParticleSystem::TYPE("NiParticleSystem", &NiParticles::TYPE );
 
-NiParticleSystem::NiParticleSystem() : unknownShort2((unsigned short)0), unknownShort3((unsigned short)0), unknownInt1((unsigned int)0), unknownInteger3((int)0), unknownInteger4((int)0), data_(NULL), worldSpace(false), numModifiers((unsigned int)0) {
+NiParticleSystem::NiParticleSystem() : unknownShort2((unsigned short)0), unknownShort3((unsigned short)0), unknownInt1((unsigned int)0), unknownInteger4((int)0), unknownInteger5((int)0), data_(NULL), worldSpace(false), numModifiers((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
@@ -51,8 +51,8 @@ void NiParticleSystem::Read( istream& in, list<unsigned int> & link_stack, const
 		NifStream( unknownInt1, in, info );
 	};
 	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion >= 12) && (info.userVersion2 >= 130)) ) ) {
-		NifStream( unknownInteger3, in, info );
 		NifStream( unknownInteger4, in, info );
+		NifStream( unknownInteger5, in, info );
 		NifStream( block_num, in, info );
 		link_stack.push_back( block_num );
 	};
@@ -82,8 +82,8 @@ void NiParticleSystem::Write( ostream& out, const map<NiObjectRef,unsigned int> 
 		NifStream( unknownInt1, out, info );
 	};
 	if ( ( info.version >= 0x14020007 ) && ( ((info.userVersion >= 12) && (info.userVersion2 >= 130)) ) ) {
-		NifStream( unknownInteger3, out, info );
 		NifStream( unknownInteger4, out, info );
+		NifStream( unknownInteger5, out, info );
 		if ( info.version < VER_3_3_0_13 ) {
 			WritePtr32( &(*data_), out );
 		} else {
@@ -141,8 +141,8 @@ std::string NiParticleSystem::asString( bool verbose ) const {
 	out << "  Unknown Short 2:  " << unknownShort2 << endl;
 	out << "  Unknown Short 3:  " << unknownShort3 << endl;
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
-	out << "  Unknown Integer 3:  " << unknownInteger3 << endl;
 	out << "  Unknown Integer 4:  " << unknownInteger4 << endl;
+	out << "  Unknown Integer 5:  " << unknownInteger5 << endl;
 	out << "  Data?:  " << data_ << endl;
 	out << "  World Space:  " << worldSpace << endl;
 	out << "  Num Modifiers:  " << numModifiers << endl;

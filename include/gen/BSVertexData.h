@@ -31,19 +31,19 @@ struct BSVertexData {
 	/*! Unknown. */
 	HalfVector3 vertex;
 	/*! Unknown. */
-	hfloat unknownDot;
-	/*! Unknown. */
-	unsigned int unknownInt1;
+	hfloat bitangentX;
+	/*! Normal nybble? */
+	unsigned int unknownShort1;
 	/*! Unknown. */
 	HalfTexCoord uv;
 	/*! Unknown. */
 	ByteVector3 normal;
 	/*! Unknown. */
-	byte unknownByte1;
+	byte bitangentY;
 	/*! Unknown. */
 	ByteVector3 tangent;
 	/*! Unknown. */
-	byte unknownByte2;
+	byte bitangentZ;
 	/*! Unknown. */
 	ByteColor4 vertexColors;
 	/*! Unknown. */
