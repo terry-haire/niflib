@@ -43,4 +43,61 @@ BSVertexData::~BSVertexData() {};
 
 //--BEGIN MISC CUSTOM CODE--//
 
+void BSVertexData::Clear()
+{
+	*this = BSVertexData();
+}
+
+Vector3 BSVertexData::GetVertex() const
+{
+	return Vector3(ConvertHFloatToFloat(vertex.x), ConvertHFloatToFloat(vertex.y), ConvertHFloatToFloat(vertex.z));
+}
+
+void BSVertexData::SetVertex(const Vector3& v)
+{
+	vertex.x = ConvertFloatToHFloat(v.x);
+	vertex.y = ConvertFloatToHFloat(v.y);
+	vertex.z = ConvertFloatToHFloat(v.z);
+}
+
+void BSVertexData::SetNormal(const Vector3& n)
+{
+	normal.x = ConvertFloatToByte(n.x);
+	normal.y = ConvertFloatToByte(n.y);
+	normal.z = ConvertFloatToByte(n.z);
+}
+
+void BSVertexData::SetUV(const TexCoord& tc)
+{
+	uv.u = ConvertFloatToHFloat(tc.u);
+	uv.v = ConvertFloatToHFloat(tc.v);
+}
+
+void BSVertexData::SetVertexColor(const Color4& vc)
+{
+	vertexColors.r = ConvertFloatToByte(vc.r);
+	vertexColors.g = ConvertFloatToByte(vc.g);
+	vertexColors.b = ConvertFloatToByte(vc.b);
+	vertexColors.a = ConvertFloatToByte(vc.a);
+}
+
+void BSVertexData::SetTangent(const Vector3& t)
+{
+	tangent.x = ConvertFloatToByte(t.x);
+	tangent.y = ConvertFloatToByte(t.y);
+	tangent.z = ConvertFloatToByte(t.z);
+}
+
+void BSVertexData::SetBitangent(const Vector3& b)
+{
+	bitangentX = ConvertFloatToHFloat(b.x);
+	bitangentY = ConvertFloatToByte(b.y);
+	bitangentZ = ConvertFloatToByte(b.z);
+}
+
+void BSVertexData::SetBoneWeight(int idx, int bone, float weight)
+{
+	boneIndices[idx] = byte(bone);
+	boneWeights[idx] = ConvertFloatToHFloat(weight);
+}
 //--END CUSTOM CODE--//

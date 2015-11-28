@@ -101,7 +101,7 @@ public:
 
 	// Unknown.
 	// \param[in] value The new value.
-	NIFLIB_API void SetBones(const vector<BSSkinBoneTrans >& value);
+	NIFLIB_API void SetBoneTransforms(const vector<BSSkinBoneTrans >& value);
 
 
 	//--END CUSTOM CODE--//

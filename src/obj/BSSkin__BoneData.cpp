@@ -50,8 +50,8 @@ void BSSkin__BoneData::Read( istream& in, list<unsigned int> & link_stack, const
 	NifStream( numBones, in, info );
 	bones.resize(numBones);
 	for (unsigned int i1 = 0; i1 < bones.size(); i1++) {
-		NifStream( bones[i1].boundingSphere_, in, info );
-		NifStream( bones[i1].radius_, in, info );
+		NifStream( bones[i1].bsCenter, in, info );
+		NifStream( bones[i1].bsRadius, in, info );
 		NifStream( bones[i1].rotation, in, info );
 		NifStream( bones[i1].translation, in, info );
 		NifStream( bones[i1].scale, in, info );
@@ -71,8 +71,8 @@ void BSSkin__BoneData::Write( ostream& out, const map<NiObjectRef,unsigned int> 
 	numBones = (unsigned int)(bones.size());
 	NifStream( numBones, out, info );
 	for (unsigned int i1 = 0; i1 < bones.size(); i1++) {
-		NifStream( bones[i1].boundingSphere_, out, info );
-		NifStream( bones[i1].radius_, out, info );
+		NifStream( bones[i1].bsCenter, out, info );
+		NifStream( bones[i1].bsRadius, out, info );
 		NifStream( bones[i1].rotation, out, info );
 		NifStream( bones[i1].translation, out, info );
 		NifStream( bones[i1].scale, out, info );
@@ -99,8 +99,8 @@ std::string BSSkin__BoneData::asString( bool verbose ) const {
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		out << "    Bounding Sphere?:  " << bones[i1].boundingSphere_ << endl;
-		out << "    Radius?:  " << bones[i1].radius_ << endl;
+		out << "    BS Center:  " << bones[i1].bsCenter << endl;
+		out << "    BS Radius:  " << bones[i1].bsRadius << endl;
 		out << "    Rotation:  " << bones[i1].rotation << endl;
 		out << "    Translation:  " << bones[i1].translation << endl;
 		out << "    Scale:  " << bones[i1].scale << endl;
@@ -164,7 +164,7 @@ vector<BSSkinBoneTrans > BSSkin__BoneData::GetBones() const {
 	return bones;
 }
 
-void BSSkin__BoneData::SetBones(const vector<BSSkinBoneTrans >& value) {
+void BSSkin__BoneData::SetBoneTransforms(const vector<BSSkinBoneTrans >& value) {
 	bones = value;
 }
 

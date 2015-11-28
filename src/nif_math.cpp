@@ -35,6 +35,16 @@ hfloat Niflib::ConvertFloatToHFloat(float f) {
 	return half_from_float(*static_cast<uint32_t*>(static_cast<void*>(&f)));
 }
 
+
+float Niflib::ConvertByteToFloat(byte value) {
+	//return float(value) * 2.0f / 255.0f - 1.0f;
+	return float(value)  * 255.0f / 128.0f - 1.0f;
+}
+
+byte Niflib::ConvertFloatToByte(float value) {
+	return byte((value + 1.0f) * 128.0f / 255.0f);
+}
+
 /* TexCoord Methods
  *
  */

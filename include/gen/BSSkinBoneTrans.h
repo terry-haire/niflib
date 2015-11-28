@@ -23,10 +23,10 @@ struct BSSkinBoneTrans {
 	NIFLIB_API BSSkinBoneTrans( const BSSkinBoneTrans & src );
 	/*! Copy Operator */
 	NIFLIB_API BSSkinBoneTrans & operator=( const BSSkinBoneTrans & src );
-	/*! Unknown. */
-	Vector3 boundingSphere_;
-	/*! Unknown. */
-	float radius_;
+	/*! Bounding Sphere Center */
+	Vector3 bsCenter;
+	/*! Bounding Sphere Radius */
+	float bsRadius;
 	/*! Unknown. */
 	Matrix33 rotation;
 	/*! Unknown. */
@@ -34,6 +34,30 @@ struct BSSkinBoneTrans {
 	/*! Unknown. */
 	float scale;
 	//--BEGIN MISC CUSTOM CODE--//
+	NIFLIB_API void SetBoundingSphere(Vector3& pos, float radius)
+	{
+		bsCenter = pos;
+		bsRadius = radius;
+	}
+
+	NIFLIB_API void SetTransform(Matrix44& transform)
+	{
+		rotation = transform.GetRotation();
+		translation = transform.GetTranslation();
+		scale = transform.GetScale();
+	}
+
+	NIFLIB_API Vector3 GetTranslation() const {
+		return translation;
+	}
+
+	NIFLIB_API Matrix33 GetRotation() const {
+		return rotation;
+	}
+
+	NIFLIB_API float GetScale() const {
+		return scale;
+	}
 
 	//--END CUSTOM CODE--//
 };

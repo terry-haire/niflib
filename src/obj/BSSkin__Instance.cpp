@@ -254,6 +254,19 @@ vector<NiNodeRef > BSSkin__Instance::GetBones() const {
 }
 
 void BSSkin__Instance::SetBones(const vector<Ref<NiNode> >& value) {
+
+	//Add the bones to the internal list
+	bones.resize(value.size());
+	for (unsigned int i = 0; i < value.size(); ++i) {
+		bones[i] = value[i];
+	}
+
+	//Flag any bones that are part of this skin instance
+	for (unsigned int i = 0; i < bones.size(); ++i) {
+		if (bones[i] != nullptr) {
+			bones[i]->SetSkinFlag(true);
+		}
+	}
 	//bones = value;
 }
 

@@ -53,6 +53,17 @@ struct BSVertexData {
 	/*! Unknown. */
 	unsigned int unknownInt2;
 	//--BEGIN MISC CUSTOM CODE--//
+	void Clear();
+
+	Vector3 GetVertex() const;
+
+	void SetVertex(const Vector3& v);
+	void SetNormal(const Vector3& n);
+	void SetUV(const TexCoord& tc);
+	void SetVertexColor(const Color4& vc);
+	void SetTangent(const Vector3& t);
+	void SetBitangent(const Vector3& b);
+	void SetBoneWeight(int idx, int bone, float weight);
 
 	//--END CUSTOM CODE--//
 };

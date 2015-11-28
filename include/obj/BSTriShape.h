@@ -116,6 +116,32 @@ public:
 
 
 	/*!
+	* Adds a property to this object.  Properties specify various characteristics of the object that affect rendering.  They may be shared among objects.
+	* \param[in] obj The new property that is to affect this object.
+	*/
+	NIFLIB_API virtual void AddProperty(NiProperty * obj);
+
+	/*!
+	* Removes a property from this object.  Properties specify various characteristics of the object that affect rendering.  They may be shared among objects.
+	* \param[in] obj The property that is no longer to affect this object.
+	*/
+	NIFLIB_API virtual void RemoveProperty(NiProperty * obj);
+
+	/*!
+	* Removes all properties from this object.  Properties specify various characteristics of the object that affect rendering.  They may be shared among objects.
+	*/
+	NIFLIB_API virtual void ClearProperties();
+
+	// Two property links, used by Bethesda.
+	// \return The current value.
+	NIFLIB_API Ref<NiProperty> GetBSProperty(int index) const;
+
+	// Two property links, used by Bethesda.
+	// \param[in] value The new value.
+	NIFLIB_API void SetBSProperty(int index, const Ref<NiProperty>&  value);
+
+
+	/*!
 	* Returns the number of verticies that make up this mesh.  This is also the number of normals, colors, and UV coordinates if these are used.
 	* \return The number of vertices that make up this mesh.
 	* \sa IShapeData::SetVertexCount
@@ -222,7 +248,10 @@ public:
 	// Unknown.
 	// \param[in] value The new value.
 	NIFLIB_API void SetVertexData(const vector<BSVertexData >& value);
-	
+
+	// Set VertexFlags from features
+	NIFLIB_API void SetVertexFlags(bool uv, bool vc, bool normal, bool tangent, bool skin);
+
 	// Unknown.
 	// \return The current value.
 	NIFLIB_API const vector<Triangle>& GetTriangles() const;
@@ -230,7 +259,9 @@ public:
 	// Unknown.
 	// \param[in] value The new value.
 	NIFLIB_API void SetTriangles(const vector<Triangle >& value);
-	
+
+private:
+	int dataSizeCalc(const NifInfo & info) const;
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown. */
@@ -246,7 +277,7 @@ protected:
 	/*! Unknown. */
 	mutable unsigned short numVertices;
 	/*! Unknown. */
-	unsigned int dataSize;
+	mutable unsigned int dataSize;
 	/*! Unknown. */
 	vector<BSVertexData > vertexData;
 	/*! Unknown. */

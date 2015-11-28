@@ -9,7 +9,7 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSSkinBoneTrans::BSSkinBoneTrans() : radius_(0.0f), scale(0.0f) {};
+BSSkinBoneTrans::BSSkinBoneTrans() : bsRadius(0.0f), scale(0.0f) {};
 
 //Copy Constructor
 BSSkinBoneTrans::BSSkinBoneTrans( const BSSkinBoneTrans & src ) {
@@ -18,8 +18,8 @@ BSSkinBoneTrans::BSSkinBoneTrans( const BSSkinBoneTrans & src ) {
 
 //Copy Operator
 BSSkinBoneTrans & BSSkinBoneTrans::operator=( const BSSkinBoneTrans & src ) {
-	this->boundingSphere_ = src.boundingSphere_;
-	this->radius_ = src.radius_;
+	this->bsCenter = src.bsCenter;
+	this->bsRadius = src.bsRadius;
 	this->rotation = src.rotation;
 	this->translation = src.translation;
 	this->scale = src.scale;
