@@ -15,6 +15,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/ObjectRegistry.h"
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/BSTriShape.h"
+#include "../../include/gen/SphereBV.h"
 #include "../../include/gen/BSVertexData.h"
 #include "../../include/gen/HalfVector3.h"
 #include "../../include/gen/HalfTexCoord.h"
@@ -52,9 +53,8 @@ void BSTriShape::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 
 	unsigned int block_num;
 	BSShape::Read( in, link_stack, info );
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		NifStream( unknown4Floats[i1], in, info );
-	};
+	NifStream( bound.center, in, info );
+	NifStream( bound.radius, in, info );
 	NifStream( block_num, in, info );
 	link_stack.push_back( block_num );
 	for (unsigned int i1 = 0; i1 < 2; i1++) {
@@ -123,35 +123,6 @@ void BSTriShape::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 	//--END CUSTOM CODE--//
 }
 
-int BSTriShape::dataSizeCalc(const NifInfo & info) const
-{
-	BSVertexData *ptr = nullptr;
-	int size = triangles.size() * sizeof(Triangle);
-	int dataSize = sizeof(ptr->vertex) + sizeof(ptr->bitangentX);
-	if ((vertexFlags[5] & 32)) {
-		dataSize += sizeof(ptr->uv);
-	};
-	if ((vertexFlags[5] & 128)) {
-		dataSize += sizeof(ptr->normal);
-		dataSize += sizeof(ptr->bitangentY);
-	};
-	if ((vertexFlags[2] & 64)) {
-		dataSize += sizeof(ptr->tangent);
-		dataSize += sizeof(ptr->bitangentZ);
-	};
-	if ((vertexFlags[6] & 2)) {
-		dataSize += sizeof(ptr->vertexColors);
-	};
-	if ((vertexFlags[6] & 4)) {
-		dataSize += sizeof(hfloat)*4 + sizeof(byte)*4;
-	};
-	if ((vertexFlags[6] & 16)) {
-		dataSize += sizeof(ptr->unknownInt2);
-	};
-	size += dataSize * vertexData.size();
-	return size;
-}
-
 void BSTriShape::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
@@ -160,9 +131,8 @@ void BSTriShape::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 	dataSize = dataSizeCalc(info);
 	numVertices = (unsigned short)(vertexData.size());
 	numTriangles = (unsigned int)(triangles.size());
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		NifStream( unknown4Floats[i1], out, info );
-	};
+	NifStream( bound.center, out, info );
+	NifStream( bound.radius, out, info );
 	if ( info.version < VER_3_3_0_13 ) {
 		WritePtr32( &(*skin), out );
 	} else {
@@ -268,18 +238,8 @@ std::string BSTriShape::asString( bool verbose ) const {
 	out << BSShape::asString();
 	numVertices = (unsigned short)(vertexData.size());
 	numTriangles = (unsigned int)(triangles.size());
-	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
-			break;
-		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			break;
-		};
-		out << "    Unknown 4 Floats[" << i1 << "]:  " << unknown4Floats[i1] << endl;
-		array_output_count++;
-	};
+	out << "  Center:  " << bound.center << endl;
+	out << "  Radius:  " << bound.radius << endl;
 	out << "  Skin:  " << skin << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 2; i1++) {
@@ -438,6 +398,14 @@ std::list<NiObject *> BSTriShape::GetPtrs() const {
 
 /***Begin Example Naive Implementation****
 
+SphereBV BSTriShape::GetBound() const {
+	return bound;
+}
+
+void BSTriShape::SetBound( const SphereBV & value ) {
+	bound = value;
+}
+
 Ref<NiObject > BSTriShape::GetSkin() const {
 	return skin;
 }
@@ -491,6 +459,34 @@ void BSTriShape::SetTriangles( const vector<Triangle >& value ) {
 //--BEGIN MISC CUSTOM CODE--//
 
 
+int BSTriShape::dataSizeCalc(const NifInfo & info) const
+{
+	BSVertexData *ptr = nullptr;
+	int size = triangles.size() * sizeof(Triangle);
+	int dataSize = sizeof(ptr->vertex) + sizeof(ptr->bitangentX);
+	if ((vertexFlags[5] & 32)) {
+		dataSize += sizeof(ptr->uv);
+	};
+	if ((vertexFlags[5] & 128)) {
+		dataSize += sizeof(ptr->normal);
+		dataSize += sizeof(ptr->bitangentY);
+	};
+	if ((vertexFlags[2] & 64)) {
+		dataSize += sizeof(ptr->tangent);
+		dataSize += sizeof(ptr->bitangentZ);
+	};
+	if ((vertexFlags[6] & 2)) {
+		dataSize += sizeof(ptr->vertexColors);
+	};
+	if ((vertexFlags[6] & 4)) {
+		dataSize += sizeof(hfloat)*4 + sizeof(byte)*4;
+	};
+	if ((vertexFlags[6] & 16)) {
+		dataSize += sizeof(ptr->unknownInt2);
+	};
+	size += dataSize * vertexData.size();
+	return size;
+}
 
 #pragma region Property Management
 // Synchronize PropertyLink 1 and Property Link 2 with Property List
@@ -647,6 +643,14 @@ void BSTriShape::SetSkin(Ref<NiObject > value) {
 	skin = value;
 }
 
+SphereBV BSTriShape::GetBounds() const {
+	return bound;
+}
+
+void BSTriShape::SetBounds(const SphereBV & value) {
+	bound = value;
+}
+
 int BSTriShape::GetBoneWeights(unsigned int vertexIdx, float weights[4], int bones[4]) const {
 	if (vertexIdx < 0 || vertexIdx >= vertexData.size()) return 0;
 	const auto& vert = vertexData[vertexIdx];
@@ -721,6 +725,11 @@ void BSTriShape::SetVertexFlags(bool uv, bool vc, bool normal, bool tangent, boo
 		}
 	}
 	//if (unk10) mask.flags[6] |= 0x10;
+}
+
+
+bool BSTriShape::IsSkin() {
+	return HasSkin();
 }
 
 

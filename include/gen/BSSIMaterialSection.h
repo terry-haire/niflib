@@ -5,38 +5,38 @@ All rights reserved.  Please see niflib.h for license. */
 
 //To change this file, alter the niftools/docsys/gen_niflib.py Python script.
 
-#ifndef _SUBINDEXPART2_H_
-#define _SUBINDEXPART2_H_
+#ifndef _BSSIMATERIALSECTION_H_
+#define _BSSIMATERIALSECTION_H_
 
 #include "../NIF_IO.h"
 
 // Include structures
-#include "SubIndexRecordB.h"
+#include "BSSIMaterial.h"
 namespace Niflib {
 
 
 /*!  */
-struct SubIndexPart2 {
+struct BSSIMaterialSection {
 	/*! Default Constructor */
-	NIFLIB_API SubIndexPart2();
+	NIFLIB_API BSSIMaterialSection();
 	/*! Default Destructor */
-	NIFLIB_API ~SubIndexPart2();
+	NIFLIB_API ~BSSIMaterialSection();
 	/*! Copy Constructor */
-	NIFLIB_API SubIndexPart2( const SubIndexPart2 & src );
+	NIFLIB_API BSSIMaterialSection( const BSSIMaterialSection & src );
 	/*! Copy Operator */
-	NIFLIB_API SubIndexPart2 & operator=( const SubIndexPart2 & src );
+	NIFLIB_API BSSIMaterialSection & operator=( const BSSIMaterialSection & src );
 	/*! Unknown. */
-	mutable unsigned int numa2;
+	mutable unsigned int numSegments;
 	/*! Unknown. */
-	mutable unsigned int numb2;
+	mutable unsigned int numMaterials;
 	/*! Unknown. */
-	vector<unsigned int > recordA;
+	vector<unsigned int > emptyMaterials;
 	/*! Unknown. */
-	vector<SubIndexRecordB > recordB;
+	vector<BSSIMaterial > materials;
 	/*! Unknown. */
-	mutable unsigned short sspLength;
+	mutable unsigned short ssfLength;
 	/*! Unknown. */
-	vector<byte > sspFile;
+	vector<byte > ssfFile;
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

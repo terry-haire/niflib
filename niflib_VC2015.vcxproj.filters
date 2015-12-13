@@ -1728,18 +1728,6 @@
     <ClCompile Include="src\obj\bhkNPCollisionObject.cpp">
       <Filter>Source Files\obj</Filter>
     </ClCompile>
-    <ClCompile Include="src\gen\SubIndexRecordB.cpp">
-      <Filter>Source Files\gen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gen\SubIndexPart1.cpp">
-      <Filter>Source Files\gen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gen\SubIndexPart2.cpp">
-      <Filter>Source Files\gen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gen\SubIndexRecordA.cpp">
-      <Filter>Source Files\gen</Filter>
-    </ClCompile>
     <ClCompile Include="src\obj\NiLightRadiusController.cpp">
       <Filter>Source Files\obj</Filter>
     </ClCompile>
@@ -1747,6 +1735,18 @@
       <Filter>Source Files\gen</Filter>
     </ClCompile>
     <ClCompile Include="src\gen\ByteVector3.cpp">
+      <Filter>Source Files\gen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gen\BSSIMaterial.cpp">
+      <Filter>Source Files\gen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gen\BSSIMaterialSection.cpp">
+      <Filter>Source Files\gen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gen\BSSITSSegment.cpp">
+      <Filter>Source Files\gen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gen\BSSITSSubSegment.cpp">
       <Filter>Source Files\gen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -3476,18 +3476,6 @@
     <ClInclude Include="include\obj\NiLightRadiusController.h">
       <Filter>Header Files\obj</Filter>
     </ClInclude>
-    <ClInclude Include="include\gen\SubIndexRecordB.h">
-      <Filter>Header Files\gen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\gen\SubIndexRecordA.h">
-      <Filter>Header Files\gen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\gen\SubIndexPart2.h">
-      <Filter>Header Files\gen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\gen\SubIndexPart1.h">
-      <Filter>Header Files\gen</Filter>
-    </ClInclude>
     <ClInclude Include="include\gen\PosKeyGroup.h">
       <Filter>Header Files\gen</Filter>
     </ClInclude>
@@ -3495,6 +3483,18 @@
       <Filter>Header Files\gen</Filter>
     </ClInclude>
     <ClInclude Include="include\gen\ByteVector3.h">
+      <Filter>Header Files\gen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gen\BSSIMaterial.h">
+      <Filter>Header Files\gen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gen\BSSIMaterialSection.h">
+      <Filter>Header Files\gen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gen\BSSITSSegment.h">
+      <Filter>Header Files\gen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gen\BSSITSSubSegment.h">
       <Filter>Header Files\gen</Filter>
     </ClInclude>
   </ItemGroup>

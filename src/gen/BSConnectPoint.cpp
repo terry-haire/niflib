@@ -9,7 +9,7 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSConnectPoint::BSConnectPoint() : unknownFloat1(0.0f) {};
+BSConnectPoint::BSConnectPoint() : scale(0.0f) {};
 
 //Copy Constructor
 BSConnectPoint::BSConnectPoint( const BSConnectPoint & src ) {
@@ -20,9 +20,9 @@ BSConnectPoint::BSConnectPoint( const BSConnectPoint & src ) {
 BSConnectPoint & BSConnectPoint::operator=( const BSConnectPoint & src ) {
 	this->root = src.root;
 	this->variableName = src.variableName;
-	this->unknownFloat1 = src.unknownFloat1;
-	this->unknown6Shorts = src.unknown6Shorts;
-	this->unknown4Floats = src.unknown4Floats;
+	this->rotation = src.rotation;
+	this->translation = src.translation;
+	this->scale = src.scale;
 	return *this;
 };
 

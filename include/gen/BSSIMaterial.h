@@ -5,8 +5,8 @@ All rights reserved.  Please see niflib.h for license. */
 
 //To change this file, alter the niftools/docsys/gen_niflib.py Python script.
 
-#ifndef _SUBINDEXRECORDA_H_
-#define _SUBINDEXRECORDA_H_
+#ifndef _BSSIMATERIAL_H_
+#define _BSSIMATERIAL_H_
 
 #include "../NIF_IO.h"
 
@@ -14,23 +14,23 @@ namespace Niflib {
 
 
 /*!  */
-struct SubIndexRecordA {
+struct BSSIMaterial {
 	/*! Default Constructor */
-	NIFLIB_API SubIndexRecordA();
+	NIFLIB_API BSSIMaterial();
 	/*! Default Destructor */
-	NIFLIB_API ~SubIndexRecordA();
+	NIFLIB_API ~BSSIMaterial();
 	/*! Copy Constructor */
-	NIFLIB_API SubIndexRecordA( const SubIndexRecordA & src );
+	NIFLIB_API BSSIMaterial( const BSSIMaterial & src );
 	/*! Copy Operator */
-	NIFLIB_API SubIndexRecordA & operator=( const SubIndexRecordA & src );
+	NIFLIB_API BSSIMaterial & operator=( const BSSIMaterial & src );
+	/*! Unique ID Per Material Hash */
+	unsigned int bodyPartIndex;
 	/*! Unknown. */
-	unsigned int unknownInt1;
+	unsigned int materialHash;
 	/*! Unknown. */
-	unsigned int unknownInt2;
+	mutable unsigned int numData;
 	/*! Unknown. */
-	unsigned int unknownInt3;
-	/*! Unknown. */
-	unsigned int unknownInt4;
+	vector<float > extraData;
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

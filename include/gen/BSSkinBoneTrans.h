@@ -10,6 +10,8 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
+// Include structures
+#include "SphereBV.h"
 namespace Niflib {
 
 
@@ -23,10 +25,8 @@ struct BSSkinBoneTrans {
 	NIFLIB_API BSSkinBoneTrans( const BSSkinBoneTrans & src );
 	/*! Copy Operator */
 	NIFLIB_API BSSkinBoneTrans & operator=( const BSSkinBoneTrans & src );
-	/*! Bounding Sphere Center */
-	Vector3 bsCenter;
-	/*! Bounding Sphere Radius */
-	float bsRadius;
+	/*! The combined bounding volume of all submeshes. */
+	SphereBV bounds;
 	/*! Unknown. */
 	Matrix33 rotation;
 	/*! Unknown. */
@@ -36,8 +36,8 @@ struct BSSkinBoneTrans {
 	//--BEGIN MISC CUSTOM CODE--//
 	NIFLIB_API void SetBoundingSphere(Vector3& pos, float radius)
 	{
-		bsCenter = pos;
-		bsRadius = radius;
+		bounds.center = pos;
+		bounds.radius = radius;
 	}
 
 	NIFLIB_API void SetTransform(Matrix44& transform)

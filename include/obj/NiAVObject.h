@@ -14,6 +14,7 @@ All rights reserved.  Please see niflib.h for license. */
 namespace Niflib {
 	class NiNode;
 }
+#include "../gen/SkinWeight.h"
 //--END CUSTOM CODE--//
 
 #include "NiObjectNET.h"
@@ -339,6 +340,70 @@ public:
 	 * Called by NiNode during the addition of new children.
 	 */
 	NIFLIB_HIDDEN void SetParent( NiNode * new_parent );
+
+
+	/*!
+	* Supports Skin / Bone Weight functionality should be interface hard to implement that way
+	*/
+	NIFLIB_API virtual bool SupportsSkinBinding() const;
+
+	/*!
+	* Binds this geometry to a list of bones.  Creates and attatches a
+	* NiSkinInstance and NiSkinData class. The bones must have a common
+	* ancestor in the scenegraph.  This becomes the skeleton root.
+	*/
+	NIFLIB_API virtual void BindSkin(vector< Ref<NiNode> >& bone_nodes);
+
+	/*!
+	* Binds this geometry to a list of bones.  Creates and attatches a
+	* NiSkinInstance and NiSkinData class. The bones must have a common
+	* ancestor in the scenegraph.  This becomes the skeleton root.
+	*/
+	NIFLIB_API virtual void BindSkinWith(vector< Ref<NiNode> >& bone_nodes, NiObject * (*SkinInstConstructor)());
+
+	/*!
+	* Unbinds this geometry from the bones.  This removes the NiSkinInstance and NiSkinData objects and causes this geometry to stop behaving as a skin.
+	*/
+	NIFLIB_API virtual void UnbindSkin();
+
+	/*!
+	* Sets the skin weights in the attached NiSkinData object.
+	* The version on this class calculates the center and radius of
+	* each set of affected vertices automatically.
+	*/
+	NIFLIB_API virtual void SetBoneWeights(unsigned int bone_index, const vector<SkinWeight> & n);
+
+	/*
+	* Returns the position of the verticies and values of the normals after they
+	* have been deformed by the positions of their skin influences.
+	* \param[out] vertices A vector that will be filled with the skin deformed position of the verticies.
+	* \param[out] normals A vector thta will be filled with the skin deformed normal values.
+	*/
+	NIFLIB_API virtual void GetSkinDeformation(vector<Vector3> & vertices, vector<Vector3> & normals) const;
+
+	/*
+	* Applies the local transform values to the vertices of the geometry and
+	* zeros them out to the identity.
+	*/
+	NIFLIB_API virtual void ApplyTransforms();
+
+	/*
+	* Propogates the transforms between this skin and the skeleton root,
+	* and then applies them to the verticies of this skin.  Sets the overall
+	* skin data transform to the identity.
+	*/
+	NIFLIB_API virtual void ApplySkinOffset();
+
+	/*
+	* This automatically normalizes all the skin weights for this geometry node if it is bound to bones as a skin.  In other words, it will guarantee that the weights for all bones on each vertex will add up to 1.0.  This can be used to correct bad input data.
+	*/
+	NIFLIB_API virtual void NormalizeSkinWeights();
+
+	/*
+	* Used to determine whether this mesh is influenced by bones as a skin.
+	* \return True if this mesh is a skin, false otherwise.
+	*/
+	NIFLIB_API virtual bool IsSkin();
 
 protected:
 	NiNode * parent;

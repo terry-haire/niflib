@@ -454,6 +454,11 @@ void NiGeometry::SetShader( const string & n ) {
 	}
 }
 
+bool NiGeometry::SupportsSkinBinding() const {
+	return true;
+}
+
+
 Ref<NiSkinInstance> NiGeometry::GetSkinInstance() const {
 	return skinInstance;
 }

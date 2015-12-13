@@ -118,11 +118,11 @@ public:
 
 	// Unknown.
 	// \return The current value.
-	unsigned int GetWetMaterial() const;
+	IndexString GetRootMaterial() const;
 
 	// Unknown.
 	// \param[in] value The new value.
-	void SetWetMaterial( unsigned int value );
+	void SetRootMaterial( const IndexString & value );
 
 	// How to handle texture borders.
 	// \return The current value.
@@ -187,6 +187,86 @@ public:
 	// Controls strength for envmap/backlight/rim/softlight lighting effect?
 	// \param[in] value The new value.
 	void SetLightingEffect2( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetSubsurfaceRolloff() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetSubsurfaceRolloff( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetBacklightPower() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetBacklightPower( float value );
+
+	// GrayscaleToPaletteScale
+	// \return The current value.
+	float GetGrayscaleToPaletteScale() const;
+
+	// GrayscaleToPaletteScale
+	// \param[in] value The new value.
+	void SetGrayscaleToPaletteScale( float value );
+
+	// Fresnel Power
+	// \return The current value.
+	float GetFresnelPower() const;
+
+	// Fresnel Power
+	// \param[in] value The new value.
+	void SetFresnelPower( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetWetnessSpecScale() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetWetnessSpecScale( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetWetnessSpecPower() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetWetnessSpecPower( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetWetnessMinVar() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetWetnessMinVar( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetWetnessEnvMapScale() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetWetnessEnvMapScale( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetWetnessFresnelPower() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetWetnessFresnelPower( float value );
+
+	// Unknown.
+	// \return The current value.
+	float GetWetnessMetalness() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetWetnessMetalness( float value );
 
 	// Scales the intensity of the environment/cube map. (0-1)
 	// \return The current value.
@@ -363,6 +443,14 @@ public:
    // \param[in] value The new value.
    void SetEmissiveMultiple( float value );
 
+   // Unknown.
+   // \return The current value.
+   string GetRootMaterial() const;
+
+   // Unknown.
+   // \param[in] value The new value.
+   void SetRootMaterial(const string & value);
+
    // How to handle texture borders.
    // \return The current value.
    TexClampMode GetTextureClampMode() const;
@@ -427,6 +515,86 @@ public:
    // Controls strength for envmap/backlight/rim/softlight lighting effect?
    // \param[in] value The new value.
    void SetLightingEffect2( float value );
+
+   // Unknown.
+   // \return The current value.
+   float GetSubsurfaceRolloff() const;
+
+   // Unknown.
+   // \param[in] value The new value.
+   void SetSubsurfaceRolloff(float value);
+
+   // Unknown.
+   // \return The current value.
+   float GetBacklightPower() const;
+
+   // Unknown.
+   // \param[in] value The new value.
+   void SetBacklightPower(float value);
+
+   // GrayscaleToPaletteScale
+   // \return The current value.
+   float GetGrayscaleToPaletteScale() const;
+
+   // GrayscaleToPaletteScale
+   // \param[in] value The new value.
+   void SetGrayscaleToPaletteScale(float value);
+
+   // Fresnel Power
+   // \return The current value.
+   float GetFresnelPower() const;
+
+   // Fresnel Power
+   // \param[in] value The new value.
+   void SetFresnelPower(float value);
+
+   // Unknown.
+   // \return The current value.
+   float GetWetnessSpecScale() const;
+
+   // Unknown.
+   // \param[in] value The new value.
+   void SetWetnessSpecScale(float value);
+
+   // Unknown.
+   // \return The current value.
+   float GetWetnessSpecPower() const;
+
+   // Unknown.
+   // \param[in] value The new value.
+   void SetWetnessSpecPower(float value);
+
+   // Unknown.
+   // \return The current value.
+   float GetWetnessMinVar() const;
+
+   // Unknown.
+   // \param[in] value The new value.
+   void SetWetnessMinVar(float value);
+
+   // Unknown.
+   // \return The current value.
+   float GetWetnessEnvMapScale() const;
+
+   // Unknown.
+   // \param[in] value The new value.
+   void SetWetnessEnvMapScale(float value);
+
+   // Unknown.
+   // \return The current value.
+   float GetWetnessFresnelPower() const;
+
+   // Unknown.
+   // \param[in] value The new value.
+   void SetWetnessFresnelPower(float value);
+
+   // Unknown.
+   // \return The current value.
+   float GetWetnessMetalness() const;
+
+   // Unknown.
+   // \param[in] value The new value.
+   void SetWetnessMetalness(float value);
 
    // Scales the environment/cube map. (0-??)
    // \return The current value.
@@ -549,7 +717,7 @@ protected:
 	/*! Multiplied emissive colors */
 	float emissiveMultiple;
 	/*! Unknown. */
-	unsigned int wetMaterial;
+	IndexString rootMaterial;
 	/*! How to handle texture borders. */
 	TexClampMode textureClampMode;
 	/*! The materials opacity (1=non-transparent). */
@@ -566,8 +734,28 @@ protected:
 	float lightingEffect1;
 	/*! Controls strength for envmap/backlight/rim/softlight lighting effect? */
 	float lightingEffect2;
-	/*! Fallout 4 Unknown */
-	array<9,float > unknownFloats1;
+	/*! Unknown. */
+	float subsurfaceRolloff;
+	/*! Unknown. */
+	float unknownFloat1;
+	/*! Unknown. */
+	float backlightPower;
+	/*! GrayscaleToPaletteScale */
+	float grayscaleToPaletteScale;
+	/*! Fresnel Power */
+	float fresnelPower;
+	/*! Unknown. */
+	float wetnessSpecScale;
+	/*! Unknown. */
+	float wetnessSpecPower;
+	/*! Unknown. */
+	float wetnessMinVar;
+	/*! Unknown. */
+	float wetnessEnvMapScale;
+	/*! Unknown. */
+	float wetnessFresnelPower;
+	/*! Unknown. */
+	float wetnessMetalness;
 	/*! Scales the intensity of the environment/cube map. (0-1) */
 	float environmentMapScale;
 	/*! Unknown */

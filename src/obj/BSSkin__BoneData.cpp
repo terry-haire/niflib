@@ -16,6 +16,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/BSSkin__BoneData.h"
 #include "../../include/gen/BSSkinBoneTrans.h"
+#include "../../include/gen/SphereBV.h"
 using namespace Niflib;
 
 //Definition of TYPE constant
@@ -50,8 +51,8 @@ void BSSkin__BoneData::Read( istream& in, list<unsigned int> & link_stack, const
 	NifStream( numBones, in, info );
 	bones.resize(numBones);
 	for (unsigned int i1 = 0; i1 < bones.size(); i1++) {
-		NifStream( bones[i1].bsCenter, in, info );
-		NifStream( bones[i1].bsRadius, in, info );
+		NifStream( bones[i1].bounds.center, in, info );
+		NifStream( bones[i1].bounds.radius, in, info );
 		NifStream( bones[i1].rotation, in, info );
 		NifStream( bones[i1].translation, in, info );
 		NifStream( bones[i1].scale, in, info );
@@ -71,8 +72,8 @@ void BSSkin__BoneData::Write( ostream& out, const map<NiObjectRef,unsigned int> 
 	numBones = (unsigned int)(bones.size());
 	NifStream( numBones, out, info );
 	for (unsigned int i1 = 0; i1 < bones.size(); i1++) {
-		NifStream( bones[i1].bsCenter, out, info );
-		NifStream( bones[i1].bsRadius, out, info );
+		NifStream( bones[i1].bounds.center, out, info );
+		NifStream( bones[i1].bounds.radius, out, info );
 		NifStream( bones[i1].rotation, out, info );
 		NifStream( bones[i1].translation, out, info );
 		NifStream( bones[i1].scale, out, info );
@@ -99,8 +100,8 @@ std::string BSSkin__BoneData::asString( bool verbose ) const {
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		out << "    BS Center:  " << bones[i1].bsCenter << endl;
-		out << "    BS Radius:  " << bones[i1].bsRadius << endl;
+		out << "    Center:  " << bones[i1].bounds.center << endl;
+		out << "    Radius:  " << bones[i1].bounds.radius << endl;
 		out << "    Rotation:  " << bones[i1].rotation << endl;
 		out << "    Translation:  " << bones[i1].translation << endl;
 		out << "    Scale:  " << bones[i1].scale << endl;

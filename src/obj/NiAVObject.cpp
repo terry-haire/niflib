@@ -532,4 +532,19 @@ void NiAVObject::SetBoundingBox( const BoundingBox & n ) {
 	hasBoundingBox = true;
 }
 
+
+// empty skinbinding implementation
+bool NiAVObject::SupportsSkinBinding() const { return false; }
+void NiAVObject::BindSkin(vector< Ref<NiNode> >& bone_nodes) {}
+void NiAVObject::BindSkinWith(vector< Ref<NiNode> >& bone_nodes, NiObject * (*SkinInstConstructor)()) {}
+void NiAVObject::UnbindSkin() {}
+void NiAVObject::SetBoneWeights(unsigned int bone_index, const vector<SkinWeight> & n) {}
+void NiAVObject::GetSkinDeformation(vector<Vector3> & vertices, vector<Vector3> & normals) const {}
+void NiAVObject::ApplyTransforms() {}
+void NiAVObject::ApplySkinOffset() {}
+void NiAVObject::NormalizeSkinWeights() {}
+bool NiAVObject::IsSkin() { return false; }
+
+
+
 //--END CUSTOM CODE--//

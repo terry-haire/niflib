@@ -77,11 +77,11 @@ public:
 	// \param[in] value The new value.
 	void SetBones( const vector<NiNode * >& value );
 
-	// Unknown.
+	// default : 0.0f,1.0f,1.0f
 	// \return The current value.
 	vector<Vector3 > GetVector31() const;
 
-	// Unknown.
+	// default : 0.0f,1.0f,1.0f
 	// \param[in] value The new value.
 	void SetVector31( const vector<Vector3 >& value );
 
@@ -118,7 +118,7 @@ protected:
 	vector<NiNode * > bones;
 	/*! Unknown. */
 	mutable unsigned int numVector31;
-	/*! Unknown. */
+	/*! default : 0.0f,1.0f,1.0f */
 	vector<Vector3 > vector31;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */

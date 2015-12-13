@@ -6,10 +6,11 @@ All rights reserved.  Please see niflib.h for license. */
 //To change this file, alter the niftools/docsys/gen_niflib.py Python script.
 
 #include "../../include/gen/BSSkinBoneTrans.h"
+#include "../../include/gen/SphereBV.h"
 using namespace Niflib;
 
 //Constructor
-BSSkinBoneTrans::BSSkinBoneTrans() : bsRadius(0.0f), scale(0.0f) {};
+BSSkinBoneTrans::BSSkinBoneTrans() : scale(0.0f) {};
 
 //Copy Constructor
 BSSkinBoneTrans::BSSkinBoneTrans( const BSSkinBoneTrans & src ) {
@@ -18,8 +19,7 @@ BSSkinBoneTrans::BSSkinBoneTrans( const BSSkinBoneTrans & src ) {
 
 //Copy Operator
 BSSkinBoneTrans & BSSkinBoneTrans::operator=( const BSSkinBoneTrans & src ) {
-	this->bsCenter = src.bsCenter;
-	this->bsRadius = src.bsRadius;
+	this->bounds = src.bounds;
 	this->rotation = src.rotation;
 	this->translation = src.translation;
 	this->scale = src.scale;

@@ -28,11 +28,11 @@ struct BSConnectPoint {
 	/*! Unknown. */
 	string variableName;
 	/*! Unknown. */
-	float unknownFloat1;
+	Quaternion rotation;
 	/*! Unknown. */
-	array<6,unsigned short > unknown6Shorts;
+	Vector3 translation;
 	/*! Unknown. */
-	array<4,float > unknown4Floats;
+	float scale;
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

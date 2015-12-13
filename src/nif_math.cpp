@@ -37,12 +37,11 @@ hfloat Niflib::ConvertFloatToHFloat(float f) {
 
 
 float Niflib::ConvertByteToFloat(byte value) {
-	//return float(value) * 2.0f / 255.0f - 1.0f;
-	return float(value)  * 255.0f / 128.0f - 1.0f;
+	return (float(value) - 127.5f)  / 127.5f;
 }
 
 byte Niflib::ConvertFloatToByte(float value) {
-	return byte((value + 1.0f) * 128.0f / 255.0f);
+	return byte(round(value * 127.5f + 127.5f)) ;
 }
 
 /* TexCoord Methods

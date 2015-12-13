@@ -17,6 +17,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "BSShape.h"
 
 // Include structures
+#include "../gen/SphereBV.h"
 #include "../Ref.h"
 #include "../gen/BSVertexData.h"
 namespace Niflib {
@@ -61,6 +62,14 @@ public:
 	NIFLIB_API virtual const Type & GetType() const;
 
 	/***Begin Example Naive Implementation****
+
+	// The combined bounding volume of all submeshes.
+	// \return The current value.
+	SphereBV GetBound() const;
+
+	// The combined bounding volume of all submeshes.
+	// \param[in] value The new value.
+	void SetBound( const SphereBV & value );
 
 	// Unknown.
 	// \return The current value.
@@ -233,6 +242,15 @@ public:
 	*/
 	NIFLIB_API int GetBoneWeights(unsigned int vertexIdx, float weights[4], int bones[4]) const;
 	
+
+	// The combined bounding volume of all submeshes.
+	// \return The current value.
+	NIFLIB_API SphereBV GetBounds() const;
+
+	// The combined bounding volume of all submeshes.
+	// \param[in] value The new value.
+	NIFLIB_API void SetBounds(const SphereBV & value);
+
 	// Unknown.
 	// \return The current value.
 	NIFLIB_API Ref<NiObject > GetSkin() const;
@@ -260,12 +278,18 @@ public:
 	// \param[in] value The new value.
 	NIFLIB_API void SetTriangles(const vector<Triangle >& value);
 
+	/*
+	* Used to determine whether this mesh is influenced by bones as a skin.
+	* \return True if this mesh is a skin, false otherwise.
+	*/
+	NIFLIB_API bool IsSkin() override;
+
 private:
 	int dataSizeCalc(const NifInfo & info) const;
 	//--END CUSTOM CODE--//
 protected:
-	/*! Unknown. */
-	array<4,float > unknown4Floats;
+	/*! The combined bounding volume of all submeshes. */
+	SphereBV bound;
 	/*! Unknown. */
 	Ref<NiObject > skin;
 	/*! Unknown. */

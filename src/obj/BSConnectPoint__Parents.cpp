@@ -52,13 +52,9 @@ void BSConnectPoint__Parents::Read( istream& in, list<unsigned int> & link_stack
 	for (unsigned int i1 = 0; i1 < connectPoints.size(); i1++) {
 		NifStream( connectPoints[i1].root, in, info );
 		NifStream( connectPoints[i1].variableName, in, info );
-		NifStream( connectPoints[i1].unknownFloat1, in, info );
-		for (unsigned int i2 = 0; i2 < 6; i2++) {
-			NifStream( connectPoints[i1].unknown6Shorts[i2], in, info );
-		};
-		for (unsigned int i2 = 0; i2 < 4; i2++) {
-			NifStream( connectPoints[i1].unknown4Floats[i2], in, info );
-		};
+		NifStream( connectPoints[i1].rotation, in, info );
+		NifStream( connectPoints[i1].translation, in, info );
+		NifStream( connectPoints[i1].scale, in, info );
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -77,13 +73,9 @@ void BSConnectPoint__Parents::Write( ostream& out, const map<NiObjectRef,unsigne
 	for (unsigned int i1 = 0; i1 < connectPoints.size(); i1++) {
 		NifStream( connectPoints[i1].root, out, info );
 		NifStream( connectPoints[i1].variableName, out, info );
-		NifStream( connectPoints[i1].unknownFloat1, out, info );
-		for (unsigned int i2 = 0; i2 < 6; i2++) {
-			NifStream( connectPoints[i1].unknown6Shorts[i2], out, info );
-		};
-		for (unsigned int i2 = 0; i2 < 4; i2++) {
-			NifStream( connectPoints[i1].unknown4Floats[i2], out, info );
-		};
+		NifStream( connectPoints[i1].rotation, out, info );
+		NifStream( connectPoints[i1].translation, out, info );
+		NifStream( connectPoints[i1].scale, out, info );
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -109,31 +101,9 @@ std::string BSConnectPoint__Parents::asString( bool verbose ) const {
 		};
 		out << "    Root:  " << connectPoints[i1].root << endl;
 		out << "    Variable Name:  " << connectPoints[i1].variableName << endl;
-		out << "    Unknown Float 1:  " << connectPoints[i1].unknownFloat1 << endl;
-		array_output_count = 0;
-		for (unsigned int i2 = 0; i2 < 6; i2++) {
-			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
-				break;
-			};
-			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-				break;
-			};
-			out << "      Unknown 6 Shorts[" << i2 << "]:  " << connectPoints[i1].unknown6Shorts[i2] << endl;
-			array_output_count++;
-		};
-		array_output_count = 0;
-		for (unsigned int i2 = 0; i2 < 4; i2++) {
-			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
-				break;
-			};
-			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-				break;
-			};
-			out << "      Unknown 4 Floats[" << i2 << "]:  " << connectPoints[i1].unknown4Floats[i2] << endl;
-			array_output_count++;
-		};
+		out << "    Rotation:  " << connectPoints[i1].rotation << endl;
+		out << "    Translation:  " << connectPoints[i1].translation << endl;
+		out << "    Scale:  " << connectPoints[i1].scale << endl;
 	};
 	return out.str();
 

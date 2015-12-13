@@ -5,34 +5,36 @@ All rights reserved.  Please see niflib.h for license. */
 
 //To change this file, alter the niftools/docsys/gen_niflib.py Python script.
 
-#ifndef _SUBINDEXRECORDB_H_
-#define _SUBINDEXRECORDB_H_
+#ifndef _BSSITSSEGMENT_H_
+#define _BSSITSSEGMENT_H_
 
 #include "../NIF_IO.h"
 
+// Include structures
+#include "BSSITSSubSegment.h"
 namespace Niflib {
 
 
 /*!  */
-struct SubIndexRecordB {
+struct BSSITSSegment {
 	/*! Default Constructor */
-	NIFLIB_API SubIndexRecordB();
+	NIFLIB_API BSSITSSegment();
 	/*! Default Destructor */
-	NIFLIB_API ~SubIndexRecordB();
+	NIFLIB_API ~BSSITSSegment();
 	/*! Copy Constructor */
-	NIFLIB_API SubIndexRecordB( const SubIndexRecordB & src );
+	NIFLIB_API BSSITSSegment( const BSSITSSegment & src );
 	/*! Copy Operator */
-	NIFLIB_API SubIndexRecordB & operator=( const SubIndexRecordB & src );
+	NIFLIB_API BSSITSSegment & operator=( const BSSITSSegment & src );
 	/*! Unknown. */
-	unsigned int unknownInt1;
+	unsigned int triangleOffset;
 	/*! Unknown. */
-	hfloat unknownHfloat1;
+	unsigned int triangleCount;
 	/*! Unknown. */
-	hfloat unknownHfloat2;
+	unsigned int materialHash;
 	/*! Unknown. */
-	mutable unsigned int numData;
+	mutable unsigned int numRecords;
 	/*! Unknown. */
-	vector<float > extraData;
+	vector<BSSITSSubSegment > subIndexRecord;
 	//--BEGIN MISC CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//

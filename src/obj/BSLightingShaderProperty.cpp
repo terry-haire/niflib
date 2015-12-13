@@ -21,7 +21,7 @@ using namespace Niflib;
 //Definition of TYPE constant
 const Type BSLightingShaderProperty::TYPE("BSLightingShaderProperty", &NiProperty::TYPE );
 
-BSLightingShaderProperty::BSLightingShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)2185233153), shaderFlags2((SkyrimShaderPropertyFlags2)32801), uvScale(1.0, 1.0), textureSet(NULL), emissiveMultiple(0.0f), wetMaterial((unsigned int)0), textureClampMode((TexClampMode)0), alpha(1.0f), refractionStrength(0.0f), glossiness(0.0f), specularStrength(1.0f), lightingEffect1(0.0f), lightingEffect2(0.0f), environmentMapScale(0.0f), unknownEmapInt1((unsigned short)0), unknownTintInt1((unsigned int)0), maxPasses(0.0f), scale(0.0f), parallaxInnerLayerThickness(0.0f), parallaxRefractionScale(0.0f), parallaxEnvmapStrength(0.0f), eyeCubemapScale(0.0f) {
+BSLightingShaderProperty::BSLightingShaderProperty() : shaderFlags1((SkyrimShaderPropertyFlags1)2185233153), shaderFlags2((SkyrimShaderPropertyFlags2)32801), uvScale(1.0, 1.0), textureSet(NULL), emissiveMultiple(0.0f), textureClampMode((TexClampMode)0), alpha(1.0f), refractionStrength(0.0f), glossiness(0.0f), specularStrength(1.0f), lightingEffect1(0.0f), lightingEffect2(0.0f), subsurfaceRolloff(0.0f), unknownFloat1(0.0f), backlightPower(0.0f), grayscaleToPaletteScale(0.0f), fresnelPower(0.0f), wetnessSpecScale(0.0f), wetnessSpecPower(0.0f), wetnessMinVar(0.0f), wetnessEnvMapScale(0.0f), wetnessFresnelPower(0.0f), wetnessMetalness(0.0f), environmentMapScale(0.0f), unknownEmapInt1((unsigned short)0), unknownTintInt1((unsigned int)0), maxPasses(0.0f), scale(0.0f), parallaxInnerLayerThickness(0.0f), parallaxRefractionScale(0.0f), parallaxEnvmapStrength(0.0f), eyeCubemapScale(0.0f) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -59,7 +59,7 @@ void BSLightingShaderProperty::Read( istream& in, list<unsigned int> & link_stac
 	NifStream( emissiveColor, in, info );
 	NifStream( emissiveMultiple, in, info );
 	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
-		NifStream( wetMaterial, in, info );
+		NifStream( rootMaterial, in, info );
 	};
 	NifStream( textureClampMode, in, info );
 	NifStream( alpha, in, info );
@@ -67,12 +67,22 @@ void BSLightingShaderProperty::Read( istream& in, list<unsigned int> & link_stac
 	NifStream( glossiness, in, info );
 	NifStream( specularColor, in, info );
 	NifStream( specularStrength, in, info );
-	NifStream( lightingEffect1, in, info );
-	NifStream( lightingEffect2, in, info );
+	if ( (info.userVersion2 < 130) ) {
+		NifStream( lightingEffect1, in, info );
+		NifStream( lightingEffect2, in, info );
+	};
 	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
-		for (unsigned int i2 = 0; i2 < 9; i2++) {
-			NifStream( unknownFloats1[i2], in, info );
-		};
+		NifStream( subsurfaceRolloff, in, info );
+		NifStream( unknownFloat1, in, info );
+		NifStream( backlightPower, in, info );
+		NifStream( grayscaleToPaletteScale, in, info );
+		NifStream( fresnelPower, in, info );
+		NifStream( wetnessSpecScale, in, info );
+		NifStream( wetnessSpecPower, in, info );
+		NifStream( wetnessMinVar, in, info );
+		NifStream( wetnessEnvMapScale, in, info );
+		NifStream( wetnessFresnelPower, in, info );
+		NifStream( wetnessMetalness, in, info );
 	};
 	if ( (skyrimShaderType == 1) ) {
 		NifStream( environmentMapScale, in, info );
@@ -149,7 +159,7 @@ void BSLightingShaderProperty::Write( ostream& out, const map<NiObjectRef,unsign
 	NifStream( emissiveColor, out, info );
 	NifStream( emissiveMultiple, out, info );
 	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
-		NifStream( wetMaterial, out, info );
+		NifStream( rootMaterial, out, info );
 	};
 	NifStream( textureClampMode, out, info );
 	NifStream( alpha, out, info );
@@ -157,12 +167,22 @@ void BSLightingShaderProperty::Write( ostream& out, const map<NiObjectRef,unsign
 	NifStream( glossiness, out, info );
 	NifStream( specularColor, out, info );
 	NifStream( specularStrength, out, info );
-	NifStream( lightingEffect1, out, info );
-	NifStream( lightingEffect2, out, info );
+	if ( (info.userVersion2 < 130) ) {
+		NifStream( lightingEffect1, out, info );
+		NifStream( lightingEffect2, out, info );
+	};
 	if ( ((info.version == 0x14020007) && (info.userVersion2 == 130)) ) {
-		for (unsigned int i2 = 0; i2 < 9; i2++) {
-			NifStream( unknownFloats1[i2], out, info );
-		};
+		NifStream( subsurfaceRolloff, out, info );
+		NifStream( unknownFloat1, out, info );
+		NifStream( backlightPower, out, info );
+		NifStream( grayscaleToPaletteScale, out, info );
+		NifStream( fresnelPower, out, info );
+		NifStream( wetnessSpecScale, out, info );
+		NifStream( wetnessSpecPower, out, info );
+		NifStream( wetnessMinVar, out, info );
+		NifStream( wetnessEnvMapScale, out, info );
+		NifStream( wetnessFresnelPower, out, info );
+		NifStream( wetnessMetalness, out, info );
 	};
 	if ( (skyrimShaderType == 1) ) {
 		NifStream( environmentMapScale, out, info );
@@ -213,7 +233,6 @@ std::string BSLightingShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	unsigned int array_output_count = 0;
 	out << NiProperty::asString();
 	out << "  Shader Flags 1:  " << shaderFlags1 << endl;
 	out << "  Shader Flags 2:  " << shaderFlags2 << endl;
@@ -222,7 +241,7 @@ std::string BSLightingShaderProperty::asString( bool verbose ) const {
 	out << "  Texture Set:  " << textureSet << endl;
 	out << "  Emissive Color:  " << emissiveColor << endl;
 	out << "  Emissive Multiple:  " << emissiveMultiple << endl;
-	out << "  Wet Material:  " << wetMaterial << endl;
+	out << "  Root Material:  " << rootMaterial << endl;
 	out << "  Texture Clamp Mode:  " << textureClampMode << endl;
 	out << "  Alpha:  " << alpha << endl;
 	out << "  Refraction Strength:  " << refractionStrength << endl;
@@ -231,18 +250,17 @@ std::string BSLightingShaderProperty::asString( bool verbose ) const {
 	out << "  Specular Strength:  " << specularStrength << endl;
 	out << "  Lighting Effect 1:  " << lightingEffect1 << endl;
 	out << "  Lighting Effect 2:  " << lightingEffect2 << endl;
-	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 9; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
-			break;
-		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
-			break;
-		};
-		out << "    Unknown Floats 1[" << i1 << "]:  " << unknownFloats1[i1] << endl;
-		array_output_count++;
-	};
+	out << "  Subsurface Rolloff:  " << subsurfaceRolloff << endl;
+	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
+	out << "  Backlight Power:  " << backlightPower << endl;
+	out << "  Grayscale To Palette Scale:  " << grayscaleToPaletteScale << endl;
+	out << "  Fresnel Power:  " << fresnelPower << endl;
+	out << "  Wetness Spec Scale:  " << wetnessSpecScale << endl;
+	out << "  Wetness Spec Power:  " << wetnessSpecPower << endl;
+	out << "  Wetness Min Var:  " << wetnessMinVar << endl;
+	out << "  Wetness Env Map Scale:  " << wetnessEnvMapScale << endl;
+	out << "  Wetness Fresnel Power:  " << wetnessFresnelPower << endl;
+	out << "  Wetness Metalness:  " << wetnessMetalness << endl;
 	if ( (skyrimShaderType == 1) ) {
 		out << "    Environment Map Scale:  " << environmentMapScale << endl;
 		out << "    Unknown EMap Int 1:  " << unknownEmapInt1 << endl;
@@ -364,12 +382,12 @@ void BSLightingShaderProperty::SetEmissiveMultiple( float value ) {
 	emissiveMultiple = value;
 }
 
-unsigned int BSLightingShaderProperty::GetWetMaterial() const {
-	return wetMaterial;
+IndexString BSLightingShaderProperty::GetRootMaterial() const {
+	return rootMaterial;
 }
 
-void BSLightingShaderProperty::SetWetMaterial( unsigned int value ) {
-	wetMaterial = value;
+void BSLightingShaderProperty::SetRootMaterial( const IndexString & value ) {
+	rootMaterial = value;
 }
 
 TexClampMode BSLightingShaderProperty::GetTextureClampMode() const {
@@ -434,6 +452,86 @@ float BSLightingShaderProperty::GetLightingEffect2() const {
 
 void BSLightingShaderProperty::SetLightingEffect2( float value ) {
 	lightingEffect2 = value;
+}
+
+float BSLightingShaderProperty::GetSubsurfaceRolloff() const {
+	return subsurfaceRolloff;
+}
+
+void BSLightingShaderProperty::SetSubsurfaceRolloff( float value ) {
+	subsurfaceRolloff = value;
+}
+
+float BSLightingShaderProperty::GetBacklightPower() const {
+	return backlightPower;
+}
+
+void BSLightingShaderProperty::SetBacklightPower( float value ) {
+	backlightPower = value;
+}
+
+float BSLightingShaderProperty::GetGrayscaleToPaletteScale() const {
+	return grayscaleToPaletteScale;
+}
+
+void BSLightingShaderProperty::SetGrayscaleToPaletteScale( float value ) {
+	grayscaleToPaletteScale = value;
+}
+
+float BSLightingShaderProperty::GetFresnelPower() const {
+	return fresnelPower;
+}
+
+void BSLightingShaderProperty::SetFresnelPower( float value ) {
+	fresnelPower = value;
+}
+
+float BSLightingShaderProperty::GetWetnessSpecScale() const {
+	return wetnessSpecScale;
+}
+
+void BSLightingShaderProperty::SetWetnessSpecScale( float value ) {
+	wetnessSpecScale = value;
+}
+
+float BSLightingShaderProperty::GetWetnessSpecPower() const {
+	return wetnessSpecPower;
+}
+
+void BSLightingShaderProperty::SetWetnessSpecPower( float value ) {
+	wetnessSpecPower = value;
+}
+
+float BSLightingShaderProperty::GetWetnessMinVar() const {
+	return wetnessMinVar;
+}
+
+void BSLightingShaderProperty::SetWetnessMinVar( float value ) {
+	wetnessMinVar = value;
+}
+
+float BSLightingShaderProperty::GetWetnessEnvMapScale() const {
+	return wetnessEnvMapScale;
+}
+
+void BSLightingShaderProperty::SetWetnessEnvMapScale( float value ) {
+	wetnessEnvMapScale = value;
+}
+
+float BSLightingShaderProperty::GetWetnessFresnelPower() const {
+	return wetnessFresnelPower;
+}
+
+void BSLightingShaderProperty::SetWetnessFresnelPower( float value ) {
+	wetnessFresnelPower = value;
+}
+
+float BSLightingShaderProperty::GetWetnessMetalness() const {
+	return wetnessMetalness;
+}
+
+void BSLightingShaderProperty::SetWetnessMetalness( float value ) {
+	wetnessMetalness = value;
 }
 
 float BSLightingShaderProperty::GetEnvironmentMapScale() const {
@@ -607,6 +705,14 @@ void BSLightingShaderProperty::SetEmissiveMultiple( float value ) {
    emissiveMultiple = value;
 }
 
+string BSLightingShaderProperty::GetRootMaterial() const {
+	return rootMaterial;
+}
+
+void BSLightingShaderProperty::SetRootMaterial(const string& value) {
+	rootMaterial = value;
+}
+
 TexClampMode BSLightingShaderProperty::GetTextureClampMode() const {
    return textureClampMode;
 }
@@ -669,6 +775,86 @@ float BSLightingShaderProperty::GetLightingEffect2() const {
 
 void BSLightingShaderProperty::SetLightingEffect2( float value ) {
    lightingEffect2 = value;
+}
+
+float BSLightingShaderProperty::GetSubsurfaceRolloff() const {
+	return subsurfaceRolloff;
+}
+
+void BSLightingShaderProperty::SetSubsurfaceRolloff(float value) {
+	subsurfaceRolloff = value;
+}
+
+float BSLightingShaderProperty::GetBacklightPower() const {
+	return backlightPower;
+}
+
+void BSLightingShaderProperty::SetBacklightPower(float value) {
+	backlightPower = value;
+}
+
+float BSLightingShaderProperty::GetGrayscaleToPaletteScale() const {
+	return grayscaleToPaletteScale;
+}
+
+void BSLightingShaderProperty::SetGrayscaleToPaletteScale(float value) {
+	grayscaleToPaletteScale = value;
+}
+
+float BSLightingShaderProperty::GetFresnelPower() const {
+	return fresnelPower;
+}
+
+void BSLightingShaderProperty::SetFresnelPower(float value) {
+	fresnelPower = value;
+}
+
+float BSLightingShaderProperty::GetWetnessSpecScale() const {
+	return wetnessSpecScale;
+}
+
+void BSLightingShaderProperty::SetWetnessSpecScale(float value) {
+	wetnessSpecScale = value;
+}
+
+float BSLightingShaderProperty::GetWetnessSpecPower() const {
+	return wetnessSpecPower;
+}
+
+void BSLightingShaderProperty::SetWetnessSpecPower(float value) {
+	wetnessSpecPower = value;
+}
+
+float BSLightingShaderProperty::GetWetnessMinVar() const {
+	return wetnessMinVar;
+}
+
+void BSLightingShaderProperty::SetWetnessMinVar(float value) {
+	wetnessMinVar = value;
+}
+
+float BSLightingShaderProperty::GetWetnessEnvMapScale() const {
+	return wetnessEnvMapScale;
+}
+
+void BSLightingShaderProperty::SetWetnessEnvMapScale(float value) {
+	wetnessEnvMapScale = value;
+}
+
+float BSLightingShaderProperty::GetWetnessFresnelPower() const {
+	return wetnessFresnelPower;
+}
+
+void BSLightingShaderProperty::SetWetnessFresnelPower(float value) {
+	wetnessFresnelPower = value;
+}
+
+float BSLightingShaderProperty::GetWetnessMetalness() const {
+	return wetnessMetalness;
+}
+
+void BSLightingShaderProperty::SetWetnessMetalness(float value) {
+	wetnessMetalness = value;
 }
 
 float BSLightingShaderProperty::GetEnvironmentMapScale() const {

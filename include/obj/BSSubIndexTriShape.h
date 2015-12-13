@@ -17,8 +17,8 @@ All rights reserved.  Please see niflib.h for license. */
 #include "BSTriShape.h"
 
 // Include structures
-#include "../gen/SubIndexPart1.h"
-#include "../gen/SubIndexPart2.h"
+#include "../gen/BSSITSSegment.h"
+#include "../gen/BSSIMaterialSection.h"
 namespace Niflib {
 
 class BSSubIndexTriShape;
@@ -69,44 +69,75 @@ public:
 
 	// Unknown.
 	// \return The current value.
-	unsigned int GetNumb() const;
+	unsigned int GetNumMaterials() const;
 
 	// Unknown.
 	// \param[in] value The new value.
-	void SetNumb( unsigned int value );
+	void SetNumMaterials( unsigned int value );
 
 	// Unknown.
 	// \return The current value.
-	vector<SubIndexPart1 > GetSubIndexPart1() const;
+	vector<BSSITSSegment > GetSegments() const;
 
 	// Unknown.
 	// \param[in] value The new value.
-	void SetSubIndexPart1( const vector<SubIndexPart1 >& value );
+	void SetSegments( const vector<BSSITSSegment >& value );
 
 	// Unknown.
 	// \return The current value.
-	SubIndexPart2 GetSubIndexPart2() const;
+	BSSIMaterialSection GetMaterialSections() const;
 
 	// Unknown.
 	// \param[in] value The new value.
-	void SetSubIndexPart2( const SubIndexPart2 & value );
+	void SetMaterialSections( const BSSIMaterialSection & value );
 
 	****End Example Naive Implementation***/
 
 	//--BEGIN MISC CUSTOM CODE--//
 
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API const vector<BSSITSSegment>& GetSegments() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetSegments(const vector<BSSITSSegment >& value);
+
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API const BSSIMaterialSection& GetMaterialSections() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetMaterialSections(const BSSIMaterialSection & value);
+
+
+	// return triangle list 
+	NIFLIB_API vector<Triangle> GetTriangles(int segment) const;
+
+	// return triangle list 
+	NIFLIB_API vector<Triangle> GetTriangles(int segment, int subindex) const;
+
+	NIFLIB_API string GetSSF() const;
+
+	NIFLIB_API void SetSSF(const string& value);
+
+private:
+	NIFLIB_HIDDEN unsigned int numTriangles2Calc(const NifInfo info) const;
+	NIFLIB_HIDDEN unsigned int numMaterialsCalc(const NifInfo info) const;
+	
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown. */
-	unsigned int numTriangles2;
+	mutable unsigned int numTriangles2;
 	/*! Unknown. */
-	mutable unsigned int numa;
+	mutable unsigned int numSegments;
 	/*! Unknown. */
-	unsigned int numb;
+	mutable unsigned int numMaterials;
 	/*! Unknown. */
-	vector<SubIndexPart1 > subIndexPart1;
+	vector<BSSITSSegment > segments;
 	/*! Unknown. */
-	SubIndexPart2 subIndexPart2;
+	BSSIMaterialSection materialSections;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );

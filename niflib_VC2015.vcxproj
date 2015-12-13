@@ -356,6 +356,10 @@
     <ClCompile Include="src\gen\BSPackedAdditionalDataBlock.cpp" />
     <ClCompile Include="src\gen\BSSegment.cpp" />
     <ClCompile Include="src\gen\BSSegmentedTriangle.cpp" />
+    <ClCompile Include="src\gen\BSSIMaterial.cpp" />
+    <ClCompile Include="src\gen\BSSIMaterialSection.cpp" />
+    <ClCompile Include="src\gen\BSSITSSegment.cpp" />
+    <ClCompile Include="src\gen\BSSITSSubSegment.cpp" />
     <ClCompile Include="src\gen\BSSkinBoneTrans.cpp" />
     <ClCompile Include="src\gen\BSTreadTransfInfo.cpp" />
     <ClCompile Include="src\gen\BSTreadTransform.cpp" />
@@ -420,10 +424,6 @@
     <ClCompile Include="src\gen\SkinWeight.cpp" />
     <ClCompile Include="src\gen\SphereBV.cpp" />
     <ClCompile Include="src\gen\StringPalette.cpp" />
-    <ClCompile Include="src\gen\SubIndexPart1.cpp" />
-    <ClCompile Include="src\gen\SubIndexPart2.cpp" />
-    <ClCompile Include="src\gen\SubIndexRecordA.cpp" />
-    <ClCompile Include="src\gen\SubIndexRecordB.cpp" />
     <ClCompile Include="src\gen\TBC.cpp" />
     <ClCompile Include="src\gen\TexDesc.cpp" />
     <ClCompile Include="src\gen\TexSource.cpp" />
@@ -943,6 +943,10 @@
     <ClInclude Include="include\gen\BSPackedAdditionalDataBlock.h" />
     <ClInclude Include="include\gen\BSSegment.h" />
     <ClInclude Include="include\gen\BSSegmentedTriangle.h" />
+    <ClInclude Include="include\gen\BSSIMaterial.h" />
+    <ClInclude Include="include\gen\BSSIMaterialSection.h" />
+    <ClInclude Include="include\gen\BSSITSSegment.h" />
+    <ClInclude Include="include\gen\BSSITSSubSegment.h" />
     <ClInclude Include="include\gen\BSSkinBoneTrans.h" />
     <ClInclude Include="include\gen\BSTreadTransfInfo.h" />
     <ClInclude Include="include\gen\BSTreadTransform.h" />
@@ -1010,10 +1014,6 @@
     <ClInclude Include="include\gen\SkinWeight.h" />
     <ClInclude Include="include\gen\SphereBV.h" />
     <ClInclude Include="include\gen\StringPalette.h" />
-    <ClInclude Include="include\gen\SubIndexPart1.h" />
-    <ClInclude Include="include\gen\SubIndexPart2.h" />
-    <ClInclude Include="include\gen\SubIndexRecordA.h" />
-    <ClInclude Include="include\gen\SubIndexRecordB.h" />
     <ClInclude Include="include\gen\TBC.h" />
     <ClInclude Include="include\gen\TexDesc.h" />
     <ClInclude Include="include\gen\TexSource.h" />

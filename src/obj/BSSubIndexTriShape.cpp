@@ -15,16 +15,16 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/ObjectRegistry.h"
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/BSSubIndexTriShape.h"
-#include "../../include/gen/SubIndexPart1.h"
-#include "../../include/gen/SubIndexRecordA.h"
-#include "../../include/gen/SubIndexPart2.h"
-#include "../../include/gen/SubIndexRecordB.h"
+#include "../../include/gen/BSSITSSegment.h"
+#include "../../include/gen/BSSITSSubSegment.h"
+#include "../../include/gen/BSSIMaterialSection.h"
+#include "../../include/gen/BSSIMaterial.h"
 using namespace Niflib;
 
 //Definition of TYPE constant
 const Type BSSubIndexTriShape::TYPE("BSSubIndexTriShape", &BSTriShape::TYPE );
 
-BSSubIndexTriShape::BSSubIndexTriShape() : numTriangles2((unsigned int)0), numa((unsigned int)0), numb((unsigned int)0) {
+BSSubIndexTriShape::BSSubIndexTriShape() : numTriangles2((unsigned int)0), numSegments((unsigned int)0), numMaterials((unsigned int)0) {
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -52,45 +52,44 @@ void BSSubIndexTriShape::Read( istream& in, list<unsigned int> & link_stack, con
 	BSTriShape::Read( in, link_stack, info );
 	if ( (dataSize > 0) ) {
 		NifStream( numTriangles2, in, info );
-		NifStream( numa, in, info );
-		NifStream( numb, in, info );
-		subIndexPart1.resize(numa);
-		for (unsigned int i2 = 0; i2 < subIndexPart1.size(); i2++) {
-			NifStream( subIndexPart1[i2].unknownInt1, in, info );
-			NifStream( subIndexPart1[i2].unknownInt2, in, info );
-			NifStream( subIndexPart1[i2].unknownInt3, in, info );
-			NifStream( subIndexPart1[i2].numRecords, in, info );
-			subIndexPart1[i2].subIndexRecord.resize(subIndexPart1[i2].numRecords);
-			for (unsigned int i3 = 0; i3 < subIndexPart1[i2].subIndexRecord.size(); i3++) {
-				NifStream( subIndexPart1[i2].subIndexRecord[i3].unknownInt1, in, info );
-				NifStream( subIndexPart1[i2].subIndexRecord[i3].unknownInt2, in, info );
-				NifStream( subIndexPart1[i2].subIndexRecord[i3].unknownInt3, in, info );
-				NifStream( subIndexPart1[i2].subIndexRecord[i3].unknownInt4, in, info );
+		NifStream( numSegments, in, info );
+		NifStream( numMaterials, in, info );
+		segments.resize(numSegments);
+		for (unsigned int i2 = 0; i2 < segments.size(); i2++) {
+			NifStream( segments[i2].triangleOffset, in, info );
+			NifStream( segments[i2].triangleCount, in, info );
+			NifStream( segments[i2].materialHash, in, info );
+			NifStream( segments[i2].numRecords, in, info );
+			segments[i2].subIndexRecord.resize(segments[i2].numRecords);
+			for (unsigned int i3 = 0; i3 < segments[i2].subIndexRecord.size(); i3++) {
+				NifStream( segments[i2].subIndexRecord[i3].triangleOffset, in, info );
+				NifStream( segments[i2].subIndexRecord[i3].triangleCount, in, info );
+				NifStream( segments[i2].subIndexRecord[i3].segmentOffset, in, info );
+				NifStream( segments[i2].subIndexRecord[i3].unknownInt1, in, info );
 			};
 		};
 	};
-	if ( ((numa < numb) && (dataSize > 0)) ) {
-		NifStream( subIndexPart2.numa2, in, info );
-		NifStream( subIndexPart2.numb2, in, info );
-		subIndexPart2.recordA.resize(subIndexPart2.numa2);
-		for (unsigned int i2 = 0; i2 < subIndexPart2.recordA.size(); i2++) {
-			NifStream( subIndexPart2.recordA[i2], in, info );
+	if ( ((numSegments < numMaterials) && (dataSize > 0)) ) {
+		NifStream( materialSections.numSegments, in, info );
+		NifStream( materialSections.numMaterials, in, info );
+		materialSections.emptyMaterials.resize(materialSections.numSegments);
+		for (unsigned int i2 = 0; i2 < materialSections.emptyMaterials.size(); i2++) {
+			NifStream( materialSections.emptyMaterials[i2], in, info );
 		};
-		subIndexPart2.recordB.resize(subIndexPart2.numb2);
-		for (unsigned int i2 = 0; i2 < subIndexPart2.recordB.size(); i2++) {
-			NifStream( subIndexPart2.recordB[i2].unknownInt1, in, info );
-			NifStream( subIndexPart2.recordB[i2].unknownHfloat1, in, info );
-			NifStream( subIndexPart2.recordB[i2].unknownHfloat2, in, info );
-			NifStream( subIndexPart2.recordB[i2].numData, in, info );
-			subIndexPart2.recordB[i2].extraData.resize(subIndexPart2.recordB[i2].numData);
-			for (unsigned int i3 = 0; i3 < subIndexPart2.recordB[i2].extraData.size(); i3++) {
-				NifStream( subIndexPart2.recordB[i2].extraData[i3], in, info );
+		materialSections.materials.resize(materialSections.numMaterials);
+		for (unsigned int i2 = 0; i2 < materialSections.materials.size(); i2++) {
+			NifStream( materialSections.materials[i2].bodyPartIndex, in, info );
+			NifStream( materialSections.materials[i2].materialHash, in, info );
+			NifStream( materialSections.materials[i2].numData, in, info );
+			materialSections.materials[i2].extraData.resize(materialSections.materials[i2].numData);
+			for (unsigned int i3 = 0; i3 < materialSections.materials[i2].extraData.size(); i3++) {
+				NifStream( materialSections.materials[i2].extraData[i3], in, info );
 			};
 		};
-		NifStream( subIndexPart2.sspLength, in, info );
-		subIndexPart2.sspFile.resize(subIndexPart2.sspLength);
-		for (unsigned int i2 = 0; i2 < subIndexPart2.sspFile.size(); i2++) {
-			NifStream( subIndexPart2.sspFile[i2], in, info );
+		NifStream( materialSections.ssfLength, in, info );
+		materialSections.ssfFile.resize(materialSections.ssfLength);
+		for (unsigned int i2 = 0; i2 < materialSections.ssfFile.size(); i2++) {
+			NifStream( materialSections.ssfFile[i2], in, info );
 		};
 	};
 
@@ -105,47 +104,48 @@ void BSSubIndexTriShape::Write( ostream& out, const map<NiObjectRef,unsigned int
 	//--END CUSTOM CODE--//
 
 	BSTriShape::Write( out, link_map, missing_link_stack, info );
-	numa = (unsigned int)(subIndexPart1.size());
+	numMaterials = numMaterialsCalc(info);
+	numSegments = (unsigned int)(segments.size());
+	numTriangles2 = numTriangles2Calc(info);
 	if ( (dataSize > 0) ) {
 		NifStream( numTriangles2, out, info );
-		NifStream( numa, out, info );
-		NifStream( numb, out, info );
-		for (unsigned int i2 = 0; i2 < subIndexPart1.size(); i2++) {
-			subIndexPart1[i2].numRecords = (unsigned int)(subIndexPart1[i2].subIndexRecord.size());
-			NifStream( subIndexPart1[i2].unknownInt1, out, info );
-			NifStream( subIndexPart1[i2].unknownInt2, out, info );
-			NifStream( subIndexPart1[i2].unknownInt3, out, info );
-			NifStream( subIndexPart1[i2].numRecords, out, info );
-			for (unsigned int i3 = 0; i3 < subIndexPart1[i2].subIndexRecord.size(); i3++) {
-				NifStream( subIndexPart1[i2].subIndexRecord[i3].unknownInt1, out, info );
-				NifStream( subIndexPart1[i2].subIndexRecord[i3].unknownInt2, out, info );
-				NifStream( subIndexPart1[i2].subIndexRecord[i3].unknownInt3, out, info );
-				NifStream( subIndexPart1[i2].subIndexRecord[i3].unknownInt4, out, info );
+		NifStream( numSegments, out, info );
+		NifStream( numMaterials, out, info );
+		for (unsigned int i2 = 0; i2 < segments.size(); i2++) {
+			segments[i2].numRecords = (unsigned int)(segments[i2].subIndexRecord.size());
+			NifStream( segments[i2].triangleOffset, out, info );
+			NifStream( segments[i2].triangleCount, out, info );
+			NifStream( segments[i2].materialHash, out, info );
+			NifStream( segments[i2].numRecords, out, info );
+			for (unsigned int i3 = 0; i3 < segments[i2].subIndexRecord.size(); i3++) {
+				NifStream( segments[i2].subIndexRecord[i3].triangleOffset, out, info );
+				NifStream( segments[i2].subIndexRecord[i3].triangleCount, out, info );
+				NifStream( segments[i2].subIndexRecord[i3].segmentOffset, out, info );
+				NifStream( segments[i2].subIndexRecord[i3].unknownInt1, out, info );
 			};
 		};
 	};
-	if ( ((numa < numb) && (dataSize > 0)) ) {
-		subIndexPart2.sspLength = (unsigned short)(subIndexPart2.sspFile.size());
-		subIndexPart2.numb2 = (unsigned int)(subIndexPart2.recordB.size());
-		subIndexPart2.numa2 = (unsigned int)(subIndexPart2.recordA.size());
-		NifStream( subIndexPart2.numa2, out, info );
-		NifStream( subIndexPart2.numb2, out, info );
-		for (unsigned int i2 = 0; i2 < subIndexPart2.recordA.size(); i2++) {
-			NifStream( subIndexPart2.recordA[i2], out, info );
+	if ( ((numSegments < numMaterials) && (dataSize > 0)) ) {
+		materialSections.ssfLength = (unsigned short)(materialSections.ssfFile.size());
+		materialSections.numMaterials = (unsigned int)(materialSections.materials.size());
+		materialSections.numSegments = (unsigned int)(materialSections.emptyMaterials.size());
+		NifStream( materialSections.numSegments, out, info );
+		NifStream( materialSections.numMaterials, out, info );
+		for (unsigned int i2 = 0; i2 < materialSections.emptyMaterials.size(); i2++) {
+			NifStream( materialSections.emptyMaterials[i2], out, info );
 		};
-		for (unsigned int i2 = 0; i2 < subIndexPart2.recordB.size(); i2++) {
-			subIndexPart2.recordB[i2].numData = (unsigned int)(subIndexPart2.recordB[i2].extraData.size());
-			NifStream( subIndexPart2.recordB[i2].unknownInt1, out, info );
-			NifStream( subIndexPart2.recordB[i2].unknownHfloat1, out, info );
-			NifStream( subIndexPart2.recordB[i2].unknownHfloat2, out, info );
-			NifStream( subIndexPart2.recordB[i2].numData, out, info );
-			for (unsigned int i3 = 0; i3 < subIndexPart2.recordB[i2].extraData.size(); i3++) {
-				NifStream( subIndexPart2.recordB[i2].extraData[i3], out, info );
+		for (unsigned int i2 = 0; i2 < materialSections.materials.size(); i2++) {
+			materialSections.materials[i2].numData = (unsigned int)(materialSections.materials[i2].extraData.size());
+			NifStream( materialSections.materials[i2].bodyPartIndex, out, info );
+			NifStream( materialSections.materials[i2].materialHash, out, info );
+			NifStream( materialSections.materials[i2].numData, out, info );
+			for (unsigned int i3 = 0; i3 < materialSections.materials[i2].extraData.size(); i3++) {
+				NifStream( materialSections.materials[i2].extraData[i3], out, info );
 			};
 		};
-		NifStream( subIndexPart2.sspLength, out, info );
-		for (unsigned int i2 = 0; i2 < subIndexPart2.sspFile.size(); i2++) {
-			NifStream( subIndexPart2.sspFile[i2], out, info );
+		NifStream( materialSections.ssfLength, out, info );
+		for (unsigned int i2 = 0; i2 < materialSections.ssfFile.size(); i2++) {
+			NifStream( materialSections.ssfFile[i2], out, info );
 		};
 	};
 
@@ -162,43 +162,43 @@ std::string BSSubIndexTriShape::asString( bool verbose ) const {
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << BSTriShape::asString();
-	numa = (unsigned int)(subIndexPart1.size());
+	numSegments = (unsigned int)(segments.size());
 	if ( (dataSize > 0) ) {
 		out << "    Num Triangles 2:  " << numTriangles2 << endl;
-		out << "    NumA:  " << numa << endl;
-		out << "    NumB:  " << numb << endl;
+		out << "    Num Segments:  " << numSegments << endl;
+		out << "    Num Materials:  " << numMaterials << endl;
 		array_output_count = 0;
-		for (unsigned int i2 = 0; i2 < subIndexPart1.size(); i2++) {
+		for (unsigned int i2 = 0; i2 < segments.size(); i2++) {
 			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 				break;
 			};
-			subIndexPart1[i2].numRecords = (unsigned int)(subIndexPart1[i2].subIndexRecord.size());
-			out << "      Unknown Int 1:  " << subIndexPart1[i2].unknownInt1 << endl;
-			out << "      Unknown Int 2:  " << subIndexPart1[i2].unknownInt2 << endl;
-			out << "      Unknown Int 3:  " << subIndexPart1[i2].unknownInt3 << endl;
-			out << "      Num Records:  " << subIndexPart1[i2].numRecords << endl;
+			segments[i2].numRecords = (unsigned int)(segments[i2].subIndexRecord.size());
+			out << "      Triangle Offset:  " << segments[i2].triangleOffset << endl;
+			out << "      Triangle Count:  " << segments[i2].triangleCount << endl;
+			out << "      Material Hash:  " << segments[i2].materialHash << endl;
+			out << "      Num Records:  " << segments[i2].numRecords << endl;
 			array_output_count = 0;
-			for (unsigned int i3 = 0; i3 < subIndexPart1[i2].subIndexRecord.size(); i3++) {
+			for (unsigned int i3 = 0; i3 < segments[i2].subIndexRecord.size(); i3++) {
 				if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 					out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 					break;
 				};
-				out << "        Unknown Int 1:  " << subIndexPart1[i2].subIndexRecord[i3].unknownInt1 << endl;
-				out << "        Unknown Int 2:  " << subIndexPart1[i2].subIndexRecord[i3].unknownInt2 << endl;
-				out << "        Unknown Int 3:  " << subIndexPart1[i2].subIndexRecord[i3].unknownInt3 << endl;
-				out << "        Unknown Int 4:  " << subIndexPart1[i2].subIndexRecord[i3].unknownInt4 << endl;
+				out << "        Triangle Offset:  " << segments[i2].subIndexRecord[i3].triangleOffset << endl;
+				out << "        Triangle Count:  " << segments[i2].subIndexRecord[i3].triangleCount << endl;
+				out << "        Segment Offset:  " << segments[i2].subIndexRecord[i3].segmentOffset << endl;
+				out << "        Unknown Int 1:  " << segments[i2].subIndexRecord[i3].unknownInt1 << endl;
 			};
 		};
 	};
-	if ( ((numa < numb) && (dataSize > 0)) ) {
-		subIndexPart2.sspLength = (unsigned short)(subIndexPart2.sspFile.size());
-		subIndexPart2.numb2 = (unsigned int)(subIndexPart2.recordB.size());
-		subIndexPart2.numa2 = (unsigned int)(subIndexPart2.recordA.size());
-		out << "    NumA2:  " << subIndexPart2.numa2 << endl;
-		out << "    NumB2:  " << subIndexPart2.numb2 << endl;
+	if ( ((numSegments < numMaterials) && (dataSize > 0)) ) {
+		materialSections.ssfLength = (unsigned short)(materialSections.ssfFile.size());
+		materialSections.numMaterials = (unsigned int)(materialSections.materials.size());
+		materialSections.numSegments = (unsigned int)(materialSections.emptyMaterials.size());
+		out << "    Num Segments:  " << materialSections.numSegments << endl;
+		out << "    Num Materials:  " << materialSections.numMaterials << endl;
 		array_output_count = 0;
-		for (unsigned int i2 = 0; i2 < subIndexPart2.recordA.size(); i2++) {
+		for (unsigned int i2 = 0; i2 < materialSections.emptyMaterials.size(); i2++) {
 			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 				break;
@@ -206,22 +206,21 @@ std::string BSSubIndexTriShape::asString( bool verbose ) const {
 			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 				break;
 			};
-			out << "      Record A[" << i2 << "]:  " << subIndexPart2.recordA[i2] << endl;
+			out << "      Empty Materials[" << i2 << "]:  " << materialSections.emptyMaterials[i2] << endl;
 			array_output_count++;
 		};
 		array_output_count = 0;
-		for (unsigned int i2 = 0; i2 < subIndexPart2.recordB.size(); i2++) {
+		for (unsigned int i2 = 0; i2 < materialSections.materials.size(); i2++) {
 			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 				break;
 			};
-			subIndexPart2.recordB[i2].numData = (unsigned int)(subIndexPart2.recordB[i2].extraData.size());
-			out << "      Unknown Int 1:  " << subIndexPart2.recordB[i2].unknownInt1 << endl;
-			out << "      Unknown HFloat 1:  " << subIndexPart2.recordB[i2].unknownHfloat1 << endl;
-			out << "      Unknown HFloat 2:  " << subIndexPart2.recordB[i2].unknownHfloat2 << endl;
-			out << "      Num Data:  " << subIndexPart2.recordB[i2].numData << endl;
+			materialSections.materials[i2].numData = (unsigned int)(materialSections.materials[i2].extraData.size());
+			out << "      Body Part Index:  " << materialSections.materials[i2].bodyPartIndex << endl;
+			out << "      Material Hash:  " << materialSections.materials[i2].materialHash << endl;
+			out << "      Num Data:  " << materialSections.materials[i2].numData << endl;
 			array_output_count = 0;
-			for (unsigned int i3 = 0; i3 < subIndexPart2.recordB[i2].extraData.size(); i3++) {
+			for (unsigned int i3 = 0; i3 < materialSections.materials[i2].extraData.size(); i3++) {
 				if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 					out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 					break;
@@ -229,13 +228,13 @@ std::string BSSubIndexTriShape::asString( bool verbose ) const {
 				if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 					break;
 				};
-				out << "        Extra Data[" << i3 << "]:  " << subIndexPart2.recordB[i2].extraData[i3] << endl;
+				out << "        Extra Data[" << i3 << "]:  " << materialSections.materials[i2].extraData[i3] << endl;
 				array_output_count++;
 			};
 		};
-		out << "    SSP Length:  " << subIndexPart2.sspLength << endl;
+		out << "    SSF Length:  " << materialSections.ssfLength << endl;
 		array_output_count = 0;
-		for (unsigned int i2 = 0; i2 < subIndexPart2.sspFile.size(); i2++) {
+		for (unsigned int i2 = 0; i2 < materialSections.ssfFile.size(); i2++) {
 			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 				break;
@@ -243,7 +242,7 @@ std::string BSSubIndexTriShape::asString( bool verbose ) const {
 			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
 				break;
 			};
-			out << "      SSP File[" << i2 << "]:  " << subIndexPart2.sspFile[i2] << endl;
+			out << "      SSF File[" << i2 << "]:  " << materialSections.ssfFile[i2] << endl;
 			array_output_count++;
 		};
 	};
@@ -288,32 +287,96 @@ void BSSubIndexTriShape::SetNumTriangles2( unsigned int value ) {
 	numTriangles2 = value;
 }
 
-unsigned int BSSubIndexTriShape::GetNumb() const {
-	return numb;
+unsigned int BSSubIndexTriShape::GetNumMaterials() const {
+	return numMaterials;
 }
 
-void BSSubIndexTriShape::SetNumb( unsigned int value ) {
-	numb = value;
+void BSSubIndexTriShape::SetNumMaterials( unsigned int value ) {
+	numMaterials = value;
 }
 
-vector<SubIndexPart1 > BSSubIndexTriShape::GetSubIndexPart1() const {
-	return subIndexPart1;
+vector<BSSITSSegment > BSSubIndexTriShape::GetSegments() const {
+	return segments;
 }
 
-void BSSubIndexTriShape::SetSubIndexPart1( const vector<SubIndexPart1 >& value ) {
-	subIndexPart1 = value;
+void BSSubIndexTriShape::SetSegments( const vector<BSSITSSegment >& value ) {
+	segments = value;
 }
 
-SubIndexPart2 BSSubIndexTriShape::GetSubIndexPart2() const {
-	return subIndexPart2;
+BSSIMaterialSection BSSubIndexTriShape::GetMaterialSections() const {
+	return materialSections;
 }
 
-void BSSubIndexTriShape::SetSubIndexPart2( const SubIndexPart2 & value ) {
-	subIndexPart2 = value;
+void BSSubIndexTriShape::SetMaterialSections( const BSSIMaterialSection & value ) {
+	materialSections = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
+
+unsigned int BSSubIndexTriShape::numTriangles2Calc(const NifInfo info) const
+{
+	return numTriangles;
+}
+
+unsigned int BSSubIndexTriShape::numMaterialsCalc(const NifInfo info) const
+{
+	return numMaterials = materialSections.numMaterials = materialSections.materials.size();
+}
+
+
+
+const vector<BSSITSSegment>& BSSubIndexTriShape::GetSegments() const {
+	return segments;
+}
+
+void BSSubIndexTriShape::SetSegments(const vector<BSSITSSegment >& value) {
+	segments = value;
+}
+
+const BSSIMaterialSection& BSSubIndexTriShape::GetMaterialSections() const {
+	return materialSections;
+}
+
+void BSSubIndexTriShape::SetMaterialSections(const BSSIMaterialSection & value) {
+	materialSections = value;
+}
+
+// return triangle list 
+vector<Triangle> BSSubIndexTriShape::GetTriangles(int segment) const
+{
+	int offset = segments[segment].triangleOffset / 3;
+	int count = segments[segment].triangleCount;
+	vector<Triangle>::const_iterator tristart = this->triangles.begin();
+	std::advance(tristart, offset);
+	vector<Triangle>::const_iterator triend = tristart;
+	std::advance(triend, count);
+	return vector<Triangle>(tristart, triend);
+}
+
+// return triangle list 
+vector<Triangle> BSSubIndexTriShape::GetTriangles(int segment, int subindex) const
+{
+	int offset = segments[segment].subIndexRecord[subindex].triangleOffset / 3;
+	int count = segments[segment].subIndexRecord[subindex].triangleCount;
+	vector<Triangle>::const_iterator tristart = this->triangles.begin();
+	std::advance(tristart, offset);
+	vector<Triangle>::const_iterator triend = tristart;
+	std::advance(triend, count);
+	return vector<Triangle>(tristart, triend);
+}
+
+string BSSubIndexTriShape::GetSSF() const
+{
+	return string((char*)&materialSections.ssfFile[0], materialSections.ssfFile.size());
+}
+
+void BSSubIndexTriShape::SetSSF(const string& value)
+{
+	materialSections.ssfFile.resize(value.size());
+	memcpy(&materialSections.ssfFile[0], &value[0], value.size());
+	materialSections.ssfLength = value.size();
+}
 
 //--END CUSTOM CODE--//

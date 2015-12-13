@@ -174,11 +174,35 @@ public:
 
 	// Unknown.
 	// \return The current value.
-	array<4,string >  GetTextures() const;
+	string GetEnvMapTexture() const;
 
 	// Unknown.
 	// \param[in] value The new value.
-	void SetTextures( const array<4,string >&  value );
+	void SetEnvMapTexture( const string & value );
+
+	// Unknown.
+	// \return The current value.
+	string GetNormalTexture() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetNormalTexture( const string & value );
+
+	// Unknown.
+	// \return The current value.
+	string GetEnvMaskTexture() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetEnvMaskTexture( const string & value );
+
+	// Unknown.
+	// \return The current value.
+	float GetEnvironmentMapScale() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	void SetEnvironmentMapScale( float value );
 
 	****End Example Naive Implementation***/
 
@@ -298,6 +322,38 @@ public:
 	// \param[in] value The new value.
 	NIFLIB_API void SetGreyscaleTexture( const string & value );
 
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API string GetEnvMapTexture() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetEnvMapTexture(const string & value);
+
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API string GetNormalTexture() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetNormalTexture(const string & value);
+
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API string GetEnvMaskTexture() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetEnvMaskTexture(const string & value);
+
+	// Unknown.
+	// \return The current value.
+	NIFLIB_API float GetEnvironmentMapScale() const;
+
+	// Unknown.
+	// \param[in] value The new value.
+	NIFLIB_API void SetEnvironmentMapScale(float value);
+
 	//--END CUSTOM CODE--//
 protected:
 	/*! Unknown. */
@@ -332,11 +388,13 @@ protected:
 	 */
 	string greyscaleTexture;
 	/*! Unknown. */
-	array<10,float > unknown10Floats;
+	string envMapTexture;
 	/*! Unknown. */
-	array<4,string > textures;
+	string normalTexture;
 	/*! Unknown. */
-	float unknownFloat1;
+	string envMaskTexture;
+	/*! Unknown. */
+	float environmentMapScale;
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */
 	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
