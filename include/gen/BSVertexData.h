@@ -35,6 +35,10 @@ struct BSVertexData {
 	/*! Normal nybble? */
 	unsigned int unknownShort1;
 	/*! Unknown. */
+	Vector3 vertex2;
+	/*! Unknown. */
+	float bitangentX2;
+	/*! Unknown. */
 	HalfTexCoord uv;
 	/*! Unknown. */
 	ByteVector3 normal;

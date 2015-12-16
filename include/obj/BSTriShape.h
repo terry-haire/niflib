@@ -268,7 +268,7 @@ public:
 	NIFLIB_API void SetVertexData(const vector<BSVertexData >& value);
 
 	// Set VertexFlags from features
-	NIFLIB_API void SetVertexFlags(bool uv, bool vc, bool normal, bool tangent, bool skin);
+	NIFLIB_API void SetVertexFlags(bool uv, bool vc, bool normal, bool tangent, bool skin, bool fullfloat);
 
 	// Unknown.
 	// \return The current value.

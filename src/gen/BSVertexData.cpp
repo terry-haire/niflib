@@ -14,7 +14,7 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSVertexData::BSVertexData() : bitangentX((hfloat)0), unknownShort1((unsigned int)0), bitangentY((byte)0), bitangentZ((byte)0), unknownInt2((unsigned int)0) {};
+BSVertexData::BSVertexData() : bitangentX((hfloat)0), unknownShort1((unsigned int)0), bitangentX2(0.0f), bitangentY((byte)0), bitangentZ((byte)0), unknownInt2((unsigned int)0) {};
 
 //Copy Constructor
 BSVertexData::BSVertexData( const BSVertexData & src ) {
@@ -26,6 +26,8 @@ BSVertexData & BSVertexData::operator=( const BSVertexData & src ) {
 	this->vertex = src.vertex;
 	this->bitangentX = src.bitangentX;
 	this->unknownShort1 = src.unknownShort1;
+	this->vertex2 = src.vertex2;
+	this->bitangentX2 = src.bitangentX2;
 	this->uv = src.uv;
 	this->normal = src.normal;
 	this->bitangentY = src.bitangentY;
@@ -50,7 +52,8 @@ void BSVertexData::Clear()
 
 Vector3 BSVertexData::GetVertex() const
 {
-	return Vector3(ConvertHFloatToFloat(vertex.x), ConvertHFloatToFloat(vertex.y), ConvertHFloatToFloat(vertex.z));
+	//return Vector3(ConvertHFloatToFloat(vertex.x), ConvertHFloatToFloat(vertex.y), ConvertHFloatToFloat(vertex.z));
+	return vertex2;
 }
 
 void BSVertexData::SetVertex(const Vector3& v)
@@ -58,6 +61,10 @@ void BSVertexData::SetVertex(const Vector3& v)
 	vertex.x = ConvertFloatToHFloat(v.x);
 	vertex.y = ConvertFloatToHFloat(v.y);
 	vertex.z = ConvertFloatToHFloat(v.z);
+
+	vertex2.x = v.x;
+	vertex2.y = v.y;
+	vertex2.z = v.z;
 }
 
 void BSVertexData::SetNormal(const Vector3& n)
@@ -90,6 +97,7 @@ void BSVertexData::SetTangent(const Vector3& t)
 
 void BSVertexData::SetBitangent(const Vector3& b)
 {
+	bitangentX2 = b.x;
 	bitangentX = ConvertFloatToHFloat(b.x);
 	bitangentY = ConvertFloatToByte(b.y);
 	bitangentZ = ConvertFloatToByte(b.z);

@@ -70,14 +70,20 @@ void BSTriShape::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 	if ( (dataSize > 0) ) {
 		vertexData.resize(numVertices);
 		for (unsigned int i2 = 0; i2 < vertexData.size(); i2++) {
-			NifStream( vertexData[i2].vertex.x, in, info );
-			NifStream( vertexData[i2].vertex.y, in, info );
-			NifStream( vertexData[i2].vertex.z, in, info );
-			if ( ((vertexFlags[5] & 128) && (vertexFlags[2] & 64)) ) {
+			if ( (!(vertexFlags[6] & 64)) ) {
+				NifStream( vertexData[i2].vertex.x, in, info );
+				NifStream( vertexData[i2].vertex.y, in, info );
+				NifStream( vertexData[i2].vertex.z, in, info );
+			};
+			if ( ((!(vertexFlags[6] & 64)) && ((vertexFlags[5] & 128) && (vertexFlags[2] & 64))) ) {
 				NifStream( vertexData[i2].bitangentX, in, info );
 			};
-			if ( (!((vertexFlags[5] & 128) && (vertexFlags[2] & 64))) ) {
+			if ( ((!(vertexFlags[6] & 64)) && (!((vertexFlags[5] & 128) && (vertexFlags[2] & 64)))) ) {
 				NifStream( vertexData[i2].unknownShort1, in, info );
+			};
+			if ( (vertexFlags[6] & 64) ) {
+				NifStream( vertexData[i2].vertex2, in, info );
+				NifStream( vertexData[i2].bitangentX2, in, info );
 			};
 			if ( (vertexFlags[5] & 32) ) {
 				NifStream( vertexData[i2].uv.u, in, info );
@@ -120,6 +126,20 @@ void BSTriShape::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
+	for (unsigned int i2 = 0; i2 < vertexData.size(); i2++) {
+		BSVertexData& vd = vertexData[i2];
+		if (vertexFlags[6] & 64) {
+			vd.vertex.x = ConvertFloatToHFloat(vd.vertex2.x);
+			vd.vertex.y = ConvertFloatToHFloat(vd.vertex2.y);
+			vd.vertex.z = ConvertFloatToHFloat(vd.vertex2.z);
+			vd.bitangentX = ConvertFloatToHFloat(vd.bitangentX2);
+		} else {
+			vd.vertex2.x = ConvertHFloatToFloat(vd.vertex.x);
+			vd.vertex2.y = ConvertHFloatToFloat(vd.vertex.y);
+			vd.vertex2.z = ConvertHFloatToFloat(vd.vertex.z);
+			vd.bitangentX2 = ConvertHFloatToFloat(vd.bitangentX);
+		}
+	}
 	//--END CUSTOM CODE--//
 }
 
@@ -177,14 +197,20 @@ void BSTriShape::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 	NifStream( dataSize, out, info );
 	if ( (dataSize > 0) ) {
 		for (unsigned int i2 = 0; i2 < vertexData.size(); i2++) {
-			NifStream( vertexData[i2].vertex.x, out, info );
-			NifStream( vertexData[i2].vertex.y, out, info );
-			NifStream( vertexData[i2].vertex.z, out, info );
-			if ( ((vertexFlags[5] & 128) && (vertexFlags[2] & 64)) ) {
+			if ( (!(vertexFlags[6] & 64)) ) {
+				NifStream( vertexData[i2].vertex.x, out, info );
+				NifStream( vertexData[i2].vertex.y, out, info );
+				NifStream( vertexData[i2].vertex.z, out, info );
+			};
+			if ( ((!(vertexFlags[6] & 64)) && ((vertexFlags[5] & 128) && (vertexFlags[2] & 64))) ) {
 				NifStream( vertexData[i2].bitangentX, out, info );
 			};
-			if ( (!((vertexFlags[5] & 128) && (vertexFlags[2] & 64))) ) {
+			if ( ((!(vertexFlags[6] & 64)) && (!((vertexFlags[5] & 128) && (vertexFlags[2] & 64)))) ) {
 				NifStream( vertexData[i2].unknownShort1, out, info );
+			};
+			if ( (vertexFlags[6] & 64) ) {
+				NifStream( vertexData[i2].vertex2, out, info );
+				NifStream( vertexData[i2].bitangentX2, out, info );
 			};
 			if ( (vertexFlags[5] & 32) ) {
 				NifStream( vertexData[i2].uv.u, out, info );
@@ -275,14 +301,20 @@ std::string BSTriShape::asString( bool verbose ) const {
 				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 				break;
 			};
-			out << "      x:  " << vertexData[i2].vertex.x << endl;
-			out << "      y:  " << vertexData[i2].vertex.y << endl;
-			out << "      z:  " << vertexData[i2].vertex.z << endl;
-			if ( ((vertexFlags[5] & 128) && (vertexFlags[2] & 64)) ) {
+			if ( (!(vertexFlags[6] & 64)) ) {
+				out << "        x:  " << vertexData[i2].vertex.x << endl;
+				out << "        y:  " << vertexData[i2].vertex.y << endl;
+				out << "        z:  " << vertexData[i2].vertex.z << endl;
+			};
+			if ( ((!(vertexFlags[6] & 64)) && ((vertexFlags[5] & 128) && (vertexFlags[2] & 64))) ) {
 				out << "        Bitangent x:  " << vertexData[i2].bitangentX << endl;
 			};
-			if ( (!((vertexFlags[5] & 128) && (vertexFlags[2] & 64))) ) {
+			if ( ((!(vertexFlags[6] & 64)) && (!((vertexFlags[5] & 128) && (vertexFlags[2] & 64)))) ) {
 				out << "        Unknown Short 1:  " << vertexData[i2].unknownShort1 << endl;
+			};
+			if ( (vertexFlags[6] & 64) ) {
+				out << "        Vertex 2:  " << vertexData[i2].vertex2 << endl;
+				out << "        Bitangent x 2:  " << vertexData[i2].bitangentX2 << endl;
 			};
 			if ( (vertexFlags[5] & 32) ) {
 				out << "        u:  " << vertexData[i2].uv.u << endl;
@@ -462,8 +494,12 @@ void BSTriShape::SetTriangles( const vector<Triangle >& value ) {
 int BSTriShape::dataSizeCalc(const NifInfo & info) const
 {
 	BSVertexData *ptr = nullptr;
-	int size = triangles.size() * sizeof(Triangle);
-	int dataSize = sizeof(ptr->vertex) + sizeof(ptr->bitangentX);
+	size_t size = triangles.size() * sizeof(Triangle);
+	size_t dataSize = 0;
+	if (vertexFlags[6] & 0x40)
+		dataSize += sizeof(ptr->vertex2) + sizeof(ptr->bitangentX2);
+	else		
+		dataSize += sizeof(ptr->vertex) + sizeof(ptr->bitangentX);
 	if ((vertexFlags[5] & 32)) {
 		dataSize += sizeof(ptr->uv);
 	};
@@ -485,7 +521,7 @@ int BSTriShape::dataSizeCalc(const NifInfo & info) const
 		dataSize += sizeof(ptr->unknownInt2);
 	};
 	size += dataSize * vertexData.size();
-	return size;
+	return int(size);
 }
 
 #pragma region Property Management
@@ -687,7 +723,7 @@ void BSTriShape::SetTriangles(const vector<Triangle >& value) {
 	triangles = value;
 }
 
-void BSTriShape::SetVertexFlags(bool uv, bool vc, bool normal, bool tangent, bool skin)
+void BSTriShape::SetVertexFlags(bool uv, bool vc, bool normal, bool tangent, bool skin, bool fullfloat)
 {
 	// sorted by usage frequency in the Fallout 4
 	typedef union { char flags[8]; unsigned long long ull; } VFlags;
@@ -708,10 +744,15 @@ void BSTriShape::SetVertexFlags(bool uv, bool vc, bool normal, bool tangent, boo
 		{ 0x04, 0x02, 0x03, 0x00, 0x00, 0xb0, 0x00, 0x00 },
 		{ 0x04, 0x02, 0x00, 0x03, 0x00, 0x30, 0x02, 0x00 },
 		{ 0x05, 0x02, 0x03, 0x04, 0x00, 0xb0, 0x02, 0x00 },
+		{ 0x08, 0x04, 0x65, 0x07, 0x00, 0xb0, 0x43, 0x00 },
+		{ 0x07, 0x04, 0x65, 0x00, 0x00, 0xb0, 0x41, 0x00 },
+		{ 0x0b, 0x04, 0x65, 0x87, 0x00, 0xb0, 0x47, 0x00 },
+		{ 0x0a, 0x04, 0x65, 0x70, 0x00, 0xb0, 0x45, 0x00 },
 		{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
 	};
 	VFlags mask;
 	mask.ull = 0UL;
+	if (fullfloat) mask.flags[6] |= 0x40;
 	if (uv) mask.flags[5] |= 0x20;
 	if (normal) mask.flags[5] |= 0x80;
 	if (tangent) mask.flags[2] |= 0x40;
