@@ -526,6 +526,14 @@ public:
 
    // Unknown.
    // \return The current value.
+   float GetUnknownFloat1() const;
+
+   // Unknown.
+   // \param[in] value The new value.
+   void SetUnknownFloat1(float value);
+
+	// Unknown.
+   // \return The current value.
    float GetBacklightPower() const;
 
    // Unknown.

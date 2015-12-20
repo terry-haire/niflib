@@ -785,6 +785,15 @@ void BSLightingShaderProperty::SetSubsurfaceRolloff(float value) {
 	subsurfaceRolloff = value;
 }
 
+float BSLightingShaderProperty::GetUnknownFloat1() const {
+	return unknownFloat1;
+}
+
+void BSLightingShaderProperty::SetUnknownFloat1(float value) {
+	unknownFloat1 = value;
+}
+
+
 float BSLightingShaderProperty::GetBacklightPower() const {
 	return backlightPower;
 }
