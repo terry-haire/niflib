@@ -55,6 +55,52 @@ public:
 	//--This object has no eligable attributes.  No example implementation generated--//
 
 	//--BEGIN MISC CUSTOM CODE--//
+	/*
+		// A vector that moves the body by the specified amount. Only enabled in
+		// bhkRigidBodyT objects.
+		// \return The current value.
+		Vector4 GetTranslation() const;
+
+		// A vector that moves the body by the specified amount. Only enabled in
+		// bhkRigidBodyT objects.
+		// \param[in] value The new value.
+		void SetTranslation(const Vector4 & value);
+
+		// The rotation Yaw/Pitch/Roll to apply to the body. Only enabled in bhkRigidBodyT
+		// objects.
+		// \return The current value.
+		QuaternionXYZW GetRotation() const;
+
+		// The rotation Yaw/Pitch/Roll to apply to the body. Only enabled in bhkRigidBodyT
+		// objects.
+		// \param[in] value The new value.
+		void SetRotation(const QuaternionXYZW & value);
+	*/
+
+	/*!
+	* Gets the current translation of this rigid body.
+	* \return The translation of this rigid body.
+	*/
+	NIFLIB_API Vector4 GetTranslation() const;
+
+	/*!
+	* Sets a new translation for this rigid body.
+	* \param[in] value  The new translation for this rigid body.
+	*/
+	NIFLIB_API void SetTranslation(const Vector4 & value);
+
+	/*!
+	* Gets the current rotation of this rigid body.
+	* \return The rotation of this rigid body.
+	*/
+	NIFLIB_API QuaternionXYZW GetRotation() const;
+
+	/*!
+	* Sets a new rotation for this rigid body.
+	* \param[in] value The new rotation for this rigid body.
+	*/
+	NIFLIB_API void SetRotation(const QuaternionXYZW & value);
+
 	//--END CUSTOM CODE--//
 public:
 	/*! NIFLIB_HIDDEN function.  For internal use only. */

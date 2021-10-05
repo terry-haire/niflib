@@ -94,4 +94,21 @@ std::list<NiObject *> bhkRigidBodyT::GetPtrs() const {
 //--This object has no eligable attributes.  No example implementation generated--//
 
 //--BEGIN MISC CUSTOM CODE--//
+
+Vector4 bhkRigidBody::GetTranslation() const {
+	return translation;
+}
+
+void bhkRigidBody::SetTranslation(const Vector4 & value) {
+	translation = value;
+}
+
+QuaternionXYZW bhkRigidBody::GetRotation() const {
+	return rotation;
+}
+
+void bhkRigidBody::SetRotation(const QuaternionXYZW & value) {
+	rotation = value;
+}
+
 //--END CUSTOM CODE--//
